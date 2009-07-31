@@ -11,6 +11,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>JS_addin</AssemblyName>
     <RootNamespace>JS_addin.Addin</RootNamespace>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,18 +38,22 @@
       <HintPath>lib\Microsoft.JScript.Compiler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parsers\CodeNode.cs" />
-    <Compile Include="Parsers\JSParser.cs" />
+    <Compile Include="Code\CodeNode.cs" />
+    <Compile Include="Code\CodeService.cs" />
+    <Compile Include="Code\Hierachy.cs" />
+    <Compile Include="Parsers\JavascriptParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CodeService\CodeService.cs" />
     <Compile Include="Connect.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -111,6 +116,10 @@
     <Content Include="JS_addin.AddIn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Test\jquery-1.3.2.js" />
+    <Content Include="Test\Simple.js" />
+    <Content Include="Test\Simple2.js" />
+    <Content Include="Test\Table.js" />
     <None Include="Resources\js_function.gif" />
     <None Include="Resources\js_file.gif" />
     <None Include="Resources\js_method_public.gif" />

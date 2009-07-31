@@ -1,56 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using EnvDTE;
-using System.IO;
-using EnvDTE80;
-using System.Resources;
-using System.Reflection;
-using System.Diagnostics;
-using System.Threading;
-using System.Globalization;
-using JS_addin.Addin.Parsers.JSParser;
+using JS_addin.Addin.Code;
+using JS_addin.Addin.Parsers;
 
-namespace JS_addin.Addin
+namespace JS_addin.Addin.UI
 {
+	/// <summary>
+	/// The tree for code.
+	/// </summary>
 	public partial class NavigationTreeView : UserControl
 	{
 		private string _loadedDocName = string.Empty;
+		private DTE _dte;
+		private Document _doc;
 
-		private DTE m_dte = null;
-		public DTE DTE
-		{
-			set { m_dte = value; }
-		}
-
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
+		/// </summary>
 		public NavigationTreeView()
 		{
 			InitializeComponent();
 		}
 
-		public void Init(DTE dte, Document doc)
+		/// <summary>
+		/// Sets DTE object.
+		/// </summary>
+		public DTE DTE
 		{
-			this.m_dte = dte;
-			this._doc = doc;
-			_code = new CodeService(Doc).LoadCode();
+			set { _dte = value; }
 		}
 
-		private Document _doc;
-
-		private Document Doc
+		/// <summary>
+		/// Gets Document.
+		/// </summary>
+		public Document Doc
 		{
 			get
 			{
 				if (_doc == null)
-					return m_dte.ActiveDocument;
+				{
+					return _dte.ActiveDocument;
+				}
+
 				return _doc;
 			}
 		}
 
+		/// <summary>
+		/// Gets Selection.
+		/// </summary>
 		public TextSelection Selection
 		{
 			get
@@ -58,34 +57,79 @@ namespace JS_addin.Addin
 				return (TextSelection)Doc.Selection;
 			}
 		}
-		private string _code;
-		public string Code
-		{
-			get { return _code; }
-		}
 
-		public void LoadFunctionList()
-		{
-			if (Doc == null || _loadedDocName == Doc.Path + Doc.Name) return;
-			_loadedDocName = Doc.Path + Doc.Name;
-			lbDocName.Text = Doc.Name;
+		/// <summary>
+		/// Gets Code.
+		/// </summary>
+		public string Code { get; private set; }
 
-			listView1.Items.Clear();
-			if (Doc.Name.EndsWith(".js"))
+		/// <summary>
+		/// Initialize method.
+		/// </summary>
+		/// <param name="dte">
+		/// The dte param.
+		/// </param>
+		/// <param name="doc">
+		/// The doc param.
+		/// </param>
+		/// <param name="debugActive">
+		/// The debug active.
+		/// </param>
+		public void Init(DTE dte, Document doc, bool debugActive)
+		{
+			this._dte = dte;
+			this._doc = doc;
+			Code = new CodeService(Doc).LoadCode();
+
+			if (!debugActive)
 			{
-				var nodes = JSParser.Parse(Code);
-				foreach (var node in nodes)
-				{
-					ListViewItem it = new ListViewItem(new[] { node.Opcode.ToString(), node.Alias, node.StartLine.ToString() });
-					it.Tag = node.StartLine;
-					listView1.Items.Add(it);
-				}
+				btnAttachDebug.Visible = false;
 			}
 		}
 
+		/// <summary>
+		/// Clears the tree.
+		/// </summary>
 		public void Clear()
 		{
-			listView1.Items.Clear();
+			treeView1.Nodes.Clear();
+		}
+
+		/// <summary>
+		/// Build the tree.
+		/// </summary>
+		public void LoadFunctionList()
+		{
+			if (Doc == null || _loadedDocName == Doc.Path + Doc.Name)
+			{
+				return;
+			}
+
+			_loadedDocName = Doc.Path + Doc.Name;
+			lbDocName.Text = Doc.Name;
+
+			treeView1.Nodes.Clear();
+			if (Doc.Name.EndsWith(".js"))
+			{
+				var nodes = JavascriptParser.Parse(Code);
+				FillNodes(nodes, treeView1.Nodes);
+			}
+		}
+
+		private void FillNodes(Hierachy<CodeNode> source, TreeNodeCollection dest)
+		{
+			foreach (var item in source.Childrens)
+			{
+				CodeNode node = item.Item;
+				TreeNode treeNode = new TreeNode(string.Format("{0} {1} {2}", node.Opcode, node.Alias, node.StartLine));
+				treeNode.Tag = node.StartLine;
+				dest.Add(treeNode);
+
+				if (item.HasChildrens)
+				{
+					FillNodes(item, treeNode.Nodes);
+				}
+			}
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
@@ -94,35 +138,35 @@ namespace JS_addin.Addin
 			{
 				this.Dock = DockStyle.Fill;
 				Refresh();
-				_code = new CodeService(Doc).LoadCode();
+				Code = new CodeService(Doc).LoadCode();
 				_loadedDocName = string.Empty;
 				LoadFunctionList();
 			}
-			catch  (Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
 			}
 		}
 
-		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			
-		}
-
-		private void listView1_DoubleClick(object sender, EventArgs e)
-		{
-			if (listView1.SelectedItems.Count > 0)
+			if (treeView1.SelectedNode != null)
 			{
-				int line = (int)listView1.SelectedItems[0].Tag;
+				int line = (int)treeView1.SelectedNode.Tag;
 				try
 				{
 					Selection.GotoLine(line, false);
 					Doc.Activate();
-					m_dte.ActiveWindow.SetFocus();
-					
+					_dte.ActiveWindow.SetFocus();
+
 				}
 				catch { }
 			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Debugger.Break();
 		}
 	}
 }
