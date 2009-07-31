@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS_addin", "JS_addin.csproj", "{CD182937-1198-464D-874D-E109E2DE57D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JS_addin", "JsAddin\JS_addin.csproj", "{CD182937-1198-464D-874D-E109E2DE57D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{0D1994A6-0A9B-4F1F-A723-B10F9A91FCF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0D1994A6-0A9B-4F1F-A723-B10F9A91FCF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
