@@ -1,7 +1,8 @@
 ﻿// Comment to funtion 1
-// This function does nothing
-function Function1()
+// This function run a delegate
+function Function1(delegate)
 {
+	delegate();
 }
 
 // Comment to funtion 2
@@ -9,9 +10,12 @@ function Function1()
 function Function2()
 {
 	var variable1 = 1;
-	
+
 	//delegate method
 	var delegate = function()
 	{
 	};
+	
+	//Anonimous function
+	Function1(function() {alert(1);});
 }

@@ -1,0 +1,24 @@
+<Hierachy>
+  <Item Text="All" Line="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="Class1" Line="2" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="Method1" Line="9" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="Method2" Line="14" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="Method3" Line="19" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="delegate" Line="22" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

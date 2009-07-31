@@ -1,0 +1,69 @@
+<Hierachy>
+  <Item Text="All" Line="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="?.?" Line="5" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="?.autocomplete" Line="8" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="highlight.highlight" Line="11" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+        <Hierachy>
+          <Item Text="?.result" Line="18" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="?.unautocomplete" Line="22" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="Autocompleter" Line="28" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="opera.?" Line="31" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="?" Line="56" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="selectCurrent" Line="66" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="stopLoading" Line="71" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+        <Hierachy>
+          <Item Text="defaults.formatItem" Line="80" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="defaults.formatMatch" Line="81" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="defaults.highlight" Line="82" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="Cache" Line="90" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="matchSubset" Line="96" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="populate" Line="101" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="?" Line="106" />
+                </Hierachy>
+              </Childrens>
+            </Hierachy>
+            <Hierachy>
+              <Item Text="flush" Line="115" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

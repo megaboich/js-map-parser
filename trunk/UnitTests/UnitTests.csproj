@@ -68,6 +68,38 @@
   <ItemGroup>
     <EmbeddedResource Include="Result\Test1.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test2.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test5.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test4.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test3.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test6.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Result\Test2.xml" />
+    <EmbeddedResource Include="Result\Test3.xml" />
+    <EmbeddedResource Include="Result\Test4.xml" />
+    <EmbeddedResource Include="Result\Test5.xml" />
+    <EmbeddedResource Include="Result\Test6.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

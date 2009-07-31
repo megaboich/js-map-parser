@@ -5,10 +5,13 @@
       <Item Text="Function1" Line="3" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function2" Line="9" />
+      <Item Text="Function2" Line="10" />
       <Childrens>
         <Hierachy>
-          <Item Text="delegate" Line="14" />
+          <Item Text="delegate" Line="15" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="?" Line="20" />
         </Hierachy>
       </Childrens>
     </Hierachy>

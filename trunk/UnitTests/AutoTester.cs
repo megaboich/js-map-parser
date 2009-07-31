@@ -50,5 +50,35 @@ namespace UnitTests
 		{
 			ProcessTemplate("Test1");
 		}
+
+		[Test]
+		public void Test2()
+		{
+			ProcessTemplate("Test2");
+		}
+
+		[Test]
+		public void Test3()
+		{
+			ProcessTemplate("Test3");
+		}
+
+		[Test]
+		public void Test4()
+		{
+			ProcessTemplate("Test4");
+		}
+
+		[Test]
+		public void Test5()
+		{
+			ProcessTemplate("Test5");
+		}
+
+		[Test]
+		public void Test6()
+		{
+			ProcessTemplate("Test6");
+		}
 	}
 }
