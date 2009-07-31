@@ -273,4 +273,12 @@ ItemList_ascx.DataItem = function(id, name, description)
 	this.Id = id;
 	this.Name = name;
 	this.Description = description;
+	
+	var sabaka = function()
+	{
+	};
+	
+	this.kabka = function()
+	{
+	};
 };

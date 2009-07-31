@@ -1,0 +1,16 @@
+<Hierachy>
+  <Item Text="All" Line="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="TestFunction1" Line="3" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="TestFunction1" Line="9" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="subFunction" Line="12" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

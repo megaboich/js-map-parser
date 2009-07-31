@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using EnvDTE;
 using JS_addin.Addin.Code;
+using JS_addin.Addin.Helpers;
 using JS_addin.Addin.Parsers;
 
 namespace JS_addin.Addin.UI
@@ -75,16 +76,11 @@ namespace JS_addin.Addin.UI
 		/// <param name="debugActive">
 		/// The debug active.
 		/// </param>
-		public void Init(DTE dte, Document doc, bool debugActive)
+		public void Init(DTE dte, Document doc)
 		{
 			this._dte = dte;
 			this._doc = doc;
 			Code = new CodeService(Doc).LoadCode();
-
-			if (!debugActive)
-			{
-				btnAttachDebug.Visible = false;
-			}
 		}
 
 		/// <summary>
@@ -118,10 +114,19 @@ namespace JS_addin.Addin.UI
 
 		private void FillNodes(Hierachy<CodeNode> source, TreeNodeCollection dest)
 		{
+			if (source.Childrens == null)
+			{
+				return;
+			}
+
 			foreach (var item in source.Childrens)
 			{
 				CodeNode node = item.Item;
-				TreeNode treeNode = new TreeNode(string.Format("{0} {1} {2}", node.Opcode, node.Alias, node.StartLine));
+				var caption = !string.IsNullOrEmpty(node.Alias)
+					? node.Alias
+					: string.Format("Anonymous function at line {0}", node.StartLine);
+
+				TreeNode treeNode = new TreeNode(caption);
 				treeNode.Tag = node.StartLine;
 				dest.Add(treeNode);
 
@@ -130,6 +135,8 @@ namespace JS_addin.Addin.UI
 					FillNodes(item, treeNode.Nodes);
 				}
 			}
+
+			treeView1.ExpandAll();
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)

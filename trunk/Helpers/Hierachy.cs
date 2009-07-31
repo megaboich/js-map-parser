@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
-namespace JS_addin.Addin.Code
+namespace JS_addin.Addin.Helpers
 {
 	/// <summary>
 	/// Represents a hierarchy template.
@@ -10,7 +11,9 @@ namespace JS_addin.Addin.Code
 	/// <typeparam name="T">
 	/// Type of objects used in hierarchy.
 	/// </typeparam>
-	public class Hierachy<T>
+	[Serializable]
+	[XmlRoot("Hierachy")]
+	public class Hierachy<T> : SerializedEntity
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Hierachy{T}"/> class.
@@ -21,10 +24,16 @@ namespace JS_addin.Addin.Code
 		/// <param name="parent">
 		/// The parent.
 		/// </param>
-		public Hierachy(T item, Hierachy<T> parent)
+		public Hierachy(T item)
 		{
 			Item = item;
-			Parent = parent;
+		}
+
+		/// <summary>
+		/// Prevents a default instance of the <see cref="Hierachy{T}"/> class from being created.
+		/// </summary>
+		private Hierachy()
+		{
 		}
 
 		/// <summary>
@@ -33,14 +42,10 @@ namespace JS_addin.Addin.Code
 		public T Item { get; set; }
 
 		/// <summary>
-		/// Gets or sets Parent.
+		/// Gets or sets Childrens.
 		/// </summary>
-		public Hierachy<T> Parent { get; set; }
-
-		/// <summary>
-		/// Gets Childrens.
-		/// </summary>
-		public List<Hierachy<T>> Childrens { get; private set; }
+		[XmlArrayItem(ElementName = "Hierachy")]
+		public List<Hierachy<T>> Childrens { get; set; }
 
 		/// <summary>
 		/// Gets a value indicating whether HasChildrens.
@@ -78,7 +83,7 @@ namespace JS_addin.Addin.Code
 		/// </returns>
 		public Hierachy<T> Add(T child)
 		{
-			var h = new Hierachy<T>(child, this);
+			var h = new Hierachy<T>(child);
 
 			if (Childrens == null)
 			{
@@ -87,6 +92,58 @@ namespace JS_addin.Addin.Code
 
 			Childrens.Add(h);
 			return h;
+		}
+
+		/// <summary>
+		/// Equals custom implementation.
+		/// </summary>
+		/// <param name="obj">
+		/// The obj parameter.
+		/// </param>
+		/// <returns>
+		/// Bool result.
+		/// </returns>
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+
+			if (!(obj is Hierachy<T>))
+			{
+				return false;
+			}
+
+			var h = (Hierachy<T>) obj;
+
+			if (!Item.Equals(h.Item))
+			{
+				return false;
+			}
+
+			int mycount = Childrens != null ? Childrens.Count : 0;
+			int hiscount = h.Childrens != null ? h.Childrens.Count : 0;
+
+			if (mycount + hiscount == 0)
+			{
+				return true;
+			}
+
+			if (mycount != hiscount)
+			{
+				return false;
+			}
+
+			for (int index = 0; index < Childrens.Count; ++index)
+			{
+				if (!(Childrens[index].Equals(h.Childrens[index])))
+				{
+					return false;
+				}
+			}
+
+			return true;
 		}
 	}
 }

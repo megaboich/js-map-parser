@@ -37,7 +37,6 @@ namespace JS_addin.Addin.UI
 			this.lbDocName = new System.Windows.Forms.Label();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.btnAttachDebug = new System.Windows.Forms.Button();
 			this.topBar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -81,21 +80,10 @@ namespace JS_addin.Addin.UI
 			this.treeView1.TabIndex = 2;
 			this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
 			// 
-			// btnAttachDebug
-			// 
-			this.btnAttachDebug.Location = new System.Drawing.Point(152, 274);
-			this.btnAttachDebug.Name = "btnAttachDebug";
-			this.btnAttachDebug.Size = new System.Drawing.Size(79, 23);
-			this.btnAttachDebug.TabIndex = 2;
-			this.btnAttachDebug.Text = "Debug plugin";
-			this.btnAttachDebug.UseVisualStyleBackColor = true;
-			this.btnAttachDebug.Click += new System.EventHandler(this.button1_Click);
-			// 
 			// NavigationTreeView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.btnAttachDebug);
 			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.topBar);
 			this.Name = "NavigationTreeView";
@@ -114,6 +102,5 @@ namespace JS_addin.Addin.UI
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.Label lbDocName;
 		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.Button btnAttachDebug;
     }
 }
