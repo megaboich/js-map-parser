@@ -33,7 +33,7 @@ namespace UnitTests
 		private void ProcessTemplate(string name)
 		{
 			var source = GetEmbeddedText("UnitTests.Source." + name + ".js");
-			var result = JavascriptParser.Parse(source);
+			var result = (new JavascriptParser()).Parse(source);
 
 			XmlDocument xml = new XmlDocument() {InnerXml = result.Serialize()};
 			xml.Save("C:\\outxml\\" + name + ".xml");
@@ -50,6 +50,13 @@ namespace UnitTests
 		{
 			ProcessTemplate("Test1");
 		}
+
+		[Test]
+		public void Test1_1()
+		{
+			ProcessTemplate("Test1.1");
+		}
+
 
 		[Test]
 		public void Test2()
@@ -70,15 +77,45 @@ namespace UnitTests
 		}
 
 		[Test]
+		public void Test4_1()
+		{
+			ProcessTemplate("Test4.1");
+		}
+
+		[Test]
+		public void Test4_2()
+		{
+			ProcessTemplate("Test4.2");
+		}
+
+		[Test]
 		public void Test5()
 		{
 			ProcessTemplate("Test5");
 		}
 
 		[Test]
+		public void Test51()
+		{
+			ProcessTemplate("Test5.1");
+		}
+
+		[Test]
 		public void Test6()
 		{
 			ProcessTemplate("Test6");
+		}
+
+		[Test]
+		public void Test7()
+		{
+			ProcessTemplate("Test7");
+		}
+
+		[Test]
+		public void Test8()
+		{
+			ProcessTemplate("Test8");
 		}
 	}
 }

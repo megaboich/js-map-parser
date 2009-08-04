@@ -5,19 +5,19 @@
       <Item Text="ItemFactory(param1, param2)" Line="3" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="item" Line="5" Opcode="ObjectLiteral" />
+          <Item Text="item" Line="6" Opcode="ObjectLiteral" />
           <Childrens>
             <Hierachy>
-              <Item Text="method1()" Line="8" Opcode="Function" />
+              <Item Text="method1()" Line="9" Opcode="Function" />
             </Hierachy>
             <Hierachy>
-              <Item Text="method2(p)" Line="9" Opcode="Function" />
+              <Item Text="method2(p)" Line="10" Opcode="Function" />
             </Hierachy>
             <Hierachy>
-              <Item Text="method3(p1, p2)" Line="10" Opcode="Function" />
+              <Item Text="method3(p1, p2)" Line="11" Opcode="Function" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="delegate()" Line="12" Opcode="Function" />
+                  <Item Text="delegate()" Line="14" Opcode="Function" />
                 </Hierachy>
               </Childrens>
             </Hierachy>

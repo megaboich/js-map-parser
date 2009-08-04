@@ -2,16 +2,16 @@
   <Item Text="All" Line="0" />
   <Childrens>
     <Hierachy>
-      <Item Text="Function1" Line="3" />
+      <Item Text="Function1(delegate)" Line="3" Opcode="Function" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function2" Line="10" />
+      <Item Text="Function2()" Line="10" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="delegate" Line="15" />
+          <Item Text="delegate()" Line="15" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="?" Line="20" />
+          <Item Text="Function1.?()" Line="20" Opcode="Function" />
         </Hierachy>
       </Childrens>
     </Hierachy>

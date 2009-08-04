@@ -1,0 +1,11 @@
+<Hierachy>
+  <Item Text="All" Line="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="Function1(delegate)" Line="3" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="Function1.?()" Line="9" Opcode="Function" />
+    </Hierachy>
+  </Childrens>
+</Hierachy>

@@ -100,6 +100,48 @@
     <EmbeddedResource Include="Result\Test5.xml" />
     <EmbeddedResource Include="Result\Test6.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test7.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test5.1.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Result\Test5.1.xml" />
+    <EmbeddedResource Include="Result\Test7.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test4.1.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test4.2.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test1.1.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Result\Test1.1.xml" />
+    <EmbeddedResource Include="Result\Test4.1.xml" />
+    <EmbeddedResource Include="Result\Test4.2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\Test8.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Result\Test8.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

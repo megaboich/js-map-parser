@@ -2,64 +2,94 @@
   <Item Text="All" Line="0" />
   <Childrens>
     <Hierachy>
-      <Item Text="?.?" Line="5" />
+      <Item Text="?($)" Line="5" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="?.autocomplete" Line="8" />
+          <Item Text="$.fn.extend.?" Line="7" Opcode="ObjectLiteral" />
           <Childrens>
             <Hierachy>
-              <Item Text="highlight.highlight" Line="11" />
-            </Hierachy>
-          </Childrens>
-        </Hierachy>
-        <Hierachy>
-          <Item Text="?.result" Line="18" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="?.unautocomplete" Line="22" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="Autocompleter" Line="28" />
-          <Childrens>
-            <Hierachy>
-              <Item Text="opera.?" Line="31" />
-            </Hierachy>
-            <Hierachy>
-              <Item Text="?" Line="56" />
-            </Hierachy>
-            <Hierachy>
-              <Item Text="selectCurrent" Line="66" />
-            </Hierachy>
-            <Hierachy>
-              <Item Text="stopLoading" Line="71" />
-            </Hierachy>
-          </Childrens>
-        </Hierachy>
-        <Hierachy>
-          <Item Text="defaults.formatItem" Line="80" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="defaults.formatMatch" Line="81" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="defaults.highlight" Line="82" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="Cache" Line="90" />
-          <Childrens>
-            <Hierachy>
-              <Item Text="matchSubset" Line="96" />
-            </Hierachy>
-            <Hierachy>
-              <Item Text="populate" Line="101" />
+              <Item Text="autocomplete(urlOrData, options)" Line="8" Opcode="Function" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="?" Line="106" />
+                  <Item Text="options.highlight(value)" Line="11" Opcode="Function" />
+                </Hierachy>
+                <Hierachy>
+                  <Item Text="return.each.?()" Line="13" Opcode="Function" />
                 </Hierachy>
               </Childrens>
             </Hierachy>
             <Hierachy>
-              <Item Text="flush" Line="115" />
+              <Item Text="result(handler)" Line="18" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="unautocomplete()" Line="22" Opcode="Function" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+        <Hierachy>
+          <Item Text="$.Autocompleter(input, options)" Line="28" Opcode="Function" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="$.bind.?()" Line="31" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="$input.bind.?(event)" Line="41" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="$input.bind.focus.?()" Line="44" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="$input.bind.focus.blur.?()" Line="49" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="$input.bind.focus.blur.click.?()" Line="56" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="selectCurrent()" Line="66" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="stopLoading()" Line="71" Opcode="Function" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+        <Hierachy>
+          <Item Text="$.Autocompleter.defaults" Line="78" Opcode="ObjectLiteral" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="formatItem(row)" Line="80" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="formatMatch(row)" Line="81" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="highlight(value, term)" Line="82" Opcode="Function" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+        <Hierachy>
+          <Item Text="$.Autocompleter.Cache(options)" Line="90" Opcode="Function" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="matchSubset(s, sub)" Line="96" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="populate(excludeDataSet)" Line="101" Opcode="Function" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="$.each.?(i, value)" Line="106" Opcode="Function" />
+                </Hierachy>
+              </Childrens>
+            </Hierachy>
+            <Hierachy>
+              <Item Text="flush()" Line="115" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="return" Line="121" Opcode="ObjectLiteral" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="load(q, excludeDataSet)" Line="125" Opcode="Function" />
+                </Hierachy>
+              </Childrens>
             </Hierachy>
           </Childrens>
         </Hierachy>

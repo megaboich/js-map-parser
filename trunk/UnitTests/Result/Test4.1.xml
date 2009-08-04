@@ -5,7 +5,7 @@
       <Item Text="ItemFactory(param1, param2)" Line="3" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="item" Line="5" Opcode="ObjectLiteral" />
+          <Item Text="return" Line="5" Opcode="ObjectLiteral" />
           <Childrens>
             <Hierachy>
               <Item Text="method1()" Line="8" Opcode="Function" />
@@ -17,7 +17,7 @@
               <Item Text="method3(p1, p2)" Line="10" Opcode="Function" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="delegate()" Line="12" Opcode="Function" />
+                  <Item Text="delegate()" Line="13" Opcode="Function" />
                 </Hierachy>
               </Childrens>
             </Hierachy>

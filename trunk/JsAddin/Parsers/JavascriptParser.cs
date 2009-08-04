@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using JS_addin.Addin.Code;
 using JS_addin.Addin.Helpers;
 using Microsoft.JScript.Compiler;
@@ -9,8 +11,11 @@ namespace JS_addin.Addin.Parsers
 	/// <summary>
 	/// The js parser.
 	/// </summary>
-	public static class JavascriptParser
+	public class JavascriptParser
 	{
+		private List<Comment> _comments;
+		private string[] _code;
+
 		/// <summary>
 		/// The parse.
 		/// </summary>
@@ -20,28 +25,21 @@ namespace JS_addin.Addin.Parsers
 		/// <returns>
 		/// Hierarhy with code structure.
 		/// </returns>
-		public static Hierachy<CodeNode> Parse(string script)
+		public Hierachy<CodeNode> Parse(string script)
 		{
+			_code = script.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
 			var parser = new Parser(script.ToCharArray(), true);
-			var comments = new List<Comment>();
+			_comments = new List<Comment>();
 			var bindingInfo = new BindingInfo();
-			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
+			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref _comments, ref bindingInfo);
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
 
 			CreateNodes(nodes, sourceElements);
 			return nodes;
 		}
 
-		/// <summary>
-		/// The create nodes.
-		/// </summary>
-		/// <param name="statements">
-		/// The statements.
-		/// </param>
-		/// <param name="nodes">
-		/// The nodes.
-		/// </param>
-		private static void CreateNodes(Hierachy<CodeNode> nodes, DList<Statement, BlockStatement> statements)
+		private void CreateNodes(Hierachy<CodeNode> nodes, DList<Statement, BlockStatement> statements)
 		{
 			var iterator = new DList<Statement, BlockStatement>.Iterator(statements);
 			while (iterator.Element != null)
@@ -56,7 +54,7 @@ namespace JS_addin.Addin.Parsers
 			}
 		}
 
-		private static string ConcatAlias(string exist, string appender)
+		private string ConcatAlias(string exist, string appender)
 		{
 			if (string.IsNullOrEmpty(exist))
 			{
@@ -66,156 +64,210 @@ namespace JS_addin.Addin.Parsers
 			return exist + "." + appender;
 		}
 
-		private static void ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, string expressionAlias)
+		private string ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, string expressionAlias)
 		{
 			if (exp is BinaryOperatorExpression)
 			{
 				var bexp = (BinaryOperatorExpression) exp;
 
-				string alias = null;
-				if (bexp.Left is QualifiedExpression)
-				{
-					alias = ((QualifiedExpression)bexp.Left).Qualifier.Spelling;
-				}
+				string alias = ProcessExpression(nodes, bexp.Left, expressionAlias);
 
-				ProcessExpression(nodes, bexp.Right, ConcatAlias(expressionAlias, alias));
-				return;
+				var falias = bexp.Opcode == Expression.Operation.Equal ? ConcatAlias(expressionAlias, alias) : expressionAlias;
+
+				ProcessExpression(nodes, bexp.Right, falias);
+				return alias;
 			}
 
 			if (exp is InvocationExpression)
 			{
 				var invexp = (InvocationExpression) exp;
-				ProcessExpression(nodes, invexp.Target, ConcatAlias(expressionAlias, "?"));
+				var alias = ProcessExpression(nodes, invexp.Target, expressionAlias);
 
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
-					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, "?"));
+					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, ConcatAlias(alias, "?")));
 				}
-				return;
+
+				return alias;
 			}
 
 			if (exp is UnaryOperatorExpression)
 			{
 				var uexp = (UnaryOperatorExpression) exp;
 				ProcessExpression(nodes, uexp.Operand, ConcatAlias(expressionAlias, "?"));
-				return;
+				return string.Empty;
 			}
 
 			if (exp is FunctionExpression)
 			{
 				var fexp = (FunctionExpression) exp;
-				ProcessFunctionExpression(nodes, fexp, expressionAlias);
-				return;
+				var alias = ProcessFunctionDefinition(nodes, fexp.Function, expressionAlias);
+				return alias.Alias;
 			}
 
 			if (exp is ObjectLiteralExpression)
 			{
 				var ojexp = (ObjectLiteralExpression) exp;
-				foreach (ObjectLiteralElement element in ojexp.Elements)
-				{
-					var alias = "?";
-					if (element.Name is IdentifierExpression)
-					{
-						alias = ((IdentifierExpression) element.Name).ID.Spelling;
-					}
 
-					ProcessExpression(nodes, element.Value, ConcatAlias(expressionAlias, alias));
+				if (ojexp.Elements.Count > 0)
+				{
+					var codeNode = new CodeNode
+					{
+						Alias = expressionAlias,
+						Opcode = exp.Opcode.ToString(),
+						StartLine = exp.Location.StartLine
+					};
+					Hierachy<CodeNode> hi = nodes.Add(codeNode);
+
+					foreach (ObjectLiteralElement element in ojexp.Elements)
+					{
+						var alias = ProcessExpression(hi, element.Name, expressionAlias);
+						ProcessExpression(hi, element.Value, alias);
+					}
 				}
 
-				return;
+				return expressionAlias;
 			}
+
+			if (exp is QualifiedExpression)
+			{
+				var qexp = (QualifiedExpression) exp;
+				var alias = qexp.Qualifier.Spelling;
+				var basealias = ProcessExpression(nodes, qexp.Base, expressionAlias);
+
+				return ConcatAlias(basealias, alias);
+			}
+
+			if (exp is IdentifierExpression)
+			{
+				// Just return the alias.
+				var iexp = (IdentifierExpression) exp;
+				return iexp.ID.Spelling;
+			}
+
+			return string.Empty;
 		}
 
-		/// <summary>
-		/// The create nodes.
-		/// </summary>
-		/// <param name="statement">
-		/// The statement.
-		/// </param>
-		/// <param name="nodes">
-		/// The nodes.
-		/// </param>
-		private static void ProcessStatement(Hierachy<CodeNode> nodes, Statement statement)
+		private void ProcessStatement(Hierachy<CodeNode> nodes, Statement statement)
 		{
 			if (statement == null)
 			{
 				return;
 			}
 
-			switch (statement.Opcode)
+			if (statement is ExpressionStatement)
 			{
-				case Statement.Operation.Expression:
-					var exp = (ExpressionStatement) statement;
-					ProcessExpression(nodes, exp.Expression, string.Empty);
-					break;
-				case Statement.Operation.Function:
-					{
-						var functionStatement = statement as FunctionStatement;
-						var node = new CodeNode
-						{
-							Alias = functionStatement.Function.Name.Spelling,
-							Opcode = functionStatement.Opcode.ToString(),
-							StartLine = functionStatement.Location.StartLine
-						};
+				var exp = (ExpressionStatement) statement;
+				ProcessExpression(nodes, exp.Expression, string.Empty);
+				return;
+			}
+			
+			if (statement is FunctionStatement)
+			{
+				var functionStatement = statement as FunctionStatement;
+				ProcessFunctionDefinition(nodes, functionStatement.Function, null);
+				return;
+			}
 
-						Hierachy<CodeNode> hi = nodes.Add(node);
-						CreateNodes(hi, functionStatement.Function.Body.Children);
+			if (statement is VariableDeclarationStatement)
+			{
+				var variableDeclarationStatement = statement as VariableDeclarationStatement;
+				foreach (VariableDeclarationListElement element in variableDeclarationStatement.Declarations)
+				{
+					if (element.Declaration is InitializerVariableDeclaration)
+					{
+						var variableDeclaration = (InitializerVariableDeclaration) element.Declaration;
+						var alias = variableDeclaration.Name != null ? variableDeclaration.Name.Spelling : string.Empty;
+						ProcessExpression(nodes, variableDeclaration.Initializer, alias);
 					}
+				}
 
-					break;
-				case Statement.Operation.VariableDeclaration:
-					var variableDeclarationStatement = statement as VariableDeclarationStatement;
-					foreach (VariableDeclarationListElement element in variableDeclarationStatement.Declarations)
+				return;
+			}
+
+			if (statement is ReturnOrThrowStatement)
+			{
+				var rstat = (ReturnOrThrowStatement) statement;
+				ProcessExpression(nodes, rstat.Value, "return");
+				return;
+			}
+
+			if (statement is SwitchStatement)
+			{
+				var sstat = (SwitchStatement)statement;
+				ProcessExpression(nodes, sstat.Value, "switch");
+
+				var iterator = new DList<CaseClause, SwitchStatement>.Iterator(sstat.Cases);
+				while (iterator.Element != null)
+				{
+					CaseClause c = iterator.Element;
+					var subiterator = new DList<Statement, CaseClause>.Iterator(c.Children);
+					while (subiterator.Element != null)
 					{
-						if (element.Declaration is InitializerVariableDeclaration)
+						var casestat = subiterator.Element;
+						if (casestat != null)
 						{
-							var variableDeclaration = (InitializerVariableDeclaration) element.Declaration;
-							var alias = variableDeclaration.Name != null ? variableDeclaration.Name.Spelling : string.Empty;
-							ProcessExpression(nodes, variableDeclaration.Initializer, alias);
+							ProcessStatement(nodes, casestat);
 						}
+
+						subiterator.Advance();
 					}
 
-					break;
+					iterator.Advance();
+				}
+
+				return;
 			}
 
 			return;
 		}
 
-		/// <summary>
-		/// The process function expression.
-		/// </summary>
-		/// <param name="nodes">
-		/// The nodes.
-		/// </param>
-		/// <param name="funcExp">
-		/// The func exp.
-		/// </param>
-		/// <param name="functionName">
-		/// The function Name.
-		/// </param>
-		/// <returns>
-		/// Parsed code node.
-		/// </returns>
-		private static CodeNode ProcessFunctionExpression(
+		private CodeNode ProcessFunctionDefinition(
 			Hierachy<CodeNode> nodes,
-			FunctionExpression funcExp,
+			FunctionDefinition function,
 			string functionName)
 		{
 			var name = !string.IsNullOrEmpty(functionName)
 				? functionName
-				: (funcExp.Function.Name != null
-					? funcExp.Function.Name.Spelling
+				: (function.Name != null
+					? function.Name.Spelling
 					: string.Empty);
+
+			var pars = string.Join(
+				", ",
+				((IEnumerable<Parameter>) function.Parameters)
+				.Select(p => p.Name != null ? p.Name.Spelling : string.Empty)
+				.ToArray());
+
+			var location = function.Location;
+			var commentStr = new List<string>();
+			foreach (Comment comment in _comments)
+			{
+				// The same line
+				if (comment.Location.EndLine == location.StartLine)
+				{
+					commentStr.Add(comment.Spelling);
+					continue;
+				}
+
+				// The prev line
+				if (comment.Location.EndLine == location.StartLine - 1)
+				{
+					commentStr.Add(comment.Spelling);
+					continue;
+				}
+			}
 
 			var codeNode = new CodeNode
 			{
-				Alias = name,
-				Opcode = funcExp.Opcode.ToString(),
-				StartLine = funcExp.Location.StartLine
+				Alias = name + "(" + pars + ")",
+				Opcode = Expression.Operation.Function.ToString(),
+				StartLine = location.StartLine,
+				Comment = String.Join(Environment.NewLine, commentStr.ToArray())
 			};
 
 			Hierachy<CodeNode> hi = nodes.Add(codeNode);
-			CreateNodes(hi, funcExp.Function.Body.Children);
+			CreateNodes(hi, function.Body.Children);
 			return codeNode;
 		}
 	}

@@ -2,19 +2,19 @@
   <Item Text="All" Line="0" />
   <Childrens>
     <Hierachy>
-      <Item Text="Class1" Line="2" />
+      <Item Text="Class1(param1, param2)" Line="2" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="Method1" Line="9" />
+          <Item Text="_this.Method1()" Line="9" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="Method2" Line="14" />
+          <Item Text="_this.Method2(param1)" Line="14" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="Method3" Line="19" />
+          <Item Text="_this.Method3(param1, param2)" Line="19" Opcode="Function" />
           <Childrens>
             <Hierachy>
-              <Item Text="delegate" Line="22" />
+              <Item Text="delegate()" Line="22" Opcode="Function" />
             </Hierachy>
           </Childrens>
         </Hierachy>

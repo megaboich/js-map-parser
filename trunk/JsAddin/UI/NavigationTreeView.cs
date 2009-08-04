@@ -15,6 +15,7 @@ namespace JS_addin.Addin.UI
 		private string _loadedDocName = string.Empty;
 		private DTE _dte;
 		private Document _doc;
+		private bool _canExpand = true;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -104,11 +105,27 @@ namespace JS_addin.Addin.UI
 			_loadedDocName = Doc.Path + Doc.Name;
 			lbDocName.Text = Doc.Name;
 
+			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
 			if (Doc.Name.EndsWith(".js"))
 			{
-				var nodes = JavascriptParser.Parse(Code);
+				var nodes = (new JavascriptParser()).Parse(Code);
 				FillNodes(nodes, treeView1.Nodes);
+			}
+
+			treeView1.EndUpdate();
+		}
+
+		private int GetImageIndex(string opCode)
+		{
+			switch (opCode)
+			{
+				case "Function":
+					return -1;
+				case "ObjectLiteral":
+					return 1;
+				default:
+					return 2;
 			}
 		}
 
@@ -128,6 +145,7 @@ namespace JS_addin.Addin.UI
 
 				TreeNode treeNode = new TreeNode(caption);
 				treeNode.Tag = node.StartLine;
+				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
 				dest.Add(treeNode);
 
 				if (item.HasChildrens)
@@ -155,7 +173,7 @@ namespace JS_addin.Addin.UI
 			}
 		}
 
-		private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
 			if (treeView1.SelectedNode != null)
 			{
@@ -165,15 +183,30 @@ namespace JS_addin.Addin.UI
 					Selection.GotoLine(line, false);
 					Doc.Activate();
 					_dte.ActiveWindow.SetFocus();
-
 				}
 				catch { }
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
-			System.Diagnostics.Debugger.Break();
+			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
+		}
+
+		private void treeView1_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
+		{
+			if (!_canExpand)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+		{
+			if (!_canExpand)
+			{
+				e.Cancel = true;
+			}
 		}
 	}
 }

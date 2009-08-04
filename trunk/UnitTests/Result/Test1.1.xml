@@ -1,0 +1,11 @@
+<Hierachy>
+  <Item Text="All" Line="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="Class1.SubClass2()" Line="5" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="Class1.SubClass2.Function1()" Line="12" Opcode="Function" />
+    </Hierachy>
+  </Childrens>
+</Hierachy>
