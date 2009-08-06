@@ -23,6 +23,12 @@ namespace JS_addin.Addin.Code
 		public int StartLine { get; set; }
 
 		/// <summary>
+		/// Gets or sets StartPosition.
+		/// </summary>
+		[XmlAttribute("Pos")]
+		public int StartColumn { get; set; }
+
+		/// <summary>
 		/// Gets or sets Opcode.
 		/// </summary>
 		[XmlAttribute("Opcode")]

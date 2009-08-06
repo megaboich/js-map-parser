@@ -66,9 +66,9 @@ namespace JS_addin.Addin.UI
 			// 
 			this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btnRefresh.Location = new System.Drawing.Point(156, 3);
+			this.btnRefresh.Location = new System.Drawing.Point(177, 3);
 			this.btnRefresh.Name = "btnRefresh";
-			this.btnRefresh.Size = new System.Drawing.Size(75, 25);
+			this.btnRefresh.Size = new System.Drawing.Size(54, 25);
 			this.btnRefresh.TabIndex = 0;
 			this.btnRefresh.Text = "Refresh";
 			this.btnRefresh.UseVisualStyleBackColor = true;
@@ -81,6 +81,7 @@ namespace JS_addin.Addin.UI
 			this.treeView1.HideSelection = false;
 			this.treeView1.Location = new System.Drawing.Point(0, 31);
 			this.treeView1.Name = "treeView1";
+			this.treeView1.ShowNodeToolTips = true;
 			this.treeView1.Size = new System.Drawing.Size(234, 269);
 			this.treeView1.StateImageList = this.imageList1;
 			this.treeView1.TabIndex = 2;

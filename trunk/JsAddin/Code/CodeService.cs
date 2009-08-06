@@ -51,10 +51,8 @@ namespace JS_addin.Addin.Code
 				return string.Empty;
 			}
 
-			using (var reader = new StreamReader(_doc.FullName))
-			{
-				return reader.ReadToEnd();
-			}
+			var textDocument = (TextDocument)_doc.Object("TextDocument");
+			return textDocument.CreateEditPoint(textDocument.StartPoint).GetText(textDocument.EndPoint);
 		}
 	}
 }

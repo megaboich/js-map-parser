@@ -107,11 +107,10 @@ namespace JS_addin.Addin.UI
 
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
-			if (Doc.Name.EndsWith(".js"))
-			{
-				var nodes = (new JavascriptParser()).Parse(Code);
-				FillNodes(nodes, treeView1.Nodes);
-			}
+			_canExpand = true;
+			
+			var nodes = (new JavascriptParser()).Parse(Code);
+			FillNodes(nodes, treeView1.Nodes);
 
 			treeView1.EndUpdate();
 		}
@@ -144,7 +143,8 @@ namespace JS_addin.Addin.UI
 					: string.Format("Anonymous function at line {0}", node.StartLine);
 
 				TreeNode treeNode = new TreeNode(caption);
-				treeNode.Tag = node.StartLine;
+				treeNode.Tag = node;
+				treeNode.ToolTipText = node.Comment;
 				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
 				dest.Add(treeNode);
 
@@ -152,9 +152,9 @@ namespace JS_addin.Addin.UI
 				{
 					FillNodes(item, treeNode.Nodes);
 				}
-			}
 
-			treeView1.ExpandAll();
+				treeNode.Expand();
+			}
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
@@ -177,10 +177,11 @@ namespace JS_addin.Addin.UI
 		{
 			if (treeView1.SelectedNode != null)
 			{
-				int line = (int)treeView1.SelectedNode.Tag;
+				CodeNode codeNode = (CodeNode)treeView1.SelectedNode.Tag;
 				try
 				{
-					Selection.GotoLine(line, false);
+					// Selection.GotoLine(codeNode.StartLine, false);
+					Selection.MoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn, false);
 					Doc.Activate();
 					_dte.ActiveWindow.SetFocus();
 				}

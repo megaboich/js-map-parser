@@ -13,8 +13,7 @@ namespace JS_addin.Addin.Parsers
 	/// </summary>
 	public class JavascriptParser
 	{
-		private List<Comment> _comments;
-		private string[] _code;
+		private CommentsAgregator _comments;
 
 		/// <summary>
 		/// The parse.
@@ -27,14 +26,14 @@ namespace JS_addin.Addin.Parsers
 		/// </returns>
 		public Hierachy<CodeNode> Parse(string script)
 		{
-			_code = script.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+			var code = script.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
 			var parser = new Parser(script.ToCharArray(), true);
-			_comments = new List<Comment>();
+			var comments = new List<Comment>();
 			var bindingInfo = new BindingInfo();
-			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref _comments, ref bindingInfo);
+			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
-
+			_comments = new CommentsAgregator(comments, code);
 			CreateNodes(nodes, sourceElements);
 			return nodes;
 		}
@@ -115,7 +114,8 @@ namespace JS_addin.Addin.Parsers
 					{
 						Alias = expressionAlias,
 						Opcode = exp.Opcode.ToString(),
-						StartLine = exp.Location.StartLine
+						StartLine = exp.Location.StartLine,
+						StartColumn = exp.Location.StartPosition
 					};
 					Hierachy<CodeNode> hi = nodes.Add(codeNode);
 
@@ -239,31 +239,13 @@ namespace JS_addin.Addin.Parsers
 				.Select(p => p.Name != null ? p.Name.Spelling : string.Empty)
 				.ToArray());
 
-			var location = function.Location;
-			var commentStr = new List<string>();
-			foreach (Comment comment in _comments)
-			{
-				// The same line
-				if (comment.Location.EndLine == location.StartLine)
-				{
-					commentStr.Add(comment.Spelling);
-					continue;
-				}
-
-				// The prev line
-				if (comment.Location.EndLine == location.StartLine - 1)
-				{
-					commentStr.Add(comment.Spelling);
-					continue;
-				}
-			}
-
 			var codeNode = new CodeNode
 			{
 				Alias = name + "(" + pars + ")",
 				Opcode = Expression.Operation.Function.ToString(),
-				StartLine = location.StartLine,
-				Comment = String.Join(Environment.NewLine, commentStr.ToArray())
+				StartLine = function.Location.StartLine,
+				StartColumn = function.Location.StartColumn,
+				Comment = _comments.GetComment(function.Location.StartLine, function.Location.EndLine)
 			};
 
 			Hierachy<CodeNode> hi = nodes.Add(codeNode);
