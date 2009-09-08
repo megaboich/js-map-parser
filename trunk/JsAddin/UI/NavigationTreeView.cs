@@ -181,7 +181,7 @@ namespace JS_addin.Addin.UI
 				try
 				{
 					// Selection.GotoLine(codeNode.StartLine, false);
-					Selection.MoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn, false);
+					Selection.MoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1, false);
 					Doc.Activate();
 					_dte.ActiveWindow.SetFocus();
 				}
