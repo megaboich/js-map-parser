@@ -115,7 +115,7 @@ namespace JS_addin.Addin.Parsers
 						Alias = expressionAlias,
 						Opcode = exp.Opcode.ToString(),
 						StartLine = exp.Location.StartLine,
-						StartColumn = exp.Location.StartPosition
+						StartColumn = exp.Location.StartColumn
 					};
 					Hierachy<CodeNode> hi = nodes.Add(codeNode);
 

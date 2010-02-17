@@ -35,6 +35,8 @@ namespace UnitTests
 			var source = GetEmbeddedText("UnitTests.Source." + name + ".js");
 			var result = (new JavascriptParser()).Parse(source);
 
+			Directory.CreateDirectory("C:\\outxml");
+
 			XmlDocument xml = new XmlDocument() {InnerXml = result.Serialize()};
 			xml.Save("C:\\outxml\\" + name + ".xml");
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using EnvDTE;
 using JS_addin.Addin.Code;
@@ -16,6 +18,8 @@ namespace JS_addin.Addin.UI
 		private DTE _dte;
 		private Document _doc;
 		private bool _canExpand = true;
+		private List<string> _bookmarkedItems = new List<string>();
+		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -104,13 +108,31 @@ namespace JS_addin.Addin.UI
 
 			_loadedDocName = Doc.Path + Doc.Name;
 			lbDocName.Text = Doc.Name;
+			lbDocName.ToolTipText = Doc.Path + Doc.Name;
 
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
+			_tempTreeNodes.Clear();
 			_canExpand = true;
-			
+
+			var isSort = btnSortToggle.Checked;
+			var isHierarchy = btnTreeToggle.Checked;
+
 			var nodes = (new JavascriptParser()).Parse(Code);
 			FillNodes(nodes, treeView1.Nodes);
+
+			if (!isHierarchy)
+			{
+				if (isSort)
+				{
+					_tempTreeNodes.Sort((n1, n2) => string.Compare(n1.Text, n2.Text));
+				}
+
+				foreach (TreeNode node in _tempTreeNodes)
+				{
+					treeView1.Nodes.Add(node);
+				}
+			}
 
 			treeView1.EndUpdate();
 		}
@@ -135,7 +157,15 @@ namespace JS_addin.Addin.UI
 				return;
 			}
 
-			foreach (var item in source.Childrens)
+			var isSort = btnSortToggle.Checked;
+			var isHierarchy = btnTreeToggle.Checked;
+			var childrens = source.Childrens;
+			if (isSort)
+			{
+				childrens.Sort((a1, a2) => string.Compare(a1.Item.Alias, a2.Item.Alias));
+			}
+
+			foreach (var item in childrens)
 			{
 				CodeNode node = item.Item;
 				var caption = !string.IsNullOrEmpty(node.Alias)
@@ -146,7 +176,18 @@ namespace JS_addin.Addin.UI
 				treeNode.Tag = node;
 				treeNode.ToolTipText = node.Comment;
 				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
-				dest.Add(treeNode);
+				if (_bookmarkedItems.Contains(caption))
+				{
+					SelectNode(treeNode, true);
+				}
+				if (isHierarchy)
+				{
+					dest.Add(treeNode);
+				}
+				else
+				{
+					_tempTreeNodes.Add(treeNode);
+				}
 
 				if (item.HasChildrens)
 				{
@@ -158,6 +199,11 @@ namespace JS_addin.Addin.UI
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			RefreshTree();
+		}
+
+		private void RefreshTree()
 		{
 			try
 			{
@@ -192,6 +238,13 @@ namespace JS_addin.Addin.UI
 		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
 			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
+
+			treeView1.SelectedNode = e.Node;
+
+			if (e.Button == MouseButtons.Right)
+			{
+				contextMenuStrip1.Show((Control) sender, e.X, e.Y);
+			}
 		}
 
 		private void treeView1_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
@@ -208,6 +261,36 @@ namespace JS_addin.Addin.UI
 			{
 				e.Cancel = true;
 			}
+		}
+
+		private void SelectNode(TreeNode node, bool select)
+		{
+			if (select)
+			{
+				node.BackColor = Color.Aqua;
+			}
+			else
+			{
+				node.BackColor = SystemColors.Window;
+			}
+		}
+
+		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SelectNode(treeView1.SelectedNode, false);
+			_bookmarkedItems.Remove(treeView1.SelectedNode.Text);
+		}
+
+		private void setLabelToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SelectNode(treeView1.SelectedNode, true);
+			_bookmarkedItems.Add(treeView1.SelectedNode.Text);
+		}
+
+		private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_bookmarkedItems.Clear();
+			RefreshTree();
 		}
 	}
 }
