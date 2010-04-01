@@ -3,7 +3,7 @@ using System.Reflection;
 using System.IO;
 using System.Drawing;
 using System.ComponentModel;
-namespace JS_addin.Addin.UI
+namespace JSparser.UI
 {
     partial class NavigationTreeView
     {
@@ -119,7 +119,7 @@ namespace JS_addin.Addin.UI
 			this.btnTreeToggle.CheckOnClick = true;
 			this.btnTreeToggle.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.btnTreeToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnTreeToggle.Image = global::JS_addin.Addin.Properties.Resources.tree;
+			this.btnTreeToggle.Image = global::JSparser.Properties.Resources.tree;
 			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnTreeToggle.Name = "btnTreeToggle";
 			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
@@ -131,7 +131,7 @@ namespace JS_addin.Addin.UI
 			// 
 			this.btnSortToggle.CheckOnClick = true;
 			this.btnSortToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnSortToggle.Image = global::JS_addin.Addin.Properties.Resources.SortAZ;
+			this.btnSortToggle.Image = global::JSparser.Properties.Resources.SortAZ;
 			this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSortToggle.Name = "btnSortToggle";
 			this.btnSortToggle.Size = new System.Drawing.Size(23, 22);
@@ -142,7 +142,7 @@ namespace JS_addin.Addin.UI
 			// btnRefresh
 			// 
 			this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnRefresh.Image = global::JS_addin.Addin.Properties.Resources.refresh;
+			this.btnRefresh.Image = global::JSparser.Properties.Resources.refresh;
 			this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(23, 22);

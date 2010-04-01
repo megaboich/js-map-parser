@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using EnvDTE;
-using JS_addin.Addin.Code;
-using JS_addin.Addin.Helpers;
-using JS_addin.Addin.Parsers;
+using JSparser.Code;
+using JSparser.Helpers;
+using JSparser.Parsers;
 using EnvDTE80;
 
-namespace JS_addin.Addin.UI
+namespace JSparser.UI
 {
 	/// <summary>
 	/// The tree for code.

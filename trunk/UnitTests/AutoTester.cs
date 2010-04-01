@@ -5,9 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using JS_addin.Addin.Code;
-using JS_addin.Addin.Helpers;
-using JS_addin.Addin.Parsers;
+using JSparser.Code;
+using JSparser.Helpers;
+using JSparser.Parsers;
 using NUnit.Framework;
 
 namespace UnitTests

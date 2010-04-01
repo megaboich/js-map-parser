@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JS_addin.Addin.Code;
-using JS_addin.Addin.Helpers;
+using JSparser.Code;
+using JSparser.Helpers;
 using Microsoft.JScript.Compiler;
 using Microsoft.JScript.Compiler.ParseTree;
 
-namespace JS_addin.Addin.Parsers
+namespace JSparser.Parsers
 {
 	/// <summary>
 	/// The js parser.

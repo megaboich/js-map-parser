@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.JScript.Compiler;
 
-namespace JS_addin.Addin.Parsers
+namespace JSparser.Parsers
 {
 	internal class CommentsAgregator
 	{

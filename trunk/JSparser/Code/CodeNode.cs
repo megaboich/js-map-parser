@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml.Serialization;
-using JS_addin.Addin.Helpers;
+using JSparser.Helpers;
 
-namespace JS_addin.Addin.Code
+namespace JSparser.Code
 {
 	/// <summary>
 	/// The code node.

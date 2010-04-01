@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JS_addin.Addin.Parsers
+namespace JSparser.Parsers
 {
 	internal class CustomComment
 	{

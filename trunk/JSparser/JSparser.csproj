@@ -65,7 +65,11 @@
     <Compile Include="Parsers\CustomComment.cs" />
     <Compile Include="Parsers\JavascriptParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="UI\NavigationTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,15 +134,16 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\Addins\JSparser - For Testing.AddIn">
-      <Link>JSparser - For Testing.AddIn</Link>
+    <Content Include="JSparser.AddIn">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="JSparser.AddIn" />
     <Content Include="Resources\function.png" />
     <Content Include="Resources\js_file.gif" />
     <Content Include="Resources\js_function.gif" />
     <Content Include="Resources\js_method_public.gif" />
     <Content Include="Resources\refresh.gif" />
+    <None Include="Resources\script_icon.bmp" />
+    <Content Include="Resources\script_icon.png" />
     <Content Include="Resources\SortAZ.png" />
     <Content Include="Resources\tree.png" />
     <Content Include="Resources\type.png" />
@@ -147,6 +152,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NavigationTreeView.resx">
       <DependentUpon>NavigationTreeView.cs</DependentUpon>

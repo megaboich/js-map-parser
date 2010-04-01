@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using EnvDTE;
 
-namespace JS_addin.Addin.Code
+namespace JSparser.Code
 {
 	/// <summary>
 	/// The code service.
