@@ -6,6 +6,7 @@ using EnvDTE;
 using JS_addin.Addin.Code;
 using JS_addin.Addin.Helpers;
 using JS_addin.Addin.Parsers;
+using EnvDTE80;
 
 namespace JS_addin.Addin.UI
 {
@@ -15,7 +16,7 @@ namespace JS_addin.Addin.UI
 	public partial class NavigationTreeView : UserControl
 	{
 		private string _loadedDocName = string.Empty;
-		private DTE _dte;
+		private DTE2 _dte;
 		private Document _doc;
 		private bool _canExpand = true;
 		private List<string> _bookmarkedItems = new List<string>();
@@ -27,14 +28,6 @@ namespace JS_addin.Addin.UI
 		public NavigationTreeView()
 		{
 			InitializeComponent();
-		}
-
-		/// <summary>
-		/// Sets DTE object.
-		/// </summary>
-		public DTE DTE
-		{
-			set { _dte = value; }
 		}
 
 		/// <summary>
@@ -81,7 +74,7 @@ namespace JS_addin.Addin.UI
 		/// <param name="debugActive">
 		/// The debug active.
 		/// </param>
-		public void Init(DTE dte, Document doc)
+		public void Init(DTE2 dte, Document doc)
 		{
 			this._dte = dte;
 			this._doc = doc;

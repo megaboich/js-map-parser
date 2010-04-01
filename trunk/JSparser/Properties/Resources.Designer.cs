@@ -80,5 +80,14 @@ namespace JS_addin.Addin.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+		internal static System.Drawing.Bitmap js_file
+		{
+			get
+			{
+				object obj = ResourceManager.GetObject("js_file", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
     }
 }
