@@ -3,7 +3,7 @@ using System.Reflection;
 using System.IO;
 using System.Drawing;
 using System.ComponentModel;
-namespace JSparser.UI
+namespace JsParcerCore.UI
 {
     partial class NavigationTreeView
     {
@@ -37,8 +37,6 @@ namespace JSparser.UI
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationTreeView));
 			this.topBar = new System.Windows.Forms.Panel();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.btnTreeToggle = new System.Windows.Forms.ToolStripButton();
-			this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.lbDocName = new System.Windows.Forms.ToolStripLabel();
@@ -49,6 +47,8 @@ namespace JSparser.UI
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btnTreeToggle = new System.Windows.Forms.ToolStripButton();
+			this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
 			this.topBar.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
@@ -78,32 +78,6 @@ namespace JSparser.UI
 			this.toolStrip1.TabIndex = 2;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// btnTreeToggle
-			// 
-			this.btnTreeToggle.Checked = true;
-			this.btnTreeToggle.CheckOnClick = true;
-			this.btnTreeToggle.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.btnTreeToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnTreeToggle.Image = global::JSparser.Properties.Resources.tree;
-			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnTreeToggle.Name = "btnTreeToggle";
-			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
-			this.btnTreeToggle.Text = "toolStripButton1";
-			this.btnTreeToggle.ToolTipText = "Hierarchical";
-			this.btnTreeToggle.Click += new System.EventHandler(this.btnRefresh_Click);
-			// 
-			// btnSortToggle
-			// 
-			this.btnSortToggle.CheckOnClick = true;
-			this.btnSortToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnSortToggle.Image = global::JSparser.Properties.Resources.SortAZ;
-			this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnSortToggle.Name = "btnSortToggle";
-			this.btnSortToggle.Size = new System.Drawing.Size(23, 22);
-			this.btnSortToggle.Text = "toolStripButton2";
-			this.btnSortToggle.ToolTipText = "Alphabetical";
-			this.btnSortToggle.Click += new System.EventHandler(this.btnRefresh_Click);
-			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -112,7 +86,7 @@ namespace JSparser.UI
 			// btnRefresh
 			// 
 			this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnRefresh.Image = global::JSparser.Properties.Resources.refresh;
+			this.btnRefresh.Image = global::JsParcerCore.Properties.Resources.refresh;
 			this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(23, 22);
@@ -163,28 +137,54 @@ namespace JSparser.UI
 			// setLabelToolStripMenuItem
 			// 
 			this.setLabelToolStripMenuItem.Name = "setLabelToolStripMenuItem";
-			this.setLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.setLabelToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.setLabelToolStripMenuItem.Text = "Set label";
 			this.setLabelToolStripMenuItem.Click += new System.EventHandler(this.setLabelToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 6);
 			// 
 			// resetLabelToolStripMenuItem
 			// 
 			this.resetLabelToolStripMenuItem.Name = "resetLabelToolStripMenuItem";
-			this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.resetLabelToolStripMenuItem.Text = "Reset label";
 			this.resetLabelToolStripMenuItem.Click += new System.EventHandler(this.resetLabelToolStripMenuItem_Click);
 			// 
 			// resetAllLabelsToolStripMenuItem
 			// 
 			this.resetAllLabelsToolStripMenuItem.Name = "resetAllLabelsToolStripMenuItem";
-			this.resetAllLabelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.resetAllLabelsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.resetAllLabelsToolStripMenuItem.Text = "Reset all labels";
 			this.resetAllLabelsToolStripMenuItem.Click += new System.EventHandler(this.resetAllLabelsToolStripMenuItem_Click);
+			// 
+			// btnTreeToggle
+			// 
+			this.btnTreeToggle.Checked = true;
+			this.btnTreeToggle.CheckOnClick = true;
+			this.btnTreeToggle.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.btnTreeToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.btnTreeToggle.Image = global::JsParcerCore.Properties.Resources.tree;
+			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnTreeToggle.Name = "btnTreeToggle";
+			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
+			this.btnTreeToggle.Text = "toolStripButton1";
+			this.btnTreeToggle.ToolTipText = "Hierarchical";
+			this.btnTreeToggle.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// btnSortToggle
+			// 
+			this.btnSortToggle.CheckOnClick = true;
+			this.btnSortToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.btnSortToggle.Image = global::JsParcerCore.Properties.Resources.SortAZ;
+			this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnSortToggle.Name = "btnSortToggle";
+			this.btnSortToggle.Size = new System.Drawing.Size(23, 22);
+			this.btnSortToggle.Text = "toolStripButton2";
+			this.btnSortToggle.ToolTipText = "Alphabetical";
+			this.btnSortToggle.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// NavigationTreeView
 			// 

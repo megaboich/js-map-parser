@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using EnvDTE;
-using JSparser.Code;
-using JSparser.Helpers;
-using JSparser.Parsers;
-using EnvDTE80;
+using JsParcerCore.Code;
+using JsParcerCore.Helpers;
+using JsParcerCore.Parsers;
 
-namespace JSparser.UI
+namespace JsParcerCore.UI
 {
 	/// <summary>
 	/// The tree for code.
@@ -16,8 +14,6 @@ namespace JSparser.UI
 	public partial class NavigationTreeView : UserControl
 	{
 		private string _loadedDocName = string.Empty;
-		private DTE2 _dte;
-		private Document _doc;
 		private bool _canExpand = true;
 		private List<string> _bookmarkedItems = new List<string>();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
@@ -31,54 +27,16 @@ namespace JSparser.UI
 		}
 
 		/// <summary>
-		/// Gets Document.
-		/// </summary>
-		public Document Doc
-		{
-			get
-			{
-				if (_doc == null)
-				{
-					return _dte.ActiveDocument;
-				}
-
-				return _doc;
-			}
-		}
-
-		/// <summary>
-		/// Gets Selection.
-		/// </summary>
-		public TextSelection Selection
-		{
-			get
-			{
-				return (TextSelection)Doc.Selection;
-			}
-		}
-
-		/// <summary>
 		/// Gets Code.
 		/// </summary>
-		public string Code { get; private set; }
+		public ICodeProvider Code { get; private set; }
 
 		/// <summary>
 		/// Initialize method.
 		/// </summary>
-		/// <param name="dte">
-		/// The dte param.
-		/// </param>
-		/// <param name="doc">
-		/// The doc param.
-		/// </param>
-		/// <param name="debugActive">
-		/// The debug active.
-		/// </param>
-		public void Init(DTE2 dte, Document doc)
+		public void Init(ICodeProvider codeProvider)
 		{
-			this._dte = dte;
-			this._doc = doc;
-			Code = new CodeService(Doc).LoadCode();
+			Code = codeProvider;
 		}
 
 		/// <summary>
@@ -94,14 +52,9 @@ namespace JSparser.UI
 		/// </summary>
 		public void LoadFunctionList()
 		{
-			if (Doc == null || _loadedDocName == Doc.Path + Doc.Name)
-			{
-				return;
-			}
-
-			_loadedDocName = Doc.Path + Doc.Name;
-			lbDocName.Text = Doc.Name;
-			lbDocName.ToolTipText = Doc.Path + Doc.Name;
+			_loadedDocName = Code.Path + Code.Name;
+			lbDocName.Text = Code.Name;
+			lbDocName.ToolTipText = Code.Path + Code.Name;
 
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
@@ -111,7 +64,7 @@ namespace JSparser.UI
 			var isSort = btnSortToggle.Checked;
 			var isHierarchy = btnTreeToggle.Checked;
 
-			var nodes = (new JavascriptParser()).Parse(Code);
+			var nodes = (new JavascriptParser()).Parse(Code.LoadCode());
 			FillNodes(nodes, treeView1.Nodes);
 
 			if (!isHierarchy)
@@ -202,7 +155,6 @@ namespace JSparser.UI
 			{
 				this.Dock = DockStyle.Fill;
 				Refresh();
-				Code = new CodeService(Doc).LoadCode();
 				_loadedDocName = string.Empty;
 				LoadFunctionList();
 			}
@@ -220,9 +172,8 @@ namespace JSparser.UI
 				try
 				{
 					// Selection.GotoLine(codeNode.StartLine, false);
-					Selection.MoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1, false);
-					Doc.Activate();
-					_dte.ActiveWindow.SetFocus();
+					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1, false);
+					Code.SetFocus();
 				}
 				catch { }
 			}

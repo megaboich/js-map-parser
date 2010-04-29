@@ -9,7 +9,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace JSparser.Helpers
+namespace JsParcerCore.Helpers
 {
 	public class VersionChecker
 	{

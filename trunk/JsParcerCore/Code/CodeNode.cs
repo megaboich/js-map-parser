@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml.Serialization;
-using JSparser.Helpers;
+using JsParcerCore.Helpers;
 
-namespace JSparser.Code
+namespace JsParcerCore.Code
 {
 	/// <summary>
 	/// The code node.
