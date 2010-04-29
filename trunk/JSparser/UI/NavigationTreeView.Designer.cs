@@ -36,18 +36,18 @@ namespace JSparser.UI
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationTreeView));
 			this.topBar = new System.Windows.Forms.Panel();
-			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.lbDocName = new System.Windows.Forms.ToolStripLabel();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnTreeToggle = new System.Windows.Forms.ToolStripButton();
 			this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+			this.lbDocName = new System.Windows.Forms.ToolStripLabel();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.setLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.topBar.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -63,30 +63,6 @@ namespace JSparser.UI
 			this.topBar.Size = new System.Drawing.Size(234, 26);
 			this.topBar.TabIndex = 1;
 			// 
-			// treeView1
-			// 
-			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.treeView1.FullRowSelect = true;
-			this.treeView1.HideSelection = false;
-			this.treeView1.Location = new System.Drawing.Point(0, 26);
-			this.treeView1.Name = "treeView1";
-			this.treeView1.ShowNodeToolTips = true;
-			this.treeView1.Size = new System.Drawing.Size(234, 274);
-			this.treeView1.StateImageList = this.imageList1;
-			this.treeView1.TabIndex = 2;
-			this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-			this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
-			this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
-			this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-			// 
-			// imageList1
-			// 
-			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList1.Images.SetKeyName(0, "function.png");
-			this.imageList1.Images.SetKeyName(1, "type.png");
-			this.imageList1.Images.SetKeyName(2, "undefined.png");
-			// 
 			// toolStrip1
 			// 
 			this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -101,17 +77,6 @@ namespace JSparser.UI
 			this.toolStrip1.Size = new System.Drawing.Size(234, 25);
 			this.toolStrip1.TabIndex = 2;
 			this.toolStrip1.Text = "toolStrip1";
-			// 
-			// lbDocName
-			// 
-			this.lbDocName.Name = "lbDocName";
-			this.lbDocName.Size = new System.Drawing.Size(58, 22);
-			this.lbDocName.Text = "< None >";
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
 			// 
 			// btnTreeToggle
 			// 
@@ -139,6 +104,11 @@ namespace JSparser.UI
 			this.btnSortToggle.ToolTipText = "Alphabetical";
 			this.btnSortToggle.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
 			// btnRefresh
 			// 
 			this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -150,6 +120,36 @@ namespace JSparser.UI
 			this.btnRefresh.ToolTipText = "Refresh";
 			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
+			// lbDocName
+			// 
+			this.lbDocName.Name = "lbDocName";
+			this.lbDocName.Size = new System.Drawing.Size(58, 22);
+			this.lbDocName.Text = "< None >";
+			// 
+			// treeView1
+			// 
+			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.treeView1.FullRowSelect = true;
+			this.treeView1.HideSelection = false;
+			this.treeView1.Location = new System.Drawing.Point(0, 26);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.ShowNodeToolTips = true;
+			this.treeView1.Size = new System.Drawing.Size(234, 274);
+			this.treeView1.StateImageList = this.imageList1;
+			this.treeView1.TabIndex = 2;
+			this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
+			this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
+			this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+			this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+			// 
+			// imageList1
+			// 
+			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageList1.Images.SetKeyName(0, "function.png");
+			this.imageList1.Images.SetKeyName(1, "type.png");
+			this.imageList1.Images.SetKeyName(2, "undefined.png");
+			// 
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -159,13 +159,6 @@ namespace JSparser.UI
             this.resetAllLabelsToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(151, 76);
-			// 
-			// resetLabelToolStripMenuItem
-			// 
-			this.resetLabelToolStripMenuItem.Name = "resetLabelToolStripMenuItem";
-			this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.resetLabelToolStripMenuItem.Text = "Reset label";
-			this.resetLabelToolStripMenuItem.Click += new System.EventHandler(this.resetLabelToolStripMenuItem_Click);
 			// 
 			// setLabelToolStripMenuItem
 			// 
@@ -178,6 +171,13 @@ namespace JSparser.UI
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
 			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			// 
+			// resetLabelToolStripMenuItem
+			// 
+			this.resetLabelToolStripMenuItem.Name = "resetLabelToolStripMenuItem";
+			this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.resetLabelToolStripMenuItem.Text = "Reset label";
+			this.resetLabelToolStripMenuItem.Click += new System.EventHandler(this.resetLabelToolStripMenuItem_Click);
 			// 
 			// resetAllLabelsToolStripMenuItem
 			// 
@@ -194,6 +194,7 @@ namespace JSparser.UI
 			this.Controls.Add(this.topBar);
 			this.Name = "NavigationTreeView";
 			this.Size = new System.Drawing.Size(234, 300);
+			this.Load += new System.EventHandler(this.NavigationTreeView_Load);
 			this.topBar.ResumeLayout(false);
 			this.topBar.PerformLayout();
 			this.toolStrip1.ResumeLayout(false);

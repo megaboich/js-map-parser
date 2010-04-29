@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
+    <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\CustomComment.cs" />
     <Compile Include="Parsers\JavascriptParser.cs" />
@@ -142,6 +143,9 @@
     <Content Include="Resources\js_function.gif" />
     <Content Include="Resources\js_method_public.gif" />
     <Content Include="Resources\refresh.gif" />
+    <EmbeddedResource Include="Version.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="Resources\script_icon.bmp" />
     <Content Include="Resources\script_icon.png" />
     <Content Include="Resources\SortAZ.png" />

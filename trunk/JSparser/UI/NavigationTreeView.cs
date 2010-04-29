@@ -285,5 +285,10 @@ namespace JSparser.UI
 			_bookmarkedItems.Clear();
 			RefreshTree();
 		}
+
+		private void NavigationTreeView_Load(object sender, EventArgs e)
+		{
+			VersionChecker.CheckVersion();
+		}
 	}
 }
