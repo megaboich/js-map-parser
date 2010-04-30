@@ -17,15 +17,11 @@ namespace JsParcerCore.Helpers
 		{
 			try
 			{
-				int thisVersion = 0;
+				int thisVersion = 2;
 				int repositoryVersion = 0;
-				using (var sr = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("JSparser.Version.xml")))
-				{
-					thisVersion = ParseVersion(sr.ReadToEnd());
-				}
 				
 				var projectSite = @"http://js-addin.googlecode.com";
-				var serverVersionUrl = projectSite + "/svn/trunk/JSparser/Version.xml";
+				var serverVersionUrl = projectSite + "/svn/trunk/Version.xml";
 
 				using (var sr = new StreamReader(WebRequest.Create(serverVersionUrl).GetResponse().GetResponseStream()))
 				{

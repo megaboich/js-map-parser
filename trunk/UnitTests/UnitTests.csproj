@@ -180,9 +180,9 @@
     <Content Include="Source\test9.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JSparser\JSparser.csproj">
-      <Project>{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}</Project>
-      <Name>JSparser</Name>
+    <ProjectReference Include="..\JsParcerCore\JsParcerCore.csproj">
+      <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
+      <Name>JsParcerCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

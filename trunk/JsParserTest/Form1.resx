@@ -112,19 +112,66 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SortAZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SortAZ.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>// Comment to funtion 1
+// This function does nothing
+function Function1()
+{
+}
+
+//------------------------------------------------------------------------------------
+// This is sample of JS class factory.
+function GetNewItem(param1, param2)
+{
+	return {
+		field1: param1,
+		field2: param2,
+		/*method1*/method1: function() { },
+		/*method2*/method2: function(p) {
+		//This function contains a lot of comments before and after declaration
+		},
+		/*method3*/method3: function(p1, p2)
+		{
+			/*Delegate method
+			This method contains multilines comment*/
+			var delegate = function()
+			{
+			};
+		}
+	};
+}
+
+//This is another sample of JS class
+var Class1 = function(param1, param2)
+{
+	var _this = this;
+	_this._field1 = param1;
+	_this._field2 = param2;
+
+	//This is First method
+	_this.Method1 = function()
+	{
+	};
+
+	//This is Second method
+	_this.Method2 = function(param1)
+	{
+	};
+
+	//This is Third method
+	_this.Method3 = function(param1, param2)
+	{
+		//delegate method
+		var delegate = function()
+		{
+		};
+	};
+};
+</value>
   </data>
 </root>

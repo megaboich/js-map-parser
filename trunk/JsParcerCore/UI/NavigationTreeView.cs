@@ -171,8 +171,7 @@ namespace JsParcerCore.UI
 				CodeNode codeNode = (CodeNode)treeView1.SelectedNode.Tag;
 				try
 				{
-					// Selection.GotoLine(codeNode.StartLine, false);
-					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1, false);
+					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
 					Code.SetFocus();
 				}
 				catch { }

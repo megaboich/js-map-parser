@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using JSparser.Code;
-using JSparser.Helpers;
-using JSparser.Parsers;
 using NUnit.Framework;
+using JsParcerCore.Parsers;
+using JsParcerCore.Helpers;
+using JsParcerCore.Code;
 
 namespace UnitTests
 {

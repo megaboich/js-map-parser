@@ -26,7 +26,7 @@ namespace JsParcerCore.Parsers
 		/// </returns>
 		public Hierachy<CodeNode> Parse(string script)
 		{
-			var code = script.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+			var code = script.Split(new[] { Environment.NewLine, "\n" }, StringSplitOptions.None);
 
 			var parser = new Parser(script.ToCharArray(), true);
 			var comments = new List<Comment>();
