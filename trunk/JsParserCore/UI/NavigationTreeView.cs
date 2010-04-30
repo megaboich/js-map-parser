@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using JsParcerCore.Code;
-using JsParcerCore.Helpers;
-using JsParcerCore.Parsers;
+using JsParserCore.Code;
+using JsParserCore.Helpers;
+using JsParserCore.Parsers;
 
-namespace JsParcerCore.UI
+namespace JsParserCore.UI
 {
 	/// <summary>
 	/// The tree for code.

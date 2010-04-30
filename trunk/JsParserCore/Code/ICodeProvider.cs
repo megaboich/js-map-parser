@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JsParcerCore.Code
+namespace JsParserCore.Code
 {
 	public interface ICodeProvider
 	{

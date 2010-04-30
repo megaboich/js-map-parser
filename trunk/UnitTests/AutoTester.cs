@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using NUnit.Framework;
-using JsParcerCore.Parsers;
-using JsParcerCore.Helpers;
-using JsParcerCore.Code;
+using JsParserCore.Parsers;
+using JsParserCore.Helpers;
+using JsParserCore.Code;
 
 namespace UnitTests
 {

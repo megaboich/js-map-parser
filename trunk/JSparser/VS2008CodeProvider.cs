@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JsParcerCore.Code;
+using JsParserCore.Code;
 using EnvDTE80;
 using EnvDTE;
 

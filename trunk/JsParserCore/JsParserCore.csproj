@@ -8,8 +8,8 @@
     <ProjectGuid>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JsParcerCore</RootNamespace>
-    <AssemblyName>JsParcerCore</AssemblyName>
+    <RootNamespace>JsParserCore</RootNamespace>
+    <AssemblyName>JsParserCore</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace JsParcerCore.Helpers
+namespace JsParserCore.Helpers
 {
 	/// <summary>
 	/// Represents a hierarchy template.

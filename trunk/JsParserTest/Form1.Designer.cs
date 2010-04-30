@@ -31,7 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-			this.navigationTreeView1 = new JsParcerCore.UI.NavigationTreeView();
+			this.navigationTreeView1 = new JsParserCore.UI.NavigationTreeView();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -96,7 +96,7 @@
 		#endregion
 
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private JsParcerCore.UI.NavigationTreeView navigationTreeView1;
+		private JsParserCore.UI.NavigationTreeView navigationTreeView1;
 		private System.Windows.Forms.RichTextBox richTextBox1;
 	}
 }

@@ -3,7 +3,7 @@ using System.Reflection;
 using System.IO;
 using System.Drawing;
 using System.ComponentModel;
-namespace JsParcerCore.UI
+namespace JsParserCore.UI
 {
     partial class NavigationTreeView
     {
@@ -86,7 +86,7 @@ namespace JsParcerCore.UI
 			// btnRefresh
 			// 
 			this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnRefresh.Image = global::JsParcerCore.Properties.Resources.refresh;
+			this.btnRefresh.Image = global::JsParserCore.Properties.Resources.refresh;
 			this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(23, 22);
@@ -166,7 +166,7 @@ namespace JsParcerCore.UI
 			this.btnTreeToggle.CheckOnClick = true;
 			this.btnTreeToggle.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.btnTreeToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnTreeToggle.Image = global::JsParcerCore.Properties.Resources.tree;
+			this.btnTreeToggle.Image = global::JsParserCore.Properties.Resources.tree;
 			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnTreeToggle.Name = "btnTreeToggle";
 			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
@@ -178,7 +178,7 @@ namespace JsParcerCore.UI
 			// 
 			this.btnSortToggle.CheckOnClick = true;
 			this.btnSortToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnSortToggle.Image = global::JsParcerCore.Properties.Resources.SortAZ;
+			this.btnSortToggle.Image = global::JsParserCore.Properties.Resources.SortAZ;
 			this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSortToggle.Name = "btnSortToggle";
 			this.btnSortToggle.Size = new System.Drawing.Size(23, 22);

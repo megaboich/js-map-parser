@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.JScript.Compiler;
 using Microsoft.JScript.Compiler.ParseTree;
-using JsParcerCore.Code;
-using JsParcerCore.Helpers;
+using JsParserCore.Code;
+using JsParserCore.Helpers;
 
-namespace JsParcerCore.Parsers
+namespace JsParserCore.Parsers
 {
 	/// <summary>
 	/// The js parser.

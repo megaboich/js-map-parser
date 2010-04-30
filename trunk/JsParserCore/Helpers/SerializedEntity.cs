@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace JsParcerCore.Helpers
+namespace JsParserCore.Helpers
 {
 	/// <summary>
 	/// The serialized entity.
