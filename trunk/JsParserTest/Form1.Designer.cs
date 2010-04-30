@@ -30,8 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.navigationTreeView1 = new JsParserCore.UI.NavigationTreeView();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +57,14 @@
 			this.splitContainer1.SplitterDistance = 207;
 			this.splitContainer1.TabIndex = 2;
 			// 
+			// navigationTreeView1
+			// 
+			this.navigationTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.navigationTreeView1.Location = new System.Drawing.Point(0, 0);
+			this.navigationTreeView1.Name = "navigationTreeView1";
+			this.navigationTreeView1.Size = new System.Drawing.Size(207, 421);
+			this.navigationTreeView1.TabIndex = 1;
+			// 
 			// richTextBox1
 			// 
 			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -67,14 +75,6 @@
 			this.richTextBox1.TabIndex = 2;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			this.richTextBox1.WordWrap = false;
-			// 
-			// navigationTreeView1
-			// 
-			this.navigationTreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.navigationTreeView1.Location = new System.Drawing.Point(0, 0);
-			this.navigationTreeView1.Name = "navigationTreeView1";
-			this.navigationTreeView1.Size = new System.Drawing.Size(207, 421);
-			this.navigationTreeView1.TabIndex = 1;
 			// 
 			// Form1
 			// 

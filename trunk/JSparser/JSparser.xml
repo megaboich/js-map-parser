@@ -13,11 +13,6 @@
             The navigation tree view.
             </summary>
         </member>
-        <member name="F:JSparser.Connect._documentEvents">
-            <summary>
-            The document events.
-            </summary>
-        </member>
         <member name="M:JSparser.Connect.#ctor">
             <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
         </member>
@@ -107,7 +102,7 @@
             <summary>
             The window events_ window activated.
             </summary>
-            <param name="GotFocus">
+            <param name="gotFocus">
             The got focus.
             </param>
             <param name="LostFocus">

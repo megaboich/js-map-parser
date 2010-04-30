@@ -118,7 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>// Comment to funtion 1
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" &gt; 
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
+&lt;head&gt;
+    &lt;title&gt;Untitled Page&lt;/title&gt;
+    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" &gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;script type="text/javascript"&gt;
+// Comment to funtion 1
 // This function does nothing
 function Function1()
 {
@@ -172,6 +181,10 @@ var Class1 = function(param1, param2)
 		};
 	};
 };
-</value>
+&lt;/script&gt;
+
+&lt;body&gt;
+	Some HTML
+&lt;/body&gt;</value>
   </data>
 </root>

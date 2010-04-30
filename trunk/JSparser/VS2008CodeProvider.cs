@@ -11,43 +11,65 @@ namespace JSparser
 	public class VS2008CodeProvider : ICodeProvider
 	{
 		private DTE2 _applicationObject;
-		private Document _doc;
+		private Document _activeDocument;
 
-		public VS2008CodeProvider(DTE2 applicationObject, Document doc)
+		public VS2008CodeProvider(DTE2 applicationObject, Document activeDocument)
 		{
 			_applicationObject = applicationObject;
-			_doc = doc;
+			_activeDocument = activeDocument ?? _applicationObject.ActiveDocument;
+		}
+
+		private Document Doc
+		{
+			get
+			{
+				return _activeDocument;
+			}
 		}
 
 		#region ICodeProvider Members
 
 		public string LoadCode()
 		{
-			var textDocument = (TextDocument)_doc.Object("TextDocument");
-			return textDocument.CreateEditPoint(textDocument.StartPoint).GetText(textDocument.EndPoint);
+			if (Doc == null)
+			{
+				return "function Error_Loading_Document(){}";
+			}
+
+			var textDocument = (TextDocument)Doc.Object("TextDocument");
+			var docContent = textDocument.CreateEditPoint(textDocument.StartPoint).GetText(textDocument.EndPoint);
+			return docContent;
 		}
 
 		public string Path
 		{
-			get { return _applicationObject.ActiveDocument.Path; }
+			get { return Doc != null ? Doc.Path : string.Empty; }
 		}
 
 		public string Name
 		{
-			get { return _applicationObject.ActiveDocument.Name; }
+			get { return Doc != null ? Doc.Name : string.Empty; }
 		}
 
 		public void SelectionMoveToLineAndOffset(int StartLine, int StartColumn)
 		{
-			throw new NotImplementedException();
+			if (Doc == null)
+			{
+				return;
+			}
 
-			var textDocument = (TextDocument)_doc.Object("TextDocument");
-			textDocument.Selection.MoveToLineAndOffset(StartLine, StartColumn + 1, false);
+			var textDocument = (TextDocument)Doc.Object("TextDocument");
+			textDocument.Selection.MoveToLineAndOffset(StartLine, StartColumn, false);
 		}
 
 		public void SetFocus()
 		{
-			_doc.Activate();
+			if (Doc == null)
+			{
+				return;
+			}
+
+			Doc.Activate();
 			_applicationObject.ActiveWindow.SetFocus();
 		}
 

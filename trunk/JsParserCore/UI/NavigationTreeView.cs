@@ -5,12 +5,16 @@ using System.Windows.Forms;
 using JsParserCore.Code;
 using JsParserCore.Helpers;
 using JsParserCore.Parsers;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace JsParserCore.UI
 {
 	/// <summary>
 	/// The tree for code.
 	/// </summary>
+	[ComVisibleAttribute(true)]
 	public partial class NavigationTreeView : UserControl
 	{
 		private string _loadedDocName = string.Empty;
@@ -18,6 +22,7 @@ namespace JsParserCore.UI
 		private List<string> _bookmarkedItems = new List<string>();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
 		private static bool _versionChecked = false;
+		private string _hash;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -57,6 +62,15 @@ namespace JsParserCore.UI
 			lbDocName.Text = Code.Name;
 			lbDocName.ToolTipText = Code.Path + Code.Name;
 
+			var code = Code.LoadCode();
+			var hash = Convert.ToBase64String(SHA1.Create().ComputeHash(Encoding.Default.GetBytes(code)));
+			if (_hash == hash)
+			{
+				return;
+			}
+
+			_hash = hash;
+
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
 			_tempTreeNodes.Clear();
@@ -65,7 +79,14 @@ namespace JsParserCore.UI
 			var isSort = btnSortToggle.Checked;
 			var isHierarchy = btnTreeToggle.Checked;
 
-			var nodes = (new JavascriptParser()).Parse(Code.LoadCode());
+			if (!Code.Name.ToLower().EndsWith(".js"))
+			{
+				code = CodeTransformer.KillNonJavascript(code);
+			}
+
+			code = CodeTransformer.KillAspNetTags(code);
+
+			var nodes = (new JavascriptParser()).Parse(code);
 			FillNodes(nodes, treeView1.Nodes);
 
 			if (!isHierarchy)
@@ -154,9 +175,8 @@ namespace JsParserCore.UI
 		{
 			try
 			{
-				this.Dock = DockStyle.Fill;
-				Refresh();
 				_loadedDocName = string.Empty;
+				_hash = string.Empty;
 				LoadFunctionList();
 			}
 			catch (Exception ex)
@@ -244,6 +264,11 @@ namespace JsParserCore.UI
 				VersionChecker.CheckVersion();
 				_versionChecked = true;
 			}
+		}
+
+		private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+
 		}
 	}
 }

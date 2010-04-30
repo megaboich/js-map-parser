@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\aboyko\Documents\Visual Studio 2010\Projects\JSparser\UnitTests\Tests.nunit" total="12" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-04-01" time="11:54:37">
-  <environment nunit-version="2.5.3.9345" clr-version="2.0.50727.4927" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.5.3\bin\net-2.0" machine-name="W-ABOYKO1" user="aboyko" user-domain="SLUA" />
+<test-results name="D:\Dev\Projects\js-addin\trunk\UnitTests\Tests.nunit" total="12" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-04-30" time="14:22:42">
+  <environment nunit-version="2.5.5.10112" clr-version="2.0.50727.4927" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="c:\Program Files (x86)\NUnit 2.5.5\bin\net-2.0" machine-name="W-ABOYKO1" user="aboyko" user-domain="SLUA" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite name="C:\Users\aboyko\Documents\Visual Studio 2010\Projects\JSparser\UnitTests\Tests.nunit" executed="True" success="True" time="0.098" asserts="0">
+  <test-suite type="Project" name="D:\Dev\Projects\js-addin\trunk\UnitTests\Tests.nunit" executed="True" result="Success" success="True" time="0.843" asserts="0">
     <results>
-      <test-suite name="C:\Users\aboyko\Documents\Visual Studio 2010\Projects\JSparser\UnitTests\bin\Debug\UnitTests.dll" executed="True" success="True" time="0.096" asserts="0">
+      <test-suite type="Assembly" name="D:\Dev\Projects\js-addin\trunk\UnitTests\bin\x86\Debug\UnitTests.dll" executed="True" result="Success" success="True" time="0.832" asserts="0">
         <results>
-          <test-suite name="UnitTests" executed="True" success="True" time="0.093" asserts="0">
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.829" asserts="0">
             <results>
-              <test-suite name="AutoTester" executed="True" success="True" time="0.092" asserts="0">
+              <test-suite type="TestFixture" name="AutoTester" executed="True" result="Success" success="True" time="0.827" asserts="0">
                 <results>
-                  <test-case name="UnitTests.AutoTester.Test1" executed="True" success="True" time="0.006" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test1_1" executed="True" success="True" time="0.008" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test2" executed="True" success="True" time="0.003" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test3" executed="True" success="True" time="0.003" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test4" executed="True" success="True" time="0.002" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test4_1" executed="True" success="True" time="0.003" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test4_2" executed="True" success="True" time="0.003" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test5" executed="True" success="True" time="0.009" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test51" executed="True" success="True" time="0.003" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test6" executed="True" success="True" time="0.021" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test7" executed="True" success="True" time="0.002" asserts="3" />
-                  <test-case name="UnitTests.AutoTester.Test8" executed="True" success="True" time="0.011" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test1" executed="True" result="Success" success="True" time="0.758" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test1_1" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test2" executed="True" result="Success" success="True" time="0.003" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test3" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test4" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test4_1" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test4_2" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test5" executed="True" result="Success" success="True" time="0.004" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test51" executed="True" result="Success" success="True" time="0.001" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test6" executed="True" result="Success" success="True" time="0.011" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test7" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                  <test-case name="UnitTests.AutoTester.Test8" executed="True" result="Success" success="True" time="0.007" asserts="3" />
                 </results>
               </test-suite>
             </results>

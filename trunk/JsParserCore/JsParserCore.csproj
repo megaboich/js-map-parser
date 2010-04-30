@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\CodeNode.cs" />
+    <Compile Include="Code\CodeTransformer.cs" />
     <Compile Include="Code\ICodeProvider.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
