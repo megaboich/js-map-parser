@@ -29,12 +29,12 @@ namespace JSparser
 
 		public string Path
 		{
-			get { return "Test path"; }
+			get { return _applicationObject.ActiveDocument.Path; }
 		}
 
 		public string Name
 		{
-			get { return "Test name"; }
+			get { return _applicationObject.ActiveDocument.Name; }
 		}
 
 		public void SelectionMoveToLineAndOffset(int StartLine, int StartColumn)
@@ -43,7 +43,6 @@ namespace JSparser
 
 			var textDocument = (TextDocument)_doc.Object("TextDocument");
 			textDocument.Selection.MoveToLineAndOffset(StartLine, StartColumn + 1, false);
-			
 		}
 
 		public void SetFocus()

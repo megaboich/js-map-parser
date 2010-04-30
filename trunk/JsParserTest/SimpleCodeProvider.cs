@@ -25,19 +25,18 @@ namespace JsParserTest
 
 		public string Path
 		{
-			get { return "Test path"; }
+			get { return string.Empty; }
 		}
 
 		public string Name
 		{
-			get { return "Test doc"; }
+			get { return string.Empty; }
 		}
 
 		public void SelectionMoveToLineAndOffset(int startLine, int startColumn)
 		{
-
-			var textLen = _textBox.Lines.Take(startLine - 1).Select(l => l.Length).Aggregate((t, l) => t += l);
-			_textBox.Select(textLen + startColumn, 0);
+			var textLen = _textBox.Lines.Take(startLine - 1).Select(l => l.Length + 1).Aggregate((t, l) => t += l);
+			_textBox.Select(textLen + startColumn - 1, 0);
 		}
 
 		public void SetFocus()

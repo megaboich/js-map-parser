@@ -17,6 +17,7 @@ namespace JsParcerCore.UI
 		private bool _canExpand = true;
 		private List<string> _bookmarkedItems = new List<string>();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
+		private static bool _versionChecked = false;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -149,7 +150,7 @@ namespace JsParcerCore.UI
 			RefreshTree();
 		}
 
-		private void RefreshTree()
+		public void RefreshTree()
 		{
 			try
 			{
@@ -238,7 +239,11 @@ namespace JsParcerCore.UI
 
 		private void NavigationTreeView_Load(object sender, EventArgs e)
 		{
-			VersionChecker.CheckVersion();
+			if (!_versionChecked)
+			{
+				VersionChecker.CheckVersion();
+				_versionChecked = true;
+			}
 		}
 	}
 }

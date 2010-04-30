@@ -20,7 +20,7 @@ namespace JsParserTest
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-
+			navigationTreeView1.RefreshTree();
 		}
 	}
 }

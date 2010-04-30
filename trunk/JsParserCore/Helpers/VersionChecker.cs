@@ -17,11 +17,11 @@ namespace JsParcerCore.Helpers
 		{
 			try
 			{
-				int thisVersion = 2;
+				int thisVersion = 1;
 				int repositoryVersion = 0;
 				
 				var projectSite = @"http://js-addin.googlecode.com";
-				var serverVersionUrl = projectSite + "/svn/trunk/Version.xml";
+				var serverVersionUrl = projectSite + "/svn/Version.xml";
 
 				using (var sr = new StreamReader(WebRequest.Create(serverVersionUrl).GetResponse().GetResponseStream()))
 				{
