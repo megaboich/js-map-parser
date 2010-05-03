@@ -1,4 +1,4 @@
-=New changes in Javascript parser add-in 2.0=
+==New changes in Javascript parser add-in 2.0==
 
   # Add new marks menu
   # Solution restructuring to future support native VS2010 add-in format.
