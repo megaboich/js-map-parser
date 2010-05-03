@@ -31,14 +31,16 @@ namespace JSparser
 
 		public string LoadCode()
 		{
-			if (Doc == null)
+			try
+			{
+				var textDocument = (TextDocument)Doc.Object("TextDocument");
+				var docContent = textDocument.CreateEditPoint(textDocument.StartPoint).GetText(textDocument.EndPoint);
+				return docContent;
+			}
+			catch
 			{
 				return "function Error_Loading_Document(){}";
 			}
-
-			var textDocument = (TextDocument)Doc.Object("TextDocument");
-			var docContent = textDocument.CreateEditPoint(textDocument.StartPoint).GetText(textDocument.EndPoint);
-			return docContent;
 		}
 
 		public string Path
@@ -53,13 +55,14 @@ namespace JSparser
 
 		public void SelectionMoveToLineAndOffset(int StartLine, int StartColumn)
 		{
-			if (Doc == null)
+			try
 			{
-				return;
+				var textDocument = (TextDocument)Doc.Object("TextDocument");
+				textDocument.Selection.MoveToLineAndOffset(StartLine, StartColumn, false);
 			}
-
-			var textDocument = (TextDocument)Doc.Object("TextDocument");
-			textDocument.Selection.MoveToLineAndOffset(StartLine, StartColumn, false);
+			catch
+			{
+			}
 		}
 
 		public void SetFocus()

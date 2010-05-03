@@ -8,6 +8,8 @@ using JsParserCore.Parsers;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
+using JsParserCore.Properties;
 
 namespace JsParserCore.UI
 {
@@ -19,7 +21,7 @@ namespace JsParserCore.UI
 	{
 		private string _loadedDocName = string.Empty;
 		private bool _canExpand = true;
-		private List<string> _bookmarkedItems = new List<string>();
+		private MarksManager _marksManager = new MarksManager();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
 		private static bool _versionChecked = false;
 		private string _hash;
@@ -58,9 +60,9 @@ namespace JsParserCore.UI
 		/// </summary>
 		public void LoadFunctionList()
 		{
-			_loadedDocName = Code.Path + Code.Name;
+			_loadedDocName = Path.Combine(Code.Path, Code.Name);
 			lbDocName.Text = Code.Name;
-			lbDocName.ToolTipText = Code.Path + Code.Name;
+			lbDocName.ToolTipText = _loadedDocName;
 
 			var code = Code.LoadCode();
 			var hash = Convert.ToBase64String(SHA1.Create().ComputeHash(Encoding.Default.GetBytes(code)));
@@ -85,7 +87,7 @@ namespace JsParserCore.UI
 			}
 
 			code = CodeTransformer.KillAspNetTags(code);
-
+			_marksManager.SetFile(_loadedDocName);
 			var nodes = (new JavascriptParser()).Parse(code);
 			FillNodes(nodes, treeView1.Nodes);
 
@@ -140,14 +142,11 @@ namespace JsParserCore.UI
 					? node.Alias
 					: string.Format("Anonymous function at line {0}", node.StartLine);
 
-				TreeNode treeNode = new TreeNode(caption);
-				treeNode.Tag = node;
+				CustomTreeNode treeNode = new CustomTreeNode(caption);
+				treeNode.CodeNode = node;
 				treeNode.ToolTipText = node.Comment;
 				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
-				if (_bookmarkedItems.Contains(caption))
-				{
-					SelectNode(treeNode, true);
-				}
+				_marksManager.RestoreMark(treeNode);
 				if (isHierarchy)
 				{
 					dest.Add(treeNode);
@@ -189,7 +188,7 @@ namespace JsParserCore.UI
 		{
 			if (treeView1.SelectedNode != null)
 			{
-				CodeNode codeNode = (CodeNode)treeView1.SelectedNode.Tag;
+				CodeNode codeNode = ((CustomTreeNode)treeView1.SelectedNode).CodeNode;
 				try
 				{
 					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
@@ -207,6 +206,7 @@ namespace JsParserCore.UI
 
 			if (e.Button == MouseButtons.Right)
 			{
+				resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((CustomTreeNode)e.Node).Tags);
 				contextMenuStrip1.Show((Control) sender, e.X, e.Y);
 			}
 		}
@@ -227,33 +227,15 @@ namespace JsParserCore.UI
 			}
 		}
 
-		private void SelectNode(TreeNode node, bool select)
-		{
-			if (select)
-			{
-				node.BackColor = Color.Aqua;
-			}
-			else
-			{
-				node.BackColor = SystemColors.Window;
-			}
-		}
-
 		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SelectNode(treeView1.SelectedNode, false);
-			_bookmarkedItems.Remove(treeView1.SelectedNode.Text);
-		}
-
-		private void setLabelToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SelectNode(treeView1.SelectedNode, true);
-			_bookmarkedItems.Add(treeView1.SelectedNode.Text);
+			_marksManager.SetMark(null, (CustomTreeNode) treeView1.SelectedNode);
+			treeView1.Refresh();
 		}
 
 		private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			_bookmarkedItems.Clear();
+			_marksManager.ResetMarks();
 			RefreshTree();
 		}
 
@@ -269,6 +251,77 @@ namespace JsParserCore.UI
 		private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 
+		}
+
+		private Image GetTagImage(char mark)
+		{
+			switch (mark)
+			{
+				case 'W':
+					return JsParserCore.Properties.Resources.flag_white;
+				case 'B':
+					return JsParserCore.Properties.Resources.flag_blue;
+				case 'G':
+					return JsParserCore.Properties.Resources.flag_green;
+				case 'O':
+					return JsParserCore.Properties.Resources.flag_orange;
+				case 'R':
+					return JsParserCore.Properties.Resources.flag_red;
+				default:
+					return JsParserCore.Properties.Resources.icon_favourites;
+			}
+		}
+
+		private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
+		{
+			var node = (CustomTreeNode)e.Node;
+			if (!string.IsNullOrEmpty(node.Tags))
+			{
+				var x = e.Bounds.Right + 2;
+				foreach (char mark in node.Tags)
+				{
+					e.Graphics.DrawImageUnscaled(GetTagImage(mark), x, e.Bounds.Top - 1);
+					x += 18;
+				}
+			}
+
+			e.DrawDefault = true;
+		}
+
+		private void toolStripMenuItem6_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("W", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void toolStripMenuItem5_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("G", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void setLabelToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("S", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void toolStripMenuItem4_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("B", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void toolStripMenuItem3_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("O", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void toolStripMenuItem2_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark("R", (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
 		}
 	}
 }

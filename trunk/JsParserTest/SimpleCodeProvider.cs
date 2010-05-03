@@ -9,11 +9,15 @@ namespace JsParserTest
 {
 	public class SimpleCodeProvider :ICodeProvider
 	{
+		private string _name;
+		private string _path;
 		private RichTextBox _textBox;
 
-		public SimpleCodeProvider(RichTextBox textBox)
+		public SimpleCodeProvider(RichTextBox textBox, string path, string name)
 		{
 			_textBox = textBox;
+			_name = name;
+			_path = path;
 		}
 
 		#region ICodeProvider Members
@@ -25,12 +29,12 @@ namespace JsParserTest
 
 		public string Path
 		{
-			get { return string.Empty; }
+			get { return _path; }
 		}
 
 		public string Name
 		{
-			get { return string.Empty; }
+			get { return _name; }
 		}
 
 		public void SelectionMoveToLineAndOffset(int startLine, int startColumn)

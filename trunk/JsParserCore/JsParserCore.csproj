@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,6 +52,7 @@
     <Compile Include="Code\ICodeProvider.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
+    <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\CustomComment.cs" />
@@ -61,6 +63,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomTreeNode.cs" />
+    <Compile Include="UI\MarksManager.cs" />
     <Compile Include="UI\NavigationTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,7 +78,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\flag_blue.gif" />
+    <None Include="Resources\flag_green.gif" />
+    <None Include="Resources\flag_orange.gif" />
+    <None Include="Resources\flag_red.gif" />
+    <None Include="Resources\flag_white.gif" />
     <Content Include="Resources\function.png" />
+    <None Include="Resources\icon_favourites.gif" />
     <Content Include="Resources\js_file.gif" />
     <Content Include="Resources\js_function.gif" />
     <Content Include="Resources\js_method_public.gif" />

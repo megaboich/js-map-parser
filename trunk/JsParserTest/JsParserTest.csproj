@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JsParserTest</RootNamespace>
     <AssemblyName>JsParserTest</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleCodeProvider.cs" />
+    <Compile Include="UnitTests\AutoTester.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,7 +72,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,12 +84,42 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UnitTests\Tests.nunit" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JsParserCore\JsParserCore.csproj">
       <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
       <Name>JsParcerCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UnitTests\Result\Test1_1.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test4_1.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test4_2.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test5_1.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test1_1.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test4_1.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test4_2.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test5_1.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test1.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test2.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test3.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test4.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test5.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test6.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test7.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test8.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test1.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test2.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test3.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test4.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test5.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test6.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test7.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test8.js" />
+    <EmbeddedResource Include="UnitTests\Source\test9.js" />
+    <Content Include="UnitTests\TestResult.xml" />
+    <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
