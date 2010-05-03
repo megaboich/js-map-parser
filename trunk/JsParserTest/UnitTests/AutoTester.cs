@@ -15,7 +15,7 @@ namespace UnitTests
 	[TestFixture]
 	public class AutoTester
 	{
-		public string GetEmbeddedText(string resourceName)
+		public static string GetEmbeddedText(string resourceName)
 		{
 			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
 			Assert.IsNotNull(stream);
