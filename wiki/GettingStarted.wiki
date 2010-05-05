@@ -7,9 +7,13 @@ To start using *Javascript Parser Extension* follow steps:
   # Click the item in the menu to show toolbox.
 
 ===Install steps for VS2008===
+TBD
 
 ===Menu location for VS2008===
+TBD
 
 ===Install steps for VS2010===
+TBD
 
 ===Menu location for VS2010===
+TBD
