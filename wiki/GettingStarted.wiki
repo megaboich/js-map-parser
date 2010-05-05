@@ -1,0 +1,15 @@
+== Javascript Parser Extension for Visual Studio ==
+
+<font color="red">This page is not finished.</font>
+
+To start using *Javascript Parser Extension* follow steps:
+  # Install extension.
+  # Click the item in the menu to show toolbox.
+
+===Install steps for VS2008===
+
+===Menu location for VS2008===
+
+===Install steps for VS2010===
+
+===Menu location for VS2010===
