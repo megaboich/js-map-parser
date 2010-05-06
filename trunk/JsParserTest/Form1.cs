@@ -16,7 +16,6 @@ namespace JsParserTest
 		public Form1()
 		{
 			InitializeComponent();
-			InitTree(richTextBox1);
 		}
 
 		private void InitTree(RichTextBox textBox)
@@ -27,13 +26,16 @@ namespace JsParserTest
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			var tests = Assembly.GetAssembly(GetType()).GetManifestResourceNames().Where(name => name.EndsWith(".js"));
+			var tests = Assembly.GetAssembly(GetType()).GetManifestResourceNames().Where(name => name.EndsWith(".js") || name.EndsWith(".htm"));
 			foreach (var testname in tests)
 			{
 				var nameparts = testname.Split(new[] { '.' });
 				var name = nameparts.Skip(nameparts.Count() - 2).Aggregate((a, i) => a += "." + i);
 				tabControl1.TabPages.Add(testname, name);
 			}
+
+			tabControl1.SelectTab(0);
+			tabControl1_TabIndexChanged(sender, e);
 		}
 
 		private void richTextBox1_TextChanged(object sender, EventArgs e)

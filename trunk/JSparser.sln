@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserCore", "JsParserCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserTest", "JsParserTest\JsParserTest.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser_package", "JsParser_package\JsParser_package.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}.Release|x86.ActiveCfg = Release|x86
 		{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}.Release|x86.Build.0 = Release|x86
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

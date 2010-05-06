@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+	<Identifier Id="85fcde11-d0ea-4b3e-b03a-79b16c2379f7">
+		<Name>Javascript parser</Name>
+		<Author>Alexander Boyko (mega.boich@gmail.com)</Author>
+		<Version>2.0</Version>
+		<Description xml:space="preserve">Extension for Visual Studio for improve support for javascript</Description>
+		<Locale>1033</Locale>
+		<MoreInfoUrl>http://code.google.com/p/js-addin/</MoreInfoUrl>
+		<License>License.txt</License>
+		<GettingStartedGuide>http://code.google.com/p/js-addin/wiki/GettingStarted</GettingStartedGuide>
+		<Icon>jsparser_icon.png</Icon>
+		<PreviewImage>jsparser_preview.png</PreviewImage>
+		<InstalledByMsi>false</InstalledByMsi>
+		<SupportedProducts>
+			<VisualStudio Version="10.0">
+				<Edition>Pro</Edition>
+			</VisualStudio>
+		</SupportedProducts>
+		<SupportedFrameworkRuntimeEdition MinVersion="3.5" MaxVersion="4.0" />
+	</Identifier>
+	<References>
+		<Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
+			<Name>Visual Studio MPF</Name>
+		</Reference>
+	</References>
+	<Content>
+		<VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
+		<MefComponent>|JsParserCore|</MefComponent>
+		<MefComponent>Microsoft.JScript.Compiler.dll</MefComponent>
+	</Content>
+</Vsix>

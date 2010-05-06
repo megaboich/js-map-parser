@@ -118,6 +118,7 @@
     <EmbeddedResource Include="UnitTests\Source\Test7.js" />
     <EmbeddedResource Include="UnitTests\Source\Test8.js" />
     <EmbeddedResource Include="UnitTests\Source\test9.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test10.htm" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

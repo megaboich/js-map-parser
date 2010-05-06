@@ -174,9 +174,12 @@ namespace JsParserCore.UI
 		{
 			try
 			{
-				_loadedDocName = string.Empty;
-				_hash = string.Empty;
-				LoadFunctionList();
+				if (Code != null)
+				{
+					_loadedDocName = string.Empty;
+					_hash = string.Empty;
+					LoadFunctionList();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -241,11 +244,7 @@ namespace JsParserCore.UI
 
 		private void NavigationTreeView_Load(object sender, EventArgs e)
 		{
-			if (!_versionChecked)
-			{
-				VersionChecker.CheckVersion();
-				_versionChecked = true;
-			}
+			
 		}
 
 		private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -322,6 +321,16 @@ namespace JsParserCore.UI
 		{
 			_marksManager.SetMark("R", (CustomTreeNode)treeView1.SelectedNode);
 			treeView1.Refresh();
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			timer1.Enabled = false;
+			if (!_versionChecked)
+			{
+				VersionChecker.CheckVersion();
+				_versionChecked = true;
+			}
 		}
 	}
 }
