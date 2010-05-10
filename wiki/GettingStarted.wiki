@@ -5,9 +5,9 @@ To start using *Javascript Parser Extension* follow steps:
   # Click the item in the menu to show toolbox.
 
 ===Install steps for VS2008===
-  # Unzip pack and copy contents to <%userdocuments%>\Visual Studio 2008\AddIns\
+  # Unzip pack and copy contents to <%userdocuments%>\Visual Studio 2008\!AddIns\
    Example:
-   c:\Users\<%Username%>\Documents\Visual Studio 2008\AddIns\
+   c:\Users\<%Username%>\Documents\Visual Studio 2008\!AddIns\
   # Restart Visual Studio.
 ===Menu location for VS2008===
   Tools\Javascript parser
