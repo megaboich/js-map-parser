@@ -17,15 +17,17 @@ namespace JsParserCore.Helpers
 		{
 			try
 			{
-				int thisVersion = 2;
-				int repositoryVersion = 0;
+				float thisVersion = 2;
+				float repositoryVersion = 0;
 				
 				var projectSite = @"http://js-addin.googlecode.com";
-				var serverVersionUrl = projectSite + "/svn/Version.xml";
+				//var serverVersionUrl = projectSite + "/svn/Version.xml";
+				var serverVersionUrl = @"http://localhost/Version.xml";
+				var releaseInfo = string.Empty;
 
 				using (var sr = new StreamReader(WebRequest.Create(serverVersionUrl).GetResponse().GetResponseStream()))
 				{
-					repositoryVersion = ParseVersion(sr.ReadToEnd());
+					repositoryVersion = ParseVersion(thisVersion, sr.ReadToEnd(), out releaseInfo);
 				}
 
 				if (thisVersion == repositoryVersion)
@@ -40,7 +42,7 @@ namespace JsParserCore.Helpers
 
 				if (thisVersion < repositoryVersion)
 				{
-					var result = MessageBox.Show(string.Format("A new version of Javascript parser addin is available. Would you like to visit site {0} ?", projectSite),
+					var result = MessageBox.Show(string.Format("A new version of Javascript parser addin is available.\r\n\r\n{1}\r\n\r\n Would you like to visit site {0} ?", projectSite, releaseInfo),
 						"JSparser version checker",
 						MessageBoxButtons.YesNo,
 						MessageBoxIcon.Information);
@@ -59,15 +61,26 @@ namespace JsParserCore.Helpers
 			}
 		}
 
-		public static int ParseVersion(string versionXml)
+		public static float ParseVersion(float thisVersion, string versionXml, out string releaseInfo)
 		{
+			releaseInfo = string.Empty;
 			var xmlDoc = new XmlDocument { InnerXml = versionXml };
 			var versionNode = xmlDoc.SelectSingleNode("Version");
 			if (versionNode != null)
 			{
-				int version = 0;
-				if (int.TryParse(versionNode.InnerText, out version))
+				float version = 0;
+				if (float.TryParse(versionNode.InnerText, out version))
 				{
+					var versionInfos = versionNode.SelectNodes("//ReleaseInfo");
+					if (versionInfos != null)
+					{
+						var newReleasesInfo = versionInfos.OfType<XmlElement>()
+							.Where(e => float.Parse(e.GetAttribute("version")) >= thisVersion)
+							.SelectMany(e => e.SelectNodes("self::*//info").OfType<XmlElement>())
+							.Select(e => e.GetAttribute("text"))
+							.ToArray();
+						releaseInfo = String.Join("\r\n", newReleasesInfo);
+					}
 					return version;
 				}
 			}

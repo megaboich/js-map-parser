@@ -124,7 +124,7 @@
   <ItemGroup>
     <ProjectReference Include="..\JsParserCore\JsParserCore.csproj">
       <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
-      <Name>JsParcerCore</Name>
+      <Name>JsParserCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />

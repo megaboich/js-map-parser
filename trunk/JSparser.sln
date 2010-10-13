@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserTest", "JsParserTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser_package", "JsParser_package\JsParser_package.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version", "Version", "{AC7D627D-4666-4F1A-AF3D-4941E2697310}"
+	ProjectSection(SolutionItems) = preProject
+		..\Version.xml = ..\Version.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
