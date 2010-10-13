@@ -16,11 +16,11 @@ namespace JsParserCore.UI
 
 		public MarksManager()
 		{
-			if (!string.IsNullOrEmpty(Settings.Default.Data))
+			if (!string.IsNullOrEmpty(Settings.Default.BookmarksData))
 			{
 				try
 				{
-					_bookmarkedItems = (new JavaScriptSerializer()).Deserialize<Dictionary<string, IDictionary<string, string>>>(Settings.Default.Data);
+					_bookmarkedItems = (new JavaScriptSerializer()).Deserialize<Dictionary<string, IDictionary<string, string>>>(Settings.Default.BookmarksData);
 				}
 				catch
 				{
@@ -36,7 +36,7 @@ namespace JsParserCore.UI
 		public void Save()
 		{
 			var d = (new JavaScriptSerializer()).Serialize(_bookmarkedItems);
-			Settings.Default.Data = d;
+			Settings.Default.BookmarksData = d;
 			Settings.Default.Save();
 		}
 

@@ -48,6 +48,32 @@ namespace JsParserTest
 			_textBox.Focus();
 		}
 
+		public void GetCursorPos(out int line, out int column)
+		{
+			try
+			{
+				var cumLength = 0;
+				int i = 0;
+				for (; i < _textBox.Lines.Length; ++i)
+				{
+					cumLength += (_textBox.Lines[i].Length + 1);
+					if (cumLength > _textBox.SelectionStart)
+					{
+						line = i;
+						column = 1;
+						return;
+					}
+				}
+				line = 1;
+				column = 1;
+			}
+			catch
+			{
+				line = -1;
+				column = -1;
+			}
+		}
+
 		#endregion
 	}
 }

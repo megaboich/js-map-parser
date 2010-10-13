@@ -32,11 +32,31 @@ namespace AlexanderBoyko.JsParser_package
 		private WindowEvents _windowEvents;
 		private DTE _dte;
 
+		public bool TreeLoaded 
+		{
+			get
+			{
+				if (NavigationTreeView != null)
+				{
+					return NavigationTreeView.TreeLoaded;
+				}
+				return false;
+			}
+		}
+
 		public NavigationTreeView NavigationTreeView
 		{
 			get
 			{
 				return (NavigationTreeView)((WindowsFormsHost)(((Panel)(((JsParserHolder)Content).Content)).Children[0])).Child;
+			}
+		}
+
+		public void FindCommand()
+		{
+			if (NavigationTreeView != null)
+			{
+				NavigationTreeView.Find();
 			}
 		}
 
@@ -145,7 +165,16 @@ namespace AlexanderBoyko.JsParser_package
 			{
 				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
 				NavigationTreeView.Init(codeProvider);
-				NavigationTreeView.LoadFunctionList();
+				var treeExist = NavigationTreeView.LoadFunctionList();
+				IVsWindowFrame windowFrame = (IVsWindowFrame)Frame;
+				if (!treeExist)
+				{
+					windowFrame.Hide();
+				}
+				else
+				{
+					windowFrame.ShowNoActivate();
+				}
 			}
 			catch (Exception ex)
 			{

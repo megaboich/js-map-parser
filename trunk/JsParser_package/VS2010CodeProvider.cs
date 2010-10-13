@@ -73,6 +73,21 @@ namespace AlexanderBoyko.JsParser_package
 			Doc.Activate();
 		}
 
+		public void GetCursorPos(out int line, out int column)
+		{
+			try
+			{
+				var textDocument = (TextDocument)Doc.Object("TextDocument");
+				line = textDocument.Selection.ActivePoint.Line;
+				column = textDocument.Selection.ActivePoint.DisplayColumn;
+			}
+			catch
+			{
+				line = -1;
+				column = -1;
+			}
+		}
+
 		#endregion
 	}
 }

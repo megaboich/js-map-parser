@@ -16,5 +16,7 @@ namespace JsParserCore.Code
 		void SelectionMoveToLineAndOffset(int startLine, int startColumn);
 
 		void SetFocus();
+
+		void GetCursorPos(out int line, out int column);
 	}
 }

@@ -8,6 +8,6 @@ namespace AlexanderBoyko.JsParser_package
     {
 
         public const uint cmdJsParser =    0x101;
-
+		public const uint cmdJsParserFind = 0x102;
     };
 }

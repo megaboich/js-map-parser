@@ -23,6 +23,18 @@ namespace JsParserCore.Code
 		public int StartLine { get; set; }
 
 		/// <summary>
+		/// Gets or sets EndLine.
+		/// </summary>
+		[XmlAttribute("EndLine")]
+		public int EndLine { get; set; }
+
+		/// <summary>
+		/// Gets or sets EndColumn.
+		/// </summary>
+		[XmlAttribute("EndColumn")]
+		public int EndColumn { get; set; }
+
+		/// <summary>
 		/// Gets or sets StartPosition.
 		/// </summary>
 		[XmlAttribute("Pos")]

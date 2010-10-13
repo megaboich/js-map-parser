@@ -22,6 +22,15 @@ The sample of JQuery plugin code style
 		unautocomplete: function()
 		{
 			return this.trigger("unautocomplete");
+		},
+		test1Function: function()
+		{
+		},
+		TestFunctions: function()
+		{
+		},
+		VeryCreepyNameFunction :function()
+		{
 		}
 	});
 

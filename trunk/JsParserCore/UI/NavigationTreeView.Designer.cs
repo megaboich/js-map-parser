@@ -35,7 +35,6 @@ namespace JsParserCore.UI
         {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationTreeView));
-			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,30 +50,22 @@ namespace JsParserCore.UI
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
 			this.btnTreeToggle = new System.Windows.Forms.ToolStripButton();
 			this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+			this.btnShowLineNumbers = new System.Windows.Forms.ToolStripMenuItem();
+			this.btnFilterByMarks = new System.Windows.Forms.ToolStripMenuItem();
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.lbDocName = new System.Windows.Forms.ToolStripLabel();
+			this.panelLinesNumbers = new System.Windows.Forms.Panel();
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
+			this.treeView1 = new JsParserCore.UI.CustomTreeView();
 			this.contextMenuStrip1.SuspendLayout();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// treeView1
-			// 
-			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-			this.treeView1.FullRowSelect = true;
-			this.treeView1.HideSelection = false;
-			this.treeView1.Location = new System.Drawing.Point(0, 25);
-			this.treeView1.Name = "treeView1";
-			this.treeView1.ShowNodeToolTips = true;
-			this.treeView1.Size = new System.Drawing.Size(204, 275);
-			this.treeView1.StateImageList = this.imageList1;
-			this.treeView1.TabIndex = 2;
-			this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
-			this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
-			this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
-			this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-			this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
 			// 
 			// imageList1
 			// 
@@ -185,6 +176,10 @@ namespace JsParserCore.UI
 			this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnTreeToggle,
             this.btnSortToggle,
+            this.toolStripSeparator1,
+            this.toolStripDropDownButton1,
+            this.toolStripSeparator3,
+            this.toolStripButton1,
             this.toolStripSeparator2,
             this.btnRefresh,
             this.lbDocName});
@@ -204,7 +199,7 @@ namespace JsParserCore.UI
 			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnTreeToggle.Name = "btnTreeToggle";
 			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
-			this.btnTreeToggle.Text = "toolStripButton1";
+			this.btnTreeToggle.Text = "Show hierarchy";
 			this.btnTreeToggle.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// btnSortToggle
@@ -215,8 +210,64 @@ namespace JsParserCore.UI
 			this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSortToggle.Name = "btnSortToggle";
 			this.btnSortToggle.Size = new System.Drawing.Size(23, 22);
-			this.btnSortToggle.Text = "toolStripButton2";
+			this.btnSortToggle.Text = "Sort";
 			this.btnSortToggle.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripDropDownButton1
+			// 
+			this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnShowLineNumbers,
+            this.btnFilterByMarks,
+            this.settingsToolStripMenuItem});
+			this.toolStripDropDownButton1.Image = global::JsParserCore.Properties.Resources.list_settings;
+			this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+			this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+			this.toolStripDropDownButton1.Text = "View tools";
+			// 
+			// btnShowLineNumbers
+			// 
+			this.btnShowLineNumbers.CheckOnClick = true;
+			this.btnShowLineNumbers.Name = "btnShowLineNumbers";
+			this.btnShowLineNumbers.Size = new System.Drawing.Size(175, 22);
+			this.btnShowLineNumbers.Text = "Show line numbers";
+			this.btnShowLineNumbers.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
+			// 
+			// btnFilterByMarks
+			// 
+			this.btnFilterByMarks.CheckOnClick = true;
+			this.btnFilterByMarks.Name = "btnFilterByMarks";
+			this.btnFilterByMarks.Size = new System.Drawing.Size(175, 22);
+			this.btnFilterByMarks.Text = "Filter by marks";
+			this.btnFilterByMarks.Click += new System.EventHandler(this.btnFilterByMarks_Click);
+			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+			this.settingsToolStripMenuItem.Text = "Settings...";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton1.Image = global::JsParserCore.Properties.Resources.Find_icon;
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButton1.Text = "Find function";
+			this.toolStripButton1.Click += new System.EventHandler(this.toolFindButton_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -230,7 +281,7 @@ namespace JsParserCore.UI
 			this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(23, 22);
-			this.btnRefresh.Text = "toolStripButton3";
+			this.btnRefresh.Text = "Refresh";
 			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// lbDocName
@@ -239,15 +290,50 @@ namespace JsParserCore.UI
 			this.lbDocName.Size = new System.Drawing.Size(25, 22);
 			this.lbDocName.Text = "      ";
 			// 
+			// panelLinesNumbers
+			// 
+			this.panelLinesNumbers.Location = new System.Drawing.Point(13, 67);
+			this.panelLinesNumbers.Name = "panelLinesNumbers";
+			this.panelLinesNumbers.Size = new System.Drawing.Size(24, 162);
+			this.panelLinesNumbers.TabIndex = 4;
+			this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
+			// 
+			// timer2
+			// 
+			this.timer2.Enabled = true;
+			this.timer2.Interval = 500;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
+			// 
+			// treeView1
+			// 
+			this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+			this.treeView1.FullRowSelect = true;
+			this.treeView1.HideSelection = false;
+			this.treeView1.Location = new System.Drawing.Point(43, 47);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.ShowNodeToolTips = true;
+			this.treeView1.Size = new System.Drawing.Size(145, 211);
+			this.treeView1.StateImageList = this.imageList1;
+			this.treeView1.TabIndex = 2;
+			this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
+			this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
+			this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
+			this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
+			this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+			this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+			this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+			// 
 			// NavigationTreeView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.treeView1);
+			this.Controls.Add(this.panelLinesNumbers);
 			this.Controls.Add(this.toolStrip2);
+			this.Controls.Add(this.treeView1);
 			this.Name = "NavigationTreeView";
 			this.Size = new System.Drawing.Size(204, 300);
 			this.Load += new System.EventHandler(this.NavigationTreeView_Load);
+			this.Resize += new System.EventHandler(this.NavigationTreeView_Resize);
 			this.contextMenuStrip1.ResumeLayout(false);
 			this.toolStrip2.ResumeLayout(false);
 			this.toolStrip2.PerformLayout();
@@ -260,7 +346,7 @@ namespace JsParserCore.UI
 
         #endregion
 
-		private System.Windows.Forms.TreeView treeView1;
+		private CustomTreeView treeView1;
 		private System.Windows.Forms.ImageList imageList1;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem resetLabelToolStripMenuItem;
@@ -279,5 +365,14 @@ namespace JsParserCore.UI
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnRefresh;
 		private System.Windows.Forms.ToolStripLabel lbDocName;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+		private System.Windows.Forms.ToolStripMenuItem btnShowLineNumbers;
+		private System.Windows.Forms.ToolStripMenuItem btnFilterByMarks;
+		private System.Windows.Forms.Panel panelLinesNumbers;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+		private System.Windows.Forms.Timer timer2;
     }
 }

@@ -17,7 +17,7 @@ namespace UnitTests
 	{
 		public static string GetEmbeddedText(string resourceName)
 		{
-			var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
+			var stream = Assembly.GetAssembly(typeof(AutoTester)).GetManifestResourceStream(resourceName);
 			Assert.IsNotNull(stream);
 			using (var sr = new StreamReader(stream))
 			{
@@ -32,7 +32,7 @@ namespace UnitTests
 
 		private void ProcessTemplate(string name)
 		{
-			var source = GetEmbeddedText("UnitTests.Source." + name + ".js");
+			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + name + ".js");
 			var result = (new JavascriptParser()).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
@@ -40,7 +40,7 @@ namespace UnitTests
 			XmlDocument xml = new XmlDocument() {InnerXml = result.Serialize()};
 			xml.Save("C:\\outxml\\" + name + ".xml");
 
-			var resxml = GetEmbeddedText("UnitTests.Result." + name + ".xml");
+			var resxml = GetEmbeddedText("JsParserTest.UnitTests.Result." + name + ".xml");
 
 			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(resxml);
 
@@ -56,7 +56,7 @@ namespace UnitTests
 		[Test]
 		public void Test1_1()
 		{
-			ProcessTemplate("Test1.1");
+			ProcessTemplate("Test1_1");
 		}
 
 
@@ -81,13 +81,13 @@ namespace UnitTests
 		[Test]
 		public void Test4_1()
 		{
-			ProcessTemplate("Test4.1");
+			ProcessTemplate("Test4_1");
 		}
 
 		[Test]
 		public void Test4_2()
 		{
-			ProcessTemplate("Test4.2");
+			ProcessTemplate("Test4_2");
 		}
 
 		[Test]
@@ -99,7 +99,7 @@ namespace UnitTests
 		[Test]
 		public void Test51()
 		{
-			ProcessTemplate("Test5.1");
+			ProcessTemplate("Test5_1");
 		}
 
 		[Test]

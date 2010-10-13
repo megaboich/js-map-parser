@@ -68,7 +68,14 @@
           <ButtonText>Javascript Parser</ButtonText>
         </Strings>
       </Button>
-
+		<Button guid="guidJsParser_packageCmdSet" id="cmdJsParserFind" priority="0x0100" type="Button">
+			<Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+			<CommandFlag>DefaultInvisible</CommandFlag>
+			<Strings>
+				<CommandName>cmdJsParserFind</CommandName>
+				<ButtonText>Javascript Parser Find</ButtonText>
+			</Strings>
+		</Button>
 
     </Buttons>
    
@@ -85,7 +92,9 @@
  
   </Commands>
 
-
+	<KeyBindings>
+		<KeyBinding guid="guidJsParser_packageCmdSet" id="cmdJsParserFind" key1="j" mod1="Alt" mod2="Shift" key2="j" editor="guidVSStd97" />
+	</KeyBindings>
 
 
 
@@ -98,6 +107,7 @@
 
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdJsParser" value="0x0101" />
+	  <IDSymbol name="cmdJsParserFind" value="0x0102" />
     </GuidSymbol>
     
     

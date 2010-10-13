@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -11,6 +12,7 @@ using Microsoft.VisualStudio.Shell;
 using EnvDTE;
 using JsParserCore.UI;
 using System.Windows;
+using AlexanderBoyko.JsParser_package.Properties;
 
 namespace AlexanderBoyko.JsParser_package
 {
@@ -56,17 +58,19 @@ namespace AlexanderBoyko.JsParser_package
         /// </summary>
         private void ShowToolWindow(object sender, EventArgs e)
         {
-            // Get the instance number 0 of this tool window. This window is single instance so this instance
-            // is actually the only one.
-            // The last flag is set to true so that if the tool window does not exists it will be created.
-			MyToolWindow window = (MyToolWindow)this.FindToolWindow(typeof(MyToolWindow), 0, true);
-            if ((null == window) || (null == window.Frame))
-            {
-                throw new NotSupportedException(Resources.CanNotCreateWindow);
-            }
-            IVsWindowFrame windowFrame = (IVsWindowFrame)window.Frame;
-            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+			var wnd = CreateToolWindow();
+			ShowToolWindow(wnd);
         }
+
+		/// <summary>
+		/// This function is called when the user clicks the menu item that shows the 
+		/// tool window. See the Initialize method to see how the menu item is associated to 
+		/// this function using the OleMenuCommandService service and the MenuCommand class.
+		/// </summary>
+		private void FindCommand(object sender, EventArgs e)
+		{
+			CreateToolWindow().FindCommand();
+		}
 
         /////////////////////////////////////////////////////////////////////////////
         // Overriden Package Implementation
@@ -89,9 +93,51 @@ namespace AlexanderBoyko.JsParser_package
                 CommandID toolwndCommandID = new CommandID(GuidList.guidJsParser_packageCmdSet, (int)PkgCmdIDList.cmdJsParser);
                 MenuCommand menuToolWin = new MenuCommand(ShowToolWindow, toolwndCommandID);
                 mcs.AddCommand( menuToolWin );
+
+				// Create the command for the tool window
+				toolwndCommandID = new CommandID(GuidList.guidJsParser_packageCmdSet, (int)PkgCmdIDList.cmdJsParserFind);
+				menuToolWin = new MenuCommand(FindCommand, toolwndCommandID);
+				mcs.AddCommand(menuToolWin);
+
+				var p = mcs.FindCommand(toolwndCommandID).Properties;
             }
+
+			if (Settings.Default.Loaded)
+			{
+				var wnd = CreateToolWindow();
+
+				if (Settings.Default.Visible)
+				{
+					ShowToolWindow(wnd);
+				}
+			}
         }
         #endregion
 
+		private MyToolWindow CreateToolWindow()
+		{
+			// Get the instance number 0 of this tool window. This window is single instance so this instance
+			// is actually the only one.
+			// The last flag is set to true so that if the tool window does not exists it will be created.
+			MyToolWindow window = (MyToolWindow)this.FindToolWindow(typeof(MyToolWindow), 0, true);
+			Settings.Default.Loaded = true;
+			Settings.Default.Save();
+			if ((null == window) || (null == window.Frame))
+			{
+				throw new NotSupportedException(Resources.CanNotCreateWindow);
+			}
+
+			return window;
+		}
+
+		private void ShowToolWindow(MyToolWindow window)
+		{
+			var wnd = CreateToolWindow();
+			IVsWindowFrame windowFrame = (IVsWindowFrame)window.Frame;
+			Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
+			Settings.Default.Loaded = true;
+			Settings.Default.Visible = true;
+			Settings.Default.Save();
+		}
     }
 }

@@ -42,7 +42,7 @@ namespace JsParserCore.Code
 			{
 				StringBuilder sb = new StringBuilder(source.Length, source.Length);
 
-				for (int ch = 0; ch < chunks.Count; ch+=2)
+				for (int ch = 0; ch < chunks.Count; ch += 2)
 				{
 					var bsi = chunks[ch].Key;
 					var bfi = chunks[ch].Value;
@@ -56,8 +56,10 @@ namespace JsParserCore.Code
 
 				return sb.ToString();
 			}
-
-			return string.Empty;
+			else
+			{
+				return source;
+			}
 		}
 
 		private static string GetSpacedChunk(string source)

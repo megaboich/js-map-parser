@@ -5,6 +5,8 @@ using Microsoft.JScript.Compiler;
 using Microsoft.JScript.Compiler.ParseTree;
 using JsParserCore.Code;
 using JsParserCore.Helpers;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace JsParserCore.Parsers
 {
@@ -34,7 +36,14 @@ namespace JsParserCore.Parsers
 			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
 			_comments = new CommentsAgregator(comments, code);
-			CreateNodes(nodes, sourceElements);
+			try
+			{
+				CreateNodes(nodes, sourceElements);
+			}
+			catch (Exception ex)
+			{
+				Trace.WriteLine(ex.ToString());
+			}
 			return nodes;
 		}
 
@@ -115,7 +124,10 @@ namespace JsParserCore.Parsers
 						Alias = expressionAlias,
 						Opcode = exp.Opcode.ToString(),
 						StartLine = exp.Location.StartLine,
-						StartColumn = exp.Location.StartColumn
+						StartColumn = exp.Location.StartColumn,
+						EndLine = exp.Location.EndLine,
+						EndColumn = exp.Location.EndColumn,
+						Comment = _comments.GetComment(exp.Location.StartLine, exp.Location.EndLine)
 					};
 					Hierachy<CodeNode> hi = nodes.Add(codeNode);
 
@@ -245,6 +257,8 @@ namespace JsParserCore.Parsers
 				Opcode = Expression.Operation.Function.ToString(),
 				StartLine = function.Location.StartLine,
 				StartColumn = function.Location.StartColumn,
+				EndLine = function.Location.EndLine,
+				EndColumn = function.Location.EndColumn,
 				Comment = _comments.GetComment(function.Location.StartLine, function.Location.EndLine)
 			};
 

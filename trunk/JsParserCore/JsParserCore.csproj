@@ -75,12 +75,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="UI\CustomTreeNode.cs" />
+    <Compile Include="UI\CustomTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FindDialog.Designer.cs">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MarksManager.cs" />
     <Compile Include="UI\NavigationTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\NavigationTreeView.Designer.cs">
       <DependentUpon>NavigationTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -95,11 +110,13 @@
     <None Include="Resources\flag_orange.gif" />
     <None Include="Resources\flag_red.gif" />
     <None Include="Resources\flag_white.gif" />
+    <None Include="Resources\Find-icon.png" />
     <Content Include="Resources\function.png" />
     <None Include="Resources\icon_favourites.gif" />
     <Content Include="Resources\js_file.gif" />
     <Content Include="Resources\js_function.gif" />
     <Content Include="Resources\js_method_public.gif" />
+    <None Include="Resources\list_settings.gif" />
     <Content Include="Resources\refresh.gif" />
     <Content Include="Resources\SortAZ.png" />
     <Content Include="Resources\tree.png" />
@@ -111,8 +128,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindDialog.resx">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\NavigationTreeView.resx">
       <DependentUpon>NavigationTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
