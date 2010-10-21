@@ -26,23 +26,25 @@ namespace JsParserCore.Parsers
 		/// <returns>
 		/// Hierarhy with code structure.
 		/// </returns>
-		public Hierachy<CodeNode> Parse(string script)
+		public Hierachy<CodeNode> Parse(IEnumerable<CodeChunk> codeChunks)
 		{
-			var code = script.Split(new[] { Environment.NewLine, "\n" }, StringSplitOptions.None);
-
-			var parser = new Parser(script.ToCharArray(), true);
-			var comments = new List<Comment>();
-			var bindingInfo = new BindingInfo();
-			DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
-			_comments = new CommentsAgregator(comments, code);
-			try
+			foreach (var codeChunk in codeChunks)
 			{
-				CreateNodes(nodes, sourceElements);
-			}
-			catch (Exception ex)
-			{
-				Trace.WriteLine(ex.ToString());
+				var code = codeChunk.Code.Split(new[] { Environment.NewLine, "\n" }, StringSplitOptions.None);
+				var parser = new Parser(codeChunk.Code.ToCharArray(), true);
+				var comments = new List<Comment>();
+				var bindingInfo = new BindingInfo();
+				DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
+				_comments = new CommentsAgregator(comments, code);
+				try
+				{
+					CreateNodes(nodes, sourceElements);
+				}
+				catch (Exception ex)
+				{
+					Trace.WriteLine(ex.ToString());
+				}
 			}
 			return nodes;
 		}

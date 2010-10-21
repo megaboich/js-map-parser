@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\CodeChunk.cs" />
     <Compile Include="Code\CodeNode.cs" />
     <Compile Include="Code\CodeTransformer.cs" />
     <Compile Include="Code\ICodeProvider.cs" />

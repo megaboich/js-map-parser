@@ -33,7 +33,9 @@ namespace UnitTests
 		private void ProcessTemplate(string name)
 		{
 			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + name + ".js");
-			var result = (new JavascriptParser()).Parse(source);
+			source = CodeTransformer.KillAspNetTags(source);
+			var codeChunks = CodeTransformer.ExtractJsFromSource(source);
+			var result = (new JavascriptParser()).Parse(codeChunks);
 
 			Directory.CreateDirectory("C:\\outxml");
 

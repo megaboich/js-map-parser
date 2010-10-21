@@ -116,7 +116,6 @@ namespace JsParserCore.UI
 			_loadedDocName = Path.Combine(Code.Path, Code.Name);
 			lbDocName.Text = Code.Name;
 			lbDocName.ToolTipText = _loadedDocName;
-			_lastCodeLine = -1;
 
 			var code = Code.LoadCode();
 			var hash = Convert.ToBase64String(SHA1.Create().ComputeHash(Encoding.Default.GetBytes(code)));
@@ -135,15 +134,14 @@ namespace JsParserCore.UI
 			var isSort = btnSortToggle.Checked;
 			var isHierarchy = btnTreeToggle.Checked;
 
-			if (!Code.Name.ToLower().EndsWith(".js"))
-			{
-				code = CodeTransformer.KillNonJavascript(code);
-			}
+			_marksManager.SetFile(_loadedDocName);
 
 			code = CodeTransformer.KillAspNetTags(code);
-			_marksManager.SetFile(_loadedDocName);
-			var nodes = (new JavascriptParser()).Parse(code);
+			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
+			var nodes = (new JavascriptParser()).Parse(codeChunks);
+
 			_linesNums = new List<int>();
+			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
 			FillNodes(nodes, treeView1.Nodes, 0, _linesNums, _functions);
 
@@ -495,14 +493,14 @@ namespace JsParserCore.UI
 			e.Graphics.FillRectangle(SystemBrushes.Control, panelLinesNumbers.ClientRectangle);
 			if (_linesNums != null && btnShowLineNumbers.Checked && treeView1.Nodes.Count > 0)
 			{
-				int p = treeView1.Nodes[0].Bounds.Top;
+				int p = treeView1.Nodes[0].Bounds.Top + 2;
+				var nodeHeight = treeView1.Nodes[0].Bounds.Height;
 				foreach (int n in _linesNums)
 				{
 					var gr = e.Graphics;
 					var s = n.ToString();
-					var ts = gr.MeasureString(s, Font);
-					gr.DrawString(s, Font, Brushes.Gray, new Point(0, p + 1));
-					p += (int) ts.Height + 1;
+					gr.DrawString(s, Font, Brushes.Gray, new Rectangle(0, p, panelLinesNumbers.Width, nodeHeight));
+					p += nodeHeight;
 				}
 			}
 		}
@@ -620,6 +618,11 @@ namespace JsParserCore.UI
 
 			if (sel)
 			{
+				if (_hightLightNode != null && node.Level < _hightLightNode.Level)
+				{
+					return false;	//Skip parent nodes
+				}
+
 				_hightLightNode = node;
 			}
 
@@ -654,6 +657,11 @@ namespace JsParserCore.UI
 				}
 			}
 			catch { }
+		}
+
+		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			panelLinesNumbers.Refresh();
 		}
 	}
 }

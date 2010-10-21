@@ -54,13 +54,16 @@ namespace JsParserTest
 			{
 				var cumLength = 0;
 				int i = 0;
+				var cursorPos = _textBox.SelectionStart;
 				for (; i < _textBox.Lines.Length; ++i)
 				{
-					cumLength += (_textBox.Lines[i].Length + 1);
-					if (cumLength > _textBox.SelectionStart)
+					var curLineLength = _textBox.Lines[i].Length + 1;
+					cumLength += curLineLength;
+					
+					if (cumLength > cursorPos)
 					{
-						line = i;
-						column = 1;
+						line = i + 1; //one-based index
+						column = cursorPos - cumLength + curLineLength;
 						return;
 					}
 				}

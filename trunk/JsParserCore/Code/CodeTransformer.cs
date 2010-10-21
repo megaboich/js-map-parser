@@ -14,8 +14,10 @@ namespace JsParserCore.Code
 				.Replace("%>", string.Empty);
 		}
 
-		public static string KillNonJavascript(string source)
+		public static IEnumerable<CodeChunk> ExtractJsFromSource(string source)
 		{
+			var resultList = new List<CodeChunk>();
+
 			var i = 0;
 			var beginTagStart = -1;
 			var beginTagFinish = -1;
@@ -40,8 +42,6 @@ namespace JsParserCore.Code
 
 			if (chunks.Count > 0)
 			{
-				StringBuilder sb = new StringBuilder(source.Length, source.Length);
-
 				for (int ch = 0; ch < chunks.Count; ch += 2)
 				{
 					var bsi = chunks[ch].Key;
@@ -49,17 +49,21 @@ namespace JsParserCore.Code
 					var esi = chunks[ch + 1].Key;
 					var efi = chunks[ch + 1].Value;
 
-					sb.Append(GetSpacedChunk(source.Substring(bsi, bfi - bsi)));
-					sb.Append(source.Substring(bfi, esi - bfi));
-					sb.Append(GetSpacedChunk(source.Substring(esi, efi - esi)));
-				}
+					StringBuilder sb = new StringBuilder(source.Length, source.Length);
 
-				return sb.ToString();
+					sb.Append(GetSpacedChunk(source.Substring(0, bfi)));
+					sb.Append(source.Substring(bfi, esi - bfi));
+					sb.Append(GetSpacedChunk(source.Substring(esi, source.Length - esi)));
+
+					resultList.Add(new CodeChunk { Code = sb.ToString() });
+				}
 			}
 			else
 			{
-				return source;
+				resultList.Add(new CodeChunk { Code = source });
 			}
+
+			return resultList;
 		}
 
 		private static string GetSpacedChunk(string source)
