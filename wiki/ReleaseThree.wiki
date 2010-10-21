@@ -1,0 +1,7 @@
+#summary Whats new in Javascript Parser 3
+
+= Whats new in Javascript Parser 3 =
+  * Find feature. (supports hotkey)
+  * Show line numbers in tree.
+  * Automatic track active function while working in text editor.
+  * Various bug fixes. (please check Issues page)
