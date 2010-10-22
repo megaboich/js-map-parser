@@ -1,2 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Version>2</Version>
+<Version>
+	3
+	<ReleaseInfo version="3">
+		<info text="Version 3" />
+		<info text="	+ Find functionality" />
+		<info text="	+ Track active function" />
+		<info text="	+ Line numbers" />
+		<info text="	+ Filtering by marks" />
+	</ReleaseInfo>
+</Version>
