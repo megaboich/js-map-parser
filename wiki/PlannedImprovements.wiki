@@ -1,8 +1,6 @@
 #summary Planned Improvements for JavaScript Parser Extension
 
-===Here is the list of improvements planned for next releases. Feel free to add suggestions in comments or to issues.===
+Here is the place for ideas planned for next releases. Feel free to add suggestions in comments or to issues.
 
-  # Somehow filter the tree. Have ideas for filter by marks, quick filter by typing, apply regexp to function names (can be useful if using some corporate code standarts when all functionshave naming rules like `<CompanyName><ClassName>FunctionName`)
-  # [http://code.google.com/p/js-addin/issues/detail?id=5 Feature request]. At present the docked JSParser window stays visible for non-js and aspx files in VS2010. Would be more usefule for people using other extensions that do the same thing for non-js files (VS10x Code Map for example), if it disappeared when not needed.
-  # [http://code.google.com/p/js-addin/issues/detail?id=6 Feature request]. It would be cool if the parser could position itself on the correct item in the list when we are inside the javascript file.
+
   
