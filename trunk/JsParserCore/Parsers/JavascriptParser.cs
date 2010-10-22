@@ -35,7 +35,7 @@ namespace JsParserCore.Parsers
 				var parser = new Parser(codeChunk.Code.ToCharArray(), true);
 				var comments = new List<Comment>();
 				var bindingInfo = new BindingInfo();
-				DList<Statement, BlockStatement> sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
+				var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
 				_comments = new CommentsAgregator(comments, code);
 				try
 				{
@@ -49,18 +49,11 @@ namespace JsParserCore.Parsers
 			return nodes;
 		}
 
-		private void CreateNodes(Hierachy<CodeNode> nodes, DList<Statement, BlockStatement> statements)
+		private void CreateNodes<ElementType, ParentType>(Hierachy<CodeNode> nodes, DList<ElementType, ParentType> statements)
 		{
-			var iterator = new DList<Statement, BlockStatement>.Iterator(statements);
-			while (iterator.Element != null)
+			foreach (var statement in statements.GetEnumerable())
 			{
-				Statement statement = iterator.Element;
-				if (statement != null)
-				{
-					ProcessStatement(nodes, statement);
-				}
-
-				iterator.Advance();
+				ProcessStatement(nodes, statement);
 			}
 		}
 
@@ -162,7 +155,7 @@ namespace JsParserCore.Parsers
 			return string.Empty;
 		}
 
-		private void ProcessStatement(Hierachy<CodeNode> nodes, Statement statement)
+		private void ProcessStatement<ElementType>(Hierachy<CodeNode> nodes, ElementType statement)
 		{
 			if (statement == null)
 			{
@@ -171,7 +164,7 @@ namespace JsParserCore.Parsers
 
 			if (statement is ExpressionStatement)
 			{
-				var exp = (ExpressionStatement) statement;
+				var exp = statement as ExpressionStatement;
 				ProcessExpression(nodes, exp.Expression, string.Empty);
 				return;
 			}
@@ -201,33 +194,41 @@ namespace JsParserCore.Parsers
 
 			if (statement is ReturnOrThrowStatement)
 			{
-				var rstat = (ReturnOrThrowStatement) statement;
+				var rstat = statement as ReturnOrThrowStatement;
 				ProcessExpression(nodes, rstat.Value, "return");
+				return;
+			}
+
+			if (statement is IfStatement)
+			{
+				var ifstat = statement as IfStatement;
+				if (ifstat.IfBody != null)
+				{
+					ProcessStatement(nodes, ifstat.IfBody);
+				}
+				if (ifstat.ElseBody != null)
+				{
+					ProcessStatement(nodes, ifstat.ElseBody);
+				}
+
+				return;
+			}
+
+			if (statement is BlockStatement)
+			{
+				var blockstat = statement as BlockStatement;
+				CreateNodes(nodes, blockstat.Children);
 				return;
 			}
 
 			if (statement is SwitchStatement)
 			{
-				var sstat = (SwitchStatement)statement;
+				var sstat = statement as SwitchStatement;
 				ProcessExpression(nodes, sstat.Value, "switch");
 
-				var iterator = new DList<CaseClause, SwitchStatement>.Iterator(sstat.Cases);
-				while (iterator.Element != null)
+				foreach(var caseClause in sstat.Cases.GetEnumerable())
 				{
-					CaseClause c = iterator.Element;
-					var subiterator = new DList<Statement, CaseClause>.Iterator(c.Children);
-					while (subiterator.Element != null)
-					{
-						var casestat = subiterator.Element;
-						if (casestat != null)
-						{
-							ProcessStatement(nodes, casestat);
-						}
-
-						subiterator.Advance();
-					}
-
-					iterator.Advance();
+					CreateNodes(nodes, caseClause.Children);
 				}
 
 				return;

@@ -125,7 +125,6 @@
     <EmbeddedResource Include="UnitTests\Result\Test5.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test6.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test7.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test8.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test1.js" />
     <EmbeddedResource Include="UnitTests\Source\Test2.js" />
     <EmbeddedResource Include="UnitTests\Source\Test3.js" />
@@ -133,9 +132,15 @@
     <EmbeddedResource Include="UnitTests\Source\Test5.js" />
     <EmbeddedResource Include="UnitTests\Source\Test6.js" />
     <EmbeddedResource Include="UnitTests\Source\Test7.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test8.js" />
     <EmbeddedResource Include="UnitTests\Source\test9.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test10.htm" />
+    <EmbeddedResource Include="UnitTests\Source\HtmlScriptBlocks.htm" />
+    <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_IF_Statement.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_IF_Statement.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_CASE_Statement.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_CASE_Statement.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

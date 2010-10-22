@@ -1,0 +1,33 @@
+<Hierachy>
+	<Item Text="All" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+	<Childrens>
+		<Hierachy>
+			<Item Text="GetFunction(type)" Line="3" EndLine="36" EndColumn="1" Pos="0" Opcode="Function" Comment="// This function returns another function" />
+			<Childrens>
+				<Hierachy>
+					<Item Text="t()" Line="8" EndLine="10" EndColumn="4" Pos="11" Opcode="Function" />
+				</Hierachy>
+				<Hierachy>
+					<Item Text="t1()" Line="13" EndLine="15" EndColumn="4" Pos="8" Opcode="Function" />
+				</Hierachy>
+				<Hierachy>
+					<Item Text="return()" Line="18" EndLine="18" EndColumn="22" Pos="10" Opcode="Function" />
+				</Hierachy>
+				<Hierachy>
+					<Item Text="return" Line="20" EndLine="20" EndColumn="32" Pos="10" Opcode="ObjectLiteral" />
+					<Childrens>
+						<Hierachy>
+							<Item Text="exec()" Line="20" EndLine="20" EndColumn="30" Pos="18" Opcode="Function" />
+						</Hierachy>
+					</Childrens>
+				</Hierachy>
+				<Hierachy>
+					<Item Text="tf()" Line="23" EndLine="26" EndColumn="5" Pos="13" Opcode="Function" />
+				</Hierachy>
+				<Hierachy>
+					<Item Text="doSome()" Line="28" EndLine="31" EndColumn="5" Pos="4" Opcode="Function" />
+				</Hierachy>
+			</Childrens>
+		</Hierachy>
+	</Childrens>
+</Hierachy>

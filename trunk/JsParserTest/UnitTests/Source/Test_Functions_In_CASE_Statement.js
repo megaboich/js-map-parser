@@ -18,5 +18,19 @@ function GetFunction(type)
 			return function(){};
 		case 3:
 			return { exec: function(){} };
+		case 4:
+			{
+				var tf = function()
+				{
+					alert('yoy');
+				};
+
+				function doSome()
+				{
+					alert(doSome);
+				}
+
+				doSome();
+			}
 	}
 }
