@@ -21,8 +21,8 @@ namespace JsParserCore.Helpers
 				float repositoryVersion = 0;
 				
 				var projectSite = @"http://js-addin.googlecode.com";
-				//var serverVersionUrl = projectSite + "/svn/Version.xml";
-				var serverVersionUrl = @"http://localhost/Version.xml";
+				var serverVersionUrl = projectSite + "/svn/Version.xml";
+				//var serverVersionUrl = @"http://localhost/Version.xml";
 				var releaseInfo = string.Empty;
 
 				using (var sr = new StreamReader(WebRequest.Create(serverVersionUrl).GetResponse().GetResponseStream()))
