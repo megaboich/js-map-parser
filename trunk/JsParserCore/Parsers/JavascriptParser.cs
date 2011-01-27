@@ -31,14 +31,15 @@ namespace JsParserCore.Parsers
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
 			foreach (var codeChunk in codeChunks)
 			{
-				var code = codeChunk.Code.Split(new[] { Environment.NewLine, "\n" }, StringSplitOptions.None);
-				var parser = new Parser(codeChunk.Code.ToCharArray(), true);
-				var comments = new List<Comment>();
-				var bindingInfo = new BindingInfo();
-				var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
-				_comments = new CommentsAgregator(comments, code);
 				try
 				{
+					var code = codeChunk.Code.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
+					var parser = new Parser(codeChunk.Code.ToCharArray(), true);
+					var comments = new List<Comment>();
+					var bindingInfo = new BindingInfo();
+					var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
+					_comments = new CommentsAgregator(comments, code);
+				
 					CreateNodes(nodes, sourceElements);
 				}
 				catch (Exception ex)
