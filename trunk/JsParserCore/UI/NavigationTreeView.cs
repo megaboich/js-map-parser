@@ -27,11 +27,15 @@ namespace JsParserCore.UI
 		private static bool _versionChecked = false;
 		private string _hash;
 		private int _lastCodeLine = -1;
-		private List<int> _linesNums;
 		private List<CodeNode> _functions;
-		private int _lastLine;
-		private int _lastColumn;
-		private TreeNode _hightLightNode;
+		private int _lastActiveLine;
+		private int _lastActiveColumn;
+		private bool _treeRefreshing = false;
+
+		/// <summary>
+		/// Gets Code.
+		/// </summary>
+		public ICodeProvider Code { get; private set; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -44,29 +48,11 @@ namespace JsParserCore.UI
 			treeView1.LostFocus += LostFocusHandler;
 
 			btnSortToggle.Checked = Settings.Default.SortingEnabled;
-			btnTreeToggle.Checked = Settings.Default.HierarchyEnabled;
+			showHierarhyToolStripMenuItem.Checked = Settings.Default.HierarchyEnabled;
 			btnShowLineNumbers.Checked = Settings.Default.ShowLineNumbersEnabled;
 			btnFilterByMarks.Checked = Settings.Default.FilterByMarksEnabled;
+			expandAllByDefaultToolStripMenuItem.Checked = Settings.Default.AutoExpandAll;
 		}
-
-		private void LostFocusHandler(object sender, EventArgs e)
-		{
-			Settings.Default.SortingEnabled = btnSortToggle.Checked;
-			Settings.Default.HierarchyEnabled = btnTreeToggle.Checked;
-			Settings.Default.ShowLineNumbersEnabled = btnShowLineNumbers.Checked;
-			Settings.Default.FilterByMarksEnabled = btnFilterByMarks.Checked;
-			Settings.Default.Save();
-		}
-
-		protected override void OnLostFocus(EventArgs e)
-		{
-			base.OnLostFocus(e);
-		}
-
-		/// <summary>
-		/// Gets Code.
-		/// </summary>
-		public ICodeProvider Code { get; private set; }
 
 		/// <summary>
 		/// Initialize method.
@@ -84,22 +70,15 @@ namespace JsParserCore.UI
 			treeView1.Nodes.Clear();
 		}
 
-		private bool CheckExt(string fileName)
+		/// <summary>
+		/// Gets status of the tree.
+		/// </summary>
+		public bool TreeLoaded
 		{
-			if (Settings.Default.Extensions.Count > 0)
+			get
 			{
-				foreach (var ext in Settings.Default.Extensions)
-				{
-					if (Code.Name.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
-					{
-						return true;
-					}
-				}
-
-				return false;
+				return treeView1.Nodes.Count > 0;
 			}
-
-			return true;
 		}
 
 		/// <summary>
@@ -125,14 +104,14 @@ namespace JsParserCore.UI
 			}
 
 			_hash = hash;
-
+			_treeRefreshing = true;
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
 			_tempTreeNodes.Clear();
 			_canExpand = true;
 
-			var isSort = btnSortToggle.Checked;
-			var isHierarchy = btnTreeToggle.Checked;
+			var isSort = Settings.Default.SortingEnabled;
+			var isHierarchy = Settings.Default.HierarchyEnabled;
 
 			_marksManager.SetFile(_loadedDocName);
 
@@ -140,10 +119,9 @@ namespace JsParserCore.UI
 			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
 			var nodes = (new JavascriptParser()).Parse(codeChunks);
 
-			_linesNums = new List<int>();
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
-			FillNodes(nodes, treeView1.Nodes, 0, _linesNums, _functions);
+			FillNodes(nodes, treeView1.Nodes, 0, _functions);
 
 			if (!isHierarchy)
 			{
@@ -155,7 +133,6 @@ namespace JsParserCore.UI
 				foreach (TreeNode node in _tempTreeNodes)
 				{
 					treeView1.Nodes.Add(node);
-					_linesNums.Add(((CustomTreeNode)node).CodeNode.StartLine);
 				}
 			}
 
@@ -165,14 +142,45 @@ namespace JsParserCore.UI
 			}
 
 			treeView1.EndUpdate();
+			_treeRefreshing = false;
 			OnResize(null);
 			panelLinesNumbers.Refresh();
 			return treeView1.Nodes.Count > 0;
 		}
 
-		public void SelectionChange()
+		public void RefreshTree()
 		{
-			MessageBox.Show("sele");
+			try
+			{
+				if (Code != null)
+				{
+					_loadedDocName = string.Empty;
+					_hash = string.Empty;
+					LoadFunctionList();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
+			}
+		}
+
+		private bool CheckExt(string fileName)
+		{
+			if (Settings.Default.Extensions.Count > 0)
+			{
+				foreach (var ext in Settings.Default.Extensions)
+				{
+					if (Code.Name.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
+
+			return true;
 		}
 
 		private bool HideUnmarkedNodes(TreeNodeCollection nodes)
@@ -228,15 +236,15 @@ namespace JsParserCore.UI
 			}
 		}
 
-		private void FillNodes(Hierachy<CodeNode> source, TreeNodeCollection dest, int level, IList<int> linesNums, IList<CodeNode> functions)
+		private void FillNodes(Hierachy<CodeNode> source, TreeNodeCollection dest, int level, IList<CodeNode> functions)
 		{
 			if (source.Childrens == null)
 			{
 				return;
 			}
 
-			var isSort = btnSortToggle.Checked;
-			var isHierarchy = btnTreeToggle.Checked;
+			var isSort = Settings.Default.SortingEnabled;
+			var isHierarchy = Settings.Default.HierarchyEnabled;
 			var childrens = source.Childrens;
 			if (isSort)
 			{
@@ -263,7 +271,6 @@ namespace JsParserCore.UI
 				if (isHierarchy)
 				{
 					dest.Add(treeNode);
-					linesNums.Add(node.StartLine);
 				}
 				else
 				{
@@ -274,38 +281,14 @@ namespace JsParserCore.UI
 
 				if (item.HasChildrens)
 				{
-					FillNodes(item, treeNode.Nodes, level + 1, linesNums, functions);
+					FillNodes(item, treeNode.Nodes, level + 1, functions);
 				}
 
-				treeNode.Expand();
-			}
-		}
-
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			RefreshTree();
-		}
-
-		public void RefreshTree()
-		{
-			try
-			{
-				if (Code != null)
+				if (Settings.Default.AutoExpandAll)
 				{
-					_loadedDocName = string.Empty;
-					_hash = string.Empty;
-					LoadFunctionList();
+					treeNode.Expand();
 				}
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
-			}
-		}
-
-		private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-		{
-			GotoSelected();
 		}
 
 		private void GotoSelected()
@@ -320,57 +303,6 @@ namespace JsParserCore.UI
 				}
 				catch { }
 			}
-		}
-
-		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-		{
-			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
-
-			treeView1.SelectedNode = e.Node;
-
-			if (e.Button == MouseButtons.Right)
-			{
-				resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((CustomTreeNode)e.Node).Tags);
-				contextMenuStrip1.Show((Control) sender, e.X, e.Y);
-			}
-		}
-
-		private void treeView1_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
-		{
-			if (!_canExpand)
-			{
-				e.Cancel = true;
-			}
-		}
-
-		private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-		{
-			if (!_canExpand)
-			{
-				e.Cancel = true;
-			}
-		}
-
-		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark(null, (CustomTreeNode) treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			_marksManager.ResetMarks();
-			RefreshTree();
-		}
-
-		private void NavigationTreeView_Load(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-
 		}
 
 		private Image GetTagImage(char mark)
@@ -392,6 +324,164 @@ namespace JsParserCore.UI
 				default:
 					return JsParserCore.Properties.Resources.icon_favourites;
 			}
+		}
+
+		public void Find()
+		{
+			if (_functions != null)
+			{
+				FindDialog fd = new FindDialog(_functions, FindCallBack);
+				fd.ShowDialog();
+			}
+		}
+
+		private bool FindCallBack(CodeNode codeNode)
+		{
+			try
+			{
+				var node = SearchNode(treeView1.Nodes, codeNode);
+				if (node != null)
+				{
+					treeView1.SelectedNode = node;
+					GotoSelected();
+				}
+				else
+				{
+					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
+					Code.SetFocus();
+				}
+			}
+			catch { }
+			return true;
+		}
+
+		private bool ScanTreeView(Func<CustomTreeNode, bool> funcDelegate, TreeNodeCollection nodes, bool scanExpandedNodes = true)
+		{
+			bool continueScan = true;
+			if (TreeLoaded)
+			{
+				foreach (CustomTreeNode node in nodes)
+				{
+					continueScan = funcDelegate(node);
+
+					if (!continueScan)
+					{
+						return false;
+					}
+
+					if (node.IsExpanded || scanExpandedNodes)
+					{
+						if (node.Nodes.Count > 0)
+						{
+							continueScan = ScanTreeView(funcDelegate, node.Nodes, scanExpandedNodes);
+
+							if (!continueScan)
+							{
+								return false;
+							}
+						}
+					}
+				}
+			}
+
+			return true;
+		}
+
+		private TreeNode SearchNode(TreeNodeCollection nodes, CodeNode cn)
+		{
+			foreach (CustomTreeNode node in nodes)
+			{
+				if (node.CodeNode == cn)
+				{
+					return node;
+				}
+
+				var inner = SearchNode(node.Nodes, cn);
+
+				if (inner != null)
+				{
+					return inner;
+				}
+			}
+
+			return null;
+		}
+
+		private string GetStringsHash(IEnumerable<string> col)
+		{
+			return col.Any() ? col.Aggregate((k, a) => a += k) : string.Empty;
+		}
+
+		private void SaveSettings()
+		{
+			Settings.Default.SortingEnabled = btnSortToggle.Checked;
+			Settings.Default.HierarchyEnabled = showHierarhyToolStripMenuItem.Checked;
+			Settings.Default.ShowLineNumbersEnabled = btnShowLineNumbers.Checked;
+			Settings.Default.FilterByMarksEnabled = btnFilterByMarks.Checked;
+			Settings.Default.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
+			Settings.Default.Save();
+		}
+
+		#region Event handlers
+
+		private void treeView1_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == 13)
+			{
+				GotoSelected();
+			}
+		}
+
+		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+		{
+			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
+
+			treeView1.SelectedNode = e.Node;
+
+			if (e.Button == MouseButtons.Right)
+			{
+				resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((CustomTreeNode)e.Node).Tags);
+				contextMenuStrip1.Show((Control)sender, e.X, e.Y);
+			}
+		}
+
+		private void treeView1_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
+		{
+			if (!_canExpand)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+		{
+			if (!_canExpand)
+			{
+				e.Cancel = true;
+			}
+		}
+
+		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_marksManager.SetMark(null, (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
+		}
+
+		private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_marksManager.ResetMarks();
+			RefreshTree();
+		}
+
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+		}
+
+		private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+		{
+			GotoSelected();
 		}
 
 		private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
@@ -460,6 +550,7 @@ namespace JsParserCore.UI
 
 		private void showLineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			SaveSettings();
 			OnResize(null);
 			panelLinesNumbers.Refresh();
 		}
@@ -472,7 +563,7 @@ namespace JsParserCore.UI
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
 		{
 			var tw = Convert.ToInt32(Math.Round(this.CreateGraphics().MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
-			treeView1.Left = btnShowLineNumbers.Checked ? tw : 0;
+			treeView1.Left = Settings.Default.ShowLineNumbersEnabled ? tw : 0;
 			treeView1.Top = 25;
 			treeView1.Width = this.ClientSize.Width - treeView1.Left;
 			treeView1.Height = this.ClientSize.Height - treeView1.Top;
@@ -480,7 +571,7 @@ namespace JsParserCore.UI
 			panelLinesNumbers.Width = tw;
 			panelLinesNumbers.Top = 25;
 			panelLinesNumbers.Height = treeView1.Height;
-			panelLinesNumbers.Visible = btnShowLineNumbers.Checked;
+			panelLinesNumbers.Visible = Settings.Default.ShowLineNumbersEnabled;
 		}
 
 		private void treeView1_OnScroll(object sender, EventArgs e)
@@ -491,17 +582,27 @@ namespace JsParserCore.UI
 		private void panelLinesNumbers_Paint(object sender, PaintEventArgs e)
 		{
 			e.Graphics.FillRectangle(SystemBrushes.Control, panelLinesNumbers.ClientRectangle);
-			if (_linesNums != null && btnShowLineNumbers.Checked && treeView1.Nodes.Count > 0)
+			if (Settings.Default.ShowLineNumbersEnabled && treeView1.Nodes.Count > 0)
 			{
-				int p = treeView1.Nodes[0].Bounds.Top + 2;
-				var nodeHeight = treeView1.Nodes[0].Bounds.Height;
-				foreach (int n in _linesNums)
+				var gr = e.Graphics;
+				ScanTreeView(node =>
 				{
-					var gr = e.Graphics;
-					var s = n.ToString();
+					int p = node.Bounds.Top + 2;
+					if (p < 0)
+					{
+						return true;
+					}
+
+					if (p > panelLinesNumbers.Height)
+					{
+						return false; //This means stop scan anymore
+					}
+
+					var nodeHeight = node.Bounds.Height;
+					var s = node.CodeNode.StartLine.ToString();
 					gr.DrawString(s, Font, Brushes.Gray, new Rectangle(0, p, panelLinesNumbers.Width, nodeHeight));
-					p += nodeHeight;
-				}
+					return true;
+				}, treeView1.Nodes, false);
 			}
 		}
 
@@ -510,128 +611,9 @@ namespace JsParserCore.UI
 			Find();
 		}
 
-		public void Find()
+		private void LostFocusHandler(object sender, EventArgs e)
 		{
-			if (_functions != null)
-			{
-				FindDialog fd = new FindDialog(_functions, FindCallBack);
-				fd.ShowDialog();
-			}
-		}
-
-		private bool FindCallBack(CodeNode codeNode)
-		{
-			try
-			{
-				var node = SearchNode(treeView1.Nodes, codeNode);
-				if (node != null)
-				{
-					treeView1.SelectedNode = node;
-					GotoSelected();
-				}
-				else
-				{
-					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
-					Code.SetFocus();
-				}
-			}
-			catch { }
-			return true;
-		}
-
-		private void treeView1_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			if (e.KeyChar == 13)
-			{
-				GotoSelected();
-			}
-		}
-
-		public bool TreeLoaded 
-		{
-			get
-			{
-				return treeView1.Nodes.Count > 0;
-			}
-		}
-
-		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SettingsForm sf = new SettingsForm();
-			sf.ShowDialog();
-		}
-
-		private bool ScanTreeView(Func<CustomTreeNode, bool> func, TreeNodeCollection nodes)
-		{
-			if (TreeLoaded)
-			{
-				foreach (CustomTreeNode node in nodes)
-				{
-					func(node);
-					if (node.Nodes.Count > 0)
-					{
-						ScanTreeView(func, node.Nodes);
-					}
-				}
-			}
-
-			return true;
-		}
-
-		private TreeNode SearchNode(TreeNodeCollection nodes, CodeNode cn)
-		{
-			foreach (CustomTreeNode node in nodes)
-			{
-				if (node.CodeNode == cn)
-				{
-					return node;
-				}
-
-				var inner = SearchNode(node.Nodes, cn);
-
-				if (inner != null)
-				{
-					return inner;
-				}
-			}
-
-			return null;
-		}
-
-		private bool HightlightCurrentNode(CustomTreeNode node, int line, int column)
-		{
-			bool sel = false;
-			if (node.CodeNode.StartLine <= line && line <= node.CodeNode.EndLine)
-			{
-				if (node.CodeNode.StartLine == node.CodeNode.EndLine)
-				{
-					if (node.CodeNode.StartColumn <= column && column <= node.CodeNode.EndColumn)
-					{
-						sel = true;
-					}
-				}
-				else
-				{
-					sel = true;
-				}
-			}
-
-			if (sel)
-			{
-				if (_hightLightNode != null && node.Level < _hightLightNode.Level)
-				{
-					return false;	//Skip parent nodes
-				}
-
-				_hightLightNode = node;
-			}
-
-			return sel;
-		}
-
-		private string GetStringsHash(IEnumerable<string> col)
-		{
-			return col.Any() ? col.Aggregate((k, a) => a += k) : string.Empty;
+			SaveSettings();
 		}
 
 		private void timer2_Tick_1(object sender, EventArgs e)
@@ -643,15 +625,44 @@ namespace JsParserCore.UI
 					int line;
 					int column;
 					Code.GetCursorPos(out line, out column);
-					if (line >= 0 && (line != _lastLine || column != _lastColumn))
+					if (line >= 0 && (line != _lastActiveLine || column != _lastActiveColumn))
 					{
-						_hightLightNode = null;
-						ScanTreeView(node => HightlightCurrentNode(node, line, column), treeView1.Nodes);
-						_lastLine = line;
-						_lastColumn = column;
-						if (_hightLightNode != null && treeView1.SelectedNode != _hightLightNode)
+						CustomTreeNode hightLightNode = null;
+						ScanTreeView(node => 
+							{
+								bool sel = false;
+								if (node.CodeNode.StartLine <= line && line <= node.CodeNode.EndLine)
+								{
+									if (node.CodeNode.StartLine == node.CodeNode.EndLine)
+									{
+										if (node.CodeNode.StartColumn <= column && column <= node.CodeNode.EndColumn)
+										{
+											sel = true;
+										}
+									}
+									else
+									{
+										sel = true;
+									}
+								}
+
+								if (sel)
+								{
+									if (hightLightNode != null && node.Level < hightLightNode.Level)
+									{
+										return true;	//Skip parent nodes
+									}
+
+									hightLightNode = node;
+								}
+
+								return true;
+							}, treeView1.Nodes);
+						_lastActiveLine = line;
+						_lastActiveColumn = column;
+						if (hightLightNode != null && treeView1.SelectedNode != hightLightNode)
 						{
-							treeView1.SelectedNode = _hightLightNode;
+							treeView1.SelectedNode = hightLightNode;
 						}
 					}
 				}
@@ -659,9 +670,55 @@ namespace JsParserCore.UI
 			catch { }
 		}
 
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SettingsForm sf = new SettingsForm();
+			sf.ShowDialog();
+		}
+
 		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			panelLinesNumbers.Refresh();
 		}
+
+		private void showHierarhyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+		}
+
+		private void expandAllByDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+		}
+
+		private void expandAllToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			treeView1.ExpandAll();
+		}
+
+		private void collapseAllNodesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			treeView1.CollapseAll();
+		}
+
+		private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
+		{
+			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
+			{
+				panelLinesNumbers.Refresh();
+			}
+		}
+
+		private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
+		{
+			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
+			{
+				panelLinesNumbers.Refresh();
+			}
+		}
+
+		#endregion
 	}
 }

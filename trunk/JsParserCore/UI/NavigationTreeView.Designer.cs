@@ -48,7 +48,12 @@ namespace JsParserCore.UI
 			this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-			this.btnTreeToggle = new System.Windows.Forms.ToolStripButton();
+			this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+			this.showHierarhyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.expandAllByDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+			this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.collapseAllNodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -89,7 +94,6 @@ namespace JsParserCore.UI
             this.resetAllLabelsToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
-			this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
 			// 
 			// toolStripMenuItem6
 			// 
@@ -174,7 +178,7 @@ namespace JsParserCore.UI
 			// 
 			this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnTreeToggle,
+            this.toolStripDropDownButton2,
             this.btnSortToggle,
             this.toolStripSeparator1,
             this.toolStripDropDownButton1,
@@ -185,22 +189,59 @@ namespace JsParserCore.UI
             this.lbDocName});
 			this.toolStrip2.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip2.Name = "toolStrip2";
-			this.toolStrip2.Size = new System.Drawing.Size(204, 25);
+			this.toolStrip2.Size = new System.Drawing.Size(246, 25);
 			this.toolStrip2.TabIndex = 3;
 			this.toolStrip2.Text = "toolStrip2";
 			// 
-			// btnTreeToggle
+			// toolStripDropDownButton2
 			// 
-			this.btnTreeToggle.Checked = true;
-			this.btnTreeToggle.CheckOnClick = true;
-			this.btnTreeToggle.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.btnTreeToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnTreeToggle.Image = global::JsParserCore.Properties.Resources.tree;
-			this.btnTreeToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnTreeToggle.Name = "btnTreeToggle";
-			this.btnTreeToggle.Size = new System.Drawing.Size(23, 22);
-			this.btnTreeToggle.Text = "Show hierarchy";
-			this.btnTreeToggle.Click += new System.EventHandler(this.btnRefresh_Click);
+			this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showHierarhyToolStripMenuItem,
+            this.expandAllByDefaultToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.expandAllToolStripMenuItem,
+            this.collapseAllNodesToolStripMenuItem});
+			this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.tree;
+			this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+			this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 22);
+			this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
+			// 
+			// showHierarhyToolStripMenuItem
+			// 
+			this.showHierarhyToolStripMenuItem.CheckOnClick = true;
+			this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
+			this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.showHierarhyToolStripMenuItem.Text = "Show hierarhy";
+			this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
+			// 
+			// expandAllByDefaultToolStripMenuItem
+			// 
+			this.expandAllByDefaultToolStripMenuItem.CheckOnClick = true;
+			this.expandAllByDefaultToolStripMenuItem.Name = "expandAllByDefaultToolStripMenuItem";
+			this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.expandAllByDefaultToolStripMenuItem.Text = "Expand all by default";
+			this.expandAllByDefaultToolStripMenuItem.Click += new System.EventHandler(this.expandAllByDefaultToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 6);
+			// 
+			// expandAllToolStripMenuItem
+			// 
+			this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
+			this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.expandAllToolStripMenuItem.Text = "Expand all nodes";
+			this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
+			// 
+			// collapseAllNodesToolStripMenuItem
+			// 
+			this.collapseAllNodesToolStripMenuItem.Name = "collapseAllNodesToolStripMenuItem";
+			this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			this.collapseAllNodesToolStripMenuItem.Text = "Collapse all nodes";
+			this.collapseAllNodesToolStripMenuItem.Click += new System.EventHandler(this.collapseAllNodesToolStripMenuItem_Click);
 			// 
 			// btnSortToggle
 			// 
@@ -317,7 +358,9 @@ namespace JsParserCore.UI
 			this.treeView1.TabIndex = 2;
 			this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
 			this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
+			this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
 			this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
+			this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
 			this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -332,8 +375,7 @@ namespace JsParserCore.UI
 			this.Controls.Add(this.toolStrip2);
 			this.Controls.Add(this.treeView1);
 			this.Name = "NavigationTreeView";
-			this.Size = new System.Drawing.Size(204, 300);
-			this.Load += new System.EventHandler(this.NavigationTreeView_Load);
+			this.Size = new System.Drawing.Size(246, 300);
 			this.Resize += new System.EventHandler(this.NavigationTreeView_Resize);
 			this.contextMenuStrip1.ResumeLayout(false);
 			this.toolStrip2.ResumeLayout(false);
@@ -361,7 +403,6 @@ namespace JsParserCore.UI
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.ToolStrip toolStrip2;
-		private System.Windows.Forms.ToolStripButton btnTreeToggle;
 		private System.Windows.Forms.ToolStripButton btnSortToggle;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnRefresh;
@@ -375,5 +416,11 @@ namespace JsParserCore.UI
 		private System.Windows.Forms.Panel panelLinesNumbers;
 		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 		private System.Windows.Forms.Timer timer2;
+		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+		private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+		private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
     }
 }

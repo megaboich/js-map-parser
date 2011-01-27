@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("JsParserCore")]
-[assembly: AssemblyCopyright("Alexander Boyko")]
+[assembly: AssemblyCopyright("Alexander Boyko 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

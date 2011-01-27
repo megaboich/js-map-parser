@@ -7,17 +7,16 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Jsavascript Parser")]
+[assembly: AssemblyTitle("Javascript Parser")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Alexander Boyko")]
-[assembly: AssemblyProduct("Jsavascript Parser")]
+[assembly: AssemblyProduct("Javascript Parser")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]   
 [assembly: ComVisible(false)]     
 [assembly: CLSCompliant(false)]
-[assembly: NeutralResourcesLanguage("en-US")]
 
 // Version information for an assembly consists of the following four values:
 //

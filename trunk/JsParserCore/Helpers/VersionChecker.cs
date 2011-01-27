@@ -17,12 +17,12 @@ namespace JsParserCore.Helpers
 		{
 			try
 			{
-				float thisVersion = 2;
+				float thisVersion = 3.1f;
 				float repositoryVersion = 0;
 				
 				var projectSite = @"http://js-addin.googlecode.com";
-				var serverVersionUrl = projectSite + "/svn/Version.xml";
-				//var serverVersionUrl = @"http://localhost/Version.xml";
+				//var serverVersionUrl = projectSite + "/svn/Version.xml";
+				var serverVersionUrl = @"http://localhost/Version.xml";
 				var releaseInfo = string.Empty;
 
 				using (var sr = new StreamReader(WebRequest.Create(serverVersionUrl).GetResponse().GetResponseStream()))
@@ -30,27 +30,19 @@ namespace JsParserCore.Helpers
 					repositoryVersion = ParseVersion(thisVersion, sr.ReadToEnd(), out releaseInfo);
 				}
 
-				if (thisVersion == repositoryVersion)
+				if (thisVersion >= repositoryVersion)
 				{
 					return false;
 				}
 
-				if (thisVersion > repositoryVersion)
-				{
-					MessageBox.Show(string.Format("js parser version checker. Your version {0}, repository version {1}. Good luck", thisVersion, repositoryVersion));
-				}
+				var result = MessageBox.Show(string.Format("A new version of Javascript parser addin is available.\r\n\r\n{1}\r\n\r\n Would you like to visit site {0} ?", projectSite, releaseInfo),
+					"JSparser version checker",
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Information);
 
-				if (thisVersion < repositoryVersion)
+				if (result == DialogResult.Yes)
 				{
-					var result = MessageBox.Show(string.Format("A new version of Javascript parser addin is available.\r\n\r\n{1}\r\n\r\n Would you like to visit site {0} ?", projectSite, releaseInfo),
-						"JSparser version checker",
-						MessageBoxButtons.YesNo,
-						MessageBoxIcon.Information);
-
-					if (result == DialogResult.Yes)
-					{
-						Process.Start(projectSite);
-					}
+					Process.Start(projectSite);
 				}
 
 				return true;
