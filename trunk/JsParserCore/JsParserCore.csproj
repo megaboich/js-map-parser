@@ -80,6 +80,7 @@
     <Compile Include="UI\CustomTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\ExpandedNodesManager.cs" />
     <Compile Include="UI\FindDialog.cs">
       <SubType>Form</SubType>
     </Compile>

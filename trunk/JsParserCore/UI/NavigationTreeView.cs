@@ -31,6 +31,8 @@ namespace JsParserCore.UI
 		private int _lastActiveLine;
 		private int _lastActiveColumn;
 		private bool _treeRefreshing = false;
+		private ExpandedNodesManager _expandedNodes = new ExpandedNodesManager();
+		private bool _firstLoadOfDocument = false;
 
 		/// <summary>
 		/// Gets Code.
@@ -92,7 +94,15 @@ namespace JsParserCore.UI
 				return false;
 			}
 
-			_loadedDocName = Path.Combine(Code.Path, Code.Name);
+			var docName = Path.Combine(Code.Path, Code.Name);
+			_firstLoadOfDocument = !_expandedNodes.HasDocumentInStorage(docName);
+			if (_loadedDocName != docName)
+			{
+				_loadedDocName = docName;
+				_expandedNodes.ActiveDocumentName = _loadedDocName;
+				//We load the new document.
+			}
+
 			lbDocName.Text = Code.Name;
 			lbDocName.ToolTipText = _loadedDocName;
 
@@ -284,7 +294,12 @@ namespace JsParserCore.UI
 					FillNodes(item, treeNode.Nodes, level + 1, functions);
 				}
 
-				if (Settings.Default.AutoExpandAll)
+				if (_firstLoadOfDocument && Settings.Default.AutoExpandAll)
+				{
+					treeNode.Expand();
+				}
+
+				if (_expandedNodes.IsNoteExpanded(treeNode))
 				{
 					treeNode.Expand();
 				}
@@ -695,16 +710,27 @@ namespace JsParserCore.UI
 
 		private void expandAllToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			_treeRefreshing = true;
+			treeView1.BeginUpdate();
 			treeView1.ExpandAll();
+			treeView1.EndUpdate();
+			_treeRefreshing = false;
+			panelLinesNumbers.Refresh();
 		}
 
 		private void collapseAllNodesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			_treeRefreshing = true;
+			treeView1.BeginUpdate();
 			treeView1.CollapseAll();
+			treeView1.EndUpdate();
+			_treeRefreshing = false;
+			panelLinesNumbers.Refresh();
 		}
 
 		private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
 		{
+			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
 			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();
@@ -713,6 +739,7 @@ namespace JsParserCore.UI
 
 		private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
 		{
+			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
 			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();
