@@ -33,5 +33,10 @@ namespace JsParserCore.UI
 			edExtensions.Lines = Settings.Default.Extensions.OfType<string>().ToArray();
 			chShowHideAutomatically.Checked = Settings.Default.ShowHideAutomatically;
 		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
 	}
 }
