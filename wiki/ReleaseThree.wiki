@@ -1,13 +1,1 @@
-#summary Whats new in Javascript Parser 3
-
-= Whats new in Javascript Parser 3 =
-  # Find feature. (supports hotkey)
-     http://js-addin.googlecode.com/svn/site/screen_FindExample.png <br/>
-     To configure hotkey please use Visual Studio hotkey manager.<br/>
-     Navigate Tools/Options/Environment/Keyboard and do search for command
-     "*!JavascriptParser.Find*" for VS2010 or "*JSparser.Connect.Find*" for VS2008. <br/>
-     Then specify your hotkey. By default it should be Shift+Alt+J.<br/>
-     http://js-addin.googlecode.com/svn/site/screen_define_shortcut.png<br/>
-  # Show line numbers in tree.
-  # Automatic track active function while working in text editor.
-  # Various bug fixes. (please check Issues page)
+This is deprecated page, to see version history navigate to VersionHistory
