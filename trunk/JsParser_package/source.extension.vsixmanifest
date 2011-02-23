@@ -17,7 +17,6 @@
 				<Edition>Ultimate</Edition>
 				<Edition>Premium</Edition>
 				<Edition>Pro</Edition>
-				<Edition>Express_All</Edition>
 			</VisualStudio>
 		</SupportedProducts>
 		<SupportedFrameworkRuntimeEdition MinVersion="3.5" MaxVersion="4.0" />
