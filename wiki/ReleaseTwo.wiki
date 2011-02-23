@@ -1,8 +1,0 @@
-==New features in Javascript parser add-in 2.0==
-
-  # Support of `<script></script>` blocks in non-js files (*`*`.html*, *`*`.aspx*, etc)
-   http://js-addin.googlecode.com/svn/site/vs2010_html.png
-  # Ignoring asp.net-specific tags (<%= %>) from source code to maintain valid javascript.
-  # Added marks. This marks are saved when restarted Visual Studio and allows to remember some points in the large scripts.
-   http://js-addin.googlecode.com/svn/site/vs2010_marks.png
-  # Solution restructuring for future support native VS2010 add-in format.
