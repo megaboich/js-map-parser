@@ -1,0 +1,25 @@
+#summary Version History of Javascript Parser addin.
+
+== Release 2.0 ==
+
+  # Support of `<script></script>` blocks in non-js files (*`*`.html*, *`*`.aspx*, etc) [http://js-addin.googlecode.com/svn/site/vs2010_html.png screenshot]
+  # Ignoring asp.net-specific tags (<%= %>) from source code to maintain valid javascript.
+  # Added marks. This marks are saved when restarted Visual Studio and allows to remember some points in the large scripts. [http://js-addin.googlecode.com/svn/site/vs2010_marks.png screenshot]
+  # Solution restructuring for future support native VS2010 add-in format.
+
+
+
+== Release 3.0 ==
+  # Find feature. (supports hotkey) [http://js-addin.googlecode.com/svn/site/screen_FindExample.png screenshot]
+     To configure hotkey please use Visual Studio hotkey manager.<br/>
+     Navigate Tools/Options/Environment/Keyboard and do search for command
+     "*!JavascriptParser.Find*" for VS2010 or "*JSparser.Connect.Find*" for VS2008. <br/>
+     Then specify your hotkey. By default it should be Shift+Alt+J. [http://js-addin.googlecode.com/svn/site/screen_define_shortcut.png screenshot]
+  # Show line numbers in tree.
+  # Automatic track active function while working in text editor.
+  # Various bug fixes. (please check Issues page)
+
+=== Release 3.1 ===
+  # Option for automatically Expand\Collapse nodes in tree. [http://js-addin.googlecode.com/svn/site/screen_expandcollapseoption.png screenshot]
+  # Option for automatically Show\Hide addin tool window. [http://js-addin.googlecode.com/svn/site/screen_optionsdialog.png screenshot]
+  # Various bug fixes. (please check Issues page)
