@@ -26,12 +26,20 @@
   &lt;string&gt;.htm&lt;/string&gt;
   &lt;string&gt;.asp&lt;/string&gt;
   &lt;string&gt;.axd&lt;/string&gt;
+  &lt;string&gt;.cshtml&lt;/string&gt;
+  &lt;string&gt;.master&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="TrackActiveItem" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoExpandAll" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Visible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowHideAutomatically" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

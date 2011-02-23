@@ -32,6 +32,7 @@
 			this.edExtensions = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
+			this.chShowHideAutomatically = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -74,11 +75,22 @@
 			this.chTrackActiveItem.Text = "Automatically track active function in tree";
 			this.chTrackActiveItem.UseVisualStyleBackColor = true;
 			// 
+			// chShowHideAutomatically
+			// 
+			this.chShowHideAutomatically.AutoSize = true;
+			this.chShowHideAutomatically.Location = new System.Drawing.Point(16, 192);
+			this.chShowHideAutomatically.Name = "chShowHideAutomatically";
+			this.chShowHideAutomatically.Size = new System.Drawing.Size(245, 17);
+			this.chShowHideAutomatically.TabIndex = 4;
+			this.chShowHideAutomatically.Text = "Automatically show/hide js-parser tool window.";
+			this.chShowHideAutomatically.UseVisualStyleBackColor = true;
+			// 
 			// SettingsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(414, 311);
+			this.Controls.Add(this.chShowHideAutomatically);
 			this.Controls.Add(this.chTrackActiveItem);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.edExtensions);
@@ -103,5 +115,6 @@
 		private System.Windows.Forms.TextBox edExtensions;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.CheckBox chTrackActiveItem;
+		private System.Windows.Forms.CheckBox chShowHideAutomatically;
 	}
 }

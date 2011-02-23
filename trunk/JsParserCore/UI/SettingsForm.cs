@@ -21,6 +21,7 @@ namespace JsParserCore.UI
 		{
 			Settings.Default.TrackActiveItem = chTrackActiveItem.Checked;
 			Settings.Default.Extensions = new System.Collections.Specialized.StringCollection();
+			Settings.Default.ShowHideAutomatically = chShowHideAutomatically.Checked;
 			Settings.Default.Extensions.AddRange(edExtensions.Lines);
 			Settings.Default.Save();
 			Close();
@@ -30,6 +31,7 @@ namespace JsParserCore.UI
 		{
 			chTrackActiveItem.Checked = Settings.Default.TrackActiveItem;
 			edExtensions.Lines = Settings.Default.Extensions.OfType<string>().ToArray();
+			chShowHideAutomatically.Checked = Settings.Default.ShowHideAutomatically;
 		}
 	}
 }

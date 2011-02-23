@@ -49,11 +49,11 @@ namespace JsParserCore.UI
 			treeView1.Nodes.Clear();
 			treeView1.LostFocus += LostFocusHandler;
 
-			btnSortToggle.Checked = Settings.Default.SortingEnabled;
-			showHierarhyToolStripMenuItem.Checked = Settings.Default.HierarchyEnabled;
-			btnShowLineNumbers.Checked = Settings.Default.ShowLineNumbersEnabled;
-			btnFilterByMarks.Checked = Settings.Default.FilterByMarksEnabled;
-			expandAllByDefaultToolStripMenuItem.Checked = Settings.Default.AutoExpandAll;
+			btnSortToggle.Checked = Settings.SortingEnabled;
+			showHierarhyToolStripMenuItem.Checked = Settings.HierarchyEnabled;
+			btnShowLineNumbers.Checked = Settings.ShowLineNumbersEnabled;
+			btnFilterByMarks.Checked = Settings.FilterByMarksEnabled;
+			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
 		}
 
 		/// <summary>
@@ -81,6 +81,14 @@ namespace JsParserCore.UI
 			{
 				return treeView1.Nodes.Count > 0;
 			}
+		}
+
+		/// <summary>
+		/// Settings instance
+		/// </summary>
+		public Settings Settings
+		{
+			get { return Settings.Default; }
 		}
 
 		/// <summary>
@@ -120,8 +128,8 @@ namespace JsParserCore.UI
 			_tempTreeNodes.Clear();
 			_canExpand = true;
 
-			var isSort = Settings.Default.SortingEnabled;
-			var isHierarchy = Settings.Default.HierarchyEnabled;
+			var isSort = Settings.SortingEnabled;
+			var isHierarchy = Settings.HierarchyEnabled;
 
 			_marksManager.SetFile(_loadedDocName);
 
@@ -177,9 +185,9 @@ namespace JsParserCore.UI
 
 		private bool CheckExt(string fileName)
 		{
-			if (Settings.Default.Extensions.Count > 0)
+			if (Settings.Extensions.Count > 0)
 			{
-				foreach (var ext in Settings.Default.Extensions)
+				foreach (var ext in Settings.Extensions)
 				{
 					if (Code.Name.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
 					{
@@ -253,8 +261,8 @@ namespace JsParserCore.UI
 				return;
 			}
 
-			var isSort = Settings.Default.SortingEnabled;
-			var isHierarchy = Settings.Default.HierarchyEnabled;
+			var isSort = Settings.SortingEnabled;
+			var isHierarchy = Settings.HierarchyEnabled;
 			var childrens = source.Childrens;
 			if (isSort)
 			{
@@ -294,7 +302,7 @@ namespace JsParserCore.UI
 					FillNodes(item, treeNode.Nodes, level + 1, functions);
 				}
 
-				if (_firstLoadOfDocument && Settings.Default.AutoExpandAll)
+				if (_firstLoadOfDocument && Settings.AutoExpandAll)
 				{
 					treeNode.Expand();
 				}
@@ -429,12 +437,12 @@ namespace JsParserCore.UI
 
 		private void SaveSettings()
 		{
-			Settings.Default.SortingEnabled = btnSortToggle.Checked;
-			Settings.Default.HierarchyEnabled = showHierarhyToolStripMenuItem.Checked;
-			Settings.Default.ShowLineNumbersEnabled = btnShowLineNumbers.Checked;
-			Settings.Default.FilterByMarksEnabled = btnFilterByMarks.Checked;
-			Settings.Default.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
-			Settings.Default.Save();
+			Settings.SortingEnabled = btnSortToggle.Checked;
+			Settings.HierarchyEnabled = showHierarhyToolStripMenuItem.Checked;
+			Settings.ShowLineNumbersEnabled = btnShowLineNumbers.Checked;
+			Settings.FilterByMarksEnabled = btnFilterByMarks.Checked;
+			Settings.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
+			Settings.Save();
 		}
 
 		#region Event handlers
@@ -578,7 +586,7 @@ namespace JsParserCore.UI
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
 		{
 			var tw = Convert.ToInt32(Math.Round(this.CreateGraphics().MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
-			treeView1.Left = Settings.Default.ShowLineNumbersEnabled ? tw : 0;
+			treeView1.Left = Settings.ShowLineNumbersEnabled ? tw : 0;
 			treeView1.Top = 25;
 			treeView1.Width = this.ClientSize.Width - treeView1.Left;
 			treeView1.Height = this.ClientSize.Height - treeView1.Top;
@@ -586,7 +594,7 @@ namespace JsParserCore.UI
 			panelLinesNumbers.Width = tw;
 			panelLinesNumbers.Top = 25;
 			panelLinesNumbers.Height = treeView1.Height;
-			panelLinesNumbers.Visible = Settings.Default.ShowLineNumbersEnabled;
+			panelLinesNumbers.Visible = Settings.ShowLineNumbersEnabled;
 		}
 
 		private void treeView1_OnScroll(object sender, EventArgs e)
@@ -597,7 +605,7 @@ namespace JsParserCore.UI
 		private void panelLinesNumbers_Paint(object sender, PaintEventArgs e)
 		{
 			e.Graphics.FillRectangle(SystemBrushes.Control, panelLinesNumbers.ClientRectangle);
-			if (Settings.Default.ShowLineNumbersEnabled && treeView1.Nodes.Count > 0)
+			if (Settings.ShowLineNumbersEnabled && treeView1.Nodes.Count > 0)
 			{
 				var gr = e.Graphics;
 				ScanTreeView(node =>
@@ -635,7 +643,7 @@ namespace JsParserCore.UI
 		{
 			try
 			{
-				if (Code != null && Settings.Default.TrackActiveItem)
+				if (Code != null && Settings.TrackActiveItem)
 				{
 					int line;
 					int column;
@@ -731,7 +739,7 @@ namespace JsParserCore.UI
 		private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
 		{
 			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
-			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
+			if (Settings.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();
 			}
@@ -740,7 +748,7 @@ namespace JsParserCore.UI
 		private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
 		{
 			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
-			if (Settings.Default.ShowLineNumbersEnabled && !_treeRefreshing)
+			if (Settings.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();
 			}

@@ -13,7 +13,7 @@ namespace JsParserCore.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -93,6 +93,8 @@ namespace JsParserCore.Properties {
   <string>.htm</string>
   <string>.asp</string>
   <string>.axd</string>
+  <string>.cshtml</string>
+  <string>.master</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Extensions {
             get {
@@ -124,6 +126,30 @@ namespace JsParserCore.Properties {
             }
             set {
                 this["AutoExpandAll"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Visible {
+            get {
+                return ((bool)(this["Visible"]));
+            }
+            set {
+                this["Visible"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowHideAutomatically {
+            get {
+                return ((bool)(this["ShowHideAutomatically"]));
+            }
+            set {
+                this["ShowHideAutomatically"] = value;
             }
         }
     }
