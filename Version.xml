@@ -1,17 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Version>
-	3.1
+	3
 	<ReleaseInfo version="3">
 		<info text="Version 3" />
 		<info text="	+ Find functionality" />
 		<info text="	+ Track active function" />
 		<info text="	+ Line numbers" />
 		<info text="	+ Filtering by marks" />
-	</ReleaseInfo>
-	<ReleaseInfo version="3.1">
-		<info text="Version 3.1" />
-		<info text="	+ Add option Expand all\Collapse all by default" />
-		<info text="	+ Add option Show\Hide automatically" />
-		<info text="	+ Fix bugs and improve performance" />
 	</ReleaseInfo>
 </Version>
