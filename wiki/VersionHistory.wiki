@@ -19,7 +19,7 @@
   # Automatic track active function while working in text editor.
   # Various bug fixes. (please check Issues page)
 
-=== Release 3.1 ===
+=== Release 3.1 http://js-addin.googlecode.com/svn/site/new-icon-small.gif ===
   # Option for automatically Expand\Collapse nodes in tree. [http://js-addin.googlecode.com/svn/site/screen_expandcollapseoption.png screenshot]
   # Option for automatically Show\Hide addin tool window. [http://js-addin.googlecode.com/svn/site/screen_optionsdialog.png screenshot]
   # Various bug fixes. (please check Issues page)
