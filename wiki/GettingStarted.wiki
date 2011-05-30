@@ -4,6 +4,13 @@ To start using *Javascript Parser Extension* follow steps:
   # Install extension.
   # Click the item in the menu to show toolbox.
 
+===Visual Studio 2010===
+ ====Install:====
+   # Install `*`.vsix package
+   # Restart Visual Studio.
+ ====Menu location:====
+   View\Other Windows\Javascript Parser
+
 ===Visual Studio 2008===
  ====Install:====
    # Unzip pack and copy contents to <%userdocuments%>\Visual Studio 2008\!AddIns\
@@ -12,11 +19,3 @@ To start using *Javascript Parser Extension* follow steps:
    # Restart Visual Studio.
  ====Menu location:====
    Tools\Javascript parser
-
-
-===Visual Studio 2010===
- ====Install:====
-   # Install `*`.vsix package
-   # Restart Visual Studio.
- ====Menu location:====
-   View\Other Windows\Javascript Parser
