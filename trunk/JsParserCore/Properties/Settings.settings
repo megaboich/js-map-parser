@@ -42,5 +42,41 @@
     <Setting Name="ShowHideAutomatically" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="taggedFunction1Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction2Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction3Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction4Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction5Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction6Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 7.8pt</Value>
+    </Setting>
+    <Setting Name="taggedFunction1Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="taggedFunction2Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="taggedFunction3Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="taggedFunction4Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="taggedFunction5Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="taggedFunction6Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

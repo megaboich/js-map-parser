@@ -344,6 +344,7 @@ namespace JsParserCore.UI
 					return JsParserCore.Properties.Resources.flag_red;
 				case '!':
 					return JsParserCore.Properties.Resources.Active;
+				case 'S':
 				default:
 					return JsParserCore.Properties.Resources.icon_favourites;
 			}

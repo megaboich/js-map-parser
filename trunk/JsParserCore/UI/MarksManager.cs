@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using JsParserCore.Properties;
 using System.Web.Script.Serialization;
+using System.Drawing;
 
 namespace JsParserCore.UI
 {
@@ -71,9 +72,39 @@ namespace JsParserCore.UI
 			if (!string.IsNullOrEmpty(mark))
 			{
 				treenode.Tags += mark;
+
+				switch (mark[0])
+				{
+					case 'W':
+						treenode.ForeColor = Settings.Default.taggedFunction1Color;
+						treenode.NodeFont = Settings.Default.taggedFunction1Font;
+						break;
+					case 'B':
+						treenode.ForeColor = Settings.Default.taggedFunction2Color;
+						treenode.NodeFont = Settings.Default.taggedFunction2Font;
+						break;
+					case 'G':
+						treenode.ForeColor = Settings.Default.taggedFunction3Color;
+						treenode.NodeFont = Settings.Default.taggedFunction3Font;
+						break;
+					case 'O':
+						treenode.ForeColor = Settings.Default.taggedFunction4Color;
+						treenode.NodeFont = Settings.Default.taggedFunction4Font;
+						break;
+					case 'R':
+						treenode.ForeColor = Settings.Default.taggedFunction5Color;
+						treenode.NodeFont = Settings.Default.taggedFunction5Font;
+						break;
+					case 'S':
+						treenode.ForeColor = Settings.Default.taggedFunction6Color;
+						treenode.NodeFont = Settings.Default.taggedFunction6Font;
+						break;
+				}
 			}
 			else
 			{
+				treenode.ForeColor = SystemColors.WindowText;
+				treenode.NodeFont = null;
 				treenode.Tags = null;
 			}
 		}
