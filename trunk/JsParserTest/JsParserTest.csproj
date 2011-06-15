@@ -147,6 +147,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_CASE_Statement.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_JQuery_Selectors.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_JQuery_Selectors.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

@@ -87,6 +87,15 @@ namespace JsParserCore.Parsers
 				var invexp = (InvocationExpression) exp;
 				var alias = ProcessExpression(nodes, invexp.Target, expressionAlias);
 
+				if (invexp.Arguments.Arguments.Count > 0)
+				{
+					var args = StringifyArguments(invexp.Arguments.Arguments);
+					if (!string.IsNullOrEmpty(args))
+					{
+						alias += "(" + args +")";
+					}
+				}
+
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
 					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, ConcatAlias(alias, "?")));
@@ -154,6 +163,34 @@ namespace JsParserCore.Parsers
 			}
 
 			return string.Empty;
+		}
+
+		private string StringifyArguments(List<ExpressionListElement> list)
+		{
+			return string.Join(",", list.Select(a => StringifyArgument(a.Value)).Where(s => !string.IsNullOrEmpty(s)).ToArray());
+		}
+
+		private string StringifyArgument(Expression exp)
+		{
+			if (exp is IdentifierExpression)
+			{
+				var iexp = (IdentifierExpression)exp;
+				return iexp.ID.Spelling;
+			}
+
+			if (exp is StringLiteralExpression)
+			{
+				var sexp = (StringLiteralExpression)exp;
+				return sexp.Spelling;
+			}
+
+			if (exp is NumericLiteralExpression)
+			{
+				var nexp = (NumericLiteralExpression)exp;
+				return nexp.Spelling;
+			}
+
+			return null;
 		}
 
 		private void ProcessStatement<ElementType>(Hierachy<CodeNode> nodes, ElementType statement)

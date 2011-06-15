@@ -1,0 +1,11 @@
+<Hierachy>
+	<Item Text="All" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+	<Childrens>
+		<Hierachy>
+			<Item Text="alertIsIEFunc()" Line="8" EndLine="11" EndColumn="2" Pos="17" Opcode="Function" Comment="// ie- specific implementation" />
+		</Hierachy>
+		<Hierachy>
+			<Item Text="alertIsIEFunc()" Line="16" EndLine="19" EndColumn="2" Pos="17" Opcode="Function" Comment="// html standart implementation" />
+		</Hierachy>
+	</Childrens>
+</Hierachy>
