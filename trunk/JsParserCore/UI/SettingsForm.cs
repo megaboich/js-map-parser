@@ -12,8 +12,11 @@ namespace JsParserCore.UI
 {
 	public partial class SettingsForm : Form
 	{
-		public SettingsForm()
+		private Font _defaultTreeFont;
+
+		public SettingsForm(Font defaultTreeFont)
 		{
+			_defaultTreeFont = defaultTreeFont;
 			InitializeComponent();
 		}
 
@@ -48,17 +51,17 @@ namespace JsParserCore.UI
 			chShowHideAutomatically.Checked = Settings.Default.ShowHideAutomatically;
 
 			taggedFuncLabel1.ForeColor = Settings.Default.taggedFunction1Color;
-			taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font;
+			taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font ?? _defaultTreeFont;
 			taggedFuncLabel2.ForeColor = Settings.Default.taggedFunction2Color;
-			taggedFuncLabel2.Font = Settings.Default.taggedFunction2Font;
+			taggedFuncLabel2.Font = Settings.Default.taggedFunction2Font ?? _defaultTreeFont;
 			taggedFuncLabel3.ForeColor = Settings.Default.taggedFunction3Color;
-			taggedFuncLabel3.Font = Settings.Default.taggedFunction3Font;
+			taggedFuncLabel3.Font = Settings.Default.taggedFunction3Font ?? _defaultTreeFont;
 			taggedFuncLabel4.ForeColor = Settings.Default.taggedFunction4Color;
-			taggedFuncLabel4.Font = Settings.Default.taggedFunction4Font;
+			taggedFuncLabel4.Font = Settings.Default.taggedFunction4Font ?? _defaultTreeFont;
 			taggedFuncLabel5.ForeColor = Settings.Default.taggedFunction5Color;
-			taggedFuncLabel5.Font = Settings.Default.taggedFunction5Font;
+			taggedFuncLabel5.Font = Settings.Default.taggedFunction5Font ?? _defaultTreeFont;
 			taggedFuncLabel6.ForeColor = Settings.Default.taggedFunction6Color;
-			taggedFuncLabel6.Font = Settings.Default.taggedFunction6Font;
+			taggedFuncLabel6.Font = Settings.Default.taggedFunction6Font ?? _defaultTreeFont;
 		}
 
 		private void button2_Click(object sender, EventArgs e)

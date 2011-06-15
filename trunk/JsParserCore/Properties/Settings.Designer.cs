@@ -155,7 +155,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction1Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction1Font"]));
@@ -167,7 +166,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction2Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction2Font"]));
@@ -179,7 +177,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction3Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction3Font"]));
@@ -191,7 +188,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction4Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction4Font"]));
@@ -203,7 +199,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction5Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction5Font"]));
@@ -215,7 +210,6 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 7.8pt")]
         public global::System.Drawing.Font taggedFunction6Font {
             get {
                 return ((global::System.Drawing.Font)(this["taggedFunction6Font"]));

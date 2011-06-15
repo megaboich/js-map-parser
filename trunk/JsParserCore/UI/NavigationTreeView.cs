@@ -696,7 +696,7 @@ namespace JsParserCore.UI
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SettingsForm sf = new SettingsForm();
+			SettingsForm sf = new SettingsForm(treeView1.Font);
 			sf.ShowDialog();
 		}
 
