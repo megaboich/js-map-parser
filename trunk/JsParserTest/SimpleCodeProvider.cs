@@ -51,7 +51,13 @@ namespace JsParserTest
 		public void GetCursorPos(out int line, out int column)
 		{
 			try
-			{/*
+			{
+				var cursorPos = _textBox.SelectionStart;
+				line = 1 + _textBox.GetLineFromCharIndex(cursorPos);
+				column = 1;
+			}
+
+			/*
 				var cumLength = 0;
 				int i = 0;
 				var cursorPos = _textBox.SelectionStart;
@@ -67,9 +73,7 @@ namespace JsParserTest
 						return;
 					}
 				}*/
-				line = 1;
-				column = 1;
-			}
+				
 			catch
 			{
 				line = -1;

@@ -135,7 +135,7 @@ namespace JsParserCore.UI
 
 			code = CodeTransformer.KillAspNetTags(code);
 			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
-			var nodes = (new JavascriptParser()).Parse(codeChunks);
+			var nodes = (new JavascriptParser(new JavascriptParserSettings { MaxParametersLengthInFunctionChain = 25 })).Parse(codeChunks);
 
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();

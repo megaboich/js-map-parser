@@ -35,7 +35,7 @@ namespace UnitTests
 			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
 			source = CodeTransformer.KillAspNetTags(source);
 			var codeChunks = CodeTransformer.ExtractJsFromSource(source);
-			var result = (new JavascriptParser()).Parse(codeChunks);
+			var result = (new JavascriptParser(new JavascriptParserSettings())).Parse(codeChunks);
 
 			Directory.CreateDirectory("C:\\outxml");
 
@@ -60,7 +60,6 @@ namespace UnitTests
 		{
 			ProcessTemplate("Test1_1.js", "Test1_1.xml");
 		}
-
 
 		[Test]
 		public void Test2()
@@ -105,15 +104,21 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void Test6()
+		public void Test_FunctionWithPlainObject()
 		{
-			ProcessTemplate("Test6.js", "Test6.xml");
+			ProcessTemplate("Test_FunctionWithPlainObject.js", "Test_FunctionWithPlainObject.xml");
 		}
 
 		[Test]
-		public void Test7()
+		public void Test_JQueryPlugin()
 		{
-			ProcessTemplate("Test7.js", "Test7.xml");
+			ProcessTemplate("Test_JQueryPlugin.js", "Test_JQueryPlugin.xml");
+		}
+
+		[Test]
+		public void Test_JQueryChain()
+		{
+			ProcessTemplate("Test_JQueryChain.js", "Test_JQueryChain.xml");
 		}
 
 		[Test]
@@ -132,6 +137,18 @@ namespace UnitTests
 		public void Test_Functions_In_IF_Statement()
 		{
 			ProcessTemplate("Test_Functions_In_IF_Statement.js", "Test_Functions_In_IF_Statement.xml");
+		}
+
+		[Test]
+		public void Test_Functions_In_TryCatch_Statement()
+		{
+			ProcessTemplate("Test_Functions_In_TryCatch_Statement.js", "Test_Functions_In_TryCatch_Statement.xml");
+		}
+
+		[Test]
+		public void Test_JQuery_Selectors()
+		{
+			ProcessTemplate("Test_JQuery_Selectors.js", "Test_JQuery_Selectors.xml");
 		}
 	}
 }

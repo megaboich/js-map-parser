@@ -83,6 +83,7 @@
     <Compile Include="SimpleCodeProvider.cs" />
     <Compile Include="UnitTests\AutoTester.cs" />
     <Compile Include="UnitTests\FindDialogTest.cs" />
+    <Compile Include="UnitTests\StringExtText.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,18 +124,18 @@
     <EmbeddedResource Include="UnitTests\Result\Test3.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test4.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test5.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test6.xml">
+    <EmbeddedResource Include="UnitTests\Result\Test_JQueryPlugin.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Result\Test7.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_JQueryChain.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test1.js" />
     <EmbeddedResource Include="UnitTests\Source\Test2.js" />
     <EmbeddedResource Include="UnitTests\Source\Test3.js" />
     <EmbeddedResource Include="UnitTests\Source\Test4.js" />
     <EmbeddedResource Include="UnitTests\Source\Test5.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test6.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test7.js" />
-    <EmbeddedResource Include="UnitTests\Source\test9.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_JQueryPlugin.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_JQueryChain.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_FunctionWithPlainObject.js" />
     <EmbeddedResource Include="UnitTests\Source\HtmlScriptBlocks.htm" />
     <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.xml">
       <SubType>Designer</SubType>
@@ -151,6 +152,11 @@
     <EmbeddedResource Include="UnitTests\Result\Test_JQuery_Selectors.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_TryCatch_Statement.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_TryCatch_Statement.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_FunctionWithPlainObject.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

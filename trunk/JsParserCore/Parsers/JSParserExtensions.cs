@@ -17,5 +17,21 @@ namespace JsParserCore.Parsers
 				iterator.Advance();
 			}
 		}
+
+		public static string Shortenize(this String s, int targetLength)
+		{
+			if (targetLength <= 0)
+			{
+				return string.Empty;
+			}
+
+			if (s.Length > targetLength)
+			{
+				var si = (int)2 * (targetLength / 3);
+				s = s.Substring(0, si) + '\x2026' + s.Substring(s.Length + 1 - targetLength + si);
+			}
+
+			return s;
+		}
 	}
 }

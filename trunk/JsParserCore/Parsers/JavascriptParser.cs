@@ -16,6 +16,12 @@ namespace JsParserCore.Parsers
 	public class JavascriptParser
 	{
 		private CommentsAgregator _comments;
+		private JavascriptParserSettings _settings;
+
+		public JavascriptParser(JavascriptParserSettings settings)
+		{
+			_settings = settings;
+		}
 
 		/// <summary>
 		/// The parse.
@@ -92,6 +98,7 @@ namespace JsParserCore.Parsers
 					var args = StringifyArguments(invexp.Arguments.Arguments);
 					if (!string.IsNullOrEmpty(args))
 					{
+						args = args.Shortenize(_settings.MaxParametersLengthInFunctionChain);
 						alias += "(" + args +")";
 					}
 				}
@@ -203,7 +210,7 @@ namespace JsParserCore.Parsers
 			if (statement is ExpressionStatement)
 			{
 				var exp = statement as ExpressionStatement;
-				ProcessExpression(nodes, exp.Expression, string.Empty);
+				ProcessExpression(nodes, exp.Expression, null);
 				return;
 			}
 			
@@ -270,6 +277,19 @@ namespace JsParserCore.Parsers
 				}
 
 				return;
+			}
+
+			if (statement is TryStatement)
+			{
+				var tstat = statement as TryStatement;
+				if (tstat.Block != null)
+				{
+					ProcessStatement(nodes, tstat.Block);
+				}
+				if (tstat.Catch != null)
+				{
+					ProcessStatement(nodes, tstat.Catch.Handler);
+				}
 			}
 
 			return;
