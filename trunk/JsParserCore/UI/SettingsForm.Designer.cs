@@ -38,34 +38,41 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.taggedFuncLabel6 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.taggedFuncLabel5 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.taggedFuncLabel4 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.taggedFuncLabel3 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.taggedFuncLabel2 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.taggedFuncLabel1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.taggedFuncLabel2 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.taggedFuncLabel3 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.taggedFuncLabel4 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.taggedFuncLabel5 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.taggedFuncLabel6 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -173,6 +180,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button13);
+            this.tabPage2.Controls.Add(this.button14);
+            this.tabPage2.Controls.Add(this.button11);
+            this.tabPage2.Controls.Add(this.button12);
+            this.tabPage2.Controls.Add(this.button10);
+            this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.pictureBox6);
             this.tabPage2.Controls.Add(this.pictureBox5);
             this.tabPage2.Controls.Add(this.pictureBox4);
@@ -199,100 +212,59 @@
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // taggedFuncLabel1
+            // pictureBox6
             // 
-            this.taggedFuncLabel1.AutoSize = true;
-            this.taggedFuncLabel1.Location = new System.Drawing.Point(42, 24);
-            this.taggedFuncLabel1.Name = "taggedFuncLabel1";
-            this.taggedFuncLabel1.Size = new System.Drawing.Size(116, 17);
-            this.taggedFuncLabel1.TabIndex = 0;
-            this.taggedFuncLabel1.Text = "taggedFunction()";
+            this.pictureBox6.Image = global::JsParserCore.Properties.Resources.icon_favourites;
+            this.pictureBox6.Location = new System.Drawing.Point(12, 169);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox6.TabIndex = 17;
+            this.pictureBox6.TabStop = false;
             // 
-            // button3
+            // pictureBox5
             // 
-            this.button3.Location = new System.Drawing.Point(241, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Font";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pictureBox5.Image = global::JsParserCore.Properties.Resources.flag_white;
+            this.pictureBox5.Location = new System.Drawing.Point(12, 24);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox5.TabIndex = 16;
+            this.pictureBox5.TabStop = false;
             // 
-            // taggedFuncLabel2
+            // pictureBox4
             // 
-            this.taggedFuncLabel2.AutoSize = true;
-            this.taggedFuncLabel2.Location = new System.Drawing.Point(42, 53);
-            this.taggedFuncLabel2.Name = "taggedFuncLabel2";
-            this.taggedFuncLabel2.Size = new System.Drawing.Size(116, 17);
-            this.taggedFuncLabel2.TabIndex = 2;
-            this.taggedFuncLabel2.Text = "taggedFunction()";
+            this.pictureBox4.Image = global::JsParserCore.Properties.Resources.flag_orange;
+            this.pictureBox4.Location = new System.Drawing.Point(12, 111);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
             // 
-            // button4
+            // pictureBox3
             // 
-            this.button4.Location = new System.Drawing.Point(241, 50);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Font";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.pictureBox3.Image = global::JsParserCore.Properties.Resources.flag_red;
+            this.pictureBox3.Location = new System.Drawing.Point(12, 140);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
             // 
-            // taggedFuncLabel3
+            // pictureBox2
             // 
-            this.taggedFuncLabel3.AutoSize = true;
-            this.taggedFuncLabel3.Location = new System.Drawing.Point(42, 82);
-            this.taggedFuncLabel3.Name = "taggedFuncLabel3";
-            this.taggedFuncLabel3.Size = new System.Drawing.Size(116, 17);
-            this.taggedFuncLabel3.TabIndex = 4;
-            this.taggedFuncLabel3.Text = "taggedFunction()";
+            this.pictureBox2.Image = global::JsParserCore.Properties.Resources.flag_green;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 82);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
             // 
-            // button5
+            // pictureBox1
             // 
-            this.button5.Location = new System.Drawing.Point(241, 79);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Font";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // taggedFuncLabel4
-            // 
-            this.taggedFuncLabel4.AutoSize = true;
-            this.taggedFuncLabel4.Location = new System.Drawing.Point(42, 111);
-            this.taggedFuncLabel4.Name = "taggedFuncLabel4";
-            this.taggedFuncLabel4.Size = new System.Drawing.Size(116, 17);
-            this.taggedFuncLabel4.TabIndex = 6;
-            this.taggedFuncLabel4.Text = "taggedFunction()";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(241, 108);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Font";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // taggedFuncLabel5
-            // 
-            this.taggedFuncLabel5.AutoSize = true;
-            this.taggedFuncLabel5.Location = new System.Drawing.Point(42, 140);
-            this.taggedFuncLabel5.Name = "taggedFuncLabel5";
-            this.taggedFuncLabel5.Size = new System.Drawing.Size(116, 17);
-            this.taggedFuncLabel5.TabIndex = 8;
-            this.taggedFuncLabel5.Text = "taggedFunction()";
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(241, 137);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Font";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.pictureBox1.Image = global::JsParserCore.Properties.Resources.flag_blue;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 53);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // taggedFuncLabel6
             // 
@@ -313,59 +285,160 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // pictureBox1
+            // taggedFuncLabel5
             // 
-            this.pictureBox1.Image = global::JsParserCore.Properties.Resources.flag_blue;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 53);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.taggedFuncLabel5.AutoSize = true;
+            this.taggedFuncLabel5.Location = new System.Drawing.Point(42, 140);
+            this.taggedFuncLabel5.Name = "taggedFuncLabel5";
+            this.taggedFuncLabel5.Size = new System.Drawing.Size(116, 17);
+            this.taggedFuncLabel5.TabIndex = 8;
+            this.taggedFuncLabel5.Text = "taggedFunction()";
             // 
-            // pictureBox2
+            // button7
             // 
-            this.pictureBox2.Image = global::JsParserCore.Properties.Resources.flag_green;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 82);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
+            this.button7.Location = new System.Drawing.Point(241, 137);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Font";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // pictureBox3
+            // taggedFuncLabel4
             // 
-            this.pictureBox3.Image = global::JsParserCore.Properties.Resources.flag_red;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 140);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox3.TabIndex = 14;
-            this.pictureBox3.TabStop = false;
+            this.taggedFuncLabel4.AutoSize = true;
+            this.taggedFuncLabel4.Location = new System.Drawing.Point(42, 111);
+            this.taggedFuncLabel4.Name = "taggedFuncLabel4";
+            this.taggedFuncLabel4.Size = new System.Drawing.Size(116, 17);
+            this.taggedFuncLabel4.TabIndex = 6;
+            this.taggedFuncLabel4.Text = "taggedFunction()";
             // 
-            // pictureBox4
+            // button6
             // 
-            this.pictureBox4.Image = global::JsParserCore.Properties.Resources.flag_orange;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 111);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox4.TabIndex = 15;
-            this.pictureBox4.TabStop = false;
+            this.button6.Location = new System.Drawing.Point(241, 108);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Font";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // pictureBox5
+            // taggedFuncLabel3
             // 
-            this.pictureBox5.Image = global::JsParserCore.Properties.Resources.flag_white;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 24);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox5.TabIndex = 16;
-            this.pictureBox5.TabStop = false;
+            this.taggedFuncLabel3.AutoSize = true;
+            this.taggedFuncLabel3.Location = new System.Drawing.Point(42, 82);
+            this.taggedFuncLabel3.Name = "taggedFuncLabel3";
+            this.taggedFuncLabel3.Size = new System.Drawing.Size(116, 17);
+            this.taggedFuncLabel3.TabIndex = 4;
+            this.taggedFuncLabel3.Text = "taggedFunction()";
             // 
-            // pictureBox6
+            // button5
             // 
-            this.pictureBox6.Image = global::JsParserCore.Properties.Resources.icon_favourites;
-            this.pictureBox6.Location = new System.Drawing.Point(12, 169);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox6.TabIndex = 17;
-            this.pictureBox6.TabStop = false;
+            this.button5.Location = new System.Drawing.Point(241, 79);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Font";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // taggedFuncLabel2
+            // 
+            this.taggedFuncLabel2.AutoSize = true;
+            this.taggedFuncLabel2.Location = new System.Drawing.Point(42, 53);
+            this.taggedFuncLabel2.Name = "taggedFuncLabel2";
+            this.taggedFuncLabel2.Size = new System.Drawing.Size(116, 17);
+            this.taggedFuncLabel2.TabIndex = 2;
+            this.taggedFuncLabel2.Text = "taggedFunction()";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(241, 50);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Font";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // taggedFuncLabel1
+            // 
+            this.taggedFuncLabel1.AutoSize = true;
+            this.taggedFuncLabel1.Location = new System.Drawing.Point(42, 24);
+            this.taggedFuncLabel1.Name = "taggedFuncLabel1";
+            this.taggedFuncLabel1.Size = new System.Drawing.Size(116, 17);
+            this.taggedFuncLabel1.TabIndex = 0;
+            this.taggedFuncLabel1.Text = "taggedFunction()";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(241, 21);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Font";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(332, 21);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 18;
+            this.button9.Text = "Color";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(332, 50);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 19;
+            this.button10.Text = "Color";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(332, 108);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 21;
+            this.button11.Text = "Color";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(332, 79);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 20;
+            this.button12.Text = "Color";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(332, 166);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 23;
+            this.button13.Text = "Color";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(332, 137);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 22;
+            this.button14.Text = "Color";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // SettingsForm
             // 
@@ -392,12 +465,12 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -433,5 +506,12 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ColorDialog colorDialog1;
 	}
 }
