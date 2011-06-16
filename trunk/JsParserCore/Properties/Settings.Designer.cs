@@ -290,5 +290,29 @@ namespace JsParserCore.Properties {
                 this["taggedFunction6Color"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public int MaxParametersLength {
+            get {
+                return ((int)(this["MaxParametersLength"]));
+            }
+            set {
+                this["MaxParametersLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public int MaxParametersLengthInFunctionChain {
+            get {
+                return ((int)(this["MaxParametersLengthInFunctionChain"]));
+            }
+            set {
+                this["MaxParametersLengthInFunctionChain"] = value;
+            }
+        }
     }
 }

@@ -78,5 +78,11 @@
     <Setting Name="taggedFunction6Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
+    <Setting Name="MaxParametersLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="MaxParametersLengthInFunctionChain" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

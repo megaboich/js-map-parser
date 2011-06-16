@@ -40,6 +40,9 @@ namespace JsParserCore.UI
 			Settings.Default.taggedFunction6Color = taggedFuncLabel6.ForeColor;
 			Settings.Default.taggedFunction6Font = taggedFuncLabel6.Font;
 
+			Settings.Default.MaxParametersLength = Convert.ToInt32(numericUpDownMaxParametersLength.Value);
+			Settings.Default.MaxParametersLengthInFunctionChain = Convert.ToInt32(numericUpDownMaxParametersLengthInFunctionChain.Value);
+
 			Settings.Default.Save();
 			Close();
 		}
@@ -62,6 +65,9 @@ namespace JsParserCore.UI
 			taggedFuncLabel5.Font = Settings.Default.taggedFunction5Font ?? _defaultTreeFont;
 			taggedFuncLabel6.ForeColor = Settings.Default.taggedFunction6Color;
 			taggedFuncLabel6.Font = Settings.Default.taggedFunction6Font ?? _defaultTreeFont;
+
+			numericUpDownMaxParametersLength.Value = Settings.Default.MaxParametersLength;
+			numericUpDownMaxParametersLengthInFunctionChain.Value = Settings.Default.MaxParametersLengthInFunctionChain;
 		}
 
 		private void button2_Click(object sender, EventArgs e)

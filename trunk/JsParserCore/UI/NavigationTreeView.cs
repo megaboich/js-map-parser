@@ -133,7 +133,10 @@ namespace JsParserCore.UI
 
 			code = CodeTransformer.KillAspNetTags(code);
 			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
-			var nodes = (new JavascriptParser(new JavascriptParserSettings { MaxParametersLengthInFunctionChain = 25 })).Parse(codeChunks);
+			var parserSettings = new JavascriptParserSettings();
+			parserSettings.MaxParametersLength = Settings.MaxParametersLength;
+			parserSettings.MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain;
+			var nodes = (new JavascriptParser( parserSettings )).Parse(codeChunks);
 
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
@@ -702,6 +705,7 @@ namespace JsParserCore.UI
 		{
 			SettingsForm sf = new SettingsForm(treeView1.Font);
 			sf.ShowDialog();
+			RefreshTree();
 		}
 
 		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

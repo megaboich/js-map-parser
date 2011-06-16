@@ -18,8 +18,11 @@ namespace JsParserCore.Parsers
 		public JavascriptParserSettings()
 		{
 			MaxParametersLengthInFunctionChain = 25;
+			MaxParametersLength = 25;
 		}
 
 		public int MaxParametersLengthInFunctionChain { get; set; }
+
+		public int MaxParametersLength { get; set; }
 	}
 }

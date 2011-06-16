@@ -307,10 +307,11 @@ namespace JsParserCore.Parsers
 					: string.Empty);
 
 			var pars = string.Join(
-				", ",
+				",",
 				((IEnumerable<Parameter>) function.Parameters)
 				.Select(p => p.Name != null ? p.Name.Spelling : string.Empty)
 				.ToArray());
+			pars = pars.Shortenize(_settings.MaxParametersLength);
 
 			var codeNode = new CodeNode
 			{
