@@ -39,7 +39,7 @@ namespace JsParserCore.UI
 			}
 		}
 
-		public bool IsNoteExpanded(CustomTreeNode node)
+		public bool? IsNoteExpanded(CustomTreeNode node)
 		{
 			var storage = ActiveStorage;
 			var nodeKey = GetNodeKey(node);
@@ -48,7 +48,7 @@ namespace JsParserCore.UI
 				return storage[nodeKey];
 			}
 
-			return false;
+			return null;
 		}
 
 		public void SetExpandedState(CustomTreeNode node)

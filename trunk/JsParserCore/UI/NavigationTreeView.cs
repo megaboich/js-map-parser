@@ -32,7 +32,6 @@ namespace JsParserCore.UI
 		private int _lastActiveColumn;
 		private bool _treeRefreshing = false;
 		private ExpandedNodesManager _expandedNodes = new ExpandedNodesManager();
-		private bool _firstLoadOfDocument = false;
 
 		/// <summary>
 		/// Gets Code.
@@ -103,7 +102,6 @@ namespace JsParserCore.UI
 			}
 
 			var docName = Path.Combine(Code.Path, Code.Name);
-			_firstLoadOfDocument = !_expandedNodes.HasDocumentInStorage(docName);
 			if (_loadedDocName != docName)
 			{
 				_loadedDocName = docName;
@@ -302,14 +300,20 @@ namespace JsParserCore.UI
 					FillNodes(item, treeNode.Nodes, level + 1, functions);
 				}
 
-				if (_firstLoadOfDocument && Settings.AutoExpandAll)
+				var isExpanded = _expandedNodes.IsNoteExpanded(treeNode);
+				if (isExpanded.HasValue)
 				{
-					treeNode.Expand();
+					if (isExpanded.Value)
+					{
+						treeNode.Expand();
+					}
 				}
-
-				if (_expandedNodes.IsNoteExpanded(treeNode))
+				else
 				{
-					treeNode.Expand();
+					if (Settings.AutoExpandAll)
+					{
+						treeNode.Expand();
+					}
 				}
 			}
 		}
