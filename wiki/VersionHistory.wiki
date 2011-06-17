@@ -1,4 +1,5 @@
 #summary Version History of Javascript Parser addin.
+#labels Featured
 
 == Release 2.0 ==
 
@@ -19,7 +20,14 @@
   # Automatic track active function while working in text editor.
   # Various bug fixes. (please check Issues page)
 
-=== Release 3.1 http://js-addin.googlecode.com/svn/site/new-icon-small.gif ===
+=== Release 3.1 ===
   # Option for automatically Expand\Collapse nodes in tree. [http://js-addin.googlecode.com/svn/site/screen_expandcollapseoption.png screenshot]
   # Option for automatically Show\Hide addin tool window. [http://js-addin.googlecode.com/svn/site/screen_optionsdialog.png screenshot]
   # Various bug fixes. (please check Issues page)
+
+=== http://js-addin.googlecode.com/svn/site/hot.gif Release 3.2 ===
+  # Configurable font and color for marks. http://js-addin.googlecode.com/svn/site/MarksFontStyle.png
+  # Add parameters for function chains - for jQuery selectors it's very useful. http://js-addin.googlecode.com/svn/site/SettingsUI.png
+  # Fix Try-Catch block were not analyzed.
+  # Fix unexpected collapse of node when change signature of function.
+  # Other fixes (please check Issues page)
