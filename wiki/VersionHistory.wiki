@@ -26,9 +26,8 @@
   # Various bug fixes. (please check Issues page)
 
 === http://js-addin.googlecode.com/svn/site/hot.gif Release 3.2 ===
-  # Configurable font and color for marks.
+  # Configurable font and color for marks. Configuration is available in Settings dialog. [http://js-addin.googlecode.com/svn/site/SettingsUI.png screenshot]
     http://js-addin.googlecode.com/svn/site/MarksFontStyle.png
-    Configuration is available in Settings dialog. [http://js-addin.googlecode.com/svn/site/SettingsUI.png screenshot]
   # Add parameters for function chains - for jQuery selectors it's very useful. 
     http://js-addin.googlecode.com/svn/site/DisplayParametersInFunctionChain.png
   # Fix Try-Catch block were not analyzed.
