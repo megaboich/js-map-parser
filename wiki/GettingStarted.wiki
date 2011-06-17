@@ -1,3 +1,4 @@
+#labels Featured
 == Javascript Parser Extension for Visual Studio ==
 
 To start using *Javascript Parser Extension* follow steps:
