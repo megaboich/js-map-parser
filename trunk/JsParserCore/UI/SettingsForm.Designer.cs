@@ -38,6 +38,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.numericUpDownMaxParametersLengthInFunctionChain = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMaxParametersLength = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -66,12 +69,11 @@
             this.taggedFuncLabel6 = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDownMaxParametersLength = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxParametersLengthInFunctionChain = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -79,8 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -201,6 +201,59 @@
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // numericUpDownMaxParametersLengthInFunctionChain
+            // 
+            this.numericUpDownMaxParametersLengthInFunctionChain.Location = new System.Drawing.Point(305, 264);
+            this.numericUpDownMaxParametersLengthInFunctionChain.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLengthInFunctionChain.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLengthInFunctionChain.Name = "numericUpDownMaxParametersLengthInFunctionChain";
+            this.numericUpDownMaxParametersLengthInFunctionChain.Size = new System.Drawing.Size(59, 22);
+            this.numericUpDownMaxParametersLengthInFunctionChain.TabIndex = 28;
+            this.numericUpDownMaxParametersLengthInFunctionChain.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownMaxParametersLength
+            // 
+            this.numericUpDownMaxParametersLength.Location = new System.Drawing.Point(305, 235);
+            this.numericUpDownMaxParametersLength.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLength.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLength.Name = "numericUpDownMaxParametersLength";
+            this.numericUpDownMaxParametersLength.Size = new System.Drawing.Size(59, 22);
+            this.numericUpDownMaxParametersLength.TabIndex = 27;
+            this.numericUpDownMaxParametersLength.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 266);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(279, 17);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Max. Parameters Length In Function Chain:";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -241,7 +294,7 @@
             this.groupBox1.Size = new System.Drawing.Size(580, 217);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Text style of market items in tree";
+            this.groupBox1.Text = "Text style of marked items in tree";
             // 
             // pictureBox5
             // 
@@ -471,59 +524,6 @@
             this.taggedFuncLabel6.TabIndex = 10;
             this.taggedFuncLabel6.Text = "taggedFunction()";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 266);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(279, 17);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Max. Parameters Length In Function Chain:";
-            // 
-            // numericUpDownMaxParametersLength
-            // 
-            this.numericUpDownMaxParametersLength.Location = new System.Drawing.Point(305, 235);
-            this.numericUpDownMaxParametersLength.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLength.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLength.Name = "numericUpDownMaxParametersLength";
-            this.numericUpDownMaxParametersLength.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDownMaxParametersLength.TabIndex = 27;
-            this.numericUpDownMaxParametersLength.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownMaxParametersLengthInFunctionChain
-            // 
-            this.numericUpDownMaxParametersLengthInFunctionChain.Location = new System.Drawing.Point(305, 264);
-            this.numericUpDownMaxParametersLengthInFunctionChain.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLengthInFunctionChain.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLengthInFunctionChain.Name = "numericUpDownMaxParametersLengthInFunctionChain";
-            this.numericUpDownMaxParametersLengthInFunctionChain.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDownMaxParametersLengthInFunctionChain.TabIndex = 28;
-            this.numericUpDownMaxParametersLengthInFunctionChain.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.button1;
@@ -549,6 +549,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -557,8 +559,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).EndInit();
             this.ResumeLayout(false);
 
 		}

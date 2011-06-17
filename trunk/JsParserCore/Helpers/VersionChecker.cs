@@ -8,6 +8,7 @@ using System.Xml;
 using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace JsParserCore.Helpers
 {
@@ -61,7 +62,7 @@ namespace JsParserCore.Helpers
 			if (versionNode != null)
 			{
 				float version = 0;
-				if (float.TryParse(versionNode.InnerText, out version))
+				if (float.TryParse(versionNode.InnerText, NumberStyles.Float, CultureInfo.InvariantCulture, out version))
 				{
 					var versionInfos = versionNode.SelectNodes("//ReleaseInfo");
 					if (versionInfos != null)
