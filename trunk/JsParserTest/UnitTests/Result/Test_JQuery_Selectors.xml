@@ -5,19 +5,22 @@
       <Item Text="$(document).ready.?()" Line="3" EndLine="5" EndColumn="1" Pos="18" Opcode="Function" Comment="//Attach on document ready" />
     </Hierachy>
     <Hierachy>
-      <Item Text="AttachEvents()" Line="9" EndLine="25" EndColumn="1" Pos="0" Opcode="Function" Comment="// Comment to funtion 1&#xD;&#xA;// This function attaches events to various elements on the page." />
+      <Item Text="AttachEvents()" Line="9" EndLine="29" EndColumn="1" Pos="0" Opcode="Function" Comment="// Comment to funtion 1&#xD;&#xA;// This function attaches events to various elements on the page." />
       <Childrens>
         <Hierachy>
           <Item Text="$('#btnSubmit').click.?()" Line="10" EndLine="12" EndColumn="5" Pos="26" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$('#btnBack').click.?()" Line="14" EndLine="16" EndColumn="5" Pos="24" Opcode="Function" />
+          <Item Text="$('#btnSearchWithL…rIsHere').click.?()" Line="14" EndLine="16" EndColumn="5" Pos="73" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$('.btnBack').each.?(index, elt)" Line="18" EndLine="20" EndColumn="5" Pos="23" Opcode="Function" />
+          <Item Text="$('#btnBack').click.?()" Line="18" EndLine="20" EndColumn="5" Pos="24" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$('.btnBack').eq(0).bind('mousedown').?()" Line="22" EndLine="24" EndColumn="5" Pos="42" Opcode="Function" />
+          <Item Text="$('.btnBack').each.?(index,elt)" Line="22" EndLine="24" EndColumn="5" Pos="23" Opcode="Function" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="$('.btnBack').eq(0).bind('mousedown').?()" Line="26" EndLine="28" EndColumn="5" Pos="42" Opcode="Function" />
         </Hierachy>
       </Childrens>
     </Hierachy>

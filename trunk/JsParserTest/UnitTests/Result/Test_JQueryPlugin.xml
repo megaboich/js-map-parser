@@ -8,7 +8,7 @@
           <Item Text="$.fn.extend.?" Line="7" EndLine="26" EndColumn="2" Pos="13" Opcode="ObjectLiteral" />
           <Childrens>
             <Hierachy>
-              <Item Text="autocomplete(urlOrData, options)" Line="8" EndLine="17" EndColumn="3" Pos="16" Opcode="Function" />
+              <Item Text="autocomplete(urlOrData,options)" Line="8" EndLine="17" EndColumn="3" Pos="16" Opcode="Function" />
               <Childrens>
                 <Hierachy>
                   <Item Text="options.highlight(value)" Line="11" EndLine="11" EndColumn="77" Pos="44" Opcode="Function" Comment="// if highlight is set to false, replace it with a do-nothing function" />
@@ -27,7 +27,7 @@
           </Childrens>
         </Hierachy>
         <Hierachy>
-          <Item Text="$.Autocompleter(input, options)" Line="28" EndLine="76" EndColumn="2" Pos="19" Opcode="Function" />
+          <Item Text="$.Autocompleter(input,options)" Line="28" EndLine="76" EndColumn="2" Pos="19" Opcode="Function" />
           <Childrens>
             <Hierachy>
               <Item Text="$.bind(&quot;submit.autocomplete&quot;).?()" Line="31" EndLine="38" EndColumn="3" Pos="63" Opcode="Function" Comment="// prevent form submit in opera when selecting with return key" />
@@ -62,7 +62,7 @@
               <Item Text="formatMatch(row)" Line="81" EndLine="81" EndColumn="47" Pos="15" Opcode="Function" />
             </Hierachy>
             <Hierachy>
-              <Item Text="highlight(value, term)" Line="82" EndLine="85" EndColumn="3" Pos="13" Opcode="Function" />
+              <Item Text="highlight(value,term)" Line="82" EndLine="85" EndColumn="3" Pos="13" Opcode="Function" />
             </Hierachy>
           </Childrens>
         </Hierachy>
@@ -70,13 +70,13 @@
           <Item Text="$.Autocompleter.Cache(options)" Line="90" EndLine="130" EndColumn="2" Pos="25" Opcode="Function" />
           <Childrens>
             <Hierachy>
-              <Item Text="matchSubset(s, sub)" Line="96" EndLine="99" EndColumn="3" Pos="2" Opcode="Function" />
+              <Item Text="matchSubset(s,sub)" Line="96" EndLine="99" EndColumn="3" Pos="2" Opcode="Function" />
             </Hierachy>
             <Hierachy>
               <Item Text="populate(excludeDataSet)" Line="101" EndLine="113" EndColumn="3" Pos="2" Opcode="Function" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="$.each(stMatchSets).?(i, value)" Line="106" EndLine="112" EndColumn="4" Pos="23" Opcode="Function" Comment="// add the data items to the cache" />
+                  <Item Text="$.each(stMatchSets).?(i,value)" Line="106" EndLine="112" EndColumn="4" Pos="23" Opcode="Function" Comment="// add the data items to the cache" />
                 </Hierachy>
               </Childrens>
             </Hierachy>
@@ -87,7 +87,7 @@
               <Item Text="return" Line="121" EndLine="129" EndColumn="3" Pos="9" Opcode="ObjectLiteral" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="load(q, excludeDataSet)" Line="125" EndLine="128" EndColumn="4" Pos="9" Opcode="Function" />
+                  <Item Text="load(q,excludeDataSet)" Line="125" EndLine="128" EndColumn="4" Pos="9" Opcode="Function" />
                 </Hierachy>
               </Childrens>
             </Hierachy>

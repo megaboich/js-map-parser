@@ -1,20 +1,20 @@
 <Hierachy>
-  <Item Text="All" Line="0" />
+  <Item Text="All" Line="0" EndLine="0" EndColumn="0" Pos="0" />
   <Childrens>
     <Hierachy>
-      <Item Text="Class2(param1, param2)" Line="3" Opcode="Function" />
+      <Item Text="Class2(param1,param2)" Line="3" EndLine="26" EndColumn="1" Pos="0" Opcode="Function" Comment="// This is sample of JS class." />
       <Childrens>
         <Hierachy>
-          <Item Text="Method1()" Line="9" Opcode="Function" />
+          <Item Text="Method1()" Line="9" EndLine="11" EndColumn="2" Pos="16" Opcode="Function" Comment="// Method1" />
         </Hierachy>
         <Hierachy>
-          <Item Text="Method2(param1)" Line="14" Opcode="Function" />
+          <Item Text="Method2(param1)" Line="14" EndLine="16" EndColumn="2" Pos="16" Opcode="Function" Comment="// Method2" />
         </Hierachy>
         <Hierachy>
-          <Item Text="Method3(param1, param2)" Line="19" Opcode="Function" />
+          <Item Text="Method3(param1,param2)" Line="19" EndLine="25" EndColumn="2" Pos="16" Opcode="Function" Comment="// Method3" />
           <Childrens>
             <Hierachy>
-              <Item Text="delegate()" Line="22" Opcode="Function" />
+              <Item Text="delegate()" Line="22" EndLine="24" EndColumn="3" Pos="17" Opcode="Function" Comment="//delegate method" />
             </Hierachy>
           </Childrens>
         </Hierachy>

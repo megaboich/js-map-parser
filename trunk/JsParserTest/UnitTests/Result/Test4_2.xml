@@ -1,23 +1,23 @@
 <Hierachy>
-  <Item Text="All" Line="0" />
+  <Item Text="All" Line="0" EndLine="0" EndColumn="0" Pos="0" />
   <Childrens>
     <Hierachy>
-      <Item Text="ItemFactory(param1, param2)" Line="3" Opcode="Function" />
+      <Item Text="ItemFactory(param1,param2)" Line="3" EndLine="20" EndColumn="1" Pos="0" Opcode="Function" Comment="// This is sample of JS class." />
       <Childrens>
         <Hierachy>
-          <Item Text="item" Line="6" Opcode="ObjectLiteral" />
+          <Item Text="item" Line="6" EndLine="18" EndColumn="2" Pos="8" Opcode="ObjectLiteral" />
           <Childrens>
             <Hierachy>
-              <Item Text="method1()" Line="9" Opcode="Function" />
+              <Item Text="method1()" Line="9" EndLine="9" EndColumn="36" Pos="22" Opcode="Function" Comment="/*method1*/" />
             </Hierachy>
             <Hierachy>
-              <Item Text="method2(p)" Line="10" Opcode="Function" />
+              <Item Text="method2(p)" Line="10" EndLine="10" EndColumn="37" Pos="22" Opcode="Function" Comment="/*method2*/" />
             </Hierachy>
             <Hierachy>
-              <Item Text="method3(p1, p2)" Line="11" Opcode="Function" />
+              <Item Text="method3(p1,p2)" Line="11" EndLine="17" EndColumn="3" Pos="22" Opcode="Function" Comment="/*method3*/" />
               <Childrens>
                 <Hierachy>
-                  <Item Text="delegate()" Line="14" Opcode="Function" />
+                  <Item Text="delegate()" Line="14" EndLine="16" EndColumn="4" Pos="18" Opcode="Function" Comment="//delegate method" />
                 </Hierachy>
               </Childrens>
             </Hierachy>
