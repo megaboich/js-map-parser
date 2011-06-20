@@ -14,4 +14,12 @@
 		<info text="	+ Add option Show\Hide automatically" />
 		<info text="	+ Fix bugs and improve performance" />
 	</ReleaseInfo>
+	<ReleaseInfo version="3.2">
+		<info text="Version 3.2" />
+		<info text="	+ Configurable font and color for marks." />
+		<info text="	+ Add parameters for function chains - for jQuery selectors it's very useful." />
+		<info text="	+ Fix Try-Catch block were not analyzed." />
+		<info text="	+ Fix unexpected collapse of node when change signature of function." />
+		<info text="	+ Fix wrong version check on some non-english locales." />
+	</ReleaseInfo>
 </Version>
