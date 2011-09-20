@@ -136,7 +136,25 @@ namespace JsParserCore.UI
 			var parserSettings = new JavascriptParserSettings();
 			parserSettings.MaxParametersLength = Settings.MaxParametersLength;
 			parserSettings.MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain;
-			var nodes = (new JavascriptParser( parserSettings )).Parse(codeChunks);
+			var result = (new JavascriptParser( parserSettings )).Parse(codeChunks);
+			var nodes = result.Nodes;
+
+			if (result.Errors.Count > 0)
+			{
+				btnErrorDiagnosis.Visible = true;
+				btnErrorSeparator.Visible = true;
+				btnErrorDiagnosis.DropDownItems.Clear();
+				result.Errors.ForEach(er =>
+				{
+					var item = btnErrorDiagnosis.DropDownItems.Add(er.Message.SplitWordsByCamelCase() + ".\r\nLine: " + er.CodeLine, null, ErrorDiagnosisClick);
+					item.Tag = er;
+				});
+			}
+			else
+			{
+				btnErrorDiagnosis.Visible = false;
+				btnErrorSeparator.Visible = false;
+			}
 
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
@@ -567,6 +585,17 @@ namespace JsParserCore.UI
 		{
 			_marksManager.SetMark("R", (CustomTreeNode)treeView1.SelectedNode);
 			treeView1.Refresh();
+		}
+
+		private void ErrorDiagnosisClick(object sender, EventArgs e)
+		{
+			var errorMessage = (ErrorMessage)((ToolStripItem)sender).Tag;
+			try
+			{
+				Code.SelectionMoveToLineAndOffset(errorMessage.CodeLine, errorMessage.Position + 1);
+				Code.SetFocus();
+			}
+			catch { }
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)

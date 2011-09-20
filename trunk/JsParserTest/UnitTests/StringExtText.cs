@@ -31,5 +31,24 @@ namespace JsParserTest.UnitTests
             Trace.WriteLine(s + " => " + r);
             Assert.AreEqual(expectedLen, r.Length);
         }
+
+        private void TracingAssert(string expected, string actual)
+        {
+            Trace.WriteLine("Comparing `" + expected + "` and `" + actual + "`");
+            Assert.AreEqual(expected, actual, "Not equal");
+        }
+
+        [Test]
+        public void TestSplitWordsByCamelCase()
+        {
+            TracingAssert("This Words Should Be Separated", "ThisWordsShouldBeSeparated".SplitWordsByCamelCase());
+            TracingAssert("", "".SplitWordsByCamelCase());
+            string test = null;
+            TracingAssert(null, test.SplitWordsByCamelCase());
+            TracingAssert("1", "1".SplitWordsByCamelCase());
+            TracingAssert("nothing", "nothing".SplitWordsByCamelCase());
+            TracingAssert("A B C", "ABC".SplitWordsByCamelCase());
+            TracingAssert("A", "A".SplitWordsByCamelCase());
+        }
     }
 }

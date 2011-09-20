@@ -39,7 +39,7 @@ namespace UnitTests
 
 			Directory.CreateDirectory("C:\\outxml");
 
-			XmlDocument xml = new XmlDocument() {InnerXml = result.Serialize()};
+			XmlDocument xml = new XmlDocument() {InnerXml = result.Nodes.Serialize()};
 			xml.Save("C:\\outxml\\" + resultName);
 
 			var resxml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);

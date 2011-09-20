@@ -32,9 +32,10 @@ namespace JsParserCore.Parsers
 		/// <returns>
 		/// Hierarhy with code structure.
 		/// </returns>
-		public Hierachy<CodeNode> Parse(IEnumerable<CodeChunk> codeChunks)
+		public JSParserResult Parse(IEnumerable<CodeChunk> codeChunks)
 		{
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
+			var errors = new List<ErrorMessage>();
 			foreach (var codeChunk in codeChunks)
 			{
 				try
@@ -44,6 +45,14 @@ namespace JsParserCore.Parsers
 					var comments = new List<Comment>();
 					var bindingInfo = new BindingInfo();
 					var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
+
+					errors = parser.Diagnostics.Select(d => new ErrorMessage
+					{
+						Message = d.Code.ToString(),
+						CodeLine = d.Location.StartLine,
+						Position = d.Location.StartColumn
+					}).ToList();
+
 					_comments = new CommentsAgregator(comments, code);
 				
 					CreateNodes(nodes, sourceElements);
@@ -53,7 +62,14 @@ namespace JsParserCore.Parsers
 					Trace.WriteLine(ex.ToString());
 				}
 			}
-			return nodes;
+
+			var result = new JSParserResult
+			{
+				Nodes = nodes,
+				Errors = errors
+			};
+
+			return result;
 		}
 
 		private void CreateNodes<ElementType, ParentType>(Hierachy<CodeNode> nodes, DList<ElementType, ParentType> statements)
