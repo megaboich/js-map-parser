@@ -622,15 +622,28 @@ namespace JsParserCore.UI
 
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
 		{
-			var tw = Convert.ToInt32(Math.Round(this.CreateGraphics().MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
+			splitContainer1.Left = 0;
+			splitContainer1.Top = 25;
+			splitContainer1.Width = this.ClientSize.Width;
+			splitContainer1.Height = this.ClientSize.Height - 25;
+		}
+
+		private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
+		{
+			var tw = 0;
+			using (var g = this.CreateGraphics())
+			{
+				tw = Convert.ToInt32(Math.Round(g.MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
+			}
+			
 			treeView1.Left = Settings.ShowLineNumbersEnabled ? tw : 0;
-			treeView1.Top = 25;
-			treeView1.Width = this.ClientSize.Width - treeView1.Left;
-			treeView1.Height = this.ClientSize.Height - treeView1.Top;
+			treeView1.Top = 0;
+			treeView1.Width = splitContainer1.Panel1.ClientSize.Width - treeView1.Left;
+			treeView1.Height = splitContainer1.Panel1.ClientSize.Height - treeView1.Top;
 			panelLinesNumbers.Left = 0;
 			panelLinesNumbers.Width = tw;
-			panelLinesNumbers.Top = 25;
-			panelLinesNumbers.Height = treeView1.Height;
+			panelLinesNumbers.Top = 0;
+			panelLinesNumbers.Height = splitContainer1.Panel1.ClientSize.Height;
 			panelLinesNumbers.Visible = Settings.ShowLineNumbersEnabled;
 		}
 
