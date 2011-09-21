@@ -146,7 +146,7 @@ namespace JsParserCore.UI
 				btnErrorDiagnosis.DropDownItems.Clear();
 				result.Errors.ForEach(er =>
 				{
-					var item = btnErrorDiagnosis.DropDownItems.Add(er.Message.SplitWordsByCamelCase() + ".\r\nLine: " + er.CodeLine, null, ErrorDiagnosisClick);
+					var item = btnErrorDiagnosis.DropDownItems.Add(er.Message.SplitWordsByCamelCase() + ".\r\nLine: " + er.StartLine, null, ErrorDiagnosisClick);
 					item.Tag = er;
 				});
 			}
@@ -155,6 +155,27 @@ namespace JsParserCore.UI
 				btnErrorDiagnosis.Visible = false;
 				btnErrorSeparator.Visible = false;
 			}
+
+			taskListListView.BeginUpdate();
+			taskListListView.Items.Clear();
+			if (result.TaskList.Count > 0)
+			{
+				int i = 0;
+				result.TaskList.ForEach(t =>
+				{
+					++i;
+					var item = new ListViewItem(new[] { i.ToString(), t.Description, t.StartLine.ToString() });
+					item.Tag = t;
+					taskListListView.Items.Add(item);
+				});
+
+				splitContainer1.Panel2Collapsed = false;
+			}
+			else
+			{
+				splitContainer1.Panel2Collapsed = true;
+			}
+			taskListListView.EndUpdate();
 
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
@@ -592,10 +613,24 @@ namespace JsParserCore.UI
 			var errorMessage = (ErrorMessage)((ToolStripItem)sender).Tag;
 			try
 			{
-				Code.SelectionMoveToLineAndOffset(errorMessage.CodeLine, errorMessage.Position + 1);
+				Code.SelectionMoveToLineAndOffset(errorMessage.StartLine, errorMessage.StartColumn + 1);
 				Code.SetFocus();
 			}
 			catch { }
+		}
+
+		private void TaskListItemClick(object sender, EventArgs e)
+		{
+			if (taskListListView.SelectedItems.Count > 0)
+			{
+				var taskListItem = (TaskListItem)(taskListListView.SelectedItems[0]).Tag;
+				try
+				{
+					Code.SelectionMoveToLineAndOffset(taskListItem.StartLine, taskListItem.StartColumn + 1);
+					Code.SetFocus();
+				}
+				catch { }
+			}
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)

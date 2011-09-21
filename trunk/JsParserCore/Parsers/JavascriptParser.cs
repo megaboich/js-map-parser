@@ -35,7 +35,8 @@ namespace JsParserCore.Parsers
 		public JSParserResult Parse(IEnumerable<CodeChunk> codeChunks)
 		{
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
-			var errors = new List<ErrorMessage>();
+			List<ErrorMessage> errors = null;
+			List<TaskListItem> taskList = null;
 			foreach (var codeChunk in codeChunks)
 			{
 				try
@@ -49,24 +50,29 @@ namespace JsParserCore.Parsers
 					errors = parser.Diagnostics.Select(d => new ErrorMessage
 					{
 						Message = d.Code.ToString(),
-						CodeLine = d.Location.StartLine,
-						Position = d.Location.StartColumn
+						StartLine = d.Location.StartLine,
+						StartColumn = d.Location.StartColumn
 					}).ToList();
 
 					_comments = new CommentsAgregator(comments, code);
 				
 					CreateNodes(nodes, sourceElements);
+
+					taskList = TaskListAggregator.GetTaskList(_comments.Comments).ToList();
 				}
 				catch (Exception ex)
 				{
 					Trace.WriteLine(ex.ToString());
+					errors = new List<ErrorMessage>();
+					taskList = new List<TaskListItem>();
 				}
 			}
 
 			var result = new JSParserResult
 			{
 				Nodes = nodes,
-				Errors = errors
+				Errors = errors,
+				TaskList = taskList,
 			};
 
 			return result;

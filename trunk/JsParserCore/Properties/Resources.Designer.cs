@@ -144,6 +144,13 @@ namespace JsParserCore.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap task_List {
+            get {
+                object obj = ResourceManager.GetObject("task_List", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap tree {
             get {
                 object obj = ResourceManager.GetObject("tree", resourceCulture);

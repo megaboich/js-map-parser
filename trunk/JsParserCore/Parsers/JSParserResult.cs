@@ -12,14 +12,16 @@ namespace JsParserCore.Parsers
         public Hierachy<CodeNode> Nodes { get; set; }
 
         public List<ErrorMessage> Errors { get; set; }
+
+        public List<TaskListItem> TaskList { get; set; }
     }
 
     public class ErrorMessage
     {
         public string Message { get; set; }
 
-        public int CodeLine { get; set; }
+        public int StartLine { get; set; }
 
-        public int Position { get; set; }
+        public int StartColumn { get; set; }
     }
 }

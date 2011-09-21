@@ -67,6 +67,8 @@
     <Compile Include="Parsers\JavascriptParser.cs" />
     <Compile Include="Parsers\JSParserExtensions.cs" />
     <Compile Include="Parsers\JSParserResult.cs" />
+    <Compile Include="Parsers\TaskListAggregator.cs" />
+    <Compile Include="Parsers\TaskListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -125,6 +127,7 @@
     <None Include="Resources\list_settings.gif" />
     <Content Include="Resources\refresh.gif" />
     <Content Include="Resources\SortAZ.png" />
+    <None Include="Resources\task_List.png" />
     <Content Include="Resources\tree.png" />
     <Content Include="Resources\type.png" />
     <Content Include="Resources\undefined.png" />

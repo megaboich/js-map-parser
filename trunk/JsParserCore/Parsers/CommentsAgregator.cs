@@ -11,6 +11,14 @@ namespace JsParserCore.Parsers
 		private List<CustomComment> _comments = new List<CustomComment>();
 		private string[] _code;
 
+		public IEnumerable<CustomComment> Comments
+		{
+			get
+			{
+				return _comments.AsReadOnly();
+			}
+		}
+
 		public CommentsAgregator(List<Comment> comments, string[] code)
 		{
 			_code = code;

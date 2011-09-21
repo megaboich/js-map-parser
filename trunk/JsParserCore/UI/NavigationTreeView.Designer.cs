@@ -69,18 +69,20 @@ namespace JsParserCore.UI
             this.lbDocName = new System.Windows.Forms.ToolStripLabel();
             this.panelLinesNumbers = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.TaskListListView = new System.Windows.Forms.ListView();
+            this.taskListListView = new System.Windows.Forms.ListView();
             this.indexToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -104,14 +106,14 @@ namespace JsParserCore.UI
             this.resetLabelToolStripMenuItem,
             this.resetAllLabelsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(178, 202);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenuItem6.Image = global::JsParserCore.Properties.Resources.flag_white;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 24);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem6.Text = "White mark";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
@@ -120,7 +122,7 @@ namespace JsParserCore.UI
             this.toolStripMenuItem5.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenuItem5.Image = global::JsParserCore.Properties.Resources.flag_green;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 24);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem5.Text = "Green mark";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -129,7 +131,7 @@ namespace JsParserCore.UI
             this.toolStripMenuItem4.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenuItem4.Image = global::JsParserCore.Properties.Resources.flag_blue;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 24);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem4.Text = "Blue mark";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
@@ -138,7 +140,7 @@ namespace JsParserCore.UI
             this.toolStripMenuItem3.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenuItem3.Image = global::JsParserCore.Properties.Resources.flag_orange;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 24);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "Orange mark";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -147,7 +149,7 @@ namespace JsParserCore.UI
             this.toolStripMenuItem2.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripMenuItem2.Image = global::JsParserCore.Properties.Resources.flag_red;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = "Red mark";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -156,26 +158,26 @@ namespace JsParserCore.UI
             this.setLabelToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.setLabelToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.icon_favourites;
             this.setLabelToolStripMenuItem.Name = "setLabelToolStripMenuItem";
-            this.setLabelToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.setLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.setLabelToolStripMenuItem.Text = "Star mark";
             this.setLabelToolStripMenuItem.Click += new System.EventHandler(this.setLabelToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // resetLabelToolStripMenuItem
             // 
             this.resetLabelToolStripMenuItem.Name = "resetLabelToolStripMenuItem";
-            this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.resetLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.resetLabelToolStripMenuItem.Text = "Reset mark";
             this.resetLabelToolStripMenuItem.Click += new System.EventHandler(this.resetLabelToolStripMenuItem_Click);
             // 
             // resetAllLabelsToolStripMenuItem
             // 
             this.resetAllLabelsToolStripMenuItem.Name = "resetAllLabelsToolStripMenuItem";
-            this.resetAllLabelsToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.resetAllLabelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.resetAllLabelsToolStripMenuItem.Text = "Reset all marks";
             this.resetAllLabelsToolStripMenuItem.Click += new System.EventHandler(this.resetAllLabelsToolStripMenuItem_Click);
             // 
@@ -202,7 +204,7 @@ namespace JsParserCore.UI
             this.lbDocName});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(328, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(246, 25);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -226,7 +228,7 @@ namespace JsParserCore.UI
             // 
             this.showHierarhyToolStripMenuItem.CheckOnClick = true;
             this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
-            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.showHierarhyToolStripMenuItem.Text = "Show hierarchy";
             this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
             // 
@@ -234,26 +236,26 @@ namespace JsParserCore.UI
             // 
             this.expandAllByDefaultToolStripMenuItem.CheckOnClick = true;
             this.expandAllByDefaultToolStripMenuItem.Name = "expandAllByDefaultToolStripMenuItem";
-            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.expandAllByDefaultToolStripMenuItem.Text = "Expand all by default";
             this.expandAllByDefaultToolStripMenuItem.Click += new System.EventHandler(this.expandAllByDefaultToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(215, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 6);
             // 
             // expandAllToolStripMenuItem
             // 
             this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
-            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.expandAllToolStripMenuItem.Text = "Expand all nodes";
             this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
             // 
             // collapseAllNodesToolStripMenuItem
             // 
             this.collapseAllNodesToolStripMenuItem.Name = "collapseAllNodesToolStripMenuItem";
-            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(218, 24);
+            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.collapseAllNodesToolStripMenuItem.Text = "Collapse all nodes";
             this.collapseAllNodesToolStripMenuItem.Click += new System.EventHandler(this.collapseAllNodesToolStripMenuItem_Click);
             // 
@@ -291,7 +293,7 @@ namespace JsParserCore.UI
             // 
             this.btnShowLineNumbers.CheckOnClick = true;
             this.btnShowLineNumbers.Name = "btnShowLineNumbers";
-            this.btnShowLineNumbers.Size = new System.Drawing.Size(203, 24);
+            this.btnShowLineNumbers.Size = new System.Drawing.Size(175, 22);
             this.btnShowLineNumbers.Text = "Show line numbers";
             this.btnShowLineNumbers.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
             // 
@@ -299,14 +301,14 @@ namespace JsParserCore.UI
             // 
             this.btnFilterByMarks.CheckOnClick = true;
             this.btnFilterByMarks.Name = "btnFilterByMarks";
-            this.btnFilterByMarks.Size = new System.Drawing.Size(203, 24);
+            this.btnFilterByMarks.Size = new System.Drawing.Size(175, 22);
             this.btnFilterByMarks.Text = "Filter by marks";
             this.btnFilterByMarks.Click += new System.EventHandler(this.btnFilterByMarks_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(203, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.settingsToolStripMenuItem.Text = "Settings...";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -359,15 +361,14 @@ namespace JsParserCore.UI
             // lbDocName
             // 
             this.lbDocName.Name = "lbDocName";
-            this.lbDocName.Size = new System.Drawing.Size(33, 22);
+            this.lbDocName.Size = new System.Drawing.Size(25, 22);
             this.lbDocName.Text = "      ";
             // 
             // panelLinesNumbers
             // 
-            this.panelLinesNumbers.Location = new System.Drawing.Point(16, 27);
-            this.panelLinesNumbers.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
             this.panelLinesNumbers.Name = "panelLinesNumbers";
-            this.panelLinesNumbers.Size = new System.Drawing.Size(33, 146);
+            this.panelLinesNumbers.Size = new System.Drawing.Size(25, 119);
             this.panelLinesNumbers.TabIndex = 4;
             this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
             // 
@@ -377,39 +378,46 @@ namespace JsParserCore.UI
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
             // 
-            // TaskListListView
+            // taskListListView
             // 
-            this.TaskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.taskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaskListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.taskListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.indexToDoListColumn,
             this.textToDoListColumn,
             this.lineNoToDoListColumn});
-            this.TaskListListView.Location = new System.Drawing.Point(3, 24);
-            this.TaskListListView.Name = "TaskListListView";
-            this.TaskListListView.Size = new System.Drawing.Size(260, 80);
-            this.TaskListListView.TabIndex = 6;
-            this.TaskListListView.UseCompatibleStateImageBehavior = false;
-            this.TaskListListView.View = System.Windows.Forms.View.Details;
+            this.taskListListView.FullRowSelect = true;
+            this.taskListListView.GridLines = true;
+            this.taskListListView.Location = new System.Drawing.Point(0, 20);
+            this.taskListListView.Margin = new System.Windows.Forms.Padding(0);
+            this.taskListListView.Name = "taskListListView";
+            this.taskListListView.ShowItemToolTips = true;
+            this.taskListListView.Size = new System.Drawing.Size(200, 67);
+            this.taskListListView.TabIndex = 6;
+            this.taskListListView.UseCompatibleStateImageBehavior = false;
+            this.taskListListView.View = System.Windows.Forms.View.Details;
+            this.taskListListView.DoubleClick += new System.EventHandler(this.TaskListItemClick);
             // 
             // indexToDoListColumn
             // 
             this.indexToDoListColumn.Text = "#";
-            this.indexToDoListColumn.Width = 28;
+            this.indexToDoListColumn.Width = 20;
             // 
             // textToDoListColumn
             // 
             this.textToDoListColumn.Text = "Description";
-            this.textToDoListColumn.Width = 197;
+            this.textToDoListColumn.Width = 160;
             // 
             // lineNoToDoListColumn
             // 
             this.lineNoToDoListColumn.Text = "Line#";
+            this.lineNoToDoListColumn.Width = 40;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(23, 44);
+            this.splitContainer1.Location = new System.Drawing.Point(17, 36);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -421,31 +429,42 @@ namespace JsParserCore.UI
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.TaskListListView);
-            this.splitContainer1.Size = new System.Drawing.Size(266, 407);
-            this.splitContainer1.SplitterDistance = 296;
+            this.splitContainer1.Panel2.Controls.Add(this.taskListListView);
+            this.splitContainer1.Size = new System.Drawing.Size(200, 331);
+            this.splitContainer1.SplitterDistance = 240;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Location = new System.Drawing.Point(15, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Task List:";
+            this.label1.Text = "Task List";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // treeView1
             // 
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
-            this.treeView1.Location = new System.Drawing.Point(57, 27);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(4);
+            this.treeView1.Location = new System.Drawing.Point(43, 22);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(192, 146);
+            this.treeView1.Size = new System.Drawing.Size(145, 119);
             this.treeView1.StateImageList = this.imageList1;
             this.treeView1.TabIndex = 2;
             this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
@@ -461,14 +480,13 @@ namespace JsParserCore.UI
             // 
             // NavigationTreeView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NavigationTreeView";
-            this.Size = new System.Drawing.Size(328, 469);
+            this.Size = new System.Drawing.Size(246, 381);
             this.Resize += new System.EventHandler(this.NavigationTreeView_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
@@ -477,6 +495,7 @@ namespace JsParserCore.UI
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,11 +540,12 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton btnErrorDiagnosis;
         private System.Windows.Forms.ToolStripSeparator btnErrorSeparator;
-        private System.Windows.Forms.ListView TaskListListView;
+        private System.Windows.Forms.ListView taskListListView;
         private System.Windows.Forms.ColumnHeader indexToDoListColumn;
         private System.Windows.Forms.ColumnHeader textToDoListColumn;
         private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

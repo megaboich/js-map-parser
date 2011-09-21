@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JsParserCore.Parsers
 {
-	internal class CustomComment
+	public class CustomComment
 	{
 		public int Start { get; set; }
 		public int End { get; set; }
