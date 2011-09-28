@@ -9,16 +9,21 @@ namespace JsParserCore.Parsers
     {
         public static IEnumerable<TaskListItem> GetTaskList(IEnumerable<CustomComment> comments)
         {
-            var targetComments = comments.Where(c => c.Text.IndexOf("TODO", StringComparison.InvariantCultureIgnoreCase) > 0);
-
-            var taskList = targetComments.Select(c => new TaskListItem
-                {
-                    Description = c.Text,
-                    StartLine = c.Start,
-                    StartColumn = 0
-                });
-
-            return taskList;
+            return comments.
+                Select(c => {
+                    var todoIndex = c.Text.IndexOf("TODO", StringComparison.InvariantCultureIgnoreCase);
+                    if (todoIndex >= 0)
+                    {
+                        return new TaskListItem
+                        {
+                            Description = c.Text.Substring(todoIndex),
+                            StartLine = c.Start,
+                            StartColumn = 0
+                        };
+                    }
+                    return null;
+                })
+                .Where(c => c != null);
         }
     }
 }
