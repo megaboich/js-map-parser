@@ -75,14 +75,12 @@ namespace JsParserCore.UI
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -393,7 +391,7 @@ namespace JsParserCore.UI
             this.taskListListView.Margin = new System.Windows.Forms.Padding(0);
             this.taskListListView.Name = "taskListListView";
             this.taskListListView.ShowItemToolTips = true;
-            this.taskListListView.Size = new System.Drawing.Size(200, 67);
+            this.taskListListView.Size = new System.Drawing.Size(200, 68);
             this.taskListListView.TabIndex = 6;
             this.taskListListView.UseCompatibleStateImageBehavior = false;
             this.taskListListView.View = System.Windows.Forms.View.Details;
@@ -417,7 +415,7 @@ namespace JsParserCore.UI
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(17, 36);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -429,32 +427,24 @@ namespace JsParserCore.UI
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.taskListListView);
             this.splitContainer1.Size = new System.Drawing.Size(200, 331);
-            this.splitContainer1.SplitterDistance = 240;
+            this.splitContainer1.SplitterDistance = 239;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 3);
+            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(-2, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(154, 20);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Task List";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::JsParserCore.Properties.Resources.task_List;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.label1.Text = "      Task List";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // treeView1
             // 
@@ -493,9 +483,7 @@ namespace JsParserCore.UI
             this.toolStrip2.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,6 +534,5 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
