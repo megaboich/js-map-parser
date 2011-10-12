@@ -98,6 +98,19 @@ namespace JsParserCore.UI
 			//check extension
 			if (!CheckExt(Code.Name))
 			{
+				lbDocName.Text = string.Empty;
+				lbDocName.ToolTipText = string.Empty;
+				_loadedDocName = string.Empty;
+				_hash = string.Empty;
+				treeView1.BeginUpdate();
+				treeView1.Nodes.Clear();
+				treeView1.EndUpdate();
+				splitContainer1.Panel2Collapsed = true;
+				_functions = new List<CodeNode>();
+				OnResize(null);
+				panelLinesNumbers.Refresh();
+				btnErrorDiagnosis.Visible = false;
+				btnErrorSeparator.Visible = false;
 				return false;
 			}
 
