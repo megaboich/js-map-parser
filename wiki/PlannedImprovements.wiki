@@ -1,6 +1,5 @@
 #summary Planned Improvements for JavaScript Parser Extension
 
-Here is the place for ideas planned for next releases. Feel free to add suggestions in comments or to issues.
+This page is quite not usable, I have created [https://groups.google.com/forum/#!forum/js-addin discussion group].
 
-
-  
+Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group] if you want to ask something or you have a great idea how to improve this addin.
