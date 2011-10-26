@@ -6,7 +6,7 @@ To start using *Javascript Parser Extension* follow steps:
   # Click the item in the menu to show toolbox.
   # Discover [http://code.google.com/p/js-addin/ list of functions] and enjoy.
 
-===Visual Studio 2010===
+===Visual Studio 2010\2011===
  ====Install:====
    # Install `*`.vsix package
    # Restart Visual Studio.
