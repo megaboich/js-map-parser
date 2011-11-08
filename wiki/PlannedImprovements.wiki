@@ -2,6 +2,10 @@
 
 Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group] if you want to ask something or you have a great idea how to improve this addin.
 
+I prefer to combine several significant features to one release. This strategy has following goals:
+ # To be not annoying for users.
+ # Minimize development and testing effort, because I am do this for free and do not have a lot of free time.
+
 =Plans for version 3.4=
 
  # Fix issue #20
