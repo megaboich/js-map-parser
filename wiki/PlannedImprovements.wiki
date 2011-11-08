@@ -2,7 +2,7 @@
 
 Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group] if you want to ask something or you have a great idea how to improve this addin.
 
-Plans for version 3.4:
+=Plans for version 3.4=
 
  # Fix issue #20
  # Improve parser to display names of string-defined properties. Like this:
