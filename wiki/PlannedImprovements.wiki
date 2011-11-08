@@ -1,5 +1,32 @@
 #summary Planned Improvements for JavaScript Parser Extension
 
-This page is quite not usable, I have created [https://groups.google.com/forum/#!forum/js-addin discussion group].
-
 Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group] if you want to ask something or you have a great idea how to improve this addin.
+
+Plans for version 3.4:
+
+ # Fix issue #20
+ # Improve parser to display names of string-defined properties. Like this:
+   <code language="javascript">
+    buttons: {
+                "OK": function () {
+                    
+                    });
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            },
+   </code>
+ # Improve parser to display hierarchy in following case
+   <code language="javascript">
+     var  module = (function() {
+       var me={}, privateFunc1,privateFunc2;
+       me.publicMethod1=function() {
+       };
+       me.publicMethod2=function() {
+       };
+       privateFunc1 = function() {  .. };
+       privateFunc2 = function() {  .. };
+       return me;
+     }
+   </code>
