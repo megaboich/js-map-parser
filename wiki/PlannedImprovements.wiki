@@ -17,7 +17,7 @@ Plans for version 3.4:
                 }
             },
    </code>
- # Improve parser to display hierarchy in following case
+ # Improve parser to display hierarchy in following case (thanks James Treworgy for the idea)
    <code language="javascript">
      var  module = (function() {
        var me={}, privateFunc1,privateFunc2;
