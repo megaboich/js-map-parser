@@ -24,6 +24,19 @@ namespace JsParserCore.Parsers
 		}
 
 		/// <summary>
+		/// Parse javascript
+		/// </summary>
+		/// <param name="code">string with javascript code</param>
+		/// <returns></returns>
+		public JSParserResult Parse(string code)
+		{
+			code = CodeTransformer.FixContinueStringLiterals(code);
+			code = CodeTransformer.KillAspNetTags(code);
+			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
+			return Parse(codeChunks);
+		}
+
+		/// <summary>
 		/// The parse.
 		/// </summary>
 		/// <param name="script">
@@ -32,7 +45,7 @@ namespace JsParserCore.Parsers
 		/// <returns>
 		/// Hierarhy with code structure.
 		/// </returns>
-		public JSParserResult Parse(IEnumerable<CodeChunk> codeChunks)
+		private JSParserResult Parse(IEnumerable<CodeChunk> codeChunks)
 		{
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
 			List<ErrorMessage> errors = new List<ErrorMessage>();

@@ -144,12 +144,10 @@ namespace JsParserCore.UI
 
 			_marksManager.SetFile(_loadedDocName);
 
-			code = CodeTransformer.KillAspNetTags(code);
-			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
 			var parserSettings = new JavascriptParserSettings();
 			parserSettings.MaxParametersLength = Settings.MaxParametersLength;
 			parserSettings.MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain;
-			var result = (new JavascriptParser( parserSettings )).Parse(codeChunks);
+			var result = (new JavascriptParser( parserSettings )).Parse(code);
 			var nodes = result.Nodes;
 
 			if (result.Errors.Count > 0)

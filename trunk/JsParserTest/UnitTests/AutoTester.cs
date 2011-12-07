@@ -33,18 +33,16 @@ namespace UnitTests
 		private void ProcessTemplate(string sourceName, string resultName)
 		{
 			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
-			source = CodeTransformer.KillAspNetTags(source);
-			var codeChunks = CodeTransformer.ExtractJsFromSource(source);
-			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(codeChunks);
+			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
-            //Save actual hierarchy xml
+			//Save actual hierarchy xml
 			XmlDocument xml = new XmlDocument() {InnerXml = actualResult.Nodes.Serialize()};
 			xml.Save("C:\\outxml\\" + resultName);
 
-            var expectedresultXml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
-            var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
-            //Save expected hierarchy xml
+			var expectedresultXml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
+			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
+			//Save expected hierarchy xml
 			xml = new XmlDocument() { InnerXml = expectedresult.Serialize() };
 			xml.Save("C:\\outxml\\" + resultName + ".ex");
 
@@ -153,10 +151,16 @@ namespace UnitTests
 			ProcessTemplate("Test_JQuery_Selectors.js", "Test_JQuery_Selectors.xml");
 		}
 
-        [Test]
-        public void Test_JsonObject_StringPropNames()
-        {
-            ProcessTemplate("Test_JsonObject_StringPropNames.js", "Test_JsonObject_StringPropNames.xml");
-        }
+		[Test]
+		public void Test_JsonObject_StringPropNames()
+		{
+			ProcessTemplate("Test_JsonObject_StringPropNames.js", "Test_JsonObject_StringPropNames.xml");
+		}
+
+		[Test]
+		public void Test_StringContinuationCharacter()
+		{
+			ProcessTemplate("Test_StringContinuationCharacter.js", "Test_StringContinuationCharacter.xml");
+		}
 	}
 }

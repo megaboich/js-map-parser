@@ -159,6 +159,8 @@
     <EmbeddedResource Include="UnitTests\Result\Test_FunctionWithPlainObject.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_JsonObject_StringPropNames.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_StringContinuationCharacter.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_StringContinuationCharacter.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

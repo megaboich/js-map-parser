@@ -7,6 +7,33 @@ namespace JsParserCore.Code
 {
 	public static class CodeTransformer
 	{
+		public static string FixContinueStringLiterals(string source)
+		{
+			var codeParts = source.Split(new[] { "\\\r\n", "\\\r", "\\\n" }, StringSplitOptions.None);
+			var multilineMultiplicator = 1;
+			if (codeParts.Length > 0)
+			{
+				//Insert new lines to compensate removed ones. This is necessary to match line numbers of original file.
+				for (var i = 1; i < codeParts.Length; ++i)
+				{
+					var index = codeParts[i].IndexOfAny(new[] { '\r', '\n' });
+					if (index >= 0)
+					{
+						codeParts[i] = codeParts[i].Insert(index, new String('\n', multilineMultiplicator));
+						multilineMultiplicator = 1;
+					}
+					else
+					{
+						++multilineMultiplicator;
+					}
+				}
+
+				return string.Join(string.Empty, codeParts);
+			}
+
+			return source;
+		}
+
 		public static string KillAspNetTags(string source)
 		{
 			return source.Replace("<%=", string.Empty)
