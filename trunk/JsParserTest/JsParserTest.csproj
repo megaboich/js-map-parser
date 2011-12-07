@@ -157,6 +157,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_TryCatch_Statement.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_FunctionWithPlainObject.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_JsonObject_StringPropNames.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

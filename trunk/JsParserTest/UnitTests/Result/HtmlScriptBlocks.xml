@@ -5,25 +5,25 @@
       <Item Text="Function_In_The_Head(param1,param2)" Line="8" EndLine="11" EndColumn="4" Pos="3" Opcode="Function" Comment="//This is the function in the head" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function_In_The_Javascript(param1,param2)" Line="23" EndLine="26" EndColumn="3" Pos="2" Opcode="Function" />
+      <Item Text="Function_In_The_Javascript(param1,param2)" Line="23" EndLine="27" EndColumn="3" Pos="2" Opcode="Function" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function_In_The_Bottom(param1,param2)" Line="31" EndLine="34" EndColumn="3" Pos="2" Opcode="Function" Comment="//This is the function in the bottom" />
+      <Item Text="Function_In_The_Bottom(param1,param2)" Line="33" EndLine="36" EndColumn="3" Pos="2" Opcode="Function" Comment="//This is the function in the bottom&#xD;&#xA;//todo: Do something good!" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Class1(param1,param2)" Line="37" EndLine="61" EndColumn="3" Pos="15" Opcode="Function" Comment="//This is another sample of JS class" />
+      <Item Text="Class1(param1,param2)" Line="39" EndLine="63" EndColumn="3" Pos="15" Opcode="Function" Comment="//This is another sample of JS class" />
       <Childrens>
         <Hierachy>
-          <Item Text="_this.Method1()" Line="44" EndLine="46" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is First method" />
+          <Item Text="_this.Method1()" Line="46" EndLine="48" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is First method" />
         </Hierachy>
         <Hierachy>
-          <Item Text="_this.Method2(param1)" Line="49" EndLine="51" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Second method" />
+          <Item Text="_this.Method2(param1)" Line="51" EndLine="53" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Second method" />
         </Hierachy>
         <Hierachy>
-          <Item Text="_this.Method3(param1,param2)" Line="54" EndLine="60" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Third method" />
+          <Item Text="_this.Method3(param1,param2)" Line="56" EndLine="62" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Third method" />
           <Childrens>
             <Hierachy>
-              <Item Text="delegate()" Line="57" EndLine="59" EndColumn="5" Pos="19" Opcode="Function" Comment="//delegate method" />
+              <Item Text="delegate()" Line="59" EndLine="61" EndColumn="5" Pos="19" Opcode="Function" Comment="//delegate method" />
             </Hierachy>
           </Childrens>
         </Hierachy>

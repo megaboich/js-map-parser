@@ -45,8 +45,10 @@ namespace UnitTests
 			var resxml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
 
 			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(resxml);
+			xml = new XmlDocument() { InnerXml = expectedresult.Serialize() };
+			xml.Save("C:\\outxml\\" + resultName + ".ex");
 
-			Assert.IsTrue(result.Equals(expectedresult));
+			Assert.IsTrue(result.Nodes.Equals(expectedresult));
 		}
 
 		[Test]

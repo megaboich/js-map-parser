@@ -70,11 +70,17 @@
           <Item Text="$.Autocompleter.Cache(options)" Line="90" EndLine="130" EndColumn="2" Pos="25" Opcode="Function" />
           <Childrens>
             <Hierachy>
+              <Item Text="data" Line="92" EndLine="92" EndColumn="15" Pos="13" Opcode="ObjectLiteral" />
+            </Hierachy>
+            <Hierachy>
               <Item Text="matchSubset(s,sub)" Line="96" EndLine="99" EndColumn="3" Pos="2" Opcode="Function" />
             </Hierachy>
             <Hierachy>
               <Item Text="populate(excludeDataSet)" Line="101" EndLine="113" EndColumn="3" Pos="2" Opcode="Function" />
               <Childrens>
+                <Hierachy>
+                  <Item Text="stMatchSets" Line="103" EndLine="103" EndColumn="23" Pos="21" Opcode="ObjectLiteral" />
+                </Hierachy>
                 <Hierachy>
                   <Item Text="$.each(stMatchSets).?(i,value)" Line="106" EndLine="112" EndColumn="4" Pos="23" Opcode="Function" Comment="// add the data items to the cache" />
                 </Hierachy>
@@ -82,6 +88,11 @@
             </Hierachy>
             <Hierachy>
               <Item Text="flush()" Line="115" EndLine="119" EndColumn="3" Pos="2" Opcode="Function" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="data" Line="117" EndLine="117" EndColumn="12" Pos="10" Opcode="ObjectLiteral" />
+                </Hierachy>
+              </Childrens>
             </Hierachy>
             <Hierachy>
               <Item Text="return" Line="121" EndLine="129" EndColumn="3" Pos="9" Opcode="ObjectLiteral" />

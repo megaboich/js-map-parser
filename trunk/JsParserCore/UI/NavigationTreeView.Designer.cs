@@ -195,10 +195,10 @@ namespace JsParserCore.UI
             this.toolStripDropDownButton1,
             this.toolStripSeparator3,
             this.toolStripButton1,
-            this.toolStripSeparator2,
-            this.btnRefresh,
             this.btnErrorSeparator,
             this.btnErrorDiagnosis,
+            this.toolStripSeparator2,
+            this.btnRefresh,
             this.lbDocName});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
