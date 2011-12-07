@@ -149,25 +149,22 @@ namespace JsParserCore.Parsers
 			{
 				var ojexp = (ObjectLiteralExpression) exp;
 
-				if (ojexp.Elements.Count > 0)
+				var codeNode = new CodeNode
 				{
-					var codeNode = new CodeNode
-					{
-						Alias = expressionAlias,
-						Opcode = exp.Opcode.ToString(),
-						StartLine = exp.Location.StartLine,
-						StartColumn = exp.Location.StartColumn,
-						EndLine = exp.Location.EndLine,
-						EndColumn = exp.Location.EndColumn,
-						Comment = _comments.GetComment(exp.Location.StartLine, exp.Location.EndLine)
-					};
-					Hierachy<CodeNode> hi = nodes.Add(codeNode);
+					Alias = expressionAlias,
+					Opcode = exp.Opcode.ToString(),
+					StartLine = exp.Location.StartLine,
+					StartColumn = exp.Location.StartColumn,
+					EndLine = exp.Location.EndLine,
+					EndColumn = exp.Location.EndColumn,
+					Comment = _comments.GetComment(exp.Location.StartLine, exp.Location.EndLine)
+				};
+				Hierachy<CodeNode> hi = nodes.Add(codeNode);
 
-					foreach (ObjectLiteralElement element in ojexp.Elements)
-					{
-						var alias = ProcessExpression(hi, element.Name, expressionAlias);
-						ProcessExpression(hi, element.Value, alias);
-					}
+				foreach (ObjectLiteralElement element in ojexp.Elements)
+				{
+					var alias = ProcessExpression(hi, element.Name, expressionAlias);
+					ProcessExpression(hi, element.Value, alias);
 				}
 
 				return expressionAlias;

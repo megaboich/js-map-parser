@@ -44,7 +44,7 @@ namespace JsParserCore.Helpers
 		/// <summary>
 		/// Gets or sets Childrens.
 		/// </summary>
-		[XmlArrayItem(ElementName = "Hierachy")]
+		[XmlArrayItem(ElementName = "Hierachy", IsNullable = true)]
 		public List<Hierachy<T>> Childrens { get; set; }
 
 		/// <summary>
