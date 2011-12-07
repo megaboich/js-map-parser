@@ -186,6 +186,12 @@ namespace JsParserCore.Parsers
 				return iexp.ID.Spelling;
 			}
 
+			if (exp is StringLiteralExpression)
+			{
+				var slexp = (StringLiteralExpression) exp;
+				return slexp.Value;
+			}
+
 			return string.Empty;
 		}
 

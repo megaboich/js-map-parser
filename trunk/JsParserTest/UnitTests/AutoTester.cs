@@ -35,20 +35,20 @@ namespace UnitTests
 			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
 			source = CodeTransformer.KillAspNetTags(source);
 			var codeChunks = CodeTransformer.ExtractJsFromSource(source);
-			var result = (new JavascriptParser(new JavascriptParserSettings())).Parse(codeChunks);
+			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(codeChunks);
 
 			Directory.CreateDirectory("C:\\outxml");
-
-			XmlDocument xml = new XmlDocument() {InnerXml = result.Nodes.Serialize()};
+            //Save actual hierarchy xml
+			XmlDocument xml = new XmlDocument() {InnerXml = actualResult.Nodes.Serialize()};
 			xml.Save("C:\\outxml\\" + resultName);
 
-			var resxml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
-
-			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(resxml);
+            var expectedresultXml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
+            var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
+            //Save expected hierarchy xml
 			xml = new XmlDocument() { InnerXml = expectedresult.Serialize() };
 			xml.Save("C:\\outxml\\" + resultName + ".ex");
 
-			Assert.IsTrue(result.Nodes.Equals(expectedresult));
+			Assert.IsTrue(actualResult.Nodes.Equals(expectedresult));
 		}
 
 		[Test]
@@ -152,5 +152,11 @@ namespace UnitTests
 		{
 			ProcessTemplate("Test_JQuery_Selectors.js", "Test_JQuery_Selectors.xml");
 		}
+
+        [Test]
+        public void Test_JsonObject_StringPropNames()
+        {
+            ProcessTemplate("Test_JsonObject_StringPropNames.js", "Test_JsonObject_StringPropNames.xml");
+        }
 	}
 }
