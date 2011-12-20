@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 using UnitTests;
+using JsParserTest.Helpers;
 
 namespace JsParserTest
 {
@@ -62,7 +63,7 @@ namespace JsParserTest
 				newTextBox.AcceptsTab = true;
 				newTextBox.WordWrap = false;
 				newTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-				newTextBox.Text = AutoTester.GetEmbeddedText(resname);
+				newTextBox.Text = TestsHelper.GetEmbeddedText(resname);
 				newTextBox.TextChanged += richTextBox1_TextChanged;
 				tab.Controls.Add(newTextBox);
 				InitTree((RichTextBox)newTextBox);

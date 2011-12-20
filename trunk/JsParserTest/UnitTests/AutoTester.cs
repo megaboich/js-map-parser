@@ -9,30 +9,16 @@ using NUnit.Framework;
 using JsParserCore.Parsers;
 using JsParserCore.Helpers;
 using JsParserCore.Code;
+using JsParserTest.Helpers;
 
 namespace UnitTests
 {
 	[TestFixture]
 	public class AutoTester
 	{
-		public static string GetEmbeddedText(string resourceName)
-		{
-			var stream = Assembly.GetAssembly(typeof(AutoTester)).GetManifestResourceStream(resourceName);
-			Assert.IsNotNull(stream);
-			using (var sr = new StreamReader(stream))
-			{
-				return sr.ReadToEnd();
-			}
-		}
-
-		public XmlDocument GetEmbeddedXml(string resourceName)
-		{
-			return new XmlDocument { InnerXml = GetEmbeddedText(resourceName) };
-		}
-
 		private void ProcessTemplate(string sourceName, string resultName)
 		{
-			var source = GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
+			var source = TestsHelper.GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
 			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
@@ -40,7 +26,7 @@ namespace UnitTests
 			XmlDocument xml = new XmlDocument() {InnerXml = actualResult.Nodes.Serialize()};
 			xml.Save("C:\\outxml\\" + resultName);
 
-			var expectedresultXml = GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
+			var expectedresultXml = TestsHelper.GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
 			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
 			//Save expected hierarchy xml
 			xml = new XmlDocument() { InnerXml = expectedresult.Serialize() };

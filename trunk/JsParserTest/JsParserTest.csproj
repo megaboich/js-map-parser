@@ -78,6 +78,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\TestsHelper.cs" />
+    <Compile Include="NodesPostProcessor\NodesPostProcessorTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleCodeProvider.cs" />
@@ -161,6 +163,10 @@
     <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_StringContinuationCharacter.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_StringContinuationCharacter.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_PropsInArrayStyleNames.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_PropsInArrayStyleNames.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_HierarhizeOnPostProcessing.js" />
+    <EmbeddedResource Include="NodesPostProcessor\TestsScripts\jquery-1.7.1.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

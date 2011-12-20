@@ -79,6 +79,8 @@ namespace JsParserCore.Parsers
 				}
 			}
 
+			NodesPostProcessor.GroupNodesByVariableDeclaration(nodes);
+
 			var result = new JSParserResult
 			{
 				Nodes = nodes,
@@ -205,6 +207,20 @@ namespace JsParserCore.Parsers
 				return slexp.Value;
 			}
 
+			if (exp is NumericLiteralExpression)
+			{
+				var numexp = (NumericLiteralExpression)exp;
+				return numexp.Spelling;
+			}
+
+			if (exp is SubscriptExpression)
+			{
+				var subexp = (SubscriptExpression)exp;
+				var basealias = ProcessExpression(nodes, subexp.Base, expressionAlias);
+				var subalias = ProcessExpression(nodes, subexp.Subscript, null);
+				return ConcatAlias(basealias, subalias);
+			}
+
 			return string.Empty;
 		}
 
@@ -264,9 +280,20 @@ namespace JsParserCore.Parsers
 				{
 					if (element.Declaration is InitializerVariableDeclaration)
 					{
-						var variableDeclaration = (InitializerVariableDeclaration) element.Declaration;
+						var variableDeclaration = (InitializerVariableDeclaration)element.Declaration;
 						var alias = variableDeclaration.Name != null ? variableDeclaration.Name.Spelling : string.Empty;
-						ProcessExpression(nodes, variableDeclaration.Initializer, alias);
+
+						var res = ProcessExpression(nodes, variableDeclaration.Initializer, alias);
+
+						if (!(variableDeclaration.Initializer is FunctionExpression) &&
+							!(variableDeclaration.Initializer is ObjectLiteralExpression))
+						{
+							var varCodeNode = ProcessVariableDefinition(nodes, element.Declaration);
+						}
+					}
+					else
+					{
+						ProcessVariableDefinition(nodes, element.Declaration);
 					}
 				}
 
@@ -331,6 +358,26 @@ namespace JsParserCore.Parsers
 			return;
 		}
 
+		private CodeNode ProcessVariableDefinition(
+			Hierachy<CodeNode> nodes,
+			VariableDeclaration variableDeclaration
+			)
+		{
+			var codeNode = new CodeNode
+			{
+				Alias = variableDeclaration.Name.Spelling,
+				Opcode = "Variable",
+				StartLine = variableDeclaration.Location.StartLine,
+				StartColumn = variableDeclaration.Location.StartColumn,
+				EndLine = variableDeclaration.Location.EndLine,
+				EndColumn = variableDeclaration.Location.EndColumn,
+				Comment = _comments.GetComment(variableDeclaration.Location.StartLine, variableDeclaration.Location.EndLine)
+			};
+
+			Hierachy<CodeNode> hi = nodes.Add(codeNode);
+			return codeNode;
+		}
+
 		private CodeNode ProcessFunctionDefinition(
 			Hierachy<CodeNode> nodes,
 			FunctionDefinition function,
@@ -360,6 +407,7 @@ namespace JsParserCore.Parsers
 				Comment = _comments.GetComment(function.Location.StartLine, function.Location.EndLine)
 			};
 
+			//Go to recursion
 			Hierachy<CodeNode> hi = nodes.Add(codeNode);
 			CreateNodes(hi, function.Body.Children);
 			return codeNode;
