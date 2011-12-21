@@ -14,16 +14,21 @@
       <Item Text="Class1(param1,param2)" Line="39" EndLine="63" EndColumn="3" Pos="15" Opcode="Function" Comment="//This is another sample of JS class" />
       <Childrens>
         <Hierachy>
-          <Item Text="_this.Method1()" Line="46" EndLine="48" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is First method" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="_this.Method2(param1)" Line="51" EndLine="53" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Second method" />
-        </Hierachy>
-        <Hierachy>
-          <Item Text="_this.Method3(param1,param2)" Line="56" EndLine="62" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Third method" />
+          <Item Text="_this" Line="41" EndLine="41" EndColumn="19" Pos="7" Opcode="Variable" />
           <Childrens>
             <Hierachy>
-              <Item Text="delegate()" Line="59" EndLine="61" EndColumn="5" Pos="19" Opcode="Function" Comment="//delegate method" />
+              <Item Text="Method1()" Line="46" EndLine="48" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is First method" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="Method2(param1)" Line="51" EndLine="53" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Second method" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="Method3(param1,param2)" Line="56" EndLine="62" EndColumn="4" Pos="19" Opcode="Function" Comment="//This is Third method" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="delegate()" Line="59" EndLine="61" EndColumn="5" Pos="19" Opcode="Function" Comment="//delegate method" />
+                </Hierachy>
+              </Childrens>
             </Hierachy>
           </Childrens>
         </Hierachy>

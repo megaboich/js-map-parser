@@ -5,16 +5,16 @@
       <Item Text="MainFunction(input,options)" Line="1" EndLine="27" EndColumn="1" Pos="19" Opcode="Function" />
       <Childrens>
         <Hierachy>
-          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).?(event)" Line="4" EndLine="7" EndColumn="2" Pos="37" Opcode="Function" Comment="// only opera doesn't trigger keydown multiple times while pressed, others don't work with keypress at all" />
+          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;)&gt;?(event)" Line="4" EndLine="7" EndColumn="2" Pos="37" Opcode="Function" Comment="// only opera doesn't trigger keydown multiple times while pressed, others don't work with keypress at all" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus.?()" Line="7" EndLine="12" EndColumn="2" Pos="10" Opcode="Function" Comment="//some code to process key events" />
+          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus&gt;?()" Line="7" EndLine="12" EndColumn="2" Pos="10" Opcode="Function" Comment="//some code to process key events" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus.blur.?()" Line="12" EndLine="19" EndColumn="2" Pos="9" Opcode="Function" />
+          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus.blur&gt;?()" Line="12" EndLine="19" EndColumn="2" Pos="9" Opcode="Function" />
         </Hierachy>
         <Hierachy>
-          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus.blur.click.?()" Line="19" EndLine="26" EndColumn="2" Pos="10" Opcode="Function" />
+          <Item Text="$input.bind(&quot;keydown.autocomplete&quot;).focus.blur.click&gt;?()" Line="19" EndLine="26" EndColumn="2" Pos="10" Opcode="Function" />
         </Hierachy>
       </Childrens>
     </Hierachy>

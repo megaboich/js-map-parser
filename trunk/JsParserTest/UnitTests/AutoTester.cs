@@ -42,12 +42,6 @@ namespace UnitTests
 		}
 
 		[Test]
-		public void Test1_1()
-		{
-			ProcessTemplate("Test1_1.js", "Test1_1.xml");
-		}
-
-		[Test]
 		public void Test2()
 		{
 			ProcessTemplate("Test2.js", "Test2.xml");
@@ -63,12 +57,6 @@ namespace UnitTests
 		public void Test4()
 		{
 			ProcessTemplate("Test4.js", "Test4.xml");
-		}
-
-		[Test]
-		public void Test4_1()
-		{
-			ProcessTemplate("Test4_1.js", "Test4_1.xml");
 		}
 
 		[Test]
@@ -147,6 +135,12 @@ namespace UnitTests
 		public void Test_StringContinuationCharacter()
 		{
 			ProcessTemplate("Test_StringContinuationCharacter.js", "Test_StringContinuationCharacter.xml");
+		}
+
+		[Test]
+		public void Test_Construct_Object_In_Return_Statement()
+		{
+			ProcessTemplate("Test_Construct_Object_In_Return_Statement.js", "Test_Construct_Object_In_Return_Statement.xml");
 		}
 	}
 }

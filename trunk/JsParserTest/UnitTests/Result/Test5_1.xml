@@ -5,7 +5,7 @@
       <Item Text="Function1(delegate)" Line="3" EndLine="6" EndColumn="1" Pos="0" Opcode="Function" Comment="// Comment to funtion 1&#xD;&#xA;// This function run a delegate" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function1.?()" Line="9" EndLine="9" EndColumn="32" Pos="10" Opcode="Function" Comment="//Anonimous function" />
+      <Item Text="Function1&gt;?()" Line="9" EndLine="9" EndColumn="32" Pos="10" Opcode="Function" Comment="//Anonimous function" />
     </Hierachy>
   </Childrens>
 </Hierachy>

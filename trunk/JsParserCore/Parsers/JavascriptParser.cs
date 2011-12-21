@@ -99,14 +99,14 @@ namespace JsParserCore.Parsers
 			}
 		}
 
-		private string ConcatAlias(string exist, string appender)
+		private string ConcatAlias(string exist, string appender, string concatenator = ".")
 		{
 			if (string.IsNullOrEmpty(exist))
 			{
 				return appender;
 			}
 
-			return exist + "." + appender;
+			return exist + concatenator + appender;
 		}
 
 		private string ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, string expressionAlias)
@@ -140,7 +140,7 @@ namespace JsParserCore.Parsers
 
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
-					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, ConcatAlias(alias, "?")));
+					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, ConcatAlias(alias, "?", ">")));
 				}
 
 				return alias;
