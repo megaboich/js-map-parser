@@ -11,6 +11,7 @@ using System.Text;
 using System.IO;
 using JsParserCore.Properties;
 using System.Linq;
+using System.Threading;
 
 namespace JsParserCore.UI
 {
@@ -24,7 +25,6 @@ namespace JsParserCore.UI
 		private bool _canExpand = true;
 		private MarksManager _marksManager = new MarksManager();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
-		private static bool _versionChecked = false;
 		private string _hash;
 		private int _lastCodeLine = -1;
 		private List<CodeNode> _functions;
@@ -53,6 +53,10 @@ namespace JsParserCore.UI
 			btnShowLineNumbers.Checked = Settings.ShowLineNumbersEnabled;
 			btnFilterByMarks.Checked = Settings.FilterByMarksEnabled;
 			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
+
+			ThreadPool.QueueUserWorkItem((object state) => {
+				VersionChecker.CheckVersion();
+			});
 		}
 
 		/// <summary>
@@ -300,8 +304,10 @@ namespace JsParserCore.UI
 					return -1;
 				case "ObjectLiteral":
 					return 1;
-				default:
+				case "Variable":
 					return 2;
+				default:
+					return 3;
 			}
 		}
 
@@ -644,16 +650,6 @@ namespace JsParserCore.UI
 			}
 		}
 
-		private void timer1_Tick(object sender, EventArgs e)
-		{
-			timer1.Enabled = false;
-			if (!_versionChecked)
-			{
-				VersionChecker.CheckVersion();
-				_versionChecked = true;
-			}
-		}
-
 		private void showLineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveSettings();
@@ -852,5 +848,6 @@ namespace JsParserCore.UI
 		}
 
 		#endregion
+
 	}
 }

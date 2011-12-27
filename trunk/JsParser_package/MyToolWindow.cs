@@ -12,6 +12,8 @@ using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Reflection;
 using EnvDTE;
+using System.Diagnostics;
+using JsParserCore.Helpers;
 
 namespace AlexanderBoyko.JsParser_package
 {
@@ -88,6 +90,7 @@ namespace AlexanderBoyko.JsParser_package
 
 		public override void OnToolWindowCreated()
 		{
+			Trace.WriteLine("js addin: OnToolWindowCreated");
 			var _dte = (DTE)GetService(typeof(DTE));
 
 			try
@@ -97,10 +100,12 @@ namespace AlexanderBoyko.JsParser_package
 					var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
 					NavigationTreeView.Init(codeProvider);
 					NavigationTreeView.LoadFunctionList();
+					Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
 				}
 			}
-			catch
+			catch (Exception ex)
 			{
+				ErrorHandler.WriteExceptionDetailsToTrace("OnToolWindowCreated", ex);
 			}
 
 			Events events = _dte.Events;
@@ -123,9 +128,12 @@ namespace AlexanderBoyko.JsParser_package
 		/// </param>
 		private void documentEvents_DocumentClosing(Document doc)
 		{
-			//MessageBox.Show("documentEvents_DocumentClosing");
+			Trace.WriteLine("js addin: documentEvents_DocumentClosing");
 			if (NavigationTreeView != null)
+			{
+				Trace.WriteLine("js addin: _navigationTreeView.Clear");
 				NavigationTreeView.Clear();
+			}
 		}
 
 		/// <summary>
@@ -136,9 +144,13 @@ namespace AlexanderBoyko.JsParser_package
 		/// </param>
 		private void documentEvents_DocumentSaved(Document doc)
 		{
-			//MessageBox.Show("documentEvents_DocumentSaved");
+			Trace.WriteLine("js addin: documentEvents_DocumentSaved");
+
 			if (NavigationTreeView != null)
+			{
+				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
 				NavigationTreeView.LoadFunctionList();
+			}
 		}
 
 		/// <summary>
@@ -152,7 +164,8 @@ namespace AlexanderBoyko.JsParser_package
 		/// </param>
 		private void windowEvents_WindowActivated(EnvDTE.Window gotFocus, EnvDTE.Window lostFocus)
 		{
-			//MessageBox.Show("windowEvents_WindowActivated");
+			Trace.WriteLine("js addin: windowEvents_WindowActivated");
+
 			if (gotFocus == null
 				|| gotFocus.Kind != "Document"
 				|| NavigationTreeView == null
@@ -165,23 +178,16 @@ namespace AlexanderBoyko.JsParser_package
 			{
 				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
 				NavigationTreeView.Init(codeProvider);
-				var treeExist = NavigationTreeView.LoadFunctionList();
-				IVsWindowFrame windowFrame = (IVsWindowFrame)Frame;
+				NavigationTreeView.LoadFunctionList();
+				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
 
-				if (NavigationTreeView.Settings.ShowHideAutomatically)
-				{
-					if (!treeExist)
-					{
-						windowFrame.Hide();
-					}
-					else
-					{
-						windowFrame.ShowNoActivate();
-					}
-				}
+				IVsWindowFrame windowFrame = (IVsWindowFrame)Frame;
+				NavigationTreeView.Settings.Visible = windowFrame.IsVisible() != 0;
+				NavigationTreeView.Settings.Save();
 			}
 			catch (Exception ex)
 			{
+				ErrorHandler.WriteExceptionDetailsToTrace("windowEvents_WindowActivated", ex);
 				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
 			}
 		}

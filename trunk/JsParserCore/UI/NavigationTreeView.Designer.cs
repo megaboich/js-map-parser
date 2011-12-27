@@ -46,7 +46,6 @@ namespace JsParserCore.UI
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.showHierarhyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +88,8 @@ namespace JsParserCore.UI
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "function.png");
             this.imageList1.Images.SetKeyName(1, "type.png");
-            this.imageList1.Images.SetKeyName(2, "undefined.png");
+            this.imageList1.Images.SetKeyName(2, "variable_declaration.gif");
+            this.imageList1.Images.SetKeyName(3, "undefined.png");
             // 
             // contextMenuStrip1
             // 
@@ -178,12 +178,6 @@ namespace JsParserCore.UI
             this.resetAllLabelsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.resetAllLabelsToolStripMenuItem.Text = "Reset all marks";
             this.resetAllLabelsToolStripMenuItem.Click += new System.EventHandler(this.resetAllLabelsToolStripMenuItem_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // toolStrip2
             // 
@@ -504,8 +498,7 @@ namespace JsParserCore.UI
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-		private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
 		private System.Windows.Forms.ToolStrip toolStrip2;
 		private System.Windows.Forms.ToolStripButton btnSortToggle;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

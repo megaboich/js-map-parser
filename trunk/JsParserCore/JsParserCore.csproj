@@ -57,6 +57,8 @@
     <Compile Include="Code\CodeNode.cs" />
     <Compile Include="Code\CodeTransformer.cs" />
     <Compile Include="Code\ICodeProvider.cs" />
+    <Compile Include="Helpers\CustomTraceListener.cs" />
+    <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
     <Compile Include="Helpers\Serializer.cs" />
@@ -107,6 +109,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\arrow_left.gif" />
+    <Content Include="Resources\variable_declaration.gif" />
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="Properties\Settings.settings">
@@ -124,7 +128,6 @@
     <None Include="Resources\icon_favourites.gif" />
     <Content Include="Resources\js_file.gif" />
     <Content Include="Resources\js_function.gif" />
-    <Content Include="Resources\js_method_public.gif" />
     <None Include="Resources\list_settings.gif" />
     <Content Include="Resources\refresh.gif" />
     <Content Include="Resources\SortAZ.png" />
@@ -137,6 +140,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
