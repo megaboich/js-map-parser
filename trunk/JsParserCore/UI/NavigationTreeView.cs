@@ -48,10 +48,10 @@ namespace JsParserCore.UI
 			treeView1.Nodes.Clear();
 			treeView1.LostFocus += LostFocusHandler;
 
-			btnSortToggle.Checked = Settings.SortingEnabled;
+			sortItemsAlphabeticallyToolStripMenuItem.Checked = Settings.SortingEnabled;
 			showHierarhyToolStripMenuItem.Checked = Settings.HierarchyEnabled;
-			btnShowLineNumbers.Checked = Settings.ShowLineNumbersEnabled;
-			btnFilterByMarks.Checked = Settings.FilterByMarksEnabled;
+			showLineNumbersToolStripMenuItem.Checked = Settings.ShowLineNumbersEnabled;
+			filterByMarksToolStripMenuItem.Checked = Settings.FilterByMarksEnabled;
 			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
 
 			ThreadPool.QueueUserWorkItem((object state) => {
@@ -209,14 +209,14 @@ namespace JsParserCore.UI
 				}
 			}
 
-			if (btnFilterByMarks.Checked)
+			if (filterByMarksToolStripMenuItem.Checked)
 			{
 				HideUnmarkedNodes(treeView1.Nodes);
 			}
 
 			treeView1.EndUpdate();
 			_treeRefreshing = false;
-			OnResize(null);
+			AdjustLineNumbersPanelSize();
 			panelLinesNumbers.Refresh();
 			return treeView1.Nodes.Count > 0;
 		}
@@ -501,12 +501,31 @@ namespace JsParserCore.UI
 
 		private void SaveSettings()
 		{
-			Settings.SortingEnabled = btnSortToggle.Checked;
+			Settings.SortingEnabled = sortItemsAlphabeticallyToolStripMenuItem.Checked;
 			Settings.HierarchyEnabled = showHierarhyToolStripMenuItem.Checked;
-			Settings.ShowLineNumbersEnabled = btnShowLineNumbers.Checked;
-			Settings.FilterByMarksEnabled = btnFilterByMarks.Checked;
+			Settings.ShowLineNumbersEnabled = showLineNumbersToolStripMenuItem.Checked;
+			Settings.FilterByMarksEnabled = filterByMarksToolStripMenuItem.Checked;
 			Settings.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
 			Settings.Save();
+		}
+
+		private void AdjustLineNumbersPanelSize()
+		{
+			var tw = 0;
+			using (var g = this.CreateGraphics())
+			{
+				tw = Convert.ToInt32(Math.Round(g.MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
+			}
+
+			treeView1.Left = Settings.ShowLineNumbersEnabled ? tw : 0;
+			treeView1.Top = 0;
+			treeView1.Width = splitContainer1.Panel1.ClientSize.Width - treeView1.Left;
+			treeView1.Height = splitContainer1.Panel1.ClientSize.Height - treeView1.Top;
+			panelLinesNumbers.Left = 0;
+			panelLinesNumbers.Width = tw;
+			panelLinesNumbers.Top = 0;
+			panelLinesNumbers.Height = splitContainer1.Panel1.ClientSize.Height;
+			panelLinesNumbers.Visible = Settings.ShowLineNumbersEnabled;
 		}
 
 		#region Event handlers
@@ -516,19 +535,6 @@ namespace JsParserCore.UI
 			if (e.KeyChar == 13)
 			{
 				GotoSelected();
-			}
-		}
-
-		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-		{
-			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
-
-			treeView1.SelectedNode = e.Node;
-
-			if (e.Button == MouseButtons.Right)
-			{
-				resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(((CustomTreeNode)e.Node).Tags);
-				contextMenuStrip1.Show((Control)sender, e.X, e.Y);
 			}
 		}
 
@@ -546,6 +552,40 @@ namespace JsParserCore.UI
 			{
 				e.Cancel = true;
 			}
+		}
+
+		private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+		{
+			_canExpand = !e.Node.Bounds.Contains(e.X, e.Y);
+
+			treeView1.SelectedNode = e.Node;
+
+			if (e.Button == MouseButtons.Right)
+			{
+				//Apply fonts and colors to menu items
+				var nodeTags = ((CustomTreeNode)e.Node).Tags ?? string.Empty;
+				resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(nodeTags);
+				
+				var menuItems = new[] { contextMenuMarks0Item, contextMenuMarks1Item, contextMenuMarks2Item, contextMenuMarks3Item, contextMenuMarks4Item, contextMenuMarks5Item };
+				var menuFonts = new[] { Settings.taggedFunction1Font, Settings.taggedFunction2Font, Settings.taggedFunction3Font, Settings.taggedFunction4Font, Settings.taggedFunction5Font, Settings.taggedFunction6Font };
+				var menuColors = new[] { Settings.taggedFunction1Color, Settings.taggedFunction2Color, Settings.taggedFunction3Color, Settings.taggedFunction4Color, Settings.taggedFunction5Color, Settings.taggedFunction6Color };
+
+				for (int i = 0; i < menuItems.Length; ++i)
+				{
+					menuItems[i].Font = menuFonts[i];
+					menuItems[i].ForeColor = menuColors[i];
+					menuItems[i].Checked = nodeTags.Contains((string)menuItems[i].Tag);
+				}
+
+				contextMenuStrip1.Show((Control)sender, e.X, e.Y);
+			}
+		}
+
+		private void contextMenuMarks0Item_Click(object sender, EventArgs e)
+		{
+			var menuItem = (ToolStripMenuItem)sender;
+			_marksManager.SetMark((string)menuItem.Tag, (CustomTreeNode)treeView1.SelectedNode);
+			treeView1.Refresh();
 		}
 
 		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -589,42 +629,6 @@ namespace JsParserCore.UI
 			e.DrawDefault = true;
 		}
 
-		private void toolStripMenuItem6_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("W", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void toolStripMenuItem5_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("G", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void setLabelToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("S", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void toolStripMenuItem4_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("B", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void toolStripMenuItem3_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("O", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
-		private void toolStripMenuItem2_Click(object sender, EventArgs e)
-		{
-			_marksManager.SetMark("R", (CustomTreeNode)treeView1.SelectedNode);
-			treeView1.Refresh();
-		}
-
 		private void ErrorDiagnosisClick(object sender, EventArgs e)
 		{
 			var errorMessage = (ErrorMessage)((ToolStripItem)sender).Tag;
@@ -653,13 +657,8 @@ namespace JsParserCore.UI
 		private void showLineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveSettings();
-			OnResize(null);
+			AdjustLineNumbersPanelSize();
 			panelLinesNumbers.Refresh();
-		}
-
-		private void btnFilterByMarks_Click(object sender, EventArgs e)
-		{
-			RefreshTree();
 		}
 
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
@@ -672,21 +671,7 @@ namespace JsParserCore.UI
 
 		private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
 		{
-			var tw = 0;
-			using (var g = this.CreateGraphics())
-			{
-				tw = Convert.ToInt32(Math.Round(g.MeasureString(_lastCodeLine.ToString(), Font).Width)) + 2;
-			}
-			
-			treeView1.Left = Settings.ShowLineNumbersEnabled ? tw : 0;
-			treeView1.Top = 0;
-			treeView1.Width = splitContainer1.Panel1.ClientSize.Width - treeView1.Left;
-			treeView1.Height = splitContainer1.Panel1.ClientSize.Height - treeView1.Top;
-			panelLinesNumbers.Left = 0;
-			panelLinesNumbers.Width = tw;
-			panelLinesNumbers.Top = 0;
-			panelLinesNumbers.Height = splitContainer1.Panel1.ClientSize.Height;
-			panelLinesNumbers.Visible = Settings.ShowLineNumbersEnabled;
+			AdjustLineNumbersPanelSize();
 		}
 
 		private void treeView1_OnScroll(object sender, EventArgs e)
@@ -848,6 +833,5 @@ namespace JsParserCore.UI
 		}
 
 		#endregion
-
 	}
 }

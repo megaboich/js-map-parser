@@ -37,12 +37,12 @@ namespace JsParserCore.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationTreeView));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.setLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks0Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks1Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks3Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks4Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks5Item = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,21 +50,20 @@ namespace JsParserCore.UI
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.showHierarhyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllByDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collapseAllNodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSortToggle = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btnShowLineNumbers = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFilterByMarks = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.sortItemsAlphabeticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showLineNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterByMarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnErrorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.btnErrorDiagnosis = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.lbDocName = new System.Windows.Forms.ToolStripLabel();
             this.panelLinesNumbers = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -73,8 +72,8 @@ namespace JsParserCore.UI
             this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new JsParserCore.UI.CustomTreeView();
             this.label1 = new System.Windows.Forms.Label();
+            this.treeView1 = new JsParserCore.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -94,71 +93,77 @@ namespace JsParserCore.UI
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem2,
-            this.setLabelToolStripMenuItem,
+            this.contextMenuMarks0Item,
+            this.contextMenuMarks1Item,
+            this.contextMenuMarks2Item,
+            this.contextMenuMarks3Item,
+            this.contextMenuMarks4Item,
+            this.contextMenuMarks5Item,
             this.toolStripMenuItem1,
             this.resetLabelToolStripMenuItem,
             this.resetAllLabelsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 208);
             // 
-            // toolStripMenuItem6
+            // contextMenuMarks0Item
             // 
-            this.toolStripMenuItem6.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem6.Image = global::JsParserCore.Properties.Resources.flag_white;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem6.Text = "White mark";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            this.contextMenuMarks0Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks0Item.Image = global::JsParserCore.Properties.Resources.flag_white;
+            this.contextMenuMarks0Item.Name = "contextMenuMarks0Item";
+            this.contextMenuMarks0Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks0Item.Tag = "W";
+            this.contextMenuMarks0Item.Text = "White mark";
+            this.contextMenuMarks0Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // toolStripMenuItem5
+            // contextMenuMarks2Item
             // 
-            this.toolStripMenuItem5.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem5.Image = global::JsParserCore.Properties.Resources.flag_green;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem5.Text = "Green mark";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
+            this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
+            this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks2Item.Tag = "G";
+            this.contextMenuMarks2Item.Text = "Green mark";
+            this.contextMenuMarks2Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // toolStripMenuItem4
+            // contextMenuMarks1Item
             // 
-            this.toolStripMenuItem4.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem4.Image = global::JsParserCore.Properties.Resources.flag_blue;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem4.Text = "Blue mark";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            this.contextMenuMarks1Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks1Item.Image = global::JsParserCore.Properties.Resources.flag_blue;
+            this.contextMenuMarks1Item.Name = "contextMenuMarks1Item";
+            this.contextMenuMarks1Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks1Item.Tag = "B";
+            this.contextMenuMarks1Item.Text = "Blue mark";
+            this.contextMenuMarks1Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // toolStripMenuItem3
+            // contextMenuMarks3Item
             // 
-            this.toolStripMenuItem3.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem3.Image = global::JsParserCore.Properties.Resources.flag_orange;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem3.Text = "Orange mark";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.contextMenuMarks3Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks3Item.Image = global::JsParserCore.Properties.Resources.flag_orange;
+            this.contextMenuMarks3Item.Name = "contextMenuMarks3Item";
+            this.contextMenuMarks3Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks3Item.Tag = "O";
+            this.contextMenuMarks3Item.Text = "Orange mark";
+            this.contextMenuMarks3Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // toolStripMenuItem2
+            // contextMenuMarks4Item
             // 
-            this.toolStripMenuItem2.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem2.Image = global::JsParserCore.Properties.Resources.flag_red;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem2.Text = "Red mark";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.contextMenuMarks4Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks4Item.Image = global::JsParserCore.Properties.Resources.flag_red;
+            this.contextMenuMarks4Item.Name = "contextMenuMarks4Item";
+            this.contextMenuMarks4Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks4Item.Tag = "R";
+            this.contextMenuMarks4Item.Text = "Red mark";
+            this.contextMenuMarks4Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // setLabelToolStripMenuItem
+            // contextMenuMarks5Item
             // 
-            this.setLabelToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.setLabelToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.icon_favourites;
-            this.setLabelToolStripMenuItem.Name = "setLabelToolStripMenuItem";
-            this.setLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.setLabelToolStripMenuItem.Text = "Star mark";
-            this.setLabelToolStripMenuItem.Click += new System.EventHandler(this.setLabelToolStripMenuItem_Click);
+            this.contextMenuMarks5Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks5Item.Image = global::JsParserCore.Properties.Resources.icon_favourites;
+            this.contextMenuMarks5Item.Name = "contextMenuMarks5Item";
+            this.contextMenuMarks5Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks5Item.Tag = "S";
+            this.contextMenuMarks5Item.Text = "Star mark";
+            this.contextMenuMarks5Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -184,9 +189,6 @@ namespace JsParserCore.UI
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton2,
-            this.btnSortToggle,
-            this.toolStripSeparator1,
-            this.toolStripDropDownButton1,
             this.toolStripSeparator3,
             this.toolStripButton1,
             this.btnErrorSeparator,
@@ -207,10 +209,15 @@ namespace JsParserCore.UI
             this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showHierarhyToolStripMenuItem,
             this.expandAllByDefaultToolStripMenuItem,
-            this.toolStripMenuItem7,
             this.expandAllToolStripMenuItem,
-            this.collapseAllNodesToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.tree;
+            this.collapseAllNodesToolStripMenuItem,
+            this.toolStripMenuItem8,
+            this.sortItemsAlphabeticallyToolStripMenuItem,
+            this.showLineNumbersToolStripMenuItem,
+            this.filterByMarksToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.settingsToolStripMenuItem1});
+            this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.list_settings;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
             this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 22);
@@ -219,90 +226,75 @@ namespace JsParserCore.UI
             // showHierarhyToolStripMenuItem
             // 
             this.showHierarhyToolStripMenuItem.CheckOnClick = true;
+            this.showHierarhyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.tree;
             this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
-            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.showHierarhyToolStripMenuItem.Text = "Show hierarchy";
+            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showHierarhyToolStripMenuItem.Text = "Show Hierachy";
             this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
             // 
             // expandAllByDefaultToolStripMenuItem
             // 
             this.expandAllByDefaultToolStripMenuItem.CheckOnClick = true;
             this.expandAllByDefaultToolStripMenuItem.Name = "expandAllByDefaultToolStripMenuItem";
-            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.expandAllByDefaultToolStripMenuItem.Text = "Expand all by default";
+            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllByDefaultToolStripMenuItem.Text = "Expand All By Default";
             this.expandAllByDefaultToolStripMenuItem.Click += new System.EventHandler(this.expandAllByDefaultToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 6);
             // 
             // expandAllToolStripMenuItem
             // 
             this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
-            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.expandAllToolStripMenuItem.Text = "Expand all nodes";
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllToolStripMenuItem.Text = "Expand All Nodes";
             this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
             // 
             // collapseAllNodesToolStripMenuItem
             // 
             this.collapseAllNodesToolStripMenuItem.Name = "collapseAllNodesToolStripMenuItem";
-            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.collapseAllNodesToolStripMenuItem.Text = "Collapse all nodes";
+            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.collapseAllNodesToolStripMenuItem.Text = "Collapse All Nodes";
             this.collapseAllNodesToolStripMenuItem.Click += new System.EventHandler(this.collapseAllNodesToolStripMenuItem_Click);
             // 
-            // btnSortToggle
+            // toolStripMenuItem8
             // 
-            this.btnSortToggle.CheckOnClick = true;
-            this.btnSortToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSortToggle.Image = global::JsParserCore.Properties.Resources.SortAZ;
-            this.btnSortToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSortToggle.Name = "btnSortToggle";
-            this.btnSortToggle.Size = new System.Drawing.Size(23, 22);
-            this.btnSortToggle.Text = "Sort";
-            this.btnSortToggle.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(202, 6);
             // 
-            // toolStripSeparator1
+            // sortItemsAlphabeticallyToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.sortItemsAlphabeticallyToolStripMenuItem.CheckOnClick = true;
+            this.sortItemsAlphabeticallyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.SortAZ;
+            this.sortItemsAlphabeticallyToolStripMenuItem.Name = "sortItemsAlphabeticallyToolStripMenuItem";
+            this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.sortItemsAlphabeticallyToolStripMenuItem.Text = "Sort Items Alphabetically";
+            this.sortItemsAlphabeticallyToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // toolStripDropDownButton1
+            // showLineNumbersToolStripMenuItem
             // 
-            this.toolStripDropDownButton1.AutoToolTip = false;
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShowLineNumbers,
-            this.btnFilterByMarks,
-            this.settingsToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::JsParserCore.Properties.Resources.list_settings;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "View tools";
+            this.showLineNumbersToolStripMenuItem.CheckOnClick = true;
+            this.showLineNumbersToolStripMenuItem.Name = "showLineNumbersToolStripMenuItem";
+            this.showLineNumbersToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showLineNumbersToolStripMenuItem.Text = "Show Line Numbers";
+            this.showLineNumbersToolStripMenuItem.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
             // 
-            // btnShowLineNumbers
+            // filterByMarksToolStripMenuItem
             // 
-            this.btnShowLineNumbers.CheckOnClick = true;
-            this.btnShowLineNumbers.Name = "btnShowLineNumbers";
-            this.btnShowLineNumbers.Size = new System.Drawing.Size(175, 22);
-            this.btnShowLineNumbers.Text = "Show line numbers";
-            this.btnShowLineNumbers.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
+            this.filterByMarksToolStripMenuItem.CheckOnClick = true;
+            this.filterByMarksToolStripMenuItem.Name = "filterByMarksToolStripMenuItem";
+            this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.filterByMarksToolStripMenuItem.Text = "Filter By Marks";
+            this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // btnFilterByMarks
+            // toolStripMenuItem7
             // 
-            this.btnFilterByMarks.CheckOnClick = true;
-            this.btnFilterByMarks.Name = "btnFilterByMarks";
-            this.btnFilterByMarks.Size = new System.Drawing.Size(175, 22);
-            this.btnFilterByMarks.Text = "Filter by marks";
-            this.btnFilterByMarks.Click += new System.EventHandler(this.btnFilterByMarks_Click);
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(202, 6);
             // 
-            // settingsToolStripMenuItem
+            // settingsToolStripMenuItem1
             // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.settingsToolStripMenuItem.Text = "Settings...";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
+            this.settingsToolStripMenuItem1.Text = "Settings...";
+            this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -319,21 +311,6 @@ namespace JsParserCore.UI
             this.toolStripButton1.Text = "Find function";
             this.toolStripButton1.Click += new System.EventHandler(this.toolFindButton_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRefresh.Image = global::JsParserCore.Properties.Resources.refresh;
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // btnErrorSeparator
             // 
             this.btnErrorSeparator.Name = "btnErrorSeparator";
@@ -349,6 +326,21 @@ namespace JsParserCore.UI
             this.btnErrorDiagnosis.Size = new System.Drawing.Size(29, 22);
             this.btnErrorDiagnosis.Text = "Errors";
             this.btnErrorDiagnosis.Visible = false;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = global::JsParserCore.Properties.Resources.refresh;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // lbDocName
             // 
@@ -428,6 +420,18 @@ namespace JsParserCore.UI
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(-2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "      Task List";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // treeView1
             // 
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
@@ -449,18 +453,6 @@ namespace JsParserCore.UI
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(-2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "      Task List";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NavigationTreeView
             // 
@@ -491,32 +483,25 @@ namespace JsParserCore.UI
 		private System.Windows.Forms.ImageList imageList1;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem resetLabelToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem setLabelToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks5Item;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem resetAllLabelsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-		private System.Windows.Forms.ToolStrip toolStrip2;
-		private System.Windows.Forms.ToolStripButton btnSortToggle;
+		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks0Item;
+		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks2Item;
+		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks1Item;
+		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks3Item;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks4Item;
+        private System.Windows.Forms.ToolStrip toolStrip2;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnRefresh;
 		private System.Windows.Forms.ToolStripLabel lbDocName;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-		private System.Windows.Forms.ToolStripMenuItem btnShowLineNumbers;
-		private System.Windows.Forms.ToolStripMenuItem btnFilterByMarks;
-		private System.Windows.Forms.Panel panelLinesNumbers;
-		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.Panel panelLinesNumbers;
 		private System.Windows.Forms.Timer timer2;
 		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
 		private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton btnErrorDiagnosis;
@@ -527,5 +512,11 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem sortItemsAlphabeticallyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showLineNumbersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filterByMarksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
     }
 }

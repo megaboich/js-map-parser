@@ -71,7 +71,7 @@ namespace JsParserCore.UI
 		{
 			if (!string.IsNullOrEmpty(mark))
 			{
-				treenode.Tags += mark;
+				treenode.Tags = mark;
 
 				switch (mark[0])
 				{
@@ -115,14 +115,7 @@ namespace JsParserCore.UI
 
 			if (!string.IsNullOrEmpty(mark))
 			{
-				if (CurrentDictionary.ContainsKey(treenode.Text))
-				{
-					CurrentDictionary[treenode.Text] = CurrentDictionary[treenode.Text] + mark;
-				}
-				else
-				{
-					CurrentDictionary.Add(treenode.Text, mark);
-				}
+				CurrentDictionary[treenode.Text] = mark;
 			}
 			else
 			{
