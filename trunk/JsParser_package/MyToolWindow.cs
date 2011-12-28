@@ -32,7 +32,6 @@ namespace AlexanderBoyko.JsParser_package
 		private DocumentEvents _documentEvents;
 		private SolutionEvents _solutionEvents;
 		private WindowEvents _windowEvents;
-		private DTE _dte;
 
 		public bool TreeLoaded
 		{
