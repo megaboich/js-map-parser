@@ -344,7 +344,7 @@ namespace JSparser
 		/// <param name="gotFocus">
 		/// The got focus.
 		/// </param>
-		/// <param name="LostFocus">
+		/// <param name="lostFocus">
 		/// The lost focus.
 		/// </param>
 		private void windowEvents_WindowActivated(Window gotFocus, Window lostFocus)
@@ -372,6 +372,10 @@ namespace JSparser
 			}
 		}
 
+		/// <summary>
+		/// On Document Opened event.
+		/// </summary>
+		/// <param name="document">Document</param>
 		public void documentEvents_DocumentOpened(Document document)
 		{
 			Trace.WriteLine("js addin: documentEvents_DocumentOpened");
