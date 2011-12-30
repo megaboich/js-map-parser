@@ -1,12 +1,12 @@
 
 *.docstates
 *.suo
-trunk/JSparser/bin/
-trunk/JSparser/obj/
-trunk/JsParser_package/bin/
-trunk/JsParser_package/obj/
-trunk/JsParserCore/bin/
+source/JSparser/bin/
+source/JSparser/obj/
+source/JsParser_package/bin/
+source/JsParser_package/obj/
+source/JsParserCore/bin/
 *.user
-trunk/JsParserCore/obj/
-trunk/JsParserTest/bin/
-trunk/JsParserTest/obj/
+source/JsParserCore/obj/
+source/JsParserTest/bin/
+source/JsParserTest/obj/
