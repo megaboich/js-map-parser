@@ -65,6 +65,7 @@
     <Compile Include="Helpers\Statistics.cs" />
     <Compile Include="Helpers\StatisticsManager.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
+    <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />
     <Compile Include="Parsers\CustomComment.cs" />

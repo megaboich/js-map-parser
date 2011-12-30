@@ -99,23 +99,29 @@ namespace JsParserCore.Parsers
 			}
 		}
 
-		private string ConcatAlias(string exist, string appender, string concatenator = ".")
+		private NodeAlias ConcatAlias(NodeAlias exist, NodeAlias appender)
 		{
-			if (string.IsNullOrEmpty(exist))
+			if (exist == null)
 			{
 				return appender;
 			}
 
-			return exist + concatenator + appender;
+			if (appender == null)
+			{
+				return exist;
+			}
+
+			appender.AppendPrev(exist);
+			return appender;
 		}
 
-		private string ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, string expressionAlias)
+		private NodeAlias ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, NodeAlias expressionAlias)
 		{
 			if (exp is BinaryOperatorExpression)
 			{
 				var bexp = (BinaryOperatorExpression) exp;
 
-				string alias = ProcessExpression(nodes, bexp.Left, expressionAlias);
+				var alias = ProcessExpression(nodes, bexp.Left, expressionAlias);
 
 				var falias = bexp.Opcode == Expression.Operation.Equal ? ConcatAlias(expressionAlias, alias) : expressionAlias;
 
@@ -134,13 +140,15 @@ namespace JsParserCore.Parsers
 					if (!string.IsNullOrEmpty(args))
 					{
 						args = args.Shortenize(_settings.MaxParametersLengthInFunctionChain);
-						alias += "(" + args +")";
+						alias.Text += "(" + args +")";
 					}
 				}
 
+				var firstPart = ConcatAlias(alias, new NodeAlias("?", NodeAliasType.AnonymousFunctionInParameter));
+				var itemAlias = ConcatAlias(expressionAlias, firstPart);
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
-					ProcessExpression(nodes, arg.Value, ConcatAlias(expressionAlias, ConcatAlias(alias, "?", ">")));
+					ProcessExpression(nodes, arg.Value, itemAlias);
 				}
 
 				return alias;
@@ -149,15 +157,15 @@ namespace JsParserCore.Parsers
 			if (exp is UnaryOperatorExpression)
 			{
 				var uexp = (UnaryOperatorExpression) exp;
-				ProcessExpression(nodes, uexp.Operand, ConcatAlias(expressionAlias, "?"));
-				return string.Empty;
+				ProcessExpression(nodes, uexp.Operand, ConcatAlias(expressionAlias, new NodeAlias("?")));
+				return null;
 			}
 
 			if (exp is FunctionExpression)
 			{
 				var fexp = (FunctionExpression) exp;
 				var alias = ProcessFunctionDefinition(nodes, fexp.Function, expressionAlias);
-				return alias.Alias;
+				return alias;
 			}
 
 			if (exp is ObjectLiteralExpression)
@@ -166,7 +174,7 @@ namespace JsParserCore.Parsers
 
 				var codeNode = new CodeNode
 				{
-					Alias = expressionAlias,
+					Alias = expressionAlias.GetFullText(),
 					Opcode = exp.Opcode.ToString(),
 					StartLine = exp.Location.StartLine,
 					StartColumn = exp.Location.StartColumn,
@@ -191,26 +199,26 @@ namespace JsParserCore.Parsers
 				var alias = qexp.Qualifier.Spelling;
 				var basealias = ProcessExpression(nodes, qexp.Base, expressionAlias);
 
-				return ConcatAlias(basealias, alias);
+				return ConcatAlias(basealias, new NodeAlias(alias));
 			}
 
 			if (exp is IdentifierExpression)
 			{
 				// Just return the alias.
 				var iexp = (IdentifierExpression) exp;
-				return iexp.ID.Spelling;
+				return new NodeAlias(iexp.ID.Spelling);
 			}
 
 			if (exp is StringLiteralExpression)
 			{
 				var slexp = (StringLiteralExpression) exp;
-				return slexp.Value;
+				return new NodeAlias(slexp.Value);
 			}
 
 			if (exp is NumericLiteralExpression)
 			{
 				var numexp = (NumericLiteralExpression)exp;
-				return numexp.Spelling;
+				return new NodeAlias(numexp.Spelling);
 			}
 
 			if (exp is SubscriptExpression)
@@ -221,7 +229,7 @@ namespace JsParserCore.Parsers
 				return ConcatAlias(basealias, subalias);
 			}
 
-			return string.Empty;
+			return null;
 		}
 
 		private string StringifyArguments(List<ExpressionListElement> list)
@@ -283,7 +291,7 @@ namespace JsParserCore.Parsers
 						var variableDeclaration = (InitializerVariableDeclaration)element.Declaration;
 						var alias = variableDeclaration.Name != null ? variableDeclaration.Name.Spelling : string.Empty;
 
-						var res = ProcessExpression(nodes, variableDeclaration.Initializer, alias);
+						var res = ProcessExpression(nodes, variableDeclaration.Initializer, new NodeAlias(alias));
 
 						if (!(variableDeclaration.Initializer is FunctionExpression) &&
 							!(variableDeclaration.Initializer is ObjectLiteralExpression))
@@ -303,7 +311,7 @@ namespace JsParserCore.Parsers
 			if (statement is ReturnOrThrowStatement)
 			{
 				var rstat = statement as ReturnOrThrowStatement;
-				ProcessExpression(nodes, rstat.Value, "return");
+				ProcessExpression(nodes, rstat.Value, new NodeAlias("return"));
 				return;
 			}
 
@@ -332,7 +340,7 @@ namespace JsParserCore.Parsers
 			if (statement is SwitchStatement)
 			{
 				var sstat = statement as SwitchStatement;
-				ProcessExpression(nodes, sstat.Value, "switch");
+				ProcessExpression(nodes, sstat.Value, new NodeAlias("switch"));
 
 				foreach(var caseClause in sstat.Cases.GetEnumerable())
 				{
@@ -378,17 +386,19 @@ namespace JsParserCore.Parsers
 			return codeNode;
 		}
 
-		private CodeNode ProcessFunctionDefinition(
+		private NodeAlias ProcessFunctionDefinition(
 			Hierachy<CodeNode> nodes,
 			FunctionDefinition function,
-			string functionName)
+			NodeAlias functionName)
 		{
-			var name = !string.IsNullOrEmpty(functionName)
-				? functionName
-				: (function.Name != null
+			if (functionName == null)
+			{
+				var name = function.Name != null
 					? function.Name.Spelling
-					: string.Empty);
-
+					: string.Empty;
+				functionName = new NodeAlias(name);
+			}
+			
 			var pars = string.Join(
 				",",
 				((IEnumerable<Parameter>) function.Parameters)
@@ -398,7 +408,7 @@ namespace JsParserCore.Parsers
 
 			var codeNode = new CodeNode
 			{
-				Alias = name + "(" + pars + ")",
+				Alias = functionName.GetFullText() + "(" + pars + ")",
 				Opcode = Expression.Operation.Function.ToString(),
 				StartLine = function.Location.StartLine,
 				StartColumn = function.Location.StartColumn,
@@ -410,7 +420,7 @@ namespace JsParserCore.Parsers
 			//Go to recursion
 			Hierachy<CodeNode> hi = nodes.Add(codeNode);
 			CreateNodes(hi, function.Body.Children);
-			return codeNode;
+			return new NodeAlias(codeNode.Alias);
 		}
 	}
 }
