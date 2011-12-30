@@ -94,10 +94,10 @@ namespace JsParserCore.Helpers
 			return h;
 		}
 
-		public override int GetHashCode()
-		{
-			return Serializer.Serialize(this).GetHashCode();
-		}
+		//public override int GetHashCode()
+		//{
+		//    return Serializer.Serialize(this).GetHashCode();
+		//}
 
 		/// <summary>
 		/// Equals custom implementation.

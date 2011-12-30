@@ -166,6 +166,8 @@
     <EmbeddedResource Include="UnitTests\Source\Test_HierarhizeOnPostProcessing.js" />
     <EmbeddedResource Include="NodesPostProcessor\TestsScripts\jquery-1.7.1.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_Construct_Object_In_Return_Statement.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_Anonimous_In_Return_Statement.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_Anonimous_In_Return_Statement.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
