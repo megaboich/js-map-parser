@@ -303,5 +303,53 @@ namespace JsParserCore.Properties {
                 this["MaxParametersLengthInFunctionChain"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Statistics {
+            get {
+                return ((string)(this["Statistics"]));
+            }
+            set {
+                this["Statistics"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://apps.megaboich.com/statistics/jsparser/submit")]
+        public string StatisticsServerUrl {
+            get {
+                return ((string)(this["StatisticsServerUrl"]));
+            }
+            set {
+                this["StatisticsServerUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckForVersionUpdates {
+            get {
+                return ((bool)(this["CheckForVersionUpdates"]));
+            }
+            set {
+                this["CheckForVersionUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SendStatistics {
+            get {
+                return ((bool)(this["SendStatistics"]));
+            }
+            set {
+                this["SendStatistics"] = value;
+            }
+        }
     }
 }

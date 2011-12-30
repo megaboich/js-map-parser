@@ -66,6 +66,10 @@
             this.button8 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.taggedFuncLabel6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnForceSendStatistics = new System.Windows.Forms.Button();
+            this.chSendStatistics = new System.Windows.Forms.CheckBox();
+            this.chCheckForVersionUpdates = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabControl1.SuspendLayout();
@@ -80,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -147,8 +152,9 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(9, 10);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(450, 283);
@@ -161,9 +167,9 @@
             this.tabPage1.Controls.Add(this.chTrackActiveItem);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(442, 257);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
@@ -177,9 +183,9 @@
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(442, 257);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "UI";
@@ -188,7 +194,7 @@
             // numericUpDownMaxParametersLengthInFunctionChain
             // 
             this.numericUpDownMaxParametersLengthInFunctionChain.Location = new System.Drawing.Point(229, 214);
-            this.numericUpDownMaxParametersLengthInFunctionChain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownMaxParametersLengthInFunctionChain.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownMaxParametersLengthInFunctionChain.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -211,7 +217,7 @@
             // numericUpDownMaxParametersLength
             // 
             this.numericUpDownMaxParametersLength.Location = new System.Drawing.Point(229, 191);
-            this.numericUpDownMaxParametersLength.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownMaxParametersLength.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownMaxParametersLength.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -278,9 +284,9 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.taggedFuncLabel6);
             this.groupBox1.Location = new System.Drawing.Point(4, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(435, 176);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
@@ -290,7 +296,7 @@
             // 
             this.pictureBox5.Image = global::JsParserCore.Properties.Resources.flag_white;
             this.pictureBox5.Location = new System.Drawing.Point(12, 26);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(18, 20);
             this.pictureBox5.TabIndex = 16;
@@ -299,7 +305,7 @@
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(252, 141);
-            this.button13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(56, 19);
             this.button13.TabIndex = 23;
@@ -310,7 +316,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(184, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 19);
             this.button3.TabIndex = 1;
@@ -321,7 +327,7 @@
             // button14
             // 
             this.button14.Location = new System.Drawing.Point(252, 118);
-            this.button14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button14.Margin = new System.Windows.Forms.Padding(2);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(56, 19);
             this.button14.TabIndex = 22;
@@ -342,7 +348,7 @@
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(252, 94);
-            this.button11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(56, 19);
             this.button11.TabIndex = 21;
@@ -353,7 +359,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(184, 47);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 19);
             this.button4.TabIndex = 3;
@@ -364,7 +370,7 @@
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(252, 71);
-            this.button12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(56, 19);
             this.button12.TabIndex = 20;
@@ -385,7 +391,7 @@
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(252, 47);
-            this.button10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(56, 19);
             this.button10.TabIndex = 19;
@@ -396,7 +402,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(184, 71);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(56, 19);
             this.button5.TabIndex = 5;
@@ -407,7 +413,7 @@
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(252, 24);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(56, 19);
             this.button9.TabIndex = 18;
@@ -429,7 +435,7 @@
             // 
             this.pictureBox6.Image = global::JsParserCore.Properties.Resources.icon_favourites;
             this.pictureBox6.Location = new System.Drawing.Point(12, 144);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(18, 20);
             this.pictureBox6.TabIndex = 17;
@@ -438,7 +444,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(184, 94);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(56, 19);
             this.button6.TabIndex = 7;
@@ -460,7 +466,7 @@
             // 
             this.pictureBox4.Image = global::JsParserCore.Properties.Resources.flag_orange;
             this.pictureBox4.Location = new System.Drawing.Point(12, 97);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(18, 20);
             this.pictureBox4.TabIndex = 15;
@@ -469,7 +475,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(184, 118);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(56, 19);
             this.button7.TabIndex = 9;
@@ -481,7 +487,7 @@
             // 
             this.pictureBox3.Image = global::JsParserCore.Properties.Resources.flag_red;
             this.pictureBox3.Location = new System.Drawing.Point(12, 120);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(18, 20);
             this.pictureBox3.TabIndex = 14;
@@ -501,7 +507,7 @@
             // 
             this.pictureBox2.Image = global::JsParserCore.Properties.Resources.flag_green;
             this.pictureBox2.Location = new System.Drawing.Point(12, 73);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(18, 20);
             this.pictureBox2.TabIndex = 13;
@@ -510,7 +516,7 @@
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(184, 141);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(56, 19);
             this.button8.TabIndex = 11;
@@ -522,7 +528,7 @@
             // 
             this.pictureBox1.Image = global::JsParserCore.Properties.Resources.flag_blue;
             this.pictureBox1.Location = new System.Drawing.Point(12, 50);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(18, 20);
             this.pictureBox1.TabIndex = 12;
@@ -537,6 +543,49 @@
             this.taggedFuncLabel6.Size = new System.Drawing.Size(87, 13);
             this.taggedFuncLabel6.TabIndex = 10;
             this.taggedFuncLabel6.Text = "taggedFunction()";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnForceSendStatistics);
+            this.tabPage3.Controls.Add(this.chSendStatistics);
+            this.tabPage3.Controls.Add(this.chCheckForVersionUpdates);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(442, 257);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Network";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnForceSendStatistics
+            // 
+            this.btnForceSendStatistics.Location = new System.Drawing.Point(35, 69);
+            this.btnForceSendStatistics.Name = "btnForceSendStatistics";
+            this.btnForceSendStatistics.Size = new System.Drawing.Size(75, 23);
+            this.btnForceSendStatistics.TabIndex = 2;
+            this.btnForceSendStatistics.Text = "Send now";
+            this.btnForceSendStatistics.UseVisualStyleBackColor = true;
+            this.btnForceSendStatistics.Click += new System.EventHandler(this.btnForceSendStatistics_Click);
+            // 
+            // chSendStatistics
+            // 
+            this.chSendStatistics.AutoSize = true;
+            this.chSendStatistics.Location = new System.Drawing.Point(21, 46);
+            this.chSendStatistics.Name = "chSendStatistics";
+            this.chSendStatistics.Size = new System.Drawing.Size(250, 17);
+            this.chSendStatistics.TabIndex = 1;
+            this.chSendStatistics.Text = "Send anonymous usage statistics. (Once a day)";
+            this.chSendStatistics.UseVisualStyleBackColor = true;
+            // 
+            // chCheckForVersionUpdates
+            // 
+            this.chCheckForVersionUpdates.AutoSize = true;
+            this.chCheckForVersionUpdates.Location = new System.Drawing.Point(21, 22);
+            this.chCheckForVersionUpdates.Name = "chCheckForVersionUpdates";
+            this.chCheckForVersionUpdates.Size = new System.Drawing.Size(217, 17);
+            this.chCheckForVersionUpdates.TabIndex = 0;
+            this.chCheckForVersionUpdates.Text = "Check for version updates automatically.";
+            this.chCheckForVersionUpdates.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -572,6 +621,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -618,5 +669,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDownMaxParametersLengthInFunctionChain;
         private System.Windows.Forms.NumericUpDown numericUpDownMaxParametersLength;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnForceSendStatistics;
+        private System.Windows.Forms.CheckBox chSendStatistics;
+        private System.Windows.Forms.CheckBox chCheckForVersionUpdates;
 	}
 }

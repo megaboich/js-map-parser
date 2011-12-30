@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using JsParserCore.Code;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace JsParserTest
 {
@@ -18,6 +19,7 @@ namespace JsParserTest
 			_textBox = textBox;
 			_name = name;
 			_path = path;
+			ContainerName = typeof(SimpleCodeProvider).Assembly.FullName;
 		}
 
 		#region ICodeProvider Members
@@ -82,5 +84,8 @@ namespace JsParserTest
 		}
 
 		#endregion
+
+
+		public string ContainerName {get; set;}
 	}
 }

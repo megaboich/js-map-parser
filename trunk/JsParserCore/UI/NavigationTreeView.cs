@@ -53,10 +53,6 @@ namespace JsParserCore.UI
 			showLineNumbersToolStripMenuItem.Checked = Settings.ShowLineNumbersEnabled;
 			filterByMarksToolStripMenuItem.Checked = Settings.FilterByMarksEnabled;
 			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
-
-			ThreadPool.QueueUserWorkItem((object state) => {
-				VersionChecker.CheckVersion();
-			});
 		}
 
 		/// <summary>
@@ -65,6 +61,9 @@ namespace JsParserCore.UI
 		public void Init(ICodeProvider codeProvider)
 		{
 			Code = codeProvider;
+			StatisticsManager.Instance.Statistics.Container = Code.ContainerName;
+
+			PerformNetworkActivity();
 		}
 
 		/// <summary>
@@ -235,6 +234,37 @@ namespace JsParserCore.UI
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
+			}
+		}
+
+		private void PerformNetworkActivity()
+		{
+			if (Settings.CheckForVersionUpdates || Settings.SendStatistics)
+			{
+				ThreadPool.QueueUserWorkItem((object state) =>
+				{
+					try
+					{
+						if (Settings.CheckForVersionUpdates)
+						{
+							VersionChecker.CheckVersion();
+						}
+					}
+					catch
+					{
+					}
+
+					try
+					{
+						if (Settings.SendStatistics)
+						{
+							StatisticsManager.Instance.SubmitStatisticsToServer();
+						}
+					}
+					catch
+					{
+					}
+				});
 			}
 		}
 

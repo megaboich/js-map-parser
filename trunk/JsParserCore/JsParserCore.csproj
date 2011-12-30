@@ -62,6 +62,8 @@
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
     <Compile Include="Helpers\Serializer.cs" />
+    <Compile Include="Helpers\Statistics.cs" />
+    <Compile Include="Helpers\StatisticsManager.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />

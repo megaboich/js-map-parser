@@ -82,5 +82,17 @@
     <Setting Name="MaxParametersLengthInFunctionChain" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
+    <Setting Name="Statistics" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="StatisticsServerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://apps.megaboich.com/statistics/jsparser/submit</Value>
+    </Setting>
+    <Setting Name="CheckForVersionUpdates" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SendStatistics" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

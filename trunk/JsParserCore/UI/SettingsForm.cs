@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JsParserCore.Properties;
+using JsParserCore.Helpers;
 
 namespace JsParserCore.UI
 {
@@ -42,6 +43,9 @@ namespace JsParserCore.UI
 			Settings.Default.MaxParametersLength = Convert.ToInt32(numericUpDownMaxParametersLength.Value);
 			Settings.Default.MaxParametersLengthInFunctionChain = Convert.ToInt32(numericUpDownMaxParametersLengthInFunctionChain.Value);
 
+			Settings.Default.CheckForVersionUpdates = chCheckForVersionUpdates.Checked;
+			Settings.Default.SendStatistics = chSendStatistics.Checked;
+
 			Settings.Default.Save();
 			Close();
 		}
@@ -66,6 +70,9 @@ namespace JsParserCore.UI
 
 			numericUpDownMaxParametersLength.Value = Settings.Default.MaxParametersLength;
 			numericUpDownMaxParametersLengthInFunctionChain.Value = Settings.Default.MaxParametersLengthInFunctionChain;
+
+			chCheckForVersionUpdates.Checked = Settings.Default.CheckForVersionUpdates;
+			chSendStatistics.Checked = Settings.Default.SendStatistics;
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -158,6 +165,11 @@ namespace JsParserCore.UI
 		private void button13_Click(object sender, EventArgs e)
 		{
 			ShowColorDialogForLabel(taggedFuncLabel6);
+		}
+
+		private void btnForceSendStatistics_Click(object sender, EventArgs e)
+		{
+			StatisticsManager.Instance.SubmitStatisticsToServer(force: true);
 		}
 	}
 }

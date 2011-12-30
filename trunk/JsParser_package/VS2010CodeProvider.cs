@@ -15,6 +15,8 @@ namespace AlexanderBoyko.JsParser_package
 		public VS2010CodeProvider(Document activeDocument)
 		{
 			_activeDocument = activeDocument;
+
+			ContainerName = "Visual Studio " + activeDocument.DTE.Version;
 		}
 
 		private Document Doc
@@ -89,5 +91,8 @@ namespace AlexanderBoyko.JsParser_package
 		}
 
 		#endregion
+
+
+		public string ContainerName {get; set;}
 	}
 }

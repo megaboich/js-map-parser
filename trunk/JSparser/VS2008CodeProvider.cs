@@ -17,6 +17,7 @@ namespace JSparser
 		{
 			_applicationObject = applicationObject;
 			_activeDocument = activeDocument ?? _applicationObject.ActiveDocument;
+			ContainerName = "Visual Studio " + _applicationObject.DTE.Version;
 		}
 
 		private Document Doc
@@ -92,5 +93,8 @@ namespace JSparser
 		}
 
 		#endregion
+
+
+		public string ContainerName {get; set;}
 	}
 }
