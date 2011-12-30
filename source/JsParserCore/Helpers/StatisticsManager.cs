@@ -41,7 +41,7 @@ namespace JsParserCore.Helpers
                 }
             }
 
-            Statistics.UpdateStatistics();
+            Statistics.UpdateStatisticsOnStart();
         }
 
         public static StatisticsManager Instance
@@ -52,9 +52,14 @@ namespace JsParserCore.Helpers
             }
         }
 
-        public void Save()
+        public void UpdateSettingsWithStatistics()
         {
             Settings.Default.Statistics = new JavaScriptSerializer().Serialize(Statistics);
+        }
+
+        public void Save()
+        {
+            UpdateSettingsWithStatistics();
             Settings.Default.Save();
         }
 

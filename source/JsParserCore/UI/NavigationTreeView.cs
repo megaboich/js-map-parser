@@ -62,6 +62,7 @@ namespace JsParserCore.UI
 		{
 			Code = codeProvider;
 			StatisticsManager.Instance.Statistics.Container = Code.ContainerName;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 
 			PerformNetworkActivity();
 		}
@@ -416,6 +417,7 @@ namespace JsParserCore.UI
 				{
 					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
 					Code.SetFocus();
+					++StatisticsManager.Instance.Statistics.NavigateFromFunctionsTreeCount;
 				}
 				catch { }
 			}
@@ -524,11 +526,6 @@ namespace JsParserCore.UI
 			return null;
 		}
 
-		private string GetStringsHash(IEnumerable<string> col)
-		{
-			return col.Any() ? col.Aggregate((k, a) => a += k) : string.Empty;
-		}
-
 		private void SaveSettings()
 		{
 			Settings.SortingEnabled = sortItemsAlphabeticallyToolStripMenuItem.Checked;
@@ -536,6 +533,8 @@ namespace JsParserCore.UI
 			Settings.ShowLineNumbersEnabled = showLineNumbersToolStripMenuItem.Checked;
 			Settings.FilterByMarksEnabled = filterByMarksToolStripMenuItem.Checked;
 			Settings.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
+			StatisticsManager.Instance.UpdateSettingsWithStatistics();
 			Settings.Save();
 		}
 
@@ -608,6 +607,8 @@ namespace JsParserCore.UI
 				}
 
 				contextMenuStrip1.Show((Control)sender, e.X, e.Y);
+
+				++StatisticsManager.Instance.Statistics.TreeContextMenuExecutedCount;
 			}
 		}
 
@@ -616,6 +617,7 @@ namespace JsParserCore.UI
 			var menuItem = (ToolStripMenuItem)sender;
 			_marksManager.SetMark((string)menuItem.Tag, (CustomTreeNode)treeView1.SelectedNode);
 			treeView1.Refresh();
+			++StatisticsManager.Instance.Statistics.SetMarkExecutedCount;
 		}
 
 		private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -666,6 +668,8 @@ namespace JsParserCore.UI
 			{
 				Code.SelectionMoveToLineAndOffset(errorMessage.StartLine, errorMessage.StartColumn + 1);
 				Code.SetFocus();
+
+				++StatisticsManager.Instance.Statistics.NavigateFromErrorListCount;
 			}
 			catch { }
 		}
@@ -679,6 +683,8 @@ namespace JsParserCore.UI
 				{
 					Code.SelectionMoveToLineAndOffset(taskListItem.StartLine, taskListItem.StartColumn + 1);
 					Code.SetFocus();
+
+					++StatisticsManager.Instance.Statistics.NavigateFromToDoListCount;
 				}
 				catch { }
 			}
@@ -689,6 +695,8 @@ namespace JsParserCore.UI
 			SaveSettings();
 			AdjustLineNumbersPanelSize();
 			panelLinesNumbers.Refresh();
+			++StatisticsManager.Instance.Statistics.ToggleShowLineNumbersCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 		}
 
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
@@ -805,6 +813,8 @@ namespace JsParserCore.UI
 			SettingsForm sf = new SettingsForm(treeView1.Font);
 			sf.ShowDialog();
 			RefreshTree();
+			++StatisticsManager.Instance.Statistics.SettingsDialogShowedCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 		}
 
 		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -816,6 +826,8 @@ namespace JsParserCore.UI
 		{
 			SaveSettings();
 			RefreshTree();
+			++StatisticsManager.Instance.Statistics.ToggleHierachyOptionCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 		}
 
 		private void expandAllByDefaultToolStripMenuItem_Click(object sender, EventArgs e)
@@ -832,6 +844,7 @@ namespace JsParserCore.UI
 			treeView1.EndUpdate();
 			_treeRefreshing = false;
 			panelLinesNumbers.Refresh();
+			++StatisticsManager.Instance.Statistics.ExpandAllCommandExecutedCount;
 		}
 
 		private void collapseAllNodesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -842,6 +855,7 @@ namespace JsParserCore.UI
 			treeView1.EndUpdate();
 			_treeRefreshing = false;
 			panelLinesNumbers.Refresh();
+			++StatisticsManager.Instance.Statistics.CollapseAllCommandExecutedCount;
 		}
 
 		private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
@@ -862,6 +876,23 @@ namespace JsParserCore.UI
 			}
 		}
 
+		private void sortItemsAlphabeticallyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+			++StatisticsManager.Instance.Statistics.SortingUsedCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
+		}
+
+		private void filterByMarksToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+			++StatisticsManager.Instance.Statistics.FilterByMarksUsedCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
+		}
+
 		#endregion
+
 	}
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using JsParserCore.Code;
+using JsParserCore.Properties;
+using JsParserCore.Helpers;
 
 namespace JsParserCore.UI
 {
@@ -24,6 +26,8 @@ namespace JsParserCore.UI
 			InitializeComponent();
 			_callback = callback;
 			_autocompletesource = autocompletesource;
+
+			++StatisticsManager.Instance.Statistics.FindFeatureShowCount;
 		}
 
 		protected override void WndProc(ref Message m)
@@ -58,6 +62,7 @@ namespace JsParserCore.UI
 			edTextInput.TextChanged -= edTextInput_TextChanged;
 			edTextInput.Text = mi.Text;
 			_callback((CodeNode)mi.Tag);
+			++StatisticsManager.Instance.Statistics.FindFeatureUsedCount;
 			Close();
 		}
 

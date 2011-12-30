@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using JsParserCore.Properties;
 
 namespace JsParserCore.Helpers
 {
@@ -10,8 +11,58 @@ namespace JsParserCore.Helpers
     {
         public Guid ClientId { get; set; }
 
+        #region Counters
+
         public int TotalRunCount { get; set; }
 
+        public int FindFeatureShowCount { get; set; }
+
+        public int FindFeatureUsedCount { get; set; }
+
+        public int ToggleHierachyOptionCount { get; set; }
+
+        public int ExpandAllCommandExecutedCount { get; set; }
+
+        public int CollapseAllCommandExecutedCount { get; set; }
+
+        public int SettingsDialogShowedCount { get; set; }
+
+        public int ToggleShowLineNumbersCount { get; set; }
+
+        public int NavigateFromToDoListCount { get; set; }
+
+        public int NavigateFromErrorListCount { get; set; }
+
+        public int NavigateFromFunctionsTreeCount { get; set; }
+
+        public int FilterByMarksUsedCount { get; set; }
+
+        public int SortingUsedCount { get; set; }
+
+        public int TreeContextMenuExecutedCount { get; set; }
+
+        public int SetMarkExecutedCount { get; set; }
+
+        #endregion
+
+        #region Settings
+
+        public bool IsAutoTrackItemEnabled { get; set; }
+
+        public bool IsHierachyShowedOption { get; set; }
+
+        public bool IsAutoExpandAllEnabled { get; set; }
+
+        public bool IsCheckForVersionUpdatesEnabled { get; set; }
+
+        public bool IsShowLineNumbersEnabled { get; set; }
+
+        public bool IsSortingEnabled { get; set; }
+
+        public bool IsFilterByMarksEnabled { get; set; }
+        #endregion
+
+        
         public DateTime FirstDateUse { get; set; }
 
         public DateTime LastSubmittedTime { get; set; }
@@ -35,9 +86,20 @@ namespace JsParserCore.Helpers
             Version = new AssemblyName(typeof(Statistics).Assembly.FullName).Version.ToString();
         }
 
-        public void UpdateStatistics()
+        public void UpdateStatisticsOnStart()
         {
             ++TotalRunCount;
+        }
+
+        internal void UpdateStatisticsFromSettings()
+        {
+            IsAutoTrackItemEnabled = Settings.Default.TrackActiveItem;
+            IsHierachyShowedOption = Settings.Default.HierarchyEnabled;
+            IsAutoExpandAllEnabled = Settings.Default.AutoExpandAll;
+            IsShowLineNumbersEnabled = Settings.Default.ShowLineNumbersEnabled;
+            IsCheckForVersionUpdatesEnabled = Settings.Default.CheckForVersionUpdates;
+            IsSortingEnabled = Settings.Default.SortingEnabled;
+            IsFilterByMarksEnabled = Settings.Default.FilterByMarksEnabled;
         }
     }
 }

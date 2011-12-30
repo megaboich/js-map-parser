@@ -38,8 +38,8 @@ namespace JsParserCore.UI
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuMarks0Item = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks1Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks3Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks4Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks5Item = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +72,8 @@ namespace JsParserCore.UI
             this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -103,7 +103,7 @@ namespace JsParserCore.UI
             this.resetLabelToolStripMenuItem,
             this.resetAllLabelsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 208);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
             // 
             // contextMenuMarks0Item
             // 
@@ -115,16 +115,6 @@ namespace JsParserCore.UI
             this.contextMenuMarks0Item.Text = "White mark";
             this.contextMenuMarks0Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // contextMenuMarks2Item
-            // 
-            this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
-            this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
-            this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
-            this.contextMenuMarks2Item.Tag = "G";
-            this.contextMenuMarks2Item.Text = "Green mark";
-            this.contextMenuMarks2Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
-            // 
             // contextMenuMarks1Item
             // 
             this.contextMenuMarks1Item.BackColor = System.Drawing.SystemColors.Control;
@@ -134,6 +124,16 @@ namespace JsParserCore.UI
             this.contextMenuMarks1Item.Tag = "B";
             this.contextMenuMarks1Item.Text = "Blue mark";
             this.contextMenuMarks1Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
+            // 
+            // contextMenuMarks2Item
+            // 
+            this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
+            this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
+            this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks2Item.Tag = "G";
+            this.contextMenuMarks2Item.Text = "Green mark";
+            this.contextMenuMarks2Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
             // contextMenuMarks3Item
             // 
@@ -266,7 +266,7 @@ namespace JsParserCore.UI
             this.sortItemsAlphabeticallyToolStripMenuItem.Name = "sortItemsAlphabeticallyToolStripMenuItem";
             this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.sortItemsAlphabeticallyToolStripMenuItem.Text = "Sort Items Alphabetically";
-            this.sortItemsAlphabeticallyToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.sortItemsAlphabeticallyToolStripMenuItem.Click += new System.EventHandler(this.sortItemsAlphabeticallyToolStripMenuItem_Click);
             // 
             // showLineNumbersToolStripMenuItem
             // 
@@ -282,7 +282,7 @@ namespace JsParserCore.UI
             this.filterByMarksToolStripMenuItem.Name = "filterByMarksToolStripMenuItem";
             this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.filterByMarksToolStripMenuItem.Text = "Filter By Marks";
-            this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.filterByMarksToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
@@ -420,18 +420,6 @@ namespace JsParserCore.UI
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(-2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "      Task List";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // treeView1
             // 
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
@@ -453,6 +441,18 @@ namespace JsParserCore.UI
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(-2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "      Task List";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NavigationTreeView
             // 
