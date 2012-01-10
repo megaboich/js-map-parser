@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 using JsParserCore.Helpers;
+using JsParserCore.Parsers;
 
 namespace JsParserCore.Code
 {
@@ -15,6 +16,12 @@ namespace JsParserCore.Code
 		/// </summary>
 		[XmlAttribute("Text")]
 		public string Alias { get; set; }
+
+		/// <summary>
+		/// Gets or sets Type of Alias
+		/// </summary>
+		[XmlAttribute("AliasType")]
+		public NodeAliasType AliasType { get; set; }
 
 		/// <summary>
 		/// Gets or sets StartLine.

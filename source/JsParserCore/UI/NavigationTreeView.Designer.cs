@@ -38,8 +38,8 @@ namespace JsParserCore.UI
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuMarks0Item = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks1Item = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks3Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks4Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks5Item = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +72,9 @@ namespace JsParserCore.UI
             this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.hideAnonymousFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -103,7 +104,7 @@ namespace JsParserCore.UI
             this.resetLabelToolStripMenuItem,
             this.resetAllLabelsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 208);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
             // 
             // contextMenuMarks0Item
             // 
@@ -115,16 +116,6 @@ namespace JsParserCore.UI
             this.contextMenuMarks0Item.Text = "White mark";
             this.contextMenuMarks0Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
-            // contextMenuMarks2Item
-            // 
-            this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
-            this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
-            this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
-            this.contextMenuMarks2Item.Tag = "G";
-            this.contextMenuMarks2Item.Text = "Green mark";
-            this.contextMenuMarks2Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
-            // 
             // contextMenuMarks1Item
             // 
             this.contextMenuMarks1Item.BackColor = System.Drawing.SystemColors.Control;
@@ -134,6 +125,16 @@ namespace JsParserCore.UI
             this.contextMenuMarks1Item.Tag = "B";
             this.contextMenuMarks1Item.Text = "Blue mark";
             this.contextMenuMarks1Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
+            // 
+            // contextMenuMarks2Item
+            // 
+            this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
+            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
+            this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
+            this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
+            this.contextMenuMarks2Item.Tag = "G";
+            this.contextMenuMarks2Item.Text = "Green mark";
+            this.contextMenuMarks2Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
             // contextMenuMarks3Item
             // 
@@ -215,6 +216,7 @@ namespace JsParserCore.UI
             this.sortItemsAlphabeticallyToolStripMenuItem,
             this.showLineNumbersToolStripMenuItem,
             this.filterByMarksToolStripMenuItem,
+            this.hideAnonymousFunctionsToolStripMenuItem,
             this.toolStripMenuItem7,
             this.settingsToolStripMenuItem1});
             this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.list_settings;
@@ -228,7 +230,7 @@ namespace JsParserCore.UI
             this.showHierarhyToolStripMenuItem.CheckOnClick = true;
             this.showHierarhyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.tree;
             this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
-            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showHierarhyToolStripMenuItem.Text = "Show Hierachy";
             this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
             // 
@@ -236,35 +238,35 @@ namespace JsParserCore.UI
             // 
             this.expandAllByDefaultToolStripMenuItem.CheckOnClick = true;
             this.expandAllByDefaultToolStripMenuItem.Name = "expandAllByDefaultToolStripMenuItem";
-            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.expandAllByDefaultToolStripMenuItem.Text = "Expand All By Default";
             this.expandAllByDefaultToolStripMenuItem.Click += new System.EventHandler(this.expandAllByDefaultToolStripMenuItem_Click);
             // 
             // expandAllToolStripMenuItem
             // 
             this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
-            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.expandAllToolStripMenuItem.Text = "Expand All Nodes";
             this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
             // 
             // collapseAllNodesToolStripMenuItem
             // 
             this.collapseAllNodesToolStripMenuItem.Name = "collapseAllNodesToolStripMenuItem";
-            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.collapseAllNodesToolStripMenuItem.Text = "Collapse All Nodes";
             this.collapseAllNodesToolStripMenuItem.Click += new System.EventHandler(this.collapseAllNodesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(219, 6);
             // 
             // sortItemsAlphabeticallyToolStripMenuItem
             // 
             this.sortItemsAlphabeticallyToolStripMenuItem.CheckOnClick = true;
             this.sortItemsAlphabeticallyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.SortAZ;
             this.sortItemsAlphabeticallyToolStripMenuItem.Name = "sortItemsAlphabeticallyToolStripMenuItem";
-            this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.sortItemsAlphabeticallyToolStripMenuItem.Text = "Sort Items Alphabetically";
             this.sortItemsAlphabeticallyToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -272,7 +274,7 @@ namespace JsParserCore.UI
             // 
             this.showLineNumbersToolStripMenuItem.CheckOnClick = true;
             this.showLineNumbersToolStripMenuItem.Name = "showLineNumbersToolStripMenuItem";
-            this.showLineNumbersToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showLineNumbersToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showLineNumbersToolStripMenuItem.Text = "Show Line Numbers";
             this.showLineNumbersToolStripMenuItem.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
             // 
@@ -280,19 +282,19 @@ namespace JsParserCore.UI
             // 
             this.filterByMarksToolStripMenuItem.CheckOnClick = true;
             this.filterByMarksToolStripMenuItem.Name = "filterByMarksToolStripMenuItem";
-            this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.filterByMarksToolStripMenuItem.Text = "Filter By Marks";
             this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(219, 6);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(222, 22);
             this.settingsToolStripMenuItem1.Text = "Settings...";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -420,18 +422,6 @@ namespace JsParserCore.UI
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(-2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "      Task List";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // treeView1
             // 
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
@@ -453,6 +443,26 @@ namespace JsParserCore.UI
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(-2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "      Task List";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // hideAnonymousFunctionsToolStripMenuItem
+            // 
+            this.hideAnonymousFunctionsToolStripMenuItem.CheckOnClick = true;
+            this.hideAnonymousFunctionsToolStripMenuItem.Name = "hideAnonymousFunctionsToolStripMenuItem";
+            this.hideAnonymousFunctionsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.hideAnonymousFunctionsToolStripMenuItem.Text = "Hide Anonymous Functions";
+            this.hideAnonymousFunctionsToolStripMenuItem.Click += new System.EventHandler(this.hideAnonymousFunctionsToolStripMenuItem_Click);
             // 
             // NavigationTreeView
             // 
@@ -518,5 +528,6 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ToolStripMenuItem filterByMarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
     }
 }

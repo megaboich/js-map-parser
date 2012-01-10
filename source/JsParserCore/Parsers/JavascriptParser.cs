@@ -99,22 +99,6 @@ namespace JsParserCore.Parsers
 			}
 		}
 
-		private NodeAlias ConcatAlias(NodeAlias exist, NodeAlias appender)
-		{
-			if (exist == null)
-			{
-				return appender;
-			}
-
-			if (appender == null)
-			{
-				return exist;
-			}
-
-			appender.AppendPrev(exist);
-			return appender;
-		}
-
 		private NodeAlias ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, NodeAlias expressionAlias)
 		{
 			if (exp is BinaryOperatorExpression)
@@ -123,7 +107,7 @@ namespace JsParserCore.Parsers
 
 				var alias = ProcessExpression(nodes, bexp.Left, expressionAlias);
 
-				var falias = bexp.Opcode == Expression.Operation.Equal ? ConcatAlias(expressionAlias, alias) : expressionAlias;
+				var falias = bexp.Opcode == Expression.Operation.Equal ? expressionAlias.Concat(alias) : expressionAlias;
 
 				ProcessExpression(nodes, bexp.Right, falias);
 				return alias;
@@ -144,8 +128,8 @@ namespace JsParserCore.Parsers
 					}
 				}
 
-				var firstPart = ConcatAlias(alias, new NodeAlias("?", NodeAliasType.AnonymousFunctionInParameter));
-				var itemAlias = ConcatAlias(expressionAlias, firstPart);
+				var firstPart = alias.Concat(new NodeAlias("?", NodeAliasType.AnonymousFunctionInParameter));
+				var itemAlias = expressionAlias.Concat(firstPart);
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
 					ProcessExpression(nodes, arg.Value, itemAlias);
@@ -157,7 +141,7 @@ namespace JsParserCore.Parsers
 			if (exp is UnaryOperatorExpression)
 			{
 				var uexp = (UnaryOperatorExpression) exp;
-				ProcessExpression(nodes, uexp.Operand, ConcatAlias(expressionAlias, new NodeAlias("?")));
+				ProcessExpression(nodes, uexp.Operand, expressionAlias.Concat(new NodeAlias("?")));
 				return null;
 			}
 
@@ -175,6 +159,7 @@ namespace JsParserCore.Parsers
 				var codeNode = new CodeNode
 				{
 					Alias = expressionAlias.GetFullText(),
+					AliasType = expressionAlias.Type,
 					Opcode = exp.Opcode.ToString(),
 					StartLine = exp.Location.StartLine,
 					StartColumn = exp.Location.StartColumn,
@@ -199,7 +184,7 @@ namespace JsParserCore.Parsers
 				var alias = qexp.Qualifier.Spelling;
 				var basealias = ProcessExpression(nodes, qexp.Base, expressionAlias);
 
-				return ConcatAlias(basealias, new NodeAlias(alias));
+				return basealias.Concat(new NodeAlias(alias));
 			}
 
 			if (exp is IdentifierExpression)
@@ -226,7 +211,7 @@ namespace JsParserCore.Parsers
 				var subexp = (SubscriptExpression)exp;
 				var basealias = ProcessExpression(nodes, subexp.Base, expressionAlias);
 				var subalias = ProcessExpression(nodes, subexp.Subscript, null);
-				return ConcatAlias(basealias, subalias);
+				return basealias.Concat(subalias);
 			}
 
 			return null;
@@ -374,6 +359,7 @@ namespace JsParserCore.Parsers
 			var codeNode = new CodeNode
 			{
 				Alias = variableDeclaration.Name.Spelling,
+				AliasType = NodeAliasType.Variable,
 				Opcode = "Variable",
 				StartLine = variableDeclaration.Location.StartLine,
 				StartColumn = variableDeclaration.Location.StartColumn,
@@ -409,6 +395,7 @@ namespace JsParserCore.Parsers
 			var codeNode = new CodeNode
 			{
 				Alias = functionName.GetFullText() + "(" + pars + ")",
+				AliasType = functionName.Type,
 				Opcode = Expression.Operation.Function.ToString(),
 				StartLine = function.Location.StartLine,
 				StartColumn = function.Location.StartColumn,

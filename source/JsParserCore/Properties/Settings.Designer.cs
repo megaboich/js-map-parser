@@ -351,5 +351,17 @@ namespace JsParserCore.Properties {
                 this["SendStatistics"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideAnonymousFunctions {
+            get {
+                return ((bool)(this["HideAnonymousFunctions"]));
+            }
+            set {
+                this["HideAnonymousFunctions"] = value;
+            }
+        }
     }
 }

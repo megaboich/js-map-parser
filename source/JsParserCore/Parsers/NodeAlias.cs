@@ -10,7 +10,8 @@ namespace JsParserCore.Parsers
     {
         Unknown = 0,
         AnonymousFunction = 1,
-        AnonymousFunctionInParameter = 2
+        AnonymousFunctionInParameter = 2,
+        Variable = 3,
     }
 
     public class NodeAlias
@@ -63,6 +64,25 @@ namespace JsParserCore.Parsers
         public override string ToString()
         {
             return GetFullText();
+        }
+    }
+
+    public static class NodeAliasExtension
+    {
+        public static NodeAlias Concat(this NodeAlias nodeAlias, NodeAlias prev)
+        {
+            if (nodeAlias == null)
+            {
+                return prev;
+            }
+
+            if (prev == null)
+            {
+                return nodeAlias;
+            }
+
+            prev.AppendPrev(nodeAlias);
+            return prev;
         }
     }
 }
