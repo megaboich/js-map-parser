@@ -53,6 +53,7 @@ namespace JsParserCore.UI
 			showLineNumbersToolStripMenuItem.Checked = Settings.ShowLineNumbersEnabled;
 			filterByMarksToolStripMenuItem.Checked = Settings.FilterByMarksEnabled;
 			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
+			hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
 		}
 
 		/// <summary>
@@ -360,16 +361,20 @@ namespace JsParserCore.UI
 			foreach (var item in childrens)
 			{
 				CodeNode node = item.Item;
-				var caption = !string.IsNullOrEmpty(node.Alias)
-					? node.Alias
-					: string.Format("Anonymous function at line {0}", node.StartLine);
+
+				if (Settings.HideAnonymousFunctions
+				 && (item.Item.AliasType == NodeAliasType.AnonymousFunction || item.Item.AliasType == NodeAliasType.AnonymousFunctionInParameter)
+				 && !item.HasChildrens)
+				{
+					continue;
+				}
 
 				if (node.StartLine > _lastCodeLine)
 				{
 					_lastCodeLine = node.StartLine;
 				}
 
-				CustomTreeNode treeNode = new CustomTreeNode(caption);
+				CustomTreeNode treeNode = new CustomTreeNode(node.Alias);
 				treeNode.CodeNode = node;
 				treeNode.ToolTipText = node.Comment;
 				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
@@ -533,6 +538,7 @@ namespace JsParserCore.UI
 			Settings.ShowLineNumbersEnabled = showLineNumbersToolStripMenuItem.Checked;
 			Settings.FilterByMarksEnabled = filterByMarksToolStripMenuItem.Checked;
 			Settings.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;
+			Settings.HideAnonymousFunctions = hideAnonymousFunctionsToolStripMenuItem.Checked;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 			StatisticsManager.Instance.UpdateSettingsWithStatistics();
 			Settings.Save();
@@ -889,6 +895,14 @@ namespace JsParserCore.UI
 			SaveSettings();
 			RefreshTree();
 			++StatisticsManager.Instance.Statistics.FilterByMarksUsedCount;
+			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
+		}
+
+		private void hideAnonymousFunctionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveSettings();
+			RefreshTree();
+			++StatisticsManager.Instance.Statistics.HideAnonymousFunctionsUsedCount;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 		}
 

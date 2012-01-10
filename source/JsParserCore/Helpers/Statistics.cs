@@ -37,6 +37,8 @@ namespace JsParserCore.Helpers
 
         public int FilterByMarksUsedCount { get; set; }
 
+        public int HideAnonymousFunctionsUsedCount { get; set; }
+
         public int SortingUsedCount { get; set; }
 
         public int TreeContextMenuExecutedCount { get; set; }
@@ -60,6 +62,8 @@ namespace JsParserCore.Helpers
         public bool IsSortingEnabled { get; set; }
 
         public bool IsFilterByMarksEnabled { get; set; }
+
+        public bool IsHideAnonymousFunctionsEnabled { get; set; }
         #endregion
 
         
@@ -100,6 +104,7 @@ namespace JsParserCore.Helpers
             IsCheckForVersionUpdatesEnabled = Settings.Default.CheckForVersionUpdates;
             IsSortingEnabled = Settings.Default.SortingEnabled;
             IsFilterByMarksEnabled = Settings.Default.FilterByMarksEnabled;
+            IsHideAnonymousFunctionsEnabled = Settings.Default.HideAnonymousFunctions;
         }
     }
 }

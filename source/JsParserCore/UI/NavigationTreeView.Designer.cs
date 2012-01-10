@@ -74,6 +74,7 @@ namespace JsParserCore.UI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
             this.label1 = new System.Windows.Forms.Label();
+            this.hideAnonymousFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -215,6 +216,7 @@ namespace JsParserCore.UI
             this.sortItemsAlphabeticallyToolStripMenuItem,
             this.showLineNumbersToolStripMenuItem,
             this.filterByMarksToolStripMenuItem,
+            this.hideAnonymousFunctionsToolStripMenuItem,
             this.toolStripMenuItem7,
             this.settingsToolStripMenuItem1});
             this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.list_settings;
@@ -228,7 +230,7 @@ namespace JsParserCore.UI
             this.showHierarhyToolStripMenuItem.CheckOnClick = true;
             this.showHierarhyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.tree;
             this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
-            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showHierarhyToolStripMenuItem.Text = "Show Hierachy";
             this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
             // 
@@ -236,35 +238,35 @@ namespace JsParserCore.UI
             // 
             this.expandAllByDefaultToolStripMenuItem.CheckOnClick = true;
             this.expandAllByDefaultToolStripMenuItem.Name = "expandAllByDefaultToolStripMenuItem";
-            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllByDefaultToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.expandAllByDefaultToolStripMenuItem.Text = "Expand All By Default";
             this.expandAllByDefaultToolStripMenuItem.Click += new System.EventHandler(this.expandAllByDefaultToolStripMenuItem_Click);
             // 
             // expandAllToolStripMenuItem
             // 
             this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
-            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.expandAllToolStripMenuItem.Text = "Expand All Nodes";
             this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
             // 
             // collapseAllNodesToolStripMenuItem
             // 
             this.collapseAllNodesToolStripMenuItem.Name = "collapseAllNodesToolStripMenuItem";
-            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.collapseAllNodesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.collapseAllNodesToolStripMenuItem.Text = "Collapse All Nodes";
             this.collapseAllNodesToolStripMenuItem.Click += new System.EventHandler(this.collapseAllNodesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(219, 6);
             // 
             // sortItemsAlphabeticallyToolStripMenuItem
             // 
             this.sortItemsAlphabeticallyToolStripMenuItem.CheckOnClick = true;
             this.sortItemsAlphabeticallyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.SortAZ;
             this.sortItemsAlphabeticallyToolStripMenuItem.Name = "sortItemsAlphabeticallyToolStripMenuItem";
-            this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.sortItemsAlphabeticallyToolStripMenuItem.Text = "Sort Items Alphabetically";
             this.sortItemsAlphabeticallyToolStripMenuItem.Click += new System.EventHandler(this.sortItemsAlphabeticallyToolStripMenuItem_Click);
             // 
@@ -272,7 +274,7 @@ namespace JsParserCore.UI
             // 
             this.showLineNumbersToolStripMenuItem.CheckOnClick = true;
             this.showLineNumbersToolStripMenuItem.Name = "showLineNumbersToolStripMenuItem";
-            this.showLineNumbersToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.showLineNumbersToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showLineNumbersToolStripMenuItem.Text = "Show Line Numbers";
             this.showLineNumbersToolStripMenuItem.Click += new System.EventHandler(this.showLineNumbersToolStripMenuItem_Click);
             // 
@@ -280,19 +282,19 @@ namespace JsParserCore.UI
             // 
             this.filterByMarksToolStripMenuItem.CheckOnClick = true;
             this.filterByMarksToolStripMenuItem.Name = "filterByMarksToolStripMenuItem";
-            this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.filterByMarksToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.filterByMarksToolStripMenuItem.Text = "Filter By Marks";
             this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.filterByMarksToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(219, 6);
             // 
             // settingsToolStripMenuItem1
             // 
             this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
+            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(222, 22);
             this.settingsToolStripMenuItem1.Text = "Settings...";
             this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -454,6 +456,14 @@ namespace JsParserCore.UI
             this.label1.Text = "      Task List";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // hideAnonymousFunctionsToolStripMenuItem
+            // 
+            this.hideAnonymousFunctionsToolStripMenuItem.CheckOnClick = true;
+            this.hideAnonymousFunctionsToolStripMenuItem.Name = "hideAnonymousFunctionsToolStripMenuItem";
+            this.hideAnonymousFunctionsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.hideAnonymousFunctionsToolStripMenuItem.Text = "Hide Anonymous Functions";
+            this.hideAnonymousFunctionsToolStripMenuItem.Click += new System.EventHandler(this.hideAnonymousFunctionsToolStripMenuItem_Click);
+            // 
             // NavigationTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,5 +528,6 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ToolStripMenuItem filterByMarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
     }
 }
