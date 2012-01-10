@@ -99,6 +99,8 @@
             // 
             // edExtensions
             // 
+            this.edExtensions.AcceptsReturn = true;
+            this.edExtensions.AcceptsTab = true;
             this.edExtensions.Location = new System.Drawing.Point(27, 46);
             this.edExtensions.Multiline = true;
             this.edExtensions.Name = "edExtensions";
