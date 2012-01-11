@@ -19,10 +19,16 @@ namespace JsParserCore.Parsers
 		{
 			MaxParametersLengthInFunctionChain = 25;
 			MaxParametersLength = 25;
+			ProcessHierarchy = true;
 		}
 
 		public int MaxParametersLengthInFunctionChain { get; set; }
 
 		public int MaxParametersLength { get; set; }
+
+		/// <summary>
+		/// Gets or sets Flag indicating that parser will additionally process hierarchy.
+		/// </summary>
+		public bool ProcessHierarchy { get; set; }
 	}
 }

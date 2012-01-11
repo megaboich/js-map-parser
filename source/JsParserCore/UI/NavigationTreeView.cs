@@ -25,7 +25,7 @@ namespace JsParserCore.UI
 		private bool _canExpand = true;
 		private MarksManager _marksManager = new MarksManager();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
-		private string _hash;
+		private string _loadedCodeHash;
 		private int _lastCodeLine = -1;
 		private List<CodeNode> _functions;
 		private int _lastActiveLine;
@@ -106,7 +106,7 @@ namespace JsParserCore.UI
 				lbDocName.Text = string.Empty;
 				lbDocName.ToolTipText = string.Empty;
 				_loadedDocName = string.Empty;
-				_hash = string.Empty;
+				_loadedCodeHash = string.Empty;
 				treeView1.BeginUpdate();
 				treeView1.Nodes.Clear();
 				treeView1.EndUpdate();
@@ -131,13 +131,13 @@ namespace JsParserCore.UI
 			lbDocName.ToolTipText = _loadedDocName;
 
 			var code = Code.LoadCode();
-			var hash = Convert.ToBase64String(SHA1.Create().ComputeHash(Encoding.Default.GetBytes(code)));
-			if (_hash == hash)
+			var hash = Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.Default.GetBytes(code)));
+			if (_loadedCodeHash == hash)
 			{
 				return true;
 			}
 
-			_hash = hash;
+			_loadedCodeHash = hash;
 			_treeRefreshing = true;
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
@@ -149,9 +149,13 @@ namespace JsParserCore.UI
 
 			_marksManager.SetFile(_loadedDocName);
 
-			var parserSettings = new JavascriptParserSettings();
-			parserSettings.MaxParametersLength = Settings.MaxParametersLength;
-			parserSettings.MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain;
+			var parserSettings = new JavascriptParserSettings
+			{
+				MaxParametersLength = Settings.MaxParametersLength,
+				MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain,
+				ProcessHierarchy = Settings.HierarchyEnabled,
+			};
+
 			var result = (new JavascriptParser( parserSettings )).Parse(code);
 			var nodes = result.Nodes;
 
@@ -229,7 +233,7 @@ namespace JsParserCore.UI
 				if (Code != null)
 				{
 					_loadedDocName = string.Empty;
-					_hash = string.Empty;
+					_loadedCodeHash = string.Empty;
 					LoadFunctionList();
 				}
 			}

@@ -12,50 +12,52 @@
     /// </summary>
     public static class NodesPostProcessor
     {
-        public static void GroupNodesByVariableDeclaration(Hierachy<CodeNode> hierachy)
+        public static void GroupNodesByVariableDeclaration(Hierachy<CodeNode> hierachy, JavascriptParserSettings settings)
         {
             do_stuff_again:
             if (hierachy.Childrens != null && hierachy.Childrens.Any())
             {
-                for (int rootCandidateIndex = 0; rootCandidateIndex < hierachy.Childrens.Count; ++rootCandidateIndex)
+                if (settings.ProcessHierarchy)
                 {
-                    var rootCandidate = hierachy.Childrens[rootCandidateIndex];
-                    var rootCandidateAlias = rootCandidate.Item.Alias;
-                    var parenIndex = rootCandidateAlias.IndexOf('(');
-                    if (parenIndex >= 0)
+                    for (int rootCandidateIndex = 0; rootCandidateIndex < hierachy.Childrens.Count; ++rootCandidateIndex)
                     {
-                        rootCandidateAlias = rootCandidateAlias.Substring(0, parenIndex);
-                    }
-
-                    rootCandidateAlias += ".";
-
-                    for (int branchCandidateIndex = 0; branchCandidateIndex < hierachy.Childrens.Count; ++branchCandidateIndex)
-                    {
-                        if (rootCandidateIndex == branchCandidateIndex)
+                        var rootCandidate = hierachy.Childrens[rootCandidateIndex];
+                        var rootCandidateAlias = rootCandidate.Item.Alias;
+                        var parenIndex = rootCandidateAlias.IndexOf('(');
+                        if (parenIndex >= 0)
                         {
-                            continue;
+                            rootCandidateAlias = rootCandidateAlias.Substring(0, parenIndex);
                         }
 
-                        var branchCandidate = hierachy.Childrens[branchCandidateIndex];
+                        rootCandidateAlias += ".";
 
-                        if (branchCandidate.Item.Alias.StartsWith(rootCandidateAlias))
+                        for (int branchCandidateIndex = 0; branchCandidateIndex < hierachy.Childrens.Count; ++branchCandidateIndex)
                         {
-                            //Strip alias of sub-item
-                            branchCandidate.Item.Alias = branchCandidate.Item.Alias.Substring(rootCandidateAlias.Length);
+                            if (rootCandidateIndex == branchCandidateIndex)
+                            {
+                                continue;
+                            }
 
-                            //Ensure that collection of childrens exists
-                            rootCandidate.Childrens = rootCandidate.Childrens ?? new List<Hierachy<CodeNode>>();
-                            //Add sub-item to new parent
-                            rootCandidate.Childrens.Add(branchCandidate);
+                            var branchCandidate = hierachy.Childrens[branchCandidateIndex];
 
-                            //Remove item from current collection
-                            hierachy.Childrens.RemoveAt(branchCandidateIndex);
+                            if (branchCandidate.Item.Alias.StartsWith(rootCandidateAlias))
+                            {
+                                //Strip alias of sub-item
+                                branchCandidate.Item.Alias = branchCandidate.Item.Alias.Substring(rootCandidateAlias.Length);
 
-                            goto do_stuff_again;
+                                //Ensure that collection of childrens exists
+                                rootCandidate.Childrens = rootCandidate.Childrens ?? new List<Hierachy<CodeNode>>();
+                                //Add sub-item to new parent
+                                rootCandidate.Childrens.Add(branchCandidate);
+
+                                //Remove item from current collection
+                                hierachy.Childrens.RemoveAt(branchCandidateIndex);
+
+                                goto do_stuff_again;
+                            }
                         }
                     }
                 }
-
 
                 // remove variables that do not contain sub-items
                 hierachy.Childrens.RemoveAll(i => i.Item.Opcode == "Variable" && (i.Childrens == null || !i.Childrens.Any()));
@@ -63,7 +65,7 @@
                 // run recursion
                 foreach (var subHierarchy in hierachy.Childrens)
                 {
-                    GroupNodesByVariableDeclaration(subHierarchy);
+                    GroupNodesByVariableDeclaration(subHierarchy, settings);
                 }
             }
         }

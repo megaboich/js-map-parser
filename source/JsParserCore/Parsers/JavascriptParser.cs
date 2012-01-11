@@ -79,7 +79,7 @@ namespace JsParserCore.Parsers
 				}
 			}
 
-			NodesPostProcessor.GroupNodesByVariableDeclaration(nodes);
+			NodesPostProcessor.GroupNodesByVariableDeclaration(nodes, _settings);
 
 			var result = new JSParserResult
 			{

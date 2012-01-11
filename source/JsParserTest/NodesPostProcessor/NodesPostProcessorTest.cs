@@ -26,7 +26,7 @@
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "_this.method2()" }));
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "_this.method3()" }));
 
-            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet);
+            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet, new JavascriptParserSettings() { ProcessHierarchy = true });
 
             Assert.AreEqual(1, testSet.Childrens.Count);
             Assert.AreEqual("_this", testSet.Childrens[0].Item.Alias);
@@ -48,7 +48,7 @@
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "level1.level2.level3()" }));
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "level1.level2.level3.level4()" }));
 
-            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet);
+            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet, new JavascriptParserSettings() { ProcessHierarchy = true });
 
             var set = testSet.Childrens;
             Assert.AreEqual(1, set.Count);
@@ -77,7 +77,7 @@
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "level1.level2()" }));
             testSet.Childrens.Add(new Hierachy<CodeNode>(new CodeNode { Alias = "level1()" }));
 
-            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet);
+            NodesPostProcessor.GroupNodesByVariableDeclaration(testSet, new JavascriptParserSettings() { ProcessHierarchy = true });
 
             var set = testSet.Childrens;
             Assert.AreEqual(1, set.Count);
