@@ -29,7 +29,7 @@ namespace UnitTests
 			var expectedresultXml = TestsHelper.GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
 			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
 			//Save expected hierarchy xml
-            File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultXml);
+			File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultXml);
 
 			Assert.IsTrue(actualResult.Nodes.Equals(expectedresult));
 		}
@@ -142,10 +142,16 @@ namespace UnitTests
 			ProcessTemplate("Test_Construct_Object_In_Return_Statement.js", "Test_Construct_Object_In_Return_Statement.xml");
 		}
 
-        [Test]
-        public void Test_Anonimous_In_Return_Statement()
-        {
-            ProcessTemplate("Test_Anonimous_In_Return_Statement.js", "Test_Anonimous_In_Return_Statement.xml");
-        }
+		[Test]
+		public void Test_Anonimous_In_Return_Statement()
+		{
+			ProcessTemplate("Test_Anonimous_In_Return_Statement.js", "Test_Anonimous_In_Return_Statement.xml");
+		}
+
+		[Test]
+		public void Test_DoubleAssign()
+		{
+			ProcessTemplate("Test_DoubleAssign.js", "Test_DoubleAssign.xml");
+		}
 	}
 }

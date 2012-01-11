@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using UnitTests;
 using JsParserTest.Helpers;
+using System.IO;
 
 namespace JsParserTest
 {
@@ -55,24 +56,50 @@ namespace JsParserTest
 			}
 			else
 			{
-				// Create new text box and load text from resource
-				var resname = tab.Name;
-				var newTextBox = new RichTextBox();
-				newTextBox.Name = "richTextBox1";
-				newTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-				newTextBox.AcceptsTab = true;
-				newTextBox.WordWrap = false;
-				newTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-				newTextBox.Text = TestsHelper.GetEmbeddedText(resname);
-				newTextBox.TextChanged += richTextBox1_TextChanged;
-				tab.Controls.Add(newTextBox);
-				InitTree((RichTextBox)newTextBox);
+                var resname = tab.Name;
+                var content = TestsHelper.GetEmbeddedText(resname);
+                var newTextBox = CreateTextBox(tab, content);
 			}
 		}
+
+        private RichTextBox CreateTextBox(TabPage tab, string content)
+        {
+            // Create new text box and load text from resource
+            
+            var newTextBox = new RichTextBox();
+            newTextBox.Name = "richTextBox1";
+            newTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            newTextBox.AcceptsTab = true;
+            newTextBox.WordWrap = false;
+            newTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            newTextBox.Text = content;
+            newTextBox.TextChanged += richTextBox1_TextChanged;
+            InitTree((RichTextBox)newTextBox);
+            tab.Controls.Add(newTextBox);
+            return newTextBox;
+        }
 
 		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
 		{
 
 		}
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var fileContent = File.ReadAllText(fileName);
+                tabControl1.TabPages.Add(Guid.NewGuid().ToString(), Path.GetFileName(fileName));
+                var tab = tabControl1.TabPages[tabControl1.TabCount - 1];
+                CreateTextBox(tab, fileContent);
+                tabControl1.SelectTab(tabControl1.TabCount - 1);
+            }
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
 	}
 }

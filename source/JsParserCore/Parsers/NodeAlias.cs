@@ -50,12 +50,18 @@ namespace JsParserCore.Parsers
             string t = Text;
             var type = Type;
             var current = Prev;
-            while (current != null)
+            int counter = 0;
+            while (current != null && ++counter <= 20)
             {
                 var concatenator = (type == NodeAliasType.AnonymousFunctionInParameter) ? ">" : ".";
                 t = current.Text + concatenator + t;
                 type = current.Type;
                 current = current.Prev;
+            }
+
+            if (counter >= 20)
+            {
+                t = "ERROR" + t;
             }
 
             return t;
