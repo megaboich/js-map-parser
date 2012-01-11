@@ -37,10 +37,10 @@ namespace JsParserCore.Parsers
             }
             else
             {
-                if (level > 6)
-                {
-                    Debugger.Break();
-                }
+                //if (level > 25)
+                //{
+                //    return;
+                //}
                 Prev.AppendPrev(prev, ++level);
             }
         }
@@ -50,8 +50,8 @@ namespace JsParserCore.Parsers
             string t = Text;
             var type = Type;
             var current = Prev;
-            int counter = 0;
-            while (current != null && ++counter <= 20)
+            //int counter = 0;
+            while (current != null /*&& ++counter <= 20*/)
             {
                 var concatenator = (type == NodeAliasType.AnonymousFunctionInParameter) ? ">" : ".";
                 t = current.Text + concatenator + t;
@@ -59,10 +59,10 @@ namespace JsParserCore.Parsers
                 current = current.Prev;
             }
 
-            if (counter >= 20)
-            {
-                t = "ERROR" + t;
-            }
+            //if (counter >= 20)
+            //{
+            //    t = "ERROR" + t;
+            //}
 
             return t;
         }
@@ -70,6 +70,14 @@ namespace JsParserCore.Parsers
         public override string ToString()
         {
             return GetFullText();
+        }
+
+        public NodeAlias Clone()
+        {
+            return new NodeAlias(this.Text, this.Type)
+            {
+                Prev = this.Prev == null ? null : Prev.Clone()
+            };
         }
     }
 
@@ -87,7 +95,8 @@ namespace JsParserCore.Parsers
                 return nodeAlias;
             }
 
-            prev.AppendPrev(nodeAlias);
+            // Cloning objects to avoid circular dependecies
+            prev.AppendPrev(nodeAlias.Clone());
             return prev;
         }
     }

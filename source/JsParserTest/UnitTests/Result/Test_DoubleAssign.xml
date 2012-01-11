@@ -1,0 +1,16 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="App" AliasType="Unknown" Line="1" EndLine="1" EndColumn="12" Pos="10" Opcode="ObjectLiteral" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="clickHandler1.document.getElementById(&quot;someId1&quot;).onClick()" AliasType="Unknown" Line="3" EndLine="4" EndColumn="1" Pos="65" Opcode="Function" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="clickHandler2.document.getElementById(&quot;someId2&quot;).onClick()" AliasType="Unknown" Line="6" EndLine="7" EndColumn="1" Pos="65" Opcode="Function" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>
