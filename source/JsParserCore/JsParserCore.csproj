@@ -97,6 +97,12 @@
     <Compile Include="UI\FindDialog.Designer.cs">
       <DependentUpon>FindDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\JsParserSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\JsParserSettingsControl.Designer.cs">
+      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MarksManager.cs" />
     <Compile Include="UI\NavigationTreeView.cs">
       <SubType>UserControl</SubType>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\JsParserSettingsControl.resx">
+      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\NavigationTreeView.resx">
       <DependentUpon>NavigationTreeView.cs</DependentUpon>
