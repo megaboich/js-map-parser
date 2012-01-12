@@ -22,7 +22,7 @@ namespace JsParserCore.UI
             _defaultTreeFont = Font;
         }
 
-        public Font DefaultFont
+        public Font DefaultTreeFont
         {
             get { return _defaultTreeFont; }
             set { _defaultTreeFont = value; }
