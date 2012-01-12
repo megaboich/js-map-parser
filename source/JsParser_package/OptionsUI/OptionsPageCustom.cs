@@ -1,14 +1,3 @@
-/***************************************************************************
-
-Copyright (c) Microsoft Corporation. All rights reserved.
-This code is licensed under the Visual Studio SDK license terms.
-THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-
-***************************************************************************/
-
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,6 +5,7 @@ using System.ComponentModel;
 using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
 using JsParserCore.UI;
+using System.Diagnostics;
 
 namespace JsParser_package
 {
@@ -30,6 +20,7 @@ namespace JsParser_package
 		#region Fields
 
 		private JsParserSettingsControl _settingsUI;
+		private bool _needReinitOnActivate = false;
 
 		#endregion Fields
 
@@ -62,6 +53,7 @@ namespace JsParser_package
 				{
 					_settingsUI = new JsParserCore.UI.JsParserSettingsControl();
 					_settingsUI.Location = new Point(0, 0);
+					_settingsUI.Dock = DockStyle.Fill;
 					_settingsUI.InitSettings();
 				}
 
@@ -71,10 +63,32 @@ namespace JsParser_package
 
 		protected override void OnApply(PageApplyEventArgs e)
 		{
-			if (e.ApplyBehavior == ApplyKind.Apply)
+			SettingsUI.SaveSettings();
+			_needReinitOnActivate = true;
+			base.OnApply(e);
+		}
+
+		protected override void OnClosed(EventArgs e)
+		{
+			SettingsUI.InitSettings();
+			_needReinitOnActivate = true;
+			base.OnClosed(e);
+		}
+
+		protected override void OnActivate(CancelEventArgs e)
+		{
+			if (_needReinitOnActivate)
 			{
-				SettingsUI.SaveSettings();
+				SettingsUI.InitSettings();
 			}
+
+			_needReinitOnActivate = false;
+			base.OnActivate(e);
+		}
+
+		protected override void OnDeactivate(CancelEventArgs e)
+		{
+			base.OnDeactivate(e);
 		}
 
 		#endregion Properties

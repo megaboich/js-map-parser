@@ -16,6 +16,7 @@ namespace JsParserCore.UI
 		public SettingsForm(Font defaultTreeFont)
 		{
 			InitializeComponent();
+			jsParserSettingsControl1.DefaultFont = defaultTreeFont;
 			jsParserSettingsControl1.InitSettings();
 		}
 

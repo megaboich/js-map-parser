@@ -22,6 +22,12 @@ namespace JsParserCore.UI
             _defaultTreeFont = Font;
         }
 
+        public Font DefaultFont
+        {
+            get { return _defaultTreeFont; }
+            set { _defaultTreeFont = value; }
+        }
+
         public void InitSettings()
         {
             chTrackActiveItem.Checked = Settings.Default.TrackActiveItem;
