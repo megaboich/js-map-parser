@@ -6,7 +6,7 @@ using JsParserCore.Code;
 using EnvDTE80;
 using EnvDTE;
 
-namespace AlexanderBoyko.JsParser_package
+namespace JsParser_package
 {
 	public class VS2010CodeProvider: ICodeProvider
 	{

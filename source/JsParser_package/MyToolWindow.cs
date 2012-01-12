@@ -15,7 +15,7 @@ using EnvDTE;
 using System.Diagnostics;
 using JsParserCore.Helpers;
 
-namespace AlexanderBoyko.JsParser_package
+namespace JsParser_package
 {
 	/// <summary>
 	/// This class implements the tool window exposed by this package and hosts a user control.

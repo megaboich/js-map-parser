@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AlexanderBoyko.JsParser_package
+namespace JsParser_package
 {
 	/// <summary>
 	/// Interaction logic for JsParserHolder.xaml

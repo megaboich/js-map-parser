@@ -13,7 +13,7 @@ using EnvDTE;
 using JsParserCore.UI;
 using System.Windows;
 
-namespace AlexanderBoyko.JsParser_package
+namespace JsParser_package
 {
 	/// <summary>
 	/// This is the class that implements the package exposed by this assembly.
@@ -35,6 +35,7 @@ namespace AlexanderBoyko.JsParser_package
 	[ProvideMenuResource("Menus.ctmenu", 1)]
 	// This attribute registers a tool window exposed by this package.
 	[ProvideToolWindow(typeof(MyToolWindow))]
+	[ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Parser Extension", "General", 113, 114, true)]
 	[Guid(GuidList.guidJsParser_packagePkgString)]
 	public sealed class JsParser_packagePackage : Package
 	{

@@ -2,7 +2,7 @@
 // MUST match PkgCmdID.h
 using System;
 
-namespace AlexanderBoyko.JsParser_package
+namespace JsParser_package
 {
     static class PkgCmdIDList
     {
