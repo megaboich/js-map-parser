@@ -77,6 +77,11 @@ namespace JsParserCore.UI
 
             Settings.Default.CheckForVersionUpdates = chCheckForVersionUpdates.Checked;
             Settings.Default.SendStatistics = chSendStatistics.Checked;
+            if (Settings.Default.SendStatistics)
+            {
+                //If user checks this item once - then politic are approved.
+                Settings.Default.SendStatisticsPolitic = "Approved";
+            }
 
             Settings.Default.Save();
         }

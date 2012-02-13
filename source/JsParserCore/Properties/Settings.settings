@@ -92,10 +92,13 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SendStatistics" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="HideAnonymousFunctions" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SendStatisticsPolitic" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"Ask"</Value>
     </Setting>
   </Settings>
 </SettingsFile>

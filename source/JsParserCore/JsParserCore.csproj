@@ -64,6 +64,7 @@
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Helpers\Statistics.cs" />
     <Compile Include="Helpers\StatisticsManager.cs" />
+    <Compile Include="Helpers\StatisticsSender.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
@@ -96,6 +97,12 @@
     </Compile>
     <Compile Include="UI\FindDialog.Designer.cs">
       <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_SendStatisticsConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_SendStatisticsConfirmation.Designer.cs">
+      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\JsParserSettingsControl.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_SendStatisticsConfirmation.resx">
+      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\JsParserSettingsControl.resx">
       <DependentUpon>JsParserSettingsControl.cs</DependentUpon>

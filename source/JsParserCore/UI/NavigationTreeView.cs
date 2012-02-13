@@ -245,33 +245,8 @@ namespace JsParserCore.UI
 
 		private void PerformNetworkActivity()
 		{
-			if (Settings.CheckForVersionUpdates || Settings.SendStatistics)
-			{
-				ThreadPool.QueueUserWorkItem((object state) =>
-				{
-					try
-					{
-						if (Settings.CheckForVersionUpdates)
-						{
-							VersionChecker.CheckVersion();
-						}
-					}
-					catch
-					{
-					}
-
-					try
-					{
-						if (Settings.SendStatistics)
-						{
-							StatisticsManager.Instance.SubmitStatisticsToServer();
-						}
-					}
-					catch
-					{
-					}
-				});
-			}
+			VersionChecker.CheckVersion();
+			StatisticsSender.Send();
 		}
 
 		private bool CheckExt(string fileName)

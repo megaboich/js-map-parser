@@ -9,6 +9,8 @@ using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using JsParserCore.Properties;
+using System.Threading;
 
 namespace JsParserCore.Helpers
 {
@@ -16,7 +18,25 @@ namespace JsParserCore.Helpers
 	{
 		private static bool _versionChecked = false;
 
-		public static bool CheckVersion(bool force = false)
+		public static void CheckVersion(bool force = false)
+		{
+			if (Settings.Default.CheckForVersionUpdates || force)
+			{
+				ThreadPool.QueueUserWorkItem((object state) =>
+				{
+					try
+					{
+						VersionChecker._CheckVersion(force);
+					}
+					catch
+					{
+					}
+				});
+				
+			}
+		}
+
+		private static bool _CheckVersion(bool force = false)
 		{
 			if (force || !_versionChecked)
 			{

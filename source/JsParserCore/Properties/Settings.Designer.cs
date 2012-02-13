@@ -342,7 +342,7 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool SendStatistics {
             get {
                 return ((bool)(this["SendStatistics"]));
@@ -361,6 +361,18 @@ namespace JsParserCore.Properties {
             }
             set {
                 this["HideAnonymousFunctions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"Ask\"")]
+        public string SendStatisticsPolitic {
+            get {
+                return ((string)(this["SendStatisticsPolitic"]));
+            }
+            set {
+                this["SendStatisticsPolitic"] = value;
             }
         }
     }

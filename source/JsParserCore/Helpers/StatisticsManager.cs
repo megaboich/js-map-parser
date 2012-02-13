@@ -63,6 +63,12 @@ namespace JsParserCore.Helpers
             Settings.Default.Save();
         }
 
+        public void IgnoreSendingStatistics()
+        {
+            Statistics.LastSubmittedTime = DateTime.UtcNow;
+            Save();
+        }
+
         public void SubmitStatisticsToServer(bool force = false)
         {
             if (force || Statistics.LastSubmittedTime.AddDays(1) < DateTime.UtcNow)
