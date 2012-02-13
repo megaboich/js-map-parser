@@ -12,6 +12,7 @@ using System.IO;
 using JsParserCore.Properties;
 using System.Linq;
 using System.Threading;
+using System.Diagnostics;
 
 namespace JsParserCore.UI
 {
@@ -32,6 +33,7 @@ namespace JsParserCore.UI
 		private int _lastActiveColumn;
 		private bool _treeRefreshing = false;
 		private ExpandedNodesManager _expandedNodes = new ExpandedNodesManager();
+		private bool _userWantsUpdateSplitterPosition = false;
 
 		/// <summary>
 		/// Gets Code.
@@ -116,6 +118,7 @@ namespace JsParserCore.UI
 				panelLinesNumbers.Refresh();
 				btnErrorDiagnosis.Visible = false;
 				btnErrorSeparator.Visible = false;
+				lbTaskList.Text = "      Task List";
 				return false;
 			}
 
@@ -180,6 +183,7 @@ namespace JsParserCore.UI
 			taskListListView.Items.Clear();
 			if (result.TaskList.Count > 0)
 			{
+				lbTaskList.Text = string.Format("      Task List: {0} items", result.TaskList.Count);
 				int i = 0;
 				result.TaskList.ForEach(t =>
 				{
@@ -190,6 +194,8 @@ namespace JsParserCore.UI
 				});
 
 				splitContainer1.Panel2Collapsed = false;
+
+				SetToDoSplitterPosition();
 			}
 			else
 			{
@@ -885,7 +891,58 @@ namespace JsParserCore.UI
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 		}
 
-		#endregion
+		private void UpdateToDoListToggleImage()
+		{
+			btnToDoListToggle.Image = Settings.ToDoListCollapsed
+				? JsParserCore.Properties.Resources.navCollapseArrow
+				: JsParserCore.Properties.Resources.navExpandArrow;
+		}
 
+		private void UpdateToDoListSettings() 
+		{
+			if (_userWantsUpdateSplitterPosition)
+			{
+				if (!Settings.ToDoListCollapsed)
+				{
+					Settings.ToDoListLastHeight = splitContainer1.Height - splitContainer1.SplitterDistance;
+				}
+				Settings.ToDoListCollapsed = (splitContainer1.Panel2.Height <= 25);
+			}
+			UpdateToDoListToggleImage();
+		}
+
+		private void SetToDoSplitterPosition()
+		{
+			if (!Settings.ToDoListCollapsed)
+			{
+				splitContainer1.SplitterDistance = splitContainer1.Height - Math.Max(100, Settings.ToDoListLastHeight);
+			}
+			else
+			{
+				splitContainer1.SplitterDistance = splitContainer1.Height;
+			}
+			UpdateToDoListToggleImage();
+		}
+
+		private void btnToDoListToggle_Click(object sender, EventArgs e)
+		{
+			_userWantsUpdateSplitterPosition = true;
+			UpdateToDoListSettings();   //need to save old position
+			Settings.ToDoListCollapsed = !Settings.ToDoListCollapsed;   //update toggle flag
+			SetToDoSplitterPosition();  //update ui
+		}
+
+		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+		{
+			UpdateToDoListSettings();
+			_userWantsUpdateSplitterPosition = false;
+		}
+
+		private void splitContainer1_SplitterMoving(object sender, SplitterCancelEventArgs e)
+		{
+			_userWantsUpdateSplitterPosition = true;
+		}
+
+		#endregion
 	}
 }

@@ -174,6 +174,11 @@ namespace JsParserCore.Parsers
 			{
 				var ojexp = (ObjectLiteralExpression) exp;
 
+				if (expressionAlias == null)
+				{
+					expressionAlias = new NodeAlias(string.Empty);
+				}
+
 				var codeNode = new CodeNode
 				{
 					Alias = expressionAlias.GetFullText(),
@@ -390,7 +395,7 @@ namespace JsParserCore.Parsers
 		{
 			var codeNode = new CodeNode
 			{
-				Alias = variableDeclaration.Name.Spelling,
+				Alias = variableDeclaration.Name != null ? variableDeclaration.Name.Spelling : "?",
 				AliasType = NodeAliasType.Variable,
 				Opcode = "Variable",
 				StartLine = variableDeclaration.Location.StartLine,

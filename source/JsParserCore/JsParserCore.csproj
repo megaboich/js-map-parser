@@ -126,6 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\arrow_left.gif" />
+    <None Include="Resources\navCollapseArrow.gif" />
+    <None Include="Resources\navExpandArrow.gif" />
     <Content Include="Resources\variable_declaration.gif" />
     <None Include="app.config" />
     <None Include="Key.snk" />

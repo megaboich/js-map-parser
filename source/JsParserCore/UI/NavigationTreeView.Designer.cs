@@ -56,6 +56,7 @@ namespace JsParserCore.UI
             this.sortItemsAlphabeticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLineNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterByMarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideAnonymousFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -73,8 +74,8 @@ namespace JsParserCore.UI
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new JsParserCore.UI.CustomTreeView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.hideAnonymousFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnToDoListToggle = new System.Windows.Forms.Button();
+            this.lbTaskList = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -286,6 +287,14 @@ namespace JsParserCore.UI
             this.filterByMarksToolStripMenuItem.Text = "Filter By Marks";
             this.filterByMarksToolStripMenuItem.Click += new System.EventHandler(this.filterByMarksToolStripMenuItem_Click);
             // 
+            // hideAnonymousFunctionsToolStripMenuItem
+            // 
+            this.hideAnonymousFunctionsToolStripMenuItem.CheckOnClick = true;
+            this.hideAnonymousFunctionsToolStripMenuItem.Name = "hideAnonymousFunctionsToolStripMenuItem";
+            this.hideAnonymousFunctionsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.hideAnonymousFunctionsToolStripMenuItem.Text = "Hide Anonymous Functions";
+            this.hideAnonymousFunctionsToolStripMenuItem.Click += new System.EventHandler(this.hideAnonymousFunctionsToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
@@ -415,12 +424,17 @@ namespace JsParserCore.UI
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.btnToDoListToggle);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTaskList);
             this.splitContainer1.Panel2.Controls.Add(this.taskListListView);
+            this.splitContainer1.Panel2.Click += new System.EventHandler(this.btnToDoListToggle_Click);
+            this.splitContainer1.Panel2MinSize = 20;
             this.splitContainer1.Size = new System.Drawing.Size(200, 331);
             this.splitContainer1.SplitterDistance = 239;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
+            this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // treeView1
             // 
@@ -444,25 +458,33 @@ namespace JsParserCore.UI
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
             // 
-            // label1
+            // btnToDoListToggle
             // 
-            this.label1.Image = global::JsParserCore.Properties.Resources.task_List;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(-2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "      Task List";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnToDoListToggle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnToDoListToggle.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnToDoListToggle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.btnToDoListToggle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.btnToDoListToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToDoListToggle.Image = global::JsParserCore.Properties.Resources.navExpandArrow;
+            this.btnToDoListToggle.Location = new System.Drawing.Point(181, 2);
+            this.btnToDoListToggle.Name = "btnToDoListToggle";
+            this.btnToDoListToggle.Size = new System.Drawing.Size(16, 16);
+            this.btnToDoListToggle.TabIndex = 8;
+            this.btnToDoListToggle.UseVisualStyleBackColor = false;
+            this.btnToDoListToggle.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
-            // hideAnonymousFunctionsToolStripMenuItem
+            // lbTaskList
             // 
-            this.hideAnonymousFunctionsToolStripMenuItem.CheckOnClick = true;
-            this.hideAnonymousFunctionsToolStripMenuItem.Name = "hideAnonymousFunctionsToolStripMenuItem";
-            this.hideAnonymousFunctionsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.hideAnonymousFunctionsToolStripMenuItem.Text = "Hide Anonymous Functions";
-            this.hideAnonymousFunctionsToolStripMenuItem.Click += new System.EventHandler(this.hideAnonymousFunctionsToolStripMenuItem_Click);
+            this.lbTaskList.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.lbTaskList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTaskList.Location = new System.Drawing.Point(-2, 0);
+            this.lbTaskList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTaskList.Name = "lbTaskList";
+            this.lbTaskList.Size = new System.Drawing.Size(152, 20);
+            this.lbTaskList.TabIndex = 7;
+            this.lbTaskList.Text = "      Task List";
+            this.lbTaskList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTaskList.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
             // NavigationTreeView
             // 
@@ -521,7 +543,7 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ColumnHeader textToDoListColumn;
         private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTaskList;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem sortItemsAlphabeticallyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLineNumbersToolStripMenuItem;
@@ -529,5 +551,6 @@ namespace JsParserCore.UI
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
+        private System.Windows.Forms.Button btnToDoListToggle;
     }
 }

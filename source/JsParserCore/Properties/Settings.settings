@@ -98,7 +98,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SendStatisticsPolitic" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"Ask"</Value>
+      <Value Profile="(Default)">Ask</Value>
+    </Setting>
+    <Setting Name="ToDoListCollapsed" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ToDoListLastHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
     </Setting>
   </Settings>
 </SettingsFile>

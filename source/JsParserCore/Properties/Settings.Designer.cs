@@ -366,13 +366,37 @@ namespace JsParserCore.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Ask\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ask")]
         public string SendStatisticsPolitic {
             get {
                 return ((string)(this["SendStatisticsPolitic"]));
             }
             set {
                 this["SendStatisticsPolitic"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ToDoListCollapsed {
+            get {
+                return ((bool)(this["ToDoListCollapsed"]));
+            }
+            set {
+                this["ToDoListCollapsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int ToDoListLastHeight {
+            get {
+                return ((int)(this["ToDoListLastHeight"]));
+            }
+            set {
+                this["ToDoListLastHeight"] = value;
             }
         }
     }

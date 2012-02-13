@@ -130,6 +130,20 @@ namespace JsParserCore.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap navCollapseArrow {
+            get {
+                object obj = ResourceManager.GetObject("navCollapseArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap navExpandArrow {
+            get {
+                object obj = ResourceManager.GetObject("navExpandArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
