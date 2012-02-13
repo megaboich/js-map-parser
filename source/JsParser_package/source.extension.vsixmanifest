@@ -2,8 +2,8 @@
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="85fcde11-d0ea-4b3e-b03a-79b16c2379f7">
     <Name>Javascript Parser</Name>
-    <Author>Oleksandr Boiko &lt;mega.boich@gmail.com&gt;</Author>
-    <Version>3.3</Version>
+    <Author>Oleksandr Boiko [mega.boich@gmail.com]</Author>
+    <Version>3.4</Version>
     <Description xml:space="preserve">Visual Studio Extension to improve support for Javascript.</Description>
     <Locale>1033</Locale>
     <MoreInfoUrl>http://code.google.com/p/js-addin/</MoreInfoUrl>
