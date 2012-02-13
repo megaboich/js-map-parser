@@ -76,6 +76,12 @@ namespace JsParserCore.Parsers
 				catch (Exception ex)
 				{
 					Trace.WriteLine(ex.ToString());
+					errors.Add(new ErrorMessage
+					{
+						Message = "Javascript Parser Internal Error: " + ex.Message,
+						StartLine = 1,
+						StartColumn = 1,
+					});
 				}
 			}
 
@@ -141,8 +147,8 @@ namespace JsParserCore.Parsers
 			if (exp is UnaryOperatorExpression)
 			{
 				var uexp = (UnaryOperatorExpression) exp;
-				ProcessExpression(nodes, uexp.Operand, expressionAlias.Concat(new NodeAlias("?")));
-				return null;
+				var alias = ProcessExpression(nodes, uexp.Operand, expressionAlias.Concat(new NodeAlias("?")));
+				return alias;
 			}
 
 			if (exp is FunctionExpression)

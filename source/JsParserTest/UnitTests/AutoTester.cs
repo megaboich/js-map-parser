@@ -153,5 +153,11 @@ namespace UnitTests
 		{
 			ProcessTemplate("Test_DoubleAssign.js", "Test_DoubleAssign.xml");
 		}
+
+		[Test]
+        public void Test_AnonymousSelfExecBlock()
+		{
+			ProcessTemplate("Test_AnonymousSelfExecBlock.js", "Test_AnonymousSelfExecBlock.xml");
+		}
 	}
 }

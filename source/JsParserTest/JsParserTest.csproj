@@ -170,6 +170,8 @@
     <EmbeddedResource Include="UnitTests\Result\Test_Anonimous_In_Return_Statement.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_DoubleAssign.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_DoubleAssign.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_AnonymousSelfExecBlock.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_AnonymousSelfExecBlock.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
