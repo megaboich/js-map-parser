@@ -13,6 +13,8 @@ namespace JsParserCore.Parsers
 
         public List<ErrorMessage> Errors { get; set; }
 
+        public List<ErrorMessage> InternalErrors { get; set; }
+
         public List<TaskListItem> TaskList { get; set; }
     }
 

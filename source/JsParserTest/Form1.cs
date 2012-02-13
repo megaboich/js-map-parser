@@ -101,5 +101,15 @@ namespace JsParserTest
         {
 
         }
+
+        private void scanDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var path = folderBrowserDialog1.SelectedPath;
+                var ff = new Form_ScanDir_Results(path);
+                ff.Show();
+            }
+        }
 	}
 }

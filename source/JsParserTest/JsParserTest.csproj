@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JsParserTest</RootNamespace>
     <AssemblyName>JsParserTest</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -78,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ScanDir_Results.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ScanDir_Results.Designer.cs">
+      <DependentUpon>Form_ScanDir_Results.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\TestsHelper.cs" />
     <Compile Include="NodesPostProcessor\NodesPostProcessorTest.cs" />
     <Compile Include="Program.cs" />
@@ -88,6 +94,9 @@
     <Compile Include="UnitTests\StringExtText.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ScanDir_Results.resx">
+      <DependentUpon>Form_ScanDir_Results.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

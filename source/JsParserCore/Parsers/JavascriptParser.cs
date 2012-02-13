@@ -49,6 +49,7 @@ namespace JsParserCore.Parsers
 		{
 			var nodes = new Hierachy<CodeNode>(new CodeNode { Alias = "All" });
 			List<ErrorMessage> errors = new List<ErrorMessage>();
+			List<ErrorMessage> internalErrors = null;
 			List<TaskListItem> taskList = new List<TaskListItem>();
 			foreach (var codeChunk in codeChunks)
 			{
@@ -76,12 +77,17 @@ namespace JsParserCore.Parsers
 				catch (Exception ex)
 				{
 					Trace.WriteLine(ex.ToString());
-					errors.Add(new ErrorMessage
+					var errMessage = new ErrorMessage
 					{
 						Message = "Javascript Parser Internal Error: " + ex.Message,
 						StartLine = 1,
 						StartColumn = 1,
-					});
+					};
+
+					errors.Add(errMessage);
+
+					internalErrors = internalErrors ?? new List<ErrorMessage>();
+					internalErrors.Add(errMessage);
 				}
 			}
 
@@ -91,6 +97,7 @@ namespace JsParserCore.Parsers
 			{
 				Nodes = nodes,
 				Errors = errors,
+				InternalErrors = internalErrors,
 				TaskList = taskList,
 			};
 
