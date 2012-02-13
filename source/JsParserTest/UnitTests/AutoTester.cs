@@ -155,9 +155,21 @@ namespace UnitTests
 		}
 
 		[Test]
-        public void Test_AnonymousSelfExecBlock()
+		public void Test_AnonymousSelfExecBlock()
 		{
 			ProcessTemplate("Test_AnonymousSelfExecBlock.js", "Test_AnonymousSelfExecBlock.xml");
+		}
+
+		[Test]
+		public void Test_ReservedWords_Goto()
+		{
+			ProcessTemplate("Test_ReservedWords_Goto.js", "Test_ReservedWords_Goto.xml");
+		}
+
+		[Test]
+		public void Test_NewStatements()
+		{
+			ProcessTemplate("Test_NewStatements.js", "Test_NewStatements.xml");
 		}
 	}
 }

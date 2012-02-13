@@ -181,6 +181,9 @@
     <EmbeddedResource Include="UnitTests\Result\Test_DoubleAssign.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_AnonymousSelfExecBlock.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_AnonymousSelfExecBlock.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_NewStatements.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_ReservedWords_Goto.js" />
+    <EmbeddedResource Include="UnitTests\Source\Test_TernerStatements.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

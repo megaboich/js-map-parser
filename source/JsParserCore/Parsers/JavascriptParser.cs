@@ -114,6 +114,11 @@ namespace JsParserCore.Parsers
 
 		private NodeAlias ProcessExpression(Hierachy<CodeNode> nodes, Expression exp, NodeAlias expressionAlias)
 		{
+			if (exp == null)
+			{
+				return null;
+			}
+
 			if (exp is BinaryOperatorExpression)
 			{
 				var bexp = (BinaryOperatorExpression) exp;
@@ -194,7 +199,10 @@ namespace JsParserCore.Parsers
 			if (exp is QualifiedExpression)
 			{
 				var qexp = (QualifiedExpression) exp;
-				var alias = qexp.Qualifier.Spelling;
+				var alias = (qexp.Qualifier != null)
+					? qexp.Qualifier.Spelling
+					: null;
+
 				var basealias = ProcessExpression(nodes, qexp.Base, expressionAlias);
 
 				return basealias.Concat(new NodeAlias(alias));
@@ -227,7 +235,18 @@ namespace JsParserCore.Parsers
 				return basealias.Concat(subalias);
 			}
 
-			return null;
+			//Describes "condition ? true : false" construction
+			if (exp is TernaryOperatorExpression)
+			{
+				var trexp = (TernaryOperatorExpression)exp;
+				var alias1 = ProcessExpression(nodes, trexp.First, expressionAlias);
+				var alias2 = ProcessExpression(nodes, trexp.Second, expressionAlias);
+				var alias3 = ProcessExpression(nodes, trexp.Third, expressionAlias);
+				return alias1.Concat(alias2).Concat(alias3);
+			}
+
+			//General case
+			return new NodeAlias(exp.Opcode.ToString());
 		}
 
 		private string StringifyArguments(List<ExpressionListElement> list)

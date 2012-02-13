@@ -35,8 +35,36 @@ namespace JsParserTest
             ScanDir(_pathToSearch);
         }
 
+        private bool analyzeJsFileIsNotObfuscated(string fileContent)
+        {
+            var totalSymbolsCount = fileContent.Length;
+            var charGroups = fileContent.GroupBy(c => c);
+
+            Func<char, int> countSymbols = (symbol) =>
+            {
+                var symbols = charGroups.FirstOrDefault(g => g.Key == symbol);
+                if (symbols != null)
+                {
+                    return symbols.Count();
+                }
+                return 0;
+            };
+
+            var spacesCount = countSymbols(' ');
+            var tabsCount = countSymbols('\t');
+            var returnCount = countSymbols('\r');
+            var newlineCount = countSymbols('\n');
+
+            var totalSeparators = spacesCount + tabsCount + returnCount + newlineCount;
+
+            //Assumption if separators are more then 10% then file is not minified
+            return (totalSeparators > totalSymbolsCount * 0.1);
+        }
+
         private void ScanDir(string dir)
         {
+            Directory.CreateDirectory("f:\\js2\\min");
+            Directory.CreateDirectory("f:\\js2\\src");
             var jsFiles = Directory.GetFiles(dir, "*.js");
             Parallel.ForEach(jsFiles, file =>
             {
@@ -51,14 +79,17 @@ namespace JsParserTest
                 Application.DoEvents();
 
                 var source = File.ReadAllText(file);
-
+                var isNotMinified = analyzeJsFileIsNotObfuscated(source);
                 var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
+
+                var fileName = Path.GetFileName(file);
+                File.AppendAllText("f:\\js2\\" + (isNotMinified ? "src\\" : "min\\") + fileName, source);
 
                 if (actualResult.InternalErrors != null && actualResult.InternalErrors.Count > 0)
                 {
                     lock (_lock)
                     {
-                        File.AppendAllText("C:\\js_err.log", file + Environment.NewLine);
+                        File.AppendAllText("f:\\js_err_" + (isNotMinified ? "src" : "min") + ".log", fileName + Environment.NewLine);
                     }
                 }
 
