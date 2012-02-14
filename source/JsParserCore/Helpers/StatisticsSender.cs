@@ -19,7 +19,9 @@ namespace JsParserCore.Helpers
             }
 
             //Ask user if it is normal to send statistics
-            if (Settings.Default.SendStatisticsPolitic == "Ask" && StatisticsManager.Instance.Statistics.LastSubmittedTime.AddDays(3) < DateTime.UtcNow)
+            if (Settings.Default.SendStatisticsPolitic == "Ask"
+             && StatisticsManager.Instance.Statistics.LastSubmittedTime.AddDays(3) < DateTime.UtcNow
+             && StatisticsManager.Instance.Statistics.NavigateFromFunctionsTreeCount > 10)
             {
                 var askForm = new Form_SendStatisticsConfirmation();
                 var result = askForm.ShowDialog();

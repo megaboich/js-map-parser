@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Gathering statistics is an important part of the evolution of the product. It allows to distinguish really useful functionality and concentrate efforts on improvements. Also it helps to find out not used functionality and make it more useful.</value>
+    <value>If you willing to help of further improvements of JS Parser, then agree to send statistics! Gathering statistics is an important part of the evolution of the product. It allows to distinguish really useful functionality and concentrate efforts on improvements. Also it helps to find out not used functionality and make it more useful.</value>
   </data>
 </root>

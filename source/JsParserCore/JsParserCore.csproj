@@ -128,6 +128,7 @@
     <Content Include="Resources\arrow_left.gif" />
     <None Include="Resources\navCollapseArrow.gif" />
     <None Include="Resources\navExpandArrow.gif" />
+    <None Include="Resources\statistics.jpg" />
     <Content Include="Resources\variable_declaration.gif" />
     <None Include="app.config" />
     <None Include="Key.snk" />
