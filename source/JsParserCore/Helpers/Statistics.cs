@@ -80,14 +80,13 @@ namespace JsParserCore.Helpers
 
         public Statistics()
         {
-            
+            Version = new AssemblyName(typeof(Statistics).Assembly.FullName).Version.ToString();
         }
 
         public void FirstInitialize()
         {
             ClientId = Guid.NewGuid();
             FirstDateUse = DateTime.UtcNow;
-            Version = new AssemblyName(typeof(Statistics).Assembly.FullName).Version.ToString();
         }
 
         public void UpdateStatisticsOnStart()
