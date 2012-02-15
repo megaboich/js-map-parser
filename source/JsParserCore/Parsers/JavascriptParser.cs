@@ -91,6 +91,7 @@ namespace JsParserCore.Parsers
 				}
 			}
 
+			NodesPostProcessor.HideAnonymousFunctions(nodes, _settings);
 			NodesPostProcessor.GroupNodesByVariableDeclaration(nodes, _settings);
 
 			var result = new JSParserResult

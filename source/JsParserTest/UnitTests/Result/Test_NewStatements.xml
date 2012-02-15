@@ -1,0 +1,17 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="F1()" AliasType="Unknown" Line="1" EndLine="3" EndColumn="1" Pos="0" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="F2()" AliasType="Unknown" Line="5" EndLine="5" EndColumn="17" Pos="0" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="F3(def,classdef)" AliasType="Unknown" Line="7" EndLine="10" EndColumn="1" Pos="0" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="F4()" AliasType="Unknown" Line="12" EndLine="12" EndColumn="17" Pos="0" Opcode="Function" />
+    </Hierachy>
+  </Childrens>
+</Hierachy>

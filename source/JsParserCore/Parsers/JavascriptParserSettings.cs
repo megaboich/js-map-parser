@@ -15,13 +15,6 @@ namespace JsParserCore.Parsers
 	/// </summary>
 	public class JavascriptParserSettings
 	{
-		public JavascriptParserSettings()
-		{
-			MaxParametersLengthInFunctionChain = 25;
-			MaxParametersLength = 25;
-			ProcessHierarchy = true;
-		}
-
 		public int MaxParametersLengthInFunctionChain { get; set; }
 
 		public int MaxParametersLength { get; set; }
@@ -30,5 +23,18 @@ namespace JsParserCore.Parsers
 		/// Gets or sets Flag indicating that parser will additionally process hierarchy.
 		/// </summary>
 		public bool ProcessHierarchy { get; set; }
+
+		/// <summary>
+		/// Gets or sets flag indicating to skip anonymous functions
+		/// </summary>
+		public bool SkipAnonymousFuntions { get; set; }
+
+		public JavascriptParserSettings()
+		{
+			MaxParametersLengthInFunctionChain = 25;
+			MaxParametersLength = 25;
+			ProcessHierarchy = true;
+			SkipAnonymousFuntions = false;
+		}
 	}
 }

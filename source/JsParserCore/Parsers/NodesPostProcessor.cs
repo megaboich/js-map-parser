@@ -12,6 +12,30 @@
     /// </summary>
     public static class NodesPostProcessor
     {
+        public static bool HideAnonymousFunctions(Hierachy<CodeNode> hierachy, JavascriptParserSettings settings)
+        {
+            if (settings.SkipAnonymousFuntions)
+            {
+                if (hierachy.Childrens != null && hierachy.Childrens.Any())
+                {
+                    hierachy.Childrens.RemoveAll(child => HideAnonymousFunctions(child, settings));
+                }
+
+                if (hierachy.Childrens != null && hierachy.Childrens.Any())
+                {
+                    return false;
+                }
+
+                if (hierachy.Item.AliasType == NodeAliasType.AnonymousFunction
+                    || hierachy.Item.AliasType == NodeAliasType.AnonymousFunctionInParameter)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static void GroupNodesByVariableDeclaration(Hierachy<CodeNode> hierachy, JavascriptParserSettings settings)
         {
             do_stuff_again:

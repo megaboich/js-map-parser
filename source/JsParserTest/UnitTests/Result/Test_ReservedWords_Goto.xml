@@ -1,0 +1,18 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="Pen(tag)" AliasType="Unknown" Line="2" EndLine="25" EndColumn="1" Pos="6" Opcode="Function" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="prototype" AliasType="Unknown" Line="26" EndLine="31" EndColumn="8" Pos="16" Opcode="ObjectLiteral" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="height()" AliasType="Unknown" Line="27" EndLine="29" EndColumn="5" Pos="12" Opcode="Function" />
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

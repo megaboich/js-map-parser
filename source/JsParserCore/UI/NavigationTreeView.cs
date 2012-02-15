@@ -157,6 +157,7 @@ namespace JsParserCore.UI
 				MaxParametersLength = Settings.MaxParametersLength,
 				MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain,
 				ProcessHierarchy = Settings.HierarchyEnabled,
+				SkipAnonymousFuntions = Settings.HideAnonymousFunctions
 			};
 
 			var result = (new JavascriptParser( parserSettings )).Parse(code);
@@ -346,13 +347,6 @@ namespace JsParserCore.UI
 			foreach (var item in childrens)
 			{
 				CodeNode node = item.Item;
-
-				if (Settings.HideAnonymousFunctions
-				 && (item.Item.AliasType == NodeAliasType.AnonymousFunction || item.Item.AliasType == NodeAliasType.AnonymousFunctionInParameter)
-				 && !item.HasChildrens)
-				{
-					continue;
-				}
 
 				if (node.StartLine > _lastCodeLine)
 				{
