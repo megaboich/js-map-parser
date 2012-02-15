@@ -1,10 +1,21 @@
 #summary Version History of Javascript Parser addin.
 #labels Featured
 
-=== Release 3.3 http://js-addin.googlecode.com/svn/site/hot.gif ===
+=== Release 3.4 http://js-addin.googlecode.com/svn/site/hot.gif ===
+  # Improved parser logic.
+  # Performance optimizations.
+  # Small UI improvements.
+  # Option to hide anonymous functions.
+  # Change location of JSParser menu in VS2008.
+  # Bug fixes.
+  # Remove buggy option Auto show\hide.
+
+
+=== Release 3.3 ===
   # Show errors in javascript. 
-   http://js-addin.googlecode.com/svn/site/vs2010_errors_tasklist.png
   # Show //TODO: comments in special task list.
+   http://js-addin.googlecode.com/svn/site/vs2010_errors_tasklist.png
+
 
 === Release 3.2 ===
   # Configurable font and color for marks. Configuration is available in Settings dialog. [http://js-addin.googlecode.com/svn/site/SettingsUI.png Screenshot]
@@ -35,4 +46,3 @@
   # Ignoring asp.net-specific tags (<%= %>) from source code to maintain valid javascript.
   # Added marks. This marks are saved when restarted Visual Studio and allows to remember some points in the large scripts. [http://js-addin.googlecode.com/svn/site/vs2010_marks.png Screenshot]
   # Solution restructuring for future support native VS2010 add-in format.
-
