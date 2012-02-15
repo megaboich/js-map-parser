@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Version>
-	3.3
+	3.4
 	<ReleaseInfo version="3">
 		<info text="Version 3" />
 		<info text="	+ Find functionality" />
@@ -28,5 +28,15 @@
 		<info text="	+ Added '//Todo:' comments parser and task list UI to display them." />
 		<info text="	+ Fixed Issue#18: Use of unused reserved words causes the parser to stop parsing past that point." />
 		<info text="	+ Fixed few other minor bugs." />
+	</ReleaseInfo>
+	<ReleaseInfo version="3.4">
+		<info text="Version 3.4" />
+		<info text="	+ Improved parser logic." />
+		<info text="	+ Performance optimizations." />
+		<info text="	+ UI improvements." />
+		<info text="	+ Change location of JSParser menu in VS2008." />
+		<info text="	+ Option to hide anonymous functions." />
+		<info text="	+ Bug fixes." />
+		<info text="	- Remove buggy option Auto show\hide." />
 	</ReleaseInfo>
 </Version>
