@@ -24,7 +24,7 @@
   http://js-addin.googlecode.com/svn/site/vs2010_html.png
 
  ===Marks===
- You can set mark to any function. This marks are saved when restarted Visual Studio and allows to remember some points in the large scripts. 
+ You can set mark to any function. This marks are saved when Visual Studio restarted and allows to remember some points in the large scripts. 
   http://js-addin.googlecode.com/svn/site/vs2010_marks.png 
 
  You also can customize font of marks. 
