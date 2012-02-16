@@ -8,4 +8,4 @@ To start using *Javascript Parser Extension* follow steps:
   # Restart Visual Studio.
   # Click the item in the menu to show tool window. Menu location: "View > Other Windows > Javascript Parser"
     http://js-addin.googlecode.com/svn/site/menu_location.png
-  # Discover ListOfFunctions and enjoy.
+  # Discover [ListOfFunctions List Of Functions] and enjoy.
