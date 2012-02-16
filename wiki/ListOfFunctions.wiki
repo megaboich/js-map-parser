@@ -1,4 +1,5 @@
 #summary Javascript Parser Functionality Guide
+#labels Featured
  ==Javascript Parser Functionality Guide==
 
  ===Tree of functions===
