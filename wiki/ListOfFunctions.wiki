@@ -30,7 +30,8 @@
   http://js-addin.googlecode.com/svn/site/SettingsUI.png
 
  ===Find feature===
- You can find your function by capital letters in its name - if you use camel naming.
+ Search in active javascript file. If you use Camel or Pascal naming then
+ you can find your function by capital letters.
   http://js-addin.googlecode.com/svn/site/screen_FindExample.png
  Also you can configure hotkey.
   http://js-addin.googlecode.com/svn/site/screen_define_shortcut.png
