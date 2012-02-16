@@ -44,7 +44,7 @@ namespace JsParserCore.Helpers
 				{
 					_versionChecked = true;
 
-					float thisVersion = 3.4f;
+					float thisVersion = 3.5f;
 					float repositoryVersion = 0;
 
 					var projectSite = @"http://js-addin.googlecode.com";
@@ -97,7 +97,7 @@ namespace JsParserCore.Helpers
 					if (versionInfos != null)
 					{
 						var newReleasesInfo = versionInfos.OfType<XmlElement>()
-							.Where(e => float.Parse(e.GetAttribute("version")) >= thisVersion)
+							.Where(e => float.Parse(e.GetAttribute("version")) > thisVersion)
 							.SelectMany(e => e.SelectNodes("self::*//info").OfType<XmlElement>())
 							.Select(e => e.GetAttribute("text"))
 							.ToArray();
