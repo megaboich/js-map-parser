@@ -8,6 +8,7 @@
   http://js-addin.googlecode.com/svn/site/vs2010_errors_tasklist.png
 
  In top menu of panel you can find error checking and access to various settings.
+  http://js-addin.googlecode.com/svn/site/panel_top_menu.png
 
  ===Loading comments===
  Comments are loaded and show on mouse over on function in tree.
