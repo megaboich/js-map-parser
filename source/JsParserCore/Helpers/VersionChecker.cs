@@ -44,7 +44,7 @@ namespace JsParserCore.Helpers
 				{
 					_versionChecked = true;
 
-					float thisVersion = 3.3f;
+					float thisVersion = 3.4f;
 					float repositoryVersion = 0;
 
 					var projectSite = @"http://js-addin.googlecode.com";
