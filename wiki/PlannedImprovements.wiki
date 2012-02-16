@@ -6,32 +6,3 @@ Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group]
 I prefer to combine several significant features to one release. This strategy has following goals:
  # To be not annoying for users.
  # Minimize development and testing effort, because I am do this for free and do not have a lot of free time.
-
-=Plans for version 3.4=
-
- # Fix issue #20
- # Improve parser to display names of string-defined properties. Like this:
-   <code language="javascript">
-    buttons: {
-                "OK": function () {
-                    
-                    });
-                },
-                "Cancel": function () {
-                    $(this).dialog("close");
-                }
-            },
-   </code>
- # Improve parser to display hierarchy in following case (thanks James Treworgy for the idea)
-   <code language="javascript">
-     var  module = (function() {
-       var me={}, privateFunc1,privateFunc2;
-       me.publicMethod1=function() {
-       };
-       me.publicMethod2=function() {
-       };
-       privateFunc1 = function() {  .. };
-       privateFunc2 = function() {  .. };
-       return me;
-     }
-   </code>
