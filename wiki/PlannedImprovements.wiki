@@ -1,6 +1,8 @@
 #summary Planned Improvements for JavaScript Parser Extension
 #labels Featured
 
+===Planned Improvements for Javascript Parser Extension===
+
 Please visit [https://groups.google.com/forum/#!forum/js-addin discussion group] if you want to ask something or you have a great idea how to improve this addin.
 
 I prefer to combine several significant features to one release. This strategy has following goals:
