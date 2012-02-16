@@ -30,7 +30,10 @@
   http://js-addin.googlecode.com/svn/site/SettingsUI.png
 
  ===Find feature===
- You can find your function by capital letters in its name - if you use camel naming. Also you can configure hotkey.
+ You can find your function by capital letters in its name - if you use camel naming.
+  http://js-addin.googlecode.com/svn/site/screen_FindExample.png
+ Also you can configure hotkey.
+  http://js-addin.googlecode.com/svn/site/screen_define_shortcut.png
 
  ===Show parameters in function chain===
  Usable for when anonymous function is attached by jQuery.
