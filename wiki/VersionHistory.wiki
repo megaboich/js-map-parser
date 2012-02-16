@@ -1,7 +1,7 @@
 #summary Version History of Javascript Parser addin.
 #labels Featured
 
-=== Release 3.4 http://js-addin.googlecode.com/svn/site/hot.gif ===
+=== Release 3.5 http://js-addin.googlecode.com/svn/site/hot.gif ===
   # Improved parser logic.
   # Performance optimizations.
   # Small UI improvements.
@@ -9,7 +9,7 @@
   # Change location of JSParser menu in VS2008.
   # Bug fixes.
   # Remove buggy option Auto show\hide.
-
+  # Fixed old version info in 3.4 release leading to wrong version detection
 
 === Release 3.3 ===
   # Show errors in javascript. 
