@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSparser", "JSparser\JSparser.csproj", "{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserCore", "JsParserCore\JsParserCore.csproj", "{4C9696D4-5D66-40F0-AADD-8D6772D1A249}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserTest", "JsParserTest\JsParserTest.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
@@ -26,16 +24,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3B5460AB-9E7D-4A5F-B707-CB9D208B83AB}.Release|x86.ActiveCfg = Release|Any CPU
 		{4C9696D4-5D66-40F0-AADD-8D6772D1A249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C9696D4-5D66-40F0-AADD-8D6772D1A249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9696D4-5D66-40F0-AADD-8D6772D1A249}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
