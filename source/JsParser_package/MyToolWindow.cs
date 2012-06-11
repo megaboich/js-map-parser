@@ -32,6 +32,7 @@ namespace JsParser_package
 		private DocumentEvents _documentEvents;
 		private SolutionEvents _solutionEvents;
 		private WindowEvents _windowEvents;
+        private VS2010UIThemeProvider _uiVS2010UIThemeProvider;
 
 		public bool TreeLoaded
 		{
@@ -85,6 +86,8 @@ namespace JsParser_package
 			// the object returned by the Content property.
 
 			base.Content = new JsParserHolder();
+
+            _uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
 		}
 
 		public override void OnToolWindowCreated()
@@ -94,6 +97,8 @@ namespace JsParser_package
 
 			try
 			{
+                NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
+
 				if (_dte.ActiveDocument != null)
 				{
 					var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
@@ -175,7 +180,7 @@ namespace JsParser_package
 
 			try
 			{
-				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
+                var codeProvider = new VS2010CodeProvider(gotFocus.Document);
 				NavigationTreeView.Init(codeProvider);
 				NavigationTreeView.LoadFunctionList();
 				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
