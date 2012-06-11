@@ -73,6 +73,7 @@ namespace JsParser.Core.UI
 		/// </summary>
         public void Init(ICodeProvider codeProvider)
 		{
+            _colorTable = _uiThemeProvider.GetColors();
             BackColor = _colorTable.ControlBackground;
             ForeColor = _colorTable.ControlText;
             treeView1.BackColor = _colorTable.WindowBackground;
