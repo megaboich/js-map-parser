@@ -1,4 +1,4 @@
-﻿namespace JsParserCore.UI
+﻿namespace JsParser.Core.UI
 {
 	partial class SettingsForm
 	{
@@ -30,7 +30,7 @@
 		{
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.jsParserSettingsControl1 = new JsParserCore.UI.JsParserSettingsControl();
+            this.jsParserSettingsControl1 = new JsParser.Core.UI.JsParserSettingsControl();
             this.SuspendLayout();
             // 
             // button1

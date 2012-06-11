@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
-using JsParserCore.Code;
-using JsParserCore.Properties;
-using JsParserCore.Helpers;
+using JsParser.Core.Code;
+using JsParser.Core.Properties;
+using JsParser.Core.Helpers;
 
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
 	public partial class FindDialog : Form
 	{

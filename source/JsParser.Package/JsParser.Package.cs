@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using EnvDTE;
-using JsParserCore.UI;
+using JsParser.Core.UI;
 using System.Windows;
 
 namespace JsParser_package

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
-using JsParserCore.UI;
+using JsParser.Core.UI;
 using System.Diagnostics;
 
 namespace JsParser_package
@@ -51,7 +51,7 @@ namespace JsParser_package
 			{
 				if (_settingsUI == null)
 				{
-					_settingsUI = new JsParserCore.UI.JsParserSettingsControl();
+					_settingsUI = new JsParser.Core.UI.JsParserSettingsControl();
 					_settingsUI.Location = new Point(0, 0);
 					_settingsUI.Dock = DockStyle.Fill;
 					_settingsUI.InitSettings();

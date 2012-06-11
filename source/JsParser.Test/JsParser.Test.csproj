@@ -8,8 +8,8 @@
     <ProjectGuid>{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JsParserTest</RootNamespace>
-    <AssemblyName>JsParserTest</AssemblyName>
+    <RootNamespace>JsParser.Test</RootNamespace>
+    <AssemblyName>JsParser.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -190,12 +190,6 @@
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JsParserCore\JsParserCore.csproj">
-      <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
-      <Name>JsParserCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -211,6 +205,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsParser.Core\JsParser.Core.csproj">
+      <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
+      <Name>JsParser.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

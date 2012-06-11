@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading.Tasks;
-using JsParserCore.Parsers;
+using JsParser.Core.Parsers;
 
 namespace JsParserTest
 {

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserCore", "JsParserCore\JsParserCore.csproj", "{4C9696D4-5D66-40F0-AADD-8D6772D1A249}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Core", "JsParser.Core\JsParser.Core.csproj", "{4C9696D4-5D66-40F0-AADD-8D6772D1A249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParserTest", "JsParserTest\JsParserTest.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Test", "JsParser.Test\JsParser.Test.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser_package", "JsParser_package\JsParser_package.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Package", "JsParser.Package\JsParser.Package.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version", "Version", "{AC7D627D-4666-4F1A-AF3D-4941E2697310}"
 	ProjectSection(SolutionItems) = preProject

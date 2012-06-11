@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
 	public static class Serializer
 	{

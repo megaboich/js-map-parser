@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JsParserCore.Helpers;
-using JsParserCore.Code;
+using JsParser.Core.Helpers;
+using JsParser.Core.Code;
 
-namespace JsParserCore.Parsers
+namespace JsParser.Core.Parsers
 {
     public class JSParserResult
     {

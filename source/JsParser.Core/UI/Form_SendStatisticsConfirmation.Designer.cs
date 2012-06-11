@@ -1,4 +1,4 @@
-﻿namespace JsParserCore.UI
+﻿namespace JsParser.Core.UI
 {
     partial class Form_SendStatisticsConfirmation
     {
@@ -98,7 +98,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::JsParserCore.Properties.Resources.statistics;
+            this.pictureBox1.Image = global::JsParser.Core.Properties.Resources.statistics;
             this.pictureBox1.Location = new System.Drawing.Point(8, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(93, 132);

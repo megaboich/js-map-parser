@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml.Serialization;
-using JsParserCore.Helpers;
-using JsParserCore.Parsers;
+using JsParser.Core.Helpers;
+using JsParser.Core.Parsers;
 
-namespace JsParserCore.Code
+namespace JsParser.Core.Code
 {
 	/// <summary>
 	/// The code node.

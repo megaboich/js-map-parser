@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using JsParserCore.Code;
-using JsParserCore.Helpers;
-using JsParserCore.Parsers;
+using JsParser.Core.Code;
+using JsParser.Core.Helpers;
+using JsParser.Core.Parsers;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
-using JsParserCore.Properties;
+using JsParser.Core.Properties;
 using System.Linq;
 using System.Threading;
 using System.Diagnostics;
 
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
 	/// <summary>
 	/// The tree for code.
@@ -432,20 +432,20 @@ namespace JsParserCore.UI
 			switch (mark)
 			{
 				case 'W':
-					return JsParserCore.Properties.Resources.flag_white;
+					return JsParser.Core.Properties.Resources.flag_white;
 				case 'B':
-					return JsParserCore.Properties.Resources.flag_blue;
+					return JsParser.Core.Properties.Resources.flag_blue;
 				case 'G':
-					return JsParserCore.Properties.Resources.flag_green;
+					return JsParser.Core.Properties.Resources.flag_green;
 				case 'O':
-					return JsParserCore.Properties.Resources.flag_orange;
+					return JsParser.Core.Properties.Resources.flag_orange;
 				case 'R':
-					return JsParserCore.Properties.Resources.flag_red;
+					return JsParser.Core.Properties.Resources.flag_red;
 				case '!':
-					return JsParserCore.Properties.Resources.Active;
+					return JsParser.Core.Properties.Resources.Active;
 				case 'S':
 				default:
-					return JsParserCore.Properties.Resources.icon_favourites;
+					return JsParser.Core.Properties.Resources.icon_favourites;
 			}
 		}
 
@@ -930,8 +930,8 @@ namespace JsParserCore.UI
 		private void UpdateToDoListToggleImage()
 		{
 			btnToDoListToggle.Image = Settings.ToDoListCollapsed
-				? JsParserCore.Properties.Resources.navCollapseArrow
-				: JsParserCore.Properties.Resources.navExpandArrow;
+				? JsParser.Core.Properties.Resources.navCollapseArrow
+				: JsParser.Core.Properties.Resources.navExpandArrow;
 		}
 
 		private void UpdateToDoListSettings() 

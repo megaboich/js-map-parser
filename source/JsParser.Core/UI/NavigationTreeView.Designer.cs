@@ -3,7 +3,7 @@ using System.Reflection;
 using System.IO;
 using System.Drawing;
 using System.ComponentModel;
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
     partial class NavigationTreeView
     {
@@ -75,7 +75,7 @@ namespace JsParserCore.UI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnToDoListToggle = new System.Windows.Forms.Button();
             this.lbTaskList = new System.Windows.Forms.Label();
-            this.treeView1 = new JsParserCore.UI.CustomTreeView();
+            this.treeView1 = new JsParser.Core.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -110,7 +110,7 @@ namespace JsParserCore.UI
             // contextMenuMarks0Item
             // 
             this.contextMenuMarks0Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks0Item.Image = global::JsParserCore.Properties.Resources.flag_white;
+            this.contextMenuMarks0Item.Image = global::JsParser.Core.Properties.Resources.flag_white;
             this.contextMenuMarks0Item.Name = "contextMenuMarks0Item";
             this.contextMenuMarks0Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks0Item.Tag = "W";
@@ -120,7 +120,7 @@ namespace JsParserCore.UI
             // contextMenuMarks1Item
             // 
             this.contextMenuMarks1Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks1Item.Image = global::JsParserCore.Properties.Resources.flag_blue;
+            this.contextMenuMarks1Item.Image = global::JsParser.Core.Properties.Resources.flag_blue;
             this.contextMenuMarks1Item.Name = "contextMenuMarks1Item";
             this.contextMenuMarks1Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks1Item.Tag = "B";
@@ -130,7 +130,7 @@ namespace JsParserCore.UI
             // contextMenuMarks2Item
             // 
             this.contextMenuMarks2Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks2Item.Image = global::JsParserCore.Properties.Resources.flag_green;
+            this.contextMenuMarks2Item.Image = global::JsParser.Core.Properties.Resources.flag_green;
             this.contextMenuMarks2Item.Name = "contextMenuMarks2Item";
             this.contextMenuMarks2Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks2Item.Tag = "G";
@@ -140,7 +140,7 @@ namespace JsParserCore.UI
             // contextMenuMarks3Item
             // 
             this.contextMenuMarks3Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks3Item.Image = global::JsParserCore.Properties.Resources.flag_orange;
+            this.contextMenuMarks3Item.Image = global::JsParser.Core.Properties.Resources.flag_orange;
             this.contextMenuMarks3Item.Name = "contextMenuMarks3Item";
             this.contextMenuMarks3Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks3Item.Tag = "O";
@@ -150,7 +150,7 @@ namespace JsParserCore.UI
             // contextMenuMarks4Item
             // 
             this.contextMenuMarks4Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks4Item.Image = global::JsParserCore.Properties.Resources.flag_red;
+            this.contextMenuMarks4Item.Image = global::JsParser.Core.Properties.Resources.flag_red;
             this.contextMenuMarks4Item.Name = "contextMenuMarks4Item";
             this.contextMenuMarks4Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks4Item.Tag = "R";
@@ -160,7 +160,7 @@ namespace JsParserCore.UI
             // contextMenuMarks5Item
             // 
             this.contextMenuMarks5Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks5Item.Image = global::JsParserCore.Properties.Resources.icon_favourites;
+            this.contextMenuMarks5Item.Image = global::JsParser.Core.Properties.Resources.icon_favourites;
             this.contextMenuMarks5Item.Name = "contextMenuMarks5Item";
             this.contextMenuMarks5Item.Size = new System.Drawing.Size(152, 22);
             this.contextMenuMarks5Item.Tag = "S";
@@ -221,7 +221,7 @@ namespace JsParserCore.UI
             this.hideAnonymousFunctionsToolStripMenuItem,
             this.toolStripMenuItem7,
             this.settingsToolStripMenuItem1});
-            this.toolStripDropDownButton2.Image = global::JsParserCore.Properties.Resources.list_settings;
+            this.toolStripDropDownButton2.Image = global::JsParser.Core.Properties.Resources.list_settings;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
             this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 22);
@@ -230,7 +230,7 @@ namespace JsParserCore.UI
             // showHierarhyToolStripMenuItem
             // 
             this.showHierarhyToolStripMenuItem.CheckOnClick = true;
-            this.showHierarhyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.tree;
+            this.showHierarhyToolStripMenuItem.Image = global::JsParser.Core.Properties.Resources.tree;
             this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
             this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.showHierarhyToolStripMenuItem.Text = "Show Hierachy";
@@ -266,7 +266,7 @@ namespace JsParserCore.UI
             // sortItemsAlphabeticallyToolStripMenuItem
             // 
             this.sortItemsAlphabeticallyToolStripMenuItem.CheckOnClick = true;
-            this.sortItemsAlphabeticallyToolStripMenuItem.Image = global::JsParserCore.Properties.Resources.SortAZ;
+            this.sortItemsAlphabeticallyToolStripMenuItem.Image = global::JsParser.Core.Properties.Resources.SortAZ;
             this.sortItemsAlphabeticallyToolStripMenuItem.Name = "sortItemsAlphabeticallyToolStripMenuItem";
             this.sortItemsAlphabeticallyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.sortItemsAlphabeticallyToolStripMenuItem.Text = "Sort Items Alphabetically";
@@ -316,7 +316,7 @@ namespace JsParserCore.UI
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::JsParserCore.Properties.Resources.Find_icon;
+            this.toolStripButton1.Image = global::JsParser.Core.Properties.Resources.Find_icon;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
@@ -332,7 +332,7 @@ namespace JsParserCore.UI
             // btnErrorDiagnosis
             // 
             this.btnErrorDiagnosis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnErrorDiagnosis.Image = global::JsParserCore.Properties.Resources.error_icon;
+            this.btnErrorDiagnosis.Image = global::JsParser.Core.Properties.Resources.error_icon;
             this.btnErrorDiagnosis.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnErrorDiagnosis.Name = "btnErrorDiagnosis";
             this.btnErrorDiagnosis.Size = new System.Drawing.Size(29, 22);
@@ -347,7 +347,7 @@ namespace JsParserCore.UI
             // btnRefresh
             // 
             this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRefresh.Image = global::JsParserCore.Properties.Resources.refresh;
+            this.btnRefresh.Image = global::JsParser.Core.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(23, 22);
@@ -444,7 +444,7 @@ namespace JsParserCore.UI
             this.btnToDoListToggle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.btnToDoListToggle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.btnToDoListToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToDoListToggle.Image = global::JsParserCore.Properties.Resources.navExpandArrow;
+            this.btnToDoListToggle.Image = global::JsParser.Core.Properties.Resources.navExpandArrow;
             this.btnToDoListToggle.Location = new System.Drawing.Point(181, 2);
             this.btnToDoListToggle.Name = "btnToDoListToggle";
             this.btnToDoListToggle.Size = new System.Drawing.Size(16, 16);
@@ -454,7 +454,7 @@ namespace JsParserCore.UI
             // 
             // lbTaskList
             // 
-            this.lbTaskList.Image = global::JsParserCore.Properties.Resources.task_List;
+            this.lbTaskList.Image = global::JsParser.Core.Properties.Resources.task_List;
             this.lbTaskList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTaskList.Location = new System.Drawing.Point(-2, 0);
             this.lbTaskList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using JsParserCore.UI;
+using JsParser.Core.UI;
 
 namespace JsParserTest.UnitTests
 {

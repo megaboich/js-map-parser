@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Text;
     using NUnit.Framework;
-    using JsParserCore.Helpers;
-    using JsParserCore.Code;
-    using JsParserCore.Parsers;
+    using JsParser.Core.Helpers;
+    using JsParser.Core.Code;
+    using JsParser.Core.Parsers;
     using JsParserTest.Helpers;
 
     /// <summary>

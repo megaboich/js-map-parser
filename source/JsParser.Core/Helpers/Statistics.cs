@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using JsParserCore.Properties;
+using JsParser.Core.Properties;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
     public class Statistics
     {

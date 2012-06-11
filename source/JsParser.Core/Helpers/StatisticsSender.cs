@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JsParserCore.Properties;
-using JsParserCore.UI;
+using JsParser.Core.Properties;
+using JsParser.Core.UI;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
     public static class StatisticsSender
     {

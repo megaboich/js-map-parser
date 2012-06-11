@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-namespace JsParserCore.Parsers
+namespace JsParser.Core.Parsers
 {
     public enum NodeAliasType
     {

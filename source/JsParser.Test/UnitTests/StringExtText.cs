@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-using JsParserCore.Parsers;
+using JsParser.Core.Parsers;
 using System.Diagnostics;
 
 namespace JsParserTest.UnitTests

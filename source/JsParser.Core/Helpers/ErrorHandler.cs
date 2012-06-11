@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
     public static class ErrorHandler
     {

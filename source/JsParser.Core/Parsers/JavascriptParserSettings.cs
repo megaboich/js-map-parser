@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.JScript.Compiler;
 using Microsoft.JScript.Compiler.ParseTree;
-using JsParserCore.Code;
-using JsParserCore.Helpers;
+using JsParser.Core.Code;
+using JsParser.Core.Helpers;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace JsParserCore.Parsers
+namespace JsParser.Core.Parsers
 {
 	/// <summary>
 	/// The js parser settings.

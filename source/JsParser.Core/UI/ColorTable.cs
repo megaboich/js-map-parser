@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
     public class ColorTable
     {

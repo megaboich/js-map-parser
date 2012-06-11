@@ -5,7 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
     public class CustomTraceListener: TraceListener
     {

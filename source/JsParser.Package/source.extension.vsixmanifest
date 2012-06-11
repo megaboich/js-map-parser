@@ -33,7 +33,7 @@
   </References>
   <Content>
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
-    <MefComponent>|JsParserCore|</MefComponent>
     <MefComponent>Microsoft.JScript.Compiler.dll</MefComponent>
+    <MefComponent>|JsParser.Core|</MefComponent>
   </Content>
 </Vsix>

@@ -7,13 +7,13 @@ using System.Windows;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
-using JsParserCore.UI;
+using JsParser.Core.UI;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Reflection;
 using EnvDTE;
 using System.Diagnostics;
-using JsParserCore.Helpers;
+using JsParser.Core.Helpers;
 
 namespace JsParser_package
 {

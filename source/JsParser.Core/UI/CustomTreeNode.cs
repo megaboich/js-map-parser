@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using JsParserCore.Code;
+using JsParser.Core.Code;
 
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
 	public class CustomTreeNode : TreeNode
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.JScript.Compiler;
 
-namespace JsParserCore.Parsers
+namespace JsParser.Core.Parsers
 {
 	public static class JSParserExtensions
 	{

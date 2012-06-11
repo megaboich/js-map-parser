@@ -1,11 +1,11 @@
-﻿namespace JsParserCore.Parsers
+﻿namespace JsParser.Core.Parsers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using JsParserCore.Helpers;
-    using JsParserCore.Code;
+    using JsParser.Core.Helpers;
+    using JsParser.Core.Code;
 
     /// <summary>
     /// Process nodes hierarchy after parsing to improve structure

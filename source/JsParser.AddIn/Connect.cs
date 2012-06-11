@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.CommandBars;
 using System.Resources;
 using System.Reflection;
 using System.Globalization;
-using JsParserCore.UI;
+using JsParser.Core.UI;
 using System.Diagnostics;
 using System.Windows.Forms;
 

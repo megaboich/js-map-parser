@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JsParserCore.Code
+namespace JsParser.Core.Code
 {
 	public class CodeChunk
 	{

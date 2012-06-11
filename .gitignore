@@ -4,11 +4,11 @@
 *.user
 source/JSparser/bin/
 source/JSparser/obj/
-source/JsParser_package/bin/
-source/JsParser_package/obj/
-source/JsParserCore/bin/
-source/JsParserCore/obj/
-source/JsParserTest/bin/
-source/JsParserTest/obj/
+source/JsParser.Package/bin/
+source/JsParser.Package/obj/
+source/JsParser.Core/bin/
+source/JsParser.Core/obj/
+source/JsParser.Test/bin/
+source/JsParser.Test/obj/
 source/JsParser.AddIn/bin/
 source/JsParser.AddIn/obj/

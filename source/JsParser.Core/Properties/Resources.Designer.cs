@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JsParserCore.Properties {
+namespace JsParser.Core.Properties {
     using System;
     
     

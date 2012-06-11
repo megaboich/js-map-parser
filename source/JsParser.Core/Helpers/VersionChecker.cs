@@ -9,10 +9,10 @@ using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
-using JsParserCore.Properties;
+using JsParser.Core.Properties;
 using System.Threading;
 
-namespace JsParserCore.Helpers
+namespace JsParser.Core.Helpers
 {
 	public class VersionChecker
 	{

@@ -6,10 +6,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using JsParserCore.Helpers;
-using JsParserCore.Properties;
+using JsParser.Core.Helpers;
+using JsParser.Core.Properties;
 
-namespace JsParserCore.UI
+namespace JsParser.Core.UI
 {
     public partial class JsParserSettingsControl : UserControl
     {
