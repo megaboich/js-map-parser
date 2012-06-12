@@ -17,13 +17,7 @@ namespace JsParser.Core.UI
 
         public DefaultUIThemeProvider()
         {
-            _colorTable = new ColorTable
-            {
-                ControlBackground = SystemColors.Control,
-                ControlText = SystemColors.ControlText,
-                WindowBackground = SystemColors.Window,
-                WindowText = SystemColors.WindowText
-            };
+            _colorTable = ColorTable.Default;
         }
 
         public ColorTable GetColors()

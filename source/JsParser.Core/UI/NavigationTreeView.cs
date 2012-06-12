@@ -34,8 +34,9 @@ namespace JsParser.Core.UI
 		private bool _treeRefreshing = false;
 		private ExpandedNodesManager _expandedNodes = new ExpandedNodesManager();
 		private bool _userWantsUpdateSplitterPosition = false;
-        private ColorTable _colorTable;
-        private IUIThemeProvider _uiThemeProvider;
+		private ColorTable _colorTable;
+		private IUIThemeProvider _uiThemeProvider;
+		private Palette _palette = new Palette();
 
 		/// <summary>
 		/// Gets Code.
@@ -48,8 +49,9 @@ namespace JsParser.Core.UI
 		public NavigationTreeView()
 		{
 			InitializeComponent();
+			this.Disposed += OnDisposed;
 
-            _uiThemeProvider = new DefaultUIThemeProvider();
+			_uiThemeProvider = new DefaultUIThemeProvider();
 
 			treeView1.Nodes.Clear();
 			treeView1.LostFocus += LostFocusHandler;
@@ -62,26 +64,32 @@ namespace JsParser.Core.UI
 			hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
 		}
 
-        public void Setup(IUIThemeProvider uiThemeProvider)
-        {
-            _uiThemeProvider = uiThemeProvider;
-            _colorTable = _uiThemeProvider.GetColors();
-        }
+		public void OnDisposed(object sender, EventArgs args)
+		{
+			_palette.Dispose();
+		}
+
+		public void Setup(IUIThemeProvider uiThemeProvider)
+		{
+			_uiThemeProvider = uiThemeProvider;
+			_colorTable = _uiThemeProvider.GetColors();
+		}
 
 		/// <summary>
 		/// Initialize method.
 		/// </summary>
-        public void Init(ICodeProvider codeProvider)
+		public void Init(ICodeProvider codeProvider)
 		{
-            _colorTable = _uiThemeProvider.GetColors();
-            BackColor = _colorTable.ControlBackground;
-            ForeColor = _colorTable.ControlText;
-            treeView1.BackColor = _colorTable.WindowBackground;
-            treeView1.ForeColor = _colorTable.WindowText;
-            taskListListView.BackColor = _colorTable.WindowBackground;
-            taskListListView.ForeColor = _colorTable.WindowText;
-            toolStrip2.BackColor = _colorTable.ControlBackground;
-            
+			_colorTable = _uiThemeProvider.GetColors();
+			BackColor = _colorTable.ControlBackground;
+			ForeColor = _colorTable.ControlText;
+			treeView1.BackColor = _colorTable.WindowBackground;
+			treeView1.ForeColor = _colorTable.WindowText;
+			taskListListView.BackColor = _colorTable.WindowBackground;
+			taskListListView.ForeColor = _colorTable.WindowText;
+			
+			toolStrip2.BackColor = _colorTable.ControlBackground;
+			
 			Code = codeProvider;
 			StatisticsManager.Instance.Statistics.Container = Code.ContainerName;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
@@ -256,7 +264,7 @@ namespace JsParser.Core.UI
 		{
 			try
 			{
-                _colorTable = _uiThemeProvider.GetColors();
+				_colorTable = _uiThemeProvider.GetColors();
 
 				if (Code != null)
 				{
@@ -654,34 +662,68 @@ namespace JsParser.Core.UI
 			var node = (CustomTreeNode)e.Node;
 			var tags = node.Tags;
 
-            // Draw the background and node text for a selected node.
-            if ((e.State & TreeNodeStates.Selected) != 0)
-            {
-                // Draw the background of the selected node. The NodeBounds
-                // method makes the highlight rectangle large enough to
-                // include the text of a node tag, if one is present.
-                e.Graphics.FillRectangle(Brushes.Green, e.Node.Bounds);
-            }
-            {
-                // Retrieve the node font. If the node font has not been set,
-                // use the TreeView font.
-                Font nodeFont = e.Node.NodeFont;
-                if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
+			// Retrieve the node font. If the node font has not been set,
+			// use the TreeView font.
+			Font nodeFont = e.Node.NodeFont;
+			if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
 
-                // Draw the node text.
-                e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White,
-                    Rectangle.Inflate(e.Bounds, 2, 0));
-            }
+			var hasExpand = (e.Node.Nodes != null && e.Node.Nodes.Count > 0);
+			var hasImage = (e.Node.StateImageIndex >= 0);
+			var hasTags = !string.IsNullOrEmpty(tags);
+			var isSelected = ((e.State & TreeNodeStates.Selected) != 0);
+			
+			var tagsShift = 0;
 
-			if (!string.IsNullOrEmpty(tags))
+			// Draw background
+			var bgBrush = isSelected
+				? (treeView1.Focused) 
+					? _palette.GetSolidBrush(_colorTable.HighlightBackground)
+					: _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
+				: _palette.GetSolidBrush(_colorTable.WindowBackground);
+
+			e.Graphics.FillRectangle(bgBrush, 0, e.Bounds.Top, e.Bounds.Right, e.Bounds.Height);
+
+			//Draw tags
+			if (hasTags)
 			{
-				var x = e.Bounds.Right + 2;
 				foreach (char mark in tags)
 				{
-					e.Graphics.DrawImageUnscaled(GetTagImage(mark), x, e.Bounds.Top - 1);
-					x += 18;
+					e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top - 1);
+					tagsShift += 18;
 				}
 			}
+
+			var nodeLeftShift = 0;
+			// Draw image before node
+			if (hasImage)
+			{
+				nodeLeftShift += 16;
+				e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
+					Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
+			}
+
+			// Draw + - sign before node
+			if (hasExpand)
+			{
+				var sign = e.Node.IsExpanded ? "-" : "+";
+				
+				e.Graphics.DrawString(sign, nodeFont, Brushes.Black,
+					Point.Subtract(e.Node.Bounds.Location, new Size(9 + nodeLeftShift, 0)));
+			}
+
+			var textColor = (e.Node.ForeColor.ToArgb() == 0)
+				? _colorTable.WindowText
+				: e.Node.ForeColor;
+
+			// Draw the node text.
+			var textBrush = ((e.State & TreeNodeStates.Selected) != 0)
+				? (treeView1.Focused) 
+					? _palette.GetSolidBrush(_colorTable.HighlightText)
+					: _palette.GetSolidBrush(_colorTable.HighlightInactiveText)
+				: _palette.GetSolidBrush(textColor);
+			
+			e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
+				Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 2)));
 
 			e.DrawDefault = false;
 		}
@@ -744,10 +786,8 @@ namespace JsParser.Core.UI
 
 		private void panelLinesNumbers_Paint(object sender, PaintEventArgs e)
 		{
-            using (var br = new SolidBrush(_colorTable.ControlBackground))
-            {
-                e.Graphics.FillRectangle(br, panelLinesNumbers.ClientRectangle);
-            }
+			e.Graphics.FillRectangle(_palette.GetSolidBrush(_colorTable.ControlBackground), panelLinesNumbers.ClientRectangle);
+
 			if (Settings.ShowLineNumbersEnabled && treeView1.Nodes.Count > 0)
 			{
 				var gr = e.Graphics;

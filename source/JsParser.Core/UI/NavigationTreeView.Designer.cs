@@ -68,13 +68,13 @@ namespace JsParser.Core.UI
             this.lbDocName = new System.Windows.Forms.ToolStripLabel();
             this.panelLinesNumbers = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.taskListListView = new System.Windows.Forms.ListView();
-            this.indexToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnToDoListToggle = new System.Windows.Forms.Button();
             this.lbTaskList = new System.Windows.Forms.Label();
+            this.indexToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.taskListListView = new System.Windows.Forms.ListView();
             this.treeView1 = new JsParser.Core.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -374,42 +374,6 @@ namespace JsParser.Core.UI
             this.timer2.Interval = 500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
             // 
-            // taskListListView
-            // 
-            this.taskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.taskListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.indexToDoListColumn,
-            this.textToDoListColumn,
-            this.lineNoToDoListColumn});
-            this.taskListListView.FullRowSelect = true;
-            this.taskListListView.GridLines = true;
-            this.taskListListView.Location = new System.Drawing.Point(0, 20);
-            this.taskListListView.Margin = new System.Windows.Forms.Padding(0);
-            this.taskListListView.Name = "taskListListView";
-            this.taskListListView.ShowItemToolTips = true;
-            this.taskListListView.Size = new System.Drawing.Size(200, 68);
-            this.taskListListView.TabIndex = 6;
-            this.taskListListView.UseCompatibleStateImageBehavior = false;
-            this.taskListListView.View = System.Windows.Forms.View.Details;
-            this.taskListListView.DoubleClick += new System.EventHandler(this.TaskListItemClick);
-            // 
-            // indexToDoListColumn
-            // 
-            this.indexToDoListColumn.Text = "#";
-            this.indexToDoListColumn.Width = 20;
-            // 
-            // textToDoListColumn
-            // 
-            this.textToDoListColumn.Text = "Description";
-            this.textToDoListColumn.Width = 160;
-            // 
-            // lineNoToDoListColumn
-            // 
-            this.lineNoToDoListColumn.Text = "Line#";
-            this.lineNoToDoListColumn.Width = 40;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(17, 36);
@@ -431,7 +395,7 @@ namespace JsParser.Core.UI
             this.splitContainer1.Panel2.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             this.splitContainer1.Panel2MinSize = 20;
             this.splitContainer1.Size = new System.Drawing.Size(200, 331);
-            this.splitContainer1.SplitterDistance = 239;
+            this.splitContainer1.SplitterDistance = 202;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 7;
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
@@ -465,12 +429,51 @@ namespace JsParser.Core.UI
             this.lbTaskList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTaskList.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
+            // indexToDoListColumn
+            // 
+            this.indexToDoListColumn.Text = "#";
+            this.indexToDoListColumn.Width = 20;
+            // 
+            // textToDoListColumn
+            // 
+            this.textToDoListColumn.Text = "Description";
+            this.textToDoListColumn.Width = 160;
+            // 
+            // lineNoToDoListColumn
+            // 
+            this.lineNoToDoListColumn.Text = "Line#";
+            this.lineNoToDoListColumn.Width = 40;
+            // 
+            // taskListListView
+            // 
+            this.taskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.taskListListView.BackColor = System.Drawing.SystemColors.Window;
+            this.taskListListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.taskListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.indexToDoListColumn,
+            this.textToDoListColumn,
+            this.lineNoToDoListColumn});
+            this.taskListListView.FullRowSelect = true;
+            this.taskListListView.GridLines = true;
+            this.taskListListView.Location = new System.Drawing.Point(0, 20);
+            this.taskListListView.Margin = new System.Windows.Forms.Padding(0);
+            this.taskListListView.Name = "taskListListView";
+            this.taskListListView.ShowItemToolTips = true;
+            this.taskListListView.Size = new System.Drawing.Size(200, 105);
+            this.taskListListView.TabIndex = 6;
+            this.taskListListView.UseCompatibleStateImageBehavior = false;
+            this.taskListListView.View = System.Windows.Forms.View.Details;
+            this.taskListListView.DoubleClick += new System.EventHandler(this.TaskListItemClick);
+            // 
             // treeView1
             // 
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView1.FullRowSelect = true;
             this.treeView1.HideSelection = false;
+            this.treeView1.Indent = 10;
             this.treeView1.Location = new System.Drawing.Point(43, 22);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowLines = false;
@@ -541,10 +544,6 @@ namespace JsParser.Core.UI
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton btnErrorDiagnosis;
         private System.Windows.Forms.ToolStripSeparator btnErrorSeparator;
-        private System.Windows.Forms.ListView taskListListView;
-        private System.Windows.Forms.ColumnHeader indexToDoListColumn;
-        private System.Windows.Forms.ColumnHeader textToDoListColumn;
-        private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lbTaskList;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
@@ -555,5 +554,9 @@ namespace JsParser.Core.UI
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
         private System.Windows.Forms.Button btnToDoListToggle;
+        private System.Windows.Forms.ListView taskListListView;
+        private System.Windows.Forms.ColumnHeader indexToDoListColumn;
+        private System.Windows.Forms.ColumnHeader textToDoListColumn;
+        private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
     }
 }

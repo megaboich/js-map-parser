@@ -133,6 +133,7 @@
     <Compile Include="UI\NavigationTreeView.Designer.cs">
       <DependentUpon>NavigationTreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Palette.cs" />
     <Compile Include="UI\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
