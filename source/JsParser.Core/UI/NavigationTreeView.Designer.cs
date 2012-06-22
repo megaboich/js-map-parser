@@ -63,19 +63,18 @@ namespace JsParser.Core.UI
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnErrorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.btnErrorDiagnosis = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.lbDocName = new System.Windows.Forms.ToolStripLabel();
             this.panelLinesNumbers = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnToDoListToggle = new System.Windows.Forms.Button();
             this.lbTaskList = new System.Windows.Forms.Label();
+            this.taskListListView = new System.Windows.Forms.ListView();
             this.indexToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.taskListListView = new System.Windows.Forms.ListView();
             this.treeView1 = new JsParser.Core.UI.CustomTreeView();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -195,12 +194,10 @@ namespace JsParser.Core.UI
             this.toolStripSeparator3,
             this.toolStripButton1,
             this.btnErrorSeparator,
-            this.btnErrorDiagnosis,
-            this.toolStripSeparator2,
-            this.btnRefresh,
-            this.lbDocName});
+            this.btnErrorDiagnosis});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip2.Size = new System.Drawing.Size(246, 25);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
@@ -215,6 +212,8 @@ namespace JsParser.Core.UI
             this.expandAllToolStripMenuItem,
             this.collapseAllNodesToolStripMenuItem,
             this.toolStripMenuItem8,
+            this.refreshToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.sortItemsAlphabeticallyToolStripMenuItem,
             this.showLineNumbersToolStripMenuItem,
             this.filterByMarksToolStripMenuItem,
@@ -339,27 +338,6 @@ namespace JsParser.Core.UI
             this.btnErrorDiagnosis.Text = "Errors";
             this.btnErrorDiagnosis.Visible = false;
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRefresh.Image = global::JsParser.Core.Properties.Resources.refresh;
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // lbDocName
-            // 
-            this.lbDocName.Name = "lbDocName";
-            this.lbDocName.Size = new System.Drawing.Size(25, 22);
-            this.lbDocName.Text = "      ";
-            // 
             // panelLinesNumbers
             // 
             this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
@@ -429,21 +407,6 @@ namespace JsParser.Core.UI
             this.lbTaskList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTaskList.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
-            // indexToDoListColumn
-            // 
-            this.indexToDoListColumn.Text = "#";
-            this.indexToDoListColumn.Width = 20;
-            // 
-            // textToDoListColumn
-            // 
-            this.textToDoListColumn.Text = "Description";
-            this.textToDoListColumn.Width = 160;
-            // 
-            // lineNoToDoListColumn
-            // 
-            this.lineNoToDoListColumn.Text = "Line#";
-            this.lineNoToDoListColumn.Width = 40;
-            // 
             // taskListListView
             // 
             this.taskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -466,6 +429,21 @@ namespace JsParser.Core.UI
             this.taskListListView.UseCompatibleStateImageBehavior = false;
             this.taskListListView.View = System.Windows.Forms.View.Details;
             this.taskListListView.DoubleClick += new System.EventHandler(this.TaskListItemClick);
+            // 
+            // indexToDoListColumn
+            // 
+            this.indexToDoListColumn.Text = "#";
+            this.indexToDoListColumn.Width = 20;
+            // 
+            // textToDoListColumn
+            // 
+            this.textToDoListColumn.Text = "Description";
+            this.textToDoListColumn.Width = 160;
+            // 
+            // lineNoToDoListColumn
+            // 
+            this.lineNoToDoListColumn.Text = "Line#";
+            this.lineNoToDoListColumn.Width = 40;
             // 
             // treeView1
             // 
@@ -491,6 +469,18 @@ namespace JsParser.Core.UI
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::JsParser.Core.Properties.Resources.refresh;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(219, 6);
             // 
             // NavigationTreeView
             // 
@@ -530,9 +520,6 @@ namespace JsParser.Core.UI
 		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks3Item;
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks4Item;
         private System.Windows.Forms.ToolStrip toolStrip2;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-		private System.Windows.Forms.ToolStripButton btnRefresh;
-		private System.Windows.Forms.ToolStripLabel lbDocName;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Panel panelLinesNumbers;
@@ -558,5 +545,7 @@ namespace JsParser.Core.UI
         private System.Windows.Forms.ColumnHeader indexToDoListColumn;
         private System.Windows.Forms.ColumnHeader textToDoListColumn;
         private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }

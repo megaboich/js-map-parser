@@ -102,8 +102,6 @@ namespace JsParser.Core.UI
 		/// </summary>
 		public void Clear()
 		{
-			lbDocName.Text = string.Empty;
-			lbDocName.ToolTipText = string.Empty;
 			_loadedDocName = string.Empty;
 			_loadedCodeHash = string.Empty;
 			treeView1.BeginUpdate();
@@ -156,9 +154,6 @@ namespace JsParser.Core.UI
 				_expandedNodes.ActiveDocumentName = _loadedDocName;
 				//We load the new document.
 			}
-
-			lbDocName.Text = Code.Name;
-			lbDocName.ToolTipText = _loadedDocName;
 
 			var code = Code.LoadCode();
 			var hash = Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.Default.GetBytes(code)));
@@ -688,7 +683,7 @@ namespace JsParser.Core.UI
 			{
 				foreach (char mark in tags)
 				{
-					e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top - 1);
+					e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
 					tagsShift += 18;
 				}
 			}
@@ -705,10 +700,9 @@ namespace JsParser.Core.UI
 			// Draw + - sign before node
 			if (hasExpand)
 			{
-				var sign = e.Node.IsExpanded ? "-" : "+";
-				
-				e.Graphics.DrawString(sign, nodeFont, Brushes.Black,
-					Point.Subtract(e.Node.Bounds.Location, new Size(9 + nodeLeftShift, 0)));
+                var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
+
+                e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 -nodeLeftShift, e.Node.Bounds.Location.Y + 3, 9, 9);
 			}
 
 			var textColor = (e.Node.ForeColor.ToArgb() == 0)
@@ -723,7 +717,7 @@ namespace JsParser.Core.UI
 				: _palette.GetSolidBrush(textColor);
 			
 			e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
-				Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 2)));
+				Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 1)));
 
 			e.DrawDefault = false;
 		}

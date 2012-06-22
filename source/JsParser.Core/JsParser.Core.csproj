@@ -147,6 +147,8 @@
     <None Include="Resources\navCollapseArrow.gif" />
     <None Include="Resources\navExpandArrow.gif" />
     <None Include="Resources\statistics.jpg" />
+    <Content Include="Resources\treeleaf_collapsed.png" />
+    <Content Include="Resources\treeleaf_expanded.png" />
     <Content Include="Resources\variable_declaration.gif" />
     <None Include="app.config" />
     <None Include="Key.snk" />
