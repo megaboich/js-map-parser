@@ -28,7 +28,7 @@
 
   <!--The Commands section is where we the commands, menus and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
-  <Commands package="guidJsParser_packagePkg">
+  <Commands package="guidJsParserPackagePkg">
     <!-- Inside this section we have different sub-sections: one for the menus, another  
     for the menu groups, one for the buttons (the actual commands), one for the combos 
     and the last one for the bitmaps used. Each element is identified by a command id that  
@@ -60,7 +60,7 @@
           If you do not want an image next to your command, remove the Icon node or set it to <Icon guid="guidOfficeIcon" id="msotcidNoIcon" /> -->
 
 
-      <Button guid="guidJsParser_packageCmdSet" id="cmdJsParser" priority="0x0100" type="Button">
+      <Button guid="guidJsParserPackageCmdSet" id="cmdJsParser" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
         <Icon guid="guidImages" id="bmpWindowIcon" />
         <Strings>
@@ -68,7 +68,7 @@
           <ButtonText>Javascript Parser</ButtonText>
         </Strings>
       </Button>
-		<Button guid="guidJsParser_packageCmdSet" id="cmdJsParserFind" priority="0x0100" type="Button">
+		<Button guid="guidJsParserPackageCmdSet" id="cmdJsParserFind" priority="0x0100" type="Button">
 			<Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
 			<CommandFlag>DefaultInvisible</CommandFlag>
 			<Strings>
@@ -93,17 +93,17 @@
   </Commands>
 
 	<KeyBindings>
-		<KeyBinding guid="guidJsParser_packageCmdSet" id="cmdJsParserFind" key1="j" mod1="Alt" mod2="Shift" key2="j" editor="guidVSStd97" />
+		<KeyBinding guid="guidJsParserPackageCmdSet" id="cmdJsParserFind" key1="j" mod1="Alt" mod2="Shift" key2="j" editor="guidVSStd97" />
 	</KeyBindings>
 
 
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidJsParser_packagePkg" value="{85fcde11-d0ea-4b3e-b03a-79b16c2379f7}" />
+    <GuidSymbol name="guidJsParserPackagePkg" value="{85fcde11-d0ea-4b3e-b03a-79b16c2379f7}" />
     
     <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidJsParser_packageCmdSet" value="{a770d5ac-aede-4255-84a2-c3fc9d3e8e96}">
+    <GuidSymbol name="guidJsParserPackageCmdSet" value="{a770d5ac-aede-4255-84a2-c3fc9d3e8e96}">
 
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdJsParser" value="0x0101" />

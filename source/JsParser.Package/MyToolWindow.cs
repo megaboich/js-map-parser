@@ -15,7 +15,7 @@ using EnvDTE;
 using System.Diagnostics;
 using JsParser.Core.Helpers;
 
-namespace JsParser_package
+namespace JsParser.Package
 {
 	/// <summary>
 	/// This class implements the tool window exposed by this package and hosts a user control.
@@ -32,7 +32,7 @@ namespace JsParser_package
 		private DocumentEvents _documentEvents;
 		private SolutionEvents _solutionEvents;
 		private WindowEvents _windowEvents;
-        private VS2010UIThemeProvider _uiVS2010UIThemeProvider;
+		private VS2010UIThemeProvider _uiVS2010UIThemeProvider;
 
 		public bool TreeLoaded
 		{
@@ -87,7 +87,7 @@ namespace JsParser_package
 
 			base.Content = new JsParserHolder();
 
-            _uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
+			_uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
 		}
 
 		public override void OnToolWindowCreated()
@@ -97,7 +97,7 @@ namespace JsParser_package
 
 			try
 			{
-                NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
+				NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
 
 				if (_dte.ActiveDocument != null)
 				{
@@ -180,7 +180,7 @@ namespace JsParser_package
 
 			try
 			{
-                var codeProvider = new VS2010CodeProvider(gotFocus.Document);
+				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
 				NavigationTreeView.Init(codeProvider);
 				NavigationTreeView.LoadFunctionList();
 				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");

@@ -13,7 +13,7 @@ using EnvDTE;
 using JsParser.Core.UI;
 using System.Windows;
 
-namespace JsParser_package
+namespace JsParser.Package
 {
 	/// <summary>
 	/// This is the class that implements the package exposed by this assembly.
@@ -36,8 +36,8 @@ namespace JsParser_package
 	// This attribute registers a tool window exposed by this package.
 	[ProvideToolWindow(typeof(MyToolWindow))]
 	[ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Parser Extension", "General", 113, 114, true)]
-	[Guid(GuidList.guidJsParser_packagePkgString)]
-	public sealed class JsParser_packagePackage : Package
+	[Guid(GuidList.guidJsParserPackagePkgString)]
+	public sealed class JsParserPackage : Microsoft.VisualStudio.Shell.Package
 	{
 		/// <summary>
 		/// Default constructor of the package.
@@ -46,7 +46,7 @@ namespace JsParser_package
 		/// not sited yet inside Visual Studio environment. The place to do all the other 
 		/// initialization is the Initialize method.
 		/// </summary>
-		public JsParser_packagePackage()
+		public JsParserPackage()
 		{
 			Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
 		}
@@ -90,12 +90,12 @@ namespace JsParser_package
 			if (null != mcs)
 			{
 				// Create the command for the tool window
-				CommandID toolwndCommandID = new CommandID(GuidList.guidJsParser_packageCmdSet, (int)PkgCmdIDList.cmdJsParser);
+				CommandID toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParser);
 				MenuCommand menuToolWin = new MenuCommand(ShowToolWindow, toolwndCommandID);
 				mcs.AddCommand(menuToolWin);
 
 				// Create the command for the tool window
-				toolwndCommandID = new CommandID(GuidList.guidJsParser_packageCmdSet, (int)PkgCmdIDList.cmdJsParserFind);
+				toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParserFind);
 				menuToolWin = new MenuCommand(FindCommand, toolwndCommandID);
 				mcs.AddCommand(menuToolWin);
 

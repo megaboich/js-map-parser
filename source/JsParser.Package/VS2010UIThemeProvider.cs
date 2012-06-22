@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Web.Script.Serialization;
 using System.IO;
 
-namespace JsParser_package
+namespace JsParser.Package
 {
     public class VS2010UIThemeProvider : IUIThemeProvider
     {
