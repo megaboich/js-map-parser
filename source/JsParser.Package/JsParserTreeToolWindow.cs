@@ -14,6 +14,7 @@ using System.Reflection;
 using EnvDTE;
 using System.Diagnostics;
 using JsParser.Core.Helpers;
+using JsParser.Core.UI.Xaml;
 
 namespace JsParser.Package
 {
@@ -26,46 +27,18 @@ namespace JsParser.Package
 	/// This class derives from the ToolWindowPane class provided from the MPF in order to use its 
 	/// implementation of the IVsUIElementPane interface.
 	/// </summary>
-    [Guid(GuidList.guidToolWindowPersistanceString)]
-	public class MyToolWindow : ToolWindowPane
+    [Guid(GuidList.guidJsParserTreeToolWindow)]
+	public class JsParserTreeToolWindow : ToolWindowPane
 	{
 		private DocumentEvents _documentEvents;
 		private SolutionEvents _solutionEvents;
 		private WindowEvents _windowEvents;
 		private VS2010UIThemeProvider _uiVS2010UIThemeProvider;
 
-		public bool TreeLoaded
-		{
-			get
-			{
-				if (NavigationTreeView != null)
-				{
-					return NavigationTreeView.TreeLoaded;
-				}
-				return false;
-			}
-		}
-
-		public NavigationTreeView NavigationTreeView
-		{
-			get
-			{
-				return (NavigationTreeView)((WindowsFormsHost)(((Panel)(((JsParserHolder)Content).Content)).Children[0])).Child;
-			}
-		}
-
-		public void FindCommand()
-		{
-			if (NavigationTreeView != null)
-			{
-				NavigationTreeView.Find();
-			}
-		}
-
 		/// <summary>
 		/// Standard constructor for the tool window.
 		/// </summary>
-		public MyToolWindow() :
+        public JsParserTreeToolWindow() :
 			base(null)
 		{
 			// Set the window title reading it from the resources.
@@ -78,14 +51,11 @@ namespace JsParser.Package
 			this.BitmapResourceID = 301;
 			this.BitmapIndex = 0;
 
-			//Force load of a referenced assembly - this is workaround of bug when sometimes WPF cant load it and throws an exception.
-			Assembly.Load(typeof(NavigationTreeView).Assembly.FullName);
-
-			// This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
+            // This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
 			// we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on 
 			// the object returned by the Content property.
 
-			base.Content = new JsParserHolder();
+            base.Content = new JsParserToolWindow();
 
 			_uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
 		}
@@ -97,15 +67,7 @@ namespace JsParser.Package
 
 			try
 			{
-				NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
-
-				if (_dte.ActiveDocument != null)
-				{
-					var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
-					NavigationTreeView.Init(codeProvider);
-					NavigationTreeView.LoadFunctionList();
-					Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-				}
+				
 			}
 			catch (Exception ex)
 			{
@@ -133,11 +95,6 @@ namespace JsParser.Package
 		private void documentEvents_DocumentClosing(Document doc)
 		{
 			Trace.WriteLine("js addin: documentEvents_DocumentClosing");
-			if (NavigationTreeView != null)
-			{
-				Trace.WriteLine("js addin: _navigationTreeView.Clear");
-				NavigationTreeView.Clear();
-			}
 		}
 
 		/// <summary>
@@ -149,12 +106,6 @@ namespace JsParser.Package
 		private void documentEvents_DocumentSaved(Document doc)
 		{
 			Trace.WriteLine("js addin: documentEvents_DocumentSaved");
-
-			if (NavigationTreeView != null)
-			{
-				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-				NavigationTreeView.LoadFunctionList();
-			}
 		}
 
 		/// <summary>
@@ -169,31 +120,6 @@ namespace JsParser.Package
 		private void windowEvents_WindowActivated(EnvDTE.Window gotFocus, EnvDTE.Window lostFocus)
 		{
 			Trace.WriteLine("js addin: windowEvents_WindowActivated");
-
-			if (gotFocus == null
-				|| gotFocus.Kind != "Document"
-				|| NavigationTreeView == null
-				|| gotFocus.Document == null)
-			{
-				return;
-			}
-
-			try
-			{
-				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
-				NavigationTreeView.Init(codeProvider);
-				NavigationTreeView.LoadFunctionList();
-				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-
-				IVsWindowFrame windowFrame = (IVsWindowFrame)Frame;
-				NavigationTreeView.Settings.Visible = windowFrame.IsVisible() != 0;
-				NavigationTreeView.Settings.Save();
-			}
-			catch (Exception ex)
-			{
-				ErrorHandler.WriteExceptionDetailsToTrace("windowEvents_WindowActivated", ex);
-				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
-			}
 		}
 	}
 }
