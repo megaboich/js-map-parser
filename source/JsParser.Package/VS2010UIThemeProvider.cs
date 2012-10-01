@@ -13,11 +13,16 @@ namespace JsParser.Package
 {
     public class VS2010UIThemeProvider : IUIThemeProvider
     {
-        private Func<Type, object> _serviceResolver;
+        private static Lazy<IVsUIShell2> _uiShell;
 
         public VS2010UIThemeProvider(Func<Type, object> serviceResolver)
         {
-            _serviceResolver = serviceResolver;
+            _uiShell = _uiShell ?? new Lazy<IVsUIShell2>(() =>
+            {
+                var uiShell2 = serviceResolver(typeof(SVsUIShell)) as IVsUIShell2;
+                Debug.Assert(uiShell2 != null, "failed to get IVsUIShell2");
+                return uiShell2;
+            });
         }
 
         private Color getVSColor(IVsUIShell2 uiShell2, __VSSYSCOLOREX color)
@@ -31,16 +36,22 @@ namespace JsParser.Package
 
         public ColorTable GetColors()
         {
-            //getIVSUIShell2
-            var uiShell2 = _serviceResolver(typeof(SVsUIShell)) as IVsUIShell2;
-            Debug.Assert(uiShell2 != null, "failed to get IVsUIShell2");
+            var uiShell2 = _uiShell.Value;
 
             var colorTable = new ColorTable
             {
                 ControlBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_ENVIRONMENT_BACKGROUND),
-                WindowText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
-                WindowBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_BACKGROUND),
                 ControlText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
+
+                WindowBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_BACKGROUND),
+                WindowText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
+                
+                HighlightBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_COMMANDBAR_HOVEROVERSELECTEDICON_BORDER),
+                HighlightInactiveBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_ACCENT_DARK),
+                HighlightText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TITLEBAR_ACTIVE_TEXT),
+                HighlightInactiveText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
+
+                GridLines = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TASKLIST_GRIDLINES),
             };
 
             //collect all colors

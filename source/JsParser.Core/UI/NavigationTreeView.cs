@@ -655,6 +655,13 @@ namespace JsParser.Core.UI
 		private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
 		{
 			var node = (CustomTreeNode)e.Node;
+
+            //workaround for a bug when nodes draws twice - first attempt on zero boundaries
+            if (node.Bounds.Width == 0 && node.Bounds.Height == 0)
+            {
+                return;
+            }
+
 			var tags = node.Tags;
 
 			// Retrieve the node font. If the node font has not been set,
