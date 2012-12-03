@@ -53,6 +53,8 @@ namespace JsParser.Core.UI
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collapseAllNodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.sortItemsAlphabeticallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLineNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterByMarksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,23 +65,22 @@ namespace JsParser.Core.UI
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnErrorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.btnErrorDiagnosis = new System.Windows.Forms.ToolStripDropDownButton();
-            this.panelLinesNumbers = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panelLinesNumbers = new JsParser.Core.UI.CustomPanel();
+            this.treeView1 = new JsParser.Core.UI.CustomTreeView();
+            this.taskListDataGrid = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnToDoListToggle = new System.Windows.Forms.Button();
             this.lbTaskList = new System.Windows.Forms.Label();
-            this.taskListListView = new System.Windows.Forms.ListView();
-            this.indexToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lineNoToDoListColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.treeView1 = new JsParser.Core.UI.CustomTreeView();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.taskListDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -262,6 +263,18 @@ namespace JsParser.Core.UI
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(219, 6);
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::JsParser.Core.Properties.Resources.refresh;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(219, 6);
+            // 
             // sortItemsAlphabeticallyToolStripMenuItem
             // 
             this.sortItemsAlphabeticallyToolStripMenuItem.CheckOnClick = true;
@@ -338,14 +351,6 @@ namespace JsParser.Core.UI
             this.btnErrorDiagnosis.Text = "Errors";
             this.btnErrorDiagnosis.Visible = false;
             // 
-            // panelLinesNumbers
-            // 
-            this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
-            this.panelLinesNumbers.Name = "panelLinesNumbers";
-            this.panelLinesNumbers.Size = new System.Drawing.Size(25, 119);
-            this.panelLinesNumbers.TabIndex = 4;
-            this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
@@ -367,9 +372,9 @@ namespace JsParser.Core.UI
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.taskListDataGrid);
             this.splitContainer1.Panel2.Controls.Add(this.btnToDoListToggle);
             this.splitContainer1.Panel2.Controls.Add(this.lbTaskList);
-            this.splitContainer1.Panel2.Controls.Add(this.taskListListView);
             this.splitContainer1.Panel2.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             this.splitContainer1.Panel2MinSize = 20;
             this.splitContainer1.Size = new System.Drawing.Size(200, 331);
@@ -378,6 +383,100 @@ namespace JsParser.Core.UI
             this.splitContainer1.TabIndex = 7;
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // panelLinesNumbers
+            // 
+            this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
+            this.panelLinesNumbers.Name = "panelLinesNumbers";
+            this.panelLinesNumbers.Size = new System.Drawing.Size(25, 119);
+            this.panelLinesNumbers.TabIndex = 4;
+            this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
+            // 
+            // treeView1
+            // 
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.Indent = 10;
+            this.treeView1.Location = new System.Drawing.Point(43, 22);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.ShowLines = false;
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.Size = new System.Drawing.Size(145, 119);
+            this.treeView1.StateImageList = this.imageList1;
+            this.treeView1.TabIndex = 2;
+            this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
+            this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
+            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
+            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
+            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
+            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            // 
+            // taskListDataGrid
+            // 
+            this.taskListDataGrid.AllowUserToAddRows = false;
+            this.taskListDataGrid.AllowUserToDeleteRows = false;
+            this.taskListDataGrid.AllowUserToOrderColumns = true;
+            this.taskListDataGrid.AllowUserToResizeColumns = false;
+            this.taskListDataGrid.AllowUserToResizeRows = false;
+            this.taskListDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.taskListDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.taskListDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.taskListDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.taskListDataGrid.ColumnHeadersVisible = false;
+            this.taskListDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.Desc,
+            this.Line});
+            this.taskListDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.taskListDataGrid.Location = new System.Drawing.Point(3, 24);
+            this.taskListDataGrid.MultiSelect = false;
+            this.taskListDataGrid.Name = "taskListDataGrid";
+            this.taskListDataGrid.ReadOnly = true;
+            this.taskListDataGrid.RowHeadersVisible = false;
+            this.taskListDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.taskListDataGrid.ShowCellErrors = false;
+            this.taskListDataGrid.ShowEditingIcon = false;
+            this.taskListDataGrid.ShowRowErrors = false;
+            this.taskListDataGrid.Size = new System.Drawing.Size(194, 99);
+            this.taskListDataGrid.TabIndex = 8;
+            this.taskListDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.taskListDataGrid_CellClick);
+            this.taskListDataGrid.Leave += new System.EventHandler(this.taskListDataGrid_Leave);
+            // 
+            // No
+            // 
+            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.No.DataPropertyName = "No";
+            this.No.FillWeight = 10.6599F;
+            this.No.HeaderText = "No";
+            this.No.MinimumWidth = 20;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.DataPropertyName = "Desc";
+            this.Desc.FillWeight = 75.47208F;
+            this.Desc.HeaderText = "Desc";
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Line
+            // 
+            this.Line.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Line.DataPropertyName = "Line";
+            this.Line.FillWeight = 18.86802F;
+            this.Line.HeaderText = "Line";
+            this.Line.Name = "Line";
+            this.Line.ReadOnly = true;
             // 
             // btnToDoListToggle
             // 
@@ -407,81 +506,6 @@ namespace JsParser.Core.UI
             this.lbTaskList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTaskList.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
-            // taskListListView
-            // 
-            this.taskListListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.taskListListView.BackColor = System.Drawing.SystemColors.Window;
-            this.taskListListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.taskListListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.indexToDoListColumn,
-            this.textToDoListColumn,
-            this.lineNoToDoListColumn});
-            this.taskListListView.FullRowSelect = true;
-            this.taskListListView.GridLines = true;
-            this.taskListListView.Location = new System.Drawing.Point(0, 20);
-            this.taskListListView.Margin = new System.Windows.Forms.Padding(0);
-            this.taskListListView.Name = "taskListListView";
-            this.taskListListView.ShowItemToolTips = true;
-            this.taskListListView.Size = new System.Drawing.Size(200, 105);
-            this.taskListListView.TabIndex = 6;
-            this.taskListListView.UseCompatibleStateImageBehavior = false;
-            this.taskListListView.View = System.Windows.Forms.View.Details;
-            this.taskListListView.DoubleClick += new System.EventHandler(this.TaskListItemClick);
-            // 
-            // indexToDoListColumn
-            // 
-            this.indexToDoListColumn.Text = "#";
-            this.indexToDoListColumn.Width = 20;
-            // 
-            // textToDoListColumn
-            // 
-            this.textToDoListColumn.Text = "Description";
-            this.textToDoListColumn.Width = 160;
-            // 
-            // lineNoToDoListColumn
-            // 
-            this.lineNoToDoListColumn.Text = "Line#";
-            this.lineNoToDoListColumn.Width = 40;
-            // 
-            // treeView1
-            // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.Indent = 10;
-            this.treeView1.Location = new System.Drawing.Point(43, 22);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.ShowLines = false;
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(145, 119);
-            this.treeView1.StateImageList = this.imageList1;
-            this.treeView1.TabIndex = 2;
-            this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
-            this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
-            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
-            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
-            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
-            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Image = global::JsParser.Core.Properties.Resources.refresh;
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(219, 6);
-            // 
             // NavigationTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,7 +514,7 @@ namespace JsParser.Core.UI
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
             this.Name = "NavigationTreeView";
-            this.Size = new System.Drawing.Size(246, 381);
+            this.Size = new System.Drawing.Size(246, 532);
             this.Resize += new System.EventHandler(this.NavigationTreeView_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
@@ -498,6 +522,7 @@ namespace JsParser.Core.UI
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.taskListDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,7 +547,7 @@ namespace JsParser.Core.UI
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.Panel panelLinesNumbers;
+        private CustomPanel panelLinesNumbers;
 		private System.Windows.Forms.Timer timer2;
 		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
 		private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
@@ -541,11 +566,11 @@ namespace JsParser.Core.UI
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
         private System.Windows.Forms.Button btnToDoListToggle;
-        private System.Windows.Forms.ListView taskListListView;
-        private System.Windows.Forms.ColumnHeader indexToDoListColumn;
-        private System.Windows.Forms.ColumnHeader textToDoListColumn;
-        private System.Windows.Forms.ColumnHeader lineNoToDoListColumn;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.DataGridView taskListDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Line;
     }
 }

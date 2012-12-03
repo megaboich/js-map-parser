@@ -37,6 +37,7 @@ namespace JsParser.Core.UI
 		private ColorTable _colorTable;
 		private IUIThemeProvider _uiThemeProvider;
 		private Palette _palette = new Palette();
+		private JSParserResult _lastParserResult;
 
 		/// <summary>
 		/// Gets Code.
@@ -64,6 +65,18 @@ namespace JsParser.Core.UI
 			hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
 		}
 
+		private void LoadColors()
+		{
+			if (Settings.Default.UseVSColorTheme)
+			{
+				_colorTable = _uiThemeProvider.GetColors();
+			}
+			else
+			{
+				_colorTable = ColorTable.Default;
+			}
+		}
+
 		public void OnDisposed(object sender, EventArgs args)
 		{
 			_palette.Dispose();
@@ -72,7 +85,7 @@ namespace JsParser.Core.UI
 		public void Setup(IUIThemeProvider uiThemeProvider)
 		{
 			_uiThemeProvider = uiThemeProvider;
-			_colorTable = _uiThemeProvider.GetColors();
+			LoadColors();
 		}
 
 		/// <summary>
@@ -80,16 +93,26 @@ namespace JsParser.Core.UI
 		/// </summary>
 		public void Init(ICodeProvider codeProvider)
 		{
-			_colorTable = _uiThemeProvider.GetColors();
+			LoadColors();
 			BackColor = _colorTable.ControlBackground;
 			ForeColor = _colorTable.ControlText;
 			treeView1.BackColor = _colorTable.WindowBackground;
 			treeView1.ForeColor = _colorTable.WindowText;
-			taskListListView.BackColor = _colorTable.WindowBackground;
-			taskListListView.ForeColor = _colorTable.WindowText;
+			taskListDataGrid.BackColor = _colorTable.WindowBackground;
+			taskListDataGrid.BackgroundColor = _colorTable.WindowBackground;
+			taskListDataGrid.ForeColor = _colorTable.WindowText;
+			taskListDataGrid.GridColor = _colorTable.GridLines;
+			taskListDataGrid.RowsDefaultCellStyle.BackColor = _colorTable.WindowBackground;
+			taskListDataGrid.RowsDefaultCellStyle.ForeColor = _colorTable.WindowText;
 			
 			toolStrip2.BackColor = _colorTable.ControlBackground;
-			
+
+			treeView1.Indent = Settings.Default.UseVSColorTheme ? 10 : 16;
+			treeView1.DrawMode = Settings.Default.UseVSColorTheme
+				? TreeViewDrawMode.OwnerDrawAll
+				: TreeViewDrawMode.OwnerDrawText;
+			treeView1.ShowLines = !Settings.Default.UseVSColorTheme;
+
 			Code = codeProvider;
 			StatisticsManager.Instance.Statistics.Container = Code.ContainerName;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
@@ -183,6 +206,7 @@ namespace JsParser.Core.UI
 			};
 
 			var result = (new JavascriptParser( parserSettings )).Parse(code);
+			_lastParserResult = result;
 			var nodes = result.Nodes;
 
 			if (result.Errors.Count > 0)
@@ -202,8 +226,7 @@ namespace JsParser.Core.UI
 				btnErrorSeparator.Visible = false;
 			}
 
-			taskListListView.BeginUpdate();
-			taskListListView.Items.Clear();
+			var tasksDataSource = new List<object>();
 			if (result.TaskList.Count > 0)
 			{
 				lbTaskList.Text = string.Format("      Task List: {0} items", result.TaskList.Count);
@@ -211,9 +234,13 @@ namespace JsParser.Core.UI
 				result.TaskList.ForEach(t =>
 				{
 					++i;
-					var item = new ListViewItem(new[] { i.ToString(), t.Description, t.StartLine.ToString() });
-					item.Tag = t;
-					taskListListView.Items.Add(item);
+					var item = new {
+						No = i.ToString(),
+						Desc = t.Description,
+						Line = t.StartLine.ToString(),
+					};
+
+					tasksDataSource.Add(item);
 				});
 
 				splitContainer1.Panel2Collapsed = false;
@@ -223,8 +250,12 @@ namespace JsParser.Core.UI
 			else
 			{
 				splitContainer1.Panel2Collapsed = true;
+				tasksDataSource.Add(new {No = "", Desc="", Line="" }); //add fake row to workaround column sizing bug
 			}
-			taskListListView.EndUpdate();
+
+			taskListDataGrid.DataSource = tasksDataSource;
+			taskListDataGrid.CurrentCell = null;
+			
 
 			_lastCodeLine = -1;
 			_functions = new List<CodeNode>();
@@ -259,10 +290,9 @@ namespace JsParser.Core.UI
 		{
 			try
 			{
-				_colorTable = _uiThemeProvider.GetColors();
-
 				if (Code != null)
 				{
+					Init(Code);
 					_loadedDocName = string.Empty;
 					_loadedCodeHash = string.Empty;
 					LoadFunctionList();
@@ -656,77 +686,102 @@ namespace JsParser.Core.UI
 		{
 			var node = (CustomTreeNode)e.Node;
 
-            //workaround for a bug when nodes draws twice - first attempt on zero boundaries
-            if (node.Bounds.Width == 0 && node.Bounds.Height == 0)
-            {
-                return;
-            }
+			//workaround for a bug when nodes draws twice - first attempt on zero boundaries
+			if (node.Bounds.Width == 0 && node.Bounds.Height == 0)
+			{
+				return;
+			}
 
 			var tags = node.Tags;
 
-			// Retrieve the node font. If the node font has not been set,
-			// use the TreeView font.
-			Font nodeFont = e.Node.NodeFont;
-			if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
-
-			var hasExpand = (e.Node.Nodes != null && e.Node.Nodes.Count > 0);
-			var hasImage = (e.Node.StateImageIndex >= 0);
-			var hasTags = !string.IsNullOrEmpty(tags);
-			var isSelected = ((e.State & TreeNodeStates.Selected) != 0);
-			
-			var tagsShift = 0;
-
-			// Draw background
-			var bgBrush = isSelected
-				? (treeView1.Focused) 
-					? _palette.GetSolidBrush(_colorTable.HighlightBackground)
-					: _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
-				: _palette.GetSolidBrush(_colorTable.WindowBackground);
-
-			e.Graphics.FillRectangle(bgBrush, 0, e.Bounds.Top, e.Bounds.Right, e.Bounds.Height);
-
-			//Draw tags
-			if (hasTags)
+			if (Settings.Default.UseVSColorTheme)
 			{
-				foreach (char mark in tags)
+
+				// Retrieve the node font. If the node font has not been set,
+				// use the TreeView font.
+				Font nodeFont = e.Node.NodeFont;
+				if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
+
+				var hasExpand = (e.Node.Nodes != null && e.Node.Nodes.Count > 0);
+				var hasImage = (e.Node.StateImageIndex >= 0);
+				var hasTags = !string.IsNullOrEmpty(tags);
+				var isSelected = ((e.State & TreeNodeStates.Selected) != 0);
+
+				var tagsShift = 0;
+
+				// Draw background
+				var bgBrush = isSelected
+					? (treeView1.Focused)
+						? _palette.GetSolidBrush(_colorTable.HighlightBackground)
+						: _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
+					: _palette.GetSolidBrush(_colorTable.WindowBackground);
+
+				e.Graphics.FillRectangle(bgBrush, 0, e.Bounds.Top, e.Bounds.Right, e.Bounds.Height);
+
+				//Draw tags
+				if (hasTags)
 				{
-					e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
-					tagsShift += 18;
+					foreach (char mark in tags)
+					{
+						e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
+						tagsShift += 18;
+					}
 				}
-			}
 
-			var nodeLeftShift = 0;
-			// Draw image before node
-			if (hasImage)
+				var nodeLeftShift = 0;
+				// Draw image before node
+				if (hasImage)
+				{
+					nodeLeftShift += 16;
+					e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
+						Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
+				}
+
+				// Draw + - sign before node
+				if (hasExpand)
+				{
+					var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
+
+					e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 - nodeLeftShift, e.Node.Bounds.Location.Y + 3, 9, 9);
+				}
+
+				var textColor = (e.Node.ForeColor.ToArgb() == 0)
+					? _colorTable.WindowText
+					: e.Node.ForeColor;
+
+				// Draw the node text.
+				var textColorToUse = ((e.State & TreeNodeStates.Selected) != 0)
+					? (treeView1.Focused)
+						? _colorTable.HighlightText
+						: _colorTable.HighlightInactiveText
+					: textColor;
+
+				var textBrush = _palette.GetSolidBrush(textColorToUse);
+
+				TextRenderer.DrawText(e.Graphics, e.Node.Text, nodeFont,
+					Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)),
+					textColorToUse);
+				/*
+				e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
+					Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)));
+				*/
+				e.DrawDefault = false;
+			}
+			else
 			{
-				nodeLeftShift += 16;
-				e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
-					Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
+				//Draw tags
+				if (!string.IsNullOrEmpty(tags))
+				{
+					var tagsShift = 2;
+					foreach (char mark in tags)
+					{
+						e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Bounds.Right + tagsShift, e.Bounds.Top);
+						tagsShift += 18;
+					}
+				}
+
+				e.DrawDefault = true;
 			}
-
-			// Draw + - sign before node
-			if (hasExpand)
-			{
-                var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
-
-                e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 -nodeLeftShift, e.Node.Bounds.Location.Y + 3, 9, 9);
-			}
-
-			var textColor = (e.Node.ForeColor.ToArgb() == 0)
-				? _colorTable.WindowText
-				: e.Node.ForeColor;
-
-			// Draw the node text.
-			var textBrush = ((e.State & TreeNodeStates.Selected) != 0)
-				? (treeView1.Focused) 
-					? _palette.GetSolidBrush(_colorTable.HighlightText)
-					: _palette.GetSolidBrush(_colorTable.HighlightInactiveText)
-				: _palette.GetSolidBrush(textColor);
-			
-			e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
-				Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 1)));
-
-			e.DrawDefault = false;
 		}
 
 		private void ErrorDiagnosisClick(object sender, EventArgs e)
@@ -742,20 +797,16 @@ namespace JsParser.Core.UI
 			catch { }
 		}
 
-		private void TaskListItemClick(object sender, EventArgs e)
+		private void taskListDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if (taskListListView.SelectedItems.Count > 0)
+			var item = _lastParserResult.TaskList[e.RowIndex];
+			try
 			{
-				var taskListItem = (TaskListItem)(taskListListView.SelectedItems[0]).Tag;
-				try
-				{
-					Code.SelectionMoveToLineAndOffset(taskListItem.StartLine, taskListItem.StartColumn + 1);
-					Code.SetFocus();
-
-					++StatisticsManager.Instance.Statistics.NavigateFromToDoListCount;
-				}
-				catch { }
+				Code.SelectionMoveToLineAndOffset(item.StartLine, item.StartColumn + 1);
+				Code.SetFocus();
+				++StatisticsManager.Instance.Statistics.NavigateFromToDoListCount;
 			}
+			catch { }
 		}
 
 		private void showLineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1022,5 +1073,10 @@ namespace JsParser.Core.UI
 		}
 
 		#endregion
+
+		private void taskListDataGrid_Leave(object sender, EventArgs e)
+		{
+			taskListDataGrid.CurrentCell = null;
+		}
 	}
 }

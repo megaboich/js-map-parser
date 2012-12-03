@@ -17,6 +17,12 @@ namespace JsParser.Core.UI
 		[Category("CatBehavior")]
 		public event EventHandler OnScroll;
 
+		public CustomTreeView()
+			: base()
+		{
+			SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+		}
+
 		protected override void WndProc(ref Message m)
 		{
 			switch (m.Msg)

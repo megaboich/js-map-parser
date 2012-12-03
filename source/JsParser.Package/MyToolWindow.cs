@@ -98,11 +98,11 @@ namespace JsParser.Package
 			try
 			{
 				NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
+                var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
+                NavigationTreeView.Init(codeProvider);
 
 				if (_dte.ActiveDocument != null)
 				{
-					var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
-					NavigationTreeView.Init(codeProvider);
 					NavigationTreeView.LoadFunctionList();
 					Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
 				}

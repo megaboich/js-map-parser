@@ -129,3 +129,6 @@ The sample of JQuery plugin code style
 		};
 	};
 })(jQuery);
+//TODO: make things better
+
+//TODO: make things better 2
