@@ -1,13 +1,17 @@
-﻿function test() {
-    var s1 = "<sxript" type='text/javascript'> </sxropt>";
+﻿// Comment to funtion 1
+// This function does nothing
+function Function1()
+{
+}
 
-    var s2 = '<sxript type="text/javascript"> </sxropt>';
-
-    var s3 = '<sxript/>';
-
-    var s4 = "<sxript"/>";
-
-    function someInnerFunc() {
-        var t = 123;
-    }
+// Comment to funtion 2
+// This function has declaration of other function
+function Function2()
+{
+	var variable1 = 1;
+	
+	//delegate method
+	var delegate = function()
+	{
+	};
 }
