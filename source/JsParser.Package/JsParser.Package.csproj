@@ -143,7 +143,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsParserTreeToolWindow.cs" />
     <Compile Include="JsParserHolder.xaml.cs">
       <DependentUpon>JsParserHolder.xaml</DependentUpon>
     </Compile>

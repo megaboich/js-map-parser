@@ -831,9 +831,12 @@ namespace JsParser.Core.UI
 			AdjustLineNumbersPanelSize();
 		}
 
-		private void treeView1_OnScroll(object sender, EventArgs e)
+		private void treeView1_OnScroll(object sender, CustomTreeView.ScrollEventArgs e)
 		{
-			panelLinesNumbers.Refresh();
+			if (e.ScrollType == CustomTreeView.ScrollType.Vertical)
+			{
+				panelLinesNumbers.Refresh();
+			}
 		}
 
 		private void panelLinesNumbers_Paint(object sender, PaintEventArgs e)

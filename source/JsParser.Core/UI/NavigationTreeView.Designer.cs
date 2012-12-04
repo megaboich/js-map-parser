@@ -67,14 +67,14 @@ namespace JsParser.Core.UI
             this.btnErrorDiagnosis = new System.Windows.Forms.ToolStripDropDownButton();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panelLinesNumbers = new JsParser.Core.UI.CustomPanel();
-            this.treeView1 = new JsParser.Core.UI.CustomTreeView();
             this.taskListDataGrid = new System.Windows.Forms.DataGridView();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Line = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnToDoListToggle = new System.Windows.Forms.Button();
             this.lbTaskList = new System.Windows.Forms.Label();
+            this.panelLinesNumbers = new JsParser.Core.UI.CustomPanel();
+            this.treeView1 = new JsParser.Core.UI.CustomTreeView();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -198,7 +198,6 @@ namespace JsParser.Core.UI
             this.btnErrorDiagnosis});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip2.Size = new System.Drawing.Size(246, 25);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
@@ -384,39 +383,6 @@ namespace JsParser.Core.UI
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
-            // panelLinesNumbers
-            // 
-            this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
-            this.panelLinesNumbers.Name = "panelLinesNumbers";
-            this.panelLinesNumbers.Size = new System.Drawing.Size(25, 119);
-            this.panelLinesNumbers.TabIndex = 4;
-            this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
-            // 
-            // treeView1
-            // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.HideSelection = false;
-            this.treeView1.Indent = 10;
-            this.treeView1.Location = new System.Drawing.Point(43, 22);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.ShowLines = false;
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(145, 119);
-            this.treeView1.StateImageList = this.imageList1;
-            this.treeView1.TabIndex = 2;
-            this.treeView1.OnScroll += new System.EventHandler(this.treeView1_OnScroll);
-            this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
-            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
-            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
-            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
-            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
-            // 
             // taskListDataGrid
             // 
             this.taskListDataGrid.AllowUserToAddRows = false;
@@ -506,6 +472,39 @@ namespace JsParser.Core.UI
             this.lbTaskList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTaskList.Click += new System.EventHandler(this.btnToDoListToggle_Click);
             // 
+            // panelLinesNumbers
+            // 
+            this.panelLinesNumbers.Location = new System.Drawing.Point(12, 22);
+            this.panelLinesNumbers.Name = "panelLinesNumbers";
+            this.panelLinesNumbers.Size = new System.Drawing.Size(25, 119);
+            this.panelLinesNumbers.TabIndex = 4;
+            this.panelLinesNumbers.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLinesNumbers_Paint);
+            // 
+            // treeView1
+            // 
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HideSelection = false;
+            this.treeView1.Indent = 10;
+            this.treeView1.Location = new System.Drawing.Point(43, 22);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.ShowLines = false;
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.Size = new System.Drawing.Size(145, 119);
+            this.treeView1.StateImageList = this.imageList1;
+            this.treeView1.TabIndex = 2;
+            this.treeView1.OnScroll += new CustomTreeView.ScrollEventHandler(this.treeView1_OnScroll);
+            this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
+            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
+            this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
+            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
+            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+            this.treeView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.treeView1_KeyPress);
+            // 
             // NavigationTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,27 +531,27 @@ namespace JsParser.Core.UI
 
         #endregion
 
-		private CustomTreeView treeView1;
-		private System.Windows.Forms.ImageList imageList1;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem resetLabelToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks5Item;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem resetAllLabelsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks0Item;
-		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks2Item;
-		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks1Item;
-		private System.Windows.Forms.ToolStripMenuItem contextMenuMarks3Item;
+        private CustomTreeView treeView1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem resetLabelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks5Item;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem resetAllLabelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks0Item;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks2Item;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks1Item;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks3Item;
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks4Item;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private CustomPanel panelLinesNumbers;
-		private System.Windows.Forms.Timer timer2;
-		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-		private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton btnErrorDiagnosis;
         private System.Windows.Forms.ToolStripSeparator btnErrorSeparator;

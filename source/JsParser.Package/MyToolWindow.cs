@@ -26,7 +26,7 @@ namespace JsParser.Package
 	/// This class derives from the ToolWindowPane class provided from the MPF in order to use its 
 	/// implementation of the IVsUIElementPane interface.
 	/// </summary>
-    [Guid(GuidList.guidToolWindowPersistanceString)]
+	[Guid(GuidList.guidToolWindowPersistanceString)]
 	public class MyToolWindow : ToolWindowPane
 	{
 		private DocumentEvents _documentEvents;
@@ -98,8 +98,8 @@ namespace JsParser.Package
 			try
 			{
 				NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
-                var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
-                NavigationTreeView.Init(codeProvider);
+				var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
+				NavigationTreeView.Init(codeProvider);
 
 				if (_dte.ActiveDocument != null)
 				{
@@ -119,9 +119,16 @@ namespace JsParser.Package
 
 			_documentEvents.DocumentClosing += documentEvents_DocumentClosing;
 			_documentEvents.DocumentSaved += documentEvents_DocumentSaved;
+			_documentEvents.DocumentOpened += documentEvents_DocumentOpened;
 			_windowEvents.WindowActivated += windowEvents_WindowActivated;
 
 			base.OnToolWindowCreated();
+		}
+
+		private string _docName;
+		private void documentEvents_DocumentOpened(Document doc)
+		{
+			ShowParserForDocument(doc);
 		}
 
 		/// <summary>
@@ -132,12 +139,6 @@ namespace JsParser.Package
 		/// </param>
 		private void documentEvents_DocumentClosing(Document doc)
 		{
-			Trace.WriteLine("js addin: documentEvents_DocumentClosing");
-			if (NavigationTreeView != null)
-			{
-				Trace.WriteLine("js addin: _navigationTreeView.Clear");
-				NavigationTreeView.Clear();
-			}
 		}
 
 		/// <summary>
@@ -173,14 +174,22 @@ namespace JsParser.Package
 			if (gotFocus == null
 				|| gotFocus.Kind != "Document"
 				|| NavigationTreeView == null
-				|| gotFocus.Document == null)
+				|| gotFocus.Document == null
+				|| gotFocus.Document.FullName == _docName)
 			{
 				return;
 			}
 
+			ShowParserForDocument(gotFocus.Document);
+		}
+
+		private void ShowParserForDocument(Document doc)
+		{
 			try
 			{
-				var codeProvider = new VS2010CodeProvider(gotFocus.Document);
+				_docName = doc.FullName;
+
+				var codeProvider = new VS2010CodeProvider(doc);
 				NavigationTreeView.Init(codeProvider);
 				NavigationTreeView.LoadFunctionList();
 				Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
@@ -191,7 +200,7 @@ namespace JsParser.Package
 			}
 			catch (Exception ex)
 			{
-				ErrorHandler.WriteExceptionDetailsToTrace("windowEvents_WindowActivated", ex);
+				ErrorHandler.WriteExceptionDetailsToTrace("ShowParserForDocument", ex);
 				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
 			}
 		}

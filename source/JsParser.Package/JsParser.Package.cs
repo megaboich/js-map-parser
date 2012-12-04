@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.Shell;
 using EnvDTE;
 using JsParser.Core.UI;
 using System.Windows;
+using System.IO;
 
 namespace JsParser.Package
 {
@@ -36,7 +37,6 @@ namespace JsParser.Package
 
     // This attribute registers a tool window exposed by this package.
     [ProvideToolWindow(typeof(MyToolWindow))]
-    [ProvideToolWindow(typeof(JsParserTreeToolWindow))]
 
     [ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Parser Extension", "General", 113, 114, true)]
     [Guid(GuidList.guidJsParserPackagePkgString)]
@@ -97,11 +97,6 @@ namespace JsParser.Package
                 MenuCommand menuToolWin = new MenuCommand(ShowToolWindow, toolwndCommandID);
                 mcs.AddCommand(menuToolWin);
 
-                // Create the command for the NEW tool window
-                toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParserToolWindowTree);
-                menuToolWin = new MenuCommand(ShowToolWindowNEW, toolwndCommandID);
-                mcs.AddCommand(menuToolWin);
-
                 // Create the command for the tool window
                 toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParserFind);
                 menuToolWin = new MenuCommand(FindCommand, toolwndCommandID);
@@ -140,12 +135,6 @@ namespace JsParser.Package
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
             wnd.NavigationTreeView.Settings.Visible = true;
             wnd.NavigationTreeView.Settings.Save();
-        }
-
-        private void ShowToolWindowNEW(object sender, EventArgs e)
-        {
-            var wnd = CreateToolWindow<JsParserTreeToolWindow>();
-            ShowToolWindow(wnd);
         }
     }
 }
