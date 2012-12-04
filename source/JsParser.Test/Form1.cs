@@ -11,7 +11,7 @@ using UnitTests;
 using JsParserTest.Helpers;
 using System.IO;
 
-namespace JsParserTest
+namespace JsParser.Test
 {
 	public partial class Form1 : Form
 	{

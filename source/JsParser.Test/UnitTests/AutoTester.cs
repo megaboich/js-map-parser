@@ -18,7 +18,7 @@ namespace UnitTests
 	{
 		private void ProcessTemplate(string sourceName, string resultName)
 		{
-			var source = TestsHelper.GetEmbeddedText("JsParserTest.UnitTests.Source." + sourceName);
+			var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source." + sourceName);
 			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
@@ -26,7 +26,7 @@ namespace UnitTests
 			XmlDocument xml = new XmlDocument() {InnerXml = actualResult.Nodes.Serialize()};
 			xml.Save("C:\\outxml\\" + resultName);
 
-			var expectedresultXml = TestsHelper.GetEmbeddedText("JsParserTest.UnitTests.Result." + resultName);
+			var expectedresultXml = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Result." + resultName);
 			var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
 			//Save expected hierarchy xml
 			File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultXml);
@@ -170,6 +170,12 @@ namespace UnitTests
 		public void Test_NewStatements()
 		{
 			ProcessTemplate("Test_NewStatements.js", "Test_NewStatements.xml");
+		}
+
+		[Test]
+		public void Test_StringScriptBlock()
+		{
+			ProcessTemplate("Test_StringScriptBlock.js", "Test_StringScriptBlock.xml");
 		}
 	}
 }

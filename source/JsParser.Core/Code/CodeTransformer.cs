@@ -41,6 +41,14 @@ namespace JsParser.Core.Code
 				.Replace("%>", string.Empty);
 		}
 
+		internal static string FixStringScriptBlocks(string code)
+		{
+			return code.Replace("\"<script", "\"<sxript")
+				.Replace("'<script", "'<sxript")
+				.Replace("script>\"", "sxript>\"")
+				.Replace("script>'", "sxript>'");
+		}
+
 		public static IEnumerable<CodeChunk> ExtractJsFromSource(string source)
 		{
 			var resultList = new List<CodeChunk>();

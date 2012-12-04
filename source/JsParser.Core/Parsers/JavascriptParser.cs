@@ -32,6 +32,7 @@ namespace JsParser.Core.Parsers
 		{
 			code = CodeTransformer.FixContinueStringLiterals(code);
 			code = CodeTransformer.KillAspNetTags(code);
+			code = CodeTransformer.FixStringScriptBlocks(code);
 			var codeChunks = CodeTransformer.ExtractJsFromSource(code);
 			return Parse(codeChunks);
 		}

@@ -6,7 +6,7 @@ using JsParser.Core.Code;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace JsParserTest
+namespace JsParser.Test
 {
 	public class SimpleCodeProvider :ICodeProvider
 	{

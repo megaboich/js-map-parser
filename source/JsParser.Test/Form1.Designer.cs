@@ -1,4 +1,4 @@
-﻿namespace JsParserTest
+﻿namespace JsParser.Test
 {
 	partial class Form1
 	{

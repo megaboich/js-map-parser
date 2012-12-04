@@ -99,7 +99,7 @@
         [Test]
         public void JustHeavyLoadTest_JQuery()
         {
-            var source = TestsHelper.GetEmbeddedText("JsParserTest.NodesPostProcessor.TestsScripts.jquery-1.7.1.js");
+            var source = TestsHelper.GetEmbeddedText("JsParser.Test.NodesPostProcessor.TestsScripts.jquery-1.7.1.js");
 
             for (var i = 0; i < 10; i++)
             {

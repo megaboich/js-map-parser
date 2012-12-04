@@ -1,0 +1,14 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="test()" AliasType="Unknown" Line="1" EndLine="13" EndColumn="1" Pos="0" Opcode="Function" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="someInnerFunc()" AliasType="Unknown" Line="10" EndLine="12" EndColumn="5" Pos="4" Opcode="Function" />
+          <Childrens />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

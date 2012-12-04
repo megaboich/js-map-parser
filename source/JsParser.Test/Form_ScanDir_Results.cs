@@ -10,7 +10,7 @@ using System.IO;
 using System.Threading.Tasks;
 using JsParser.Core.Parsers;
 
-namespace JsParserTest
+namespace JsParser.Test
 {
     public partial class Form_ScanDir_Results : Form
     {
