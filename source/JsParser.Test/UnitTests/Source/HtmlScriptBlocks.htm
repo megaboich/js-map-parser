@@ -15,7 +15,13 @@
 		This is the test HTM page
 	</body>
 
-	<script runat="server">
+    <script>
+        function DefaultScriptFunction() {
+            //script without type considered as javascript
+        }
+    </script>
+
+	<script runat="server" type="text/not-javascript">
 		Error javascript
 	</script>
 
@@ -26,6 +32,11 @@
 		    //TODO: Do something!
 		}
 	</script>
+
+    <script type="text/template">
+        This is not javascript - should not raise error
+
+    </script>
 
 	<script type="text/javascript">
 	    //This is the function in the bottom

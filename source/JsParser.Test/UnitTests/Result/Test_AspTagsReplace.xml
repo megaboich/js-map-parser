@@ -1,0 +1,16 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="clickHandlerClentID()" AliasType="Unknown" Line="4" EndLine="6" EndColumn="5" Pos="4" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="controlHelperClientId" AliasType="Unknown" Line="14" EndLine="18" EndColumn="5" Pos="32" Opcode="ObjectLiteral" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="click()" AliasType="Unknown" Line="16" EndLine="17" EndColumn="9" Pos="15" Opcode="Function" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

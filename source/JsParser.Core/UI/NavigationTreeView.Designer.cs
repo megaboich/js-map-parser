@@ -188,7 +188,9 @@ namespace JsParser.Core.UI
             // 
             // toolStrip2
             // 
+            this.toolStrip2.AutoSize = false;
             this.toolStrip2.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton2,
@@ -198,7 +200,7 @@ namespace JsParser.Core.UI
             this.btnErrorDiagnosis});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(246, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1000, 25);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -494,7 +496,7 @@ namespace JsParser.Core.UI
             this.treeView1.Size = new System.Drawing.Size(145, 119);
             this.treeView1.StateImageList = this.imageList1;
             this.treeView1.TabIndex = 2;
-            this.treeView1.OnScroll += new CustomTreeView.ScrollEventHandler(this.treeView1_OnScroll);
+            this.treeView1.OnScroll += new JsParser.Core.UI.CustomTreeView.ScrollEventHandler(this.treeView1_OnScroll);
             this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
             this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
@@ -523,7 +525,6 @@ namespace JsParser.Core.UI
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.taskListDataGrid)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

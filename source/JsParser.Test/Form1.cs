@@ -28,7 +28,13 @@ namespace JsParser.Test
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			var tests = Assembly.GetAssembly(GetType()).GetManifestResourceNames().Where(name => name.EndsWith(".js") || name.EndsWith(".htm"));
+			var tests = Assembly.GetAssembly(GetType()).GetManifestResourceNames()
+                .Where(name => name.EndsWith(".js")
+                    || name.EndsWith(".htm")
+                    || name.EndsWith(".aspx")
+                    )
+                .OrderBy(n => n);
+
 			foreach (var testname in tests)
 			{
 				var nameparts = testname.Split(new[] { '.' });

@@ -194,6 +194,10 @@
     <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_StringScriptBlock.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_StringScriptBlock.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_AspTagsReplace.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitTests\Result\Test_AspTagsReplace.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

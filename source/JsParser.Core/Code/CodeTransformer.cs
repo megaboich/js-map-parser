@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace JsParser.Core.Code
 {
@@ -36,12 +37,24 @@ namespace JsParser.Core.Code
 
 		public static string KillAspNetTags(string source)
 		{
-			return source.Replace("<%=", string.Empty)
-				.Replace("<%", string.Empty)
-				.Replace("%>", string.Empty);
+			//Replace value-evaluated blocks like <%= ...%> or <%: ...%> with numeric-letter contents
+			var regExp = new Regex("(<%=.*?%>)|(<%:.*?%>)", RegexOptions.Singleline | RegexOptions.Compiled);
+			source = regExp.Replace(source, (match =>
+			{
+				return new String(match.Value.Where(c => Char.IsLetterOrDigit(c)).ToArray());
+			}));
+
+			//Replace <%%> blocks with newlines to preserve correct line numbering
+			var regExp2 = new Regex("(<%.*?%>)", RegexOptions.Singleline | RegexOptions.Compiled);
+			source = regExp2.Replace(source, (match =>
+			{
+				return GetSpacedChunk(match.Value);
+			}));
+
+			return source;
 		}
 
-		internal static string FixStringScriptBlocks(string code)
+		public static string FixStringScriptBlocks(string code)
 		{
 			return code.Replace("\"<script", "\"<sxript")
 				.Replace("'<script", "'<sxript")
@@ -49,91 +62,88 @@ namespace JsParser.Core.Code
 				.Replace("script>'", "sxript>'");
 		}
 
-		public static IEnumerable<CodeChunk> ExtractJsFromSource(string source)
+		public static string ExtractJsFromSource(string source)
 		{
-			var resultList = new List<CodeChunk>();
+			var regEx = new Regex(@"(<script[\s\S]*?>[\s\S]*?</script>)", RegexOptions.IgnoreCase);
 
-			var i = 0;
-			var beginTagStart = -1;
-			var beginTagFinish = -1;
-			var endTagStart = -1;
-			var endTagFinish = -1;
-			var chunks = new List<KeyValuePair<int, int>>();
-
-			while (FindTag(source, "<script", i, out beginTagStart, out beginTagFinish))
+			var matches = regEx.Split(source);
+			if (matches.Length > 1)
 			{
-				var isFinish = FindTag(source, "</script", beginTagStart, out endTagStart, out endTagFinish);
-				if (isFinish)
+				var sb = new StringBuilder();
+
+				foreach (var m in matches)
 				{
-					chunks.Add(new KeyValuePair<int, int>(i, beginTagFinish));
-					chunks.Add(new KeyValuePair<int, int>(endTagStart, endTagFinish));
-					i = endTagFinish;
+					if (m.StartsWith("<script", StringComparison.OrdinalIgnoreCase))
+					{
+						//process script block
+						var script = ProcessScriptBlock(m);
+						if (!string.IsNullOrEmpty(script))
+						{
+							sb.Append(script);
+						}
+						else
+						{
+							sb.Append(GetSpacedChunk(m));
+						}
+					}
+					else
+					{
+						//strip all symbols except line breaks
+						sb.Append(GetSpacedChunk(m));
+					}
 				}
-				else
+
+				return sb.ToString();
+			}
+
+			return source;
+		}
+
+		private static string ProcessScriptBlock(string scriptBlock)
+		{
+			//get beginning tag <script type="text/javascript>
+			var beginTagEndIndex = scriptBlock.IndexOf('>');
+			if (beginTagEndIndex < 0)
+			{
+				return null;
+			}
+
+			var beginTag = scriptBlock.Substring(0, beginTagEndIndex + 1);
+
+			//decide if this is javascript declaration?
+			var typeBeginIndex = beginTag.IndexOf("type=", StringComparison.OrdinalIgnoreCase);
+			if (typeBeginIndex > 0)
+			{
+				var validJavascriptTypes = new[] {
+					"text/javascript",
+					"text/ecmascript",
+					"application/ecmascript",
+					"application/javascript",
+				};
+
+				if (!validJavascriptTypes.Any(type => (beginTag.IndexOf(type, StringComparison.OrdinalIgnoreCase) > 0)))
 				{
-					break;
+					return null;
 				}
 			}
 
-			if (chunks.Count > 0)
+			//get end tag </script>
+			var endTagBeginIndex = scriptBlock.LastIndexOf('<');
+			if (endTagBeginIndex < 0)
 			{
-				for (int ch = 0; ch < chunks.Count; ch += 2)
-				{
-					var bsi = chunks[ch].Key;
-					var bfi = chunks[ch].Value;
-					var esi = chunks[ch + 1].Key;
-					var efi = chunks[ch + 1].Value;
-
-					StringBuilder sb = new StringBuilder(source.Length, source.Length);
-
-					sb.Append(GetSpacedChunk(source.Substring(0, bfi)));
-					sb.Append(source.Substring(bfi, esi - bfi));
-					sb.Append(GetSpacedChunk(source.Substring(esi, source.Length - esi)));
-
-					resultList.Add(new CodeChunk { Code = sb.ToString() });
-				}
-			}
-			else
-			{
-				resultList.Add(new CodeChunk { Code = source });
+				return null;
 			}
 
-			return resultList;
+			var endTag = scriptBlock.Substring(endTagBeginIndex);
+
+			var script = scriptBlock.Substring(beginTagEndIndex + 1, endTagBeginIndex - beginTagEndIndex - 1);
+
+			return script;
 		}
 
 		private static string GetSpacedChunk(string source)
 		{
-			var res = new StringBuilder(source.Length, source.Length);
-			res.Append(source.Where(ch => (ch == '\r' || ch == '\n')).ToArray());
-			return res.ToString();
-		}
-
-		private static bool FindTag(string source, string tag, int startSearchIndex, out int tagStart, out int tagFinish)
-		{
-			var si = source.IndexOf(tag, startSearchIndex, StringComparison.InvariantCultureIgnoreCase);
-			if (si >= 0)
-			{
-				var afterTagSymbol = source[si + tag.Length];
-				if (afterTagSymbol != ' ' && afterTagSymbol != '>') //Avoid tag like "<Scripts>"
-				{
-					return FindTag(source, tag, si + 1, out tagStart, out tagFinish);
-				}
-				else
-				{
-					var ei = source.IndexOf(">", si);
-
-					if (ei >= 0)
-					{
-						tagStart = si;
-						tagFinish = ei + 1;
-						return true;
-					}
-				}
-			}
-
-			tagStart = -1;
-			tagFinish = -1;
-			return false;
+			return new String(source.Where(ch => (ch == '\r' || ch == '\n')).ToArray());
 		}
 	}
 }

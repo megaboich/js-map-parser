@@ -106,6 +106,18 @@ namespace UnitTests
 			ProcessTemplate("HtmlScriptBlocks.htm", "HtmlScriptBlocks.xml");
 		}
 
+        [Test]
+        public void TestHtmlScriptBlocks_HeavyLoad()
+        {
+            //var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source.HtmlScriptBlocks.htm");
+            
+            //for (int o = 0; o < 10000; o++)
+            //{
+            //    var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
+            //    Assert.Greater(actualResult.Nodes.Childrens.Count, 0);
+            //}
+        }
+
 		[Test]
 		public void Test_Functions_In_IF_Statement()
 		{
@@ -176,6 +188,12 @@ namespace UnitTests
 		public void Test_StringScriptBlock()
 		{
 			ProcessTemplate("Test_StringScriptBlock.js", "Test_StringScriptBlock.xml");
+		}
+
+		[Test]
+		public void Test_AspTagsReplace()
+		{
+			ProcessTemplate("Test_AspTagsReplace.aspx", "Test_AspTagsReplace.xml");
 		}
 	}
 }

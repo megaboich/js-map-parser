@@ -98,6 +98,7 @@ namespace JsParser.Core.UI
 			ForeColor = _colorTable.ControlText;
 			treeView1.BackColor = _colorTable.WindowBackground;
 			treeView1.ForeColor = _colorTable.WindowText;
+			lbTaskList.ForeColor = _colorTable.WindowText;
 			taskListDataGrid.BackColor = _colorTable.WindowBackground;
 			taskListDataGrid.BackgroundColor = _colorTable.WindowBackground;
 			taskListDataGrid.ForeColor = _colorTable.WindowText;
