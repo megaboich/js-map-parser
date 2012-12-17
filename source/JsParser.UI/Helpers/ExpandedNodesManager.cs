@@ -1,9 +1,10 @@
-﻿using System;
+﻿using JsParser.UI.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.Helpers
 {
 	class ExpandedNodesManager
 	{

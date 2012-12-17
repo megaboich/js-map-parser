@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using EnvDTE;
-using JsParser.Core.UI;
+using JsParser.UI.UI;
 using System.Windows;
 using System.IO;
 

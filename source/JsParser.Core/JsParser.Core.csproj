@@ -57,18 +57,11 @@
     <Reference Include="Microsoft.JScript.Compiler">
       <HintPath>..\lib\Microsoft.JScript.Compiler.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\CodeNode.cs" />
@@ -79,10 +72,6 @@
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
     <Compile Include="Helpers\Serializer.cs" />
-    <Compile Include="Helpers\Statistics.cs" />
-    <Compile Include="Helpers\StatisticsManager.cs" />
-    <Compile Include="Helpers\StatisticsSender.cs" />
-    <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />
@@ -94,113 +83,10 @@
     <Compile Include="Parsers\TaskListAggregator.cs" />
     <Compile Include="Parsers\TaskListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ColorTable.cs" />
-    <Compile Include="UI\CustomPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\CustomTreeNode.cs" />
-    <Compile Include="UI\CustomTreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UI\ExpandedNodesManager.cs" />
-    <Compile Include="UI\FindDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FindDialog.Designer.cs">
-      <DependentUpon>FindDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Form_SendStatisticsConfirmation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Form_SendStatisticsConfirmation.Designer.cs">
-      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\JsParserSettingsControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\JsParserSettingsControl.Designer.cs">
-      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\MarksManager.cs" />
-    <Compile Include="UI\NavigationTreeView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\NavigationTreeView.Designer.cs">
-      <DependentUpon>NavigationTreeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Palette.cs" />
-    <Compile Include="UI\SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UIThemeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\arrow_left.gif" />
-    <None Include="Resources\navCollapseArrow.gif" />
-    <None Include="Resources\navExpandArrow.gif" />
-    <None Include="Resources\statistics.jpg" />
-    <Content Include="Resources\treeleaf_collapsed.png" />
-    <Content Include="Resources\treeleaf_expanded.png" />
-    <Content Include="Resources\variable_declaration.gif" />
     <None Include="app.config" />
     <None Include="Key.snk" />
-    <None Include="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\flag_blue.gif" />
-    <None Include="Resources\flag_green.gif" />
-    <None Include="Resources\flag_orange.gif" />
-    <None Include="Resources\flag_red.gif" />
-    <None Include="Resources\flag_white.gif" />
-    <None Include="Resources\Find-icon.png" />
-    <None Include="Resources\error_icon.png" />
-    <Content Include="Resources\function.png" />
-    <None Include="Resources\icon_favourites.gif" />
-    <Content Include="Resources\js_file.gif" />
-    <Content Include="Resources\js_function.gif" />
-    <None Include="Resources\list_settings.gif" />
-    <Content Include="Resources\refresh.gif" />
-    <Content Include="Resources\SortAZ.png" />
-    <None Include="Resources\task_List.png" />
-    <Content Include="Resources\tree.png" />
-    <Content Include="Resources\type.png" />
-    <Content Include="Resources\undefined.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FindDialog.resx">
-      <DependentUpon>FindDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_SendStatisticsConfirmation.resx">
-      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\JsParserSettingsControl.resx">
-      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\NavigationTreeView.resx">
-      <DependentUpon>NavigationTreeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

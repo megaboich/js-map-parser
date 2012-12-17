@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using JsParser.Core.Code;
-using JsParser.Core.Helpers;
+using JsParser.UI.Helpers;
 using JsParser.Core.Parsers;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
-using JsParser.Core.Properties;
+using JsParser.UI.Properties;
 using System.Linq;
 using System.Threading;
 using System.Diagnostics;
+using JsParser.Core.Helpers;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
 	/// <summary>
 	/// The tree for code.
@@ -467,20 +468,20 @@ namespace JsParser.Core.UI
 			switch (mark)
 			{
 				case 'W':
-					return JsParser.Core.Properties.Resources.flag_white;
+					return JsParser.UI.Properties.Resources.flag_white;
 				case 'B':
-					return JsParser.Core.Properties.Resources.flag_blue;
+					return JsParser.UI.Properties.Resources.flag_blue;
 				case 'G':
-					return JsParser.Core.Properties.Resources.flag_green;
+					return JsParser.UI.Properties.Resources.flag_green;
 				case 'O':
-					return JsParser.Core.Properties.Resources.flag_orange;
+					return JsParser.UI.Properties.Resources.flag_orange;
 				case 'R':
-					return JsParser.Core.Properties.Resources.flag_red;
+					return JsParser.UI.Properties.Resources.flag_red;
 				case '!':
-					return JsParser.Core.Properties.Resources.Active;
+					return JsParser.UI.Properties.Resources.Active;
 				case 'S':
 				default:
-					return JsParser.Core.Properties.Resources.icon_favourites;
+					return JsParser.UI.Properties.Resources.icon_favourites;
 			}
 		}
 
@@ -822,9 +823,9 @@ namespace JsParser.Core.UI
 		private void NavigationTreeView_Resize(object sender, EventArgs e)
 		{
 			splitContainer1.Left = 0;
-			splitContainer1.Top = 25;
+			splitContainer1.Top = 27;
 			splitContainer1.Width = this.ClientSize.Width;
-			splitContainer1.Height = this.ClientSize.Height - 25;
+			splitContainer1.Height = this.ClientSize.Height - 27;
 		}
 
 		private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
@@ -1027,8 +1028,8 @@ namespace JsParser.Core.UI
 		private void UpdateToDoListToggleImage()
 		{
 			btnToDoListToggle.Image = Settings.ToDoListCollapsed
-				? JsParser.Core.Properties.Resources.navCollapseArrow
-				: JsParser.Core.Properties.Resources.navExpandArrow;
+				? JsParser.UI.Properties.Resources.navCollapseArrow
+				: JsParser.UI.Properties.Resources.navExpandArrow;
 		}
 
 		private void UpdateToDoListSettings() 

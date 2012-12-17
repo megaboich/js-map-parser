@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
     public partial class Form_SendStatisticsConfirmation : Form
     {

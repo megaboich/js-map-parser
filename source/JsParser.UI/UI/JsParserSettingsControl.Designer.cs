@@ -1,4 +1,4 @@
-﻿namespace JsParser.Core.UI
+﻿namespace JsParser.UI.UI
 {
     partial class JsParserSettingsControl
     {
@@ -275,7 +275,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::JsParser.Core.Properties.Resources.flag_white;
+            this.pictureBox5.Image = global::JsParser.UI.Properties.Resources.flag_white;
             this.pictureBox5.Location = new System.Drawing.Point(12, 26);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
@@ -423,7 +423,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::JsParser.Core.Properties.Resources.icon_favourites;
+            this.pictureBox6.Image = global::JsParser.UI.Properties.Resources.icon_favourites;
             this.pictureBox6.Location = new System.Drawing.Point(12, 144);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
@@ -455,7 +455,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::JsParser.Core.Properties.Resources.flag_orange;
+            this.pictureBox4.Image = global::JsParser.UI.Properties.Resources.flag_orange;
             this.pictureBox4.Location = new System.Drawing.Point(12, 97);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
@@ -477,7 +477,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::JsParser.Core.Properties.Resources.flag_red;
+            this.pictureBox3.Image = global::JsParser.UI.Properties.Resources.flag_red;
             this.pictureBox3.Location = new System.Drawing.Point(12, 120);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
@@ -497,7 +497,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::JsParser.Core.Properties.Resources.flag_green;
+            this.pictureBox2.Image = global::JsParser.UI.Properties.Resources.flag_green;
             this.pictureBox2.Location = new System.Drawing.Point(12, 73);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
@@ -519,7 +519,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::JsParser.Core.Properties.Resources.flag_blue;
+            this.pictureBox1.Image = global::JsParser.UI.Properties.Resources.flag_blue;
             this.pictureBox1.Location = new System.Drawing.Point(12, 50);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";

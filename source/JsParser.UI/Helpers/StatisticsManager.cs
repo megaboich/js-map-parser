@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JsParser.Core.Properties;
+using JsParser.UI.Properties;
 using System.Net;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
 
-namespace JsParser.Core.Helpers
+namespace JsParser.UI.Helpers
 {
     public class StatisticsManager
     {

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
-using JsParser.Core.UI;
+using JsParser.UI.UI;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Reflection;

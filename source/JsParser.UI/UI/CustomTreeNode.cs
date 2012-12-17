@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using JsParser.Core.Code;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
 	public class CustomTreeNode : TreeNode
 	{

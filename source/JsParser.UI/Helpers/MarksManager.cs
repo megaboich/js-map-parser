@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JsParser.Core.Properties;
+using JsParser.UI.Properties;
 using System.Web.Script.Serialization;
 using System.Drawing;
+using JsParser.UI.UI;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.Helpers
 {
 	public class MarksManager
 	{

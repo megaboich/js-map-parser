@@ -6,10 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using JsParser.Core.Properties;
-using JsParser.Core.Helpers;
+using JsParser.UI.Properties;
+using JsParser.UI.Helpers;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
 	public partial class SettingsForm : Form
 	{

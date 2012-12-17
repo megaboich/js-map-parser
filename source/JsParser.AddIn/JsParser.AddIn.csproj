@@ -144,6 +144,10 @@
       <Project>{4C9696D4-5D66-40F0-AADD-8D6772D1A249}</Project>
       <Name>JsParser.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JsParser.UI\JsParser.UI.csproj">
+      <Project>{2c3a9341-bfb8-45de-8b5c-e2bafe3a3b80}</Project>
+      <Name>JsParser.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>

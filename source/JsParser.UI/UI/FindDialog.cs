@@ -8,10 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using JsParser.Core.Code;
-using JsParser.Core.Properties;
-using JsParser.Core.Helpers;
+using JsParser.UI.Properties;
+using JsParser.UI.Helpers;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
 	public partial class FindDialog : Form
 	{

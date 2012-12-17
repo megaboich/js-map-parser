@@ -1,4 +1,4 @@
-﻿namespace JsParser.Core.UI
+﻿namespace JsParser.UI.UI
 {
 	partial class FindDialog
 	{
@@ -76,7 +76,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::JsParser.Core.Properties.Resources.Find_icon;
+			this.pictureBox1.Image = global::JsParser.UI.Properties.Resources.Find_icon;
 			this.pictureBox1.Location = new System.Drawing.Point(5, 23);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(19, 20);

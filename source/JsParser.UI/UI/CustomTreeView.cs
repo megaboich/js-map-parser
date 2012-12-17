@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace JsParser.Core.UI
+namespace JsParser.UI.UI
 {
     public class CustomTreeView : TreeView
     {

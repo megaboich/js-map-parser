@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.navigationTreeView1 = new JsParser.Core.UI.NavigationTreeView();
+            this.navigationTreeView1 = new JsParser.UI.UI.NavigationTreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,7 +145,7 @@
 		#endregion
 
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private JsParser.Core.UI.NavigationTreeView navigationTreeView1;
+		private JsParser.UI.UI.NavigationTreeView navigationTreeView1;
 		public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JsParser.UI</RootNamespace>
     <AssemblyName>JsParser.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,17 +30,137 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ExpandedNodesManager.cs" />
+    <Compile Include="Helpers\MarksManager.cs" />
+    <Compile Include="Helpers\Statistics.cs" />
+    <Compile Include="Helpers\StatisticsManager.cs" />
+    <Compile Include="Helpers\StatisticsSender.cs" />
+    <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ColorTable.cs" />
+    <Compile Include="UI\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\CustomTreeNode.cs" />
+    <Compile Include="UI\CustomTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FindDialog.Designer.cs">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_SendStatisticsConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_SendStatisticsConfirmation.Designer.cs">
+      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\JsParserSettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\JsParserSettingsControl.Designer.cs">
+      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NavigationTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NavigationTreeView.Designer.cs">
+      <DependentUpon>NavigationTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Palette.cs" />
+    <Compile Include="UI\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UIThemeProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="UI\FindDialog.resx">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_SendStatisticsConfirmation.resx">
+      <DependentUpon>Form_SendStatisticsConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\JsParserSettingsControl.resx">
+      <DependentUpon>JsParserSettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NavigationTreeView.resx">
+      <DependentUpon>NavigationTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\arrow_left.gif" />
+    <Content Include="Resources\error_icon.png" />
+    <Content Include="Resources\Find-icon.png" />
+    <Content Include="Resources\flag_blue.gif" />
+    <Content Include="Resources\flag_green.gif" />
+    <Content Include="Resources\flag_orange.gif" />
+    <Content Include="Resources\flag_red.gif" />
+    <Content Include="Resources\flag_white.gif" />
+    <Content Include="Resources\function.png" />
+    <Content Include="Resources\icon_favourites.gif" />
+    <Content Include="Resources\jsp.png" />
+    <Content Include="Resources\js_file.gif" />
+    <Content Include="Resources\js_function.gif" />
+    <Content Include="Resources\list_settings.gif" />
+    <Content Include="Resources\navCollapseArrow.gif" />
+    <Content Include="Resources\navExpandArrow.gif" />
+    <Content Include="Resources\refresh.gif" />
+    <Content Include="Resources\SortAZ.png" />
+    <Content Include="Resources\statistics.jpg" />
+    <Content Include="Resources\task_List.png" />
+    <Content Include="Resources\tree.png" />
+    <Content Include="Resources\treeleaf_collapsed.png" />
+    <Content Include="Resources\treeleaf_expanded.png" />
+    <Content Include="Resources\type.png" />
+    <Content Include="Resources\undefined.png" />
+    <Content Include="Resources\variable_declaration.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsParser.Core\JsParser.Core.csproj">
+      <Project>{4c9696d4-5d66-40f0-aadd-8d6772d1a249}</Project>
+      <Name>JsParser.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

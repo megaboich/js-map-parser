@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using JsParser.Core.Properties;
+using JsParser.UI.Properties;
 
-namespace JsParser.Core.Helpers
+namespace JsParser.UI.Helpers
 {
     public class Statistics
     {
@@ -94,7 +94,7 @@ namespace JsParser.Core.Helpers
             ++TotalRunCount;
         }
 
-        internal void UpdateStatisticsFromSettings()
+        public void UpdateStatisticsFromSettings()
         {
             IsAutoTrackItemEnabled = Settings.Default.TrackActiveItem;
             IsHierachyShowedOption = Settings.Default.HierarchyEnabled;
