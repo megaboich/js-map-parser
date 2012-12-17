@@ -5,11 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JsParserCore")]
+[assembly: AssemblyTitle("JsParser.UI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("JsParserCore")]
-[assembly: AssemblyCopyright("Oleksandr Boiko 2011")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("JsParser.UI")]
+[assembly: AssemblyCopyright("Copyright © Oleksandr Boiko 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("dc7ab37b-45bf-4067-b68d-64b9e966d8f4")]
+[assembly: Guid("6326fbfe-5ead-4789-9b9e-b8fffe07b3dc")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -30,4 +31,6 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.0.*")]
+
 [assembly: AssemblyVersion("3.6.*")]

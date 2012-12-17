@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Package", "JsParse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.AddIn", "JsParser.AddIn\JsParser.AddIn.csproj", "{1C699393-B880-4B7A-AD0E-64C1174718A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.UI", "JsParser.UI\JsParser.UI.csproj", "{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,16 @@ Global
 		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
