@@ -15,6 +15,7 @@ using EnvDTE;
 using System.Diagnostics;
 using JsParser.Core.Helpers;
 using Microsoft.VisualStudio.TextManager.Interop;
+using JsParser.Package.UI;
 
 namespace JsParser.Package
 {
@@ -99,6 +100,7 @@ namespace JsParser.Package
 			try
 			{
 				NavigationTreeView.Setup(_uiVS2010UIThemeProvider);
+				NavigationTreeView.OnErrors += OnErrorsEvent;
 				var codeProvider = new VS2010CodeProvider(_dte.ActiveDocument);
 				NavigationTreeView.Init(codeProvider);
 
@@ -124,6 +126,11 @@ namespace JsParser.Package
 			_windowEvents.WindowActivated += windowEvents_WindowActivated;
 
 			base.OnToolWindowCreated();
+		}
+
+		private void OnErrorsEvent(object sender, JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs e)
+		{
+			ErrorNotificationCommunicator.FireActionsForDoc(e.FullFileName, e);
 		}
 
 		private string _docName;
@@ -198,16 +205,6 @@ namespace JsParser.Package
 				IVsWindowFrame windowFrame = (IVsWindowFrame)Frame;
 				NavigationTreeView.Settings.Visible = windowFrame.IsVisible() != 0;
 				NavigationTreeView.Settings.Save();
-
-                //var _dte = (DTE)GetService(typeof(DTE));
-                //using (ServiceProvider wrapperSP = new ServiceProvider((Microsoft.VisualStudio.OLE.Interop.IServiceProvider)_dte))
-                //{
-                //    var tm = (IVsTextManager)wrapperSP.GetService(typeof(SVsTextManager));
-                //    IVsTextView activeVsView;
-                //    tm.GetActiveView(Convert.ToInt32(true), null, out activeVsView);
-                //    activeVsView.
-                //}
-
 			}
 			catch (Exception ex)
 			{

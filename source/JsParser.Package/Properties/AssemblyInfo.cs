@@ -14,9 +14,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Javascript Parser")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]   
-[assembly: ComVisible(false)]     
-[assembly: CLSCompliant(false)]
+[assembly: AssemblyCulture("")]
+
+[assembly: ComVisible(false)]
 
 // Version information for an assembly consists of the following four values:
 //

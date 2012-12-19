@@ -41,6 +41,17 @@ namespace JsParser.UI.UI
 		private JSParserResult _lastParserResult;
 
 		/// <summary>
+		/// Event args for subscribing for Error events 
+		/// </summary>
+		public class ErrorsNotificationArgs : EventArgs
+		{
+			public string FullFileName { get; set; }
+			public List<ErrorMessage> Errors { get; set; }
+		}
+		public delegate void ErrorsNotificationEventHandler(object sender, ErrorsNotificationArgs e);
+		public event ErrorsNotificationEventHandler OnErrors;
+
+		/// <summary>
 		/// Gets Code.
 		/// </summary>
 		public ICodeProvider Code { get; private set; }
@@ -226,6 +237,11 @@ namespace JsParser.UI.UI
 			{
 				btnErrorDiagnosis.Visible = false;
 				btnErrorSeparator.Visible = false;
+			}
+
+			if (OnErrors != null)
+			{
+				OnErrors(this, new ErrorsNotificationArgs { Errors = result.Errors, FullFileName = _loadedDocName });
 			}
 
 			var tasksDataSource = new List<object>();
