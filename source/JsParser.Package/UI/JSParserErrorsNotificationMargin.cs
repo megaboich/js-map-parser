@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows;
 using Microsoft.VisualStudio.Text;
 using JsParser.Package.UI;
+using JsParser.Package.Infrastructure;
 
 namespace JsParser.Package
 {
@@ -50,7 +51,7 @@ namespace JsParser.Package
             ErrorNotificationCommunicator.SubscribeForErrors(ErrorsHandler, _docFilePath);
         }
 
-        public void ErrorsHandler(JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs args)
+        public void ErrorsHandler(ErrorsNotificationArgs args)
         {
             SetErrors(args.Errors);
         }

@@ -72,6 +72,7 @@
     <Reference Include="Microsoft.VisualStudio.Text.UI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
+    <Reference Include="Microsoft.VisualStudio.Platform.WindowManagement, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.Shell.10.0">
       <Private>false</Private>
     </Reference>
@@ -149,15 +150,15 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsParserHolder.xaml.cs">
-      <DependentUpon>JsParserHolder.xaml</DependentUpon>
+    <Compile Include="UI\JsParserNavTreeHolder.xaml.cs">
+      <DependentUpon>JsParserNavTreeHolder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyToolWindow.cs" />
+    <Compile Include="UI\JSParserToolWindow.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="OptionsUI\OptionsPageCustom.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Resources.Designer.cs">
+    <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -166,14 +167,14 @@
     <Compile Include="JsParser.Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
-    <Compile Include="UI\ErrorNotificationCommunicator.cs" />
+    <Compile Include="Infrastructure\ErrorNotificationCommunicator.cs" />
     <Compile Include="UI\JSParserErrorsNotificationMargin.cs" />
     <Compile Include="UI\JSParserErrorsNotificationMarginFactory.cs" />
-    <Compile Include="VS2010CodeProvider.cs" />
-    <Compile Include="VS2010UIThemeProvider.cs" />
+    <Compile Include="Infrastructure\VS2010CodeProvider.cs" />
+    <Compile Include="Infrastructure\VS2010UIThemeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
+    <EmbeddedResource Include="Resources\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -218,7 +219,7 @@
     <None Include="Resources\Images_24bit1.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="JsParserHolder.xaml">
+    <Page Include="UI\JsParserNavTreeHolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>

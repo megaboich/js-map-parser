@@ -9,6 +9,8 @@ namespace JsParser.Core.Parsers
 {
     public class JSParserResult
     {
+        public string FileName { get; set; }
+
         public Hierachy<CodeNode> Nodes { get; set; }
 
         public List<ErrorMessage> Errors { get; set; }

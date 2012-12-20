@@ -12,19 +12,15 @@ namespace JsParser.UI.Helpers
 		private string _activeDocName;
 		private Dictionary<string, bool> _activeStorage;
 
-		public string ActiveDocumentName 
+		public void SetFile(string activeDocumentName )
 		{
-			get { return _activeDocName; }
-			set
+			_activeDocName = activeDocumentName;
+			if (!HasDocumentInStorage(_activeDocName))
 			{
-				_activeDocName = value;
-				if (!HasDocumentInStorage(_activeDocName))
-				{
-					_storage.Add(_activeDocName, new Dictionary<string, bool>());
-				}
-
-				_activeStorage = _storage[ActiveDocumentName];
+				_storage.Add(_activeDocName, new Dictionary<string, bool>());
 			}
+
+			_activeStorage = _storage[_activeDocName];
 		}
 
 		public bool HasDocumentInStorage(string docName)

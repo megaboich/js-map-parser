@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Web.Script.Serialization;
 using System.IO;
 
-namespace JsParser.Package
+namespace JsParser.Package.Infrastructure
 {
     public class VS2010UIThemeProvider : IUIThemeProvider
     {
@@ -52,8 +52,11 @@ namespace JsParser.Package
                 HighlightInactiveText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
 
                 GridLines = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TASKLIST_GRIDLINES),
-            };
 
+                TabText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TAB_TEXT),
+                
+            };
+            /*
             //collect all colors
             var colorIndexes = Enum.GetValues(typeof(__VSSYSCOLOREX));
             var colorNames = Enum.GetNames(typeof(__VSSYSCOLOREX));
@@ -68,7 +71,7 @@ namespace JsParser.Package
             }
 
             File.WriteAllText("c:\\vscolors.txt", new JavaScriptSerializer().Serialize(dic));
-
+            */
             return colorTable;
         }
     }

@@ -1,24 +1,35 @@
-﻿using System;
+﻿using JsParser.Core.Parsers;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JsParser.Package.UI
+namespace JsParser.Package.Infrastructure
 {
+    /// <summary>
+    /// Event args for subscribing for Error events 
+    /// </summary>
+    public class ErrorsNotificationArgs : EventArgs
+    {
+        public string FullFileName { get; set; }
+        public List<ErrorMessage> Errors { get; set; }
+    }
+        
+
     public static class ErrorNotificationCommunicator
     {
         static object _lockObj = new object();
-        static Dictionary<string, List<Action<JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs>>> _subscribers
-            = new Dictionary<string, List<Action<JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs>>>();
+        static Dictionary<string, List<Action<ErrorsNotificationArgs>>> _subscribers
+            = new Dictionary<string, List<Action<ErrorsNotificationArgs>>>();
 
-        public static void SubscribeForErrors(Action<JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs> action, string docIdentifier)
+        public static void SubscribeForErrors(Action<ErrorsNotificationArgs> action, string docIdentifier)
         {
             lock (_lockObj)
             {
                 if (!_subscribers.ContainsKey(docIdentifier))
                 {
-                    _subscribers[docIdentifier] = new List<Action<JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs>>();
+                    _subscribers[docIdentifier] = new List<Action<ErrorsNotificationArgs>>();
                 }
 
                 if (!_subscribers[docIdentifier].Contains(action))
@@ -28,7 +39,7 @@ namespace JsParser.Package.UI
             }
         }
 
-        public static void UnsubscribeFromErrors(Action<JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs> action, string docIdentifier)
+        public static void UnsubscribeFromErrors(Action<ErrorsNotificationArgs> action, string docIdentifier)
         {
             lock (_lockObj)
             {
@@ -48,7 +59,7 @@ namespace JsParser.Package.UI
             }
         }
 
-        public static void FireActionsForDoc(string docIdentifier, JsParser.UI.UI.NavigationTreeView.ErrorsNotificationArgs args)
+        public static void FireActionsForDoc(string docIdentifier, ErrorsNotificationArgs args)
         {
             lock(_lockObj)
             {

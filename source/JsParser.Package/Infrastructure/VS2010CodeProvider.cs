@@ -6,7 +6,7 @@ using JsParser.Core.Code;
 using EnvDTE80;
 using EnvDTE;
 
-namespace JsParser.Package
+namespace JsParser.Package.Infrastructure
 {
 	public class VS2010CodeProvider: ICodeProvider
 	{
@@ -77,11 +77,16 @@ namespace JsParser.Package
 
 		public void GetCursorPos(out int line, out int column)
 		{
+			line = -1;
+			column = -1;
 			try
 			{
 				var textDocument = (TextDocument)Doc.Object("TextDocument");
-				line = textDocument.Selection.ActivePoint.Line;
-				column = textDocument.Selection.ActivePoint.DisplayColumn;
+				if (textDocument != null)
+				{
+					line = textDocument.Selection.ActivePoint.Line;
+					column = textDocument.Selection.ActivePoint.DisplayColumn;
+				}
 			}
 			catch
 			{

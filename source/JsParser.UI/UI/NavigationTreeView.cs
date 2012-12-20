@@ -26,36 +26,20 @@ namespace JsParser.UI.UI
 		private string _loadedDocName = string.Empty;
 		private bool _canExpand = true;
 		private MarksManager _marksManager = new MarksManager();
+		private ExpandedNodesManager _expandedNodesManager = new ExpandedNodesManager();
 		private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
-		private string _loadedCodeHash;
 		private int _lastCodeLine = -1;
 		private List<CodeNode> _functions;
 		private int _lastActiveLine;
 		private int _lastActiveColumn;
 		private bool _treeRefreshing = false;
-		private ExpandedNodesManager _expandedNodes = new ExpandedNodesManager();
 		private bool _userWantsUpdateSplitterPosition = false;
-		private ColorTable _colorTable;
-		private IUIThemeProvider _uiThemeProvider;
+		private ColorTable _colorTable = ColorTable.Default;
 		private Palette _palette = new Palette();
 		private JSParserResult _lastParserResult;
+		private ICodeProvider _codeProvider;
 
-		/// <summary>
-		/// Event args for subscribing for Error events 
-		/// </summary>
-		public class ErrorsNotificationArgs : EventArgs
-		{
-			public string FullFileName { get; set; }
-			public List<ErrorMessage> Errors { get; set; }
-		}
-		public delegate void ErrorsNotificationEventHandler(object sender, ErrorsNotificationArgs e);
-		public event ErrorsNotificationEventHandler OnErrors;
-
-		/// <summary>
-		/// Gets Code.
-		/// </summary>
-		public ICodeProvider Code { get; private set; }
-
+		
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
 		/// </summary>
@@ -63,8 +47,6 @@ namespace JsParser.UI.UI
 		{
 			InitializeComponent();
 			this.Disposed += OnDisposed;
-
-			_uiThemeProvider = new DefaultUIThemeProvider();
 
 			treeView1.Nodes.Clear();
 			treeView1.LostFocus += LostFocusHandler;
@@ -77,47 +59,29 @@ namespace JsParser.UI.UI
 			hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
 		}
 
-		private void LoadColors()
+		public void InitColors(IUIThemeProvider uiThemeProvider)
 		{
 			if (Settings.Default.UseVSColorTheme)
 			{
-				_colorTable = _uiThemeProvider.GetColors();
+				_colorTable = uiThemeProvider.GetColors();
 			}
 			else
 			{
 				_colorTable = ColorTable.Default;
 			}
-		}
 
-		public void OnDisposed(object sender, EventArgs args)
-		{
-			_palette.Dispose();
-		}
-
-		public void Setup(IUIThemeProvider uiThemeProvider)
-		{
-			_uiThemeProvider = uiThemeProvider;
-			LoadColors();
-		}
-
-		/// <summary>
-		/// Initialize method.
-		/// </summary>
-		public void Init(ICodeProvider codeProvider)
-		{
-			LoadColors();
 			BackColor = _colorTable.ControlBackground;
 			ForeColor = _colorTable.ControlText;
 			treeView1.BackColor = _colorTable.WindowBackground;
 			treeView1.ForeColor = _colorTable.WindowText;
-			lbTaskList.ForeColor = _colorTable.WindowText;
+			lbTaskList.ForeColor = _colorTable.TabText;
 			taskListDataGrid.BackColor = _colorTable.WindowBackground;
 			taskListDataGrid.BackgroundColor = _colorTable.WindowBackground;
 			taskListDataGrid.ForeColor = _colorTable.WindowText;
 			taskListDataGrid.GridColor = _colorTable.GridLines;
 			taskListDataGrid.RowsDefaultCellStyle.BackColor = _colorTable.WindowBackground;
 			taskListDataGrid.RowsDefaultCellStyle.ForeColor = _colorTable.WindowText;
-			
+
 			toolStrip2.BackColor = _colorTable.ControlBackground;
 
 			treeView1.Indent = Settings.Default.UseVSColorTheme ? 10 : 16;
@@ -126,8 +90,18 @@ namespace JsParser.UI.UI
 				: TreeViewDrawMode.OwnerDrawText;
 			treeView1.ShowLines = !Settings.Default.UseVSColorTheme;
 
-			Code = codeProvider;
-			StatisticsManager.Instance.Statistics.Container = Code.ContainerName;
+		}
+
+		public void OnDisposed(object sender, EventArgs args)
+		{
+			_palette.Dispose();
+		}
+
+		public void Init(ICodeProvider codeProvider)
+		{
+			
+			_codeProvider = codeProvider;
+			StatisticsManager.Instance.Statistics.Container = _codeProvider.ContainerName;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
 
 			PerformNetworkActivity();
@@ -139,7 +113,6 @@ namespace JsParser.UI.UI
 		public void Clear()
 		{
 			_loadedDocName = string.Empty;
-			_loadedCodeHash = string.Empty;
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
 			treeView1.EndUpdate();
@@ -174,52 +147,34 @@ namespace JsParser.UI.UI
 		/// <summary>
 		/// Build the tree.
 		/// </summary>
-		public bool LoadFunctionList()
+		public bool UpdateTree(JSParserResult result, ICodeProvider codeProvider)
 		{
-			//check extension
-			if (!CheckExt(Code.Name))
+			if (result == null)
 			{
 				Clear();
 				return false;
 			}
-
-			var docName = Path.Combine(Code.Path, Code.Name);
-			if (_loadedDocName != docName)
+			if(string.IsNullOrEmpty(result.FileName))
 			{
-				_loadedDocName = docName;
-				_expandedNodes.ActiveDocumentName = _loadedDocName;
-				//We load the new document.
+				return false;
 			}
 
-			var code = Code.LoadCode();
-			var hash = Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.Default.GetBytes(code)));
-			if (_loadedCodeHash == hash)
-			{
-				return true;
-			}
+			_lastParserResult = result;
+			_codeProvider = codeProvider;
 
-			_loadedCodeHash = hash;
+			_loadedDocName = _lastParserResult.FileName;
+			_expandedNodesManager.SetFile(_loadedDocName);
+			_marksManager.SetFile(_loadedDocName);
+
+			var isSort = Settings.SortingEnabled;
+			var isHierarchy = Settings.HierarchyEnabled;
+
 			_treeRefreshing = true;
 			treeView1.BeginUpdate();
 			treeView1.Nodes.Clear();
 			_tempTreeNodes.Clear();
 			_canExpand = true;
 
-			var isSort = Settings.SortingEnabled;
-			var isHierarchy = Settings.HierarchyEnabled;
-
-			_marksManager.SetFile(_loadedDocName);
-
-			var parserSettings = new JavascriptParserSettings
-			{
-				MaxParametersLength = Settings.MaxParametersLength,
-				MaxParametersLengthInFunctionChain = Settings.MaxParametersLengthInFunctionChain,
-				ProcessHierarchy = Settings.HierarchyEnabled,
-				SkipAnonymousFuntions = Settings.HideAnonymousFunctions
-			};
-
-			var result = (new JavascriptParser( parserSettings )).Parse(code);
-			_lastParserResult = result;
 			var nodes = result.Nodes;
 
 			if (result.Errors.Count > 0)
@@ -237,11 +192,6 @@ namespace JsParser.UI.UI
 			{
 				btnErrorDiagnosis.Visible = false;
 				btnErrorSeparator.Visible = false;
-			}
-
-			if (OnErrors != null)
-			{
-				OnErrors(this, new ErrorsNotificationArgs { Errors = result.Errors, FullFileName = _loadedDocName });
 			}
 
 			var tasksDataSource = new List<object>();
@@ -306,44 +256,13 @@ namespace JsParser.UI.UI
 
 		public void RefreshTree()
 		{
-			try
-			{
-				if (Code != null)
-				{
-					Init(Code);
-					_loadedDocName = string.Empty;
-					_loadedCodeHash = string.Empty;
-					LoadFunctionList();
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
-			}
+			UpdateTree(_lastParserResult, _codeProvider);
 		}
 
 		private void PerformNetworkActivity()
 		{
 			VersionChecker.CheckVersion();
 			StatisticsSender.Send();
-		}
-
-		private bool CheckExt(string fileName)
-		{
-			if (Settings.Extensions.Count > 0)
-			{
-				foreach (var ext in Settings.Extensions)
-				{
-					if (Code.Name.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-
-			return true;
 		}
 
 		private bool HideUnmarkedNodes(TreeNodeCollection nodes)
@@ -446,7 +365,7 @@ namespace JsParser.UI.UI
 					FillNodes(item, treeNode.Nodes, level + 1, functions);
 				}
 
-				var isExpanded = _expandedNodes.IsNoteExpanded(treeNode);
+				var isExpanded = _expandedNodesManager.IsNoteExpanded(treeNode);
 				if (isExpanded.HasValue)
 				{
 					if (isExpanded.Value)
@@ -471,8 +390,8 @@ namespace JsParser.UI.UI
 				CodeNode codeNode = ((CustomTreeNode)treeView1.SelectedNode).CodeNode;
 				try
 				{
-					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
-					Code.SetFocus();
+					_codeProvider.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
+					_codeProvider.SetFocus();
 					++StatisticsManager.Instance.Statistics.NavigateFromFunctionsTreeCount;
 				}
 				catch { }
@@ -522,8 +441,8 @@ namespace JsParser.UI.UI
 				}
 				else
 				{
-					Code.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
-					Code.SetFocus();
+					_codeProvider.SelectionMoveToLineAndOffset(codeNode.StartLine, codeNode.StartColumn + 1);
+					_codeProvider.SetFocus();
 				}
 			}
 			catch { }
@@ -807,8 +726,8 @@ namespace JsParser.UI.UI
 			var errorMessage = (ErrorMessage)((ToolStripItem)sender).Tag;
 			try
 			{
-				Code.SelectionMoveToLineAndOffset(errorMessage.StartLine, errorMessage.StartColumn + 1);
-				Code.SetFocus();
+				_codeProvider.SelectionMoveToLineAndOffset(errorMessage.StartLine, errorMessage.StartColumn + 1);
+				_codeProvider.SetFocus();
 
 				++StatisticsManager.Instance.Statistics.NavigateFromErrorListCount;
 			}
@@ -820,8 +739,8 @@ namespace JsParser.UI.UI
 			var item = _lastParserResult.TaskList[e.RowIndex];
 			try
 			{
-				Code.SelectionMoveToLineAndOffset(item.StartLine, item.StartColumn + 1);
-				Code.SetFocus();
+				_codeProvider.SelectionMoveToLineAndOffset(item.StartLine, item.StartColumn + 1);
+				_codeProvider.SetFocus();
 				++StatisticsManager.Instance.Statistics.NavigateFromToDoListCount;
 			}
 			catch { }
@@ -899,11 +818,11 @@ namespace JsParser.UI.UI
 		{
 			try
 			{
-				if (Code != null && Settings.TrackActiveItem)
+				if (_codeProvider != null && Settings.TrackActiveItem)
 				{
 					int line;
 					int column;
-					Code.GetCursorPos(out line, out column);
+					_codeProvider.GetCursorPos(out line, out column);
 					if (line >= 0 && (line != _lastActiveLine || column != _lastActiveColumn))
 					{
 						CustomTreeNode hightLightNode = null;
@@ -1001,7 +920,7 @@ namespace JsParser.UI.UI
 
 		private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
 		{
-			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
+			_expandedNodesManager.SetExpandedState((CustomTreeNode)e.Node);
 			if (Settings.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();
@@ -1010,7 +929,7 @@ namespace JsParser.UI.UI
 
 		private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
 		{
-			_expandedNodes.SetExpandedState((CustomTreeNode)e.Node);
+			_expandedNodesManager.SetExpandedState((CustomTreeNode)e.Node);
 			if (Settings.ShowLineNumbersEnabled && !_treeRefreshing)
 			{
 				panelLinesNumbers.Refresh();

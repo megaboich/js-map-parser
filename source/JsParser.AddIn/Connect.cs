@@ -309,7 +309,7 @@ namespace JsParser.AddIn
                 {
                     var codeProvider = new VS2008CodeProvider(_applicationObject, null);
                     _navigationTreeView.Init(codeProvider);
-                    _navigationTreeView.LoadFunctionList();
+                    //_navigationTreeView.LoadFunctionList();
                 }
                 catch (Exception ex)
                 {
@@ -360,7 +360,7 @@ namespace JsParser.AddIn
             if (_navigationTreeView != null)
             {
                 Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-                _navigationTreeView.LoadFunctionList();
+                //_navigationTreeView.LoadFunctionList();
             }
         }
 
@@ -389,7 +389,7 @@ namespace JsParser.AddIn
             {
                 var codeProvider = new VS2008CodeProvider(_applicationObject, gotFocus.Document);
                 _navigationTreeView.Init(codeProvider);
-                _navigationTreeView.LoadFunctionList();
+                //_navigationTreeView.LoadFunctionList();
                 Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
             }
             catch (Exception ex)

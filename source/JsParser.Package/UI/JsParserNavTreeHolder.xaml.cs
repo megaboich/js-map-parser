@@ -12,16 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JsParser.Package
+namespace JsParser.Package.UI
 {
-	/// <summary>
-	/// Interaction logic for JsParserHolder.xaml
-	/// </summary>
-	public partial class JsParserHolder : UserControl
-	{
-		public JsParserHolder()
-		{
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for JsParserHolder.xaml
+    /// </summary>
+    public partial class JsParserNavTreeHolder : UserControl
+    {
+        public JsParserNavTreeHolder()
+        {
+            InitializeComponent();
+        }
+    }
 }
