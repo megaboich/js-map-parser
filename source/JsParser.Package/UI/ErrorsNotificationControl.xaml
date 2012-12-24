@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="JsParser.Package.UI.ErrorsNotificationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="600">
+    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+        <DockPanel Background="Beige" Height="28" >
+            <Image 
+                Source="../Resources/Error_small.png" 
+                VerticalAlignment="Center" Margin="4,0,0,0" Width="17" Height="17" />
+            <Label Name="SummaryMessageLabel" 
+                VerticalAlignment="Center" Content="Javascript Parser: {0} errors found."></Label>
+            <ComboBox
+                Name="ErrorsDetailsCombobox"
+                Focusable="False"
+                Margin="8,0,4,0"
+                VerticalAlignment="Center"
+                DisplayMemberPath="Text" 
+                SelectedValuePath="Item" 
+                SelectionChanged="ErrorsDetailsCombobox_SelectionChanged"
+            />
+        </DockPanel>
+    </Border>
+</UserControl>

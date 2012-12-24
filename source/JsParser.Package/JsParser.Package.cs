@@ -193,6 +193,14 @@ namespace JsParser.Package
 
         private void documentEvents_DocumentSaved(Document doc)
         {
+            if (doc.ActiveWindow != null 
+                && doc.ActiveWindow.Left == 0 
+                && doc.ActiveWindow.Top == 0)
+            {
+                //This is invisible doc
+                return;
+            }
+
             CallParserForDocument(doc);
         }
 
@@ -230,9 +238,13 @@ namespace JsParser.Package
                     return;
                 }
 
-                ErrorNotificationCommunicator.FireActionsForDoc(
+                JsParserEventsBroadcaster.FireActionsForDoc(
                     _activeDocName, 
-                    new ErrorsNotificationArgs {FullFileName = _activeDocName, Errors = result.Errors});
+                    new JsParserErrorsNotificationArgs {
+                        Code = codeProvider,
+                        FullFileName = _activeDocName,
+                        Errors = result.Errors
+                    });
 
                 if (toolWindow != null)
                 {

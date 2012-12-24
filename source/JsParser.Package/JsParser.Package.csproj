@@ -150,6 +150,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\ErrorsNotificationControl.xaml.cs">
+      <DependentUpon>ErrorsNotificationControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\JsParserNavTreeHolder.xaml.cs">
       <DependentUpon>JsParserNavTreeHolder.xaml</DependentUpon>
     </Compile>
@@ -167,8 +170,7 @@
     <Compile Include="JsParser.Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
-    <Compile Include="Infrastructure\ErrorNotificationCommunicator.cs" />
-    <Compile Include="UI\JSParserErrorsNotificationMargin.cs" />
+    <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
     <Compile Include="UI\JSParserErrorsNotificationMarginFactory.cs" />
     <Compile Include="Infrastructure\VS2010CodeProvider.cs" />
     <Compile Include="Infrastructure\VS2010UIThemeProvider.cs" />
@@ -212,6 +214,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Resource Include="Resources\Error_small.png" />
     <Content Include="screen_shot_mini.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -219,6 +222,10 @@
     <None Include="Resources\Images_24bit1.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UI\ErrorsNotificationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\JsParserNavTreeHolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

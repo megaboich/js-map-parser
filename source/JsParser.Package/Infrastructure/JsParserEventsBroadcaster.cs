@@ -1,4 +1,5 @@
-﻿using JsParser.Core.Parsers;
+﻿using JsParser.Core.Code;
+using JsParser.Core.Parsers;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -7,29 +8,38 @@ using System.Text;
 
 namespace JsParser.Package.Infrastructure
 {
+    public class JsParserEvent: EventArgs
+    {
+        public ICodeProvider Code { get; set; }
+    }
+
     /// <summary>
     /// Event args for subscribing for Error events 
     /// </summary>
-    public class ErrorsNotificationArgs : EventArgs
+    public class JsParserErrorsNotificationArgs : JsParserEvent
     {
         public string FullFileName { get; set; }
         public List<ErrorMessage> Errors { get; set; }
     }
-        
 
-    public static class ErrorNotificationCommunicator
+    public class JsParserDocumentSavedArgs : JsParserEvent
+    {
+        public EnvDTE.Document Document { get; set; }
+    }
+
+    public static class JsParserEventsBroadcaster
     {
         static object _lockObj = new object();
-        static Dictionary<string, List<Action<ErrorsNotificationArgs>>> _subscribers
-            = new Dictionary<string, List<Action<ErrorsNotificationArgs>>>();
+        static Dictionary<string, List<Action<JsParserEvent>>> _subscribers
+            = new Dictionary<string, List<Action<JsParserEvent>>>();
 
-        public static void SubscribeForErrors(Action<ErrorsNotificationArgs> action, string docIdentifier)
+        public static void Subscribe(Action<JsParserEvent> action, string docIdentifier)
         {
             lock (_lockObj)
             {
                 if (!_subscribers.ContainsKey(docIdentifier))
                 {
-                    _subscribers[docIdentifier] = new List<Action<ErrorsNotificationArgs>>();
+                    _subscribers[docIdentifier] = new List<Action<JsParserEvent>>();
                 }
 
                 if (!_subscribers[docIdentifier].Contains(action))
@@ -39,7 +49,7 @@ namespace JsParser.Package.Infrastructure
             }
         }
 
-        public static void UnsubscribeFromErrors(Action<ErrorsNotificationArgs> action, string docIdentifier)
+        public static void Unsubscribe(Action<JsParserEvent> action, string docIdentifier)
         {
             lock (_lockObj)
             {
@@ -59,7 +69,20 @@ namespace JsParser.Package.Infrastructure
             }
         }
 
-        public static void FireActionsForDoc(string docIdentifier, ErrorsNotificationArgs args)
+        public static void UpdateSubscription(string oldDocId, string newDocId)
+        {
+            lock (_lockObj)
+            {
+                if (_subscribers.ContainsKey(oldDocId))
+                {
+                    var list = _subscribers[oldDocId];
+                    _subscribers.Remove(oldDocId);
+                    _subscribers[newDocId] = list;
+                }
+            }
+        }
+
+        public static void FireActionsForDoc(string docIdentifier, JsParserEvent args)
         {
             lock(_lockObj)
             {
