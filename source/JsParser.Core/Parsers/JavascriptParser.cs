@@ -36,12 +36,15 @@ namespace JsParser.Core.Parsers
 			code = CodeTransformer.FixStringScriptBlocks(code);
 
 			var ext = Path.GetExtension(_settings.Filename).ToLower();
-			if (ext != "js")
+			if (ext.StartsWith("."))
 			{
-				var findScriptBlocks = CodeTransformer.ExtractJsFromSource(ref code);
+				ext = ext.Substring(1);
+			}
+			if (!_settings.ExtensionsToBeConsideredAsJs.Contains(ext))
+			{
+				var foundScriptBlocks = CodeTransformer.ExtractJsFromSource(ref code);
 
-				if (!findScriptBlocks
-					&& _settings.SkipParsingIfNoScriptBlocksInNonJsFiles)
+				if (!foundScriptBlocks)
 				{
 					return ParseInternal(string.Empty);
 				}

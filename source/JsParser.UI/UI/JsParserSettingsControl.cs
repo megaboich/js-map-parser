@@ -31,7 +31,8 @@ namespace JsParser.UI.UI
         public void InitSettings()
         {
             chTrackActiveItem.Checked = Settings.Default.TrackActiveItem;
-            edExtensions.Lines = Settings.Default.Extensions.OfType<string>().ToArray();
+            edExtensions.Text = string.Join(" ", Settings.Default.Extensions.OfType<string>().ToArray());
+            edJSExtensions.Text = string.Join(" ", Settings.Default.JSExtensions.OfType<string>().ToArray());
 
             taggedFuncLabel1.ForeColor = Settings.Default.taggedFunction1Color;
             taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font ?? _defaultTreeFont;
@@ -49,19 +50,18 @@ namespace JsParser.UI.UI
             numericUpDownMaxParametersLength.Value = Settings.Default.MaxParametersLength;
             numericUpDownMaxParametersLengthInFunctionChain.Value = Settings.Default.MaxParametersLengthInFunctionChain;
 
-            chCheckForVersionUpdates.Checked = Settings.Default.CheckForVersionUpdates;
             chSendStatistics.Checked = Settings.Default.SendStatistics;
             chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
-            chSkippNonJSFiles.Checked = Settings.Default.DoNotParseNonJsFilesIfNoScriptBlocks;
         }
 
         public void SaveSettings()
         {
             Settings.Default.UseVSColorTheme = chUseVSColors.Checked;
-            Settings.Default.DoNotParseNonJsFilesIfNoScriptBlocks = chSkippNonJSFiles.Checked;
             Settings.Default.TrackActiveItem = chTrackActiveItem.Checked;
             Settings.Default.Extensions = new System.Collections.Specialized.StringCollection();
-            Settings.Default.Extensions.AddRange(edExtensions.Lines);
+            Settings.Default.Extensions.AddRange(edExtensions.Text.Split(new[] {' ', ',', ';'}, StringSplitOptions.RemoveEmptyEntries));
+            Settings.Default.JSExtensions = new System.Collections.Specialized.StringCollection();
+            Settings.Default.JSExtensions.AddRange(edJSExtensions.Text.Split(new[] { ' ', ',', ';' }, StringSplitOptions.RemoveEmptyEntries));
 
             Settings.Default.taggedFunction1Color = taggedFuncLabel1.ForeColor;
             Settings.Default.taggedFunction1Font = taggedFuncLabel1.Font;
@@ -79,7 +79,6 @@ namespace JsParser.UI.UI
             Settings.Default.MaxParametersLength = Convert.ToInt32(numericUpDownMaxParametersLength.Value);
             Settings.Default.MaxParametersLengthInFunctionChain = Convert.ToInt32(numericUpDownMaxParametersLengthInFunctionChain.Value);
 
-            Settings.Default.CheckForVersionUpdates = chCheckForVersionUpdates.Checked;
             Settings.Default.SendStatistics = chSendStatistics.Checked;
             if (Settings.Default.SendStatistics)
             {

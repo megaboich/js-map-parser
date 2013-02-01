@@ -10,40 +10,40 @@ using System.Diagnostics;
 
 namespace JsParser.Core.Parsers
 {
-	/// <summary>
-	/// The js parser settings.
-	/// </summary>
-	public class JavascriptParserSettings
-	{
-		public int MaxParametersLengthInFunctionChain { get; set; }
+    /// <summary>
+    /// The js parser settings.
+    /// </summary>
+    public class JavascriptParserSettings
+    {
+        public int MaxParametersLengthInFunctionChain { get; set; }
 
-		public int MaxParametersLength { get; set; }
+        public int MaxParametersLength { get; set; }
 
-		/// <summary>
-		/// Gets or sets Flag indicating that parser will additionally process hierarchy.
-		/// </summary>
-		public bool ProcessHierarchy { get; set; }
+        /// <summary>
+        /// Gets or sets Flag indicating that parser will additionally process hierarchy.
+        /// </summary>
+        public bool ProcessHierarchy { get; set; }
 
-		/// <summary>
-		/// Gets or sets flag indicating to skip anonymous functions
-		/// </summary>
-		public bool SkipAnonymousFuntions { get; set; }
+        /// <summary>
+        /// Gets or sets flag indicating to skip anonymous functions
+        /// </summary>
+        public bool SkipAnonymousFuntions { get; set; }
 
-		public string Filename { get; set; }
+        public string Filename { get; set; }
 
-		/// <summary>
-		/// Dependent on filename proprty. If file extension is non-js and there no <script> tags found then skip processing of file.
-		/// </summary>
-		public bool SkipParsingIfNoScriptBlocksInNonJsFiles { get; set; }
+        /// <summary>
+        /// List of extensions that are considered as JS files. No Script blocks will be parsed.
+        /// </summary>
+        public string[] ExtensionsToBeConsideredAsJs { get; set; }
 
-		public JavascriptParserSettings()
-		{
-			MaxParametersLengthInFunctionChain = 25;
-			MaxParametersLength = 25;
-			ProcessHierarchy = true;
-			SkipAnonymousFuntions = false;
-			SkipParsingIfNoScriptBlocksInNonJsFiles = false;
-			Filename = "fakefilename.html";
-		}
-	}
+        public JavascriptParserSettings()
+        {
+            MaxParametersLengthInFunctionChain = 25;
+            MaxParametersLength = 25;
+            ProcessHierarchy = true;
+            SkipAnonymousFuntions = false;
+            Filename = "fakefilename.html";
+            ExtensionsToBeConsideredAsJs = new[] { "js" };
+        }
+    }
 }

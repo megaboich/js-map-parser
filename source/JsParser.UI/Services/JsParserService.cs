@@ -54,7 +54,7 @@ namespace JsParser.UI.Services
                 ProcessHierarchy = UISettings.HierarchyEnabled,
                 SkipAnonymousFuntions = UISettings.HideAnonymousFunctions,
                 Filename = docName,
-                SkipParsingIfNoScriptBlocksInNonJsFiles = UISettings.DoNotParseNonJsFilesIfNoScriptBlocks,
+                ExtensionsToBeConsideredAsJs = UISettings.JSExtensions.OfType<string>().ToArray(),
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);

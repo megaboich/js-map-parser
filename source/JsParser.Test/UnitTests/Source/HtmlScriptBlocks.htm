@@ -15,11 +15,11 @@
 		This is the test HTM page
 	</body>
 
-    <script>
-        function DefaultScriptFunction() {
-            //script without type considered as javascript
-        }
-    </script>
+	<script>
+		function DefaultScriptFunction() {
+			//script without type considered as javascript
+		}
+	</script>
 
 	<script runat="server" type="text/not-javascript">
 		Error javascript
@@ -28,19 +28,19 @@
 	<script language="javascript">
 		function Function_In_The_Javascript(param1, param2)
 		{
-		    alert("do some stuff");
-		    //TODO: Do something!
+			alert("do some stuff");
+			//TODO: Do something!
 		}
 	</script>
 
-    <script type="text/template">
-        This is not javascript - should not raise error
+	<script type="text/template">
+		This is not javascript - should not raise error
 
-    </script>
+	</script>
 
 	<script type="text/javascript">
-	    //This is the function in the bottom
-	    //todo: Do something good!
+		//This is the function in the bottom
+		//TODO: Not forget to remove this hack!
 		function Function_In_The_Bottom(param1, param2)
 		{
 			alert("do some stuff 2");

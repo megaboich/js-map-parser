@@ -55,8 +55,6 @@ namespace JsParser.UI.Helpers
 
         public bool IsAutoExpandAllEnabled { get; set; }
 
-        public bool IsCheckForVersionUpdatesEnabled { get; set; }
-
         public bool IsShowLineNumbersEnabled { get; set; }
 
         public bool IsSortingEnabled { get; set; }
@@ -100,7 +98,6 @@ namespace JsParser.UI.Helpers
             IsHierachyShowedOption = Settings.Default.HierarchyEnabled;
             IsAutoExpandAllEnabled = Settings.Default.AutoExpandAll;
             IsShowLineNumbersEnabled = Settings.Default.ShowLineNumbersEnabled;
-            IsCheckForVersionUpdatesEnabled = Settings.Default.CheckForVersionUpdates;
             IsSortingEnabled = Settings.Default.SortingEnabled;
             IsFilterByMarksEnabled = Settings.Default.FilterByMarksEnabled;
             IsHideAnonymousFunctionsEnabled = Settings.Default.HideAnonymousFunctions;
