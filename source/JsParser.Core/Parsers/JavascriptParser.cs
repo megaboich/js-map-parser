@@ -7,6 +7,7 @@ using JsParser.Core.Code;
 using JsParser.Core.Helpers;
 using System.Reflection;
 using System.Diagnostics;
+using System.IO;
 
 namespace JsParser.Core.Parsers
 {
@@ -33,7 +34,19 @@ namespace JsParser.Core.Parsers
 			code = CodeTransformer.FixContinueStringLiterals(code);
 			code = CodeTransformer.KillAspNetTags(code);
 			code = CodeTransformer.FixStringScriptBlocks(code);
-			code = CodeTransformer.ExtractJsFromSource(code);
+
+			var ext = Path.GetExtension(_settings.Filename).ToLower();
+			if (ext != "js")
+			{
+				var findScriptBlocks = CodeTransformer.ExtractJsFromSource(ref code);
+
+				if (!findScriptBlocks
+					&& _settings.SkipParsingIfNoScriptBlocksInNonJsFiles)
+				{
+					return ParseInternal(string.Empty);
+				}
+			}
+			
 			return ParseInternal(code);
 		}
 
@@ -52,46 +65,49 @@ namespace JsParser.Core.Parsers
 			List<ErrorMessage> errors = new List<ErrorMessage>();
 			List<ErrorMessage> internalErrors = null;
 			List<TaskListItem> taskList = new List<TaskListItem>();
-			
-			try
+
+			if (!string.IsNullOrEmpty(sourceCode))
 			{
-				var parser = new Parser(sourceCode.ToCharArray(), true);
-				var comments = new List<Comment>();
-				var bindingInfo = new BindingInfo();
-				var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
-
-				errors.AddRange(parser.Diagnostics.Select(d => new ErrorMessage
+				try
 				{
-					Message = d.Code.ToString(),
-					StartLine = d.Location.StartLine,
-					StartColumn = d.Location.StartColumn
-				}));
+					var parser = new Parser(sourceCode.ToCharArray(), true);
+					var comments = new List<Comment>();
+					var bindingInfo = new BindingInfo();
+					var sourceElements = parser.ParseProgram(ref comments, ref bindingInfo);
 
-				var code = sourceCode.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
-				_comments = new CommentsAgregator(comments, code);
-				
-				CreateNodes(nodes, sourceElements);
+					errors.AddRange(parser.Diagnostics.Select(d => new ErrorMessage
+					{
+						Message = d.Code.ToString(),
+						StartLine = d.Location.StartLine,
+						StartColumn = d.Location.StartColumn
+					}));
 
-				taskList.AddRange(TaskListAggregator.GetTaskList(_comments.Comments));
-			}
-			catch (Exception ex)
-			{
-				Trace.WriteLine(ex.ToString());
-				var errMessage = new ErrorMessage
+					var code = sourceCode.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
+					_comments = new CommentsAgregator(comments, code);
+
+					CreateNodes(nodes, sourceElements);
+
+					taskList.AddRange(TaskListAggregator.GetTaskList(_comments.Comments));
+				}
+				catch (Exception ex)
 				{
-					Message = "Javascript Parser Internal Error: " + ex.Message,
-					StartLine = 1,
-					StartColumn = 1,
-				};
+					Trace.WriteLine(ex.ToString());
+					var errMessage = new ErrorMessage
+					{
+						Message = "Javascript Parser Internal Error: " + ex.Message,
+						StartLine = 1,
+						StartColumn = 1,
+					};
 
-				errors.Add(errMessage);
+					errors.Add(errMessage);
 
-				internalErrors = internalErrors ?? new List<ErrorMessage>();
-				internalErrors.Add(errMessage);
+					internalErrors = internalErrors ?? new List<ErrorMessage>();
+					internalErrors.Add(errMessage);
+				}
+
+				NodesPostProcessor.HideAnonymousFunctions(nodes, _settings);
+				NodesPostProcessor.GroupNodesByVariableDeclaration(nodes, _settings);
 			}
-
-			NodesPostProcessor.HideAnonymousFunctions(nodes, _settings);
-			NodesPostProcessor.GroupNodesByVariableDeclaration(nodes, _settings);
 
 			var result = new JSParserResult
 			{
@@ -99,6 +115,7 @@ namespace JsParser.Core.Parsers
 				Errors = errors,
 				InternalErrors = internalErrors,
 				TaskList = taskList,
+				FileName = _settings.Filename,
 			};
 
 			return result;

@@ -411,5 +411,17 @@ namespace JsParser.UI.Properties {
                 this["UseVSColorTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DoNotParseNonJsFilesIfNoScriptBlocks {
+            get {
+                return ((bool)(this["DoNotParseNonJsFilesIfNoScriptBlocks"]));
+            }
+            set {
+                this["DoNotParseNonJsFilesIfNoScriptBlocks"] = value;
+            }
+        }
     }
 }

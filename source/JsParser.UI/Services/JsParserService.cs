@@ -52,7 +52,9 @@ namespace JsParser.UI.Services
                 MaxParametersLength = UISettings.MaxParametersLength,
                 MaxParametersLengthInFunctionChain = UISettings.MaxParametersLengthInFunctionChain,
                 ProcessHierarchy = UISettings.HierarchyEnabled,
-                SkipAnonymousFuntions = UISettings.HideAnonymousFunctions
+                SkipAnonymousFuntions = UISettings.HideAnonymousFunctions,
+                Filename = docName,
+                SkipParsingIfNoScriptBlocksInNonJsFiles = UISettings.DoNotParseNonJsFilesIfNoScriptBlocks,
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);

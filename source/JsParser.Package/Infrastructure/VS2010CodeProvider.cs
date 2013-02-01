@@ -5,6 +5,7 @@ using System.Text;
 using JsParser.Core.Code;
 using EnvDTE80;
 using EnvDTE;
+using System.Threading;
 
 namespace JsParser.Package.Infrastructure
 {
@@ -73,6 +74,14 @@ namespace JsParser.Package.Infrastructure
 			}
 
 			Doc.Activate();
+			//ThreadPool.QueueUserWorkItem((state) =>
+			//{
+			//    try
+			//    {
+			//        Doc.Activate();
+			//    }
+			//    catch { }
+			//}, null);
 		}
 
 		public void GetCursorPos(out int line, out int column)

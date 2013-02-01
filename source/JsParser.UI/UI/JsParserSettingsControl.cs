@@ -52,11 +52,13 @@ namespace JsParser.UI.UI
             chCheckForVersionUpdates.Checked = Settings.Default.CheckForVersionUpdates;
             chSendStatistics.Checked = Settings.Default.SendStatistics;
             chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
+            chSkippNonJSFiles.Checked = Settings.Default.DoNotParseNonJsFilesIfNoScriptBlocks;
         }
 
         public void SaveSettings()
         {
             Settings.Default.UseVSColorTheme = chUseVSColors.Checked;
+            Settings.Default.DoNotParseNonJsFilesIfNoScriptBlocks = chSkippNonJSFiles.Checked;
             Settings.Default.TrackActiveItem = chTrackActiveItem.Checked;
             Settings.Default.Extensions = new System.Collections.Specialized.StringCollection();
             Settings.Default.Extensions.AddRange(edExtensions.Lines);

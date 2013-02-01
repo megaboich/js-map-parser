@@ -62,7 +62,12 @@ namespace JsParser.Core.Code
 				.Replace("script>'", "sxript>'");
 		}
 
-		public static string ExtractJsFromSource(string source)
+		/// <summary>
+		/// Modifies argument
+		/// </summary>
+		/// <param name="source"></param>
+		/// <returns>True if found <script> blocks </returns>
+		public static bool ExtractJsFromSource(ref string source)
 		{
 			var regEx = new Regex(@"(<script[\s\S]*?>[\s\S]*?</script>)", RegexOptions.IgnoreCase);
 
@@ -93,10 +98,11 @@ namespace JsParser.Core.Code
 					}
 				}
 
-				return sb.ToString();
+				source = sb.ToString();
+				return true;
 			}
 
-			return source;
+			return false;
 		}
 
 		private static string ProcessScriptBlock(string scriptBlock)

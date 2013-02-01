@@ -19,7 +19,11 @@ namespace UnitTests
 		private void ProcessTemplate(string sourceName, string resultName)
 		{
 			var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source." + sourceName);
-			var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
+			var settings = new JavascriptParserSettings()
+			{
+				Filename = sourceName,
+			};
+			var actualResult = (new JavascriptParser(settings)).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
 			//Save actual hierarchy xml
@@ -106,17 +110,17 @@ namespace UnitTests
 			ProcessTemplate("HtmlScriptBlocks.htm", "HtmlScriptBlocks.xml");
 		}
 
-        [Test]
-        public void TestHtmlScriptBlocks_HeavyLoad()
-        {
-            //var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source.HtmlScriptBlocks.htm");
-            
-            //for (int o = 0; o < 10000; o++)
-            //{
-            //    var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
-            //    Assert.Greater(actualResult.Nodes.Childrens.Count, 0);
-            //}
-        }
+		[Test]
+		public void TestHtmlScriptBlocks_HeavyLoad()
+		{
+			//var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source.HtmlScriptBlocks.htm");
+			
+			//for (int o = 0; o < 10000; o++)
+			//{
+			//    var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
+			//    Assert.Greater(actualResult.Nodes.Childrens.Count, 0);
+			//}
+		}
 
 		[Test]
 		public void Test_Functions_In_IF_Statement()

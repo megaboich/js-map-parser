@@ -35,6 +35,7 @@
             this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chUseVSColors = new System.Windows.Forms.CheckBox();
             this.numericUpDownMaxParametersLengthInFunctionChain = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownMaxParametersLength = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,7 +71,7 @@
             this.chCheckForVersionUpdates = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.chUseVSColors = new System.Windows.Forms.CheckBox();
+            this.chSkippNonJSFiles = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chSkippNonJSFiles);
             this.tabPage1.Controls.Add(this.edExtensions);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.chTrackActiveItem);
@@ -171,6 +173,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chUseVSColors
+            // 
+            this.chUseVSColors.AutoSize = true;
+            this.chUseVSColors.Location = new System.Drawing.Point(17, 15);
+            this.chUseVSColors.Name = "chUseVSColors";
+            this.chUseVSColors.Size = new System.Drawing.Size(172, 17);
+            this.chUseVSColors.TabIndex = 29;
+            this.chUseVSColors.Text = "Use Visual Studio Color Theme";
+            this.chUseVSColors.UseVisualStyleBackColor = true;
             // 
             // numericUpDownMaxParametersLengthInFunctionChain
             // 
@@ -584,15 +596,15 @@
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // chUseVSColors
+            // chSkippNonJSFiles
             // 
-            this.chUseVSColors.AutoSize = true;
-            this.chUseVSColors.Location = new System.Drawing.Point(17, 15);
-            this.chUseVSColors.Name = "chUseVSColors";
-            this.chUseVSColors.Size = new System.Drawing.Size(172, 17);
-            this.chUseVSColors.TabIndex = 29;
-            this.chUseVSColors.Text = "Use Visual Studio Color Theme";
-            this.chUseVSColors.UseVisualStyleBackColor = true;
+            this.chSkippNonJSFiles.AutoSize = true;
+            this.chSkippNonJSFiles.Location = new System.Drawing.Point(19, 221);
+            this.chSkippNonJSFiles.Name = "chSkippNonJSFiles";
+            this.chSkippNonJSFiles.Size = new System.Drawing.Size(269, 17);
+            this.chSkippNonJSFiles.TabIndex = 7;
+            this.chSkippNonJSFiles.Text = "Do not parse non .js files if no <script> blocks found";
+            this.chSkippNonJSFiles.UseVisualStyleBackColor = true;
             // 
             // JsParserSettingsControl
             // 
@@ -667,5 +679,6 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.CheckBox chUseVSColors;
+        private System.Windows.Forms.CheckBox chSkippNonJSFiles;
     }
 }

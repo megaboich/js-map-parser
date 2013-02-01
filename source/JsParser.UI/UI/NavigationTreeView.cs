@@ -261,7 +261,6 @@ namespace JsParser.UI.UI
 
 		private void PerformNetworkActivity()
 		{
-			VersionChecker.CheckVersion();
 			StatisticsSender.Send();
 		}
 

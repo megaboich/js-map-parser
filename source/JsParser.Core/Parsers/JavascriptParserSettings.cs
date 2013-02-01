@@ -29,12 +29,21 @@ namespace JsParser.Core.Parsers
 		/// </summary>
 		public bool SkipAnonymousFuntions { get; set; }
 
+		public string Filename { get; set; }
+
+		/// <summary>
+		/// Dependent on filename proprty. If file extension is non-js and there no <script> tags found then skip processing of file.
+		/// </summary>
+		public bool SkipParsingIfNoScriptBlocksInNonJsFiles { get; set; }
+
 		public JavascriptParserSettings()
 		{
 			MaxParametersLengthInFunctionChain = 25;
 			MaxParametersLength = 25;
 			ProcessHierarchy = true;
 			SkipAnonymousFuntions = false;
+			SkipParsingIfNoScriptBlocksInNonJsFiles = false;
+			Filename = "fakefilename.html";
 		}
 	}
 }
