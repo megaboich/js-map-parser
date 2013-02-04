@@ -38,6 +38,7 @@ namespace JsParser.UI.UI
 		private Palette _palette = new Palette();
 		private JSParserResult _lastParserResult;
 		private ICodeProvider _codeProvider;
+		private string _colorTableHash;
 
 		
 		/// <summary>
@@ -63,12 +64,19 @@ namespace JsParser.UI.UI
 		{
 			if (Settings.Default.UseVSColorTheme)
 			{
-				_colorTable = uiThemeProvider.GetColors();
+				_colorTable = uiThemeProvider.Colors;
 			}
 			else
 			{
 				_colorTable = ColorTable.Default;
 			}
+
+			var colorHash = _colorTable.GetHash();
+			if (_colorTableHash == colorHash)
+			{
+				return;
+			}
+			_colorTableHash = colorHash;
 
 			BackColor = _colorTable.ControlBackground;
 			ForeColor = _colorTable.ControlText;
@@ -82,14 +90,13 @@ namespace JsParser.UI.UI
 			taskListDataGrid.RowsDefaultCellStyle.BackColor = _colorTable.WindowBackground;
 			taskListDataGrid.RowsDefaultCellStyle.ForeColor = _colorTable.WindowText;
 
-			toolStrip2.BackColor = _colorTable.ControlBackground;
+			toolStrip2.BackColor = _colorTable.MenuBackground;
 
 			treeView1.Indent = Settings.Default.UseVSColorTheme ? 10 : 16;
 			treeView1.DrawMode = Settings.Default.UseVSColorTheme
 				? TreeViewDrawMode.OwnerDrawAll
 				: TreeViewDrawMode.OwnerDrawText;
 			treeView1.ShowLines = !Settings.Default.UseVSColorTheme;
-
 		}
 
 		public void OnDisposed(object sender, EventArgs args)

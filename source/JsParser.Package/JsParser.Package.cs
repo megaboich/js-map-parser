@@ -18,6 +18,7 @@ using JsParser.UI.Services;
 using JsParser.Package.Infrastructure;
 using EnvDTE80;
 using Microsoft.VisualStudio.Platform.WindowManagement;
+using JsParser.Package._2012;
 
 namespace JsParser.Package
 {
@@ -57,7 +58,7 @@ namespace JsParser.Package
         private SolutionEvents _solutionEvents;
         private WindowEvents _windowEvents;
         private string _activeDocName;
-        private IUIThemeProvider _uiVS2010UIThemeProvider;
+        private IUIThemeProvider _uiThemeProvider;
 
         public static JsParserService JsParserService
         {
@@ -139,8 +140,20 @@ namespace JsParser.Package
             _documentEvents.DocumentSaved += documentEvents_DocumentSaved;
             _documentEvents.DocumentOpened += documentEvents_DocumentOpened;
             _windowEvents.WindowActivated += windowEvents_WindowActivated;
-            _uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
 
+            if (VSVersionDetector.IsVs2012(dte.Version))
+            {
+                _uiThemeProvider = new VS2012UIThemeProvider(GetService);
+                _uiThemeProvider.SubscribeToThemeChanged(() =>
+                {
+                    NotifyColorChangeToToolWindow();
+                });
+            }
+            else 
+            {
+                _uiThemeProvider = new VS2010UIThemeProvider(GetService);
+            }
+            
             base.Initialize();
         }
         #endregion
@@ -263,7 +276,7 @@ namespace JsParser.Package
             var toolWindow = FindToolWindow<JsParserToolWindow>();
             if (toolWindow != null)
             {
-                toolWindow.NavigationTreeView.InitColors(_uiVS2010UIThemeProvider);
+                toolWindow.NavigationTreeView.InitColors(_uiThemeProvider);
             }
         }
     }

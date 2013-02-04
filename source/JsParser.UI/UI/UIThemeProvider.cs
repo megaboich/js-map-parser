@@ -8,7 +8,9 @@ namespace JsParser.UI.UI
 {
     public interface IUIThemeProvider
     {
-        ColorTable GetColors();
+        ColorTable Colors { get; }
+
+        void SubscribeToThemeChanged(Action action);
     }
 
     public class DefaultUIThemeProvider : IUIThemeProvider
@@ -20,9 +22,17 @@ namespace JsParser.UI.UI
             _colorTable = ColorTable.Default;
         }
 
-        public ColorTable GetColors()
+        public ColorTable Colors
         {
-            return _colorTable;
+            get
+            {
+                return _colorTable;
+            }
+        }
+
+        public void SubscribeToThemeChanged(Action action)
+        {
+            //nothing here
         }
     }
 }

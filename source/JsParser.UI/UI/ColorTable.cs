@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace JsParser.UI.UI
 {
+    [Serializable]
     public class ColorTable
     {
         public Color ControlBackground { get; set; }
@@ -28,6 +31,8 @@ namespace JsParser.UI.UI
 
         public Color TabText { get; set; }
 
+        public Color MenuBackground { get; set; }
+
         public static ColorTable Default
         {
             get
@@ -43,8 +48,18 @@ namespace JsParser.UI.UI
                     HighlightInactiveBackground = SystemColors.InactiveCaption,
                     HighlightInactiveText = SystemColors.InactiveCaptionText,
                     GridLines = SystemColors.ActiveBorder,
-                    TabText = SystemColors.WindowText
+                    TabText = SystemColors.WindowText,
+                    MenuBackground = SystemColors.Control,
                 };
+            }
+        }
+
+        public string GetHash()
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                new BinaryFormatter().Serialize(stream, this);
+                return Convert.ToBase64String(stream.ToArray());
             }
         }
     }
