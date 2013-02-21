@@ -36,6 +36,10 @@ namespace JsParser.Core.Parsers
         /// </summary>
         public string[] ExtensionsToBeConsideredAsJs { get; set; }
 
+        public bool FixAspNetTags { get; set; }
+
+        public bool FixRazorSyntax { get; set; }
+
         public JavascriptParserSettings()
         {
             MaxParametersLengthInFunctionChain = 25;
@@ -44,6 +48,8 @@ namespace JsParser.Core.Parsers
             SkipAnonymousFuntions = false;
             Filename = "fakefilename.html";
             ExtensionsToBeConsideredAsJs = new[] { "js" };
+            FixAspNetTags = true;
+            FixRazorSyntax = true;
         }
     }
 }

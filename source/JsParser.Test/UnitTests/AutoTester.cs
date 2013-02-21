@@ -16,7 +16,7 @@ namespace UnitTests
 	[TestFixture]
 	public class AutoTester
 	{
-		private void ProcessTemplate(string sourceName, string resultName)
+		private JSParserResult ProcessTemplate(string sourceName, string resultName)
 		{
 			var source = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Source." + sourceName);
 			var settings = new JavascriptParserSettings()
@@ -36,6 +36,8 @@ namespace UnitTests
 			File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultXml);
 
 			Assert.IsTrue(actualResult.Nodes.Equals(expectedresult));
+
+			return actualResult;
 		}
 
 		[Test]
@@ -198,6 +200,13 @@ namespace UnitTests
 		public void Test_AspTagsReplace()
 		{
 			ProcessTemplate("Test_AspTagsReplace.aspx", "Test_AspTagsReplace.xml");
+		}
+
+		[Test]
+		public void Test_RazorTagsReplace()
+		{
+			var result = ProcessTemplate("Test_RazorSyntax.cshtml", "Test_RazorSyntax.xml");
+			Assert.AreEqual(0, result.Errors.Count);
 		}
 	}
 }

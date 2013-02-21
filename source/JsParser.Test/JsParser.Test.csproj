@@ -198,6 +198,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitTests\Result\Test_AspTagsReplace.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_RazorSyntax.cshtml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_RazorSyntax.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

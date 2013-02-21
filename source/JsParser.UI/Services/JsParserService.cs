@@ -28,6 +28,11 @@ namespace JsParser.UI.Services
         /// </summary>
         public ICodeProvider Code { get; private set; }
 
+        public void InvalidateCash()
+        {
+            _loadedCodeHash = null;
+            _docName = null;
+        }
 
         public JSParserResult Process(ICodeProvider codeProvider, bool skipHashCheck = false)
         {

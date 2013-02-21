@@ -237,15 +237,16 @@ namespace JsParser.Package
                 if (result == null)
                 {
                     // Not JS case - need to clean tree
+                    _jsParserService.InvalidateCash();
                     if (toolWindow != null)
                     {
                         toolWindow.NavigationTreeView.Clear();
                     }
-
+                    
                     return;
                 }
 
-                if (result.FileName == string.Empty)
+                if (string.IsNullOrEmpty(result.FileName))
                 {
                     // skip - cached result
                     return;

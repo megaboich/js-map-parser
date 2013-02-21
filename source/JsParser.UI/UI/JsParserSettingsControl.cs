@@ -52,6 +52,8 @@ namespace JsParser.UI.UI
 
             chSendStatistics.Checked = Settings.Default.SendStatistics;
             chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
+            chFixAspNet.Checked = Settings.Default.FixAspNetTags;
+            chFixRazor.Checked = Settings.Default.FixRazorSyntax;
         }
 
         public void SaveSettings()
@@ -85,6 +87,9 @@ namespace JsParser.UI.UI
                 //If user checks this item once - then politic are approved.
                 Settings.Default.SendStatisticsPolitic = "Approved";
             }
+
+            Settings.Default.FixAspNetTags = chFixAspNet.Checked;
+            Settings.Default.FixRazorSyntax = chFixRazor.Checked;
 
             Settings.Default.Save();
         }

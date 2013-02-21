@@ -54,6 +54,11 @@ namespace JsParser.Core.Code
 			return source;
 		}
 
+		public static string FixRazorSyntax(string source)
+		{
+			return source.Replace("@", string.Empty);
+		}
+
 		public static string FixStringScriptBlocks(string code)
 		{
 			return code.Replace("\"<script", "\"<sxript")

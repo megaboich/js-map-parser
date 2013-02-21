@@ -32,7 +32,12 @@ namespace JsParser.Core.Parsers
 		public JSParserResult Parse(string code)
 		{
 			code = CodeTransformer.FixContinueStringLiterals(code);
-			code = CodeTransformer.KillAspNetTags(code);
+
+			if (_settings.FixAspNetTags)
+			{
+				code = CodeTransformer.KillAspNetTags(code);
+			}
+
 			code = CodeTransformer.FixStringScriptBlocks(code);
 
 			var ext = Path.GetExtension(_settings.Filename).ToLower();
@@ -48,6 +53,11 @@ namespace JsParser.Core.Parsers
 				{
 					return ParseInternal(string.Empty);
 				}
+			}
+
+			if (_settings.FixRazorSyntax && ext == "cshtml")
+			{
+				code = CodeTransformer.FixRazorSyntax(code);
 			}
 			
 			return ParseInternal(code);

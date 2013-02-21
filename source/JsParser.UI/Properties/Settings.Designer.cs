@@ -413,5 +413,29 @@ namespace JsParser.UI.Properties {
                 this["JSExtensions"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FixAspNetTags {
+            get {
+                return ((bool)(this["FixAspNetTags"]));
+            }
+            set {
+                this["FixAspNetTags"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FixRazorSyntax {
+            get {
+                return ((bool)(this["FixRazorSyntax"]));
+            }
+            set {
+                this["FixRazorSyntax"] = value;
+            }
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace JsParser.Test
 				.Where(name => name.EndsWith(".js")
 					|| name.EndsWith(".htm")
 					|| name.EndsWith(".aspx")
+					|| name.EndsWith(".cshtml")
 					)
 				.OrderBy(n => n);
 

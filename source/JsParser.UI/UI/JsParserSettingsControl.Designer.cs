@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.edJSExtensions = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.edExtensions = new System.Windows.Forms.TextBox();
             this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -68,9 +71,8 @@
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.edExtensions = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.edJSExtensions = new System.Windows.Forms.TextBox();
+            this.chFixAspNet = new System.Windows.Forms.CheckBox();
+            this.chFixRazor = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -101,6 +103,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chFixRazor);
+            this.tabPage1.Controls.Add(this.chFixAspNet);
             this.tabPage1.Controls.Add(this.edJSExtensions);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.edExtensions);
@@ -115,13 +119,36 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // edJSExtensions
+            // 
+            this.edJSExtensions.Location = new System.Drawing.Point(19, 92);
+            this.edJSExtensions.Name = "edJSExtensions";
+            this.edJSExtensions.Size = new System.Drawing.Size(406, 20);
+            this.edJSExtensions.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(354, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Extensions considered as pure JS files. <Script> blocks will not be parsed.";
+            // 
+            // edExtensions
+            // 
+            this.edExtensions.Location = new System.Drawing.Point(19, 36);
+            this.edExtensions.Name = "edExtensions";
+            this.edExtensions.Size = new System.Drawing.Size(406, 20);
+            this.edExtensions.TabIndex = 1;
+            // 
             // chTrackActiveItem
             // 
             this.chTrackActiveItem.AutoSize = true;
             this.chTrackActiveItem.Location = new System.Drawing.Point(19, 198);
             this.chTrackActiveItem.Name = "chTrackActiveItem";
             this.chTrackActiveItem.Size = new System.Drawing.Size(220, 17);
-            this.chTrackActiveItem.TabIndex = 4;
+            this.chTrackActiveItem.TabIndex = 6;
             this.chTrackActiveItem.Text = "Automatically track active function in tree";
             this.chTrackActiveItem.UseVisualStyleBackColor = true;
             // 
@@ -562,28 +589,25 @@
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // edExtensions
+            // chFixAspNet
             // 
-            this.edExtensions.Location = new System.Drawing.Point(19, 36);
-            this.edExtensions.Name = "edExtensions";
-            this.edExtensions.Size = new System.Drawing.Size(406, 20);
-            this.edExtensions.TabIndex = 1;
+            this.chFixAspNet.AutoSize = true;
+            this.chFixAspNet.Location = new System.Drawing.Point(19, 136);
+            this.chFixAspNet.Name = "chFixAspNet";
+            this.chFixAspNet.Size = new System.Drawing.Size(266, 17);
+            this.chFixAspNet.TabIndex = 4;
+            this.chFixAspNet.Text = "Correct Asp.Net blocks <%...%> to be correct script";
+            this.chFixAspNet.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // chFixRazor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(354, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Extensions considered as pure JS files. <Script> blocks will not be parsed.";
-            // 
-            // edJSExtensions
-            // 
-            this.edJSExtensions.Location = new System.Drawing.Point(19, 92);
-            this.edJSExtensions.Name = "edJSExtensions";
-            this.edJSExtensions.Size = new System.Drawing.Size(406, 20);
-            this.edJSExtensions.TabIndex = 3;
+            this.chFixRazor.AutoSize = true;
+            this.chFixRazor.Location = new System.Drawing.Point(19, 159);
+            this.chFixRazor.Name = "chFixRazor";
+            this.chFixRazor.Size = new System.Drawing.Size(287, 17);
+            this.chFixRazor.TabIndex = 5;
+            this.chFixRazor.Text = "Correct Razor syntax to be correct script in *.cshtml files";
+            this.chFixRazor.UseVisualStyleBackColor = true;
             // 
             // JsParserSettingsControl
             // 
@@ -658,5 +682,7 @@
         private System.Windows.Forms.TextBox edJSExtensions;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox edExtensions;
+        private System.Windows.Forms.CheckBox chFixRazor;
+        private System.Windows.Forms.CheckBox chFixAspNet;
     }
 }
