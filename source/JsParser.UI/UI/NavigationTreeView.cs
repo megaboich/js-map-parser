@@ -158,6 +158,8 @@ namespace JsParser.UI.UI
 				return false;
 			}
 
+			PerformNetworkActivity();
+
 			_lastParserResult = result;
 			_codeProvider = codeProvider;
 
