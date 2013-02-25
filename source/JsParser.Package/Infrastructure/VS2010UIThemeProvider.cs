@@ -62,6 +62,7 @@ namespace JsParser.Package.Infrastructure
 
                 };
                 
+                /*
                 //collect all colors
                 var colorIndexes = Enum.GetValues(typeof(__VSSYSCOLOREX));
                 var colorNames = Enum.GetNames(typeof(__VSSYSCOLOREX));
@@ -76,7 +77,7 @@ namespace JsParser.Package.Infrastructure
                 }
 
                 File.WriteAllText("c:\\vscolors.txt", new JavaScriptSerializer().Serialize(dic));
-                
+                */
                 return colorTable;
             }
         }
