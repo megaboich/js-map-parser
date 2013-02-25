@@ -11,18 +11,19 @@ using UnitTests;
 using JsParserTest.Helpers;
 using System.IO;
 using JsParser.Core.Code;
+using JsParser.UI.Properties;
 
 namespace JsParser.Test
 {
 	public partial class Form1 : Form
 	{
-		private JsParser.UI.Services.JsParserService _jsParserService;
+		private JsParser.Core.Infrastructure.JsParserService _jsParserService;
 
 		public Form1()
 		{
 			InitializeComponent();
 
-			_jsParserService = new UI.Services.JsParserService();
+			_jsParserService = new JsParser.Core.Infrastructure.JsParserService(Settings.Default);
 		}
 
 		private void InitTree(RichTextBox textBox)
@@ -31,7 +32,6 @@ namespace JsParser.Test
 
 			var result = _jsParserService.Process(codeProvider);
 
-			navigationTreeView1.Init(codeProvider);
 			navigationTreeView1.UpdateTree(result, codeProvider);
 		}
 

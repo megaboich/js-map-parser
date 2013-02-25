@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -72,6 +73,9 @@
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\SerializedEntity.cs" />
     <Compile Include="Helpers\Serializer.cs" />
+    <Compile Include="Infrastructure\ISettings.cs" />
+    <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
+    <Compile Include="Infrastructure\JsParserService.cs" />
     <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />

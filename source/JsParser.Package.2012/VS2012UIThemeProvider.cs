@@ -36,7 +36,6 @@ namespace JsParser.Package._2012
                 WindowText = VSColorTheme.GetThemedColor(EnvironmentColors.ToolWindowTextColorKey),
 
                 HighlightBackground = VSColorTheme.GetThemedColor(EnvironmentColors.SystemHighlightColorKey),
-                //HighlightInactiveBackground = VSColorTheme.GetThemedColor(EnvironmentColors.DarkColorKey),
                 HighlightInactiveBackground = VSColorTheme.GetThemedColor(EnvironmentColors.SystemActiveBorderColorKey),
 
                 HighlightText = VSColorTheme.GetThemedColor(EnvironmentColors.SystemHighlightTextColorKey),

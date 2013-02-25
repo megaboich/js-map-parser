@@ -13,6 +13,8 @@ namespace JsParser.Core.Code
 
 		string Name { get; }
 
+		string FullName { get; }
+
 		string ContainerName { get; set; }
 
 		void SelectionMoveToLineAndOffset(int startLine, int startColumn);

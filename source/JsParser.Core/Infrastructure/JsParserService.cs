@@ -1,6 +1,5 @@
 ﻿using JsParser.Core.Code;
 using JsParser.Core.Parsers;
-using JsParser.UI.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,19 +7,17 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace JsParser.UI.Services
+namespace JsParser.Core.Infrastructure
 {
     public class JsParserService
     {
         private string _loadedCodeHash;
         private string _docName;
+        private ISettings _settings;
 
-        /// <summary>
-        /// Settings instance
-        /// </summary>
-        public static Settings UISettings
+        public JsParserService(ISettings settings)
         {
-            get { return Settings.Default; }
+            _settings = settings;
         }
 
         /// <summary>
@@ -54,12 +51,12 @@ namespace JsParser.UI.Services
 
             var parserSettings = new JavascriptParserSettings
             {
-                MaxParametersLength = UISettings.MaxParametersLength,
-                MaxParametersLengthInFunctionChain = UISettings.MaxParametersLengthInFunctionChain,
-                ProcessHierarchy = UISettings.HierarchyEnabled,
-                SkipAnonymousFuntions = UISettings.HideAnonymousFunctions,
+                MaxParametersLength = _settings.MaxParametersLength,
+                MaxParametersLengthInFunctionChain = _settings.MaxParametersLengthInFunctionChain,
+                ProcessHierarchy = _settings.HierarchyEnabled,
+                SkipAnonymousFuntions = _settings.HideAnonymousFunctions,
                 Filename = docName,
-                ExtensionsToBeConsideredAsJs = UISettings.JSExtensions.OfType<string>().ToArray(),
+                ExtensionsToBeConsideredAsJs = _settings.JSExtensions.OfType<string>().ToArray(),
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);
@@ -69,9 +66,9 @@ namespace JsParser.UI.Services
 
         private bool CheckExt(string fileName)
         {
-            if (UISettings.Extensions.Count > 0)
+            if (_settings.Extensions.Count > 0)
             {
-                foreach (var ext in UISettings.Extensions)
+                foreach (var ext in _settings.Extensions)
                 {
                     if (fileName.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
                     {

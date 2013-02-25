@@ -39,6 +39,14 @@ namespace JsParser.Test
 			get { return _name; }
 		}
 
+		public string FullName
+		{
+			get
+			{
+				return System.IO.Path.Combine(Path, Name);
+			}
+		}
+
 		public void SelectionMoveToLineAndOffset(int startLine, int startColumn)
 		{
 			var textLen = _textBox.Lines.Take(startLine - 1).Select(l => l.Length + 1).Aggregate((t, l) => t += l);

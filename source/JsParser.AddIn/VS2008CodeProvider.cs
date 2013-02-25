@@ -44,6 +44,14 @@ namespace JsParser.AddIn
 			}
 		}
 
+		public string FullName
+		{
+			get
+			{
+				return System.IO.Path.Combine(Path, Name);
+			}
+		}
+
 		public string Path
 		{
 			get { return Doc != null ? Doc.Path : string.Empty; }

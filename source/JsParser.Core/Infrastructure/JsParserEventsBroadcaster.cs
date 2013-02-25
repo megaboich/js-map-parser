@@ -1,12 +1,11 @@
 ﻿using JsParser.Core.Code;
 using JsParser.Core.Parsers;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JsParser.Package.Infrastructure
+namespace JsParser.Core.Infrastructure
 {
     public class JsParserEvent: EventArgs
     {
@@ -20,11 +19,6 @@ namespace JsParser.Package.Infrastructure
     {
         public string FullFileName { get; set; }
         public List<ErrorMessage> Errors { get; set; }
-    }
-
-    public class JsParserDocumentSavedArgs : JsParserEvent
-    {
-        public EnvDTE.Document Document { get; set; }
     }
 
     public static class JsParserEventsBroadcaster

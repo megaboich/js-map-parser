@@ -18,6 +18,7 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using JsParser.UI;
 using JsParser.Core.Code;
 using JsParser.Package.Infrastructure;
+using JsParser.UI.Infrastructure;
 
 namespace JsParser.Package.UI
 {
@@ -31,7 +32,7 @@ namespace JsParser.Package.UI
     /// implementation of the IVsUIElementPane interface.
     /// </summary>
     [Guid(GuidList.guidToolWindowPersistanceString)]
-    public class JsParserToolWindow : ToolWindowPane
+    public class JsParserToolWindow : ToolWindowPane, IJsParserToolWindow
     {
         private NavigationTreeView _navigationTreeView;
 
@@ -74,15 +75,11 @@ namespace JsParser.Package.UI
 
         public override void OnToolWindowCreated()
         {
-            IUIThemeProvider uiVS2010UIThemeProvider = new VS2010UIThemeProvider(GetService);
-            _navigationTreeView.InitColors(uiVS2010UIThemeProvider);
-
-            if (JsParserPackage.JsParserService != null && JsParserPackage.JsParserService.Code != null)
+            if (JsParserPackage.JsParserToolWindowManager != null)
             {
-                var result = JsParserPackage.JsParserService.Process(JsParserPackage.JsParserService.Code, skipHashCheck: true);
-                _navigationTreeView.UpdateTree(result, JsParserPackage.JsParserService.Code);
+                JsParserPackage.JsParserToolWindowManager.PerformInitialParsing(_navigationTreeView);
             }
-
+            
             base.OnToolWindowCreated();
         }
 

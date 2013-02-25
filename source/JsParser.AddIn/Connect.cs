@@ -9,6 +9,9 @@ using System.Globalization;
 using JsParser.UI.UI;
 using System.Diagnostics;
 using System.Windows.Forms;
+using JsParser.UI.Infrastructure;
+using JsParser.Core.Infrastructure;
+using JsParser.UI.Properties;
 
 namespace JsParser.AddIn
 {
@@ -16,17 +19,22 @@ namespace JsParser.AddIn
     /// <seealso class='IDTExtensibility2' />
     public class Connect : IDTExtensibility2, IDTCommandTarget
     {
-        /// <summary>
-        /// The navigation tree view.
-        /// </summary>
-        private NavigationTreeView _navigationTreeView;
-
-        private Window _toolWindow;
-
         private DTE2 _applicationObject;
         private EnvDTE.AddIn _addInInstance;
         private DocumentEvents _documentEvents;
         private WindowEvents _windowEvents;
+
+        private IUIThemeProvider _uiThemeProvider;
+        private JsParserService _jsParserService;
+        private JsParserToolWindowManager _jsParserToolWindowManager;
+        
+        private class JsParserToolWindow: IJsParserToolWindow
+        {
+            public NavigationTreeView NavigationTreeView { get; set; }
+            public Window Window { get; set; }
+        }
+
+        private JsParserToolWindow _toolWindow;
 
         /// <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
         public Connect()
@@ -141,9 +149,16 @@ namespace JsParser.AddIn
             Events events = _applicationObject.Events;
             _documentEvents = events.get_DocumentEvents(null);
             _windowEvents = events.get_WindowEvents(null);
-            _documentEvents.DocumentClosing += documentEvents_DocumentClosing;
             _documentEvents.DocumentSaved += documentEvents_DocumentSaved;
+            _documentEvents.DocumentOpened += documentEvents_DocumentOpened;
             _windowEvents.WindowActivated += windowEvents_WindowActivated;
+
+            _uiThemeProvider = new DefaultUIThemeProvider();
+            _jsParserService = new JsParserService(Settings.Default);
+            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, _uiThemeProvider, () =>
+            {
+                return EnsureWindowCreated();
+            });
         }
 
         /// <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
@@ -152,12 +167,12 @@ namespace JsParser.AddIn
         /// <seealso class='IDTExtensibility2' />
         public void OnDisconnection(ext_DisconnectMode disconnectMode, ref Array custom)
         {
-            //UnSubscribe to IDE events
+            //UnSubscribe from IDE events
             try
             {
                 if (_documentEvents != null)
                 {
-                    _documentEvents.DocumentClosing -= documentEvents_DocumentClosing;
+                    _documentEvents.DocumentOpened -= documentEvents_DocumentOpened;
                     _documentEvents.DocumentSaved -= documentEvents_DocumentSaved;
                 }
                 if (_windowEvents != null)
@@ -232,7 +247,11 @@ namespace JsParser.AddIn
                 if (commandName == "JsParser.AddIn.Connect.Find")
                 {
                     ShowWindow();
-                    _navigationTreeView.Find();
+                    var wnd = EnsureWindowCreated();
+                    if (wnd != null)
+                    {
+                        wnd.NavigationTreeView.Find();
+                    }
                     handled = true;
                     return;
                 }
@@ -247,13 +266,14 @@ namespace JsParser.AddIn
         /// </returns>
         private bool ShowWindow()
         {
-            if (EnsureWindowCreated())
+            var wnd = EnsureWindowCreated();
+            if (wnd != null)
             {
                 Trace.WriteLine("JSParser: Set toolwindow visible");
 
-                _toolWindow.Linkable = true;
-                _toolWindow.IsFloating = false;
-                _toolWindow.Visible = true;
+                wnd.Window.Linkable = true;
+                wnd.Window.IsFloating = false;
+                wnd.Window.Visible = true;
 
                 return true;
             }
@@ -269,12 +289,12 @@ namespace JsParser.AddIn
         /// <returns>
         /// The ensure window created.
         /// </returns>
-        private bool EnsureWindowCreated()
+        private JsParserToolWindow EnsureWindowCreated()
         {
-            if (_navigationTreeView != null)
+            if (_toolWindow != null)
             {
                 //Window is created already
-                return true;
+                return _toolWindow;
             }
 
             try
@@ -287,115 +307,81 @@ namespace JsParser.AddIn
                 try
                 {
                     var t = typeof(NavigationTreeView);
-                    _toolWindow = windows2.CreateToolWindow2(_addInInstance, t.Assembly.Location, t.ToString(),
+                    var window = windows2.CreateToolWindow2(_addInInstance, t.Assembly.Location, t.ToString(),
                                                               "JavaScript Parser", guid, ref obj);
-                    _toolWindow.Visible = true;
+                    window.Visible = true;
+
+                    _toolWindow = new JsParserToolWindow
+                    {
+                        Window = window,
+                        NavigationTreeView = (NavigationTreeView)obj,
+                    };
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine("js addin: Error while creating tool window");
                     MessageBox.Show("Error while creating tool window" + Environment.NewLine + ex.Message + Environment.NewLine + ex.Source, "JSParser");
-                    return false;
+                    return null;
                 }
 
-                _navigationTreeView = obj as NavigationTreeView;
-                if (_navigationTreeView == null || _toolWindow == null)
+                if (_toolWindow == null || _toolWindow.NavigationTreeView == null || _toolWindow.Window == null)
                 {
                     MessageBox.Show("Tool window has not created", "JSParser");
-                    return false;
+                    return null;
                 }
 
                 try
                 {
-                    var codeProvider = new VS2008CodeProvider(_applicationObject, null);
-                    _navigationTreeView.Init(codeProvider);
-                    //_navigationTreeView.LoadFunctionList();
+                    _jsParserToolWindowManager.PerformInitialParsing();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error while initializing JS Parser" + Environment.NewLine + ex.Message + Environment.NewLine + ex.Source, "JSParser");
-                    return false;
+                    return null;
                 }
 
                 Trace.WriteLine("js addin: EnsureWindowCreated OK");
-                return true;
+                return _toolWindow;
             }
             catch
             {
-                return false;
+                return null;
             }
             finally
             {
             }
         }
 
-
-        /// <summary>
-        /// The document events_ document closing.
-        /// </summary>
-        /// <param name="doc">
-        /// The doc.
-        /// </param>
-        private void documentEvents_DocumentClosing(Document doc)
-        {
-            Trace.WriteLine("js addin: documentEvents_DocumentSaved");
-
-            if (_navigationTreeView != null)
-            {
-                Trace.WriteLine("js addin: _navigationTreeView.Clear");
-                _navigationTreeView.Clear();
-            }
-        }
-
-        /// <summary>
-        /// The document events_ document saved.
-        /// </summary>
-        /// <param name="doc">
-        /// The doc.
-        /// </param>
-        private void documentEvents_DocumentSaved(Document doc)
-        {
-            Trace.WriteLine("js addin: documentEvents_DocumentSaved");
-
-            if (_navigationTreeView != null)
-            {
-                Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-                //_navigationTreeView.LoadFunctionList();
-            }
-        }
-
-        /// <summary>
-        /// The window events_ window activated.
-        /// </summary>
-        /// <param name="gotFocus">
-        /// The got focus.
-        /// </param>
-        /// <param name="lostFocus">
-        /// The lost focus.
-        /// </param>
         private void windowEvents_WindowActivated(Window gotFocus, Window lostFocus)
         {
-            Trace.WriteLine("js addin: windowEvents_WindowActivated");
-            if (_navigationTreeView == null
-                || gotFocus == null
+            if (gotFocus == null
                 || gotFocus.Kind != "Document"
-                || gotFocus.Document == null)
+                || gotFocus.Document == null
+                || gotFocus.Document.FullName == _jsParserToolWindowManager.ActiveDocFullName)
             {
-                Trace.WriteLine("js addin: windowEvents_WindowActivated early return");
                 return;
             }
 
-            try
-            {
-                var codeProvider = new VS2008CodeProvider(_applicationObject, gotFocus.Document);
-                _navigationTreeView.Init(codeProvider);
-                //_navigationTreeView.LoadFunctionList();
-                Trace.WriteLine("js addin: _navigationTreeView.LoadFunctionList");
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.Message + Environment.NewLine + ex.Source);
-            }
+            _jsParserToolWindowManager.CallParserForDocument(new VS2008CodeProvider(_applicationObject, gotFocus.Document));
         }
+
+        private void documentEvents_DocumentSaved(Document doc)
+        {
+            if (doc.ActiveWindow != null
+                && doc.ActiveWindow.Left == 0
+                && doc.ActiveWindow.Top == 0)
+            {
+                //This is invisible doc
+                return;
+            }
+
+            _jsParserToolWindowManager.CallParserForDocument(new VS2008CodeProvider(_applicationObject, doc));
+        }
+
+        private void documentEvents_DocumentOpened(Document document)
+        {
+            _jsParserToolWindowManager.CallParserForDocument(new VS2008CodeProvider(_applicationObject, document));
+        }
+        
     }
 }

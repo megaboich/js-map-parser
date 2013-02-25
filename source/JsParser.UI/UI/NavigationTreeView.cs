@@ -39,6 +39,7 @@ namespace JsParser.UI.UI
 		private JSParserResult _lastParserResult;
 		private ICodeProvider _codeProvider;
 		private string _colorTableHash;
+		private IUIThemeProvider _uiThemesProvider;
 
 		
 		/// <summary>
@@ -62,6 +63,7 @@ namespace JsParser.UI.UI
 
 		public void InitColors(IUIThemeProvider uiThemeProvider)
 		{
+			_uiThemesProvider = uiThemeProvider;
 			if (Settings.Default.UseVSColorTheme)
 			{
 				_colorTable = uiThemeProvider.Colors;
@@ -102,16 +104,6 @@ namespace JsParser.UI.UI
 		public void OnDisposed(object sender, EventArgs args)
 		{
 			_palette.Dispose();
-		}
-
-		public void Init(ICodeProvider codeProvider)
-		{
-			
-			_codeProvider = codeProvider;
-			StatisticsManager.Instance.Statistics.Container = _codeProvider.ContainerName;
-			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
-
-			PerformNetworkActivity();
 		}
 
 		/// <summary>
@@ -263,6 +255,10 @@ namespace JsParser.UI.UI
 
 		public void RefreshTree()
 		{
+			if (_uiThemesProvider != null)
+			{
+				InitColors(_uiThemesProvider);
+			}
 			UpdateTree(_lastParserResult, _codeProvider);
 		}
 
@@ -659,7 +655,7 @@ namespace JsParser.UI.UI
 						: _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
 					: _palette.GetSolidBrush(_colorTable.WindowBackground);
 
-				e.Graphics.FillRectangle(bgBrush, 0, e.Bounds.Top, e.Bounds.Right, e.Bounds.Height);
+				e.Graphics.FillRectangle(bgBrush, e.Graphics.VisibleClipBounds.Left, e.Bounds.Top, e.Graphics.VisibleClipBounds.Width, e.Bounds.Height);
 
 				//Draw tags
 				if (hasTags)
@@ -718,7 +714,7 @@ namespace JsParser.UI.UI
 					var tagsShift = 2;
 					foreach (char mark in tags)
 					{
-						e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Bounds.Right + tagsShift, e.Bounds.Top);
+						e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Right + tagsShift, e.Bounds.Top);
 						tagsShift += 18;
 					}
 				}

@@ -14,11 +14,13 @@ using JsParser.UI.UI;
 using System.Windows;
 using System.IO;
 using JsParser.Package.UI;
-using JsParser.UI.Services;
 using JsParser.Package.Infrastructure;
 using EnvDTE80;
 using Microsoft.VisualStudio.Platform.WindowManagement;
 using JsParser.Package._2012;
+using JsParser.Core.Infrastructure;
+using JsParser.UI.Properties;
+using JsParser.UI.Infrastructure;
 
 namespace JsParser.Package
 {
@@ -53,18 +55,19 @@ namespace JsParser.Package
     [Guid(GuidList.guidJsParserPackagePkgString)]
     public sealed class JsParserPackage : Microsoft.VisualStudio.Shell.Package
     {
-        private static JsParserService _jsParserService;
+        private JsParserService _jsParserService;
         private DocumentEvents _documentEvents;
         private SolutionEvents _solutionEvents;
         private WindowEvents _windowEvents;
         private string _activeDocName;
         private IUIThemeProvider _uiThemeProvider;
+        private static JsParserToolWindowManager _jsParserToolWindowManager;
 
-        public static JsParserService JsParserService
+        public static JsParserToolWindowManager JsParserToolWindowManager
         {
             get
             {
-                return _jsParserService;
+                return _jsParserToolWindowManager;
             }
         }
 
@@ -130,7 +133,7 @@ namespace JsParser.Package
                 mcs.AddCommand(menuToolWin);
             }
 
-            _jsParserService = new JsParserService();
+            _jsParserService = new JsParserService(Settings.Default);
 
             var dte = (DTE)GetService(typeof(DTE));
             Events events = dte.Events;
@@ -144,16 +147,22 @@ namespace JsParser.Package
             if (VSVersionDetector.IsVs2012(dte.Version))
             {
                 _uiThemeProvider = new VS2012UIThemeProvider(GetService);
-                _uiThemeProvider.SubscribeToThemeChanged(() =>
-                {
-                    NotifyColorChangeToToolWindow();
-                });
             }
             else 
             {
                 _uiThemeProvider = new VS2010UIThemeProvider(GetService);
             }
-            
+
+            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, _uiThemeProvider, () =>
+            {
+                return FindToolWindow<JsParserToolWindow>();
+            });
+
+            _uiThemeProvider.SubscribeToThemeChanged(() =>
+            {
+                _jsParserToolWindowManager.NotifyColorChangeToToolWindow();
+            });
+
             base.Initialize();
         }
         #endregion
@@ -196,12 +205,12 @@ namespace JsParser.Package
             if (gotFocus == null
                 || gotFocus.Kind != "Document"
                 || gotFocus.Document == null
-                || gotFocus.Document.FullName == _activeDocName)
+                || gotFocus.Document.FullName == _jsParserToolWindowManager.ActiveDocFullName)
             {
                 return;
             }
 
-            CallParserForDocument(gotFocus.Document);
+            _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(gotFocus.Document));
         }
 
         private void documentEvents_DocumentSaved(Document doc)
@@ -214,71 +223,17 @@ namespace JsParser.Package
                 return;
             }
 
-            CallParserForDocument(doc);
+            _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(doc));
         }
 
         private void documentEvents_DocumentOpened(Document doc)
         {
-            CallParserForDocument(doc);
+            _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(doc));
         }
         #endregion
 
-        private void CallParserForDocument(Document doc)
-        {
-            try
-            {
-                _activeDocName = doc.FullName;
-                var codeProvider = new VS2010CodeProvider(doc);
+        
 
-                var result = _jsParserService.Process(codeProvider);
 
-                var toolWindow = FindToolWindow<JsParserToolWindow>();
-
-                if (result == null)
-                {
-                    // Not JS case - need to clean tree
-                    _jsParserService.InvalidateCash();
-                    if (toolWindow != null)
-                    {
-                        toolWindow.NavigationTreeView.Clear();
-                    }
-                    
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(result.FileName))
-                {
-                    // skip - cached result
-                    return;
-                }
-
-                JsParserEventsBroadcaster.FireActionsForDoc(
-                    _activeDocName, 
-                    new JsParserErrorsNotificationArgs {
-                        Code = codeProvider,
-                        FullFileName = _activeDocName,
-                        Errors = result.Errors
-                    });
-
-                if (toolWindow != null)
-                {
-                    NotifyColorChangeToToolWindow();
-                    toolWindow.NavigationTreeView.UpdateTree(result, codeProvider);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + Environment.NewLine + ex.Source);
-            }
-        }
-
-        private void NotifyColorChangeToToolWindow()
-        {
-            var toolWindow = FindToolWindow<JsParserToolWindow>();
-            if (toolWindow != null)
-            {
-                toolWindow.NavigationTreeView.InitColors(_uiThemeProvider);
-            }
-        }
     }
 }

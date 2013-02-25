@@ -1,4 +1,5 @@
 ﻿using JsParser.Core.Code;
+using JsParser.Core.Infrastructure;
 using JsParser.Core.Parsers;
 using JsParser.Package.Infrastructure;
 using Microsoft.VisualStudio.Text;

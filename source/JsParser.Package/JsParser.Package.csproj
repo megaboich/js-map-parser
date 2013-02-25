@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -172,7 +172,6 @@
     <Compile Include="JsParser.Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
-    <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
     <Compile Include="UI\JSParserErrorsNotificationMarginFactory.cs" />
     <Compile Include="Infrastructure\VS2010CodeProvider.cs" />
     <Compile Include="Infrastructure\VS2010UIThemeProvider.cs" />
@@ -216,7 +215,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="Resources\Error_small.png" />
+    <Resource Include="Resources\error_icon.png" />
     <Content Include="screen_shot_mini.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

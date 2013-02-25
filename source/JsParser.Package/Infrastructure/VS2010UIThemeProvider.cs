@@ -47,20 +47,21 @@ namespace JsParser.Package.Infrastructure
 
                     MenuBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_COMMANDBAR_GRADIENT_BEGIN),
 
-                    WindowBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_BACKGROUND),
+                    WindowBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLBOX_BACKGROUND),
                     WindowText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
 
-                    HighlightBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_COMMANDBAR_HOVEROVERSELECTEDICON_BORDER),
-                    HighlightInactiveBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_ACCENT_DARK),
-                    HighlightText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TITLEBAR_ACTIVE_TEXT),
-                    HighlightInactiveText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT),
+                    HighlightBackground = SystemColors.Highlight, // getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_COMMANDBAR_HOVEROVERSELECTEDICON_BORDER),
+                    HighlightText = SystemColors.HighlightText, // getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TITLEBAR_ACTIVE_TEXT),
+
+                    HighlightInactiveBackground = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_DEBUGGER_DATATIP_INACTIVE_HIGHLIGHT),
+                    HighlightInactiveText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TEXT), // getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_DEBUGGER_DATATIP_INACTIVE_HIGHLIGHTTEXT),
 
                     GridLines = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TASKLIST_GRIDLINES),
 
                     TabText = getVSColor(uiShell2, __VSSYSCOLOREX.VSCOLOR_TOOLWINDOW_TAB_TEXT),
 
                 };
-                /*
+                
                 //collect all colors
                 var colorIndexes = Enum.GetValues(typeof(__VSSYSCOLOREX));
                 var colorNames = Enum.GetNames(typeof(__VSSYSCOLOREX));
@@ -75,7 +76,7 @@ namespace JsParser.Package.Infrastructure
                 }
 
                 File.WriteAllText("c:\\vscolors.txt", new JavaScriptSerializer().Serialize(dic));
-                */
+                
                 return colorTable;
             }
         }
@@ -83,7 +84,6 @@ namespace JsParser.Package.Infrastructure
 
         public void SubscribeToThemeChanged(Action action)
         {
-            throw new NotImplementedException();
         }
     }
 }
