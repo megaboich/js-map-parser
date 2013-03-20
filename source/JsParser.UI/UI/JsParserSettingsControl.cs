@@ -31,8 +31,8 @@ namespace JsParser.UI.UI
         public void InitSettings()
         {
             chTrackActiveItem.Checked = Settings.Default.TrackActiveItem;
-            edExtensions.Text = string.Join(" ", Settings.Default.Extensions.OfType<string>().ToArray());
-            edJSExtensions.Text = string.Join(" ", Settings.Default.JSExtensions.OfType<string>().ToArray());
+            edExtensions.Text = string.Join(" ", Settings.Default.Extensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
+            edJSExtensions.Text = string.Join(" ", Settings.Default.JSExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
 
             taggedFuncLabel1.ForeColor = Settings.Default.taggedFunction1Color;
             taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font ?? _defaultTreeFont;
@@ -54,6 +54,8 @@ namespace JsParser.UI.UI
             chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
             chFixAspNet.Checked = Settings.Default.FixAspNetTags;
             chFixRazor.Checked = Settings.Default.FixRazorSyntax;
+
+            edToDoKeyWords.Text = String.Join(", ", Settings.Default.ToDoKeywords.OfType<string>().ToArray());
         }
 
         public void SaveSettings()
@@ -90,6 +92,9 @@ namespace JsParser.UI.UI
 
             Settings.Default.FixAspNetTags = chFixAspNet.Checked;
             Settings.Default.FixRazorSyntax = chFixRazor.Checked;
+
+            Settings.Default.ToDoKeywords = new System.Collections.Specialized.StringCollection();
+            Settings.Default.ToDoKeywords.AddRange(edToDoKeyWords.Text.Split(new[] { ',', ';' }).Select(p => p.Trim()).ToArray());
 
             Settings.Default.Save();
         }

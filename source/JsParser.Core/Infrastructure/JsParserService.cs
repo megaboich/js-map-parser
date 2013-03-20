@@ -57,6 +57,7 @@ namespace JsParser.Core.Infrastructure
                 SkipAnonymousFuntions = _settings.HideAnonymousFunctions,
                 Filename = docName,
                 ExtensionsToBeConsideredAsJs = _settings.JSExtensions.OfType<string>().ToArray(),
+                ToDoKeyWords = _settings.ToDoKeywords.OfType<string>().ToArray(),
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);

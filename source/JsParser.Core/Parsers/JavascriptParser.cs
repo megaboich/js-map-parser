@@ -100,7 +100,7 @@ namespace JsParser.Core.Parsers
 
 					CreateNodes(nodes, sourceElements);
 
-					taskList.AddRange(TaskListAggregator.GetTaskList(_comments.Comments));
+					taskList.AddRange(TaskListAggregator.GetTaskList(_comments.Comments, _settings.ToDoKeyWords));
 				}
 				catch (Exception ex)
 				{

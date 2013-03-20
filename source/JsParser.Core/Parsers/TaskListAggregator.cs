@@ -7,20 +7,24 @@ namespace JsParser.Core.Parsers
 {
     public static class TaskListAggregator
     {
-        public static IEnumerable<TaskListItem> GetTaskList(IEnumerable<CustomComment> comments)
+        public static IEnumerable<TaskListItem> GetTaskList(IEnumerable<CustomComment> comments, string[] todokeywords)
         {
             return comments.
                 Select(c => {
-                    var todoIndex = c.Text.IndexOf("TODO", StringComparison.InvariantCultureIgnoreCase);
-                    if (todoIndex >= 0)
+                    foreach (var kw in todokeywords)
                     {
-                        return new TaskListItem
+                        var todoIndex = c.Text.IndexOf(kw, StringComparison.InvariantCultureIgnoreCase);
+                        if (todoIndex >= 0)
                         {
-                            Description = c.Text.Substring(todoIndex),
-                            StartLine = c.Start,
-                            StartColumn = 0
-                        };
+                            return new TaskListItem
+                            {
+                                Description = c.Text.Substring(todoIndex),
+                                StartLine = c.Start,
+                                StartColumn = 0
+                            };
+                        }
                     }
+
                     return null;
                 })
                 .Where(c => c != null);

@@ -37,5 +37,6 @@ namespace JsParser.Core.Infrastructure
         bool TrackActiveItem { get; set; }
         bool UseVSColorTheme { get; set; }
         bool Visible { get; set; }
+        System.Collections.Specialized.StringCollection ToDoKeywords { get; set; }
     }
 }

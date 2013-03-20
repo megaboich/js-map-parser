@@ -40,6 +40,8 @@ namespace JsParser.Core.Parsers
 
         public bool FixRazorSyntax { get; set; }
 
+        public string[] ToDoKeyWords { get; set; }
+
         public JavascriptParserSettings()
         {
             MaxParametersLengthInFunctionChain = 25;
@@ -50,6 +52,7 @@ namespace JsParser.Core.Parsers
             ExtensionsToBeConsideredAsJs = new[] { "js" };
             FixAspNetTags = true;
             FixRazorSyntax = true;
+            ToDoKeyWords = new[] { "todo:", "to do:" };
         }
     }
 }

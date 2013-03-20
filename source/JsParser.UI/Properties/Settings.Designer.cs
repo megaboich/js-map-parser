@@ -437,5 +437,19 @@ namespace JsParser.UI.Properties {
                 this["FixRazorSyntax"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>TODO:</string>\r\n  <string>To Do:</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection ToDoKeywords {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ToDoKeywords"]));
+            }
+            set {
+                this["ToDoKeywords"] = value;
+            }
+        }
     }
 }

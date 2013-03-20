@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chFixRazor = new System.Windows.Forms.CheckBox();
+            this.chFixAspNet = new System.Windows.Forms.CheckBox();
             this.edJSExtensions = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.edExtensions = new System.Windows.Forms.TextBox();
@@ -71,8 +73,8 @@
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.chFixAspNet = new System.Windows.Forms.CheckBox();
-            this.chFixRazor = new System.Windows.Forms.CheckBox();
+            this.edToDoKeyWords = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,6 +105,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.edToDoKeyWords);
+            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.chFixRazor);
             this.tabPage1.Controls.Add(this.chFixAspNet);
             this.tabPage1.Controls.Add(this.edJSExtensions);
@@ -118,6 +122,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chFixRazor
+            // 
+            this.chFixRazor.AutoSize = true;
+            this.chFixRazor.Location = new System.Drawing.Point(19, 159);
+            this.chFixRazor.Name = "chFixRazor";
+            this.chFixRazor.Size = new System.Drawing.Size(294, 17);
+            this.chFixRazor.TabIndex = 5;
+            this.chFixRazor.Text = "Process Razor syntax  in *.cshtml files to be correct script";
+            this.chFixRazor.UseVisualStyleBackColor = true;
+            // 
+            // chFixAspNet
+            // 
+            this.chFixAspNet.AutoSize = true;
+            this.chFixAspNet.Location = new System.Drawing.Point(19, 136);
+            this.chFixAspNet.Name = "chFixAspNet";
+            this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
+            this.chFixAspNet.TabIndex = 4;
+            this.chFixAspNet.Text = "Process Asp.Net blocks <%...%> to be correct script";
+            this.chFixAspNet.UseVisualStyleBackColor = true;
             // 
             // edJSExtensions
             // 
@@ -589,25 +613,21 @@
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // chFixAspNet
+            // edToDoKeyWords
             // 
-            this.chFixAspNet.AutoSize = true;
-            this.chFixAspNet.Location = new System.Drawing.Point(19, 136);
-            this.chFixAspNet.Name = "chFixAspNet";
-            this.chFixAspNet.Size = new System.Drawing.Size(266, 17);
-            this.chFixAspNet.TabIndex = 4;
-            this.chFixAspNet.Text = "Correct Asp.Net blocks <%...%> to be correct script";
-            this.chFixAspNet.UseVisualStyleBackColor = true;
+            this.edToDoKeyWords.Location = new System.Drawing.Point(19, 242);
+            this.edToDoKeyWords.Name = "edToDoKeyWords";
+            this.edToDoKeyWords.Size = new System.Drawing.Size(406, 20);
+            this.edToDoKeyWords.TabIndex = 8;
             // 
-            // chFixRazor
+            // label5
             // 
-            this.chFixRazor.AutoSize = true;
-            this.chFixRazor.Location = new System.Drawing.Point(19, 159);
-            this.chFixRazor.Name = "chFixRazor";
-            this.chFixRazor.Size = new System.Drawing.Size(287, 17);
-            this.chFixRazor.TabIndex = 5;
-            this.chFixRazor.Text = "Correct Razor syntax to be correct script in *.cshtml files";
-            this.chFixRazor.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Task List Keywords (separated by comma):";
             // 
             // JsParserSettingsControl
             // 
@@ -684,5 +704,7 @@
         private System.Windows.Forms.TextBox edExtensions;
         private System.Windows.Forms.CheckBox chFixRazor;
         private System.Windows.Forms.CheckBox chFixAspNet;
+        private System.Windows.Forms.TextBox edToDoKeyWords;
+        private System.Windows.Forms.Label label5;
     }
 }
