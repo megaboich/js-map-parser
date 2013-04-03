@@ -169,7 +169,7 @@
             // chTrackActiveItem
             // 
             this.chTrackActiveItem.AutoSize = true;
-            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 198);
+            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 192);
             this.chTrackActiveItem.Name = "chTrackActiveItem";
             this.chTrackActiveItem.Size = new System.Drawing.Size(220, 17);
             this.chTrackActiveItem.TabIndex = 6;

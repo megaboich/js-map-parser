@@ -10,6 +10,7 @@ using System.Diagnostics;
 using JsParser.Core.Code;
 using JsParser.UI.Properties;
 using JsParser.UI.Helpers;
+using JsParser.Core.Search;
 
 namespace JsParser.UI.UI
 {
@@ -135,9 +136,17 @@ namespace JsParser.UI.UI
 		private void edTextInput_TextChanged(object sender, EventArgs e)
 		{
 			contextMenuStrip1.Items.Clear();
-			if ((!string.IsNullOrEmpty(edTextInput.Text.Trim())) && edTextInput.Text.Trim() != "*")
+			if (edTextInput.Text.Length >= 2)
 			{
-				GetMatches(edTextInput.Text).ToList().ForEach(item =>
+				var matches = SearchHelper.GetMatches(_autocompletesource, item => item.Alias, edTextInput.Text)
+					.ToList();
+
+				if (matches.Count > 30) 
+				{
+					matches = matches.Take(30).ToList();
+				}
+
+				matches.ForEach(item =>
 					{
 						ToolStripMenuItem mi = new ToolStripMenuItem(item.Alias
 							+ "                 "
@@ -162,88 +171,6 @@ namespace JsParser.UI.UI
 					contextMenuStrip1.Hide();
 				}
 			}
-		}
-
-		private IEnumerable<CodeNode> GetMatches(string input)
-		{
-			var pattern = SplitFunctionName(input).ToList();
-			return _autocompletesource
-				.Where(item => CompareEntities(pattern, SplitFunctionName(item.Alias).ToList()));
-		}
-
-		public static bool CompareEntities(IList<string> pattern, IList<string> fname)
-		{
-			if (pattern.Count > fname.Count)
-			{
-				return false;
-			}
-
-			bool isMask = false;
-			int pIndex = 0, fIndex = 0;
-			for (; pIndex < pattern.Count && fIndex < fname.Count; ++fIndex, ++pIndex)
-			{
-				if (isMask && !fname[fIndex].StartsWith(pattern[pIndex], StringComparison.InvariantCultureIgnoreCase))
-				{
-					--pIndex;
-					continue;
-				}
-
-				if (fname[fIndex].StartsWith(pattern[pIndex], StringComparison.InvariantCultureIgnoreCase))
-				{
-					isMask = false;
-					continue;
-				}
-
-				if (pattern[pIndex] == "*")
-				{
-					isMask = true;
-					continue;
-				}
-
-				return false;
-			}
-
-			return pIndex == pattern.Count;
-		}
-
-		public static string GetFunctionNameTestTransform(string originalFName)
-		{
-			return String.Join(" | ", SplitFunctionName(originalFName).ToArray());
-		}
-
-		private static IEnumerable<string> SplitByUpperCaseWording(string fname)
-		{
-			var lastUpperIndex = 0;
-			var counter = 0;
-			for (int index = 0; index < fname.Length; ++index)
-			{
-				if (char.IsUpper(fname[index]) ||
-					char.IsDigit(fname[index]) ||
-					fname[index] == '*' ||
-					(index > 0 && fname[index - 1] == '*'))
-				{
-					var tl = lastUpperIndex;
-					lastUpperIndex = index;
-					++counter;
-					yield return fname.Substring(tl, index - tl);
-				}
-			}
-
-			yield return fname.Substring(lastUpperIndex, fname.Length - lastUpperIndex);
-		}
-
-		public static IEnumerable<string> SplitFunctionName(string fname)
-		{
-			var openBracket = fname.IndexOf('('); //Extract function name without parameters
-			if (openBracket > 0 && openBracket < fname.Length)
-			{
-				fname = fname.Substring(0, openBracket);
-			}
-
-			var res = fname.Split(new[] { '.', '|', '^', '!', '$' }, StringSplitOptions.RemoveEmptyEntries);
-			return res
-				.SelectMany(r => SplitByUpperCaseWording(r))
-				.Where(s => !string.IsNullOrEmpty(s.Trim()));
 		}
 
 		private void FindDialog_FormClosing(object sender, FormClosingEventArgs e)
