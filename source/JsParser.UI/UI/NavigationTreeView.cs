@@ -158,6 +158,7 @@ namespace JsParser.UI.UI
 				return false;
 			}
 
+			StatisticsManager.Instance.Statistics.Container = codeProvider.ContainerName;
 			PerformNetworkActivity();
 
 			_lastParserResult = result;
