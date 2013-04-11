@@ -17,10 +17,10 @@ using JsParser.Package.UI;
 using JsParser.Package.Infrastructure;
 using EnvDTE80;
 using Microsoft.VisualStudio.Platform.WindowManagement;
-using JsParser.Package._2012;
 using JsParser.Core.Infrastructure;
 using JsParser.UI.Properties;
 using JsParser.UI.Infrastructure;
+using System.Reflection;
 
 namespace JsParser.Package
 {
@@ -59,7 +59,6 @@ namespace JsParser.Package
         private DocumentEvents _documentEvents;
         private SolutionEvents _solutionEvents;
         private WindowEvents _windowEvents;
-        private string _activeDocName;
         private IUIThemeProvider _uiThemeProvider;
         private static JsParserToolWindowManager _jsParserToolWindowManager;
 
@@ -146,7 +145,11 @@ namespace JsParser.Package
 
             if (VSVersionDetector.IsVs2012(dte.Version))
             {
-                _uiThemeProvider = new VS2012UIThemeProvider(GetService);
+                //load .Net4.5 assembly dynamically because current project targeted as 4.0 for VS2010 compability 
+                var asm = Assembly.Load("JsParser.Package.2012");
+                var type = asm.GetType("JsParser.Package._2012.VS2012UIThemeProvider");
+                object serviceDelegate = new Func<Type, object>(GetService);
+                _uiThemeProvider = (IUIThemeProvider) Activator.CreateInstance(type, serviceDelegate);
             }
             else 
             {
