@@ -42,6 +42,8 @@ namespace JsParser.Core.Parsers
 
         public string[] ToDoKeyWords { get; set; }
 
+        public bool IgnoreDebuggerKeyword { get; set; }
+
         public JavascriptParserSettings()
         {
             MaxParametersLengthInFunctionChain = 25;
@@ -53,6 +55,7 @@ namespace JsParser.Core.Parsers
             FixAspNetTags = true;
             FixRazorSyntax = true;
             ToDoKeyWords = new[] { "todo:", "to do:" };
+            IgnoreDebuggerKeyword = false;
         }
     }
 }

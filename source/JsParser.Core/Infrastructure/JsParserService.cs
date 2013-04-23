@@ -58,6 +58,9 @@ namespace JsParser.Core.Infrastructure
                 Filename = docName,
                 ExtensionsToBeConsideredAsJs = _settings.JSExtensions.OfType<string>().ToArray(),
                 ToDoKeyWords = _settings.ToDoKeywords.OfType<string>().ToArray(),
+                IgnoreDebuggerKeyword = _settings.IgnoreDebuggerKeyword,
+                FixAspNetTags = _settings.FixAspNetTags,
+                FixRazorSyntax = _settings.FixRazorSyntax,
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);

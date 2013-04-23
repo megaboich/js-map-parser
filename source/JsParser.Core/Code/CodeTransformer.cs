@@ -35,6 +35,12 @@ namespace JsParser.Core.Code
 			return source;
 		}
 
+		public static string FixDebuggerKeyword(string source)
+		{
+			var regExp = new Regex(@"([\W])(debugger)([\W])", RegexOptions.Compiled);
+			return regExp.Replace(source, "$1Debugger$3");
+		}
+
 		public static string KillAspNetTags(string source)
 		{
 			//Replace value-evaluated blocks like <%= ...%> or <%: ...%> with numeric-letter contents
@@ -74,7 +80,7 @@ namespace JsParser.Core.Code
 		/// <returns>True if found <script> blocks </returns>
 		public static bool ExtractJsFromSource(ref string source)
 		{
-			var regEx = new Regex(@"(<script[\s\S]*?>[\s\S]*?</script>)", RegexOptions.IgnoreCase);
+			var regEx = new Regex(@"(<script[\s\S]*?>[\s\S]*?</script>)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 			var matches = regEx.Split(source);
 			if (matches.Length > 1)

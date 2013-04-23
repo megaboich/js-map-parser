@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chIgnoreDebugger = new System.Windows.Forms.CheckBox();
+            this.edToDoKeyWords = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.chFixRazor = new System.Windows.Forms.CheckBox();
             this.chFixAspNet = new System.Windows.Forms.CheckBox();
             this.edJSExtensions = new System.Windows.Forms.TextBox();
@@ -73,8 +76,6 @@
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.edToDoKeyWords = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -105,6 +106,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chIgnoreDebugger);
             this.tabPage1.Controls.Add(this.edToDoKeyWords);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.chFixRazor);
@@ -123,23 +125,49 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // chIgnoreDebugger
+            // 
+            this.chIgnoreDebugger.AutoSize = true;
+            this.chIgnoreDebugger.Location = new System.Drawing.Point(19, 123);
+            this.chIgnoreDebugger.Name = "chIgnoreDebugger";
+            this.chIgnoreDebugger.Size = new System.Drawing.Size(157, 17);
+            this.chIgnoreDebugger.TabIndex = 4;
+            this.chIgnoreDebugger.Text = "Ignore \"debugger\" keyword";
+            this.chIgnoreDebugger.UseVisualStyleBackColor = true;
+            // 
+            // edToDoKeyWords
+            // 
+            this.edToDoKeyWords.Location = new System.Drawing.Point(19, 242);
+            this.edToDoKeyWords.Name = "edToDoKeyWords";
+            this.edToDoKeyWords.Size = new System.Drawing.Size(406, 20);
+            this.edToDoKeyWords.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Task List Keywords (separated by comma):";
+            // 
             // chFixRazor
             // 
             this.chFixRazor.AutoSize = true;
-            this.chFixRazor.Location = new System.Drawing.Point(19, 159);
+            this.chFixRazor.Location = new System.Drawing.Point(19, 169);
             this.chFixRazor.Name = "chFixRazor";
             this.chFixRazor.Size = new System.Drawing.Size(294, 17);
-            this.chFixRazor.TabIndex = 5;
+            this.chFixRazor.TabIndex = 6;
             this.chFixRazor.Text = "Process Razor syntax  in *.cshtml files to be correct script";
             this.chFixRazor.UseVisualStyleBackColor = true;
             // 
             // chFixAspNet
             // 
             this.chFixAspNet.AutoSize = true;
-            this.chFixAspNet.Location = new System.Drawing.Point(19, 136);
+            this.chFixAspNet.Location = new System.Drawing.Point(19, 146);
             this.chFixAspNet.Name = "chFixAspNet";
             this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
-            this.chFixAspNet.TabIndex = 4;
+            this.chFixAspNet.TabIndex = 5;
             this.chFixAspNet.Text = "Process Asp.Net blocks <%...%> to be correct script";
             this.chFixAspNet.UseVisualStyleBackColor = true;
             // 
@@ -172,7 +200,7 @@
             this.chTrackActiveItem.Location = new System.Drawing.Point(19, 192);
             this.chTrackActiveItem.Name = "chTrackActiveItem";
             this.chTrackActiveItem.Size = new System.Drawing.Size(220, 17);
-            this.chTrackActiveItem.TabIndex = 6;
+            this.chTrackActiveItem.TabIndex = 7;
             this.chTrackActiveItem.Text = "Automatically track active function in tree";
             this.chTrackActiveItem.UseVisualStyleBackColor = true;
             // 
@@ -613,22 +641,6 @@
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // edToDoKeyWords
-            // 
-            this.edToDoKeyWords.Location = new System.Drawing.Point(19, 242);
-            this.edToDoKeyWords.Name = "edToDoKeyWords";
-            this.edToDoKeyWords.Size = new System.Drawing.Size(406, 20);
-            this.edToDoKeyWords.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 226);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Task List Keywords (separated by comma):";
-            // 
             // JsParserSettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,5 +718,6 @@
         private System.Windows.Forms.CheckBox chFixAspNet;
         private System.Windows.Forms.TextBox edToDoKeyWords;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chIgnoreDebugger;
     }
 }

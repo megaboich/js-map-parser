@@ -38,6 +38,11 @@ namespace JsParser.Core.Parsers
 				code = CodeTransformer.KillAspNetTags(code);
 			}
 
+			if (_settings.IgnoreDebuggerKeyword)
+			{
+				code = CodeTransformer.FixDebuggerKeyword(code);
+			}
+
 			code = CodeTransformer.FixStringScriptBlocks(code);
 
 			var ext = Path.GetExtension(_settings.Filename).ToLower();
