@@ -32,21 +32,35 @@ namespace JsParser.Package.UI
         private string _docFilePath;
         private ICodeProvider _codeProvider;
 
-        public ErrorsNotificationControl(IWpfTextView textView)
+        public ErrorsNotificationControl(IWpfTextView wpfTextView)
         {
-            _textView = textView;
+            _textView = wpfTextView;
 
             this.Height = 0;
             this.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
 
-            //Get full path of dicument
-            ITextDocument document;
-            textView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(ITextDocument), out document);
-            _docFilePath = document.FilePath;
+            
+            Microsoft.VisualStudio.Text.ITextDocument document;
+            if (wpfTextView == null 
+                || wpfTextView.TextDataModel == null
+                || wpfTextView.TextDataModel.DocumentBuffer == null
+                || wpfTextView.TextDataModel.DocumentBuffer.Properties == null
+                || (!wpfTextView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(Microsoft.VisualStudio.Text.ITextDocument), out document))
+                || document == null
+                || document.TextBuffer == null
+            )
+            {
+                // Perform a monstroneous null-check while extracting document object. 
+                // There were couple of issues probably caused of non error checking : http://code.google.com/p/js-addin/issues/detail?id=32, http://code.google.com/p/js-addin/issues/detail?id=30
 
-            document.FileActionOccurred += document_FileActionOccurred;
-
-            JsParserEventsBroadcaster.Subscribe(JsParserEventsHandler, _docFilePath);
+                // There is no document, so just empty initialize without any functionality.
+            }
+            else
+            {
+                _docFilePath = document.FilePath;
+                document.FileActionOccurred += document_FileActionOccurred;
+                JsParserEventsBroadcaster.Subscribe(JsParserEventsHandler, _docFilePath);
+            }
 
             InitializeComponent();
         }
