@@ -128,11 +128,11 @@
             // chIgnoreDebugger
             // 
             this.chIgnoreDebugger.AutoSize = true;
-            this.chIgnoreDebugger.Location = new System.Drawing.Point(19, 123);
+            this.chIgnoreDebugger.Location = new System.Drawing.Point(19, 141);
             this.chIgnoreDebugger.Name = "chIgnoreDebugger";
-            this.chIgnoreDebugger.Size = new System.Drawing.Size(157, 17);
-            this.chIgnoreDebugger.TabIndex = 4;
-            this.chIgnoreDebugger.Text = "Ignore \"debugger\" keyword";
+            this.chIgnoreDebugger.Size = new System.Drawing.Size(227, 17);
+            this.chIgnoreDebugger.TabIndex = 5;
+            this.chIgnoreDebugger.Text = "Do not threat \"debugger\" keyword as error";
             this.chIgnoreDebugger.UseVisualStyleBackColor = true;
             // 
             // edToDoKeyWords
@@ -154,20 +154,20 @@
             // chFixRazor
             // 
             this.chFixRazor.AutoSize = true;
-            this.chFixRazor.Location = new System.Drawing.Point(19, 169);
+            this.chFixRazor.Location = new System.Drawing.Point(19, 187);
             this.chFixRazor.Name = "chFixRazor";
             this.chFixRazor.Size = new System.Drawing.Size(294, 17);
-            this.chFixRazor.TabIndex = 6;
+            this.chFixRazor.TabIndex = 7;
             this.chFixRazor.Text = "Process Razor syntax  in *.cshtml files to be correct script";
             this.chFixRazor.UseVisualStyleBackColor = true;
             // 
             // chFixAspNet
             // 
             this.chFixAspNet.AutoSize = true;
-            this.chFixAspNet.Location = new System.Drawing.Point(19, 146);
+            this.chFixAspNet.Location = new System.Drawing.Point(19, 164);
             this.chFixAspNet.Name = "chFixAspNet";
             this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
-            this.chFixAspNet.TabIndex = 5;
+            this.chFixAspNet.TabIndex = 6;
             this.chFixAspNet.Text = "Process Asp.Net blocks <%...%> to be correct script";
             this.chFixAspNet.UseVisualStyleBackColor = true;
             // 
@@ -197,10 +197,10 @@
             // chTrackActiveItem
             // 
             this.chTrackActiveItem.AutoSize = true;
-            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 192);
+            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 118);
             this.chTrackActiveItem.Name = "chTrackActiveItem";
             this.chTrackActiveItem.Size = new System.Drawing.Size(220, 17);
-            this.chTrackActiveItem.TabIndex = 7;
+            this.chTrackActiveItem.TabIndex = 4;
             this.chTrackActiveItem.Text = "Automatically track active function in tree";
             this.chTrackActiveItem.UseVisualStyleBackColor = true;
             // 
