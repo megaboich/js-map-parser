@@ -1,0 +1,8 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="anotherFake()" AliasType="Unknown" Line="22" EndLine="24" EndColumn="9" Pos="8" Opcode="Function" />
+    </Hierachy>
+  </Childrens>
+</Hierachy>

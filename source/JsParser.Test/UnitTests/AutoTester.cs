@@ -208,5 +208,12 @@ namespace UnitTests
 			var result = ProcessTemplate("Test_RazorSyntax.cshtml", "Test_RazorSyntax.xml");
 			Assert.AreEqual(0, result.Errors.Count);
 		}
+
+		[Test]
+		public void Test_AspScriptCombiner()
+		{
+			var result = ProcessTemplate("Test_AspScriptCombiner.aspx", "Test_AspScriptCombiner.xml");
+			Assert.AreEqual(0, result.Errors.Count);
+		}
 	}
 }

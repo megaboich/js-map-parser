@@ -80,7 +80,7 @@ namespace JsParser.Core.Code
 		/// <returns>True if found <script> blocks </returns>
 		public static bool ExtractJsFromSource(ref string source)
 		{
-			var regEx = new Regex(@"(<script[\s\S]*?>[\s\S]*?</script>)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			var regEx = new Regex(@"(<script [\s\S]*?>[\s\S]*?</script>)|(<script>[\s\S]*?</script>)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 			var matches = regEx.Split(source);
 			if (matches.Length > 1)

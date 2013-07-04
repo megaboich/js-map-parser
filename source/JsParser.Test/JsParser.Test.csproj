@@ -126,6 +126,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="UnitTests\Source\Test_AspScriptCombiner.aspx" />
     <None Include="UnitTests\Tests.nunit" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,8 @@
     <EmbeddedResource Include="UnitTests\Result\Test_AspTagsReplace.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_RazorSyntax.cshtml" />
     <EmbeddedResource Include="UnitTests\Result\Test_RazorSyntax.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_XmlComments.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_AspScriptCombiner.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
