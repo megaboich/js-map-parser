@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chIgnoreDebugger = new System.Windows.Forms.CheckBox();
@@ -76,6 +77,8 @@
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.chShowErrorNotificationOnTopOfTheEditor = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -106,6 +109,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chShowErrorNotificationOnTopOfTheEditor);
             this.tabPage1.Controls.Add(this.chIgnoreDebugger);
             this.tabPage1.Controls.Add(this.edToDoKeyWords);
             this.tabPage1.Controls.Add(this.label5);
@@ -128,7 +132,7 @@
             // chIgnoreDebugger
             // 
             this.chIgnoreDebugger.AutoSize = true;
-            this.chIgnoreDebugger.Location = new System.Drawing.Point(19, 141);
+            this.chIgnoreDebugger.Location = new System.Drawing.Point(19, 134);
             this.chIgnoreDebugger.Name = "chIgnoreDebugger";
             this.chIgnoreDebugger.Size = new System.Drawing.Size(227, 17);
             this.chIgnoreDebugger.TabIndex = 5;
@@ -137,24 +141,25 @@
             // 
             // edToDoKeyWords
             // 
-            this.edToDoKeyWords.Location = new System.Drawing.Point(19, 242);
+            this.edToDoKeyWords.Location = new System.Drawing.Point(19, 248);
             this.edToDoKeyWords.Name = "edToDoKeyWords";
             this.edToDoKeyWords.Size = new System.Drawing.Size(406, 20);
-            this.edToDoKeyWords.TabIndex = 9;
+            this.edToDoKeyWords.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 226);
+            this.label5.Location = new System.Drawing.Point(16, 232);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Task List Keywords (separated by comma):";
+            this.label5.Size = new System.Drawing.Size(224, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Keywords for Task List (separated by comma):";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // chFixRazor
             // 
             this.chFixRazor.AutoSize = true;
-            this.chFixRazor.Location = new System.Drawing.Point(19, 187);
+            this.chFixRazor.Location = new System.Drawing.Point(19, 180);
             this.chFixRazor.Name = "chFixRazor";
             this.chFixRazor.Size = new System.Drawing.Size(294, 17);
             this.chFixRazor.TabIndex = 7;
@@ -164,7 +169,7 @@
             // chFixAspNet
             // 
             this.chFixAspNet.AutoSize = true;
-            this.chFixAspNet.Location = new System.Drawing.Point(19, 164);
+            this.chFixAspNet.Location = new System.Drawing.Point(19, 157);
             this.chFixAspNet.Name = "chFixAspNet";
             this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
             this.chFixAspNet.TabIndex = 6;
@@ -173,7 +178,7 @@
             // 
             // edJSExtensions
             // 
-            this.edJSExtensions.Location = new System.Drawing.Point(19, 92);
+            this.edJSExtensions.Location = new System.Drawing.Point(19, 82);
             this.edJSExtensions.Name = "edJSExtensions";
             this.edJSExtensions.Size = new System.Drawing.Size(406, 20);
             this.edJSExtensions.TabIndex = 3;
@@ -181,7 +186,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 76);
+            this.label2.Location = new System.Drawing.Point(16, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(354, 13);
             this.label2.TabIndex = 2;
@@ -197,7 +202,7 @@
             // chTrackActiveItem
             // 
             this.chTrackActiveItem.AutoSize = true;
-            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 118);
+            this.chTrackActiveItem.Location = new System.Drawing.Point(19, 111);
             this.chTrackActiveItem.Name = "chTrackActiveItem";
             this.chTrackActiveItem.Size = new System.Drawing.Size(220, 17);
             this.chTrackActiveItem.TabIndex = 4;
@@ -641,6 +646,17 @@
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
+            // chShowErrorNotificationOnTopOfTheEditor
+            // 
+            this.chShowErrorNotificationOnTopOfTheEditor.AutoSize = true;
+            this.chShowErrorNotificationOnTopOfTheEditor.Location = new System.Drawing.Point(19, 203);
+            this.chShowErrorNotificationOnTopOfTheEditor.Name = "chShowErrorNotificationOnTopOfTheEditor";
+            this.chShowErrorNotificationOnTopOfTheEditor.Size = new System.Drawing.Size(306, 17);
+            this.chShowErrorNotificationOnTopOfTheEditor.TabIndex = 8;
+            this.chShowErrorNotificationOnTopOfTheEditor.Text = "Show error notification on top of the editor (VS2010 and up)";
+            this.toolTip1.SetToolTip(this.chShowErrorNotificationOnTopOfTheEditor, "Requires reopen of the editor to apply setting effect.");
+            this.chShowErrorNotificationOnTopOfTheEditor.UseVisualStyleBackColor = true;
+            // 
             // JsParserSettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,5 +735,7 @@
         private System.Windows.Forms.TextBox edToDoKeyWords;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chIgnoreDebugger;
+        private System.Windows.Forms.CheckBox chShowErrorNotificationOnTopOfTheEditor;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

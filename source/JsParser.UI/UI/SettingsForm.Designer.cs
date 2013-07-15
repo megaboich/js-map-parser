@@ -36,7 +36,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(301, 314);
+            this.button1.Location = new System.Drawing.Point(308, 346);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -47,7 +47,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(382, 314);
+            this.button2.Location = new System.Drawing.Point(389, 346);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -57,9 +57,10 @@
             // 
             // jsParserSettingsControl1
             // 
+            this.jsParserSettingsControl1.DefaultTreeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.jsParserSettingsControl1.Location = new System.Drawing.Point(12, 12);
             this.jsParserSettingsControl1.Name = "jsParserSettingsControl1";
-            this.jsParserSettingsControl1.Size = new System.Drawing.Size(460, 296);
+            this.jsParserSettingsControl1.Size = new System.Drawing.Size(460, 328);
             this.jsParserSettingsControl1.TabIndex = 2;
             // 
             // SettingsForm
@@ -68,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(476, 349);
+            this.ClientSize = new System.Drawing.Size(476, 381);
             this.Controls.Add(this.jsParserSettingsControl1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -39,27 +39,30 @@ namespace JsParser.Package.UI
             this.Height = 0;
             this.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
 
-            
-            Microsoft.VisualStudio.Text.ITextDocument document;
-            if (wpfTextView == null 
-                || wpfTextView.TextDataModel == null
-                || wpfTextView.TextDataModel.DocumentBuffer == null
-                || wpfTextView.TextDataModel.DocumentBuffer.Properties == null
-                || (!wpfTextView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(Microsoft.VisualStudio.Text.ITextDocument), out document))
-                || document == null
-                || document.TextBuffer == null
-            )
+            if (JsParser.UI.Properties.Settings.Default.ShowErrorsNotificationOnTopOfEditor)
             {
-                // Perform a monstroneous null-check while extracting document object. 
-                // There were couple of issues probably caused of non error checking : http://code.google.com/p/js-addin/issues/detail?id=32, http://code.google.com/p/js-addin/issues/detail?id=30
 
-                // There is no document, so just empty initialize without any functionality.
-            }
-            else
-            {
-                _docFilePath = document.FilePath;
-                document.FileActionOccurred += document_FileActionOccurred;
-                JsParserEventsBroadcaster.Subscribe(JsParserEventsHandler, _docFilePath);
+                Microsoft.VisualStudio.Text.ITextDocument document;
+                if (wpfTextView == null
+                    || wpfTextView.TextDataModel == null
+                    || wpfTextView.TextDataModel.DocumentBuffer == null
+                    || wpfTextView.TextDataModel.DocumentBuffer.Properties == null
+                    || (!wpfTextView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(Microsoft.VisualStudio.Text.ITextDocument), out document))
+                    || document == null
+                    || document.TextBuffer == null
+                )
+                {
+                    // Perform a monstroneous null-check while extracting document object. 
+                    // There were couple of issues probably caused of non error checking : http://code.google.com/p/js-addin/issues/detail?id=32, http://code.google.com/p/js-addin/issues/detail?id=30
+
+                    // There is no document, so just empty initialize without any functionality.
+                }
+                else
+                {
+                    _docFilePath = document.FilePath;
+                    document.FileActionOccurred += document_FileActionOccurred;
+                    JsParserEventsBroadcaster.Subscribe(JsParserEventsHandler, _docFilePath);
+                }
             }
 
             InitializeComponent();

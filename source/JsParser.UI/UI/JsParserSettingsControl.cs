@@ -58,6 +58,8 @@ namespace JsParser.UI.UI
             chIgnoreDebugger.Checked = Settings.Default.IgnoreDebuggerKeyword;
 
             edToDoKeyWords.Text = String.Join(", ", Settings.Default.ToDoKeywords.OfType<string>().ToArray());
+
+            chShowErrorNotificationOnTopOfTheEditor.Checked = Settings.Default.ShowErrorsNotificationOnTopOfEditor;
         }
 
         public void SaveSettings()
@@ -98,6 +100,8 @@ namespace JsParser.UI.UI
 
             Settings.Default.ToDoKeywords = new System.Collections.Specialized.StringCollection();
             Settings.Default.ToDoKeywords.AddRange(edToDoKeyWords.Text.Split(new[] { ',', ';' }).Select(p => p.Trim()).ToArray());
+
+            Settings.Default.ShowErrorsNotificationOnTopOfEditor = chShowErrorNotificationOnTopOfTheEditor.Checked;
 
             Settings.Default.Save();
         }
@@ -146,6 +150,11 @@ namespace JsParser.UI.UI
         {
             var lblName = "taggedFuncLabel" + (string)((Control)sender).Tag;
             ShowColorDialogForLabel(lblName);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

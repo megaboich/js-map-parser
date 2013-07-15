@@ -1,11 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version", "Version", "{AC7D627D-4666-4F1A-AF3D-4941E2697310}"
-	ProjectSection(SolutionItems) = preProject
-		..\Version.xml = ..\Version.xml
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Core", "JsParser.Core\JsParser.Core.csproj", "{4C9696D4-5D66-40F0-AADD-8D6772D1A249}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Test", "JsParser.Test\JsParser.Test.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
