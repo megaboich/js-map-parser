@@ -215,5 +215,12 @@ namespace UnitTests
 			var result = ProcessTemplate("Test_AspScriptCombiner.aspx", "Test_AspScriptCombiner.xml");
 			Assert.AreEqual(0, result.Errors.Count);
 		}
+
+        [Test]
+        public void Test_SkipJSParser()
+        {
+            var result = ProcessTemplate("Test_JSParserSkipHandling.js", "Test_JSParserSkipHandling.xml");
+            Assert.AreEqual(0, result.Errors.Count);
+        }
 	}
 }

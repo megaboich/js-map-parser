@@ -205,6 +205,8 @@
     <EmbeddedResource Include="UnitTests\Result\Test_RazorSyntax.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_XmlComments.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_AspScriptCombiner.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_JSParserSkipHandling.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_JSParserSkipHandling.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

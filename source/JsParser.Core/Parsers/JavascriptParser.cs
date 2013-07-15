@@ -31,13 +31,8 @@ namespace JsParser.Core.Parsers
 		/// <returns></returns>
 		public JSParserResult Parse(string code)
 		{
-			code = CodeTransformer.FixContinueStringLiterals(code);
-
-			if (_settings.FixAspNetTags)
-			{
-				code = CodeTransformer.KillAspNetTags(code);
-			}
-
+			code = CodeTransformer.ApplyJSParserSkip(code);
+			
 			if (_settings.IgnoreDebuggerKeyword)
 			{
 				code = CodeTransformer.FixDebuggerKeyword(code);
@@ -60,10 +55,16 @@ namespace JsParser.Core.Parsers
 				}
 			}
 
+			if (_settings.FixAspNetTags)
+			{
+				code = CodeTransformer.KillAspNetTags(code);
+			}
 			if (_settings.FixRazorSyntax && ext == "cshtml")
 			{
 				code = CodeTransformer.FixRazorSyntax(code);
 			}
+
+			code = CodeTransformer.FixContinueStringLiterals(code);
 			
 			return ParseInternal(code);
 		}

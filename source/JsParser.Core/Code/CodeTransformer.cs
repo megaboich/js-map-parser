@@ -60,6 +60,18 @@ namespace JsParser.Core.Code
 			return source;
 		}
 
+		public static string ApplyJSParserSkip(string source)
+		{
+			//Replace <%%> blocks with newlines to preserve correct line numbering
+			var regExp2 = new Regex("(jsparser:off.*?jsparser:on)", RegexOptions.Singleline | RegexOptions.Compiled);
+			source = regExp2.Replace(source, (match =>
+			{
+				return GetSpacedChunk(match.Value);
+			}));
+
+			return source;
+		}
+
 		public static string FixRazorSyntax(string source)
 		{
 			return source.Replace("@", string.Empty);
