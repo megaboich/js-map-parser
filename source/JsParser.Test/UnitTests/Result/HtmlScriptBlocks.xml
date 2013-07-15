@@ -5,13 +5,13 @@
       <Item Text="Function_In_The_Head(param1,param2)" AliasType="Unknown" Line="8" EndLine="11" EndColumn="4" Pos="3" Opcode="Function" Comment="//This is the function in the head" />
     </Hierachy>
     <Hierachy>
-      <Item Text="DefaultScriptFunction()" AliasType="Unknown" Line="19" EndLine="21" EndColumn="9" Pos="8" Opcode="Function" Comment="//script without type considered as javascript" />
+      <Item Text="DefaultScriptFunction()" AliasType="Unknown" Line="19" EndLine="21" EndColumn="3" Pos="2" Opcode="Function" Comment="//script without type considered as javascript" />
     </Hierachy>
     <Hierachy>
       <Item Text="Function_In_The_Javascript(param1,param2)" AliasType="Unknown" Line="29" EndLine="33" EndColumn="3" Pos="2" Opcode="Function" />
     </Hierachy>
     <Hierachy>
-      <Item Text="Function_In_The_Bottom(param1,param2)" AliasType="Unknown" Line="44" EndLine="47" EndColumn="3" Pos="2" Opcode="Function" Comment="//This is the function in the bottom&#xD;&#xA;//todo: Do something good!" />
+      <Item Text="Function_In_The_Bottom(param1,param2)" AliasType="Unknown" Line="44" EndLine="47" EndColumn="3" Pos="2" Opcode="Function" Comment="//This is the function in the bottom&#xD;&#xA;//TODO: Not forget to remove this hack!" />
     </Hierachy>
     <Hierachy>
       <Item Text="Class1(param1,param2)" AliasType="Unknown" Line="50" EndLine="74" EndColumn="3" Pos="15" Opcode="Function" Comment="//This is another sample of JS class" />

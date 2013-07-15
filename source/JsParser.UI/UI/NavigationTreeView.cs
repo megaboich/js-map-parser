@@ -351,7 +351,7 @@ namespace JsParser.UI.UI
 
 				CustomTreeNode treeNode = new CustomTreeNode(node.Alias);
 				treeNode.CodeNode = node;
-				treeNode.ToolTipText = node.Comment;
+				treeNode.ToolTipText = CommentTipFormatter.FormatPlainTextComment(node.Comment);
 				treeNode.StateImageIndex = GetImageIndex(node.Opcode);
 				_marksManager.RestoreMark(treeNode);
 				if (isHierarchy)
