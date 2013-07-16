@@ -3,7 +3,7 @@
   <Identifier Id="85fcde11-d0ea-4b3e-b03a-79b16c2379f7">
     <Name>Javascript Parser</Name>
     <Author>Oleksandr Boiko [mega.boich@gmail.com]</Author>
-    <Version>3.6</Version>
+    <Version>3.7</Version>
     <Description xml:space="preserve">Visual Studio Extension to improve support for Javascript.</Description>
     <Locale>1033</Locale>
     <MoreInfoUrl>http://code.google.com/p/js-addin/</MoreInfoUrl>
@@ -19,6 +19,11 @@
         <Edition>Pro</Edition>
       </VisualStudio>
       <VisualStudio Version="11.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+      </VisualStudio>
+      <VisualStudio Version="12.0">
         <Edition>Ultimate</Edition>
         <Edition>Premium</Edition>
         <Edition>Pro</Edition>
