@@ -12,7 +12,6 @@ namespace JsParser.Core.Infrastructure
     public class JsParserService
     {
         private string _loadedCodeHash;
-        private string _docName;
         private ISettings _settings;
 
         public JsParserService(ISettings settings)
@@ -28,7 +27,6 @@ namespace JsParser.Core.Infrastructure
         public void InvalidateCash()
         {
             _loadedCodeHash = null;
-            _docName = null;
         }
 
         public JSParserResult Process(ICodeProvider codeProvider, bool skipHashCheck = false)

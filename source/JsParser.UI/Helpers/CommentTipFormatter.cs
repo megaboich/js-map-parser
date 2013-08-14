@@ -110,7 +110,7 @@ namespace JsParser.UI.Helpers
                     result.OtherText = xmlDoc.InnerText.Trim();
                     return result;
                 }
-                catch(Exception ex) {
+                catch {
                     //no luck
                 }
             }

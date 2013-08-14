@@ -150,5 +150,10 @@ namespace JsParser.Core.Helpers
 
 			return true;
 		}
+
+		public override int GetHashCode()
+		{
+			throw new NotImplementedException("Hierarchy do not implement GetHashCode");
+		}
 	}
 }
