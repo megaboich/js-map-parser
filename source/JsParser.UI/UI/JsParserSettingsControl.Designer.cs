@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chShowErrorNotificationOnTopOfTheEditor = new System.Windows.Forms.CheckBox();
+            this.chIgnoreDebugger = new System.Windows.Forms.CheckBox();
             this.edJSExtensions = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.edExtensions = new System.Windows.Forms.TextBox();
@@ -63,6 +65,15 @@
             this.button8 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.taggedFuncLabel6 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.edToDoKeyWords = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chFixRazor = new System.Windows.Forms.CheckBox();
+            this.chFixAspNet = new System.Windows.Forms.CheckBox();
+            this.numericUpDownMaxParametersLengthInFunctionChain = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMaxParametersLength = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnForceSendStatistics = new System.Windows.Forms.Button();
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
@@ -70,17 +81,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.numericUpDownMaxParametersLengthInFunctionChain = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxParametersLength = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.edToDoKeyWords = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.chFixRazor = new System.Windows.Forms.CheckBox();
-            this.chFixAspNet = new System.Windows.Forms.CheckBox();
-            this.chShowErrorNotificationOnTopOfTheEditor = new System.Windows.Forms.CheckBox();
-            this.chIgnoreDebugger = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -91,11 +91,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,11 +104,12 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(2, 2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(374, 315);
+            this.tabControl1.Size = new System.Drawing.Size(564, 449);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -124,10 +125,31 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(366, 289);
+            this.tabPage1.Size = new System.Drawing.Size(556, 423);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chShowErrorNotificationOnTopOfTheEditor
+            // 
+            this.chShowErrorNotificationOnTopOfTheEditor.AutoSize = true;
+            this.chShowErrorNotificationOnTopOfTheEditor.Location = new System.Drawing.Point(9, 183);
+            this.chShowErrorNotificationOnTopOfTheEditor.Name = "chShowErrorNotificationOnTopOfTheEditor";
+            this.chShowErrorNotificationOnTopOfTheEditor.Size = new System.Drawing.Size(306, 17);
+            this.chShowErrorNotificationOnTopOfTheEditor.TabIndex = 6;
+            this.chShowErrorNotificationOnTopOfTheEditor.Text = "Show error notification on top of the editor (VS2010 and up)";
+            this.toolTip1.SetToolTip(this.chShowErrorNotificationOnTopOfTheEditor, "Requires reopen of the editor to apply setting effect.");
+            this.chShowErrorNotificationOnTopOfTheEditor.UseVisualStyleBackColor = true;
+            // 
+            // chIgnoreDebugger
+            // 
+            this.chIgnoreDebugger.AutoSize = true;
+            this.chIgnoreDebugger.Location = new System.Drawing.Point(9, 154);
+            this.chIgnoreDebugger.Name = "chIgnoreDebugger";
+            this.chIgnoreDebugger.Size = new System.Drawing.Size(227, 17);
+            this.chIgnoreDebugger.TabIndex = 5;
+            this.chIgnoreDebugger.Text = "Do not treat \"debugger\" keyword as error";
+            this.chIgnoreDebugger.UseVisualStyleBackColor = true;
             // 
             // edJSExtensions
             // 
@@ -183,7 +205,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(369, 289);
+            this.tabPage2.Size = new System.Drawing.Size(556, 423);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -497,6 +519,133 @@
             this.taggedFuncLabel6.TabIndex = 15;
             this.taggedFuncLabel6.Text = "taggedFunction()";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.edToDoKeyWords);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.chFixRazor);
+            this.tabPage4.Controls.Add(this.chFixAspNet);
+            this.tabPage4.Controls.Add(this.numericUpDownMaxParametersLengthInFunctionChain);
+            this.tabPage4.Controls.Add(this.numericUpDownMaxParametersLength);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(556, 423);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Advanced";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // edToDoKeyWords
+            // 
+            this.edToDoKeyWords.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.edToDoKeyWords.Location = new System.Drawing.Point(23, 31);
+            this.edToDoKeyWords.Name = "edToDoKeyWords";
+            this.edToDoKeyWords.Size = new System.Drawing.Size(336, 20);
+            this.edToDoKeyWords.TabIndex = 1;
+            this.edToDoKeyWords.Text = "TODO:, todo:, to do:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(224, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Keywords for Task List (separated by comma):";
+            // 
+            // chFixRazor
+            // 
+            this.chFixRazor.AutoSize = true;
+            this.chFixRazor.Location = new System.Drawing.Point(13, 155);
+            this.chFixRazor.Name = "chFixRazor";
+            this.chFixRazor.Size = new System.Drawing.Size(294, 17);
+            this.chFixRazor.TabIndex = 7;
+            this.chFixRazor.Text = "Process Razor syntax  in *.cshtml files to be correct script";
+            this.toolTip1.SetToolTip(this.chFixRazor, "Current implementation replaces @ with empty string, so it can help with Razor sy" +
+        "ntax. \r\nNot helps with complex razor expressions, so it is recommended to minimize" +
+        " razor inlines in javascript blocks.");
+            this.chFixRazor.UseVisualStyleBackColor = true;
+            // 
+            // chFixAspNet
+            // 
+            this.chFixAspNet.AutoSize = true;
+            this.chFixAspNet.Location = new System.Drawing.Point(13, 132);
+            this.chFixAspNet.Name = "chFixAspNet";
+            this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
+            this.chFixAspNet.TabIndex = 6;
+            this.chFixAspNet.Text = "Process Asp.Net blocks <%...%> to be correct script";
+            this.toolTip1.SetToolTip(this.chFixAspNet, "Remove all non-alphanumerical symbols from inside <%...%> blocks.\r\nAfter transformation code becomes v" +
+        "alid javascript just for structure parsing.");
+            this.chFixAspNet.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownMaxParametersLengthInFunctionChain
+            // 
+            this.numericUpDownMaxParametersLengthInFunctionChain.Location = new System.Drawing.Point(225, 97);
+            this.numericUpDownMaxParametersLengthInFunctionChain.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownMaxParametersLengthInFunctionChain.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLengthInFunctionChain.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLengthInFunctionChain.Name = "numericUpDownMaxParametersLengthInFunctionChain";
+            this.numericUpDownMaxParametersLengthInFunctionChain.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownMaxParametersLengthInFunctionChain.TabIndex = 5;
+            this.numericUpDownMaxParametersLengthInFunctionChain.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownMaxParametersLength
+            // 
+            this.numericUpDownMaxParametersLength.Location = new System.Drawing.Point(139, 72);
+            this.numericUpDownMaxParametersLength.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownMaxParametersLength.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLength.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxParametersLength.Name = "numericUpDownMaxParametersLength";
+            this.numericUpDownMaxParametersLength.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownMaxParametersLength.TabIndex = 3;
+            this.numericUpDownMaxParametersLength.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 99);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(211, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Max. Parameters Length In Function Chain:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 74);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Max. Parameters Length:";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.btnForceSendStatistics);
@@ -504,7 +653,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(369, 289);
+            this.tabPage3.Size = new System.Drawing.Size(366, 230);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Network";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -543,149 +692,6 @@
             this.panel1.Size = new System.Drawing.Size(564, 449);
             this.panel1.TabIndex = 1;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.edToDoKeyWords);
-            this.tabPage4.Controls.Add(this.label5);
-            this.tabPage4.Controls.Add(this.chFixRazor);
-            this.tabPage4.Controls.Add(this.chFixAspNet);
-            this.tabPage4.Controls.Add(this.numericUpDownMaxParametersLengthInFunctionChain);
-            this.tabPage4.Controls.Add(this.numericUpDownMaxParametersLength);
-            this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Controls.Add(this.label3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(369, 289);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Advanced";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDownMaxParametersLengthInFunctionChain
-            // 
-            this.numericUpDownMaxParametersLengthInFunctionChain.Location = new System.Drawing.Point(225, 97);
-            this.numericUpDownMaxParametersLengthInFunctionChain.Margin = new System.Windows.Forms.Padding(2);
-            this.numericUpDownMaxParametersLengthInFunctionChain.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLengthInFunctionChain.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLengthInFunctionChain.Name = "numericUpDownMaxParametersLengthInFunctionChain";
-            this.numericUpDownMaxParametersLengthInFunctionChain.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDownMaxParametersLengthInFunctionChain.TabIndex = 9;
-            this.numericUpDownMaxParametersLengthInFunctionChain.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownMaxParametersLength
-            // 
-            this.numericUpDownMaxParametersLength.Location = new System.Drawing.Point(139, 72);
-            this.numericUpDownMaxParametersLength.Margin = new System.Windows.Forms.Padding(2);
-            this.numericUpDownMaxParametersLength.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLength.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxParametersLength.Name = "numericUpDownMaxParametersLength";
-            this.numericUpDownMaxParametersLength.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDownMaxParametersLength.TabIndex = 7;
-            this.numericUpDownMaxParametersLength.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 99);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(211, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Max. Parameters Length In Function Chain:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 74);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Max. Parameters Length:";
-            // 
-            // edToDoKeyWords
-            // 
-            this.edToDoKeyWords.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.edToDoKeyWords.Location = new System.Drawing.Point(23, 31);
-            this.edToDoKeyWords.Name = "edToDoKeyWords";
-            this.edToDoKeyWords.Size = new System.Drawing.Size(336, 20);
-            this.edToDoKeyWords.TabIndex = 16;
-            this.edToDoKeyWords.Text = "TODO:, todo:, to do:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(224, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Keywords for Task List (separated by comma):";
-            // 
-            // chFixRazor
-            // 
-            this.chFixRazor.AutoSize = true;
-            this.chFixRazor.Location = new System.Drawing.Point(13, 155);
-            this.chFixRazor.Name = "chFixRazor";
-            this.chFixRazor.Size = new System.Drawing.Size(294, 17);
-            this.chFixRazor.TabIndex = 13;
-            this.chFixRazor.Text = "Process Razor syntax  in *.cshtml files to be correct script";
-            this.chFixRazor.UseVisualStyleBackColor = true;
-            // 
-            // chFixAspNet
-            // 
-            this.chFixAspNet.AutoSize = true;
-            this.chFixAspNet.Location = new System.Drawing.Point(13, 132);
-            this.chFixAspNet.Name = "chFixAspNet";
-            this.chFixAspNet.Size = new System.Drawing.Size(270, 17);
-            this.chFixAspNet.TabIndex = 12;
-            this.chFixAspNet.Text = "Process Asp.Net blocks <%...%> to be correct script";
-            this.chFixAspNet.UseVisualStyleBackColor = true;
-            // 
-            // chShowErrorNotificationOnTopOfTheEditor
-            // 
-            this.chShowErrorNotificationOnTopOfTheEditor.AutoSize = true;
-            this.chShowErrorNotificationOnTopOfTheEditor.Location = new System.Drawing.Point(9, 183);
-            this.chShowErrorNotificationOnTopOfTheEditor.Name = "chShowErrorNotificationOnTopOfTheEditor";
-            this.chShowErrorNotificationOnTopOfTheEditor.Size = new System.Drawing.Size(306, 17);
-            this.chShowErrorNotificationOnTopOfTheEditor.TabIndex = 16;
-            this.chShowErrorNotificationOnTopOfTheEditor.Text = "Show error notification on top of the editor (VS2010 and up)";
-            this.toolTip1.SetToolTip(this.chShowErrorNotificationOnTopOfTheEditor, "Requires reopen of the editor to apply setting effect.");
-            this.chShowErrorNotificationOnTopOfTheEditor.UseVisualStyleBackColor = true;
-            // 
-            // chIgnoreDebugger
-            // 
-            this.chIgnoreDebugger.AutoSize = true;
-            this.chIgnoreDebugger.Location = new System.Drawing.Point(9, 154);
-            this.chIgnoreDebugger.Name = "chIgnoreDebugger";
-            this.chIgnoreDebugger.Size = new System.Drawing.Size(227, 17);
-            this.chIgnoreDebugger.TabIndex = 15;
-            this.chIgnoreDebugger.Text = "Do not threat \"debugger\" keyword as error";
-            this.chIgnoreDebugger.UseVisualStyleBackColor = true;
-            // 
             // JsParserSettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,13 +712,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLengthInFunctionChain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxParametersLength)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
