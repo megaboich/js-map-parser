@@ -2,3 +2,5 @@ source/*/obj/
 source/*/bin/
 *.user
 *.suo
+source/JsParser.Package.3.7.1.Debug.vsix
+source/JsParser.Package.3.7.1.Release.vsix
