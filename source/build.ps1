@@ -42,7 +42,7 @@ $newPath = Mkdir $tempFolder
 Copy-Item $compiledPackageFileName $compiledPackageFileNameZip
 UnzipFileToFolder $compiledPackageFileNameZip $tempFolder
 
-dir "$tempFolder\*.*" | Copy-ToZip –zipfile $packageResultZip
+dir $tempFolder | Copy-ToZip –zipfile $packageResultZip
 Rename-Item $packageResultZip $packageResult
 
 del $tempFolder -recurse
