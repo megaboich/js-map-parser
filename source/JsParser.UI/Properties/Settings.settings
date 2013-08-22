@@ -106,12 +106,8 @@
     <Setting Name="UseVSColorTheme" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="JSExtensions" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;js&lt;/string&gt;
-  &lt;string&gt;axd&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
+    <Setting Name="ScriptStripEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FixAspNetTags" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -131,6 +127,33 @@
     </Setting>
     <Setting Name="ShowErrorsNotificationOnTopOfEditor" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ScriptStripExtensions" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;html&lt;/string&gt;
+  &lt;string&gt;htm&lt;/string&gt;
+  &lt;string&gt;asp&lt;/string&gt;
+  &lt;string&gt;aspx&lt;/string&gt;
+  &lt;string&gt;cshtml&lt;/string&gt;
+  &lt;string&gt;aspx&lt;/string&gt;
+  &lt;string&gt;ascx&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FixAspNetTagsExtensions" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;asp&lt;/string&gt;
+  &lt;string&gt;aspx&lt;/string&gt;
+  &lt;string&gt;ascx&lt;/string&gt;
+  &lt;string&gt;master&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="FixRazorSyntaxExtensions" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;cshtml&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

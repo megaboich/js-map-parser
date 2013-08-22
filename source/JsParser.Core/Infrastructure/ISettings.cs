@@ -8,10 +8,13 @@ namespace JsParser.Core.Infrastructure
         System.Collections.Specialized.StringCollection Extensions { get; set; }
         bool FilterByMarksEnabled { get; set; }
         bool FixAspNetTags { get; set; }
+        System.Collections.Specialized.StringCollection FixAspNetTagsExtensions { get; set; }
         bool FixRazorSyntax { get; set; }
+        System.Collections.Specialized.StringCollection FixRazorSyntaxExtensions { get; set; }
         bool HideAnonymousFunctions { get; set; }
         bool HierarchyEnabled { get; set; }
-        System.Collections.Specialized.StringCollection JSExtensions { get; set; }
+        bool ScriptStripEnabled { get; set; }
+        System.Collections.Specialized.StringCollection ScriptStripExtensions { get; set; }
         int MaxParametersLength { get; set; }
         int MaxParametersLengthInFunctionChain { get; set; }
         bool SendStatistics { get; set; }

@@ -54,11 +54,14 @@ namespace JsParser.Core.Infrastructure
                 ProcessHierarchy = _settings.HierarchyEnabled,
                 SkipAnonymousFuntions = _settings.HideAnonymousFunctions,
                 Filename = docName,
-                ExtensionsToBeConsideredAsJs = _settings.JSExtensions.OfType<string>().ToArray(),
+                ScriptStripEnabled = _settings.ScriptStripEnabled,
+                ScriptStripExtensions = _settings.ScriptStripExtensions.OfType<string>().ToArray(),
                 ToDoKeyWords = _settings.ToDoKeywords.OfType<string>().ToArray(),
                 IgnoreDebuggerKeyword = _settings.IgnoreDebuggerKeyword,
                 FixAspNetTags = _settings.FixAspNetTags,
+                FixAspNetTagsExtensions = _settings.FixAspNetTagsExtensions.OfType<string>().ToArray(),
                 FixRazorSyntax = _settings.FixRazorSyntax,
+                FixRazorSyntaxExtensions = _settings.FixRazorSyntaxExtensions.OfType<string>().ToArray(),
             };
 
             var result = (new JavascriptParser(parserSettings)).Parse(code);

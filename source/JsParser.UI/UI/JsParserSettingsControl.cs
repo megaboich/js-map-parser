@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using JsParser.UI.Helpers;
 using JsParser.UI.Properties;
+using System.Collections.Specialized;
 
 namespace JsParser.UI.UI
 {
@@ -32,7 +33,8 @@ namespace JsParser.UI.UI
         {
             chTrackActiveItem.Checked = Settings.Default.TrackActiveItem;
             edExtensions.Text = string.Join(" ", Settings.Default.Extensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
-            edJSExtensions.Text = string.Join(" ", Settings.Default.JSExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
+            chScriptStripEnabled.Checked = Settings.Default.ScriptStripEnabled;
+            edScriptStripEtensions.Text = string.Join(" ", Settings.Default.ScriptStripExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
 
             taggedFuncLabel1.ForeColor = Settings.Default.taggedFunction1Color;
             taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font ?? _defaultTreeFont;
@@ -53,7 +55,9 @@ namespace JsParser.UI.UI
             chSendStatistics.Checked = Settings.Default.SendStatistics;
             chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
             chFixAspNet.Checked = Settings.Default.FixAspNetTags;
+            edFixAspNetExtensions.Text = string.Join(" ", Settings.Default.FixAspNetTagsExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
             chFixRazor.Checked = Settings.Default.FixRazorSyntax;
+            edFixRazorExtensions.Text = string.Join(" ", Settings.Default.FixRazorSyntaxExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
 
             chIgnoreDebugger.Checked = Settings.Default.IgnoreDebuggerKeyword;
 
@@ -62,14 +66,21 @@ namespace JsParser.UI.UI
             chShowErrorNotificationOnTopOfTheEditor.Checked = Settings.Default.ShowErrorsNotificationOnTopOfEditor;
         }
 
+        private StringCollection ReadListOfExtensionsFromTextBoxText(string textBoxText)
+        {
+            var list = new StringCollection();
+            list.AddRange(textBoxText.Split(new[] { ' ', ',', ';' }, StringSplitOptions.RemoveEmptyEntries));
+            return list;
+        }
+
         public void SaveSettings()
         {
             Settings.Default.UseVSColorTheme = chUseVSColors.Checked;
             Settings.Default.TrackActiveItem = chTrackActiveItem.Checked;
-            Settings.Default.Extensions = new System.Collections.Specialized.StringCollection();
-            Settings.Default.Extensions.AddRange(edExtensions.Text.Split(new[] {' ', ',', ';'}, StringSplitOptions.RemoveEmptyEntries));
-            Settings.Default.JSExtensions = new System.Collections.Specialized.StringCollection();
-            Settings.Default.JSExtensions.AddRange(edJSExtensions.Text.Split(new[] { ' ', ',', ';' }, StringSplitOptions.RemoveEmptyEntries));
+            Settings.Default.Extensions = ReadListOfExtensionsFromTextBoxText(edExtensions.Text);
+
+            Settings.Default.ScriptStripEnabled = chScriptStripEnabled.Checked;
+            Settings.Default.ScriptStripExtensions = ReadListOfExtensionsFromTextBoxText(edScriptStripEtensions.Text);
 
             Settings.Default.taggedFunction1Color = taggedFuncLabel1.ForeColor;
             Settings.Default.taggedFunction1Font = taggedFuncLabel1.Font;
@@ -95,7 +106,9 @@ namespace JsParser.UI.UI
             }
 
             Settings.Default.FixAspNetTags = chFixAspNet.Checked;
+            Settings.Default.FixAspNetTagsExtensions = ReadListOfExtensionsFromTextBoxText(edFixAspNetExtensions.Text);
             Settings.Default.FixRazorSyntax = chFixRazor.Checked;
+            Settings.Default.FixRazorSyntaxExtensions = ReadListOfExtensionsFromTextBoxText(edFixRazorExtensions.Text);
             Settings.Default.IgnoreDebuggerKeyword = chIgnoreDebugger.Checked;
 
             Settings.Default.ToDoKeywords = new System.Collections.Specialized.StringCollection();
@@ -155,6 +168,21 @@ namespace JsParser.UI.UI
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void chScriptStripEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            edScriptStripEtensions.Enabled = chScriptStripEnabled.Checked;
+        }
+
+        private void chFixAspNet_CheckedChanged(object sender, EventArgs e)
+        {
+            edFixAspNetExtensions.Enabled = chFixAspNet.Checked;
+        }
+
+        private void chFixRazor_CheckedChanged(object sender, EventArgs e)
+        {
+            edFixRazorExtensions.Enabled = chFixRazor.Checked;
         }
     }
 }
