@@ -31,14 +31,20 @@ namespace JsParser.Core.Parsers
 
         public string Filename { get; set; }
 
+        public bool ScriptStripEnabled { get; set; }
+
         /// <summary>
-        /// List of extensions that are considered as JS files. No Script blocks will be parsed.
+        /// List of extensions that are considered as for script blocks stripping.
         /// </summary>
-        public string[] ExtensionsToBeConsideredAsJs { get; set; }
+        public string[] ScriptStripExtensions { get; set; }
 
         public bool FixAspNetTags { get; set; }
 
+        public string[] FixAspNetTagsExtensions { get; set; }
+
         public bool FixRazorSyntax { get; set; }
+
+        public string[] FixRazorSyntaxExtensions { get; set; }
 
         public string[] ToDoKeyWords { get; set; }
 
@@ -51,9 +57,12 @@ namespace JsParser.Core.Parsers
             ProcessHierarchy = true;
             SkipAnonymousFuntions = false;
             Filename = "fakefilename.html";
-            ExtensionsToBeConsideredAsJs = new[] { "js" };
+            ScriptStripEnabled = true;
+            ScriptStripExtensions = new[] { "htm", "html", "aspx", "asp", "ascx", "master", "cshtml" };
             FixAspNetTags = true;
+            FixAspNetTagsExtensions = new[] { "asp", "aspx", "ascx", "master" };
             FixRazorSyntax = true;
+            FixRazorSyntaxExtensions = new[] { "cshtml" };
             ToDoKeyWords = new[] { "todo:", "to do:" };
             IgnoreDebuggerKeyword = false;
         }

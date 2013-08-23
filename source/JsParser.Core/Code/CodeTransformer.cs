@@ -62,7 +62,7 @@ namespace JsParser.Core.Code
 
 		public static string ApplyJSParserSkip(string source)
 		{
-			//Replace <%%> blocks with newlines to preserve correct line numbering
+			//Replace matched blocks with newlines to preserve correct line numbering
 			var regExp2 = new Regex("(jsparser:off.*?jsparser:on)", RegexOptions.Singleline | RegexOptions.Compiled);
 			source = regExp2.Replace(source, (match =>
 			{
@@ -154,6 +154,12 @@ namespace JsParser.Core.Code
 				{
 					return null;
 				}
+			}
+
+			//Skip asp.net runat="server" script blocks
+			if (beginTag.Contains("runat") && beginTag.Contains("server"))
+			{
+				return null;
 			}
 
 			//get end tag </script>

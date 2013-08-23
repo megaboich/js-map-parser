@@ -31,6 +31,13 @@ namespace JsParser.Core.Parsers
 		/// <returns></returns>
 		public JSParserResult Parse(string code)
 		{
+			// Get extension
+			var ext = Path.GetExtension(_settings.Filename).ToLower();
+			if (ext.StartsWith("."))
+			{
+				ext = ext.Substring(1);
+			}
+
 			code = CodeTransformer.ApplyJSParserSkip(code);
 			
 			if (_settings.IgnoreDebuggerKeyword)
@@ -40,28 +47,23 @@ namespace JsParser.Core.Parsers
 
 			code = CodeTransformer.FixStringScriptBlocks(code);
 
-			var ext = Path.GetExtension(_settings.Filename).ToLower();
-			if (ext.StartsWith("."))
-			{
-				ext = ext.Substring(1);
-			}
-			if (!_settings.ExtensionsToBeConsideredAsJs.Contains(ext))
-			{
-				var foundScriptBlocks = CodeTransformer.ExtractJsFromSource(ref code);
-
-				if (!foundScriptBlocks)
-				{
-					return ParseInternal(string.Empty);
-				}
-			}
-
-			if (_settings.FixAspNetTags)
+			if (_settings.FixAspNetTags && _settings.FixAspNetTagsExtensions.Contains(ext))
 			{
 				code = CodeTransformer.KillAspNetTags(code);
 			}
-			if (_settings.FixRazorSyntax && ext == "cshtml")
+			if (_settings.FixRazorSyntax && _settings.FixRazorSyntaxExtensions.Contains(ext))
 			{
 				code = CodeTransformer.FixRazorSyntax(code);
+			}
+
+			if (_settings.ScriptStripEnabled && _settings.ScriptStripExtensions.Contains(ext))
+			{
+				var foundScriptBlocks = CodeTransformer.ExtractJsFromSource(ref code);
+
+				if (!foundScriptBlocks) //empty file
+				{
+					return ParseInternal(string.Empty);
+				}
 			}
 
 			code = CodeTransformer.FixContinueStringLiterals(code);
