@@ -127,7 +127,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="UnitTests\Source\Test_AspScriptCombiner.aspx" />
+    <EmbeddedResource Include="UnitTests\Source\Test_AspScriptCombiner.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
     <None Include="UnitTests\Tests.nunit" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +209,7 @@
     <EmbeddedResource Include="UnitTests\Result\Test_AspScriptCombiner.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_JSParserSkipHandling.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_JSParserSkipHandling.xml" />
+    <EmbeddedResource Include="UnitTests\Source\Test_AnonymousWithNames.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
@@ -236,6 +239,9 @@
       <Project>{2c3a9341-bfb8-45de-8b5c-e2bafe3a3b80}</Project>
       <Name>JsParser.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
