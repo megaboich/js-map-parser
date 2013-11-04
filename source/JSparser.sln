@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Core", "JsParser.Core\JsParser.Core.csproj", "{4C9696D4-5D66-40F0-AADD-8D6772D1A249}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Test", "JsParser.Test\JsParser.Test.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"

@@ -94,11 +94,6 @@ namespace JsParser.Core.Helpers
 			return h;
 		}
 
-		//public override int GetHashCode()
-		//{
-		//    return Serializer.Serialize(this).GetHashCode();
-		//}
-
 		/// <summary>
 		/// Equals custom implementation.
 		/// </summary>
@@ -149,11 +144,6 @@ namespace JsParser.Core.Helpers
 			}
 
 			return true;
-		}
-
-		public override int GetHashCode()
-		{
-			throw new NotImplementedException("Hierarchy do not implement GetHashCode");
 		}
 	}
 }
