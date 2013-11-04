@@ -963,6 +963,7 @@ namespace JsParser.UI.UI
 			RefreshTree();
 			++StatisticsManager.Instance.Statistics.HideAnonymousFunctionsUsedCount;
 			StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
+			toolTip1.Show("You must update active document (change\\save or switch to another) in order for the changes to take effect.", this, 10, -30, 4000);
 		}
 
 		private void UpdateToDoListToggleImage()
