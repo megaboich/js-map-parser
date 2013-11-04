@@ -184,10 +184,12 @@ namespace JsParser.Core.Parsers
 					}
 				}
 
-				var firstPart = alias.Concat(new NodeAlias("?", NodeAliasType.AnonymousFunctionInParameter));
-				var itemAlias = expressionAlias.Concat(firstPart);
+				
 				foreach (ExpressionListElement arg in invexp.Arguments.Arguments)
 				{
+					var argAlias = GetAliasForExpr(arg.Value);
+					var itemAlias = expressionAlias.Concat(alias.Concat(argAlias));
+
 					ProcessExpression(nodes, arg.Value, itemAlias);
 				}
 
@@ -197,7 +199,8 @@ namespace JsParser.Core.Parsers
 			if (exp is UnaryOperatorExpression)
 			{
 				var uexp = (UnaryOperatorExpression) exp;
-				var alias = ProcessExpression(nodes, uexp.Operand, expressionAlias.Concat(new NodeAlias("?")));
+				var opAlias = GetAliasForExpr(uexp.Operand);
+				var alias = ProcessExpression(nodes, uexp.Operand, expressionAlias.Concat(opAlias));
 				return alias;
 			}
 
@@ -290,6 +293,25 @@ namespace JsParser.Core.Parsers
 
 			//General case
 			return new NodeAlias(exp.Opcode.ToString());
+		}
+
+		private NodeAlias GetAliasForExpr(Expression expr)
+		{
+			var aliasStr = "?";
+			// Try to find name of the function passed as parameter - name of anonimous function
+			if (expr.Opcode == Expression.Operation.Function && expr is FunctionExpression)
+			{
+				if (((FunctionExpression)expr).Function.Name != null)
+				{
+					var fn = ((FunctionExpression)expr).Function.Name.Spelling;
+					if (!string.IsNullOrEmpty(fn))
+					{
+						aliasStr = fn;
+					}
+				}
+			}
+
+			return new NodeAlias(aliasStr, aliasStr == "?" ? NodeAliasType.Anonymous : NodeAliasType.Unknown);
 		}
 
 		private string StringifyArguments(List<ExpressionListElement> list)

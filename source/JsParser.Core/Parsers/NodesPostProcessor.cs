@@ -26,8 +26,7 @@
                     return false;
                 }
 
-                if (hierachy.Item.AliasType == NodeAliasType.AnonymousFunction
-                    || hierachy.Item.AliasType == NodeAliasType.AnonymousFunctionInParameter)
+                if (hierachy.Item.AliasType == NodeAliasType.Anonymous)
                 {
                     return true;
                 }

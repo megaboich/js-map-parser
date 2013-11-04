@@ -9,9 +9,8 @@ namespace JsParser.Core.Parsers
     public enum NodeAliasType
     {
         Unknown = 0,
-        AnonymousFunction = 1,
-        AnonymousFunctionInParameter = 2,
-        Variable = 3,
+        Anonymous = 1,
+        Variable = 2,
     }
 
     public class NodeAlias
@@ -53,7 +52,7 @@ namespace JsParser.Core.Parsers
             //int counter = 0;
             while (current != null /*&& ++counter <= 20*/)
             {
-                var concatenator = (type == NodeAliasType.AnonymousFunctionInParameter) ? ">" : ".";
+                var concatenator = (type == NodeAliasType.Anonymous) ? ">" : ".";
                 t = current.Text + concatenator + t;
                 type = current.Type;
                 current = current.Prev;
