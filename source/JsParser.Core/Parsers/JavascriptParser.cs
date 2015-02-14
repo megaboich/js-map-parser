@@ -14,7 +14,7 @@ namespace JsParser.Core.Parsers
 	/// <summary>
 	/// The js parser.
 	/// </summary>
-	public class JavascriptParser
+	public class JavascriptParser : IJavascriptParser
 	{
 		private CommentsAgregator _comments;
 		private JavascriptParserSettings _settings;

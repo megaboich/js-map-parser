@@ -76,6 +76,7 @@
     <Compile Include="Infrastructure\ISettings.cs" />
     <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
     <Compile Include="Infrastructure\JsParserService.cs" />
+    <Compile Include="Parsers\IJavascriptParser.cs" />
     <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />
@@ -110,7 +111,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Jint.Parser\Jint.Parser.csproj">
+      <Project>{f2d9f1ae-8db3-4e58-a83c-3297eb69f715}</Project>
+      <Name>Jint.Parser</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
