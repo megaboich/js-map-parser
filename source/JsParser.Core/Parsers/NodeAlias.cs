@@ -11,6 +11,8 @@ namespace JsParser.Core.Parsers
         Unknown = 0,
         Anonymous = 1,
         Variable = 2,
+        FunctionDefinition = 3,
+        AnonymousFunctionInParameter = 4,
     }
 
     public class NodeAlias

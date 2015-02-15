@@ -23,7 +23,8 @@ namespace UnitTests
 			{
 				Filename = sourceName,
 			};
-			var actualResult = (new JavascriptParser(settings)).Parse(source);
+			//var actualResult = (new JavascriptParser(settings)).Parse(source);
+            var actualResult = (new JavaScriptParserV2()).Parse(source);
 
 			Directory.CreateDirectory("C:\\outxml");
 			//Save actual hierarchy xml

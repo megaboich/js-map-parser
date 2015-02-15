@@ -210,6 +210,8 @@
     <EmbeddedResource Include="UnitTests\Source\Test_JSParserSkipHandling.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_JSParserSkipHandling.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test_AnonymousWithNames.js" />
+    <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy.js" />
+    <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy2.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

@@ -4,20 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="600">
+             d:DesignHeight="30" d:DesignWidth="600" IsEnabled="True">
     <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
         <DockPanel Background="Beige" Height="28" >
             <Image 
                 Source="../Resources/error_icon.png" 
                 VerticalAlignment="Center" Margin="8,0,0,0" Width="16" Height="16"
-                RenderOptions.BitmapScalingMode="NearestNeighbor"
-                RenderOptions.EdgeMode="Aliased"
+                RenderOptions.BitmapScalingMode="LowQuality"
                 />
             <Label Name="SummaryMessageLabel" 
                 VerticalAlignment="Center" Margin="4,0,0,0" Content="Javascript Parser: {0} errors found."></Label>
             <ComboBox
                 Name="ErrorsDetailsCombobox"
-                Focusable="False"
+                Focusable="True"
+                IsEnabled="True"
                 Margin="8,0,4,0"
                 VerticalAlignment="Center"
                 DisplayMemberPath="Text" 

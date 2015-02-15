@@ -64,7 +64,8 @@ namespace JsParser.Core.Infrastructure
                 FixRazorSyntaxExtensions = _settings.FixRazorSyntaxExtensions.OfType<string>().ToArray(),
             };
 
-            var result = (new JavascriptParser(parserSettings)).Parse(code);
+            //var result = (new JavascriptParser(parserSettings)).Parse(code);
+            var result = (new JavaScriptParserV2()).Parse(code);
             result.FileName = docName;
             return result;
         }

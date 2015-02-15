@@ -18,6 +18,14 @@ namespace JsParser.Core.Parsers
         public List<ErrorMessage> InternalErrors { get; set; }
 
         public List<TaskListItem> TaskList { get; set; }
+
+        public JSParserResult()
+        {
+            Nodes = new Hierachy<CodeNode>(new CodeNode(){Alias = "All"});
+            Errors = new List<ErrorMessage>();
+            InternalErrors = new List<ErrorMessage>();
+            TaskList = new List<TaskListItem>();
+        }
     }
 
     public class ErrorMessage

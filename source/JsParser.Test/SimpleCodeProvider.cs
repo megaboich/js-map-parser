@@ -49,8 +49,15 @@ namespace JsParser.Test
 
 		public void SelectionMoveToLineAndOffset(int startLine, int startColumn)
 		{
-			var textLen = _textBox.Lines.Take(startLine - 1).Select(l => l.Length + 1).Aggregate((t, l) => t += l);
-			_textBox.Select(textLen + startColumn - 1, 0);
+		    if (startLine == 1)
+		    {
+                _textBox.Select(startLine + startColumn - 1, 0);
+		    }
+		    else
+		    {
+		        var textLen = _textBox.Lines.Take(startLine - 1).Select(l => l.Length + 1).Aggregate((t, l) => t += l);
+		        _textBox.Select(textLen + startColumn - 1, 0);
+		    }
 		}
 
 		public void SetFocus()
