@@ -1,0 +1,3 @@
+﻿window.globalFunc = function() {
+	
+}

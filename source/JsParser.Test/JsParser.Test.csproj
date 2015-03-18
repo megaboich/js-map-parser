@@ -212,6 +212,9 @@
     <EmbeddedResource Include="UnitTests\Source\Test_AnonymousWithNames.js" />
     <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy.js" />
     <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy2.js" />
+    <EmbeddedResource Include="UnitTests\Source\New\Assignment.js" />
+    <EmbeddedResource Include="UnitTests\Source\New\CallbackChain.js" />
+    <EmbeddedResource Include="UnitTests\Source\New\ArrayChain.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

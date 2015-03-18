@@ -33,7 +33,7 @@ namespace JsParser.Core.Infrastructure
         {
             Code = codeProvider;
             string docName = Path.Combine(Code.Path, Code.Name);
-            
+
             if (!CheckExt(docName))
             {
                 return null;
@@ -64,8 +64,7 @@ namespace JsParser.Core.Infrastructure
                 FixRazorSyntaxExtensions = _settings.FixRazorSyntaxExtensions.OfType<string>().ToArray(),
             };
 
-            //var result = (new JavascriptParser(parserSettings)).Parse(code);
-            var result = (new JavaScriptParserV2()).Parse(code);
+            var result = (new JavascriptParser(parserSettings)).Parse(code);
             result.FileName = docName;
             return result;
         }
