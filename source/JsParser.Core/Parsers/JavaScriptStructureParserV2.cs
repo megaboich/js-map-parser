@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web.Script.Serialization;
 using Jint.Parser;
 using Jint.Parser.Ast;
 using JsParser.Core.Code;
@@ -12,6 +11,7 @@ namespace JsParser.Core.Parsers
 {
     public class JavascriptStructureParserV2
     {
+        private CommentsAgregator _comments;
         private JavascriptParserSettings _settings;
 
         private List<string> _nameStack = new List<string>();
@@ -56,7 +56,13 @@ namespace JsParser.Core.Parsers
             {
                 return returnedResult;
             }
-            
+
+            var comments = (program.Comments ?? Enumerable.Empty<Comment>())
+                .Select(c => (ICommentWrapper)new JintCommentWrapper(c)).ToList();
+
+            var codeLines = code.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
+            _comments = new CommentsAgregator(comments, codeLines);
+
             ProcessStatements(program.Body, returnedResult.Nodes);
 
             return returnedResult;
@@ -137,7 +143,7 @@ namespace JsParser.Core.Parsers
                 StartColumn = syntaxNode.Location.Start.Column,
                 EndLine = syntaxNode.Location.End.Line,
                 EndColumn = syntaxNode.Location.End.Column,
-                //Comment = _comments.GetComment(function.Location.StartLine, function.Location.EndLine)
+                Comment = _comments.GetComment(syntaxNode.Location.Start.Line, syntaxNode.Location.End.Line)
             };
             
             if (function.Body is BlockStatement)
@@ -205,7 +211,7 @@ namespace JsParser.Core.Parsers
                     StartColumn = exp.Location.Start.Column,
                     EndLine = exp.Location.End.Line,
                     EndColumn = exp.Location.End.Column,
-                    //Comment = _comments.GetComment(exp.Location.StartLine, exp.Location.EndLine)
+                    Comment = _comments.GetComment(exp.Location.Start.Line, exp.Location.End.Line)
                 };
                 Hierachy<CodeNode> hi = nodes.Add(codeNode);
 
