@@ -12,7 +12,6 @@ namespace JsParser.Core.Infrastructure
         bool FixRazorSyntax { get; set; }
         System.Collections.Specialized.StringCollection FixRazorSyntaxExtensions { get; set; }
         bool HideAnonymousFunctions { get; set; }
-        bool HierarchyEnabled { get; set; }
         bool ScriptStripEnabled { get; set; }
         System.Collections.Specialized.StringCollection ScriptStripExtensions { get; set; }
         int MaxParametersLength { get; set; }

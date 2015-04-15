@@ -123,7 +123,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void TestHtmlScriptBlocks()
+        public void HtmlScriptBlocks()
         {
             ProcessTemplate("HtmlScriptBlocks.htm", "HtmlScriptBlocks.xml");
         }
@@ -219,7 +219,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void Test_RazorTagsReplace()
+        public void Test_RazorSyntax()
         {
             var result = ProcessTemplate("Test_RazorSyntax.cshtml", "Test_RazorSyntax.xml");
             Assert.AreEqual(0, result.Errors.Count);

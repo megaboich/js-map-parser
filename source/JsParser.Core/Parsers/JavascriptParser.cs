@@ -64,7 +64,6 @@ namespace JsParser.Core.Parsers
             var result = ParseInternal(code);
 
             NodesPostProcessor.HideAnonymousFunctions(result.Nodes, _settings);
-            NodesPostProcessor.GroupNodesByVariableDeclaration(result.Nodes, _settings);
 
             return result;
         }

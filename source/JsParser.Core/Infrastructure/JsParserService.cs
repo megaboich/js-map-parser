@@ -51,7 +51,6 @@ namespace JsParser.Core.Infrastructure
             {
                 MaxParametersLength = _settings.MaxParametersLength,
                 MaxParametersLengthInFunctionChain = _settings.MaxParametersLengthInFunctionChain,
-                ProcessHierarchy = _settings.HierarchyEnabled,
                 SkipAnonymousFuntions = _settings.HideAnonymousFunctions,
                 Filename = docName,
                 ScriptStripEnabled = _settings.ScriptStripEnabled,

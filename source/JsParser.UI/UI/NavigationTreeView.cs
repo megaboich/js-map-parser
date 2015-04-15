@@ -54,7 +54,6 @@ namespace JsParser.UI.UI
 			treeView1.LostFocus += LostFocusHandler;
 
 			sortItemsAlphabeticallyToolStripMenuItem.Checked = Settings.SortingEnabled;
-			showHierarhyToolStripMenuItem.Checked = Settings.HierarchyEnabled;
 			showLineNumbersToolStripMenuItem.Checked = Settings.ShowLineNumbersEnabled;
 			filterByMarksToolStripMenuItem.Checked = Settings.FilterByMarksEnabled;
 			expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
@@ -169,7 +168,7 @@ namespace JsParser.UI.UI
 			_marksManager.SetFile(_loadedDocName);
 
 			var isSort = Settings.SortingEnabled;
-			var isHierarchy = Settings.HierarchyEnabled;
+			var isHierarchy = true;
 
 			_treeRefreshing = true;
 			treeView1.BeginUpdate();
@@ -333,7 +332,7 @@ namespace JsParser.UI.UI
 			}
 
 			var isSort = Settings.SortingEnabled;
-			var isHierarchy = Settings.HierarchyEnabled;
+			var isHierarchy = true;
 			var childrens = source.Childrens;
 			if (isSort)
 			{
@@ -509,7 +508,6 @@ namespace JsParser.UI.UI
 		private void SaveSettings()
 		{
 			Settings.SortingEnabled = sortItemsAlphabeticallyToolStripMenuItem.Checked;
-			Settings.HierarchyEnabled = showHierarhyToolStripMenuItem.Checked;
 			Settings.ShowLineNumbersEnabled = showLineNumbersToolStripMenuItem.Checked;
 			Settings.FilterByMarksEnabled = filterByMarksToolStripMenuItem.Checked;
 			Settings.AutoExpandAll = expandAllByDefaultToolStripMenuItem.Checked;

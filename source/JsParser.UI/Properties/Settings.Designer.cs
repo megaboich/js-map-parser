@@ -50,18 +50,6 @@ namespace JsParser.UI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool HierarchyEnabled {
-            get {
-                return ((bool)(this["HierarchyEnabled"]));
-            }
-            set {
-                this["HierarchyEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ShowLineNumbersEnabled {
             get {
                 return ((bool)(this["ShowLineNumbersEnabled"]));

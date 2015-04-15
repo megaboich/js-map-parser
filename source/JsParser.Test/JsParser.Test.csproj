@@ -219,6 +219,8 @@
     <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.alt.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt.xml" />
     <EmbeddedResource Include="UnitTests\Source\New\InlineOrDecralation.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt1.xml" />
+    <EmbeddedResource Include="UnitTests\Source\New\ReturnStatement.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

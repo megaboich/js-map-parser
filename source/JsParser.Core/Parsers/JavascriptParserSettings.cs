@@ -20,11 +20,6 @@ namespace JsParser.Core.Parsers
         public int MaxParametersLength { get; set; }
 
         /// <summary>
-        /// Gets or sets Flag indicating that parser will additionally process hierarchy.
-        /// </summary>
-        public bool ProcessHierarchy { get; set; }
-
-        /// <summary>
         /// Gets or sets flag indicating to skip anonymous functions
         /// </summary>
         public bool SkipAnonymousFuntions { get; set; }
@@ -54,7 +49,6 @@ namespace JsParser.Core.Parsers
         {
             MaxParametersLengthInFunctionChain = 25;
             MaxParametersLength = 25;
-            ProcessHierarchy = true;
             SkipAnonymousFuntions = false;
             Filename = "fakefilename.html";
             ScriptStripEnabled = true;

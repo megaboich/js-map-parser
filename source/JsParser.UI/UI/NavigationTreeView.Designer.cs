@@ -48,7 +48,6 @@ namespace JsParser.UI.UI
 			this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
 			this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-			this.showHierarhyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.expandAllByDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.collapseAllNodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,7 +207,6 @@ namespace JsParser.UI.UI
 			this.toolStripDropDownButton2.AutoToolTip = false;
 			this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showHierarhyToolStripMenuItem,
             this.expandAllByDefaultToolStripMenuItem,
             this.expandAllToolStripMenuItem,
             this.collapseAllNodesToolStripMenuItem,
@@ -224,15 +222,6 @@ namespace JsParser.UI.UI
 			this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
 			this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 22);
 			this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
-			// 
-			// showHierarhyToolStripMenuItem
-			// 
-			this.showHierarhyToolStripMenuItem.CheckOnClick = true;
-			this.showHierarhyToolStripMenuItem.Image = global::JsParser.UI.Properties.Resources.tree;
-			this.showHierarhyToolStripMenuItem.Name = "showHierarhyToolStripMenuItem";
-			this.showHierarhyToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-			this.showHierarhyToolStripMenuItem.Text = "Show Hierachy";
-			this.showHierarhyToolStripMenuItem.Click += new System.EventHandler(this.showHierarhyToolStripMenuItem_Click);
 			// 
 			// expandAllByDefaultToolStripMenuItem
 			// 
@@ -541,7 +530,6 @@ namespace JsParser.UI.UI
         private CustomPanel panelLinesNumbers;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripMenuItem showHierarhyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;

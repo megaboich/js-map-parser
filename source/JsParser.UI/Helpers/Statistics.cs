@@ -51,8 +51,6 @@ namespace JsParser.UI.Helpers
 
         public bool IsAutoTrackItemEnabled { get; set; }
 
-        public bool IsHierachyShowedOption { get; set; }
-
         public bool IsAutoExpandAllEnabled { get; set; }
 
         public bool IsShowLineNumbersEnabled { get; set; }
@@ -95,7 +93,6 @@ namespace JsParser.UI.Helpers
         public void UpdateStatisticsFromSettings()
         {
             IsAutoTrackItemEnabled = Settings.Default.TrackActiveItem;
-            IsHierachyShowedOption = Settings.Default.HierarchyEnabled;
             IsAutoExpandAllEnabled = Settings.Default.AutoExpandAll;
             IsShowLineNumbersEnabled = Settings.Default.ShowLineNumbersEnabled;
             IsSortingEnabled = Settings.Default.SortingEnabled;

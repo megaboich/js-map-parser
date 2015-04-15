@@ -1,0 +1,30 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="Pen(tag)" AliasType="FunctionDefinition" Line="2" EndLine="25" EndColumn="1" Pos="6" Opcode="Function" />
+      <Childrens />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="prototype" AliasType="Unknown" Line="26" EndLine="61" EndColumn="1" Pos="16" Opcode="Object" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="height()" AliasType="FunctionDefinition" Line="27" EndLine="29" EndColumn="5" Pos="12" Opcode="Function" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="goto(x,y)" AliasType="FunctionDefinition" Line="31" EndLine="41" EndColumn="5" Pos="10" Opcode="Function" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="jump(x,y)" AliasType="FunctionDefinition" Line="43" EndLine="52" EndColumn="5" Pos="10" Opcode="Function" />
+          <Childrens />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="height()" AliasType="FunctionDefinition" Line="54" EndLine="56" EndColumn="5" Pos="12" Opcode="Function" />
+        </Hierachy>
+        <Hierachy>
+          <Item Text="center()" AliasType="FunctionDefinition" Line="58" EndLine="60" EndColumn="5" Pos="12" Opcode="Function" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

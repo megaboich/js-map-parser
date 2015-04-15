@@ -88,6 +88,7 @@
     <Compile Include="Parsers\JSParserExtensions.cs" />
     <Compile Include="Parsers\JSParserResult.cs" />
     <Compile Include="Parsers\NodesPostProcessor.cs" />
+    <Compile Include="Parsers\ParserContext.cs" />
     <Compile Include="Parsers\TaskListAggregator.cs" />
     <Compile Include="Parsers\TaskListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

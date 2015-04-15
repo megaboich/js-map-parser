@@ -14,8 +14,6 @@ namespace JsParser.Core.Parsers
         private CommentsAgregator _comments;
         private JavascriptParserSettings _settings;
 
-        private List<string> _nameStack = new List<string>();
-
         public JavascriptStructureParserV2(JavascriptParserSettings settings)
         {
             _settings = settings;
@@ -35,8 +33,6 @@ namespace JsParser.Core.Parsers
                     Tokens = true,
                     Comment = true,
                 });
-
-                //serialized = new JavaScriptSerializer().Serialize(program);
             }
             catch (ParserException pex)
             {
@@ -68,120 +64,116 @@ namespace JsParser.Core.Parsers
             var codeLines = code.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
             _comments = new CommentsAgregator(comments, codeLines);
 
-            ProcessStatements(program.Body, returnedResult.Nodes);
+            ProcessStatements(program.Body, new ParserContext(returnedResult.Nodes));
 
             return returnedResult;
         }
 
-        private void ProcessStatements(IEnumerable<Statement> statements, Hierachy<CodeNode> nodes)
+        private void ProcessStatements(IEnumerable<Statement> statements, ParserContext context)
         {
             foreach (var statement in statements)
             {
-                ProcessStatement(statement, nodes);
+                ProcessStatement(statement, context);
             }
         }
 
-        private void ProcessStatement(Statement statement, Hierachy<CodeNode> nodes)
+        private void ProcessStatement(Statement statement, ParserContext context)
         {
-            _nameStack.Clear();
+            context = new ParserContext(context.Nodes);
 
             if (statement is FunctionDeclaration)
             {
-                ProcessFunctionDeclaration(statement.As<FunctionDeclaration>(), nodes);
+                ProcessFunctionDeclaration(statement.As<FunctionDeclaration>(), context);
                 return;
             }
 
             if (statement is VariableDeclaration)
             {
-                ProcessVariableDeclaration(statement.As<VariableDeclaration>(), nodes);
+                ProcessVariableDeclaration(statement.As<VariableDeclaration>(), context);
                 return;
             }
 
             if (statement is ExpressionStatement)
             {
-                ProcessExpression(statement.As<ExpressionStatement>().Expression, nodes);
+                ProcessExpression(statement.As<ExpressionStatement>().Expression, context);
                 return;
             }
 
             if (statement is ReturnStatement)
             {
-                _nameStack.Add("return");
-                ProcessExpression(statement.As<ReturnStatement>().Argument, nodes);
+                ProcessExpression(statement.As<ReturnStatement>().Argument, context);
                 return;
             }
 
             if (statement is BlockStatement)
             {
-                ProcessStatements(statement.As<BlockStatement>().Body, nodes);
+                ProcessStatements(statement.As<BlockStatement>().Body, context);
             }
 
             if (statement is IfStatement)
             {
-                ProcessExpression(statement.As<IfStatement>().Test, nodes);
-                ProcessStatement(statement.As<IfStatement>().Consequent, nodes);
-                ProcessStatement(statement.As<IfStatement>().Alternate, nodes);
+                ProcessExpression(statement.As<IfStatement>().Test, context);
+                ProcessStatement(statement.As<IfStatement>().Consequent, context);
+                ProcessStatement(statement.As<IfStatement>().Alternate, context);
             }
 
             if (statement is TryStatement)
             {
-                ProcessStatement(statement.As<TryStatement>().Block, nodes);
-                ProcessStatement(statement.As<TryStatement>().Finalizer, nodes);
-                ProcessStatements(statement.As<TryStatement>().Handlers.OfType<Statement>(), nodes);
-                ProcessStatements(statement.As<TryStatement>().GuardedHandlers, nodes);
+                ProcessStatement(statement.As<TryStatement>().Block, context);
+                ProcessStatement(statement.As<TryStatement>().Finalizer, context);
+                ProcessStatements(statement.As<TryStatement>().Handlers.OfType<Statement>(), context);
+                ProcessStatements(statement.As<TryStatement>().GuardedHandlers, context);
             }
 
             if (statement is CatchClause)
             {
-                ProcessStatement(statement.As<CatchClause>().Body, nodes);
+                ProcessStatement(statement.As<CatchClause>().Body, context);
             }
 
             if (statement is SwitchStatement)
             {
-                ProcessExpression(statement.As<SwitchStatement>().Discriminant, nodes);
-                ProcessStatements(statement.As<SwitchStatement>().Cases.SelectMany(c => c.Consequent), nodes);
+                ProcessExpression(statement.As<SwitchStatement>().Discriminant, context);
+                ProcessStatements(statement.As<SwitchStatement>().Cases.SelectMany(c => c.Consequent), context);
             }
         }
 
         private void ProcessVariableDeclaration(
             VariableDeclaration variableDeclaration,
-            Hierachy<CodeNode> nodes)
+            ParserContext context)
         {
             foreach (var variable in variableDeclaration.Declarations)
             {
-                _nameStack.Clear();
                 if (variable.Init != null)
                 {
-                    ProcessExpression(variable.Id, nodes);
+                    var childContext = new ParserContext(context);
 
-                    var codeNode = new CodeNode
-                    {
-                        Alias = variable.Id.Name,
-                        AliasType = NodeAliasType.Variable,
-                        Opcode = "Variable",
-                        StartLine = variableDeclaration.Location.Start.Line,
-                        StartColumn = variableDeclaration.Location.Start.Column,
-                        EndLine = variableDeclaration.Location.End.Line,
-                        EndColumn = variableDeclaration.Location.End.Column,
-                        Comment = _comments.GetComment(variableDeclaration.Location.Start.Line, variableDeclaration.Location.End.Line)
-                    };
-
-                    Hierachy<CodeNode> hi = nodes.Add(codeNode);
-
-                    ProcessExpression(variable.Init, nodes);
+                    ProcessExpression(variable.Id, childContext);
+                    ProcessExpression(variable.Init, childContext);
                 }
             }
         }
 
         private void ProcessFunctionDeclaration(
             IFunctionDeclaration function,
-            Hierachy<CodeNode> nodes)
+            ParserContext context)
         {
-            var name = function.Id != null
-                ? function.Id.Name
-                : _nameStack.Count > 0
-                    ? string.Join(".", _nameStack.ToArray().Reverse().ToArray())
-                    : "?";
-                
+            string name;
+            if (function.Id != null)
+            {
+                name = function.Id.Name;
+            }
+            else
+            {
+                if (context.NameStack != null && context.NameStack.Count > 0)
+                {
+                    name = string.Join(".", ((IEnumerable<string>) context.NameStack).Reverse().ToArray());
+                }
+                else
+                {
+                    name = "?";
+                }
+            }
+            
             var pars = string.Join(
                 ",",
                 (function.Parameters)
@@ -202,16 +194,12 @@ namespace JsParser.Core.Parsers
                 EndColumn = syntaxNode.Location.End.Column,
                 Comment = _comments.GetComment(syntaxNode.Location.Start.Line, syntaxNode.Location.End.Line)
             };
-            
-            if (function.Body is BlockStatement)
-            {
-                //Go to recursion
-                Hierachy<CodeNode> hi = nodes.Add(codeNode);
-                ProcessStatements(function.Body.As<BlockStatement>().Body, hi);
-            }
+
+            Hierachy<CodeNode> hi = context.Nodes.Add(codeNode);
+            ProcessStatement(function.Body, new ParserContext(hi));
         }
 
-        private void ProcessExpression(Expression exp, Hierachy<CodeNode> nodes)
+        private void ProcessExpression(Expression exp, ParserContext context)
         {
             if (exp == null)
             {
@@ -222,20 +210,22 @@ namespace JsParser.Core.Parsers
             {
                 var bexp = exp.As<BinaryExpression>();
 
-                ProcessExpression(bexp.Left, nodes);
+                ProcessExpression(bexp.Left, context);
 
-                ProcessExpression(bexp.Right, nodes);
+                ProcessExpression(bexp.Right, context);
                 return;
             }
 
             if (exp is CallExpression)
             {
                 var invexp = exp.As<CallExpression>();
-                ProcessExpression(invexp.Callee, nodes);
+                ProcessExpression(invexp.Callee, context);
 
                 foreach (var arg in invexp.Arguments)
                 {
-                    ProcessExpression(arg, nodes);
+                    var cc = new ParserContext(context, copyNames: true);
+                    cc.NameStack.Insert(0, "?");
+                    ProcessExpression(arg, cc);
                 }
                 return;
             }
@@ -243,13 +233,13 @@ namespace JsParser.Core.Parsers
             if (exp is UnaryExpression)
             {
                 var uexp = (UnaryExpression)exp;
-                ProcessExpression(uexp.Argument, nodes);
+                ProcessExpression(uexp.Argument, context);
                 return;
             }
 
             if (exp is IFunctionDeclaration)
             {
-                ProcessFunctionDeclaration((IFunctionDeclaration)exp, nodes);
+                ProcessFunctionDeclaration((IFunctionDeclaration)exp, context);
                 return;
             }
 
@@ -257,57 +247,61 @@ namespace JsParser.Core.Parsers
             {
                 var ojexp = (ObjectExpression)exp;
 
-                var codeNode = new CodeNode
+                if (ojexp.Properties.Any())
                 {
-                    Alias = _nameStack.Count > 0
-                        ? string.Join(".", _nameStack.ToArray().Reverse().ToArray())
-                        : "?",
-                    AliasType = NodeAliasType.Unknown,
-                    Opcode = "Object",
-                    StartLine = exp.Location.Start.Line,
-                    StartColumn = exp.Location.Start.Column,
-                    EndLine = exp.Location.End.Line,
-                    EndColumn = exp.Location.End.Column,
-                    Comment = _comments.GetComment(exp.Location.Start.Line, exp.Location.End.Line)
-                };
-                Hierachy<CodeNode> hi = nodes.Add(codeNode);
+                    var codeNode = new CodeNode
+                    {
+                        Alias = context.NameStack.Count > 0
+                            ? string.Join(".", context.NameStack.ToArray().Reverse().ToArray())
+                            : "?",
+                        AliasType = NodeAliasType.Unknown,
+                        Opcode = "Object",
+                        StartLine = exp.Location.Start.Line,
+                        StartColumn = exp.Location.Start.Column,
+                        EndLine = exp.Location.End.Line,
+                        EndColumn = exp.Location.End.Column,
+                        Comment = _comments.GetComment(exp.Location.Start.Line, exp.Location.End.Line)
+                    };
+                    Hierachy<CodeNode> hi = context.Nodes.Add(codeNode);
 
-                foreach (var element in ojexp.Properties)
-                {
-                    _nameStack.Clear();
-                    ProcessExpression((Expression)element.Key, hi);
-                    ProcessExpression(element.Value, hi);
+                    foreach (var element in ojexp.Properties)
+                    {
+                        var childContext = new ParserContext(hi);
+                        ProcessExpression((Expression)element.Key, childContext);
+                        ProcessExpression(element.Value, childContext);
+                    }
                 }
+
                 return;
             }
 
             if (exp is AssignmentExpression)
             {
                 var qexp = (AssignmentExpression)exp;
-                ProcessExpression(qexp.Left, nodes);
-                ProcessExpression(qexp.Right, nodes);
+                ProcessExpression(qexp.Left, context);
+                ProcessExpression(qexp.Right, context);
                 return;
             }
 
             if (exp is Identifier)
             {
                 var iexp = (Identifier)exp;
-                _nameStack.Push(iexp.Name);
+                context.NameStack.Push(iexp.Name);
                 return;
             }
 
             if (exp is Literal)
             {
                 var slexp = (Literal)exp;
-                _nameStack.Push(slexp.Raw);
+                context.NameStack.Push(slexp.Raw);
                 return;
             }
 
             if (exp is MemberExpression)
             {
                 var mexp = exp.As<MemberExpression>();
-                ProcessExpression(mexp.Property, nodes);
-                ProcessExpression(mexp.Object, nodes);
+                ProcessExpression(mexp.Property, context);
+                ProcessExpression(mexp.Object, new ParserContext(context));
                 return;
             }
 
@@ -316,7 +310,7 @@ namespace JsParser.Core.Parsers
                 var arexp = exp.As<ArrayExpression>();
                 foreach (var arelt in arexp.Elements)
                 {
-                    ProcessExpression(arelt, nodes);
+                    ProcessExpression(arelt, new ParserContext(context));
                 }
             }
 
@@ -325,16 +319,15 @@ namespace JsParser.Core.Parsers
                 var nexp = exp.As<NewExpression>();
                 foreach (var elt in nexp.Arguments)
                 {
-                    _nameStack.Clear();
-                    ProcessExpression(elt, nodes);
+                    ProcessExpression(elt, new ParserContext(context.Nodes));
                 }
             }
 
             if (exp is LogicalExpression)
             {
                 var lexp = exp.As<LogicalExpression>();
-                ProcessExpression(lexp.Left, nodes);
-                ProcessExpression(lexp.Right, nodes);
+                ProcessExpression(lexp.Left, new ParserContext(context, copyNames: true));
+                ProcessExpression(lexp.Right, new ParserContext(context, copyNames: true));
             }
 
             return;
