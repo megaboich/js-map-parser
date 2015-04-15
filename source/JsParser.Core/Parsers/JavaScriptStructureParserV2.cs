@@ -30,7 +30,12 @@ namespace JsParser.Core.Parsers
             Program program = null;
             try
             {
-                program = jsp.Parse(code);
+                program = jsp.Parse(code, new ParserOptions()
+                {
+                    Tokens = true,
+                    Comment = true,
+                });
+
                 //serialized = new JavaScriptSerializer().Serialize(program);
             }
             catch (ParserException pex)
@@ -97,6 +102,44 @@ namespace JsParser.Core.Parsers
                 ProcessExpression(statement.As<ExpressionStatement>().Expression, nodes);
                 return;
             }
+
+            if (statement is ReturnStatement)
+            {
+                _nameStack.Add("return");
+                ProcessExpression(statement.As<ReturnStatement>().Argument, nodes);
+                return;
+            }
+
+            if (statement is BlockStatement)
+            {
+                ProcessStatements(statement.As<BlockStatement>().Body, nodes);
+            }
+
+            if (statement is IfStatement)
+            {
+                ProcessExpression(statement.As<IfStatement>().Test, nodes);
+                ProcessStatement(statement.As<IfStatement>().Consequent, nodes);
+                ProcessStatement(statement.As<IfStatement>().Alternate, nodes);
+            }
+
+            if (statement is TryStatement)
+            {
+                ProcessStatement(statement.As<TryStatement>().Block, nodes);
+                ProcessStatement(statement.As<TryStatement>().Finalizer, nodes);
+                ProcessStatements(statement.As<TryStatement>().Handlers.OfType<Statement>(), nodes);
+                ProcessStatements(statement.As<TryStatement>().GuardedHandlers, nodes);
+            }
+
+            if (statement is CatchClause)
+            {
+                ProcessStatement(statement.As<CatchClause>().Body, nodes);
+            }
+
+            if (statement is SwitchStatement)
+            {
+                ProcessExpression(statement.As<SwitchStatement>().Discriminant, nodes);
+                ProcessStatements(statement.As<SwitchStatement>().Cases.SelectMany(c => c.Consequent), nodes);
+            }
         }
 
         private void ProcessVariableDeclaration(
@@ -109,6 +152,20 @@ namespace JsParser.Core.Parsers
                 if (variable.Init != null)
                 {
                     ProcessExpression(variable.Id, nodes);
+
+                    var codeNode = new CodeNode
+                    {
+                        Alias = variable.Id.Name,
+                        AliasType = NodeAliasType.Variable,
+                        Opcode = "Variable",
+                        StartLine = variableDeclaration.Location.Start.Line,
+                        StartColumn = variableDeclaration.Location.Start.Column,
+                        EndLine = variableDeclaration.Location.End.Line,
+                        EndColumn = variableDeclaration.Location.End.Column,
+                        Comment = _comments.GetComment(variableDeclaration.Location.Start.Line, variableDeclaration.Location.End.Line)
+                    };
+
+                    Hierachy<CodeNode> hi = nodes.Add(codeNode);
 
                     ProcessExpression(variable.Init, nodes);
                 }
@@ -260,6 +317,16 @@ namespace JsParser.Core.Parsers
                 foreach (var arelt in arexp.Elements)
                 {
                     ProcessExpression(arelt, nodes);
+                }
+            }
+
+            if (exp is NewExpression)
+            {
+                var nexp = exp.As<NewExpression>();
+                foreach (var elt in nexp.Arguments)
+                {
+                    _nameStack.Clear();
+                    ProcessExpression(elt, nodes);
                 }
             }
 

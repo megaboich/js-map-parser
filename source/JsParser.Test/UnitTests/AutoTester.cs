@@ -30,12 +30,28 @@ namespace UnitTests
             XmlDocument xml = new XmlDocument() {InnerXml = actualResult.Nodes.Serialize()};
             xml.Save("C:\\outxml\\" + resultName);
 
-            var expectedresultXml = TestsHelper.GetEmbeddedText("JsParser.Test.UnitTests.Result." + resultName);
-            var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
-            //Save expected hierarchy xml
-            File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultXml);
+            var passed = false;
+            var alterResultsSuffixes = new[] {"", "alt", "alt1"};
+            foreach (var suf in alterResultsSuffixes)
+            {
+                var resName = string.IsNullOrEmpty(suf)
+                    ? "JsParser.Test.UnitTests.Result." + resultName
+                    : "JsParser.Test.UnitTests.Result." + resultName.Replace(".xml", "." + suf + ".xml");
 
-            Assert.IsTrue(actualResult.Nodes.Equals(expectedresult));
+                if (TestsHelper.CheckEmbeddedRes(resName))
+                {
+                    var expectedresultXml = TestsHelper.GetEmbeddedText(resName);
+                    var expectedresult = SerializedEntity.Deserialize<Hierachy<CodeNode>>(expectedresultXml);
+                    //Save expected hierarchy xml
+                    File.WriteAllText("C:\\outxml\\" + resultName + ".ex" + suf, expectedresultXml);
+
+                    if (actualResult.Nodes.Equals(expectedresult))
+                    {
+                        passed = true;
+                    }
+                }
+            }
+            Assert.IsTrue(passed);
 
             return actualResult;
         }

@@ -61,7 +61,12 @@ namespace JsParser.Core.Parsers
 
             code = CodeTransformer.FixContinueStringLiterals(code);
             
-            return ParseInternal(code);
+            var result = ParseInternal(code);
+
+            NodesPostProcessor.HideAnonymousFunctions(result.Nodes, _settings);
+            NodesPostProcessor.GroupNodesByVariableDeclaration(result.Nodes, _settings);
+
+            return result;
         }
 
         /// <summary>

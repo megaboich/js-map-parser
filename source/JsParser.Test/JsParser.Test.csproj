@@ -215,6 +215,8 @@
     <EmbeddedResource Include="UnitTests\Source\New\Assignment.js" />
     <EmbeddedResource Include="UnitTests\Source\New\CallbackChain.js" />
     <EmbeddedResource Include="UnitTests\Source\New\ArrayChain.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test3.alt.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.alt.xml" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

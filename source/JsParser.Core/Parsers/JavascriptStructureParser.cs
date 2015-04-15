@@ -79,9 +79,6 @@ namespace JsParser.Core.Parsers
                     internalErrors = internalErrors ?? new List<ErrorMessage>();
                     internalErrors.Add(errMessage);
                 }
-
-                NodesPostProcessor.HideAnonymousFunctions(nodes, _settings);
-                NodesPostProcessor.GroupNodesByVariableDeclaration(nodes, _settings);
             }
 
             var result = new JSParserResult

@@ -21,9 +21,12 @@ namespace JsParserTest.Helpers
             }
         }
 
-        public static XmlDocument GetEmbeddedXml(string resourceName)
+        public static bool CheckEmbeddedRes(string resourceName)
         {
-            return new XmlDocument { InnerXml = GetEmbeddedText(resourceName) };
+            using (var stream = Assembly.GetAssembly(typeof (TestsHelper)).GetManifestResourceStream(resourceName))
+            {
+                return stream != null;
+            }
         }
     }
 }
