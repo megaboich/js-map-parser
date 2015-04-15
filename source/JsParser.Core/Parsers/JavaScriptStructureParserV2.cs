@@ -330,6 +330,13 @@ namespace JsParser.Core.Parsers
                 }
             }
 
+            if (exp is LogicalExpression)
+            {
+                var lexp = exp.As<LogicalExpression>();
+                ProcessExpression(lexp.Left, nodes);
+                ProcessExpression(lexp.Right, nodes);
+            }
+
             return;
         }
     }

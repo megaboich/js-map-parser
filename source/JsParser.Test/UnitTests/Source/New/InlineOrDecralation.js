@@ -1,0 +1,1 @@
+﻿var func = options.func || function() {}
