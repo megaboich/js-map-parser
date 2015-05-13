@@ -12,13 +12,6 @@ namespace JsParser.Core.Parsers
         public int EndLine { get; set; }
         public bool Processed { get; set; }
 
-        public CommentWrapper(Microsoft.JScript.Compiler.Comment orig)
-        {
-            Spelling = orig.Spelling;
-            StartLine = orig.Location.StartLine;
-            EndLine = orig.Location.EndLine;
-        }
-
         public CommentWrapper(Jint.Parser.Comment orig)
         {
             Spelling = orig.Value;

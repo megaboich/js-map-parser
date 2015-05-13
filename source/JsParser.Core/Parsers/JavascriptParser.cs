@@ -79,7 +79,6 @@ namespace JsParser.Core.Parsers
         /// </returns>
         private JSParserResult ParseInternal(string sourceCode)
         {
-            //var parser = new JavascriptStructureParser(_settings);
             var parser = new JavascriptStructureParserV2(_settings);
             return parser.Parse(sourceCode);
         }

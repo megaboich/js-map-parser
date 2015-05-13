@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.JScript.Compiler;
-using Microsoft.JScript.Compiler.ParseTree;
 using JsParser.Core.Code;
 using JsParser.Core.Helpers;
 using System.Reflection;
