@@ -105,18 +105,6 @@ namespace UnitTests
         }
 
         [Test]
-        public void Test_JQueryPlugin()
-        {
-            ProcessTemplate("Test_JQueryPlugin.js", "Test_JQueryPlugin.xml");
-        }
-
-        [Test]
-        public void Test_JQueryChain()
-        {
-            ProcessTemplate("Test_JQueryChain.js", "Test_JQueryChain.xml");
-        }
-
-        [Test]
         public void Test_Functions_In_CASE_Statement()
         {
             ProcessTemplate("Test_Functions_In_CASE_Statement.js", "Test_Functions_In_CASE_Statement.xml");
@@ -150,12 +138,6 @@ namespace UnitTests
         public void Test_Functions_In_TryCatch_Statement()
         {
             ProcessTemplate("Test_Functions_In_TryCatch_Statement.js", "Test_Functions_In_TryCatch_Statement.xml");
-        }
-
-        [Test]
-        public void Test_JQuery_Selectors()
-        {
-            ProcessTemplate("Test_JQuery_Selectors.js", "Test_JQuery_Selectors.xml");
         }
 
         [Test]

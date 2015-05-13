@@ -164,14 +164,8 @@ namespace JsParser.Core.Parsers
             }
             else
             {
-                if (context.NameStack != null && context.NameStack.Count > 0)
-                {
-                    name = string.Join(".", ((IEnumerable<string>) context.NameStack).Reverse().ToArray());
-                }
-                else
-                {
-                    name = "?";
-                }
+                name = context.GetNameFromStack();
+                
             }
             
             var pars = string.Join(
@@ -251,9 +245,7 @@ namespace JsParser.Core.Parsers
                 {
                     var codeNode = new CodeNode
                     {
-                        Alias = context.NameStack.Count > 0
-                            ? string.Join(".", context.NameStack.ToArray().Reverse().ToArray())
-                            : "?",
+                        Alias = context.GetNameFromStack(),
                         AliasType = NodeAliasType.Unknown,
                         Opcode = "Object",
                         StartLine = exp.Location.Start.Line,

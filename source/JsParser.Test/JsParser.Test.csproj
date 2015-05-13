@@ -144,17 +144,11 @@
     <EmbeddedResource Include="UnitTests\Result\Test3.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test4.xml" />
     <EmbeddedResource Include="UnitTests\Result\Test5.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_JQueryPlugin.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Result\Test_JQueryChain.xml" />
     <EmbeddedResource Include="UnitTests\Source\Test1.js" />
     <EmbeddedResource Include="UnitTests\Source\Test2.js" />
     <EmbeddedResource Include="UnitTests\Source\Test3.js" />
     <EmbeddedResource Include="UnitTests\Source\Test4.js" />
     <EmbeddedResource Include="UnitTests\Source\Test5.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_JQueryPlugin.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_JQueryChain.js" />
     <EmbeddedResource Include="UnitTests\Source\Test_FunctionWithPlainObject.js" />
     <EmbeddedResource Include="UnitTests\Source\HtmlScriptBlocks.htm" />
     <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.xml">
@@ -168,10 +162,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_CASE_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_JQuery_Selectors.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_JQuery_Selectors.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_TryCatch_Statement.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -222,6 +212,16 @@
     <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt1.xml" />
     <EmbeddedResource Include="UnitTests\Source\New\ReturnStatement.js" />
     <EmbeddedResource Include="UnitTests\Source\New\Comments.js" />
+    <EmbeddedResource Include="UnitTests\Result\Test2.alt.xml" />
+    <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.alt.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitTests\Result\Test_Anonimous_In_Return_Statement.alt.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_Construct_Object_In_Return_Statement.alt.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_DoubleAssign.alt.xml" />
+    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_CASE_Statement.alt.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>

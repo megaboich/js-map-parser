@@ -1,0 +1,11 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="someClickHandler1()" AliasType="FunctionDefinition" Line="3" EndLine="4" EndColumn="1" Pos="65" Opcode="Function" />
+    </Hierachy>
+    <Hierachy>
+      <Item Text="someClickHandler2()" AliasType="FunctionDefinition" Line="6" EndLine="7" EndColumn="1" Pos="65" Opcode="Function" />
+    </Hierachy>
+  </Childrens>
+</Hierachy>

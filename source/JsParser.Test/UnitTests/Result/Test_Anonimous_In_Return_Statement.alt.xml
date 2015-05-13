@@ -1,0 +1,21 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="jQuery(selector,context)" AliasType="FunctionDefinition" Line="2" EndLine="5" EndColumn="1" Pos="13" Opcode="Function" Comment=" Define a local copy of jQuery&#xD;&#xA; The jQuery object is actually just the init constructor 'enhanced'" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="?()" AliasType="FunctionDefinition" Line="4" EndLine="4" EndColumn="76" Pos="61" Opcode="Function" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+    <Hierachy>
+      <Item Text="GetNewItem(param1,param2)" AliasType="FunctionDefinition" Line="7" EndLine="11" EndColumn="1" Pos="0" Opcode="Function" />
+      <Childrens>
+        <Hierachy>
+          <Item Text="each&gt;?(subparam)" AliasType="FunctionDefinition" Line="9" EndLine="10" EndColumn="5" Pos="21" Opcode="Function" />
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>

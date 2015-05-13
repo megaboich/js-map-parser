@@ -1,0 +1,29 @@
+<Hierachy>
+  <Item Text="All" AliasType="Unknown" Line="0" EndLine="0" EndColumn="0" Pos="0" />
+  <Childrens>
+    <Hierachy>
+      <Item Text="GetNewItem(param1,param2)" AliasType="FunctionDefinition" Line="3" EndLine="21" EndColumn="1" Pos="0" Opcode="Function" Comment="------------------------------------------------------------------------------------&#xD;&#xA; This is sample of JS class factory." />
+      <Childrens>
+        <Hierachy>
+          <Item Text="?" AliasType="Unknown" Line="5" EndLine="20" EndColumn="2" Pos="8" Opcode="Object" />
+          <Childrens>
+            <Hierachy>
+              <Item Text="method1()" AliasType="FunctionDefinition" Line="8" EndLine="8" EndColumn="36" Pos="22" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="method2(p)" AliasType="FunctionDefinition" Line="9" EndLine="11" EndColumn="3" Pos="22" Opcode="Function" />
+            </Hierachy>
+            <Hierachy>
+              <Item Text="method3(p1,p2)" AliasType="FunctionDefinition" Line="12" EndLine="19" EndColumn="3" Pos="22" Opcode="Function" Comment="method3" />
+              <Childrens>
+                <Hierachy>
+                  <Item Text="delegate()" AliasType="FunctionDefinition" Line="16" EndLine="18" EndColumn="4" Pos="18" Opcode="Function" Comment="Delegate method&#xD;&#xA;			This method contains multilines comment" />
+                </Hierachy>
+              </Childrens>
+            </Hierachy>
+          </Childrens>
+        </Hierachy>
+      </Childrens>
+    </Hierachy>
+  </Childrens>
+</Hierachy>
