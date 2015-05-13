@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\CodeNode.cs" />
+    <Compile Include="Code\CodeNodeType.cs" />
     <Compile Include="Code\CodeTransformer.cs" />
     <Compile Include="Code\ICodeProvider.cs" />
     <Compile Include="Helpers\CustomTraceListener.cs" />
@@ -76,7 +77,6 @@
     <Compile Include="Parsers\CommentWrapper.cs" />
     <Compile Include="Parsers\IJavascriptParser.cs" />
     <Compile Include="Parsers\JavascriptStructureParserV2.cs" />
-    <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />
     <Compile Include="Parsers\JavascriptParser.cs" />

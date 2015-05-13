@@ -158,6 +158,7 @@ namespace JsParser.Core.Parsers
             ParserContext context)
         {
             string name;
+            bool isAnonymous = false;
             if (function.Id != null)
             {
                 name = function.Id.Name;
@@ -165,23 +166,19 @@ namespace JsParser.Core.Parsers
             else
             {
                 name = context.GetNameFromStack();
-                
+                isAnonymous = name.EndsWith("?");
             }
             
-            var pars = string.Join(
-                ",",
-                (function.Parameters)
-                .Select(p => p.Name)
-                .ToArray());
+            var pars = string.Join(",",
+                function.Parameters.Select(p => p.Name).ToArray());
             pars = pars.Shortenize(_settings.MaxParametersLength);
 
             var syntaxNode = (SyntaxNode) function;
 
             var codeNode = new CodeNode
             {
-                Alias = name + "("+pars+")",
-                AliasType = NodeAliasType.FunctionDefinition,
-                Opcode = "Function",
+                Alias = name + "(" + pars + ")",
+                NodeType = isAnonymous ? CodeNodeType.AnonymousFunction : CodeNodeType.Function,
                 StartLine = syntaxNode.Location.Start.Line,
                 StartColumn = syntaxNode.Location.Start.Column,
                 EndLine = syntaxNode.Location.End.Line,
@@ -246,8 +243,7 @@ namespace JsParser.Core.Parsers
                     var codeNode = new CodeNode
                     {
                         Alias = context.GetNameFromStack(),
-                        AliasType = NodeAliasType.Unknown,
-                        Opcode = "Object",
+                        NodeType = CodeNodeType.Object,
                         StartLine = exp.Location.Start.Line,
                         StartColumn = exp.Location.Start.Column,
                         EndLine = exp.Location.End.Line,
