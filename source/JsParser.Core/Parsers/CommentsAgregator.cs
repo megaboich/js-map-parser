@@ -8,10 +8,9 @@ namespace JsParser.Core.Parsers
 {
     internal class CommentsAgregator
     {
-        private List<CustomComment> _comments = new List<CustomComment>();
-        private string[] _code;
+        private List<CommentWrapper> _comments;
 
-        public IEnumerable<CustomComment> Comments
+        public IList<CommentWrapper> Comments
         {
             get
             {
@@ -19,143 +18,58 @@ namespace JsParser.Core.Parsers
             }
         }
 
-        public CommentsAgregator(IList<ICommentWrapper> comments, string[] code)
+        public void ProcessComments(IEnumerable<CommentWrapper> rawComments)
         {
-            _code = code;
+            _comments = new List<CommentWrapper>();
+            CommentWrapper prevCom = null;
 
-            string aggregatedCommentString = string.Empty;
-            int start = 0;
-            int end = 0;
-            for (int index = 0; index < comments.Count; ++index)
+            // Combine comments on neighbour lines to comment groups
+            foreach(var currentCom in rawComments)
             {
-                var c1 = comments[index];
-                if (!ContainsLiteralOrDigits(c1.Spelling))
+                if (prevCom != null)
                 {
-                    continue;
-                }
-
-                var c2 = index < comments.Count - 1 ? comments[index + 1] : null;
-
-                var c1t = c1.StartLine != c1.EndLine;
-                if (!c1t)
-                {
-                    c1t = c1.Spelling == _code[c1.StartLine - 1].Trim();
-                }
-
-                var c2t = c1.StartLine != c1.EndLine;
-                if (!c2t)
-                {
-                    c2t = c2 != null ? c2.Spelling == _code[c2.StartLine - 1].Trim() : false;
-                }
-
-                if (c2 != null && c1.EndLine + 1 == c2.StartLine && c1t && c2t)
-                {
-                    // Continuous comment.
-                    if (string.IsNullOrEmpty(aggregatedCommentString))
+                    if (prevCom.EndLine == currentCom.StartLine - 1)
                     {
-                        aggregatedCommentString = c1.Spelling + "\r\n" + c2.Spelling;
-                        start = c1.StartLine;
-                        end = c2.EndLine;
+                        prevCom.Spelling = prevCom.Spelling + Environment.NewLine + currentCom.Spelling;
+                        prevCom.EndLine = currentCom.EndLine;
                     }
                     else
                     {
-                        aggregatedCommentString += "\r\n" + c2.Spelling;
-                        end = c2.EndLine;
+                        _comments.Add(currentCom);
+                        prevCom = currentCom;
                     }
                 }
                 else
                 {
-                    // Break.
-                    if (!string.IsNullOrEmpty(aggregatedCommentString))
-                    {
-                        CustomComment c = new CustomComment
-                        {
-                            Text = aggregatedCommentString,
-                            Start = start,
-                            End = end,
-                            Solid = true
-                        };
-                        _comments.Add(c);
-
-                        aggregatedCommentString = string.Empty;
-                    }
-                    else
-                    {
-                        CustomComment c = new CustomComment
-                        {
-                            Text = c1.Spelling,
-                            Start = c1.StartLine,
-                            End = c1.EndLine,
-                            Solid = c1t
-                        };
-
-                        _comments.Add(c);
-                    }
+                    _comments.Add(currentCom);
+                    prevCom = currentCom;
                 }
-            }
-
-            // Last case.
-            if (!string.IsNullOrEmpty(aggregatedCommentString))
-            {
-                CustomComment c = new CustomComment
-                {
-                    Text = aggregatedCommentString,
-                    Start = start,
-                    End = end,
-                    Solid = true
-                };
-                _comments.Add(c);
             }
         }
 
         public string GetComment(int startline, int endline)
         {
             var result = new List<string>();
-            foreach (CustomComment comment in _comments.Where(c => !c.Processed))
+            foreach (var comment in _comments.Where(c => !c.Processed))
             {
-                // The same line
-                if (comment.End == startline)
+                
+                if (comment.EndLine == startline // The same line
+                    || comment.EndLine == startline - 1 // The prev line
+                    || comment.StartLine == startline + 1 // The next line
+                   )
                 {
-                    result.Add(comment.Text);
+                    result.Add(comment.Spelling);
                     comment.Processed = true;
-                    continue;
-                }
-
-                if (!comment.Solid)
-                {
-                    continue;
-                }
-
-                // The prev line
-                if (comment.End == startline - 1)
-                {
-                    result.Add(comment.Text);
-                    comment.Processed = true;
-                    continue;
-                }
-
-                // The next line
-                if (comment.Start == startline + 1)
-                {
-                    result.Add(comment.Text);
-                    comment.Processed = true;
-                    continue;
                 }
             }
 
-            var r = string.Join("\r\n", result.ToArray());
+            var r = string.Join(Environment.NewLine, result.ToArray());
             if (string.IsNullOrEmpty(r.Trim()))
             {
                 return null;
             }
 
             return r;
-        }
-
-        private bool ContainsLiteralOrDigits(string src)
-        {
-            bool hasDigits = src.Any(c => Char.IsLetterOrDigit(c));
-            return hasDigits;
         }
     }
 }

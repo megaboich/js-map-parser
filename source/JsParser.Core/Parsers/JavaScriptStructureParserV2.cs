@@ -59,10 +59,10 @@ namespace JsParser.Core.Parsers
             }
 
             var comments = (program.Comments ?? Enumerable.Empty<Comment>())
-                .Select(c => (ICommentWrapper)new JintCommentWrapper(c)).ToList();
+                .Select(c => new CommentWrapper(c));
 
-            var codeLines = code.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
-            _comments = new CommentsAgregator(comments, codeLines);
+            _comments = new CommentsAgregator();
+            _comments.ProcessComments(comments);
 
             ProcessStatements(program.Body, new ParserContext(returnedResult.Nodes));
 

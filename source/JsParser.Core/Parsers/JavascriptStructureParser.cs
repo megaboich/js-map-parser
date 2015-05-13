@@ -56,9 +56,8 @@ namespace JsParser.Core.Parsers
                         StartColumn = d.Location.StartColumn
                     }));
 
-                    var commentsToProcess = comments.Select(c => (ICommentWrapper) new MsJsParserCommentWrapper(c)).ToList();
-                    var code = sourceCode.Split(new[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.None);
-                    _comments = new CommentsAgregator(commentsToProcess, code);
+                    _comments = new CommentsAgregator();
+                    _comments.ProcessComments(comments.Select(c => new CommentWrapper(c)));
 
                     CreateNodes(nodes, sourceElements);
 

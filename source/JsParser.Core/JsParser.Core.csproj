@@ -83,7 +83,6 @@
     <Compile Include="Parsers\NodeAlias.cs" />
     <Compile Include="Parsers\CommentsAgregator.cs" />
     <Compile Include="Parsers\JavascriptParserSettings.cs" />
-    <Compile Include="Parsers\CustomComment.cs" />
     <Compile Include="Parsers\JavascriptParser.cs" />
     <Compile Include="Parsers\JSParserExtensions.cs" />
     <Compile Include="Parsers\JSParserResult.cs" />

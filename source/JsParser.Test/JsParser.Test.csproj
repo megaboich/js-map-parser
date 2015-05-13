@@ -221,6 +221,7 @@
     <EmbeddedResource Include="UnitTests\Source\New\InlineOrDecralation.js" />
     <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt1.xml" />
     <EmbeddedResource Include="UnitTests\Source\New\ReturnStatement.js" />
+    <EmbeddedResource Include="UnitTests\Source\New\Comments.js" />
     <Content Include="UnitTests\TestResult.xml" />
     <Content Include="UnitTests\Tests.VisualState.xml" />
   </ItemGroup>
