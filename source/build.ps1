@@ -15,7 +15,7 @@ $myPath = Split-Path -Parent $MyInvocation.MyCommand.Path;
 $compiledPackageFileName = $myPath + "\JsParser.Package\bin\$configuration\JsParser.Package.vsix"
 $compiledPackageFileNameZip = $compiledPackageFileName + '.zip'
 $tempFolder = $myPath + "\temp" + [Guid]::NewGuid().ToString()
-$packageResult = $myPath + "\JsParser.Package.3.7.1.$configuration.vsix"
+$packageResult = $myPath + "\JsParser.Package.4.0.1.$configuration.vsix"
 $packageResultZip = $myPath + "\JsParser.Package.vsix.zip"
 
 if (Test-Path $packageResult)
