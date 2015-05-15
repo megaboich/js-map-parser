@@ -1,0 +1,20 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: loadFirst()
+	StartLine: 2
+	EndLine: 4
+	NodeType: Function
+
+	Alias: loadSecond()
+	StartLine: 5
+	EndLine: 7
+	NodeType: Function
+
+	Alias: loadThird()
+	StartLine: 8
+	EndLine: 10
+	NodeType: Function
+

@@ -1,0 +1,26 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: function1()
+	StartLine: 1
+	EndLine: 42
+	NodeType: Function
+
+		Alias: innerFunction()
+		StartLine: 30
+		EndLine: 32
+		NodeType: Function
+		Comment: Not visible if previous hugeString declaration was throw error
+
+		Alias: f
+		StartLine: 34
+		EndLine: 41
+		NodeType: Object
+
+			Alias: testFunction()
+			StartLine: 39
+			EndLine: 40
+			NodeType: Function
+

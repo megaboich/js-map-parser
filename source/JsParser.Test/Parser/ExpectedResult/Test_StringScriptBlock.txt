@@ -1,0 +1,15 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: test()
+	StartLine: 1
+	EndLine: 13
+	NodeType: Function
+
+		Alias: someInnerFunc()
+		StartLine: 10
+		EndLine: 12
+		NodeType: Function
+

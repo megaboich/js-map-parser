@@ -1,0 +1,17 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: alertIsIEFunc()
+	StartLine: 8
+	EndLine: 11
+	NodeType: Function
+	Comment:  ie- specific implementation
+
+	Alias: alertIsIEFunc()
+	StartLine: 16
+	EndLine: 19
+	NodeType: Function
+	Comment:  html standart implementation
+

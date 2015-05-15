@@ -1,0 +1,35 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Class2(param1,param2)
+	StartLine: 3
+	EndLine: 26
+	NodeType: Function
+	Comment: ------------------------------------------------------------------------------------&#D;&#A; This is sample of JS class.
+
+		Alias: Method1()
+		StartLine: 9
+		EndLine: 11
+		NodeType: Function
+		Comment:  Method1
+
+		Alias: Method2(param1)
+		StartLine: 14
+		EndLine: 16
+		NodeType: Function
+		Comment:  Method2
+
+		Alias: Method3(param1,param2)
+		StartLine: 19
+		EndLine: 25
+		NodeType: Function
+		Comment:  Method3
+
+			Alias: delegate()
+			StartLine: 22
+			EndLine: 24
+			NodeType: Function
+			Comment: delegate method
+

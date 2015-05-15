@@ -18,13 +18,13 @@ namespace JsParser.Core.Parsers
             }
         }
 
-        public ParserContext(Hierachy<CodeNode> nodes)
+        public ParserContext(Hierarchy<CodeNode> nodes)
         {
             Nodes = nodes;
             NameStack = new List<string>();
         }
 
-        public Hierachy<CodeNode> Nodes { get; set; }
+        public Hierarchy<CodeNode> Nodes { get; set; }
 
         public List<string> NameStack { get; set; }
 

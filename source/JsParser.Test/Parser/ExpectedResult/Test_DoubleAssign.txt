@@ -1,0 +1,15 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: someClickHandler1()
+	StartLine: 3
+	EndLine: 4
+	NodeType: Function
+
+	Alias: someClickHandler2()
+	StartLine: 6
+	EndLine: 7
+	NodeType: Function
+

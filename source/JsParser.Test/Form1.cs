@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
-using UnitTests;
 using JsParserTest.Helpers;
 using System.IO;
 using JsParser.Core.Code;

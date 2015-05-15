@@ -324,16 +324,16 @@ namespace JsParser.UI.UI
             return -1;
         }
 
-        private void FillNodes(Hierachy<CodeNode> source, TreeNodeCollection dest, int level, IList<CodeNode> functions)
+        private void FillNodes(Hierarchy<CodeNode> source, TreeNodeCollection dest, int level, IList<CodeNode> functions)
         {
-            if (source.Childrens == null)
+            if (!source.HasChildren)
             {
                 return;
             }
 
             var isSort = Settings.SortingEnabled;
             var isHierarchy = true;
-            var childrens = source.Childrens;
+            var childrens = source.Children;
             if (isSort)
             {
                 childrens.Sort((a1, a2) => string.Compare(a1.Item.Alias, a2.Item.Alias));
@@ -364,7 +364,7 @@ namespace JsParser.UI.UI
 
                 functions.Add(node);
 
-                if (item.HasChildrens)
+                if (item.HasChildren)
                 {
                     FillNodes(item, treeNode.Nodes, level + 1, functions);
                 }

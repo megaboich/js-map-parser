@@ -51,7 +51,6 @@ namespace JsParser.Core.Parsers
             var result = new List<string>();
             foreach (var comment in _comments.Where(c => !c.Processed))
             {
-                
                 if (comment.EndLine == startline // The same line
                     || comment.EndLine == startline - 1 // The prev line
                     || comment.StartLine == startline + 1 // The next line
@@ -68,7 +67,7 @@ namespace JsParser.Core.Parsers
                 return null;
             }
 
-            return r;
+            return r.Trim();
         }
     }
 }

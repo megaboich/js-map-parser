@@ -1,0 +1,26 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: jQuery(selector,context)
+	StartLine: 2
+	EndLine: 5
+	NodeType: Function
+	Comment:  Define a local copy of jQuery&#D;&#A; The jQuery object is actually just the init constructor &apos;enhanced&apos;
+
+		Alias: ?()
+		StartLine: 4
+		EndLine: 4
+		NodeType: AnonymousFunction
+
+	Alias: GetNewItem(param1,param2)
+	StartLine: 7
+	EndLine: 11
+	NodeType: Function
+
+		Alias: each&gt;?(subparam)
+		StartLine: 9
+		EndLine: 10
+		NodeType: AnonymousFunction
+

@@ -1,0 +1,20 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: then&gt;?()
+	StartLine: 2
+	EndLine: 4
+	NodeType: AnonymousFunction
+
+	Alias: fail&gt;?()
+	StartLine: 5
+	EndLine: 7
+	NodeType: AnonymousFunction
+
+	Alias: finally_&gt;?()
+	StartLine: 8
+	EndLine: 10
+	NodeType: AnonymousFunction
+

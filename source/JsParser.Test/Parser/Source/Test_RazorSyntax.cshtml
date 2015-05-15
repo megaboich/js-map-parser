@@ -1,0 +1,50 @@
+﻿@using Newtonsoft.Json
+@model PageModel_Test
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@section head
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/jqtree/jqtree.css")" />
+    <style type="text/css">
+
+    </style>
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    Content goes here...
+</div>
+
+@section scripts 
+{
+    <script type="text/javascript" src="~/Scripts/Lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/Scripts/Lib/jqtree.js"></script>
+    <script type="text/javascript" src="~/Scripts/Lib/knockout.js"></script>
+    <script type="text/javascript" src="~/Scripts/Views/Test.js"></script>
+
+    <script type="text/javascript">
+        $(function()
+        {
+            var skillMatrixModel = @Html.Raw(JsonConvert.SerializeObject(Model.Test, Formatting.Indented));
+
+            var skillsCatalogModel = @Html.Raw(JsonConvert.SerializeObject(Model.Test2));
+
+            var array=[];
+            @for(var i=0; i< Model.Data.Count; ++i)
+            {
+                array.push('@(Model.Data[i])');
+            }
+
+            Init({
+                SaveMatrixUrl: '@Url.Action("Save")',
+                IndexUrl: '@Url.Action("Index")',
+                SkillsCatalogTreeData: skillsCatalogModel,
+                SkillMatrixModel: skillMatrixModel
+            });
+            
+        });
+    </script>
+}

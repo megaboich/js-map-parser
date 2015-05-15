@@ -11,7 +11,7 @@ namespace JsParser.Core.Parsers
     {
         public string FileName { get; set; }
 
-        public Hierachy<CodeNode> Nodes { get; set; }
+        public Hierarchy<CodeNode> Nodes { get; set; }
 
         public List<ErrorMessage> Errors { get; set; }
 
@@ -21,7 +21,7 @@ namespace JsParser.Core.Parsers
 
         public JSParserResult()
         {
-            Nodes = new Hierachy<CodeNode>(new CodeNode(){Alias = "All"});
+            Nodes = new Hierarchy<CodeNode>(new CodeNode(){Alias = "All"});
             Errors = new List<ErrorMessage>();
             InternalErrors = new List<ErrorMessage>();
             TaskList = new List<TaskListItem>();

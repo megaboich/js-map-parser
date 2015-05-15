@@ -1,0 +1,25 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: F1()
+	StartLine: 1
+	EndLine: 3
+	NodeType: Function
+
+	Alias: F2()
+	StartLine: 5
+	EndLine: 5
+	NodeType: Function
+
+	Alias: F3(def,classdef)
+	StartLine: 7
+	EndLine: 10
+	NodeType: Function
+
+	Alias: F4()
+	StartLine: 12
+	EndLine: 12
+	NodeType: Function
+

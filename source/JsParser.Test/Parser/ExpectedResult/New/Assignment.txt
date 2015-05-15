@@ -1,0 +1,10 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: globalFunc()
+	StartLine: 1
+	EndLine: 3
+	NodeType: Function
+

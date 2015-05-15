@@ -1,0 +1,40 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Pen(tag)
+	StartLine: 2
+	EndLine: 25
+	NodeType: Function
+
+	Alias: prototype
+	StartLine: 26
+	EndLine: 61
+	NodeType: Object
+
+		Alias: height()
+		StartLine: 27
+		EndLine: 29
+		NodeType: Function
+
+		Alias: goto(x,y)
+		StartLine: 31
+		EndLine: 41
+		NodeType: Function
+
+		Alias: jump(x,y)
+		StartLine: 43
+		EndLine: 52
+		NodeType: Function
+
+		Alias: height()
+		StartLine: 54
+		EndLine: 56
+		NodeType: Function
+
+		Alias: center()
+		StartLine: 58
+		EndLine: 60
+		NodeType: Function
+

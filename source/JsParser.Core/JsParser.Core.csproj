@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\CodeNodeComparer.cs" />
     <Compile Include="Code\CodeNode.cs" />
     <Compile Include="Code\CodeNodeType.cs" />
     <Compile Include="Code\CodeTransformer.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Helpers\CustomTraceListener.cs" />
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
-    <Compile Include="Helpers\SerializedEntity.cs" />
+    <Compile Include="Helpers\HierarchyComparer.cs" />
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Infrastructure\ISettings.cs" />
     <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />

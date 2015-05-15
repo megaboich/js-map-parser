@@ -1,0 +1,38 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: ItemFactory(param1,param2)
+	StartLine: 3
+	EndLine: 20
+	NodeType: Function
+	Comment: ------------------------------------------------------------------------------------&#D;&#A; This is sample of JS class.
+
+		Alias: item
+		StartLine: 6
+		EndLine: 18
+		NodeType: Object
+
+			Alias: method1()
+			StartLine: 9
+			EndLine: 9
+			NodeType: Function
+
+			Alias: method2(p)
+			StartLine: 10
+			EndLine: 10
+			NodeType: Function
+
+			Alias: method3(p1,p2)
+			StartLine: 11
+			EndLine: 17
+			NodeType: Function
+			Comment: method1&#D;&#A;method2&#D;&#A;method3
+
+				Alias: delegate()
+				StartLine: 14
+				EndLine: 16
+				NodeType: Function
+				Comment: delegate method
+

@@ -1,0 +1,20 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: testObj
+	StartLine: 1
+	EndLine: 6
+	NodeType: Object
+
+		Alias: &quot;OK&quot;()
+		StartLine: 2
+		EndLine: 3
+		NodeType: Function
+
+		Alias: &quot;Cancel&quot;()
+		StartLine: 4
+		EndLine: 5
+		NodeType: Function
+

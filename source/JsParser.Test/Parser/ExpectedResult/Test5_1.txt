@@ -1,0 +1,17 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Function1(delegate)
+	StartLine: 3
+	EndLine: 6
+	NodeType: Function
+	Comment:  Comment to funtion 1&#D;&#A; This function run a delegate
+
+	Alias: Function1&gt;?()
+	StartLine: 9
+	EndLine: 9
+	NodeType: AnonymousFunction
+	Comment: Anonimous function
+

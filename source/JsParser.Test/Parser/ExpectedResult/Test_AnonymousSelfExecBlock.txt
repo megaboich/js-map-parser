@@ -1,0 +1,23 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: BeforeSelfExec()
+	StartLine: 2
+	EndLine: 3
+	NodeType: Function
+	Comment: Some function declared before self-exec block
+
+	Alias: ?($)
+	StartLine: 5
+	EndLine: 7
+	NodeType: AnonymousFunction
+	Comment: Some Anonymous Self-Executing function
+
+	Alias: AfterSelfExec()
+	StartLine: 10
+	EndLine: 11
+	NodeType: Function
+	Comment: Some function declared after self-exec block
+

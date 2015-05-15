@@ -65,6 +65,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -91,15 +93,19 @@
     <Compile Include="Form_ScanDir_Results.Designer.cs">
       <DependentUpon>Form_ScanDir_Results.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SimpleHierarchySerializer.cs" />
     <Compile Include="Helpers\TestsHelper.cs" />
+    <Compile Include="Parser\JsParserTests_New.cs" />
+    <Compile Include="Parser\JsParserTests.cs" />
+    <Compile Include="Parser\TestRunner.cs" />
     <Compile Include="NodesPostProcessor\NodesPostProcessorTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleCodeProvider.cs" />
-    <Compile Include="UnitTests\AutoTester.cs" />
-    <Compile Include="UnitTests\Find\SearchFinalTest.cs" />
-    <Compile Include="UnitTests\Find\FindDialogTest.cs" />
-    <Compile Include="UnitTests\StringExtText.cs" />
+    <Compile Include="SimpleHierarchySerializerTest\SimpleHierarchySerializerTest.cs" />
+    <Compile Include="Find\SearchFinalTest.cs" />
+    <Compile Include="Find\FindDialogTest.cs" />
+    <Compile Include="Helpers\StringExtText.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,103 +133,86 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="UnitTests\Source\Test_AspScriptCombiner.aspx">
+    <EmbeddedResource Include="Parser\Source\Test_AspScriptCombiner.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </EmbeddedResource>
-    <None Include="UnitTests\Tests.nunit" />
+    <None Include="Parser\Tests.nunit" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UnitTests\Result\Test4_1.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test4_2.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test5_1.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_Construct_Object_In_Return_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test4_2.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test5_1.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test1.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test2.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test3.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test4.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test5.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test1.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test2.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test3.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test4.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test5.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_FunctionWithPlainObject.js" />
-    <EmbeddedResource Include="UnitTests\Source\HtmlScriptBlocks.htm" />
-    <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_IF_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_IF_Statement.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_CASE_Statement.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_CASE_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_TryCatch_Statement.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Source\Test_Functions_In_TryCatch_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_FunctionWithPlainObject.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_JsonObject_StringPropNames.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_StringContinuationCharacter.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_StringContinuationCharacter.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_PropsInArrayStyleNames.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_PropsInArrayStyleNames.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_HierarhizeOnPostProcessing.js" />
+    <EmbeddedResource Include="Parser\Source\Test_Construct_Object_In_Return_Statement.js" />
+    <EmbeddedResource Include="Parser\Source\Test4_2.js" />
+    <EmbeddedResource Include="Parser\Source\Test5_1.js" />
+    <EmbeddedResource Include="Parser\Source\Test1.js" />
+    <EmbeddedResource Include="Parser\Source\Test2.js" />
+    <EmbeddedResource Include="Parser\Source\Test3.js" />
+    <EmbeddedResource Include="Parser\Source\Test4.js" />
+    <EmbeddedResource Include="Parser\Source\Test5.js" />
+    <EmbeddedResource Include="Parser\Source\Test_FunctionWithPlainObject.js" />
+    <EmbeddedResource Include="Parser\Source\HtmlScriptBlocks.htm" />
+    <EmbeddedResource Include="Parser\Source\Test_Functions_In_IF_Statement.js" />
+    <EmbeddedResource Include="Parser\Source\Test_Functions_In_CASE_Statement.js" />
+    <EmbeddedResource Include="Parser\Source\Test_Functions_In_TryCatch_Statement.js" />
+    <EmbeddedResource Include="Parser\Source\Test_JsonObject_StringPropNames.js" />
+    <EmbeddedResource Include="Parser\Source\Test_StringContinuationCharacter.js" />
+    <EmbeddedResource Include="Parser\Source\Test_PropsInArrayStyleNames.js" />
+    <EmbeddedResource Include="Parser\Source\Test_HierarhizeOnPostProcessing.js" />
     <EmbeddedResource Include="NodesPostProcessor\TestsScripts\jquery-1.7.1.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Construct_Object_In_Return_Statement.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_Anonimous_In_Return_Statement.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Anonimous_In_Return_Statement.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_DoubleAssign.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_DoubleAssign.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_AnonymousSelfExecBlock.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_AnonymousSelfExecBlock.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_NewStatements.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_ReservedWords_Goto.js" />
-    <EmbeddedResource Include="UnitTests\Source\Test_TernerStatements.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_NewStatements.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_StringScriptBlock.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_StringScriptBlock.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_AspTagsReplace.aspx">
+    <EmbeddedResource Include="Parser\Source\Test_Anonimous_In_Return_Statement.js" />
+    <EmbeddedResource Include="Parser\Source\Test_DoubleAssign.js" />
+    <EmbeddedResource Include="Parser\Source\Test_AnonymousSelfExecBlock.js" />
+    <EmbeddedResource Include="Parser\Source\Test_NewStatements.js" />
+    <EmbeddedResource Include="Parser\Source\Test_ReservedWords_Goto.js" />
+    <EmbeddedResource Include="Parser\Source\Test_TernerStatements.js" />
+    <EmbeddedResource Include="Parser\Source\Test_StringScriptBlock.js" />
+    <EmbeddedResource Include="Parser\Source\Test_AspTagsReplace.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Result\Test_AspTagsReplace.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_RazorSyntax.cshtml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_RazorSyntax.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_XmlComments.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_AspScriptCombiner.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_JSParserSkipHandling.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_JSParserSkipHandling.xml" />
-    <EmbeddedResource Include="UnitTests\Source\Test_AnonymousWithNames.js" />
-    <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy.js" />
-    <EmbeddedResource Include="UnitTests\Source\Spec_FunctionsHierarchy2.js" />
-    <EmbeddedResource Include="UnitTests\Source\New\Assignment.js" />
-    <EmbeddedResource Include="UnitTests\Source\New\CallbackChain.js" />
-    <EmbeddedResource Include="UnitTests\Source\New\ArrayChain.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test3.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_JsonObject_StringPropNames.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Source\New\InlineOrDecralation.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test_ReservedWords_Goto.alt1.xml" />
-    <EmbeddedResource Include="UnitTests\Source\New\ReturnStatement.js" />
-    <EmbeddedResource Include="UnitTests\Source\New\Comments.js" />
-    <EmbeddedResource Include="UnitTests\Result\Test2.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\HtmlScriptBlocks.alt.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnitTests\Result\Test_Anonimous_In_Return_Statement.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Construct_Object_In_Return_Statement.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_DoubleAssign.alt.xml" />
-    <EmbeddedResource Include="UnitTests\Result\Test_Functions_In_CASE_Statement.alt.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Content Include="UnitTests\TestResult.xml" />
-    <Content Include="UnitTests\Tests.VisualState.xml" />
+    <EmbeddedResource Include="Parser\Source\Test_RazorSyntax.cshtml" />
+    <EmbeddedResource Include="Parser\Source\Test_XmlComments.js" />
+    <EmbeddedResource Include="Parser\Source\Test_JSParserSkipHandling.js" />
+    <EmbeddedResource Include="Parser\Source\Test_AnonymousWithNames.js" />
+    <EmbeddedResource Include="Parser\Source\New\FunctionsHierarchy.js" />
+    <EmbeddedResource Include="Parser\Source\New\FunctionsHierarchy2.js" />
+    <EmbeddedResource Include="Parser\Source\New\Assignment.js" />
+    <EmbeddedResource Include="Parser\Source\New\CallbackChain.js" />
+    <EmbeddedResource Include="Parser\Source\New\ArrayChain.js" />
+    <EmbeddedResource Include="Parser\Source\New\InlineOrDecralation.js" />
+    <EmbeddedResource Include="Parser\Source\New\ReturnStatement.js" />
+    <EmbeddedResource Include="Parser\Source\New\Comments.js" />
+    <EmbeddedResource Include="Parser\ExpectedResult\HtmlScriptBlocks.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test1.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test2.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test3.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test4.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test4_2.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test5.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test5_1.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_Anonimous_In_Return_Statement.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_AnonymousSelfExecBlock.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_AspScriptCombiner.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_AspTagsReplace.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_Construct_Object_In_Return_Statement.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_DoubleAssign.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_Functions_In_CASE_Statement.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_Functions_In_IF_Statement.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_Functions_In_TryCatch_Statement.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_FunctionWithPlainObject.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_JsonObject_StringPropNames.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_JSParserSkipHandling.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_NewStatements.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_RazorSyntax.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_ReservedWords_Goto.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_StringContinuationCharacter.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\Test_StringScriptBlock.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\ArrayChain.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\Assignment.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\CallbackChain.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\Comments.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\FunctionsHierarchy.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\FunctionsHierarchy2.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\InlineOrDecralation.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\ReturnStatement.txt" />
+    <Content Include="Parser\Tests.VisualState.xml" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -255,6 +244,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

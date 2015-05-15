@@ -1,0 +1,58 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Function_In_The_Head(param1,param2)
+	StartLine: 8
+	EndLine: 11
+	NodeType: Function
+	Comment: This is the function in the head
+
+	Alias: DefaultScriptFunction()
+	StartLine: 19
+	EndLine: 21
+	NodeType: Function
+	Comment: script without type considered as javascript
+
+	Alias: Function_In_The_Javascript(param1,param2)
+	StartLine: 29
+	EndLine: 33
+	NodeType: Function
+
+	Alias: Function_In_The_Bottom(param1,param2)
+	StartLine: 44
+	EndLine: 47
+	NodeType: Function
+	Comment: This is the function in the bottom&#D;&#A;TODO: Not forget to remove this hack!
+
+	Alias: Class1(param1,param2)
+	StartLine: 50
+	EndLine: 74
+	NodeType: Function
+	Comment: This is another sample of JS class
+
+		Alias: Method1()
+		StartLine: 57
+		EndLine: 59
+		NodeType: Function
+		Comment: This is First method
+
+		Alias: Method2(param1)
+		StartLine: 62
+		EndLine: 64
+		NodeType: Function
+		Comment: This is Second method
+
+		Alias: Method3(param1,param2)
+		StartLine: 67
+		EndLine: 73
+		NodeType: Function
+		Comment: This is Third method
+
+			Alias: delegate()
+			StartLine: 70
+			EndLine: 72
+			NodeType: Function
+			Comment: delegate method
+

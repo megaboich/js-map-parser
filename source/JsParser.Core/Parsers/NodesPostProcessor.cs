@@ -12,16 +12,16 @@
     /// </summary>
     public static class NodesPostProcessor
     {
-        public static bool HideAnonymousFunctions(Hierachy<CodeNode> hierachy, JavascriptParserSettings settings)
+        public static bool HideAnonymousFunctions(Hierarchy<CodeNode> hierachy, JavascriptParserSettings settings)
         {
             if (settings.SkipAnonymousFuntions)
             {
-                if (hierachy.Childrens != null && hierachy.Childrens.Any())
+                if (hierachy.HasChildren)
                 {
-                    hierachy.Childrens.RemoveAll(child => HideAnonymousFunctions(child, settings));
+                    hierachy.Children.RemoveAll(child => HideAnonymousFunctions(child, settings));
                 }
 
-                if (hierachy.Childrens != null && hierachy.Childrens.Any())
+                if (hierachy.HasChildren)
                 {
                     return false;
                 }

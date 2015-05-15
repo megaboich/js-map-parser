@@ -186,7 +186,7 @@ namespace JsParser.Core.Parsers
                 Comment = _comments.GetComment(syntaxNode.Location.Start.Line, syntaxNode.Location.End.Line)
             };
 
-            Hierachy<CodeNode> hi = context.Nodes.Add(codeNode);
+            Hierarchy<CodeNode> hi = context.Nodes.Add(codeNode);
             ProcessStatement(function.Body, new ParserContext(hi));
         }
 
@@ -250,7 +250,7 @@ namespace JsParser.Core.Parsers
                         EndColumn = exp.Location.End.Column,
                         Comment = _comments.GetComment(exp.Location.Start.Line, exp.Location.End.Line)
                     };
-                    Hierachy<CodeNode> hi = context.Nodes.Add(codeNode);
+                    Hierarchy<CodeNode> hi = context.Nodes.Add(codeNode);
 
                     foreach (var element in ojexp.Properties)
                     {

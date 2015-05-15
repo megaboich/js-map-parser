@@ -1,0 +1,46 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: GetFunction(type)
+	StartLine: 3
+	EndLine: 36
+	NodeType: Function
+	Comment:  This function returns another function
+
+		Alias: t()
+		StartLine: 8
+		EndLine: 10
+		NodeType: Function
+
+		Alias: t1()
+		StartLine: 13
+		EndLine: 15
+		NodeType: Function
+
+		Alias: ?()
+		StartLine: 18
+		EndLine: 18
+		NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 20
+		EndLine: 20
+		NodeType: Object
+
+			Alias: exec()
+			StartLine: 20
+			EndLine: 20
+			NodeType: Function
+
+		Alias: tf()
+		StartLine: 23
+		EndLine: 26
+		NodeType: Function
+
+		Alias: doSome()
+		StartLine: 28
+		EndLine: 31
+		NodeType: Function
+

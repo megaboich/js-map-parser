@@ -1,0 +1,25 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: test()
+	StartLine: 1
+	EndLine: 4
+	NodeType: Function
+
+	Alias: test2()
+	StartLine: 6
+	EndLine: 9
+	NodeType: Function
+
+	Alias: test3()
+	StartLine: 11
+	EndLine: 18
+	NodeType: Function
+
+	Alias: test4()
+	StartLine: 20
+	EndLine: 23
+	NodeType: Function
+

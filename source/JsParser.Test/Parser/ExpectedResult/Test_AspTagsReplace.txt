@@ -1,0 +1,20 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: clickHandlerClentID()
+	StartLine: 4
+	EndLine: 6
+	NodeType: Function
+
+	Alias: controlHelperClientId
+	StartLine: 14
+	EndLine: 18
+	NodeType: Object
+
+		Alias: click()
+		StartLine: 16
+		EndLine: 17
+		NodeType: Function
+

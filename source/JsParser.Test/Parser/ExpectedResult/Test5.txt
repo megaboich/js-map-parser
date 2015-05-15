@@ -1,0 +1,29 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Function1(delegate)
+	StartLine: 3
+	EndLine: 6
+	NodeType: Function
+	Comment:  Comment to funtion 1&#D;&#A; This function run a delegate
+
+	Alias: Function2()
+	StartLine: 10
+	EndLine: 21
+	NodeType: Function
+	Comment:  Comment to funtion 2&#D;&#A; This function has declaration of other function
+
+		Alias: delegate()
+		StartLine: 15
+		EndLine: 17
+		NodeType: Function
+		Comment: delegate method
+
+		Alias: Function1&gt;?()
+		StartLine: 20
+		EndLine: 20
+		NodeType: AnonymousFunction
+		Comment: Anonimous function
+

@@ -1,0 +1,15 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Main()
+	StartLine: 1
+	EndLine: 7
+	NodeType: Function
+
+		Alias: obj
+		StartLine: 3
+		EndLine: 6
+		NodeType: Object
+

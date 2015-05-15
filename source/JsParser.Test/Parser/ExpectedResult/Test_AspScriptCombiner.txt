@@ -1,0 +1,10 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: anotherFake()
+	StartLine: 22
+	EndLine: 24
+	NodeType: Function
+

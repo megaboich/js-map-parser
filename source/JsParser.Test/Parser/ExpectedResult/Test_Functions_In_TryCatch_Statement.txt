@@ -1,0 +1,40 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: f1()
+	StartLine: 3
+	EndLine: 5
+	NodeType: Function
+
+	Alias: f2()
+	StartLine: 7
+	EndLine: 24
+	NodeType: Function
+
+		Alias: f21()
+		StartLine: 11
+		EndLine: 13
+		NodeType: Function
+
+		Alias: f22()
+		StartLine: 16
+		EndLine: 18
+		NodeType: Function
+
+		Alias: f23()
+		StartLine: 20
+		EndLine: 22
+		NodeType: Function
+
+	Alias: f3()
+	StartLine: 28
+	EndLine: 30
+	NodeType: Function
+
+	Alias: f4()
+	StartLine: 32
+	EndLine: 34
+	NodeType: Function
+

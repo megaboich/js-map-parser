@@ -1,7 +1,0 @@
-﻿<NUnitProject>
-  <Settings activeconfig="Debug" appbase="D:\Dev\Projects\js-addin\trunk\JsParserTest" />
-  <Config name="Debug" binpathtype="Auto">
-    <assembly path="bin\Debug\JsParserTest.exe" />
-  </Config>
-  <Config name="Release" binpathtype="Auto" />
-</NUnitProject>

@@ -1,0 +1,34 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: BigMainFunc()
+	StartLine: 2
+	EndLine: 25
+	NodeType: Function
+	Comment: Simple line comment&#D;&#A;Simple two lines comments - line 1&#D;&#A;Simple two lines comments - line 2
+
+		Alias: loadFirst()
+		StartLine: 5
+		EndLine: 7
+		NodeType: Function
+
+		Alias: loadSecond()
+		StartLine: 9
+		EndLine: 11
+		NodeType: Function
+		Comment: Comment block of 1 line
+
+		Alias: loadThird()
+		StartLine: 14
+		EndLine: 16
+		NodeType: Function
+		Comment: Comment block - 1 line&#D;&#A;    Comment block - 2 line
+
+		Alias: loadThird()
+		StartLine: 22
+		EndLine: 24
+		NodeType: Function
+		Comment: Comment block with new lines- 2 line&#D;&#A;&#D;&#A;    Comment block with new lines- 3 line
+

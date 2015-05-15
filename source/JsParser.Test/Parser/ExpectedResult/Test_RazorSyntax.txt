@@ -1,0 +1,15 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: $&gt;?()
+	StartLine: 29
+	EndLine: 48
+	NodeType: AnonymousFunction
+
+		Alias: Init&gt;?
+		StartLine: 41
+		EndLine: 46
+		NodeType: Object
+
