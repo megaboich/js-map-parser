@@ -1,0 +1,15 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: Aha()
+	StartLine: 1
+	EndLine: 7
+	NodeType: Function
+
+		Alias: Inner()
+		StartLine: 4
+		EndLine: 6
+		NodeType: Function
+

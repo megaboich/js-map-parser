@@ -35,7 +35,6 @@
             this.edScriptStripEtensions = new System.Windows.Forms.TextBox();
             this.chScriptStripEnabled = new System.Windows.Forms.CheckBox();
             this.chShowErrorNotificationOnTopOfTheEditor = new System.Windows.Forms.CheckBox();
-            this.chIgnoreDebugger = new System.Windows.Forms.CheckBox();
             this.edExtensions = new System.Windows.Forms.TextBox();
             this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -123,7 +122,6 @@
             this.tabPage1.Controls.Add(this.edScriptStripEtensions);
             this.tabPage1.Controls.Add(this.chScriptStripEnabled);
             this.tabPage1.Controls.Add(this.chShowErrorNotificationOnTopOfTheEditor);
-            this.tabPage1.Controls.Add(this.chIgnoreDebugger);
             this.tabPage1.Controls.Add(this.edExtensions);
             this.tabPage1.Controls.Add(this.chTrackActiveItem);
             this.tabPage1.Controls.Add(this.label1);
@@ -178,16 +176,6 @@
             this.chShowErrorNotificationOnTopOfTheEditor.Text = "Show error notification on top of the editor (VS2010 and up)";
             this.toolTip1.SetToolTip(this.chShowErrorNotificationOnTopOfTheEditor, "Requires reopen of the editor to apply setting effect.");
             this.chShowErrorNotificationOnTopOfTheEditor.UseVisualStyleBackColor = true;
-            // 
-            // chIgnoreDebugger
-            // 
-            this.chIgnoreDebugger.AutoSize = true;
-            this.chIgnoreDebugger.Location = new System.Drawing.Point(16, 167);
-            this.chIgnoreDebugger.Name = "chIgnoreDebugger";
-            this.chIgnoreDebugger.Size = new System.Drawing.Size(221, 17);
-            this.chIgnoreDebugger.TabIndex = 5;
-            this.chIgnoreDebugger.Text = "Do not treat \"debugger\" keyword as error";
-            this.chIgnoreDebugger.UseVisualStyleBackColor = true;
             // 
             // edExtensions
             // 
@@ -836,7 +824,6 @@
         private System.Windows.Forms.CheckBox chFixRazor;
         private System.Windows.Forms.CheckBox chFixAspNet;
         private System.Windows.Forms.CheckBox chShowErrorNotificationOnTopOfTheEditor;
-        private System.Windows.Forms.CheckBox chIgnoreDebugger;
         private System.Windows.Forms.TextBox edFixRazorExtensions;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox edFixAspNetExtensions;

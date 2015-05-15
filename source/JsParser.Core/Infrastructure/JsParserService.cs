@@ -56,7 +56,6 @@ namespace JsParser.Core.Infrastructure
                 ScriptStripEnabled = _settings.ScriptStripEnabled,
                 ScriptStripExtensions = _settings.ScriptStripExtensions.OfType<string>().ToArray(),
                 ToDoKeyWords = _settings.ToDoKeywords.OfType<string>().ToArray(),
-                IgnoreDebuggerKeyword = _settings.IgnoreDebuggerKeyword,
                 FixAspNetTags = _settings.FixAspNetTags,
                 FixAspNetTagsExtensions = _settings.FixAspNetTagsExtensions.OfType<string>().ToArray(),
                 FixRazorSyntax = _settings.FixRazorSyntax,

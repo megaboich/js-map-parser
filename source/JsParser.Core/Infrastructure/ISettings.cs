@@ -40,6 +40,5 @@ namespace JsParser.Core.Infrastructure
         bool UseVSColorTheme { get; set; }
         bool Visible { get; set; }
         System.Collections.Specialized.StringCollection ToDoKeywords { get; set; }
-        bool IgnoreDebuggerKeyword { get; set; }
     }
 }

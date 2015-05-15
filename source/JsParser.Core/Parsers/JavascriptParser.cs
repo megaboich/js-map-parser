@@ -33,11 +33,6 @@ namespace JsParser.Core.Parsers
 
             code = CodeTransformer.ApplyJSParserSkip(code);
             
-            if (_settings.IgnoreDebuggerKeyword)
-            {
-                code = CodeTransformer.FixDebuggerKeyword(code);
-            }
-
             code = CodeTransformer.FixStringScriptBlocks(code);
 
             if (_settings.FixAspNetTags && _settings.FixAspNetTagsExtensions.Contains(ext))
@@ -58,8 +53,6 @@ namespace JsParser.Core.Parsers
                     return ParseInternal(string.Empty);
                 }
             }
-
-            code = CodeTransformer.FixContinueStringLiterals(code);
             
             var result = ParseInternal(code);
 

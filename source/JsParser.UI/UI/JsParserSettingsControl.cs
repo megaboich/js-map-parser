@@ -59,8 +59,6 @@ namespace JsParser.UI.UI
             chFixRazor.Checked = Settings.Default.FixRazorSyntax;
             edFixRazorExtensions.Text = string.Join(" ", Settings.Default.FixRazorSyntaxExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
 
-            chIgnoreDebugger.Checked = Settings.Default.IgnoreDebuggerKeyword;
-
             edToDoKeyWords.Text = String.Join(", ", Settings.Default.ToDoKeywords.OfType<string>().ToArray());
 
             chShowErrorNotificationOnTopOfTheEditor.Checked = Settings.Default.ShowErrorsNotificationOnTopOfEditor;
@@ -109,7 +107,6 @@ namespace JsParser.UI.UI
             Settings.Default.FixAspNetTagsExtensions = ReadListOfExtensionsFromTextBoxText(edFixAspNetExtensions.Text);
             Settings.Default.FixRazorSyntax = chFixRazor.Checked;
             Settings.Default.FixRazorSyntaxExtensions = ReadListOfExtensionsFromTextBoxText(edFixRazorExtensions.Text);
-            Settings.Default.IgnoreDebuggerKeyword = chIgnoreDebugger.Checked;
 
             Settings.Default.ToDoKeywords = new System.Collections.Specialized.StringCollection();
             Settings.Default.ToDoKeywords.AddRange(edToDoKeyWords.Text.Split(new[] { ',', ';' }).Select(p => p.Trim()).ToArray());

@@ -42,6 +42,12 @@ namespace JsParser.Test.Parser
         }
 
         [Test]
+        public void DebuggerKeyword()
+        {
+            TestRunner.RunTest("New.DebuggerKeyword.js", "New.DebuggerKeyword.txt");
+        }
+
+        [Test]
         public void FunctionsHierarchy()
         {
             TestRunner.RunTest("New.FunctionsHierarchy.js", "New.FunctionsHierarchy.txt");
