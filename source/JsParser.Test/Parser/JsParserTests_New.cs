@@ -70,5 +70,18 @@ namespace JsParser.Test.Parser
         {
             TestRunner.RunTest("New.ReturnStatement.js", "New.ReturnStatement.txt");
         }
+
+        [Test]
+        public void TodoList()
+        {
+            var result = TestRunner.RunTest("New.TodoList.js", "New.TodoList.txt");
+
+            Assert.AreEqual(2, result.TaskList.Count);
+            Assert.AreEqual("TODO: write some code here", result.TaskList[0].Description);
+            Assert.AreEqual(6, result.TaskList[0].StartLine);
+
+            Assert.AreEqual("to do: Another todo line", result.TaskList[1].Description);
+            Assert.AreEqual(9, result.TaskList[1].StartLine);
+        }
     }
 }

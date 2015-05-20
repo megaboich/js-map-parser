@@ -988,7 +988,7 @@ namespace JsParser.UI.UI
         {
             if (!Settings.ToDoListCollapsed)
             {
-                splitContainer1.SplitterDistance = splitContainer1.Height - Math.Max(100, Settings.ToDoListLastHeight);
+                splitContainer1.SplitterDistance = Math.Max(100, splitContainer1.Height - Math.Max(100, Settings.ToDoListLastHeight));
             }
             else
             {

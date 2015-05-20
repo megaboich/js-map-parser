@@ -16,9 +16,16 @@ namespace JsParser.Core.Parsers
                         var todoIndex = c.Spelling.IndexOf(kw, StringComparison.InvariantCultureIgnoreCase);
                         if (todoIndex >= 0)
                         {
+                            var todoClause = c.Spelling.Substring(todoIndex);
+                            var endIndex = todoClause.IndexOfAny(new[] { '\r', '\n' });
+                            if (endIndex >= 0)
+                            {
+                                todoClause = todoClause.Substring(0, endIndex);
+                            }
+
                             return new TaskListItem
                             {
-                                Description = c.Spelling.Substring(todoIndex),
+                                Description = todoClause,
                                 StartLine = c.StartLine,
                                 StartColumn = 0
                             };

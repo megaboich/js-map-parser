@@ -66,6 +66,8 @@ namespace JsParser.Core.Parsers
 
             ProcessStatements(program.Body, new ParserContext(returnedResult.Nodes));
 
+            returnedResult.TaskList = TaskListAggregator.GetTaskList(_comments.Comments, _settings.ToDoKeyWords).ToList();
+            
             return returnedResult;
         }
 

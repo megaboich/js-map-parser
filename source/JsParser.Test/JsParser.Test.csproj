@@ -214,6 +214,8 @@
     <EmbeddedResource Include="Parser\ExpectedResult\New\ReturnStatement.txt" />
     <EmbeddedResource Include="Parser\ExpectedResult\New\DebuggerKeyword.txt" />
     <EmbeddedResource Include="Parser\Source\New\DebuggerKeyword.js" />
+    <EmbeddedResource Include="Parser\Source\New\TodoList.js" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\TodoList.txt" />
     <Content Include="Parser\Tests.VisualState.xml" />
   </ItemGroup>
   <ItemGroup>
