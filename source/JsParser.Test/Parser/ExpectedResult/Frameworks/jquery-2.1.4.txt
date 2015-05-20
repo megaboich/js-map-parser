@@ -1,0 +1,3540 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: ?(global,factory)
+	StartLine: 15
+	EndLine: 38
+	NodeType: AnonymousFunction
+
+	Alias: ?(window,noGlobal)
+	StartLine: 38
+	EndLine: 9210
+	NodeType: AnonymousFunction
+	Comment: Pass this if window is not defined yet
+
+		Alias: jQuery(selector,context)
+		StartLine: 73
+		EndLine: 77
+		NodeType: Function
+		Comment: Define a local copy of jQuery&#D;&#A; The jQuery object is actually just the init constructor &#39;enhanced&#39;&#D;&#A; Need init if jQuery is called (just allow error to be thrown if not included)
+
+		Alias: fcamelCase(all,letter)
+		StartLine: 88
+		EndLine: 90
+		NodeType: Function
+		Comment: Used by jQuery.camelCase as callback to replace()
+
+		Alias: prototype.fn
+		StartLine: 92
+		EndLine: 175
+		NodeType: Object
+		Comment: The current version of jQuery being used
+
+			Alias: toArray()
+			StartLine: 104
+			EndLine: 106
+			NodeType: Function
+
+			Alias: get(num)
+			StartLine: 110
+			EndLine: 118
+			NodeType: Function
+			Comment: Get the Nth element in the matched element set OR&#D;&#A; Get the whole matched element set as a clean array
+
+			Alias: pushStack(elems)
+			StartLine: 122
+			EndLine: 133
+			NodeType: Function
+			Comment: Take an array of elements and push it onto the stack&#D;&#A; (returning the new matched element set)
+
+			Alias: each(callback,args)
+			StartLine: 138
+			EndLine: 140
+			NodeType: Function
+			Comment: Execute a callback for every element in the matched set.&#D;&#A; (You can seed the arguments with an array of args, but this is&#D;&#A; only used internally.)
+
+			Alias: map(callback)
+			StartLine: 142
+			EndLine: 146
+			NodeType: Function
+
+				Alias: map.pushStack&gt;?&gt;?(elem,i)
+				StartLine: 143
+				EndLine: 145
+				NodeType: AnonymousFunction
+
+			Alias: slice()
+			StartLine: 148
+			EndLine: 150
+			NodeType: Function
+
+			Alias: first()
+			StartLine: 152
+			EndLine: 154
+			NodeType: Function
+
+			Alias: last()
+			StartLine: 156
+			EndLine: 158
+			NodeType: Function
+
+			Alias: eq(i)
+			StartLine: 160
+			EndLine: 164
+			NodeType: Function
+
+			Alias: end()
+			StartLine: 166
+			EndLine: 168
+			NodeType: Function
+
+		Alias: extend.extend()
+		StartLine: 177
+		EndLine: 240
+		NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 242
+		EndLine: 526
+		NodeType: Object
+		Comment: Unique for each copy of jQuery on the page
+
+			Alias: error(msg)
+			StartLine: 249
+			EndLine: 251
+			NodeType: Function
+
+			Alias: noop()
+			StartLine: 253
+			EndLine: 253
+			NodeType: Function
+
+			Alias: isFunction(obj)
+			StartLine: 255
+			EndLine: 257
+			NodeType: Function
+
+			Alias: isWindow(obj)
+			StartLine: 261
+			EndLine: 263
+			NodeType: Function
+
+			Alias: isNumeric(obj)
+			StartLine: 265
+			EndLine: 271
+			NodeType: Function
+			Comment: parseFloat NaNs numeric-cast false positives (null|true|false|&quot;&quot;)&#D;&#A; ...but misinterprets leading-number strings, particularly hex literals (&quot;0x...&quot;)&#D;&#A; subtraction forces infinities to NaN&#D;&#A; adding 1 corrects loss of precision from parseFloat (#15100)
+
+			Alias: isPlainObject(obj)
+			StartLine: 273
+			EndLine: 290
+			NodeType: Function
+			Comment: Not plain objects:&#D;&#A; - Any object or value whose internal [[Class]] property is not &quot;[object Object]&quot;&#D;&#A; - DOM nodes&#D;&#A; - window
+
+			Alias: isEmptyObject(obj)
+			StartLine: 292
+			EndLine: 298
+			NodeType: Function
+
+			Alias: type(obj)
+			StartLine: 300
+			EndLine: 308
+			NodeType: Function
+
+			Alias: globalEval(code)
+			StartLine: 311
+			EndLine: 331
+			NodeType: Function
+			Comment: Evaluates a script in a global context
+
+			Alias: camelCase(string)
+			StartLine: 336
+			EndLine: 338
+			NodeType: Function
+			Comment: Convert dashed to camelCase; used by the css and data modules&#D;&#A; Support: IE9-11+&#D;&#A; Microsoft forgot to hump their vendor prefix (#9572)
+
+			Alias: nodeName(elem,name)
+			StartLine: 340
+			EndLine: 342
+			NodeType: Function
+
+			Alias: each(obj,callback,args)
+			StartLine: 345
+			EndLine: 392
+			NodeType: Function
+			Comment: args is for internal usage only
+
+			Alias: trim(text)
+			StartLine: 395
+			EndLine: 399
+			NodeType: Function
+			Comment: Support: Android&lt;4.1
+
+			Alias: makeArray(arr,results)
+			StartLine: 402
+			EndLine: 417
+			NodeType: Function
+			Comment: results is for internal usage only
+
+			Alias: inArray(elem,arr,i)
+			StartLine: 419
+			EndLine: 421
+			NodeType: Function
+
+			Alias: merge(first,second)
+			StartLine: 423
+			EndLine: 435
+			NodeType: Function
+
+			Alias: grep(elems,callback,invert)
+			StartLine: 437
+			EndLine: 454
+			NodeType: Function
+
+			Alias: map(elems,callback,arg)
+			StartLine: 457
+			EndLine: 487
+			NodeType: Function
+			Comment: arg is for internal usage only
+
+			Alias: proxy(fn,context)
+			StartLine: 494
+			EndLine: 519
+			NodeType: Function
+			Comment: Bind a function to a context, optionally partially applying any&#D;&#A; arguments.
+
+				Alias: proxy()
+				StartLine: 511
+				EndLine: 513
+				NodeType: Function
+
+		Alias: each&gt;?(i,name)
+		StartLine: 529
+		EndLine: 531
+		NodeType: AnonymousFunction
+		Comment: Populate the class2type map
+
+		Alias: isArraylike(obj)
+		StartLine: 533
+		EndLine: 552
+		NodeType: Function
+
+		Alias: Sizzle(window)
+		StartLine: 564
+		EndLine: 2611
+		NodeType: Function
+		Comment: !&#A; * Sizzle CSS Selector Engine v2.2.0-pre&#A; * http://sizzlejs.com/&#A; *&#A; * Copyright 2008, 2014 jQuery Foundation, Inc. and other contributors&#A; * Released under the MIT license&#A; * http://jquery.org/license&#A; *&#A; * Date: 2014-12-16
+
+			Alias: sortOrder(a,b)
+			StartLine: 596
+			EndLine: 601
+			NodeType: Function
+
+			Alias: indexOf(list,elem)
+			StartLine: 615
+			EndLine: 624
+			NodeType: Function
+			Comment: Use a stripped-down indexOf as it&#39;s faster than native&#D;&#A; http://jsperf.com/thor-indexof-vs-for/5
+
+			Alias: matchExpr
+			StartLine: 670
+			EndLine: 684
+			NodeType: Object
+
+			Alias: funescape(_,escaped,escape…itespace)
+			StartLine: 699
+			EndLine: 711
+			NodeType: Function
+
+			Alias: unloadHandler()
+			StartLine: 717
+			EndLine: 719
+			NodeType: Function
+			Comment: Used for iframes&#D;&#A; See setDocument()&#D;&#A; Removing the function wrapper causes a &quot;Permission Denied&quot;&#D;&#A; error in IE
+
+			Alias: push
+			StartLine: 731
+			EndLine: 747
+			NodeType: Object
+
+			Alias: Sizzle(selector,context…lts,seed)
+			StartLine: 750
+			EndLine: 856
+			NodeType: Function
+
+			Alias: createCache()
+			StartLine: 864
+			EndLine: 876
+			NodeType: Function
+			Comment: *&#A; * Create key-value caches of limited size&#A; * @returns {Function(string, Object)} Returns the Object data after storing it on itself with&#A; *&#9;property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)&#A; *&#9;deleting the oldest entry
+
+				Alias: cache(key,value)
+				StartLine: 867
+				EndLine: 874
+				NodeType: Function
+				Comment: Use (key + &quot; &quot;) to avoid collision with native prototype properties (see Issue #157)
+
+			Alias: markFunction(fn)
+			StartLine: 882
+			EndLine: 885
+			NodeType: Function
+			Comment: *&#A; * Mark a function for special use by Sizzle&#A; * @param {Function} fn The function to mark
+
+			Alias: assert(fn)
+			StartLine: 891
+			EndLine: 906
+			NodeType: Function
+			Comment: *&#A; * Support testing using an element&#A; * @param {Function} fn Passed the created div and expects a boolean result
+
+			Alias: addHandle(attrs,handler)
+			StartLine: 913
+			EndLine: 920
+			NodeType: Function
+			Comment: *&#A; * Adds the same handler for all of the specified attrs&#A; * @param {String} attrs Pipe-separated list of attributes&#A; * @param {Function} handler The method that will be applied
+
+			Alias: siblingCheck(a,b)
+			StartLine: 928
+			EndLine: 949
+			NodeType: Function
+			Comment: *&#A; * Checks document order of two siblings&#A; * @param {Element} a&#A; * @param {Element} b&#A; * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
+
+			Alias: createInputPseudo(type)
+			StartLine: 955
+			EndLine: 960
+			NodeType: Function
+			Comment: *&#A; * Returns a function to use in pseudos for input types&#A; * @param {String} type
+
+				Alias: ?(elem)
+				StartLine: 956
+				EndLine: 959
+				NodeType: AnonymousFunction
+
+			Alias: createButtonPseudo(type)
+			StartLine: 966
+			EndLine: 971
+			NodeType: Function
+			Comment: *&#A; * Returns a function to use in pseudos for buttons&#A; * @param {String} type
+
+				Alias: ?(elem)
+				StartLine: 967
+				EndLine: 970
+				NodeType: AnonymousFunction
+
+			Alias: createPositionalPseudo(fn)
+			StartLine: 977
+			EndLine: 993
+			NodeType: Function
+			Comment: *&#A; * Returns a function to use in pseudos for positionals&#A; * @param {Function} fn
+
+				Alias: markFunction&gt;?(argument)
+				StartLine: 978
+				EndLine: 992
+				NodeType: AnonymousFunction
+
+					Alias: markFunction&gt;?(seed,matches)
+					StartLine: 980
+					EndLine: 991
+					NodeType: AnonymousFunction
+
+			Alias: testContext(context)
+			StartLine: 1000
+			EndLine: 1002
+			NodeType: Function
+			Comment: *&#A; * Checks a node for validity as a Sizzle context&#A; * @param {Element|Object=} context&#A; * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
+
+			Alias: isXML.isXML(elem)
+			StartLine: 1012
+			EndLine: 1017
+			NodeType: Function
+			Comment: *&#A; * Detects XML nodes&#A; * @param {Element|Object} elem An element or a document&#A; * @returns {Boolean} True iff elem is a non-HTML XML node&#A; &#D;&#A; documentElement is verified for cases where it doesn&#39;t yet exist&#D;&#A; (such as loading iframes in IE - #4833)
+
+			Alias: setDocument.setDocument(node)
+			StartLine: 1024
+			EndLine: 1393
+			NodeType: Function
+			Comment: *&#A; * Sets document-related variables once based on the current document&#A; * @param {Element|Object} [doc] An element or document object to use to set the document&#A; * @returns {Object} Returns the current document
+
+				Alias: assert.attributes&gt;?(div)
+				StartLine: 1061
+				EndLine: 1064
+				NodeType: AnonymousFunction
+				Comment: Support: IE&lt;8&#D;&#A; Verify that getAttribute really returns attributes and not properties&#D;&#A; (excepting IE8 booleans)
+
+				Alias: assert.getElementsByTagName&gt;?(div)
+				StartLine: 1070
+				EndLine: 1073
+				NodeType: AnonymousFunction
+				Comment: Check if getElementsByTagName(&quot;*&quot;) returns only elements
+
+				Alias: assert.getById&gt;?(div)
+				StartLine: 1082
+				EndLine: 1085
+				NodeType: AnonymousFunction
+				Comment: Support: IE&lt;10&#D;&#A; Check if getElementById returns elements by name&#D;&#A; The broken getElementById methods don&#39;t pick up programatically-set names,&#D;&#A; so use a roundabout getElementsByName test
+
+				Alias: &quot;ID&quot;(id,context)
+				StartLine: 1089
+				EndLine: 1096
+				NodeType: Function
+
+				Alias: &quot;ID&quot;(id)
+				StartLine: 1097
+				EndLine: 1102
+				NodeType: Function
+
+					Alias: ?(elem)
+					StartLine: 1099
+					EndLine: 1101
+					NodeType: AnonymousFunction
+
+				Alias: &quot;ID&quot;(id)
+				StartLine: 1108
+				EndLine: 1114
+				NodeType: Function
+
+					Alias: ?(elem)
+					StartLine: 1110
+					EndLine: 1113
+					NodeType: AnonymousFunction
+
+				Alias: &quot;CLASS&quot;(className,context)
+				StartLine: 1150
+				EndLine: 1154
+				NodeType: Function
+				Comment: Class
+
+				Alias: assert&gt;?(div)
+				StartLine: 1174
+				EndLine: 1216
+				NodeType: AnonymousFunction
+				Comment: Build QSA regex&#D;&#A; Regex strategy adopted from Diego Perini&#D;&#A; Select is set to empty string on purpose&#D;&#A; This is to test IE&#39;s treatment of not explicitly&#D;&#A; setting a boolean content attribute,&#D;&#A; since its presence should be enough&#D;&#A; http://bugs.jquery.com/ticket/12359
+
+				Alias: assert&gt;?(div)
+				StartLine: 1218
+				EndLine: 1240
+				NodeType: AnonymousFunction
+				Comment: Support: Windows 8 Native Apps&#D;&#A; The type and name attributes are restricted during .innerHTML assignment
+
+				Alias: assert&gt;?(div)
+				StartLine: 1249
+				EndLine: 1258
+				NodeType: AnonymousFunction
+				Comment: Check to see if it&#39;s possible to do matchesSelector&#D;&#A; on a disconnected node (IE 9)
+
+			Alias: matches(expr,elements)
+			StartLine: 1395
+			EndLine: 1397
+			NodeType: Function
+
+			Alias: matchesSelector(elem,expr)
+			StartLine: 1399
+			EndLine: 1426
+			NodeType: Function
+			Comment: Set document vars if needed
+
+			Alias: contains(context,elem)
+			StartLine: 1428
+			EndLine: 1434
+			NodeType: Function
+			Comment: Set document vars if needed
+
+			Alias: attr(elem,name)
+			StartLine: 1436
+			EndLine: 1455
+			NodeType: Function
+			Comment: Set document vars if needed
+
+			Alias: error(msg)
+			StartLine: 1457
+			EndLine: 1459
+			NodeType: Function
+
+			Alias: uniqueSort(results)
+			StartLine: 1465
+			EndLine: 1492
+			NodeType: Function
+			Comment: *&#A; * Document sorting and removing duplicates&#A; * @param {ArrayLike} results
+
+			Alias: getText.getText(elem)
+			StartLine: 1498
+			EndLine: 1527
+			NodeType: Function
+			Comment: *&#A; * Utility function for retrieving the text value of an array of DOM nodes&#A; * @param {Array|Element} elem
+
+			Alias: selectors.Expr
+			StartLine: 1529
+			EndLine: 1996
+			NodeType: Object
+
+				Alias: relative
+				StartLine: 1542
+				EndLine: 1547
+				NodeType: Object
+
+					Alias: &quot;&gt;&quot;
+					StartLine: 1543
+					EndLine: 1543
+					NodeType: Object
+
+					Alias: &quot; &quot;
+					StartLine: 1544
+					EndLine: 1544
+					NodeType: Object
+
+					Alias: &quot;+&quot;
+					StartLine: 1545
+					EndLine: 1545
+					NodeType: Object
+
+					Alias: &quot;~&quot;
+					StartLine: 1546
+					EndLine: 1546
+					NodeType: Object
+
+				Alias: preFilter
+				StartLine: 1549
+				EndLine: 1622
+				NodeType: Object
+
+					Alias: &quot;ATTR&quot;(match)
+					StartLine: 1550
+					EndLine: 1561
+					NodeType: Function
+
+					Alias: &quot;CHILD&quot;(match)
+					StartLine: 1563
+					EndLine: 1593
+					NodeType: Function
+					Comment: matches from matchExpr[&quot;CHILD&quot;]&#A;&#9;&#9;&#9;&#9;1 type (only|nth|...)&#A;&#9;&#9;&#9;&#9;2 what (child|of-type)&#A;&#9;&#9;&#9;&#9;3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)&#A;&#9;&#9;&#9;&#9;4 xn-component of xn+y argument ([+-]?\d*n|)&#A;&#9;&#9;&#9;&#9;5 sign of xn-component&#A;&#9;&#9;&#9;&#9;6 x of xn-component&#A;&#9;&#9;&#9;&#9;7 sign of y-component&#A;&#9;&#9;&#9;&#9;8 y of y-component
+
+					Alias: &quot;PSEUDO&quot;(match)
+					StartLine: 1595
+					EndLine: 1621
+					NodeType: Function
+
+				Alias: filter
+				StartLine: 1624
+				EndLine: 1794
+				NodeType: Object
+
+					Alias: &quot;TAG&quot;(nodeNameSelector)
+					StartLine: 1626
+					EndLine: 1633
+					NodeType: Function
+
+					Alias: &quot;CLASS&quot;(className)
+					StartLine: 1635
+					EndLine: 1643
+					NodeType: Function
+
+						Alias: classCache&gt;?(elem)
+						StartLine: 1640
+						EndLine: 1642
+						NodeType: AnonymousFunction
+
+					Alias: &quot;ATTR&quot;(name,operator,check)
+					StartLine: 1645
+					EndLine: 1667
+					NodeType: Function
+
+						Alias: ?(elem)
+						StartLine: 1646
+						EndLine: 1666
+						NodeType: AnonymousFunction
+
+					Alias: &quot;CHILD&quot;(type,what,argume…rst,last)
+					StartLine: 1669
+					EndLine: 1756
+					NodeType: Function
+
+					Alias: &quot;PSEUDO&quot;(pseudo,argument)
+					StartLine: 1758
+					EndLine: 1793
+					NodeType: Function
+					Comment: pseudo-class names are case-insensitive&#D;&#A; http://www.w3.org/TR/selectors/#pseudo-classes&#D;&#A; Prioritize by case sensitivity in case custom pseudos are added with uppercase letters&#D;&#A; Remember that setFilters inherits from pseudos
+
+				Alias: pseudos
+				StartLine: 1796
+				EndLine: 1995
+				NodeType: Object
+				Comment: Potentially complex pseudos
+
+					Alias: markFunction.&quot;not&quot;&gt;?(selector)
+					StartLine: 1798
+					EndLine: 1826
+					NodeType: AnonymousFunction
+					Comment: Trim the selector passed to compile&#D;&#A; to avoid treating leading and trailing&#D;&#A; spaces as combinators
+
+					Alias: markFunction.&quot;has&quot;&gt;?(selector)
+					StartLine: 1828
+					EndLine: 1832
+					NodeType: AnonymousFunction
+
+						Alias: ?(elem)
+						StartLine: 1829
+						EndLine: 1831
+						NodeType: AnonymousFunction
+
+					Alias: markFunction.&quot;contains&quot;&gt;?(text)
+					StartLine: 1834
+					EndLine: 1839
+					NodeType: AnonymousFunction
+
+						Alias: ?(elem)
+						StartLine: 1836
+						EndLine: 1838
+						NodeType: AnonymousFunction
+
+					Alias: markFunction.&quot;lang&quot;&gt;?(lang)
+					StartLine: 1848
+					EndLine: 1867
+					NodeType: AnonymousFunction
+					Comment: &quot;Whether an element is represented by a :lang() selector&#D;&#A; is based solely on the element&#39;s language value&#D;&#A; being equal to the identifier C,&#D;&#A; or beginning with the identifier C immediately followed by &quot;-&quot;.&#D;&#A; The matching of C against the element&#39;s language value is performed case-insensitively.&#D;&#A; The identifier C does not have to be a valid language name.&quot;&#D;&#A; http://www.w3.org/TR/selectors/#lang-pseudo&#D;&#A; lang value must be a valid identifier
+
+						Alias: ?(elem)
+						StartLine: 1854
+						EndLine: 1866
+						NodeType: AnonymousFunction
+
+					Alias: &quot;target&quot;(elem)
+					StartLine: 1870
+					EndLine: 1873
+					NodeType: Function
+					Comment: Miscellaneous
+
+					Alias: &quot;root&quot;(elem)
+					StartLine: 1875
+					EndLine: 1877
+					NodeType: Function
+
+					Alias: &quot;focus&quot;(elem)
+					StartLine: 1879
+					EndLine: 1881
+					NodeType: Function
+
+					Alias: &quot;enabled&quot;(elem)
+					StartLine: 1884
+					EndLine: 1886
+					NodeType: Function
+					Comment: Boolean properties
+
+					Alias: &quot;disabled&quot;(elem)
+					StartLine: 1888
+					EndLine: 1890
+					NodeType: Function
+
+					Alias: &quot;checked&quot;(elem)
+					StartLine: 1892
+					EndLine: 1897
+					NodeType: Function
+					Comment: In CSS3, :checked should return both checked and selected elements&#D;&#A; http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
+
+					Alias: &quot;selected&quot;(elem)
+					StartLine: 1899
+					EndLine: 1907
+					NodeType: Function
+					Comment: Accessing this property makes selected-by-default&#D;&#A; options in Safari work properly
+
+					Alias: &quot;empty&quot;(elem)
+					StartLine: 1910
+					EndLine: 1921
+					NodeType: Function
+					Comment: Contents&#D;&#A; http://www.w3.org/TR/selectors/#empty-pseudo&#D;&#A; :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),&#D;&#A;   but not by others (comment: 8; processing instruction: 7; etc.)&#D;&#A; nodeType &lt; 6 works because attributes (2) do not appear as children
+
+					Alias: &quot;parent&quot;(elem)
+					StartLine: 1923
+					EndLine: 1925
+					NodeType: Function
+
+					Alias: &quot;header&quot;(elem)
+					StartLine: 1928
+					EndLine: 1930
+					NodeType: Function
+					Comment: Element/input types
+
+					Alias: &quot;input&quot;(elem)
+					StartLine: 1932
+					EndLine: 1934
+					NodeType: Function
+
+					Alias: &quot;button&quot;(elem)
+					StartLine: 1936
+					EndLine: 1939
+					NodeType: Function
+
+					Alias: &quot;text&quot;(elem)
+					StartLine: 1941
+					EndLine: 1949
+					NodeType: Function
+
+					Alias: createPositionalPseudo.&quot;first&quot;&gt;?()
+					StartLine: 1952
+					EndLine: 1954
+					NodeType: AnonymousFunction
+					Comment: Position-in-collection
+
+					Alias: createPositionalPseudo.&quot;last&quot;&gt;?(matchIndexes,length)
+					StartLine: 1956
+					EndLine: 1958
+					NodeType: AnonymousFunction
+
+					Alias: createPositionalPseudo.&quot;eq&quot;&gt;?(matchIndexes,len…argument)
+					StartLine: 1960
+					EndLine: 1962
+					NodeType: AnonymousFunction
+
+					Alias: createPositionalPseudo.&quot;even&quot;&gt;?(matchIndexes,length)
+					StartLine: 1964
+					EndLine: 1970
+					NodeType: AnonymousFunction
+
+					Alias: createPositionalPseudo.&quot;odd&quot;&gt;?(matchIndexes,length)
+					StartLine: 1972
+					EndLine: 1978
+					NodeType: AnonymousFunction
+
+					Alias: createPositionalPseudo.&quot;lt&quot;&gt;?(matchIndexes,len…argument)
+					StartLine: 1980
+					EndLine: 1986
+					NodeType: AnonymousFunction
+
+					Alias: createPositionalPseudo.&quot;gt&quot;&gt;?(matchIndexes,len…argument)
+					StartLine: 1988
+					EndLine: 1994
+					NodeType: AnonymousFunction
+
+			Alias: setFilters()
+			StartLine: 2009
+			EndLine: 2009
+			NodeType: Function
+			Comment: Easy API for creating new setFilters
+
+			Alias: tokenize.tokenize(selector,parseOnly)
+			StartLine: 2013
+			EndLine: 2078
+			NodeType: Function
+
+			Alias: toSelector(tokens)
+			StartLine: 2080
+			EndLine: 2088
+			NodeType: Function
+
+			Alias: addCombinator(matcher,combinator,base)
+			StartLine: 2090
+			EndLine: 2141
+			NodeType: Function
+
+			Alias: elementMatcher(matchers)
+			StartLine: 2143
+			EndLine: 2155
+			NodeType: Function
+
+			Alias: multipleContexts(selector,contexts,results)
+			StartLine: 2157
+			EndLine: 2164
+			NodeType: Function
+
+			Alias: condense(unmatched,map,fi…text,xml)
+			StartLine: 2166
+			EndLine: 2185
+			NodeType: Function
+
+			Alias: setMatcher(preFilter,select…Selector)
+			StartLine: 2187
+			EndLine: 2278
+			NodeType: Function
+
+				Alias: markFunction&gt;?(seed,results,context,xml)
+				StartLine: 2194
+				EndLine: 2277
+				NodeType: AnonymousFunction
+
+			Alias: matcherFromTokens(tokens)
+			StartLine: 2280
+			EndLine: 2336
+			NodeType: Function
+
+				Alias: addCombinator.matchContext&gt;?(elem)
+				StartLine: 2288
+				EndLine: 2290
+				NodeType: AnonymousFunction
+				Comment: The foundational matcher ensures that elements are reachable from top-level context(s)
+
+				Alias: addCombinator.matchAnyContext&gt;?(elem)
+				StartLine: 2291
+				EndLine: 2293
+				NodeType: AnonymousFunction
+
+				Alias: ?(elem,context,xml)
+				StartLine: 2294
+				EndLine: 2302
+				NodeType: AnonymousFunction
+
+			Alias: matcherFromGroupMatchers(elementMatchers,…Matchers)
+			StartLine: 2338
+			EndLine: 2435
+			NodeType: Function
+
+				Alias: superMatcher(seed,context,xml…utermost)
+				StartLine: 2341
+				EndLine: 2430
+				NodeType: Function
+
+			Alias: compile.compile(selector,match)
+			StartLine: 2437
+			EndLine: 2465
+			NodeType: Function
+			Comment: Internal Use Only
+
+			Alias: select.select(selector,context…lts,seed)
+			StartLine: 2476
+			EndLine: 2544
+			NodeType: Function
+			Comment: *&#A; * A low-level selection function that works with Sizzle&#39;s compiled&#A; *  selector functions&#A; * @param {String|Function} selector A selector or a pre-compiled&#A; *  selector function built with Sizzle.compile&#A; * @param {Element} context&#A; * @param {Array} [results]&#A; * @param {Array} [seed] A set of elements to match against
+
+			Alias: assert.sortDetached&gt;?(div1)
+			StartLine: 2560
+			EndLine: 2563
+			NodeType: AnonymousFunction
+			Comment: Support: Webkit&lt;537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)&#D;&#A; Detached nodes confoundingly follow *each other*&#D;&#A; Should return 1, but returns 4 (following)
+
+			Alias: assert&gt;?(div)
+			StartLine: 2568
+			EndLine: 2571
+			NodeType: AnonymousFunction
+			Comment: Support: IE&lt;8&#D;&#A; Prevent attribute/property &quot;interpolation&quot;&#D;&#A; http://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
+
+			Alias: addHandle&gt;?(elem,name,isXML)
+			StartLine: 2572
+			EndLine: 2576
+			NodeType: AnonymousFunction
+
+			Alias: assert&gt;?(div)
+			StartLine: 2581
+			EndLine: 2585
+			NodeType: AnonymousFunction
+			Comment: Support: IE&lt;9&#D;&#A; Use defaultValue in place of getAttribute(&quot;value&quot;)
+
+			Alias: addHandle&gt;?(elem,name,isXML)
+			StartLine: 2586
+			EndLine: 2590
+			NodeType: AnonymousFunction
+
+			Alias: assert&gt;?(div)
+			StartLine: 2595
+			EndLine: 2597
+			NodeType: AnonymousFunction
+			Comment: Support: IE&lt;9&#D;&#A; Use getAttributeNode to fetch booleans when getAttribute lies
+
+			Alias: addHandle&gt;?(elem,name,isXML)
+			StartLine: 2598
+			EndLine: 2606
+			NodeType: AnonymousFunction
+
+		Alias: winnow(elements,qualifier,not)
+		StartLine: 2634
+		EndLine: 2661
+		NodeType: Function
+		Comment: Implement the identical functionality for filter and not
+
+			Alias: grep&gt;?(elem,i)
+			StartLine: 2636
+			EndLine: 2639
+			NodeType: AnonymousFunction
+			Comment: jshint -W018
+
+			Alias: grep&gt;?(elem)
+			StartLine: 2644
+			EndLine: 2646
+			NodeType: AnonymousFunction
+
+			Alias: grep&gt;?(elem)
+			StartLine: 2658
+			EndLine: 2660
+			NodeType: AnonymousFunction
+
+		Alias: filter(expr,elems,not)
+		StartLine: 2663
+		EndLine: 2675
+		NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 2677
+		EndLine: 2721
+		NodeType: Object
+
+			Alias: find(selector)
+			StartLine: 2678
+			EndLine: 2702
+			NodeType: Function
+
+				Alias: filter.pushStack&gt;?&gt;?()
+				StartLine: 2685
+				EndLine: 2691
+				NodeType: AnonymousFunction
+
+			Alias: filter(selector)
+			StartLine: 2703
+			EndLine: 2705
+			NodeType: Function
+
+			Alias: not(selector)
+			StartLine: 2706
+			EndLine: 2708
+			NodeType: Function
+
+			Alias: is(selector)
+			StartLine: 2709
+			EndLine: 2720
+			NodeType: Function
+
+		Alias: init.init(selector,context)
+		StartLine: 2735
+		EndLine: 2832
+		NodeType: Function
+
+		Alias: guaranteedUnique
+		StartLine: 2843
+		EndLine: 2848
+		NodeType: Object
+		Comment: Methods guaranteed to produce a unique set when starting from a unique set
+
+		Alias: extend&gt;?
+		StartLine: 2850
+		EndLine: 2877
+		NodeType: Object
+
+			Alias: dir(elem,dir,until)
+			StartLine: 2851
+			EndLine: 2864
+			NodeType: Function
+
+			Alias: sibling(n,elem)
+			StartLine: 2866
+			EndLine: 2876
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 2879
+		EndLine: 2956
+		NodeType: Object
+
+			Alias: has(target)
+			StartLine: 2880
+			EndLine: 2892
+			NodeType: Function
+
+				Alias: filter&gt;?()
+				StartLine: 2884
+				EndLine: 2891
+				NodeType: AnonymousFunction
+
+			Alias: closest(selectors,context)
+			StartLine: 2894
+			EndLine: 2920
+			NodeType: Function
+
+			Alias: index(elem)
+			StartLine: 2923
+			EndLine: 2941
+			NodeType: Function
+			Comment: Determine the position of an element within the set
+
+			Alias: add(selector,context)
+			StartLine: 2943
+			EndLine: 2949
+			NodeType: Function
+
+			Alias: addBack(selector)
+			StartLine: 2951
+			EndLine: 2955
+			NodeType: Function
+
+		Alias: sibling(cur,dir)
+		StartLine: 2958
+		EndLine: 2961
+		NodeType: Function
+
+		Alias: each&gt;?
+		StartLine: 2963
+		EndLine: 3001
+		NodeType: Object
+
+			Alias: parent(elem)
+			StartLine: 2964
+			EndLine: 2967
+			NodeType: Function
+
+			Alias: parents(elem)
+			StartLine: 2968
+			EndLine: 2970
+			NodeType: Function
+
+			Alias: parentsUntil(elem,i,until)
+			StartLine: 2971
+			EndLine: 2973
+			NodeType: Function
+
+			Alias: next(elem)
+			StartLine: 2974
+			EndLine: 2976
+			NodeType: Function
+
+			Alias: prev(elem)
+			StartLine: 2977
+			EndLine: 2979
+			NodeType: Function
+
+			Alias: nextAll(elem)
+			StartLine: 2980
+			EndLine: 2982
+			NodeType: Function
+
+			Alias: prevAll(elem)
+			StartLine: 2983
+			EndLine: 2985
+			NodeType: Function
+
+			Alias: nextUntil(elem,i,until)
+			StartLine: 2986
+			EndLine: 2988
+			NodeType: Function
+
+			Alias: prevUntil(elem,i,until)
+			StartLine: 2989
+			EndLine: 2991
+			NodeType: Function
+
+			Alias: siblings(elem)
+			StartLine: 2992
+			EndLine: 2994
+			NodeType: Function
+
+			Alias: children(elem)
+			StartLine: 2995
+			EndLine: 2997
+			NodeType: Function
+
+			Alias: contents(elem)
+			StartLine: 2998
+			EndLine: 3000
+			NodeType: Function
+
+		Alias: each&gt;?(name,fn)
+		StartLine: 3001
+		EndLine: 3027
+		NodeType: AnonymousFunction
+
+			Alias: name(until,selector)
+			StartLine: 3002
+			EndLine: 3026
+			NodeType: Function
+
+		Alias: createOptions(options)
+		StartLine: 3036
+		EndLine: 3042
+		NodeType: Function
+		Comment: Convert String-formatted options into Object-formatted ones and store in cache
+
+			Alias: each&gt;?(_,flag)
+			StartLine: 3038
+			EndLine: 3040
+			NodeType: AnonymousFunction
+
+		Alias: Callbacks(options)
+		StartLine: 3066
+		EndLine: 3228
+		NodeType: Function
+		Comment: * Create a callback list using the following parameters:&#A; *&#A; *&#9;options: an optional list of space-separated options that will change how&#A; *&#9;&#9;&#9;the callback list behaves or a more traditional option object&#A; *&#A; * By default a callback list will act like an event callback list and can be&#A; * &quot;fired&quot; multiple times.&#A; *&#A; * Possible options:&#A; *&#A; *&#9;once:&#9;&#9;&#9;will ensure the callback list can only be fired once (like a Deferred)&#A; *&#A; *&#9;memory:&#9;&#9;&#9;will keep track of previous values and will call any callback added&#A; *&#9;&#9;&#9;&#9;&#9;after the list has been fired right away with the latest &quot;memorized&quot;&#A; *&#9;&#9;&#9;&#9;&#9;values (like a Deferred)&#A; *&#A; *&#9;unique:&#9;&#9;&#9;will ensure a callback can only be added once (no duplicate in the list)&#A; *&#A; *&#9;stopOnFalse:&#9;interrupt callings when a callback returns false&#A; *
+
+			Alias: fire(data)
+			StartLine: 3091
+			EndLine: 3116
+			NodeType: Function
+			Comment: Fire callbacks
+
+			Alias: self
+			StartLine: 3118
+			EndLine: 3225
+			NodeType: Object
+			Comment: Actual Callbacks object&#D;&#A; Add a callback or a collection of callbacks to the list
+
+				Alias: add()
+				StartLine: 3120
+				EndLine: 3149
+				NodeType: Function
+
+					Alias: add(args)
+					StartLine: 3124
+					EndLine: 3136
+					NodeType: Function
+
+						Alias: each&gt;?(_,arg)
+						StartLine: 3125
+						EndLine: 3135
+						NodeType: AnonymousFunction
+
+				Alias: remove()
+				StartLine: 3151
+				EndLine: 3170
+				NodeType: Function
+				Comment: Remove a callback from the list
+
+					Alias: each&gt;?(_,arg)
+					StartLine: 3153
+					EndLine: 3167
+					NodeType: AnonymousFunction
+
+				Alias: has(fn)
+				StartLine: 3173
+				EndLine: 3175
+				NodeType: Function
+				Comment: Check if a given callback is in the list.&#D;&#A; If no argument is given, return whether or not list has callbacks attached.
+
+				Alias: empty()
+				StartLine: 3177
+				EndLine: 3181
+				NodeType: Function
+				Comment: Remove all callbacks from the list
+
+				Alias: disable()
+				StartLine: 3183
+				EndLine: 3186
+				NodeType: Function
+				Comment: Have the list do nothing anymore
+
+				Alias: disabled()
+				StartLine: 3188
+				EndLine: 3190
+				NodeType: Function
+				Comment: Is it disabled?
+
+				Alias: lock()
+				StartLine: 3192
+				EndLine: 3198
+				NodeType: Function
+				Comment: Lock the list in its current state
+
+				Alias: locked()
+				StartLine: 3200
+				EndLine: 3202
+				NodeType: Function
+				Comment: Is it locked?
+
+				Alias: fireWith(context,args)
+				StartLine: 3204
+				EndLine: 3215
+				NodeType: Function
+				Comment: Call all callbacks with the given context and arguments
+
+				Alias: fire()
+				StartLine: 3217
+				EndLine: 3220
+				NodeType: Function
+				Comment: Call all the callbacks with the given arguments
+
+				Alias: fired()
+				StartLine: 3222
+				EndLine: 3224
+				NodeType: Function
+				Comment: To know if the callbacks have already been called at least once
+
+		Alias: extend&gt;?
+		StartLine: 3231
+		EndLine: 3370
+		NodeType: Object
+
+			Alias: Deferred(func)
+			StartLine: 3233
+			EndLine: 3317
+			NodeType: Function
+
+				Alias: promise
+				StartLine: 3241
+				EndLine: 3275
+				NodeType: Object
+
+					Alias: state()
+					StartLine: 3242
+					EndLine: 3244
+					NodeType: Function
+
+					Alias: always()
+					StartLine: 3245
+					EndLine: 3248
+					NodeType: Function
+
+					Alias: then()
+					StartLine: 3249
+					EndLine: 3269
+					NodeType: Function
+					Comment: fnDone, fnFail, fnProgress
+
+						Alias: Deferred&gt;?(newDefer)
+						StartLine: 3251
+						EndLine: 3268
+						NodeType: AnonymousFunction
+
+							Alias: each&gt;?(i,tuple)
+							StartLine: 3252
+							EndLine: 3266
+							NodeType: AnonymousFunction
+
+								Alias: 1&gt;?()
+								StartLine: 3255
+								EndLine: 3265
+								NodeType: AnonymousFunction
+								Comment: deferred[ done | fail | progress ] for forwarding actions to newDefer
+
+					Alias: promise(obj)
+					StartLine: 3272
+					EndLine: 3274
+					NodeType: Function
+					Comment: Get a promise for this deferred&#D;&#A; If obj is provided, the promise aspect is added to the object
+
+				Alias: each&gt;?(i,tuple)
+				StartLine: 3282
+				EndLine: 3305
+				NodeType: AnonymousFunction
+				Comment: Add list-specific methods
+
+					Alias: add&gt;?()
+					StartLine: 3291
+					EndLine: 3296
+					NodeType: AnonymousFunction
+					Comment: state = [ resolved | rejected ]
+
+					Alias: 0()
+					StartLine: 3300
+					EndLine: 3303
+					NodeType: Function
+					Comment: deferred[ resolve | reject | notify ]
+
+			Alias: when(subordinate)
+			StartLine: 3320
+			EndLine: 3369
+			NodeType: Function
+			Comment: Deferred helper&#D;&#A; , ..., subordinateN
+
+				Alias: updateFunc(i,contexts,values)
+				StartLine: 3332
+				EndLine: 3342
+				NodeType: Function
+				Comment: Update function for both resolve and progress values
+
+					Alias: ?(value)
+					StartLine: 3333
+					EndLine: 3341
+					NodeType: AnonymousFunction
+
+		Alias: ready(fn)
+		StartLine: 3376
+		EndLine: 3381
+		NodeType: Function
+		Comment: Add the callback
+
+		Alias: extend&gt;?
+		StartLine: 3383
+		EndLine: 3425
+		NodeType: Object
+		Comment: Is the DOM ready to be used? Set to true once it occurs.
+
+			Alias: holdReady(hold)
+			StartLine: 3392
+			EndLine: 3398
+			NodeType: Function
+			Comment: Hold (or release) the ready event
+
+			Alias: ready(wait)
+			StartLine: 3401
+			EndLine: 3424
+			NodeType: Function
+			Comment: Handle when the DOM is ready
+
+		Alias: completed()
+		StartLine: 3430
+		EndLine: 3434
+		NodeType: Function
+		Comment: *&#A; * The ready event handler and self cleanup method
+
+		Alias: promise(obj)
+		StartLine: 3436
+		EndLine: 3458
+		NodeType: Function
+
+		Alias: access.access(elems,fn,key,val…yGet,raw)
+		StartLine: 3468
+		EndLine: 3517
+		NodeType: Function
+		Comment: Multifunctional method to get and set values of a collection&#D;&#A; The value/s can optionally be executed if it&#39;s a function
+
+			Alias: fn(elem,key,value)
+			StartLine: 3497
+			EndLine: 3499
+			NodeType: Function
+
+		Alias: acceptData(owner)
+		StartLine: 3523
+		EndLine: 3532
+		NodeType: Function
+		Comment: *&#A; * Determines whether an object can have data&#A; &#D;&#A; Accepts only:&#D;&#A;  - Node&#D;&#A;    - Node.ELEMENT_NODE&#D;&#A;    - Node.DOCUMENT_NODE&#D;&#A;  - Object&#D;&#A;    - Any&#D;&#A; jshint -W018
+
+		Alias: Data()
+		StartLine: 3535
+		EndLine: 3546
+		NodeType: Function
+		Comment: Support: Android&lt;4,&#D;&#A; Old WebKit does not have Object.preventExtensions/freeze method,&#D;&#A; return new empty object instead with no [[set]] accessor
+
+			Alias: defineProperty&gt;?
+			StartLine: 3539
+			EndLine: 3543
+			NodeType: Object
+
+				Alias: get()
+				StartLine: 3540
+				EndLine: 3542
+				NodeType: Function
+
+		Alias: prototype
+		StartLine: 3551
+		EndLine: 3706
+		NodeType: Object
+
+			Alias: key(owner)
+			StartLine: 3552
+			EndLine: 3587
+			NodeType: Function
+			Comment: We can accept data for non-element nodes in modern browsers,&#D;&#A; but we should not, see #8335.&#D;&#A; Always return the key for a frozen object.
+
+				Alias: expando
+				StartLine: 3570
+				EndLine: 3570
+				NodeType: Object
+
+			Alias: set(owner,data,value)
+			StartLine: 3588
+			EndLine: 3613
+			NodeType: Function
+
+			Alias: get(owner,key)
+			StartLine: 3614
+			EndLine: 3623
+			NodeType: Function
+			Comment: Either a valid cache is found, or will be created.&#D;&#A; New caches will be created and the unlock returned,&#D;&#A; allowing direct access to the newly created&#D;&#A; empty data object. A valid owner object must be provided.
+
+			Alias: access(owner,key,value)
+			StartLine: 3624
+			EndLine: 3657
+			NodeType: Function
+
+			Alias: remove(owner,key)
+			StartLine: 3658
+			EndLine: 3695
+			NodeType: Function
+
+			Alias: hasData(owner)
+			StartLine: 3696
+			EndLine: 3700
+			NodeType: Function
+
+			Alias: discard(owner)
+			StartLine: 3701
+			EndLine: 3705
+			NodeType: Function
+
+		Alias: dataAttr(elem,key,data)
+		StartLine: 3726
+		EndLine: 3753
+		NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 3755
+		EndLine: 3777
+		NodeType: Object
+
+			Alias: hasData(elem)
+			StartLine: 3756
+			EndLine: 3758
+			NodeType: Function
+
+			Alias: data(elem,name,data)
+			StartLine: 3760
+			EndLine: 3762
+			NodeType: Function
+
+			Alias: removeData(elem,name)
+			StartLine: 3764
+			EndLine: 3766
+			NodeType: Function
+
+			Alias: _data(elem,name,data)
+			StartLine: 3770
+			EndLine: 3772
+			NodeType: Function
+			Comment: TODO: Now that all calls to _data and _removeData have been replaced&#D;&#A; with direct calls to data_priv methods, these can be deprecated.
+
+			Alias: _removeData(elem,name)
+			StartLine: 3774
+			EndLine: 3776
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 3779
+		EndLine: 3879
+		NodeType: Object
+
+			Alias: data(key,value)
+			StartLine: 3780
+			EndLine: 3872
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 3813
+				EndLine: 3815
+				NodeType: AnonymousFunction
+
+				Alias: access&gt;?(value)
+				StartLine: 3818
+				EndLine: 3871
+				NodeType: AnonymousFunction
+
+					Alias: each&gt;?()
+					StartLine: 3854
+					EndLine: 3870
+					NodeType: AnonymousFunction
+					Comment: Set the data...&#D;&#A; First, attempt to store a copy or reference of any&#D;&#A; data that might&#39;ve been store with a camelCased key.
+
+			Alias: removeData(key)
+			StartLine: 3874
+			EndLine: 3878
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 3875
+				EndLine: 3877
+				NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 3882
+		EndLine: 3946
+		NodeType: Object
+
+			Alias: queue(elem,type,data)
+			StartLine: 3883
+			EndLine: 3900
+			NodeType: Function
+
+			Alias: dequeue(elem,type)
+			StartLine: 3902
+			EndLine: 3935
+			NodeType: Function
+
+				Alias: next()
+				StartLine: 3909
+				EndLine: 3911
+				NodeType: Function
+
+			Alias: _queueHooks(elem,type)
+			StartLine: 3938
+			EndLine: 3945
+			NodeType: Function
+			Comment: Not public - generate a queueHooks object, or return the current one
+
+				Alias: access&gt;?
+				StartLine: 3940
+				EndLine: 3944
+				NodeType: Object
+
+					Alias: add.empty&gt;?()
+					StartLine: 3941
+					EndLine: 3943
+					NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 3948
+		EndLine: 4013
+		NodeType: Object
+
+			Alias: queue(type,data)
+			StartLine: 3949
+			EndLine: 3974
+			NodeType: Function
+
+			Alias: dequeue(type)
+			StartLine: 3975
+			EndLine: 3979
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 3976
+				EndLine: 3978
+				NodeType: AnonymousFunction
+
+			Alias: clearQueue(type)
+			StartLine: 3980
+			EndLine: 3982
+			NodeType: Function
+
+			Alias: promise(type,obj)
+			StartLine: 3985
+			EndLine: 4012
+			NodeType: Function
+			Comment: Get a promise resolved when queues of a certain type&#D;&#A; are emptied (fx is the type by default)
+
+				Alias: resolve()
+				StartLine: 3991
+				EndLine: 3995
+				NodeType: Function
+
+		Alias: isHidden(elem,el)
+		StartLine: 4018
+		EndLine: 4023
+		NodeType: Function
+		Comment: isHidden might be called from jQuery#filter function;&#D;&#A; in that case, element will be second argument
+
+		Alias: ?()
+		StartLine: 4029
+		EndLine: 4052
+		NodeType: AnonymousFunction
+
+		Alias: returnTrue()
+		StartLine: 4066
+		EndLine: 4068
+		NodeType: Function
+
+		Alias: returnFalse()
+		StartLine: 4070
+		EndLine: 4072
+		NodeType: Function
+
+		Alias: safeActiveElement()
+		StartLine: 4074
+		EndLine: 4078
+		NodeType: Function
+
+		Alias: event
+		StartLine: 4084
+		EndLine: 4660
+		NodeType: Object
+		Comment: * Helper functions for managing events -- not part of the public interface.&#A; * Props to Dean Edwards&#39; addEvent library for many of the ideas.
+
+			Alias: add(elem,types,handl…selector)
+			StartLine: 4088
+			EndLine: 4191
+			NodeType: Function
+
+				Alias: handle.eventHandle(e)
+				StartLine: 4117
+				EndLine: 4122
+				NodeType: Function
+				Comment: Discard the second event of a jQuery.event.trigger() and&#D;&#A; when an event is called after a page has unloaded
+
+			Alias: remove(elem,types,handl…pedTypes)
+			StartLine: 4194
+			EndLine: 4262
+			NodeType: Function
+			Comment: Detach an event or set of events from an element
+
+			Alias: trigger(event,data,elem,…Handlers)
+			StartLine: 4264
+			EndLine: 4394
+			NodeType: Function
+
+			Alias: dispatch(event)
+			StartLine: 4396
+			EndLine: 4453
+			NodeType: Function
+
+			Alias: handlers(event,handlers)
+			StartLine: 4455
+			EndLine: 4499
+			NodeType: Function
+
+				Alias: push&gt;?
+				StartLine: 4495
+				EndLine: 4495
+				NodeType: Object
+
+			Alias: keyHooks
+			StartLine: 4506
+			EndLine: 4517
+			NodeType: Object
+
+				Alias: filter(event,original)
+				StartLine: 4508
+				EndLine: 4516
+				NodeType: Function
+
+			Alias: mouseHooks
+			StartLine: 4519
+			EndLine: 4543
+			NodeType: Object
+
+				Alias: filter(event,original)
+				StartLine: 4521
+				EndLine: 4542
+				NodeType: Function
+
+			Alias: fix(event)
+			StartLine: 4545
+			EndLine: 4585
+			NodeType: Function
+
+			Alias: special
+			StartLine: 4587
+			EndLine: 4636
+			NodeType: Object
+
+				Alias: load
+				StartLine: 4588
+				EndLine: 4591
+				NodeType: Object
+				Comment: Prevent triggered image.load events from bubbling to window.load
+
+				Alias: focus
+				StartLine: 4592
+				EndLine: 4601
+				NodeType: Object
+				Comment: Fire native event if possible so blur/focus sequence is correct
+
+					Alias: trigger()
+					StartLine: 4594
+					EndLine: 4599
+					NodeType: Function
+
+				Alias: blur
+				StartLine: 4602
+				EndLine: 4610
+				NodeType: Object
+
+					Alias: trigger()
+					StartLine: 4603
+					EndLine: 4608
+					NodeType: Function
+
+				Alias: click
+				StartLine: 4611
+				EndLine: 4624
+				NodeType: Object
+				Comment: For checkbox, fire native event so checked state will be right
+
+					Alias: trigger()
+					StartLine: 4613
+					EndLine: 4618
+					NodeType: Function
+
+					Alias: _default(event)
+					StartLine: 4621
+					EndLine: 4623
+					NodeType: Function
+					Comment: For cross-browser consistency, don&#39;t fire native .click() on links
+
+				Alias: beforeunload
+				StartLine: 4626
+				EndLine: 4635
+				NodeType: Object
+
+					Alias: postDispatch(event)
+					StartLine: 4627
+					EndLine: 4634
+					NodeType: Function
+
+			Alias: simulate(type,elem,event,bubble)
+			StartLine: 4638
+			EndLine: 4659
+			NodeType: Function
+			Comment: Piggyback on a donor event to simulate a different one.&#D;&#A; Fake originalEvent to avoid donor&#39;s stopPropagation, but if the&#D;&#A; simulated event prevents default then we do the same on the donor.
+
+				Alias: extend.e&gt;?
+				StartLine: 4645
+				EndLine: 4649
+				NodeType: Object
+
+		Alias: removeEvent(elem,type,handle)
+		StartLine: 4662
+		EndLine: 4666
+		NodeType: Function
+
+		Alias: Event(src,props)
+		StartLine: 4668
+		EndLine: 4703
+		NodeType: Function
+		Comment: Allow instantiation without the &#39;new&#39; keyword
+
+		Alias: prototype
+		StartLine: 4707
+		EndLine: 4741
+		NodeType: Object
+		Comment: jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding&#D;&#A; http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+
+			Alias: preventDefault()
+			StartLine: 4712
+			EndLine: 4720
+			NodeType: Function
+
+			Alias: stopPropagation()
+			StartLine: 4721
+			EndLine: 4729
+			NodeType: Function
+
+			Alias: stopImmediatePropagation()
+			StartLine: 4730
+			EndLine: 4740
+			NodeType: Function
+
+		Alias: each&gt;?
+		StartLine: 4745
+		EndLine: 4750
+		NodeType: Object
+		Comment: Create mouseenter/leave events using mouseover/out and event-time checks&#D;&#A; Support: Chrome 15+
+
+		Alias: each&gt;?(orig,fix)
+		StartLine: 4750
+		EndLine: 4771
+		NodeType: AnonymousFunction
+
+			Alias: orig
+			StartLine: 4751
+			EndLine: 4770
+			NodeType: Object
+
+				Alias: handle(event)
+				StartLine: 4755
+				EndLine: 4769
+				NodeType: Function
+
+		Alias: each&gt;?
+		StartLine: 4776
+		EndLine: 4776
+		NodeType: Object
+
+		Alias: each&gt;?(orig,fix)
+		StartLine: 4776
+		EndLine: 4806
+		NodeType: AnonymousFunction
+
+			Alias: handler(event)
+			StartLine: 4779
+			EndLine: 4781
+			NodeType: Function
+			Comment: Attach a single capturing handler on the document while someone wants focusin/focusout
+
+			Alias: fix
+			StartLine: 4783
+			EndLine: 4805
+			NodeType: Object
+
+				Alias: setup()
+				StartLine: 4784
+				EndLine: 4792
+				NodeType: Function
+
+				Alias: teardown()
+				StartLine: 4793
+				EndLine: 4804
+				NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 4809
+		EndLine: 4910
+		NodeType: Object
+
+			Alias: on(types,selector,d…a,fn,one)
+			StartLine: 4811
+			EndLine: 4863
+			NodeType: Function
+			Comment: INTERNAL
+
+				Alias: fn(event)
+				StartLine: 4852
+				EndLine: 4856
+				NodeType: Function
+				Comment: Can use an empty set, since event contains the info
+
+				Alias: each&gt;?()
+				StartLine: 4860
+				EndLine: 4862
+				NodeType: AnonymousFunction
+
+			Alias: one(types,selector,data,fn)
+			StartLine: 4864
+			EndLine: 4866
+			NodeType: Function
+
+			Alias: off(types,selector,fn)
+			StartLine: 4867
+			EndLine: 4897
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 4894
+				EndLine: 4896
+				NodeType: AnonymousFunction
+
+			Alias: trigger(type,data)
+			StartLine: 4899
+			EndLine: 4903
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 4900
+				EndLine: 4902
+				NodeType: AnonymousFunction
+
+			Alias: triggerHandler(type,data)
+			StartLine: 4904
+			EndLine: 4909
+			NodeType: Function
+
+		Alias: wrapMap
+		StartLine: 4925
+		EndLine: 4936
+		NodeType: Object
+		Comment: We have to close these tags to support XHTML (#13200)
+
+		Alias: manipulationTarget(elem,content)
+		StartLine: 4946
+		EndLine: 4953
+		NodeType: Function
+		Comment: Support: 1.x compatibility&#D;&#A; Manipulating tables requires a tbody
+
+		Alias: disableScript(elem)
+		StartLine: 4956
+		EndLine: 4959
+		NodeType: Function
+		Comment: Replace/restore the type attribute of script elements for safe DOM manipulation
+
+		Alias: restoreScript(elem)
+		StartLine: 4960
+		EndLine: 4970
+		NodeType: Function
+
+		Alias: setGlobalEval(elems,refElements)
+		StartLine: 4973
+		EndLine: 4982
+		NodeType: Function
+		Comment: Mark scripts as having already been evaluated
+
+		Alias: cloneCopyEvent(src,dest)
+		StartLine: 4984
+		EndLine: 5016
+		NodeType: Function
+
+		Alias: getAll(context,tag)
+		StartLine: 5018
+		EndLine: 5026
+		NodeType: Function
+
+		Alias: fixInput(src,dest)
+		StartLine: 5029
+		EndLine: 5040
+		NodeType: Function
+		Comment: Fix IE bugs, see support tests
+
+		Alias: extend&gt;?
+		StartLine: 5042
+		EndLine: 5202
+		NodeType: Object
+
+			Alias: clone(elem,dataAndEven…ndEvents)
+			StartLine: 5043
+			EndLine: 5083
+			NodeType: Function
+
+			Alias: buildFragment(elems,context,sc…election)
+			StartLine: 5085
+			EndLine: 5169
+			NodeType: Function
+
+			Alias: cleanData(elems)
+			StartLine: 5171
+			EndLine: 5201
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 5204
+		EndLine: 5445
+		NodeType: Object
+
+			Alias: text(value)
+			StartLine: 5205
+			EndLine: 5215
+			NodeType: Function
+
+				Alias: access&gt;?(value)
+				StartLine: 5206
+				EndLine: 5214
+				NodeType: AnonymousFunction
+
+			Alias: append()
+			StartLine: 5217
+			EndLine: 5224
+			NodeType: Function
+
+				Alias: domManip&gt;?(elem)
+				StartLine: 5218
+				EndLine: 5223
+				NodeType: AnonymousFunction
+
+			Alias: prepend()
+			StartLine: 5226
+			EndLine: 5233
+			NodeType: Function
+
+				Alias: domManip&gt;?(elem)
+				StartLine: 5227
+				EndLine: 5232
+				NodeType: AnonymousFunction
+
+			Alias: before()
+			StartLine: 5235
+			EndLine: 5241
+			NodeType: Function
+
+				Alias: domManip&gt;?(elem)
+				StartLine: 5236
+				EndLine: 5240
+				NodeType: AnonymousFunction
+
+			Alias: after()
+			StartLine: 5243
+			EndLine: 5249
+			NodeType: Function
+
+				Alias: domManip&gt;?(elem)
+				StartLine: 5244
+				EndLine: 5248
+				NodeType: AnonymousFunction
+
+			Alias: remove(selector,keepData)
+			StartLine: 5251
+			EndLine: 5270
+			NodeType: Function
+			Comment: Internal Use Only
+
+			Alias: empty()
+			StartLine: 5272
+			EndLine: 5288
+			NodeType: Function
+
+			Alias: clone(dataAndEvents,de…ndEvents)
+			StartLine: 5290
+			EndLine: 5297
+			NodeType: Function
+
+				Alias: map&gt;?()
+				StartLine: 5294
+				EndLine: 5296
+				NodeType: AnonymousFunction
+
+			Alias: html(value)
+			StartLine: 5299
+			EndLine: 5336
+			NodeType: Function
+
+				Alias: access&gt;?(value)
+				StartLine: 5300
+				EndLine: 5335
+				NodeType: AnonymousFunction
+
+			Alias: replaceWith()
+			StartLine: 5338
+			EndLine: 5354
+			NodeType: Function
+
+				Alias: domManip&gt;?(elem)
+				StartLine: 5342
+				EndLine: 5350
+				NodeType: AnonymousFunction
+				Comment: Make the changes, replacing each context element with the new content
+
+			Alias: detach(selector)
+			StartLine: 5356
+			EndLine: 5358
+			NodeType: Function
+
+			Alias: domManip(args,callback)
+			StartLine: 5360
+			EndLine: 5444
+			NodeType: Function
+
+				Alias: each&gt;?(index)
+				StartLine: 5377
+				EndLine: 5383
+				NodeType: AnonymousFunction
+
+		Alias: each&gt;?
+		StartLine: 5447
+		EndLine: 5453
+		NodeType: Object
+
+		Alias: each&gt;?(name,original)
+		StartLine: 5453
+		EndLine: 5472
+		NodeType: AnonymousFunction
+
+			Alias: name(selector)
+			StartLine: 5454
+			EndLine: 5471
+			NodeType: Function
+
+		Alias: actualDisplay(name,doc)
+		StartLine: 5484
+		EndLine: 5500
+		NodeType: Function
+		Comment: *&#A; * Retrieve the actual display of a element&#A; * @param {String} name nodeName of the element&#A; * @param {Object} doc Document object&#A; &#D;&#A; Called only from within defaultDisplay
+
+		Alias: defaultDisplay(nodeName)
+		StartLine: 5506
+		EndLine: 5535
+		NodeType: Function
+		Comment: *&#A; * Try to determine the default display value of an element&#A; * @param {String} nodeName
+
+		Alias: getStyles(elem)
+		StartLine: 5540
+		EndLine: 5549
+		NodeType: Function
+		Comment: Support: IE&lt;=11+, Firefox&lt;=30+ (#15098, #14150)&#D;&#A; IE throws on elements created in popups&#D;&#A; FF meanwhile throws on frame elements through &quot;defaultView.getComputedStyle&quot;
+
+		Alias: curCSS(elem,name,computed)
+		StartLine: 5553
+		EndLine: 5598
+		NodeType: Function
+
+		Alias: addGetHookIf(conditionFn,hookFn)
+		StartLine: 5601
+		EndLine: 5616
+		NodeType: Function
+		Comment: Define the hook, we&#39;ll check on the first run if it&#39;s really needed.
+
+			Alias: ?
+			StartLine: 5603
+			EndLine: 5615
+			NodeType: Object
+
+				Alias: get()
+				StartLine: 5604
+				EndLine: 5614
+				NodeType: Function
+
+		Alias: ?()
+		StartLine: 5619
+		EndLine: 5705
+		NodeType: AnonymousFunction
+
+			Alias: computePixelPositionAndBoxSizingReliable()
+			StartLine: 5641
+			EndLine: 5656
+			NodeType: Function
+			Comment: Executing both pixelPosition &amp; boxSizingReliable tests require only one layout&#D;&#A; so they&#39;re executed at the same time to save the second computation.
+
+			Alias: extend&gt;?
+			StartLine: 5661
+			EndLine: 5703
+			NodeType: Object
+
+				Alias: pixelPosition()
+				StartLine: 5662
+				EndLine: 5669
+				NodeType: Function
+
+				Alias: boxSizingReliable()
+				StartLine: 5670
+				EndLine: 5675
+				NodeType: Function
+
+				Alias: reliableMarginRight()
+				StartLine: 5676
+				EndLine: 5702
+				NodeType: Function
+
+		Alias: swap(elem,options,cal…ack,args)
+		StartLine: 5709
+		EndLine: 5727
+		NodeType: Function
+		Comment: A method for quickly swapping in/out CSS properties to get correct calculations.
+
+		Alias: cssShow
+		StartLine: 5737
+		EndLine: 5737
+		NodeType: Object
+
+		Alias: cssNormalTransform
+		StartLine: 5738
+		EndLine: 5741
+		NodeType: Object
+
+		Alias: vendorPropName(style,name)
+		StartLine: 5746
+		EndLine: 5766
+		NodeType: Function
+		Comment: Return a css property mapped to a potentially vendor prefixed property
+
+		Alias: setPositiveNumber(elem,value,subtract)
+		StartLine: 5768
+		EndLine: 5774
+		NodeType: Function
+
+		Alias: augmentWidthOrHeight(elem,name,extra,…x,styles)
+		StartLine: 5776
+		EndLine: 5813
+		NodeType: Function
+
+		Alias: getWidthOrHeight(elem,name,extra)
+		StartLine: 5815
+		EndLine: 5857
+		NodeType: Function
+
+		Alias: showHide(elements,show)
+		StartLine: 5859
+		EndLine: 5908
+		NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 5910
+		EndLine: 6042
+		NodeType: Object
+
+			Alias: cssHooks
+			StartLine: 5914
+			EndLine: 5925
+			NodeType: Object
+			Comment: Add in style property hooks for overriding the default&#D;&#A; behavior of getting and setting a style property
+
+				Alias: opacity
+				StartLine: 5915
+				EndLine: 5924
+				NodeType: Object
+
+					Alias: get(elem,computed)
+					StartLine: 5916
+					EndLine: 5923
+					NodeType: Function
+
+			Alias: cssNumber
+			StartLine: 5928
+			EndLine: 5941
+			NodeType: Object
+			Comment: Don&#39;t automatically add &quot;px&quot; to these possibly-unitless properties
+
+			Alias: cssProps
+			StartLine: 5945
+			EndLine: 5947
+			NodeType: Object
+			Comment: Add in properties whose names you wish to fix before&#D;&#A; setting or getting the value
+
+			Alias: style(elem,name,value,extra)
+			StartLine: 5950
+			EndLine: 6008
+			NodeType: Function
+			Comment: Get and set the style property on a DOM Node
+
+			Alias: css(elem,name,extra,styles)
+			StartLine: 6010
+			EndLine: 6041
+			NodeType: Function
+
+		Alias: each&gt;?(i,name)
+		StartLine: 6044
+		EndLine: 6072
+		NodeType: AnonymousFunction
+
+			Alias: name
+			StartLine: 6045
+			EndLine: 6071
+			NodeType: Object
+
+				Alias: get(elem,computed,extra)
+				StartLine: 6046
+				EndLine: 6057
+				NodeType: Function
+
+				Alias: set(elem,value,extra)
+				StartLine: 6059
+				EndLine: 6070
+				NodeType: Function
+
+		Alias: addGetHookIf.marginRight&gt;?(elem,computed)
+		StartLine: 6076
+		EndLine: 6081
+		NodeType: AnonymousFunction
+
+			Alias: swap&gt;?
+			StartLine: 6078
+			EndLine: 6078
+			NodeType: Object
+
+		Alias: each&gt;?
+		StartLine: 6085
+		EndLine: 6089
+		NodeType: Object
+		Comment: These hooks are used by animate to expand properties
+
+		Alias: each&gt;?(prefix,suffix)
+		StartLine: 6089
+		EndLine: 6110
+		NodeType: AnonymousFunction
+
+			Alias: suffix.prefix
+			StartLine: 6090
+			EndLine: 6105
+			NodeType: Object
+
+				Alias: expand(value)
+				StartLine: 6091
+				EndLine: 6104
+				NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 6112
+		EndLine: 6154
+		NodeType: Object
+
+			Alias: css(name,value)
+			StartLine: 6113
+			EndLine: 6134
+			NodeType: Function
+
+				Alias: access&gt;?(elem,name,value)
+				StartLine: 6114
+				EndLine: 6133
+				NodeType: AnonymousFunction
+
+			Alias: show()
+			StartLine: 6135
+			EndLine: 6137
+			NodeType: Function
+
+			Alias: hide()
+			StartLine: 6138
+			EndLine: 6140
+			NodeType: Function
+
+			Alias: toggle(state)
+			StartLine: 6141
+			EndLine: 6153
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 6146
+				EndLine: 6152
+				NodeType: AnonymousFunction
+
+		Alias: Tween(elem,options,pro…d,easing)
+		StartLine: 6157
+		EndLine: 6159
+		NodeType: Function
+
+		Alias: prototype
+		StartLine: 6162
+		EndLine: 6204
+		NodeType: Object
+
+			Alias: init(elem,options,pro…ing,unit)
+			StartLine: 6164
+			EndLine: 6172
+			NodeType: Function
+
+			Alias: cur()
+			StartLine: 6173
+			EndLine: 6179
+			NodeType: Function
+
+			Alias: run(percent)
+			StartLine: 6180
+			EndLine: 6203
+			NodeType: Function
+
+		Alias: propHooks
+		StartLine: 6208
+		EndLine: 6239
+		NodeType: Object
+
+			Alias: _default
+			StartLine: 6209
+			EndLine: 6238
+			NodeType: Object
+
+				Alias: get(tween)
+				StartLine: 6210
+				EndLine: 6225
+				NodeType: Function
+
+				Alias: set(tween)
+				StartLine: 6226
+				EndLine: 6237
+				NodeType: Function
+				Comment: Use step hook for back compat.&#D;&#A; Use cssHook if its there.&#D;&#A; Use .style if available and use plain properties where available.
+
+		Alias: scrollLeft.scrollTop
+		StartLine: 6243
+		EndLine: 6249
+		NodeType: Object
+		Comment: Support: IE9&#D;&#A; Panic based approach to setting things on disconnected nodes
+
+			Alias: set(tween)
+			StartLine: 6244
+			EndLine: 6248
+			NodeType: Function
+
+		Alias: easing
+		StartLine: 6251
+		EndLine: 6258
+		NodeType: Object
+
+			Alias: linear(p)
+			StartLine: 6252
+			EndLine: 6254
+			NodeType: Function
+
+			Alias: swing(p)
+			StartLine: 6255
+			EndLine: 6257
+			NodeType: Function
+
+		Alias: tweeners
+		StartLine: 6274
+		EndLine: 6323
+		NodeType: Object
+
+			Alias: ?(prop,value)
+			StartLine: 6275
+			EndLine: 6322
+			NodeType: AnonymousFunction
+
+		Alias: createFxNow()
+		StartLine: 6326
+		EndLine: 6331
+		NodeType: Function
+		Comment: Animations created synchronously will run synchronously
+
+			Alias: setTimeout&gt;?()
+			StartLine: 6327
+			EndLine: 6329
+			NodeType: AnonymousFunction
+
+		Alias: genFx(type,includeWidth)
+		StartLine: 6334
+		EndLine: 6352
+		NodeType: Function
+		Comment: Generate parameters to create a standard animation
+
+			Alias: attrs
+			StartLine: 6337
+			EndLine: 6337
+			NodeType: Object
+
+		Alias: createTween(value,prop,animation)
+		StartLine: 6354
+		EndLine: 6366
+		NodeType: Function
+
+		Alias: defaultPrefilter(elem,props,opts)
+		StartLine: 6368
+		EndLine: 6499
+		NodeType: Function
+		Comment: jshint validthis: true
+
+			Alias: fire()
+			StartLine: 6383
+			EndLine: 6387
+			NodeType: Function
+
+			Alias: always&gt;?()
+			StartLine: 6391
+			EndLine: 6399
+			NodeType: AnonymousFunction
+			Comment: Ensure the complete handler is called before this completes
+
+				Alias: always&gt;?()
+				StartLine: 6393
+				EndLine: 6398
+				NodeType: AnonymousFunction
+
+			Alias: always&gt;?()
+			StartLine: 6425
+			EndLine: 6429
+			NodeType: AnonymousFunction
+
+			Alias: done&gt;?()
+			StartLine: 6471
+			EndLine: 6473
+			NodeType: AnonymousFunction
+
+			Alias: done&gt;?()
+			StartLine: 6475
+			EndLine: 6482
+			NodeType: AnonymousFunction
+
+		Alias: propFilter(props,specialEasing)
+		StartLine: 6501
+		EndLine: 6536
+		NodeType: Function
+
+		Alias: Animation(elem,properties,options)
+		StartLine: 6538
+		EndLine: 6640
+		NodeType: Function
+
+			Alias: always.deferred&gt;?()
+			StartLine: 6543
+			EndLine: 6546
+			NodeType: AnonymousFunction
+			Comment: Don&#39;t match elem in the :animated selector
+
+			Alias: tick()
+			StartLine: 6547
+			EndLine: 6572
+			NodeType: Function
+
+			Alias: promise.animation&gt;?
+			StartLine: 6573
+			EndLine: 6609
+			NodeType: Object
+
+				Alias: extend.opts&gt;?
+				StartLine: 6576
+				EndLine: 6576
+				NodeType: Object
+
+				Alias: createTween(prop,end)
+				StartLine: 6582
+				EndLine: 6587
+				NodeType: Function
+
+				Alias: stop(gotoEnd)
+				StartLine: 6588
+				EndLine: 6608
+				NodeType: Function
+
+			Alias: extend.timer&gt;?&gt;?
+			StartLine: 6628
+			EndLine: 6632
+			NodeType: Object
+
+		Alias: extend.Animation&gt;?
+		StartLine: 6642
+		EndLine: 6670
+		NodeType: Object
+
+			Alias: tweener(props,callback)
+			StartLine: 6644
+			EndLine: 6661
+			NodeType: Function
+
+			Alias: prefilter(callback,prepend)
+			StartLine: 6663
+			EndLine: 6669
+			NodeType: Function
+
+		Alias: speed(speed,easing,fn)
+		StartLine: 6672
+		EndLine: 6702
+		NodeType: Function
+
+			Alias: complete()
+			StartLine: 6691
+			EndLine: 6699
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 6704
+		EndLine: 6822
+		NodeType: Object
+
+			Alias: fadeTo(speed,to,easing,callback)
+			StartLine: 6705
+			EndLine: 6712
+			NodeType: Function
+
+				Alias: animate&gt;?
+				StartLine: 6711
+				EndLine: 6711
+				NodeType: Object
+				Comment: Animate to the value specified
+
+			Alias: animate(prop,speed,easin…callback)
+			StartLine: 6713
+			EndLine: 6730
+			NodeType: Function
+
+				Alias: doAnimation()
+				StartLine: 6716
+				EndLine: 6724
+				NodeType: Function
+				Comment: Operate on a copy of prop so per-property easing won&#39;t be lost
+
+			Alias: stop(type,clearQueue,gotoEnd)
+			StartLine: 6731
+			EndLine: 6780
+			NodeType: Function
+
+				Alias: stopQueue(hooks)
+				StartLine: 6732
+				EndLine: 6736
+				NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 6747
+				EndLine: 6779
+				NodeType: AnonymousFunction
+
+			Alias: finish(type)
+			StartLine: 6781
+			EndLine: 6821
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 6785
+				EndLine: 6820
+				NodeType: AnonymousFunction
+
+		Alias: each&gt;?(i,name)
+		StartLine: 6824
+		EndLine: 6831
+		NodeType: AnonymousFunction
+
+			Alias: name(speed,easing,callback)
+			StartLine: 6826
+			EndLine: 6830
+			NodeType: Function
+
+		Alias: each&gt;?
+		StartLine: 6834
+		EndLine: 6841
+		NodeType: Object
+		Comment: Generate shortcuts for custom animations
+
+			Alias: fadeIn
+			StartLine: 6838
+			EndLine: 6838
+			NodeType: Object
+
+			Alias: fadeOut
+			StartLine: 6839
+			EndLine: 6839
+			NodeType: Object
+
+			Alias: fadeToggle
+			StartLine: 6840
+			EndLine: 6840
+			NodeType: Object
+
+		Alias: each&gt;?(name,props)
+		StartLine: 6841
+		EndLine: 6845
+		NodeType: AnonymousFunction
+
+			Alias: name(speed,easing,callback)
+			StartLine: 6842
+			EndLine: 6844
+			NodeType: Function
+
+		Alias: tick()
+		StartLine: 6848
+		EndLine: 6867
+		NodeType: Function
+
+		Alias: timer(timer)
+		StartLine: 6869
+		EndLine: 6876
+		NodeType: Function
+
+		Alias: start()
+		StartLine: 6880
+		EndLine: 6884
+		NodeType: Function
+
+		Alias: stop()
+		StartLine: 6886
+		EndLine: 6889
+		NodeType: Function
+
+		Alias: speeds
+		StartLine: 6891
+		EndLine: 6896
+		NodeType: Object
+
+		Alias: delay(time,type)
+		StartLine: 6901
+		EndLine: 6911
+		NodeType: Function
+		Comment: Based off of the plugin by Clint Helfers, with permission.&#D;&#A; http://blindsignals.com/index.php/2009/07/jquery-delay/
+
+			Alias: queue&gt;?(next,hooks)
+			StartLine: 6905
+			EndLine: 6910
+			NodeType: AnonymousFunction
+
+				Alias: stop()
+				StartLine: 6907
+				EndLine: 6909
+				NodeType: Function
+
+		Alias: ?()
+		StartLine: 6914
+		EndLine: 6940
+		NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 6946
+		EndLine: 6956
+		NodeType: Object
+
+			Alias: attr(name,value)
+			StartLine: 6947
+			EndLine: 6949
+			NodeType: Function
+
+			Alias: removeAttr(name)
+			StartLine: 6951
+			EndLine: 6955
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 6952
+				EndLine: 6954
+				NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 6958
+		EndLine: 7042
+		NodeType: Object
+
+			Alias: attr(elem,name,value)
+			StartLine: 6959
+			EndLine: 7005
+			NodeType: Function
+
+			Alias: removeAttr(elem,value)
+			StartLine: 7007
+			EndLine: 7025
+			NodeType: Function
+
+			Alias: attrHooks
+			StartLine: 7027
+			EndLine: 7041
+			NodeType: Object
+
+				Alias: type
+				StartLine: 7028
+				EndLine: 7040
+				NodeType: Object
+
+					Alias: set(elem,value)
+					StartLine: 7029
+					EndLine: 7039
+					NodeType: Function
+
+		Alias: boolHook
+		StartLine: 7045
+		EndLine: 7055
+		NodeType: Object
+		Comment: Hooks for boolean attributes
+
+			Alias: set(elem,value,name)
+			StartLine: 7046
+			EndLine: 7054
+			NodeType: Function
+
+		Alias: each&gt;?(i,name)
+		StartLine: 7056
+		EndLine: 7072
+		NodeType: AnonymousFunction
+
+			Alias: name(elem,name,isXML)
+			StartLine: 7059
+			EndLine: 7071
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 7079
+		EndLine: 7089
+		NodeType: Object
+
+			Alias: prop(name,value)
+			StartLine: 7080
+			EndLine: 7082
+			NodeType: Function
+
+			Alias: removeProp(name)
+			StartLine: 7084
+			EndLine: 7088
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 7085
+				EndLine: 7087
+				NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 7091
+		EndLine: 7135
+		NodeType: Object
+
+			Alias: propFix
+			StartLine: 7092
+			EndLine: 7095
+			NodeType: Object
+
+			Alias: prop(elem,name,value)
+			StartLine: 7097
+			EndLine: 7124
+			NodeType: Function
+
+			Alias: propHooks
+			StartLine: 7126
+			EndLine: 7134
+			NodeType: Object
+
+				Alias: tabIndex
+				StartLine: 7127
+				EndLine: 7133
+				NodeType: Object
+
+					Alias: get(elem)
+					StartLine: 7128
+					EndLine: 7132
+					NodeType: Function
+
+		Alias: selected
+		StartLine: 7138
+		EndLine: 7146
+		NodeType: Object
+
+			Alias: get(elem)
+			StartLine: 7139
+			EndLine: 7145
+			NodeType: Function
+
+		Alias: each&gt;?()
+		StartLine: 7160
+		EndLine: 7162
+		NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 7169
+		EndLine: 7314
+		NodeType: Object
+
+			Alias: addClass(value)
+			StartLine: 7170
+			EndLine: 7211
+			NodeType: Function
+
+				Alias: each&gt;?(j)
+				StartLine: 7177
+				EndLine: 7179
+				NodeType: AnonymousFunction
+
+			Alias: removeClass(value)
+			StartLine: 7213
+			EndLine: 7254
+			NodeType: Function
+
+				Alias: each&gt;?(j)
+				StartLine: 7220
+				EndLine: 7222
+				NodeType: AnonymousFunction
+
+			Alias: toggleClass(value,stateVal)
+			StartLine: 7256
+			EndLine: 7300
+			NodeType: Function
+
+				Alias: each&gt;?(i)
+				StartLine: 7264
+				EndLine: 7266
+				NodeType: AnonymousFunction
+
+				Alias: each&gt;?()
+				StartLine: 7269
+				EndLine: 7299
+				NodeType: AnonymousFunction
+
+			Alias: hasClass(selector)
+			StartLine: 7302
+			EndLine: 7313
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 7321
+		EndLine: 7382
+		NodeType: Object
+
+			Alias: val(value)
+			StartLine: 7322
+			EndLine: 7381
+			NodeType: Function
+
+				Alias: each&gt;?(i)
+				StartLine: 7348
+				EndLine: 7380
+				NodeType: AnonymousFunction
+
+					Alias: map.val&gt;?(value)
+					StartLine: 7369
+					EndLine: 7371
+					NodeType: AnonymousFunction
+
+		Alias: extend&gt;?
+		StartLine: 7384
+		EndLine: 7455
+		NodeType: Object
+
+			Alias: valHooks
+			StartLine: 7385
+			EndLine: 7454
+			NodeType: Object
+
+				Alias: option
+				StartLine: 7386
+				EndLine: 7395
+				NodeType: Object
+
+					Alias: get(elem)
+					StartLine: 7387
+					EndLine: 7394
+					NodeType: Function
+
+				Alias: select
+				StartLine: 7396
+				EndLine: 7453
+				NodeType: Object
+
+					Alias: get(elem)
+					StartLine: 7397
+					EndLine: 7432
+					NodeType: Function
+
+					Alias: set(elem,value)
+					StartLine: 7434
+					EndLine: 7452
+					NodeType: Function
+
+		Alias: each&gt;?()
+		StartLine: 7458
+		EndLine: 7471
+		NodeType: AnonymousFunction
+		Comment: Radios and checkboxes getter/setter
+
+			Alias: ?
+			StartLine: 7459
+			EndLine: 7465
+			NodeType: Object
+
+				Alias: set(elem,value)
+				StartLine: 7460
+				EndLine: 7464
+				NodeType: Function
+
+			Alias: get(elem)
+			StartLine: 7467
+			EndLine: 7469
+			NodeType: Function
+
+		Alias: each&gt;?(i,name)
+		StartLine: 7481
+		EndLine: 7489
+		NodeType: AnonymousFunction
+
+			Alias: name(data,fn)
+			StartLine: 7484
+			EndLine: 7488
+			NodeType: Function
+			Comment: Handle event binding
+
+		Alias: extend&gt;?
+		StartLine: 7491
+		EndLine: 7510
+		NodeType: Object
+
+			Alias: hover(fnOver,fnOut)
+			StartLine: 7492
+			EndLine: 7494
+			NodeType: Function
+
+			Alias: bind(types,data,fn)
+			StartLine: 7496
+			EndLine: 7498
+			NodeType: Function
+
+			Alias: unbind(types,fn)
+			StartLine: 7499
+			EndLine: 7501
+			NodeType: Function
+
+			Alias: delegate(selector,types,data,fn)
+			StartLine: 7503
+			EndLine: 7505
+			NodeType: Function
+
+			Alias: undelegate(selector,types,fn)
+			StartLine: 7506
+			EndLine: 7509
+			NodeType: Function
+			Comment: ( namespace ) or ( selector, types [, fn] )
+
+		Alias: parseJSON(data)
+		StartLine: 7521
+		EndLine: 7523
+		NodeType: Function
+		Comment: Support: Android 2.3&#D;&#A; Workaround failure to string-cast null input
+
+		Alias: parseXML(data)
+		StartLine: 7527
+		EndLine: 7545
+		NodeType: Function
+		Comment: Cross-browser xml parsing
+
+		Alias: addToPrefiltersOrTransports(structure)
+		StartLine: 7586
+		EndLine: 7615
+		NodeType: Function
+		Comment: Base &quot;constructor&quot; for jQuery.ajaxPrefilter and jQuery.ajaxTransport
+
+			Alias: ?(dataTypeExpression,func)
+			StartLine: 7589
+			EndLine: 7614
+			NodeType: AnonymousFunction
+			Comment: dataTypeExpression is optional and defaults to &quot;*&quot;
+
+		Alias: inspectPrefiltersOrTransports(structure,option…ns,jqXHR)
+		StartLine: 7618
+		EndLine: 7640
+		NodeType: Function
+		Comment: Base inspection function for prefilters and transports
+
+			Alias: inspect(dataType)
+			StartLine: 7623
+			EndLine: 7637
+			NodeType: Function
+
+				Alias: each&gt;?(_,prefilterOrFactory)
+				StartLine: 7626
+				EndLine: 7635
+				NodeType: AnonymousFunction
+
+		Alias: ajaxExtend(target,src)
+		StartLine: 7645
+		EndLine: 7659
+		NodeType: Function
+		Comment: A special extend for ajax options&#D;&#A; that takes &quot;flat&quot; options (not to be deep extended)&#D;&#A; Fixes #9887
+
+		Alias: ajaxHandleResponses(s,jqXHR,responses)
+		StartLine: 7665
+		EndLine: 7716
+		NodeType: Function
+		Comment: Handles responses to an ajax request:&#A; * - finds the right dataType (mediates between content-type and expected dataType)&#A; * - returns the corresponding response
+
+		Alias: ajaxConvert(s,response,jqXHR…sSuccess)
+		StartLine: 7721
+		EndLine: 7810
+		NodeType: Function
+		Comment: Chain conversions given the request and the original response&#A; * Also sets the responseXXX fields on the jqXHR instance
+
+			Alias: ?
+			StartLine: 7809
+			EndLine: 7809
+			NodeType: Object
+
+		Alias: extend&gt;?
+		StartLine: 7812
+		EndLine: 8300
+		NodeType: Object
+
+			Alias: ajaxSettings
+			StartLine: 7821
+			EndLine: 7886
+			NodeType: Object
+
+				Alias: accepts
+				StartLine: 7841
+				EndLine: 7847
+				NodeType: Object
+
+				Alias: contents
+				StartLine: 7849
+				EndLine: 7853
+				NodeType: Object
+
+				Alias: responseFields
+				StartLine: 7855
+				EndLine: 7859
+				NodeType: Object
+
+				Alias: converters
+				StartLine: 7863
+				EndLine: 7876
+				NodeType: Object
+				Comment: Data converters&#D;&#A; Keys separate source (or catchall &quot;*&quot;) and destination types with a single space
+
+				Alias: flatOptions
+				StartLine: 7882
+				EndLine: 7885
+				NodeType: Object
+				Comment: For options that shouldn&#39;t be deep extended:&#D;&#A; you can add your own custom options here if&#D;&#A; and when you create one that shouldn&#39;t be&#D;&#A; deep extended (see ajaxExtend)
+
+			Alias: ajaxSetup(target,settings)
+			StartLine: 7891
+			EndLine: 7899
+			NodeType: Function
+			Comment: Creates a full fledged settings object into target&#D;&#A; with both ajaxSettings and settings fields.&#D;&#A; If target is omitted, writes into ajaxSettings.
+
+			Alias: ajax(url,options)
+			StartLine: 7905
+			EndLine: 8291
+			NodeType: Function
+			Comment: Main method
+
+				Alias: jqXHR
+				StartLine: 7951
+				EndLine: 8018
+				NodeType: Object
+				Comment: Fake xhr
+
+					Alias: getResponseHeader(key)
+					StartLine: 7955
+					EndLine: 7967
+					NodeType: Function
+					Comment: Builds headers hashtable if needed
+
+					Alias: getAllResponseHeaders()
+					StartLine: 7970
+					EndLine: 7972
+					NodeType: Function
+					Comment: Raw string
+
+					Alias: setRequestHeader(name,value)
+					StartLine: 7975
+					EndLine: 7982
+					NodeType: Function
+					Comment: Caches the header
+
+					Alias: overrideMimeType(type)
+					StartLine: 7985
+					EndLine: 7990
+					NodeType: Function
+					Comment: Overrides response content-type header
+
+					Alias: statusCode(map)
+					StartLine: 7993
+					EndLine: 8007
+					NodeType: Function
+					Comment: Status-dependent callbacks
+
+					Alias: abort(statusText)
+					StartLine: 8010
+					EndLine: 8017
+					NodeType: Function
+					Comment: Cancel the request
+
+				Alias: setTimeout.timeoutTimer&gt;?()
+				StartLine: 8159
+				EndLine: 8161
+				NodeType: AnonymousFunction
+
+				Alias: done(status,nativeSta…,headers)
+				StartLine: 8179
+				EndLine: 8288
+				NodeType: Function
+				Comment: Callback for when everything is done
+
+			Alias: getJSON(url,data,callback)
+			StartLine: 8293
+			EndLine: 8295
+			NodeType: Function
+
+			Alias: getScript(url,callback)
+			StartLine: 8297
+			EndLine: 8299
+			NodeType: Function
+
+		Alias: each&gt;?(i,method)
+		StartLine: 8302
+		EndLine: 8319
+		NodeType: AnonymousFunction
+
+			Alias: method(url,data,callback,type)
+			StartLine: 8303
+			EndLine: 8318
+			NodeType: Function
+			Comment: Shift arguments if data argument was omitted
+
+				Alias: ajax&gt;?
+				StartLine: 8311
+				EndLine: 8317
+				NodeType: Object
+
+		Alias: _evalUrl(url)
+		StartLine: 8322
+		EndLine: 8331
+		NodeType: Function
+
+			Alias: ajax&gt;?
+			StartLine: 8323
+			EndLine: 8330
+			NodeType: Object
+
+		Alias: extend&gt;?
+		StartLine: 8334
+		EndLine: 8402
+		NodeType: Object
+
+			Alias: wrapAll(html)
+			StartLine: 8335
+			EndLine: 8365
+			NodeType: Function
+
+				Alias: each&gt;?(i)
+				StartLine: 8339
+				EndLine: 8341
+				NodeType: AnonymousFunction
+
+				Alias: map&gt;?()
+				StartLine: 8353
+				EndLine: 8361
+				NodeType: AnonymousFunction
+
+			Alias: wrapInner(html)
+			StartLine: 8367
+			EndLine: 8385
+			NodeType: Function
+
+				Alias: each&gt;?(i)
+				StartLine: 8369
+				EndLine: 8371
+				NodeType: AnonymousFunction
+
+				Alias: each&gt;?()
+				StartLine: 8374
+				EndLine: 8384
+				NodeType: AnonymousFunction
+
+			Alias: wrap(html)
+			StartLine: 8387
+			EndLine: 8393
+			NodeType: Function
+
+				Alias: each&gt;?(i)
+				StartLine: 8390
+				EndLine: 8392
+				NodeType: AnonymousFunction
+
+			Alias: unwrap()
+			StartLine: 8395
+			EndLine: 8401
+			NodeType: Function
+
+				Alias: each&gt;?()
+				StartLine: 8396
+				EndLine: 8400
+				NodeType: AnonymousFunction
+
+		Alias: hidden(elem)
+		StartLine: 8405
+		EndLine: 8409
+		NodeType: Function
+		Comment: Support: Opera &lt;= 12.12&#D;&#A; Opera reports offsetWidths and offsetHeights less than zero on some elements
+
+		Alias: visible(elem)
+		StartLine: 8410
+		EndLine: 8412
+		NodeType: Function
+
+		Alias: buildParams(prefix,obj,tradi…onal,add)
+		StartLine: 8423
+		EndLine: 8449
+		NodeType: Function
+
+			Alias: each&gt;?(i,v)
+			StartLine: 8428
+			EndLine: 8437
+			NodeType: AnonymousFunction
+			Comment: Serialize array item.
+
+		Alias: param(a,traditional)
+		StartLine: 8453
+		EndLine: 8484
+		NodeType: Function
+		Comment: Serialize an array of form elements or a set of&#D;&#A; key/values into a query string
+
+			Alias: add(key,value)
+			StartLine: 8456
+			EndLine: 8460
+			NodeType: Function
+			Comment: If value is a function, invoke it and return its value
+
+			Alias: each&gt;?()
+			StartLine: 8470
+			EndLine: 8472
+			NodeType: AnonymousFunction
+			Comment: Serialize the form elements
+
+		Alias: extend&gt;?
+		StartLine: 8486
+		EndLine: 8516
+		NodeType: Object
+
+			Alias: serialize()
+			StartLine: 8487
+			EndLine: 8489
+			NodeType: Function
+
+			Alias: serializeArray()
+			StartLine: 8490
+			EndLine: 8515
+			NodeType: Function
+
+				Alias: map&gt;?()
+				StartLine: 8491
+				EndLine: 8495
+				NodeType: AnonymousFunction
+				Comment: Can add propHook for &quot;elements&quot; to filter or add form elements
+
+				Alias: filter&gt;?()
+				StartLine: 8496
+				EndLine: 8503
+				NodeType: AnonymousFunction
+
+				Alias: map&gt;?(i,elem)
+				StartLine: 8504
+				EndLine: 8514
+				NodeType: AnonymousFunction
+
+		Alias: xhr()
+		StartLine: 8519
+		EndLine: 8523
+		NodeType: Function
+
+		Alias: xhrSuccessStatus
+		StartLine: 8527
+		EndLine: 8533
+		NodeType: Object
+		Comment: file protocol always yields status code 0, assume 200
+
+		Alias: attachEvent&gt;?()
+		StartLine: 8540
+		EndLine: 8544
+		NodeType: AnonymousFunction
+
+		Alias: ajaxTransport&gt;?(options)
+		StartLine: 8550
+		EndLine: 8646
+		NodeType: AnonymousFunction
+
+			Alias: ?
+			StartLine: 8555
+			EndLine: 8644
+			NodeType: Object
+
+				Alias: send(headers,complete)
+				StartLine: 8556
+				EndLine: 8637
+				NodeType: Function
+
+					Alias: callback(type)
+					StartLine: 8590
+					EndLine: 8619
+					NodeType: Function
+					Comment: Callback
+
+						Alias: ?()
+						StartLine: 8591
+						EndLine: 8618
+						NodeType: AnonymousFunction
+
+				Alias: abort()
+				StartLine: 8639
+				EndLine: 8643
+				NodeType: Function
+
+		Alias: ajaxSetup&gt;?
+		StartLine: 8652
+		EndLine: 8665
+		NodeType: Object
+		Comment: Install script dataType
+
+			Alias: accepts
+			StartLine: 8653
+			EndLine: 8655
+			NodeType: Object
+
+			Alias: contents
+			StartLine: 8656
+			EndLine: 8658
+			NodeType: Object
+
+			Alias: converters
+			StartLine: 8659
+			EndLine: 8664
+			NodeType: Object
+
+				Alias: &quot;text script&quot;(text)
+				StartLine: 8660
+				EndLine: 8663
+				NodeType: Function
+
+		Alias: ajaxPrefilter&gt;?(s)
+		StartLine: 8668
+		EndLine: 8675
+		NodeType: AnonymousFunction
+		Comment: Handle cache&#39;s special case and crossDomain
+
+		Alias: ajaxTransport&gt;?(s)
+		StartLine: 8678
+		EndLine: 8707
+		NodeType: AnonymousFunction
+		Comment: Bind script tag hack transport&#D;&#A; This transport only deals with cross domain requests
+
+			Alias: ?
+			StartLine: 8682
+			EndLine: 8705
+			NodeType: Object
+
+				Alias: send(_,complete)
+				StartLine: 8683
+				EndLine: 8699
+				NodeType: Function
+
+					Alias: prop&gt;?
+					StartLine: 8684
+					EndLine: 8688
+					NodeType: Object
+
+					Alias: callback.on.script&gt;?(evt)
+					StartLine: 8690
+					EndLine: 8696
+					NodeType: AnonymousFunction
+
+				Alias: abort()
+				StartLine: 8700
+				EndLine: 8704
+				NodeType: Function
+
+		Alias: ajaxSetup&gt;?
+		StartLine: 8716
+		EndLine: 8723
+		NodeType: Object
+		Comment: Default jsonp settings
+
+			Alias: jsonpCallback()
+			StartLine: 8718
+			EndLine: 8722
+			NodeType: Function
+
+		Alias: ajaxPrefilter&gt;?(s,originalSettings,jqXHR)
+		StartLine: 8726
+		EndLine: 8791
+		NodeType: AnonymousFunction
+		Comment: Detect, normalize options and install callbacks for jsonp requests
+
+			Alias: &quot;script json&quot;()
+			StartLine: 8750
+			EndLine: 8755
+			NodeType: Function
+			Comment: Use data converter to retrieve json after script execution
+
+			Alias: callbackName()
+			StartLine: 8762
+			EndLine: 8764
+			NodeType: Function
+
+			Alias: always&gt;?()
+			StartLine: 8767
+			EndLine: 8786
+			NodeType: AnonymousFunction
+			Comment: Clean-up function (fires after converters)&#D;&#A; Restore preexisting value
+
+		Alias: parseHTML(data,context,keepScripts)
+		StartLine: 8799
+		EndLine: 8824
+		NodeType: Function
+		Comment: data: string of html&#D;&#A; context (optional): If specified, the fragment will be created in this context, defaults to document&#D;&#A; keepScripts (optional): If true, will include scripts passed in the html string
+
+		Alias: load(url,params,callback)
+		StartLine: 8833
+		EndLine: 8888
+		NodeType: Function
+		Comment: *&#A; * Load a url into a page
+
+			Alias: ajax&gt;?
+			StartLine: 8861
+			EndLine: 8868
+			NodeType: Object
+
+			Alias: done&gt;?(responseText)
+			StartLine: 8868
+			EndLine: 8882
+			NodeType: AnonymousFunction
+
+			Alias: complete&gt;?(jqXHR,status)
+			StartLine: 8882
+			EndLine: 8884
+			NodeType: AnonymousFunction
+
+		Alias: each&gt;?(i,type)
+		StartLine: 8894
+		EndLine: 8898
+		NodeType: AnonymousFunction
+		Comment: Attach a bunch of functions for handling common AJAX events
+
+			Alias: type(fn)
+			StartLine: 8895
+			EndLine: 8897
+			NodeType: Function
+
+		Alias: animated(elem)
+		StartLine: 8903
+		EndLine: 8907
+		NodeType: Function
+
+			Alias: grep&gt;?(fn)
+			StartLine: 8904
+			EndLine: 8906
+			NodeType: AnonymousFunction
+
+		Alias: getWindow(elem)
+		StartLine: 8917
+		EndLine: 8919
+		NodeType: Function
+		Comment: *&#A; * Gets a window from an element
+
+		Alias: offset
+		StartLine: 8921
+		EndLine: 8969
+		NodeType: Object
+
+			Alias: setOffset(elem,options,i)
+			StartLine: 8922
+			EndLine: 8968
+			NodeType: Function
+
+		Alias: extend&gt;?
+		StartLine: 8971
+		EndLine: 9056
+		NodeType: Object
+
+			Alias: offset(options)
+			StartLine: 8972
+			EndLine: 9007
+			NodeType: Function
+
+				Alias: box
+				StartLine: 8983
+				EndLine: 8983
+				NodeType: Object
+
+				Alias: ?
+				StartLine: 9003
+				EndLine: 9006
+				NodeType: Object
+
+			Alias: position()
+			StartLine: 9009
+			EndLine: 9043
+			NodeType: Function
+
+				Alias: parentOffset
+				StartLine: 9016
+				EndLine: 9016
+				NodeType: Object
+
+				Alias: ?
+				StartLine: 9039
+				EndLine: 9042
+				NodeType: Object
+				Comment: Subtract parent offsets and element margins
+
+			Alias: offsetParent()
+			StartLine: 9045
+			EndLine: 9055
+			NodeType: Function
+
+				Alias: map&gt;?()
+				StartLine: 9046
+				EndLine: 9054
+				NodeType: AnonymousFunction
+
+		Alias: each&gt;?
+		StartLine: 9059
+		EndLine: 9059
+		NodeType: Object
+		Comment: Create scrollLeft and scrollTop methods
+
+		Alias: each&gt;?(method,prop)
+		StartLine: 9059
+		EndLine: 9081
+		NodeType: AnonymousFunction
+
+			Alias: method(val)
+			StartLine: 9062
+			EndLine: 9080
+			NodeType: Function
+
+				Alias: access&gt;?(elem,method,val)
+				StartLine: 9063
+				EndLine: 9079
+				NodeType: AnonymousFunction
+
+		Alias: each&gt;?(i,prop)
+		StartLine: 9089
+		EndLine: 9101
+		NodeType: AnonymousFunction
+		Comment: Support: Safari&lt;7+, Chrome&lt;37+&#D;&#A; Add the top/left cssHooks using jQuery.fn.position&#D;&#A; Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084&#D;&#A; Blink bug: https://code.google.com/p/chromium/issues/detail?id=229280&#D;&#A; getComputedStyle returns percent when specified for top/left/bottom/right;&#D;&#A; rather than make the css module depend on the offset module, just check for it here
+
+			Alias: addGetHookIf.prop&gt;?(elem,computed)
+			StartLine: 9091
+			EndLine: 9099
+			NodeType: AnonymousFunction
+
+		Alias: each&gt;?
+		StartLine: 9105
+		EndLine: 9105
+		NodeType: Object
+		Comment: Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
+
+		Alias: each&gt;?(name,type)
+		StartLine: 9105
+		EndLine: 9144
+		NodeType: AnonymousFunction
+
+			Alias: each&gt;?
+			StartLine: 9106
+			EndLine: 9106
+			NodeType: Object
+			Comment: Margin is only for outerHeight, outerWidth
+
+			Alias: each&gt;?(defaultExtra,funcName)
+			StartLine: 9106
+			EndLine: 9143
+			NodeType: AnonymousFunction
+
+				Alias: funcName(margin,value)
+				StartLine: 9108
+				EndLine: 9142
+				NodeType: Function
+
+					Alias: access&gt;?(elem,type,value)
+					StartLine: 9112
+					EndLine: 9141
+					NodeType: AnonymousFunction
+
+		Alias: size()
+		StartLine: 9148
+		EndLine: 9150
+		NodeType: Function
+		Comment: The number of elements contained in the matched element set
+
+		Alias: define&gt;?()
+		StartLine: 9171
+		EndLine: 9173
+		NodeType: AnonymousFunction
+
+		Alias: noConflict(deep)
+		StartLine: 9186
+		EndLine: 9196
+		NodeType: Function
+

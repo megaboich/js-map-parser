@@ -1,0 +1,2950 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: ?()
+	StartLine: 7
+	EndLine: 5475
+	NodeType: AnonymousFunction
+
+		Alias: ?(undefined)
+		StartLine: 9
+		EndLine: 5474
+		NodeType: AnonymousFunction
+		Comment: (0, eval)(&#39;this&#39;) is a robust way of getting a reference to the global object&#D;&#A; For details, see http://stackoverflow.com/questions/14119988/return-this-0-evalthis/14120023#14120023
+
+			Alias: ?(factory)
+			StartLine: 17
+			EndLine: 29
+			NodeType: AnonymousFunction
+			Comment: Support three module loading scenarios
+
+			Alias: ?(koExports,amdRequire)
+			StartLine: 29
+			EndLine: 5473
+			NodeType: AnonymousFunction
+			Comment: Internally, all KO objects are attached to koExports (even the non-exported ones whose names will be minified by the closure compiler).&#D;&#A; In the future, the following &quot;ko&quot; variable may be made distinct from &quot;koExports&quot; so that private objects are not externally reachable.
+
+				Alias: exportSymbol(koPath,object)
+				StartLine: 34
+				EndLine: 44
+				NodeType: Function
+				Comment: Google Closure Compiler helpers (used only to make the minified file smaller)
+
+				Alias: exportProperty(owner,publicName,object)
+				StartLine: 45
+				EndLine: 47
+				NodeType: Function
+
+				Alias: utils()
+				StartLine: 51
+				EndLine: 595
+				NodeType: Function
+
+					Alias: objectForEach(obj,action)
+					StartLine: 52
+					EndLine: 58
+					NodeType: Function
+
+					Alias: extend(target,source)
+					StartLine: 60
+					EndLine: 69
+					NodeType: Function
+
+					Alias: setPrototypeOf(obj,proto)
+					StartLine: 71
+					EndLine: 74
+					NodeType: Function
+
+					Alias: canSetPrototype
+					StartLine: 76
+					EndLine: 76
+					NodeType: Object
+
+					Alias: objectForEach&gt;?(eventType,knownE…sForType)
+					StartLine: 83
+					EndLine: 88
+					NodeType: AnonymousFunction
+
+					Alias: eventsThatMustBeRegisteredUsingAttachEvent
+					StartLine: 89
+					EndLine: 89
+					NodeType: Object
+					Comment: Workaround for an IE9 issue - https://github.com/SteveSanderson/knockout/issues/406
+
+					Alias: ieVersion()
+					StartLine: 95
+					EndLine: 104
+					NodeType: Function
+					Comment: Detect IE versions for bug workarounds (uses IE conditionals, not UA string, for robustness)&#D;&#A; Note that, since IE 10 does not support conditional comments, the following logic only detects IE &lt; 10.&#D;&#A; Currently this is by design, since IE 10+ behaves correctly when treated as a standard browser.&#D;&#A; If there is a future need to detect specific versions of IE10+, we will amend this.
+
+					Alias: isClickOnCheckableElement(element,eventType)
+					StartLine: 108
+					EndLine: 113
+					NodeType: Function
+
+					Alias: toggleDomNodeCssClass(node,classNames,…aveClass)
+					StartLine: 119
+					EndLine: 135
+					NodeType: Function
+
+						Alias: arrayForEach&gt;?(className)
+						StartLine: 124
+						EndLine: 126
+						NodeType: AnonymousFunction
+
+					Alias: toggleObjectClassPropertyString(obj,prop,classNa…aveClass)
+					StartLine: 137
+					EndLine: 144
+					NodeType: Function
+					Comment: obj/prop is either a node/&#39;className&#39; or a SVGAnimatedString/&#39;baseVal&#39;.
+
+						Alias: arrayForEach&gt;?(className)
+						StartLine: 140
+						EndLine: 142
+						NodeType: AnonymousFunction
+
+					Alias: ?
+					StartLine: 146
+					EndLine: 594
+					NodeType: Object
+
+						Alias: arrayForEach(array,action)
+						StartLine: 149
+						EndLine: 152
+						NodeType: Function
+
+						Alias: arrayIndexOf(array,item)
+						StartLine: 154
+						EndLine: 161
+						NodeType: Function
+
+						Alias: arrayFirst(array,predicate,…ateOwner)
+						StartLine: 163
+						EndLine: 168
+						NodeType: Function
+
+						Alias: arrayRemoveItem(array,itemToRemove)
+						StartLine: 170
+						EndLine: 178
+						NodeType: Function
+
+						Alias: arrayGetDistinctValues(array)
+						StartLine: 180
+						EndLine: 188
+						NodeType: Function
+
+						Alias: arrayMap(array,mapping)
+						StartLine: 190
+						EndLine: 196
+						NodeType: Function
+
+						Alias: arrayFilter(array,predicate)
+						StartLine: 198
+						EndLine: 205
+						NodeType: Function
+
+						Alias: arrayPushAll(array,valuesToPush)
+						StartLine: 207
+						EndLine: 214
+						NodeType: Function
+
+						Alias: addOrRemoveItem(array,value,included)
+						StartLine: 216
+						EndLine: 225
+						NodeType: Function
+
+						Alias: objectMap(source,mapping)
+						StartLine: 237
+						EndLine: 247
+						NodeType: Function
+
+						Alias: emptyDomNode(domNode)
+						StartLine: 249
+						EndLine: 253
+						NodeType: Function
+
+						Alias: moveCleanedNodesToContainerElement(nodes)
+						StartLine: 255
+						EndLine: 266
+						NodeType: Function
+						Comment: Ensure it&#39;s a real array, as we&#39;re about to reparent the nodes and&#D;&#A; we don&#39;t want the underlying collection to change while we&#39;re doing that.
+
+						Alias: cloneNodes(nodesArray,shoul…eanNodes)
+						StartLine: 268
+						EndLine: 274
+						NodeType: Function
+
+						Alias: setDomNodeChildren(domNode,childNodes)
+						StartLine: 276
+						EndLine: 282
+						NodeType: Function
+
+						Alias: replaceDomNodes(nodeToReplaceOrN…desArray)
+						StartLine: 284
+						EndLine: 295
+						NodeType: Function
+
+						Alias: fixUpContinuousNodeArray(continuousNodeAr…rentNode)
+						StartLine: 297
+						EndLine: 334
+						NodeType: Function
+						Comment: Before acting on a set of nodes that were previously outputted by a template function, we have to reconcile&#D;&#A; them against what is in the DOM right now. It may be that some of the nodes have already been removed, or that&#D;&#A; new nodes might have been inserted in the middle, for example by a binding. Also, there may previously have been&#D;&#A; leading comment nodes (created by rewritten string-based templates) that have since been removed during binding.&#D;&#A; So, this function translates the old &quot;map&quot; output array into its best guess of the set of current DOM nodes.&#D;&#A;&#D;&#A; Rules:&#D;&#A;   [A] Any leading nodes that have been removed should be ignored&#D;&#A;       These most likely correspond to memoization nodes that were already removed during binding&#D;&#A;       See https://github.com/SteveSanderson/knockout/pull/440&#D;&#A;   [B] We want to output a continuous series of nodes. So, ignore any nodes that have already been removed,&#D;&#A;       and include any nodes that have been inserted among the previous collection
+
+						Alias: setOptionNodeSelectionState(optionNode,isSelected)
+						StartLine: 336
+						EndLine: 342
+						NodeType: Function
+						Comment: IE6 sometimes throws &quot;unknown error&quot; if you try to write to .selected directly, whereas Firefox struggles with setAttribute. Pick one based on browser.
+
+						Alias: stringTrim(string)
+						StartLine: 344
+						EndLine: 349
+						NodeType: Function
+
+						Alias: stringStartsWith(string,startsWith)
+						StartLine: 351
+						EndLine: 356
+						NodeType: Function
+
+						Alias: domNodeIsContainedBy(node,containedByNode)
+						StartLine: 358
+						EndLine: 371
+						NodeType: Function
+
+						Alias: domNodeIsAttachedToDocument(node)
+						StartLine: 373
+						EndLine: 375
+						NodeType: Function
+
+						Alias: anyDomNodeIsAttachedToDocument(nodes)
+						StartLine: 377
+						EndLine: 379
+						NodeType: Function
+
+						Alias: tagNameLower(element)
+						StartLine: 381
+						EndLine: 386
+						NodeType: Function
+						Comment: For HTML elements, tagName will always be upper case; for XHTML elements, it&#39;ll be lower case.&#D;&#A; Possible future optimization: If we know it&#39;s an element from an XHTML document (not HTML),&#D;&#A; we don&#39;t need to do the .toLowerCase() as it will always be lower case anyway.
+
+						Alias: registerEventHandler(element,eventType,handler)
+						StartLine: 388
+						EndLine: 406
+						NodeType: Function
+
+							Alias: attachEventHandler(event)
+							StartLine: 395
+							EndLine: 395
+							NodeType: Function
+
+							Alias: addDisposeCallback&gt;?()
+							StartLine: 401
+							EndLine: 403
+							NodeType: AnonymousFunction
+							Comment: IE does not dispose attachEvent handlers automatically (unlike with addEventListener)&#D;&#A; so to avoid leaks, we have to remove them manually. See bug #856
+
+						Alias: triggerEvent(element,eventType)
+						StartLine: 408
+						EndLine: 436
+						NodeType: Function
+
+						Alias: unwrapObservable(value)
+						StartLine: 438
+						EndLine: 440
+						NodeType: Function
+
+						Alias: peekObservable(value)
+						StartLine: 442
+						EndLine: 444
+						NodeType: Function
+
+						Alias: setTextContent(element,textContent)
+						StartLine: 448
+						EndLine: 464
+						NodeType: Function
+
+						Alias: setElementName(element,name)
+						StartLine: 466
+						EndLine: 478
+						NodeType: Function
+
+						Alias: forceRefresh(node)
+						StartLine: 480
+						EndLine: 488
+						NodeType: Function
+						Comment: Workaround for an IE9 rendering bug - https://github.com/SteveSanderson/knockout/issues/209
+
+						Alias: ensureSelectElementIsRenderedCorrectly(selectElement)
+						StartLine: 490
+						EndLine: 499
+						NodeType: Function
+						Comment: Workaround for IE9 rendering bug - it doesn&#39;t reliably display all the text in dynamically-added select boxes unless you force it to re-render by updating the width.&#D;&#A; (See https://github.com/SteveSanderson/knockout/issues/312, http://stackoverflow.com/questions/5908494/select-only-shows-first-char-of-selected-option)&#D;&#A; Also fixes IE7 and IE8 bug that causes selects to be zero width if enclosed by &#39;if&#39; or &#39;with&#39;. (See issue #839)
+
+						Alias: range(min,max)
+						StartLine: 501
+						EndLine: 508
+						NodeType: Function
+
+						Alias: makeArray(arrayLikeObject)
+						StartLine: 510
+						EndLine: 516
+						NodeType: Function
+
+						Alias: getFormFields(form,fieldName)
+						StartLine: 522
+						EndLine: 533
+						NodeType: Function
+
+						Alias: parseJson(jsonString)
+						StartLine: 535
+						EndLine: 545
+						NodeType: Function
+
+						Alias: stringifyJson(data,replacer,space)
+						StartLine: 547
+						EndLine: 551
+						NodeType: Function
+						Comment: replacer and space are optional
+
+						Alias: postJson(urlOrForm,data,options)
+						StartLine: 553
+						EndLine: 593
+						NodeType: Function
+
+							Alias: objectForEach&gt;?(key,value)
+							StartLine: 583
+							EndLine: 589
+							NodeType: AnonymousFunction
+
+							Alias: setTimeout&gt;?()
+							StartLine: 592
+							EndLine: 592
+							NodeType: AnonymousFunction
+
+				Alias: &#39;bind&#39;(object)
+				StartLine: 626
+				EndLine: 640
+				NodeType: Function
+				Comment: Function.prototype.bind is a standard part of ECMAScript 5th Edition (December 2009, http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf)&#D;&#A; In case the browser doesn&#39;t implement it natively, provide a JavaScript implementation. This implementation is based on the one in prototype.js
+
+					Alias: ?()
+					StartLine: 629
+					EndLine: 631
+					NodeType: AnonymousFunction
+
+					Alias: ?()
+					StartLine: 634
+					EndLine: 638
+					NodeType: AnonymousFunction
+
+				Alias: ?()
+				StartLine: 795
+				EndLine: 888
+				NodeType: AnonymousFunction
+
+					Alias: simpleHtmlParse(html,documentContext)
+					StartLine: 798
+					EndLine: 833
+					NodeType: Function
+
+					Alias: jQueryHtmlParse(html,documentContext)
+					StartLine: 835
+					EndLine: 858
+					NodeType: Function
+					Comment: jQuery&#39;s &quot;parseHTML&quot; function was introduced in jQuery 1.8.0 and is a documented public API.
+
+					Alias: parseHtmlFragment(html,documentContext)
+					StartLine: 860
+					EndLine: 863
+					NodeType: Function
+					Comment: As below, benefit from jQuery&#39;s optimisations where possible&#D;&#A; ... otherwise, this simple logic will do in most common cases.
+
+					Alias: setHtml(node,html)
+					StartLine: 865
+					EndLine: 887
+					NodeType: Function
+
+				Alias: memoization()
+				StartLine: 893
+				EndLine: 955
+				NodeType: Function
+
+					Alias: randomMax8HexChars()
+					StartLine: 896
+					EndLine: 898
+					NodeType: Function
+
+					Alias: generateRandomId()
+					StartLine: 899
+					EndLine: 901
+					NodeType: Function
+
+					Alias: findMemoNodes(rootNode,appendToArray)
+					StartLine: 902
+					EndLine: 913
+					NodeType: Function
+
+						Alias: push&gt;?
+						StartLine: 908
+						EndLine: 908
+						NodeType: Object
+
+					Alias: ?
+					StartLine: 915
+					EndLine: 954
+					NodeType: Object
+
+						Alias: memoize(callback)
+						StartLine: 916
+						EndLine: 922
+						NodeType: Function
+
+						Alias: unmemoize(memoId,callbackParams)
+						StartLine: 924
+						EndLine: 933
+						NodeType: Function
+
+						Alias: unmemoizeDomNodeAndDescendants(domNode,extraCal…amsArray)
+						StartLine: 935
+						EndLine: 948
+						NodeType: Function
+
+						Alias: parseMemoText(memoText)
+						StartLine: 950
+						EndLine: 953
+						NodeType: Function
+
+				Alias: extenders
+				StartLine: 962
+				EndLine: 1005
+				NodeType: Object
+
+					Alias: &#39;throttle&#39;(target,timeout)
+					StartLine: 963
+					EndLine: 982
+					NodeType: Function
+					Comment: Throttling means two things:
+
+						Alias: dependentObservable&gt;?
+						StartLine: 973
+						EndLine: 981
+						NodeType: Object
+
+							Alias: &#39;write&#39;(value)
+							StartLine: 975
+							EndLine: 980
+							NodeType: Function
+
+								Alias: setTimeout.writeTimeoutInstance&gt;?()
+								StartLine: 977
+								EndLine: 979
+								NodeType: AnonymousFunction
+
+					Alias: &#39;rateLimit&#39;(target,options)
+					StartLine: 984
+					EndLine: 998
+					NodeType: Function
+
+						Alias: limit&gt;?(callback)
+						StartLine: 995
+						EndLine: 997
+						NodeType: AnonymousFunction
+
+					Alias: &#39;notify&#39;(target,notifyWhen)
+					StartLine: 1000
+					EndLine: 1004
+					NodeType: Function
+
+				Alias: primitiveTypes
+				StartLine: 1007
+				EndLine: 1007
+				NodeType: Object
+
+				Alias: valuesArePrimitiveAndEqual(a,b)
+				StartLine: 1008
+				EndLine: 1011
+				NodeType: Function
+
+				Alias: throttle(callback,timeout)
+				StartLine: 1013
+				EndLine: 1023
+				NodeType: Function
+
+					Alias: ?()
+					StartLine: 1015
+					EndLine: 1022
+					NodeType: AnonymousFunction
+
+						Alias: setTimeout.timeoutInstance&gt;?()
+						StartLine: 1017
+						EndLine: 1020
+						NodeType: AnonymousFunction
+
+				Alias: debounce(callback,timeout)
+				StartLine: 1025
+				EndLine: 1031
+				NodeType: Function
+
+					Alias: ?()
+					StartLine: 1027
+					EndLine: 1030
+					NodeType: AnonymousFunction
+
+				Alias: applyExtenders(requestedExtenders)
+				StartLine: 1033
+				EndLine: 1044
+				NodeType: Function
+
+					Alias: objectForEach&gt;?(key,value)
+					StartLine: 1036
+					EndLine: 1041
+					NodeType: AnonymousFunction
+
+				Alias: subscription(target,callback,…Callback)
+				StartLine: 1048
+				EndLine: 1054
+				NodeType: Function
+
+				Alias: dispose()
+				StartLine: 1055
+				EndLine: 1058
+				NodeType: Function
+
+				Alias: subscribable()
+				StartLine: 1060
+				EndLine: 1064
+				NodeType: Function
+
+				Alias: ko_subscribable_fn
+				StartLine: 1068
+				EndLine: 1186
+				NodeType: Object
+
+					Alias: subscribe(callback,callbac…et,event)
+					StartLine: 1069
+					EndLine: 1089
+					NodeType: Function
+
+						Alias: ?()
+						StartLine: 1075
+						EndLine: 1079
+						NodeType: AnonymousFunction
+
+					Alias: &quot;notifySubscribers&quot;(valueToNotify,event)
+					StartLine: 1091
+					EndLine: 1109
+					NodeType: Function
+
+					Alias: getVersion()
+					StartLine: 1111
+					EndLine: 1113
+					NodeType: Function
+
+					Alias: hasChanged(versionToCheck)
+					StartLine: 1115
+					EndLine: 1117
+					NodeType: Function
+
+					Alias: updateVersion()
+					StartLine: 1119
+					EndLine: 1121
+					NodeType: Function
+
+					Alias: limit(limitFunction)
+					StartLine: 1123
+					EndLine: 1163
+					NodeType: Function
+
+						Alias: &quot;notifySubscribers&quot;(value,event)
+						StartLine: 1129
+						EndLine: 1137
+						NodeType: Function
+
+						Alias: limitFunction.finish&gt;?()
+						StartLine: 1140
+						EndLine: 1150
+						NodeType: AnonymousFunction
+						Comment: If an observable provided a reference to itself, access it to get the latest value.&#D;&#A; This allows computed observables to delay calculating their value until needed.
+
+						Alias: _rateLimitedChange(value)
+						StartLine: 1152
+						EndLine: 1156
+						NodeType: Function
+
+						Alias: _rateLimitedBeforeChange(value)
+						StartLine: 1157
+						EndLine: 1162
+						NodeType: Function
+
+					Alias: hasSubscriptionsForEvent(event)
+					StartLine: 1165
+					EndLine: 1167
+					NodeType: Function
+
+					Alias: getSubscriptionsCount(event)
+					StartLine: 1169
+					EndLine: 1179
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(eventName,subscriptions)
+						StartLine: 1174
+						EndLine: 1176
+						NodeType: AnonymousFunction
+
+					Alias: isDifferent(oldValue,newValue)
+					StartLine: 1181
+					EndLine: 1183
+					NodeType: Function
+
+				Alias: isSubscribable(instance)
+				StartLine: 1202
+				EndLine: 1204
+				NodeType: Function
+
+				Alias: dependencyDetection.computedContext()
+				StartLine: 1209
+				EndLine: 1265
+				NodeType: Function
+
+					Alias: getId()
+					StartLine: 1220
+					EndLine: 1222
+					NodeType: Function
+					Comment: Return a unique ID that can be assigned to an observable for dependency tracking.&#D;&#A; Theoretically, you could eventually overflow the number storage size, resulting&#D;&#A; in duplicate IDs. But in JavaScript, the largest exact integral value is 2^53&#D;&#A; or 9,007,199,254,740,992. If you created 1,000,000 IDs per second, it would&#D;&#A; take over 285 years to reach that number.&#D;&#A; Reference http://blog.vjeux.com/2010/javascript/javascript-max_int-number-limits.html
+
+					Alias: begin(options)
+					StartLine: 1224
+					EndLine: 1227
+					NodeType: Function
+
+					Alias: end()
+					StartLine: 1229
+					EndLine: 1231
+					NodeType: Function
+
+					Alias: ?
+					StartLine: 1233
+					EndLine: 1264
+					NodeType: Object
+
+						Alias: registerDependency(subscribable)
+						StartLine: 1238
+						EndLine: 1244
+						NodeType: Function
+
+						Alias: ignore(callback,callbac…backArgs)
+						StartLine: 1246
+						EndLine: 1253
+						NodeType: Function
+
+						Alias: getDependenciesCount()
+						StartLine: 1255
+						EndLine: 1258
+						NodeType: Function
+
+						Alias: isInitial()
+						StartLine: 1260
+						EndLine: 1263
+						NodeType: Function
+
+				Alias: observable(initialValue)
+				StartLine: 1273
+				EndLine: 1308
+				NodeType: Function
+
+					Alias: observable()
+					StartLine: 1276
+					EndLine: 1294
+					NodeType: Function
+
+					Alias: peek()
+					StartLine: 1299
+					EndLine: 1299
+					NodeType: Function
+
+					Alias: valueHasMutated()
+					StartLine: 1300
+					EndLine: 1300
+					NodeType: Function
+
+					Alias: valueWillMutate()
+					StartLine: 1301
+					EndLine: 1301
+					NodeType: Function
+
+				Alias: &#39;fn&#39;
+				StartLine: 1310
+				EndLine: 1312
+				NodeType: Object
+
+				Alias: hasPrototype(instance,prototype)
+				StartLine: 1323
+				EndLine: 1327
+				NodeType: Function
+
+				Alias: isObservable(instance)
+				StartLine: 1329
+				EndLine: 1331
+				NodeType: Function
+
+				Alias: isWriteableObservable(instance)
+				StartLine: 1332
+				EndLine: 1341
+				NodeType: Function
+				Comment: Observable
+
+				Alias: observableArray(initialValues)
+				StartLine: 1348
+				EndLine: 1357
+				NodeType: Function
+
+					Alias: extend&gt;?
+					StartLine: 1356
+					EndLine: 1356
+					NodeType: Object
+
+				Alias: &#39;fn&#39;
+				StartLine: 1359
+				EndLine: 1437
+				NodeType: Object
+
+					Alias: &#39;remove&#39;(valueOrPredicate)
+					StartLine: 1360
+					EndLine: 1379
+					NodeType: Function
+
+					Alias: &#39;removeAll&#39;(arrayOfValues)
+					StartLine: 1381
+					EndLine: 1397
+					NodeType: Function
+					Comment: If you passed zero args, we remove everything
+
+						Alias: &#39;remove&#39;&gt;?(value)
+						StartLine: 1394
+						EndLine: 1396
+						NodeType: AnonymousFunction
+
+					Alias: &#39;destroy&#39;(valueOrPredicate)
+					StartLine: 1399
+					EndLine: 1409
+					NodeType: Function
+
+					Alias: &#39;destroyAll&#39;(arrayOfValues)
+					StartLine: 1411
+					EndLine: 1422
+					NodeType: Function
+					Comment: If you passed zero args, we destroy everything
+
+						Alias: &#39;destroy&#39;&gt;?()
+						StartLine: 1414
+						EndLine: 1414
+						NodeType: AnonymousFunction
+
+						Alias: &#39;destroy&#39;&gt;?(value)
+						StartLine: 1419
+						EndLine: 1421
+						NodeType: AnonymousFunction
+
+					Alias: &#39;indexOf&#39;(item)
+					StartLine: 1424
+					EndLine: 1427
+					NodeType: Function
+
+					Alias: &#39;replace&#39;(oldItem,newItem)
+					StartLine: 1429
+					EndLine: 1436
+					NodeType: Function
+
+				Alias: arrayForEach&gt;?(methodName)
+				StartLine: 1442
+				EndLine: 1453
+				NodeType: AnonymousFunction
+				Comment: Populate ko.observableArray.fn with read/write functions from native arrays&#D;&#A; Important: Do not add any additional functions here that may reasonably be used to *read* data from the array&#D;&#A; because we&#39;ll eval them without causing subscriptions, so ko.computed output could end up getting stale
+
+					Alias: methodName()
+					StartLine: 1443
+					EndLine: 1452
+					NodeType: Function
+					Comment: Use &quot;peek&quot; to avoid creating a subscription in any computed that we&#39;re executing in the context of&#D;&#A; (for consistency with mutating regular observables)
+
+				Alias: arrayForEach&gt;?(methodName)
+				StartLine: 1456
+				EndLine: 1461
+				NodeType: AnonymousFunction
+				Comment: Populate ko.observableArray.fn with read-only functions from native arrays
+
+					Alias: methodName()
+					StartLine: 1457
+					EndLine: 1460
+					NodeType: Function
+
+				Alias: &#39;trackArrayChanges&#39;(target)
+				StartLine: 1471
+				EndLine: 1607
+				NodeType: Function
+				Comment: Only modify the target observable once
+
+					Alias: beforeSubscriptionAdd(event)
+					StartLine: 1484
+					EndLine: 1490
+					NodeType: Function
+					Comment: Watch &quot;subscribe&quot; calls, and for array change events, ensure change tracking is enabled
+
+					Alias: afterSubscriptionRemove(event)
+					StartLine: 1492
+					EndLine: 1499
+					NodeType: Function
+					Comment: Watch &quot;dispose&quot; calls, and for array change events, ensure change tracking is disabled when all are disposed
+
+					Alias: trackChanges()
+					StartLine: 1501
+					EndLine: 1540
+					NodeType: Function
+					Comment: Calling &#39;trackChanges&#39; multiple times is the same as calling it once
+
+						Alias: &#39;notifySubscribers&#39;(valueToNotify,event)
+						StartLine: 1511
+						EndLine: 1516
+						NodeType: Function
+
+						Alias: subscribe.arrayChangeSubscription&gt;?(currentContents)
+						StartLine: 1522
+						EndLine: 1539
+						NodeType: AnonymousFunction
+						Comment: Make a copy of the current contents and ensure it&#39;s an array
+
+					Alias: getChanges(previousContents…Contents)
+					StartLine: 1542
+					EndLine: 1552
+					NodeType: Function
+					Comment: We try to re-use cached diffs.&#D;&#A; The scenarios where pendingNotifications &gt; 1 are when using rate-limiting or the Deferred Updates&#D;&#A; plugin, which without this check would not be compatible with arrayChange notifications. Normally,&#D;&#A; notifications are issued immediately so we wouldn&#39;t be queueing up more than one.
+
+						Alias: compareArrays.cachedDiff&gt;?
+						StartLine: 1548
+						EndLine: 1548
+						NodeType: Object
+
+					Alias: cacheDiffForKnownOperation(rawArray,operati…ame,args)
+					StartLine: 1554
+					EndLine: 1606
+					NodeType: Function
+					Comment: Only run if we&#39;re currently tracking changes for this observable array&#D;&#A; and there aren&#39;t any pending deferred notifications.
+
+						Alias: pushDiff(status,value,index)
+						StartLine: 1565
+						EndLine: 1567
+						NodeType: Function
+
+							Alias: length
+							StartLine: 1566
+							EndLine: 1566
+							NodeType: Object
+
+				Alias: dependentObservable.computed(evaluatorFunctio…,options)
+				StartLine: 1608
+				EndLine: 1959
+				NodeType: Function
+
+					Alias: addDependencyTracking(id,target,trackingObj)
+					StartLine: 1631
+					EndLine: 1639
+					NodeType: Function
+
+					Alias: haveDependenciesChanged()
+					StartLine: 1641
+					EndLine: 1651
+					NodeType: Function
+
+					Alias: disposeComputed()
+					StartLine: 1653
+					EndLine: 1665
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(id,dependency)
+						StartLine: 1655
+						EndLine: 1658
+						NodeType: AnonymousFunction
+
+					Alias: evaluatePossiblyAsync()
+					StartLine: 1667
+					EndLine: 1679
+					NodeType: Function
+
+						Alias: setTimeout.evaluationTimeoutInstance&gt;?()
+						StartLine: 1671
+						EndLine: 1673
+						NodeType: AnonymousFunction
+						Comment: notifyChange
+
+					Alias: evaluateImmediate(notifyChange)
+					StartLine: 1681
+					EndLine: 1777
+					NodeType: Function
+
+						Alias: begin&gt;?
+						StartLine: 1715
+						EndLine: 1731
+						NodeType: Object
+
+							Alias: callback(subscribable,id)
+							StartLine: 1716
+							EndLine: 1728
+							NodeType: Function
+
+						Alias: objectForEach&gt;?(id,toDispose)
+						StartLine: 1744
+						EndLine: 1747
+						NodeType: AnonymousFunction
+
+					Alias: dependentObservable()
+					StartLine: 1779
+					EndLine: 1796
+					NodeType: Function
+
+					Alias: peek()
+					StartLine: 1798
+					EndLine: 1804
+					NodeType: Function
+					Comment: Peek won&#39;t re-evaluate, except while the computed is sleeping or to get the initial value when &quot;deferEvaluation&quot; is set.
+
+					Alias: isActive()
+					StartLine: 1806
+					EndLine: 1808
+					NodeType: Function
+
+					Alias: notify(value,event)
+					StartLine: 1810
+					EndLine: 1812
+					NodeType: Function
+
+					Alias: getDependenciesCount()
+					StartLine: 1831
+					EndLine: 1831
+					NodeType: Function
+
+					Alias: dispose()
+					StartLine: 1833
+					EndLine: 1833
+					NodeType: Function
+
+					Alias: limit(limitFunction)
+					StartLine: 1838
+					EndLine: 1849
+					NodeType: Function
+
+						Alias: _evalRateLimited()
+						StartLine: 1840
+						EndLine: 1848
+						NodeType: Function
+
+					Alias: beforeSubscriptionAdd(event)
+					StartLine: 1854
+					EndLine: 1882
+					NodeType: Function
+					Comment: Starts off sleeping; will awake on the first subscription&#D;&#A; If asleep, wake up the computed by subscribing to any dependencies.
+
+						Alias: objectForEach&gt;?(id,dependency)
+						StartLine: 1866
+						EndLine: 1868
+						NodeType: AnonymousFunction
+
+						Alias: arrayForEach&gt;?(id,order)
+						StartLine: 1870
+						EndLine: 1876
+						NodeType: AnonymousFunction
+						Comment: Next, subscribe to each one
+
+					Alias: afterSubscriptionRemove(event)
+					StartLine: 1884
+					EndLine: 1899
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(id,dependency)
+						StartLine: 1886
+						EndLine: 1895
+						NodeType: AnonymousFunction
+
+							Alias: id
+							StartLine: 1888
+							EndLine: 1892
+							NodeType: Object
+
+					Alias: getVersion()
+					StartLine: 1905
+					EndLine: 1910
+					NodeType: Function
+
+					Alias: beforeSubscriptionAdd(event)
+					StartLine: 1913
+					EndLine: 1917
+					NodeType: Function
+					Comment: This will force a computed with deferEvaluation to evaluate when the first subscriptions is registered.
+
+					Alias: disposeWhen()
+					StartLine: 1938
+					EndLine: 1940
+					NodeType: Function
+
+					Alias: dispose()
+					StartLine: 1951
+					EndLine: 1954
+					NodeType: Function
+
+				Alias: isComputed(instance)
+				StartLine: 1961
+				EndLine: 1963
+				NodeType: Function
+
+				Alias: &#39;fn&#39;
+				StartLine: 1968
+				EndLine: 1970
+				NodeType: Object
+
+				Alias: pureComputed(evaluatorFunctio…onTarget)
+				StartLine: 1983
+				EndLine: 1991
+				NodeType: Function
+
+					Alias: computed&gt;?
+					StartLine: 1985
+					EndLine: 1985
+					NodeType: Object
+
+				Alias: ?()
+				StartLine: 1994
+				EndLine: 2085
+				NodeType: AnonymousFunction
+				Comment: Escape the (unlikely) pathalogical case where an observable&#39;s current value is itself (or similar reference cycle)
+
+					Alias: toJS(rootObject)
+					StartLine: 1997
+					EndLine: 2008
+					NodeType: Function
+
+						Alias: mapJsObjectGraph&gt;?(valueToMap)
+						StartLine: 2002
+						EndLine: 2007
+						NodeType: AnonymousFunction
+						Comment: We just unwrap everything at every level in the object graph&#D;&#A; Loop because an observable&#39;s value might in turn be another observable wrapper
+
+					Alias: toJSON(rootObject,replacer,space)
+					StartLine: 2010
+					EndLine: 2013
+					NodeType: Function
+					Comment: replacer and space are optional
+
+					Alias: mapJsObjectGraph(rootObject,mapIn…dObjects)
+					StartLine: 2015
+					EndLine: 2047
+					NodeType: Function
+
+						Alias: visitPropertiesOrArrayEntries&gt;?(indexer)
+						StartLine: 2026
+						EndLine: 2044
+						NodeType: AnonymousFunction
+
+					Alias: visitPropertiesOrArrayEntries(rootObject,visit…Callback)
+					StartLine: 2049
+					EndLine: 2062
+					NodeType: Function
+
+					Alias: objectLookup()
+					StartLine: 2064
+					EndLine: 2067
+					NodeType: Function
+
+					Alias: prototype
+					StartLine: 2069
+					EndLine: 2084
+					NodeType: Object
+
+						Alias: save(key,value)
+						StartLine: 2071
+						EndLine: 2079
+						NodeType: Function
+
+						Alias: get(key)
+						StartLine: 2080
+						EndLine: 2083
+						NodeType: Function
+
+				Alias: ?()
+				StartLine: 2089
+				EndLine: 2156
+				NodeType: AnonymousFunction
+
+					Alias: selectExtensions
+					StartLine: 2095
+					EndLine: 2155
+					NodeType: Object
+					Comment: Normally, SELECT elements and their OPTIONs can only take value of type &#39;string&#39; (because the values&#D;&#A; are stored on DOM attributes). ko.selectExtensions provides a way for SELECTs/OPTIONs to have values&#D;&#A; that are arbitrary objects. This is very convenient when implementing things like cascading dropdowns.
+
+						Alias: readValue(element)
+						StartLine: 2096
+						EndLine: 2109
+						NodeType: Function
+
+						Alias: writeValue(element,value,allowUnset)
+						StartLine: 2111
+						EndLine: 2154
+						NodeType: Function
+
+				Alias: expressionRewriting()
+				StartLine: 2161
+				EndLine: 2341
+				NodeType: Function
+
+					Alias: getWriteableValue(expression)
+					StartLine: 2169
+					EndLine: 2174
+					NodeType: Function
+
+					Alias: keywordRegexLookBehind
+					StartLine: 2201
+					EndLine: 2201
+					NodeType: Object
+
+					Alias: parseObjectLiteral(objectLiteralString)
+					StartLine: 2203
+					EndLine: 2259
+					NodeType: Function
+					Comment: Trim leading and trailing spaces from the string
+
+					Alias: preProcessBindings(bindingsStringOr…gOptions)
+					StartLine: 2264
+					EndLine: 2304
+					NodeType: Function
+
+						Alias: processKeyValue(key,val)
+						StartLine: 2267
+						EndLine: 2287
+						NodeType: Function
+
+							Alias: callPreprocessHook(obj)
+							StartLine: 2269
+							EndLine: 2271
+							NodeType: Function
+
+						Alias: arrayForEach&gt;?(keyValue)
+						StartLine: 2296
+						EndLine: 2298
+						NodeType: AnonymousFunction
+
+					Alias: ?
+					StartLine: 2306
+					EndLine: 2340
+					NodeType: Object
+
+						Alias: keyValueArrayContainsKey(keyValueArray,key)
+						StartLine: 2315
+						EndLine: 2320
+						NodeType: Function
+
+						Alias: writeValueToProperty(property,allBind…ifferent)
+						StartLine: 2331
+						EndLine: 2339
+						NodeType: Function
+						Comment: Internal, private KO utility for updating model properties from within bindings&#D;&#A; property:            If the property being updated is (or might be) an observable, pass it here&#D;&#A;                      If it turns out to be a writable observable, it will be written to directly&#D;&#A; allBindings:         An object with a get method to retrieve bindings in the current execution context.&#D;&#A;                      This will be searched for a &#39;_ko_property_writers&#39; property in case you&#39;re writing to a non-observable&#D;&#A; key:                 The key identifying the property to be written. Example: for { hasFocus: myValue }, write to &#39;myValue&#39; by specifying the key &#39;hasFocus&#39;&#D;&#A; value:               The value to be written&#D;&#A; checkIfDifferent:    If true, and if the property being written is a writable observable, the value will only be written if&#D;&#A;                      it is !== existing value on that writable observable
+
+				Alias: ?()
+				StartLine: 2361
+				EndLine: 2547
+				NodeType: AnonymousFunction
+				Comment: &quot;Virtual elements&quot; is an abstraction on top of the usual DOM API which understands the notion that comment nodes&#D;&#A; may be used to represent hierarchy (in addition to the DOM&#39;s natural hierarchy).&#D;&#A; If you call the DOM-manipulating functions on ko.virtualElements, you will be able to read and write the state&#D;&#A; of that virtual hierarchy&#D;&#A;&#D;&#A; The point of all this is to support containerless templates (e.g., &lt;!-- ko foreach:someCollection --&gt;blah&lt;!-- /ko --&gt;)&#D;&#A; without having to scatter special cases all over the binding and templating code.
+
+					Alias: htmlTagsWithOptionallyClosingChildren
+					StartLine: 2377
+					EndLine: 2377
+					NodeType: Object
+
+					Alias: isStartComment(node)
+					StartLine: 2379
+					EndLine: 2381
+					NodeType: Function
+
+					Alias: isEndComment(node)
+					StartLine: 2383
+					EndLine: 2385
+					NodeType: Function
+
+					Alias: getVirtualChildren(startComment,all…balanced)
+					StartLine: 2387
+					EndLine: 2406
+					NodeType: Function
+
+					Alias: getMatchingEndComment(startComment,all…balanced)
+					StartLine: 2408
+					EndLine: 2416
+					NodeType: Function
+
+					Alias: getUnbalancedChildTags(node)
+					StartLine: 2418
+					EndLine: 2438
+					NodeType: Function
+					Comment: e.g., from &lt;div&gt;OK&lt;/div&gt;&lt;!-- ko blah --&gt;&lt;span&gt;Another&lt;/span&gt;, returns: &lt;!-- ko blah --&gt;&lt;span&gt;Another&lt;/span&gt;&#D;&#A;       from &lt;div&gt;OK&lt;/div&gt;&lt;!-- /ko --&gt;&lt;!-- /ko --&gt;,             returns: &lt;!-- /ko --&gt;&lt;!-- /ko --&gt;
+
+					Alias: virtualElements
+					StartLine: 2440
+					EndLine: 2546
+					NodeType: Object
+
+						Alias: childNodes(node)
+						StartLine: 2443
+						EndLine: 2445
+						NodeType: Function
+
+						Alias: emptyNode(node)
+						StartLine: 2447
+						EndLine: 2455
+						NodeType: Function
+
+						Alias: setDomNodeChildren(node,childNodes)
+						StartLine: 2457
+						EndLine: 2466
+						NodeType: Function
+
+						Alias: prepend(containerNode,no…oPrepend)
+						StartLine: 2468
+						EndLine: 2478
+						NodeType: Function
+
+						Alias: insertAfter(containerNode,no…fterNode)
+						StartLine: 2480
+						EndLine: 2493
+						NodeType: Function
+
+						Alias: firstChild(node)
+						StartLine: 2495
+						EndLine: 2501
+						NodeType: Function
+
+						Alias: nextSibling(node)
+						StartLine: 2503
+						EndLine: 2509
+						NodeType: Function
+
+						Alias: virtualNodeBindingValue(node)
+						StartLine: 2513
+						EndLine: 2516
+						NodeType: Function
+
+						Alias: normaliseVirtualElementDomStructure(elementVerified)
+						StartLine: 2518
+						EndLine: 2545
+						NodeType: Function
+						Comment: Workaround for https://github.com/SteveSanderson/knockout/issues/155&#D;&#A; (IE &lt;= 8 or IE 9 quirks mode parses your HTML weirdly, treating closing &lt;/li&gt; tags as if they don&#39;t exist, thereby moving comment nodes&#D;&#A; that are direct descendants of &lt;ul&gt; into the preceding &lt;li&gt;)
+
+				Alias: ?()
+				StartLine: 2556
+				EndLine: 2626
+				NodeType: AnonymousFunction
+
+					Alias: bindingProvider()
+					StartLine: 2559
+					EndLine: 2561
+					NodeType: Function
+
+					Alias: extend&gt;?
+					StartLine: 2563
+					EndLine: 2608
+					NodeType: Object
+
+						Alias: &#39;nodeHasBindings&#39;(node)
+						StartLine: 2564
+						EndLine: 2573
+						NodeType: Function
+
+						Alias: &#39;getBindings&#39;(node,bindingContext)
+						StartLine: 2575
+						EndLine: 2579
+						NodeType: Function
+
+						Alias: &#39;getBindingAccessors&#39;(node,bindingContext)
+						StartLine: 2581
+						EndLine: 2585
+						NodeType: Function
+
+						Alias: &#39;getBindingsString&#39;(node,bindingContext)
+						StartLine: 2589
+						EndLine: 2595
+						NodeType: Function
+						Comment: The following function is only used internally by this default provider.&#D;&#A; It&#39;s not part of the interface definition for a general binding provider.
+
+						Alias: &#39;parseBindingsString&#39;(bindingsString,b…,options)
+						StartLine: 2599
+						EndLine: 2607
+						NodeType: Function
+						Comment: The following function is only used internally by this default provider.&#D;&#A; It&#39;s not part of the interface definition for a general binding provider.
+
+					Alias: createBindingsStringEvaluatorViaCache(bindingsString,c…,options)
+					StartLine: 2612
+					EndLine: 2616
+					NodeType: Function
+
+					Alias: createBindingsStringEvaluator(bindingsString,options)
+					StartLine: 2618
+					EndLine: 2625
+					NodeType: Function
+					Comment: Build the source for a function that evaluates &quot;expression&quot;&#D;&#A; For each scope variable, add an extra level of &quot;with&quot; nesting&#D;&#A; Example result: with(sc1) { with(sc0) { return (expression) } }
+
+				Alias: ?()
+				StartLine: 2629
+				EndLine: 3093
+				NodeType: AnonymousFunction
+
+					Alias: bindingDoesNotRecurseIntoElementTypes
+					StartLine: 2635
+					EndLine: 2640
+					NodeType: Object
+					Comment: The following element types will not be recursed into during binding. In the future, we&#D;&#A; may consider adding &lt;template&gt; to this list, because such elements&#39; contents are always&#D;&#A; intended to be bound in a different context from where they appear in the document.&#D;&#A; Don&#39;t want bindings that operate on text nodes to mutate &lt;script&gt; and &lt;textarea&gt; contents,&#D;&#A; because it&#39;s unexpected and a potential XSS issue
+
+					Alias: &#39;getBindingHandler&#39;(bindingKey)
+					StartLine: 2643
+					EndLine: 2645
+					NodeType: Function
+					Comment: Use an overridable method for retrieving binding handlers so that a plugins may support dynamically created handlers
+
+					Alias: bindingContext(dataItemOrAccess…Callback)
+					StartLine: 2649
+					EndLine: 2735
+					NodeType: Function
+					Comment: The ko.bindingContext constructor is only called directly to create the root context. For child&#D;&#A; contexts, use bindingContext.createChildContext or bindingContext.extend.
+
+						Alias: updateContext()
+						StartLine: 2654
+						EndLine: 2697
+						NodeType: Function
+						Comment: The binding context object includes static properties for the current, parent, and root view models.&#D;&#A; If a view model is actually stored in an observable, the corresponding binding context object, and&#D;&#A; any child contexts, must be updated when the view model is changed.&#D;&#A; Most of the time, the context will directly get a view model object, but if a function is given,&#D;&#A; we call the function to retrieve the view model. If the function accesses any obsevables or returns&#D;&#A; an observable, the dependency is tracked, and those observables can later cause the binding&#D;&#A; context to be updated.
+
+						Alias: disposeWhen()
+						StartLine: 2698
+						EndLine: 2700
+						NodeType: Function
+
+						Alias: dependentObservable.subscribable&gt;?
+						StartLine: 2705
+						EndLine: 2705
+						NodeType: Object
+
+						Alias: _addNode(node)
+						StartLine: 2724
+						EndLine: 2733
+						NodeType: Function
+
+							Alias: addDisposeCallback&gt;?(node)
+							StartLine: 2726
+							EndLine: 2732
+							NodeType: AnonymousFunction
+
+					Alias: &#39;createChildContext&#39;(dataItemOrAccess…Callback)
+					StartLine: 2742
+					EndLine: 2752
+					NodeType: Function
+					Comment: Extend the binding context hierarchy with a new view model object. If the parent context is watching&#D;&#A; any obsevables, the new child context will automatically get a dependency on the parent context.&#D;&#A; But this does not mean that the $data value of the child context will also get updated. If the child&#D;&#A; view model also depends on the parent view model, you must provide a function that returns the correct&#D;&#A; view model on each update.
+
+						Alias: ?(self,parentContext)
+						StartLine: 2743
+						EndLine: 2751
+						NodeType: AnonymousFunction
+						Comment: Extend the context hierarchy by setting the appropriate pointers
+
+					Alias: &#39;extend&#39;(properties)
+					StartLine: 2757
+					EndLine: 2766
+					NodeType: Function
+					Comment: Extend the binding context with new custom properties. This doesn&#39;t change the context hierarchy.&#D;&#A; Similarly to &quot;child&quot; contexts, provide a function here to make sure that the correct values are set&#D;&#A; when an observable view model is updated.&#D;&#A; If the parent context references an observable view model, &quot;_subscribable&quot; will always be the&#D;&#A; latest view model object. If not, &quot;_subscribable&quot; isn&#39;t set, and we can use the static &quot;$data&quot; value.
+
+						Alias: ?(self,parentContext)
+						StartLine: 2760
+						EndLine: 2765
+						NodeType: AnonymousFunction
+						Comment: This &quot;child&quot; context doesn&#39;t directly track a parent observable view model,&#D;&#A; so we need to manually set the $rawData value to match the parent.
+
+					Alias: makeValueAccessor(value)
+					StartLine: 2769
+					EndLine: 2773
+					NodeType: Function
+					Comment: Returns the valueAccesor function for a binding value
+
+						Alias: ?()
+						StartLine: 2770
+						EndLine: 2772
+						NodeType: AnonymousFunction
+
+					Alias: evaluateValueAccessor(valueAccessor)
+					StartLine: 2776
+					EndLine: 2778
+					NodeType: Function
+					Comment: Returns the value of a valueAccessor function
+
+					Alias: makeAccessorsFromFunction(callback)
+					StartLine: 2784
+					EndLine: 2790
+					NodeType: Function
+					Comment: Given a function that returns bindings, create and return a new object that contains&#D;&#A; binding value-accessors functions. Each accessor function calls the original function&#D;&#A; so that it always gets the latest value and all dependencies are captured. This is used&#D;&#A; by ko.applyBindingsToNode and getBindingsAndMakeAccessors.
+
+						Alias: objectMap&gt;?(value,key)
+						StartLine: 2785
+						EndLine: 2789
+						NodeType: AnonymousFunction
+
+							Alias: ?()
+							StartLine: 2786
+							EndLine: 2788
+							NodeType: AnonymousFunction
+
+					Alias: makeBindingAccessors(bindings,context,node)
+					StartLine: 2794
+					EndLine: 2800
+					NodeType: Function
+					Comment: Given a bindings function or object, create and return a new object that contains&#D;&#A; binding value-accessors functions. This is used by ko.applyBindingsToNode.
+
+					Alias: getBindingsAndMakeAccessors(node,context)
+					StartLine: 2804
+					EndLine: 2806
+					NodeType: Function
+					Comment: This function is used if the binding provider doesn&#39;t include a getBindingAccessors function.&#D;&#A; It must be called with &#39;this&#39; set to the provider instance.
+
+					Alias: validateThatBindingIsAllowedForVirtualElements(bindingName)
+					StartLine: 2808
+					EndLine: 2812
+					NodeType: Function
+
+					Alias: applyBindingsToDescendantsInternal(bindingContext,e…tElement)
+					StartLine: 2814
+					EndLine: 2838
+					NodeType: Function
+
+					Alias: applyBindingsToNodeAndDescendantsInternal(bindingContext,n…tElement)
+					StartLine: 2840
+					EndLine: 2865
+					NodeType: Function
+
+					Alias: topologicalSortBindings(bindings)
+					StartLine: 2870
+					EndLine: 2901
+					NodeType: Function
+					Comment: Depth-first sort&#D;&#A; The list of key/handler pairs that we will return&#D;&#A; A temporary record of which bindings are already in &#39;result&#39;&#D;&#A; Keeps track of a depth-search so that, if there&#39;s a cycle, we know which bindings caused it
+
+						Alias: pushBinding(bindingKey)
+						StartLine: 2875
+						EndLine: 2898
+						NodeType: Function
+
+							Alias: arrayForEach&gt;?(bindingDependencyKey)
+							StartLine: 2882
+							EndLine: 2890
+							NodeType: AnonymousFunction
+
+							Alias: push&gt;?
+							StartLine: 2894
+							EndLine: 2894
+							NodeType: Object
+							Comment: Next add the current binding
+
+					Alias: applyBindingsToNodeInternal(node,sourceBindi…tElement)
+					StartLine: 2903
+					EndLine: 3020
+					NodeType: Function
+					Comment: Prevent multiple applyBindings calls for the same node, except when a binding value is specified
+
+						Alias: dependentObservable.bindingsUpdater&gt;?()
+						StartLine: 2930
+						EndLine: 2936
+						NodeType: AnonymousFunction
+
+						Alias: dependentObservable.bindingsUpdater&gt;?
+						StartLine: 2937
+						EndLine: 2937
+						NodeType: Object
+
+						Alias: allBindings()
+						StartLine: 2959
+						EndLine: 2961
+						NodeType: Function
+						Comment: Use of allBindings as a function is maintained for backwards compatibility, but its use is deprecated
+
+						Alias: &#39;get&#39;(key)
+						StartLine: 2963
+						EndLine: 2965
+						NodeType: Function
+						Comment: The following is the 3.x allBindings API
+
+						Alias: &#39;has&#39;(key)
+						StartLine: 2966
+						EndLine: 2968
+						NodeType: Function
+
+						Alias: arrayForEach&gt;?(bindingKeyAndHandler)
+						StartLine: 2974
+						EndLine: 3014
+						NodeType: AnonymousFunction
+						Comment: Go through the sorted bindings, calling init and update for each&#D;&#A; Note that topologicalSortBindings has already filtered out any nonexistent binding handlers,&#D;&#A; so bindingKeyAndHandler.handler will always be nonnull.
+
+							Alias: ignore&gt;?()
+							StartLine: 2988
+							EndLine: 2997
+							NodeType: AnonymousFunction
+
+							Alias: dependentObservable&gt;?()
+							StartLine: 3003
+							EndLine: 3005
+							NodeType: AnonymousFunction
+
+							Alias: dependentObservable&gt;?
+							StartLine: 3007
+							EndLine: 3007
+							NodeType: Object
+
+						Alias: ?
+						StartLine: 3017
+						EndLine: 3019
+						NodeType: Object
+
+					Alias: storedBindingContextForNode(node,bindingContext)
+					StartLine: 3023
+					EndLine: 3031
+					NodeType: Function
+
+					Alias: getBindingContext(viewModelOrBindingContext)
+					StartLine: 3033
+					EndLine: 3037
+					NodeType: Function
+
+					Alias: applyBindingAccessorsToNode(node,bindings,vi…gContext)
+					StartLine: 3039
+					EndLine: 3043
+					NodeType: Function
+					Comment: If it&#39;s an element, workaround IE &lt;= 8 HTML parsing weirdness
+
+					Alias: applyBindingsToNode(node,bindings,vi…gContext)
+					StartLine: 3045
+					EndLine: 3048
+					NodeType: Function
+
+					Alias: applyBindingsToDescendants(viewModelOrBindi…rootNode)
+					StartLine: 3050
+					EndLine: 3053
+					NodeType: Function
+
+					Alias: applyBindings(viewModelOrBindi…rootNode)
+					StartLine: 3055
+					EndLine: 3066
+					NodeType: Function
+					Comment: If jQuery is loaded after Knockout, we won&#39;t initially have access to it. So save it here.
+
+					Alias: contextFor(node)
+					StartLine: 3069
+					EndLine: 3080
+					NodeType: Function
+					Comment: Retrieving binding context from arbitrary nodes&#D;&#A; We can only do something meaningful for elements and comment nodes (in particular, not text nodes, as IE can&#39;t store domdata for them)
+
+					Alias: dataFor(node)
+					StartLine: 3081
+					EndLine: 3084
+					NodeType: Function
+
+				Alias: ?(undefined)
+				StartLine: 3094
+				EndLine: 3235
+				NodeType: AnonymousFunction
+				Comment: Tracks component loads that are currently in flight&#D;&#A; Tracks component loads that have already completed
+
+					Alias: components
+					StartLine: 3098
+					EndLine: 3123
+					NodeType: Object
+
+						Alias: get(componentName,callback)
+						StartLine: 3099
+						EndLine: 3116
+						NodeType: Function
+
+							Alias: ignore&gt;?()
+							StartLine: 3106
+							EndLine: 3108
+							NodeType: AnonymousFunction
+							Comment: See comment in loaderRegistryBehaviors.js for reasoning
+
+							Alias: setTimeout&gt;?()
+							StartLine: 3110
+							EndLine: 3110
+							NodeType: AnonymousFunction
+
+						Alias: clearCachedDefinition(componentName)
+						StartLine: 3118
+						EndLine: 3120
+						NodeType: Function
+
+					Alias: getObjectOwnProperty(obj,propName)
+					StartLine: 3125
+					EndLine: 3127
+					NodeType: Function
+
+					Alias: loadComponentAndNotify(componentName,callback)
+					StartLine: 3129
+					EndLine: 3162
+					NodeType: Function
+
+						Alias: beginLoadingComponent&gt;?(definition,config)
+						StartLine: 3137
+						EndLine: 3157
+						NodeType: AnonymousFunction
+
+							Alias: componentName
+							StartLine: 3139
+							EndLine: 3139
+							NodeType: Object
+
+							Alias: setTimeout&gt;?()
+							StartLine: 3153
+							EndLine: 3155
+							NodeType: AnonymousFunction
+
+					Alias: beginLoadingComponent(componentName,callback)
+					StartLine: 3164
+					EndLine: 3179
+					NodeType: Function
+
+						Alias: getFirstResultFromLoaders&gt;?(config)
+						StartLine: 3165
+						EndLine: 3178
+						NodeType: AnonymousFunction
+
+							Alias: getFirstResultFromLoaders&gt;?(definition)
+							StartLine: 3168
+							EndLine: 3170
+							NodeType: AnonymousFunction
+							Comment: We have a config, so now load its definition
+
+					Alias: getFirstResultFromLoaders(methodName,argsE…eLoaders)
+					StartLine: 3181
+					EndLine: 3226
+					NodeType: Function
+					Comment: On the first call in the stack, start with the full set of loaders
+
+						Alias: concat.apply.synchronousReturnValue&gt;?&gt;?(result)
+						StartLine: 3193
+						EndLine: 3203
+						NodeType: AnonymousFunction
+
+				Alias: ?(undefined)
+				StartLine: 3236
+				EndLine: 3461
+				NodeType: AnonymousFunction
+
+					Alias: register(componentName,config)
+					StartLine: 3250
+					EndLine: 3260
+					NodeType: Function
+
+					Alias: isRegistered(componentName)
+					StartLine: 3262
+					EndLine: 3264
+					NodeType: Function
+
+					Alias: unregister(componentName)
+					StartLine: 3266
+					EndLine: 3269
+					NodeType: Function
+
+					Alias: defaultLoader
+					StartLine: 3271
+					EndLine: 3293
+					NodeType: Object
+
+						Alias: &#39;getConfig&#39;(componentName,callback)
+						StartLine: 3272
+						EndLine: 3277
+						NodeType: Function
+
+						Alias: &#39;loadComponent&#39;(componentName,co…callback)
+						StartLine: 3279
+						EndLine: 3284
+						NodeType: Function
+
+							Alias: possiblyGetConfigFromAmd&gt;?(loadedConfig)
+							StartLine: 3281
+							EndLine: 3283
+							NodeType: AnonymousFunction
+
+						Alias: &#39;loadTemplate&#39;(componentName,te…callback)
+						StartLine: 3286
+						EndLine: 3288
+						NodeType: Function
+
+						Alias: &#39;loadViewModel&#39;(componentName,vi…callback)
+						StartLine: 3290
+						EndLine: 3292
+						NodeType: Function
+
+					Alias: resolveConfig(componentName,er…callback)
+					StartLine: 3303
+					EndLine: 3335
+					NodeType: Function
+					Comment: Takes a config object of the form { template: ..., viewModel: ... }, and asynchronously convert it&#D;&#A; into the standard component definition format:&#D;&#A;    { template: &lt;ArrayOfDomNodes&gt;, createViewModel: function(params, componentInfo) { ... } }.&#D;&#A; Since both template and viewModel may need to be resolved asynchronously, both tasks are performed&#D;&#A; in parallel, and the results joined when both are ready. We don&#39;t depend on any promises infrastructure,&#D;&#A; so this is implemented manually below.
+
+						Alias: tryIssueCallback()
+						StartLine: 3306
+						EndLine: 3310
+						NodeType: Function
+
+						Alias: possiblyGetConfigFromAmd&gt;?(loadedConfig)
+						StartLine: 3315
+						EndLine: 3320
+						NodeType: AnonymousFunction
+
+							Alias: _getFirstResultFromLoaders&gt;?(resolvedTemplate)
+							StartLine: 3316
+							EndLine: 3319
+							NodeType: AnonymousFunction
+
+						Alias: possiblyGetConfigFromAmd&gt;?(loadedConfig)
+						StartLine: 3326
+						EndLine: 3331
+						NodeType: AnonymousFunction
+
+							Alias: _getFirstResultFromLoaders&gt;?(resolvedViewModel)
+							StartLine: 3327
+							EndLine: 3330
+							NodeType: AnonymousFunction
+
+					Alias: resolveTemplate(errorCallback,te…callback)
+					StartLine: 3337
+					EndLine: 3366
+					NodeType: Function
+
+					Alias: resolveViewModel(errorCallback,vi…callback)
+					StartLine: 3368
+					EndLine: 3392
+					NodeType: Function
+
+						Alias: callback&gt;?(params)
+						StartLine: 3374
+						EndLine: 3376
+						NodeType: AnonymousFunction
+						Comment: Constructor - convert to standard factory function format&#D;&#A; By design, this does *not* supply componentInfo to the constructor, as the intent is that&#D;&#A; componentInfo contains non-viewmodel data (e.g., the component&#39;s element) that should only&#D;&#A; be used in factory functions, not viewmodel constructors.&#D;&#A;, componentInfo
+
+						Alias: callback&gt;?(params,componentInfo)
+						StartLine: 3383
+						EndLine: 3385
+						NodeType: AnonymousFunction
+
+					Alias: cloneNodesFromTemplateSourceElement(elemInstance)
+					StartLine: 3394
+					EndLine: 3411
+					NodeType: Function
+
+					Alias: isDomElement(obj)
+					StartLine: 3413
+					EndLine: 3419
+					NodeType: Function
+
+					Alias: isDocumentFragment(obj)
+					StartLine: 3421
+					EndLine: 3427
+					NodeType: Function
+
+					Alias: possiblyGetConfigFromAmd(errorCallback,co…callback)
+					StartLine: 3429
+					EndLine: 3440
+					NodeType: Function
+
+					Alias: makeErrorCallback(componentName)
+					StartLine: 3442
+					EndLine: 3446
+					NodeType: Function
+
+						Alias: ?(message)
+						StartLine: 3443
+						EndLine: 3445
+						NodeType: AnonymousFunction
+
+				Alias: ?(undefined)
+				StartLine: 3462
+				EndLine: 3571
+				NodeType: AnonymousFunction
+				Comment: Overridable API for determining which component name applies to a given node. By overriding this,&#D;&#A; you can for example map specific tagNames to components that are not preregistered.
+
+					Alias: &#39;getComponentNameForNode&#39;(node)
+					StartLine: 3465
+					EndLine: 3468
+					NodeType: Function
+
+					Alias: addBindingsForCustomElement(allBindings,node…ccessors)
+					StartLine: 3470
+					EndLine: 3492
+					NodeType: Function
+					Comment: Determine if it&#39;s really a custom element matching a component
+
+						Alias: componentBindingValue
+						StartLine: 3483
+						EndLine: 3483
+						NodeType: Object
+
+					Alias: getComponentParamsFromCustomElement(elem,bindingContext)
+					StartLine: 3496
+					EndLine: 3542
+					NodeType: Function
+
+						Alias: &#39;parseBindingsString&#39;.params&gt;?
+						StartLine: 3500
+						EndLine: 3500
+						NodeType: Object
+
+						Alias: objectMap.rawParamComputedValues&gt;?(paramValue,paramName)
+						StartLine: 3501
+						EndLine: 3503
+						NodeType: AnonymousFunction
+
+							Alias: computed&gt;?
+							StartLine: 3502
+							EndLine: 3502
+							NodeType: Object
+
+						Alias: objectMap.result&gt;?(paramValueComput…aramName)
+						StartLine: 3504
+						EndLine: 3526
+						NodeType: AnonymousFunction
+
+							Alias: computed&gt;?
+							StartLine: 3516
+							EndLine: 3524
+							NodeType: Object
+							Comment: Yes it does. Supply a computed property that unwraps both the outer (binding expression)&#D;&#A; level of observability, and any inner (resulting model value) level of observability.&#D;&#A; This means the component doesn&#39;t have to worry about multiple unwrapping. If the value is a&#D;&#A; writable observable, the computed will also be writable and pass the value on to the observable.
+
+								Alias: &#39;read&#39;()
+								StartLine: 3517
+								EndLine: 3519
+								NodeType: Function
+
+								Alias: &#39;write&#39;(value)
+								StartLine: 3520
+								EndLine: 3522
+								NodeType: Function
+
+						Alias: ?
+						StartLine: 3540
+						EndLine: 3540
+						NodeType: Object
+						Comment: For consistency, absence of a &quot;params&quot; attribute is treated the same as the presence of&#D;&#A; any empty one. Otherwise component viewmodels need special code to check whether or not&#D;&#A; &#39;params&#39; or &#39;params.$raw&#39; is null/undefined before reading subproperties, which is annoying.
+
+					Alias: &#39;register&#39;(originalFunction)
+					StartLine: 3549
+					EndLine: 3554
+					NodeType: Function
+					Comment: Whenever you preregister a component, enable it as a custom element in the current document
+
+						Alias: ?(componentName)
+						StartLine: 3550
+						EndLine: 3553
+						NodeType: AnonymousFunction
+						Comment: Allows IE&lt;9 to parse markup containing the custom element
+
+					Alias: createDocumentFragment(originalFunction)
+					StartLine: 3558
+					EndLine: 3569
+					NodeType: Function
+					Comment: Whenever you create a document fragment, enable all preregistered component names as custom elements&#D;&#A; This is needed to make innerShiv/jQuery HTML parsing correctly handle the custom elements
+
+						Alias: ?()
+						StartLine: 3559
+						EndLine: 3568
+						NodeType: AnonymousFunction
+
+				Alias: ?(undefined)
+				StartLine: 3571
+				EndLine: 3655
+				NodeType: AnonymousFunction
+
+					Alias: &#39;component&#39;
+					StartLine: 3575
+					EndLine: 3634
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAcc…gContext)
+						StartLine: 3576
+						EndLine: 3633
+						NodeType: Function
+
+							Alias: disposeAssociatedComponentViewModel()
+							StartLine: 3579
+							EndLine: 3587
+							NodeType: Function
+
+							Alias: computed&gt;?()
+							StartLine: 3592
+							EndLine: 3630
+							NodeType: AnonymousFunction
+
+								Alias: get&gt;?(componentDefinition)
+								StartLine: 3608
+								EndLine: 3629
+								NodeType: AnonymousFunction
+								Comment: If this is not the current load operation for this element, ignore it.
+
+									Alias: &#39;createChildContext&#39;.childBindingContext&gt;?(ctx)
+									StartLine: 3623
+									EndLine: 3626
+									NodeType: AnonymousFunction
+									Comment: dataItemAlias
+
+							Alias: computed&gt;?
+							StartLine: 3630
+							EndLine: 3630
+							NodeType: Object
+
+							Alias: ?
+							StartLine: 3632
+							EndLine: 3632
+							NodeType: Object
+
+					Alias: cloneTemplateIntoElement(componentName,co…,element)
+					StartLine: 3638
+					EndLine: 3646
+					NodeType: Function
+
+					Alias: createViewModel(componentDefinit…ntParams)
+					StartLine: 3648
+					EndLine: 3653
+					NodeType: Function
+
+				Alias: attrHtmlToJavascriptMap
+				StartLine: 3656
+				EndLine: 3656
+				NodeType: Object
+
+				Alias: &#39;attr&#39;
+				StartLine: 3657
+				EndLine: 3693
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAcc…Bindings)
+					StartLine: 3658
+					EndLine: 3692
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(attrName,attrValue)
+						StartLine: 3660
+						EndLine: 3691
+						NodeType: AnonymousFunction
+
+				Alias: ?()
+				StartLine: 3694
+				EndLine: 3800
+				NodeType: AnonymousFunction
+
+					Alias: &#39;checked&#39;
+					StartLine: 3696
+					EndLine: 3791
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAcc…Bindings)
+						StartLine: 3698
+						EndLine: 3790
+						NodeType: Function
+
+							Alias: pureComputed.checkedValue&gt;?()
+							StartLine: 3699
+							EndLine: 3708
+							NodeType: AnonymousFunction
+							Comment: Treat &quot;value&quot; like &quot;checkedValue&quot; when it is included with &quot;checked&quot; binding
+
+							Alias: updateModel()
+							StartLine: 3710
+							EndLine: 3747
+							NodeType: Function
+							Comment: This updates the model value from the view value.&#D;&#A; It runs in response to DOM events (click) and changes in checkedValue.
+
+							Alias: updateView()
+							StartLine: 3749
+							EndLine: 3764
+							NodeType: Function
+							Comment: This updates the view value from the model value.&#D;&#A; It runs in response to changes in the bound (checked) value.
+
+							Alias: &#39;init&#39;&gt;?()
+							StartLine: 3780
+							EndLine: 3780
+							NodeType: AnonymousFunction
+
+							Alias: computed&gt;?
+							StartLine: 3785
+							EndLine: 3785
+							NodeType: Object
+							Comment: The first responds to changes in the checkedValue value and to element clicks
+
+							Alias: computed&gt;?
+							StartLine: 3789
+							EndLine: 3789
+							NodeType: Object
+							Comment: The second responds to changes in the model value (the one associated with the checked binding)
+
+					Alias: &#39;checkedValue&#39;
+					StartLine: 3794
+					EndLine: 3798
+					NodeType: Object
+
+						Alias: &#39;update&#39;(element,valueAccessor)
+						StartLine: 3795
+						EndLine: 3797
+						NodeType: Function
+
+				Alias: &#39;css&#39;
+				StartLine: 3801
+				EndLine: 3816
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 3802
+					EndLine: 3815
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(className,shouldHaveClass)
+						StartLine: 3805
+						EndLine: 3808
+						NodeType: AnonymousFunction
+
+				Alias: &#39;enable&#39;
+				StartLine: 3817
+				EndLine: 3825
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 3818
+					EndLine: 3824
+					NodeType: Function
+
+				Alias: &#39;disable&#39;
+				StartLine: 3827
+				EndLine: 3831
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 3828
+					EndLine: 3830
+					NodeType: Function
+
+						Alias: &#39;update&#39;&gt;?()
+						StartLine: 3829
+						EndLine: 3829
+						NodeType: AnonymousFunction
+
+				Alias: makeEventHandlerShortcut(eventName)
+				StartLine: 3834
+				EndLine: 3845
+				NodeType: Function
+				Comment: For certain common events (currently just &#39;click&#39;), allow a simplified data-binding syntax&#D;&#A; e.g. click:handler instead of the usual full-length event:{click:handler}
+
+					Alias: eventName
+					StartLine: 3835
+					EndLine: 3844
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAcc…gContext)
+						StartLine: 3836
+						EndLine: 3843
+						NodeType: Function
+
+							Alias: newValueAccessor()
+							StartLine: 3837
+							EndLine: 3841
+							NodeType: Function
+
+				Alias: &#39;event&#39;
+				StartLine: 3847
+				EndLine: 3883
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…gContext)
+					StartLine: 3848
+					EndLine: 3882
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(eventName)
+						StartLine: 3850
+						EndLine: 3881
+						NodeType: AnonymousFunction
+
+							Alias: registerEventHandler&gt;?(event)
+							StartLine: 3852
+							EndLine: 3879
+							NodeType: AnonymousFunction
+
+				Alias: &#39;foreach&#39;
+				StartLine: 3886
+				EndLine: 3919
+				NodeType: Object
+				Comment: &quot;foreach: someExpression&quot; is equivalent to &quot;template: { foreach: someExpression }&quot;&#D;&#A; &quot;foreach: { data: someExpression, afterAdd: myfn }&quot; is equivalent to &quot;template: { foreach: someExpression, afterAdd: myfn }&quot;
+
+					Alias: makeTemplateValueAccessor(valueAccessor)
+					StartLine: 3887
+					EndLine: 3912
+					NodeType: Function
+
+						Alias: ?()
+						StartLine: 3888
+						EndLine: 3911
+						NodeType: AnonymousFunction
+
+							Alias: ?
+							StartLine: 3896
+							EndLine: 3896
+							NodeType: Object
+
+							Alias: ?
+							StartLine: 3900
+							EndLine: 3910
+							NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…gContext)
+					StartLine: 3913
+					EndLine: 3915
+					NodeType: Function
+
+					Alias: &#39;update&#39;(element,valueAcc…gContext)
+					StartLine: 3916
+					EndLine: 3918
+					NodeType: Function
+
+				Alias: &#39;hasfocus&#39;
+				StartLine: 3924
+				EndLine: 3967
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…Bindings)
+					StartLine: 3925
+					EndLine: 3959
+					NodeType: Function
+
+						Alias: handleElementFocusChange(isFocused)
+						StartLine: 3926
+						EndLine: 3951
+						NodeType: Function
+						Comment: Where possible, ignore which event was raised and determine focus state using activeElement,&#D;&#A; as this avoids phantom focus/blur events raised when changing tabs in modern browsers.&#D;&#A; However, not all KO-targeted browsers (Firefox 2) support activeElement. For those browsers,&#D;&#A; prevent a loss of focus when changing tabs/windows by setting a flag that prevents hasfocus&#D;&#A; from calling &#39;blur()&#39; on the element when it loses focus.&#D;&#A; Discussion at https://github.com/SteveSanderson/knockout/pull/352
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 3960
+					EndLine: 3966
+					NodeType: Function
+					Comment: force boolean to compare with last value
+
+				Alias: &#39;html&#39;
+				StartLine: 3972
+				EndLine: 3981
+				NodeType: Object
+
+					Alias: &#39;init&#39;()
+					StartLine: 3973
+					EndLine: 3976
+					NodeType: Function
+					Comment: Prevent binding on the dynamically-injected HTML (as developers are unlikely to expect that, and it has security implications)
+
+						Alias: ?
+						StartLine: 3975
+						EndLine: 3975
+						NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 3977
+					EndLine: 3980
+					NodeType: Function
+					Comment: setHtml will unwrap the value if needed
+
+				Alias: makeWithIfBinding(bindingKey,isWit…Callback)
+				StartLine: 3983
+				EndLine: 4017
+				NodeType: Function
+				Comment: Makes a binding like with or if
+
+					Alias: bindingKey
+					StartLine: 3984
+					EndLine: 4014
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAcc…gContext)
+						StartLine: 3985
+						EndLine: 4013
+						NodeType: Function
+
+							Alias: computed&gt;?()
+							StartLine: 3988
+							EndLine: 4011
+							NodeType: AnonymousFunction
+
+							Alias: computed&gt;?
+							StartLine: 4011
+							EndLine: 4011
+							NodeType: Object
+
+							Alias: ?
+							StartLine: 4012
+							EndLine: 4012
+							NodeType: Object
+
+				Alias: makeWithIfBinding&gt;?(bindingContext,dataValue)
+				StartLine: 4023
+				EndLine: 4025
+				NodeType: AnonymousFunction
+				Comment: isNot &#D;&#A; isWith &#D;&#A; isNot
+
+				Alias: &#39;options&#39;
+				StartLine: 4028
+				EndLine: 4191
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element)
+					StartLine: 4029
+					EndLine: 4040
+					NodeType: Function
+
+						Alias: ?
+						StartLine: 4039
+						EndLine: 4039
+						NodeType: Object
+						Comment: Ensures that the binding processor doesn&#39;t try to bind the options
+
+					Alias: &#39;update&#39;(element,valueAcc…Bindings)
+					StartLine: 4041
+					EndLine: 4190
+					NodeType: Function
+
+						Alias: selectedOptions()
+						StartLine: 4042
+						EndLine: 4044
+						NodeType: Function
+
+							Alias: arrayFilter&gt;?(node)
+							StartLine: 4043
+							EndLine: 4043
+							NodeType: AnonymousFunction
+
+						Alias: arrayFilter.filteredArray&gt;?(item)
+						StartLine: 4070
+						EndLine: 4072
+						NodeType: AnonymousFunction
+						Comment: Filter out any entries marked as destroyed
+
+						Alias: applyToObject(object,predicate…ultValue)
+						StartLine: 4086
+						EndLine: 4094
+						NodeType: Function
+
+						Alias: optionForArrayItem(arrayEntry,index…dOptions)
+						StartLine: 4101
+						EndLine: 4120
+						NodeType: Function
+
+						Alias: &#39;beforeRemove&#39;(option)
+						StartLine: 4125
+						EndLine: 4127
+						NodeType: Function
+
+						Alias: setSelectionCallback(arrayEntry,newOptions)
+						StartLine: 4129
+						EndLine: 4145
+						NodeType: Function
+
+						Alias: callback(arrayEntry,newOptions)
+						StartLine: 4149
+						EndLine: 4152
+						NodeType: Function
+
+						Alias: ignore&gt;?()
+						StartLine: 4157
+						EndLine: 4183
+						NodeType: AnonymousFunction
+
+				Alias: &#39;selectedOptions&#39;
+				StartLine: 4193
+				EndLine: 4217
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…Bindings)
+					StartLine: 4195
+					EndLine: 4204
+					NodeType: Function
+
+						Alias: registerEventHandler&gt;?()
+						StartLine: 4196
+						EndLine: 4203
+						NodeType: AnonymousFunction
+
+							Alias: arrayForEach&gt;?(node)
+							StartLine: 4198
+							EndLine: 4201
+							NodeType: AnonymousFunction
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 4205
+					EndLine: 4216
+					NodeType: Function
+
+						Alias: arrayForEach&gt;?(node)
+						StartLine: 4211
+						EndLine: 4214
+						NodeType: AnonymousFunction
+
+				Alias: &#39;style&#39;
+				StartLine: 4219
+				EndLine: 4233
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 4220
+					EndLine: 4232
+					NodeType: Function
+
+						Alias: objectForEach&gt;?(styleName,styleValue)
+						StartLine: 4222
+						EndLine: 4231
+						NodeType: AnonymousFunction
+
+				Alias: &#39;submit&#39;
+				StartLine: 4234
+				EndLine: 4252
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…gContext)
+					StartLine: 4235
+					EndLine: 4251
+					NodeType: Function
+
+						Alias: registerEventHandler&gt;?(event)
+						StartLine: 4238
+						EndLine: 4250
+						NodeType: AnonymousFunction
+
+				Alias: &#39;text&#39;
+				StartLine: 4253
+				EndLine: 4262
+				NodeType: Object
+
+					Alias: &#39;init&#39;()
+					StartLine: 4254
+					EndLine: 4258
+					NodeType: Function
+					Comment: Prevent binding on the dynamically-injected text node (as developers are unlikely to expect that, and it has security implications).&#D;&#A; It should also make things faster, as we no longer have to consider whether the text node might be bindable.
+
+						Alias: ?
+						StartLine: 4257
+						EndLine: 4257
+						NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 4259
+					EndLine: 4261
+					NodeType: Function
+
+				Alias: ?()
+				StartLine: 4264
+				EndLine: 4441
+				NodeType: AnonymousFunction
+
+					Alias: parseVersion(matches)
+					StartLine: 4267
+					EndLine: 4271
+					NodeType: Function
+
+					Alias: selectionChangeHandler(event)
+					StartLine: 4289
+					EndLine: 4295
+					NodeType: Function
+
+					Alias: registerForSelectionChangeEvent(element,handler)
+					StartLine: 4296
+					EndLine: 4303
+					NodeType: Function
+
+					Alias: &#39;textInput&#39;
+					StartLine: 4306
+					EndLine: 4430
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAcc…Bindings)
+						StartLine: 4307
+						EndLine: 4429
+						NodeType: Function
+
+							Alias: updateModel(event)
+							StartLine: 4313
+							EndLine: 4324
+							NodeType: Function
+
+							Alias: deferUpdateModel(event)
+							StartLine: 4326
+							EndLine: 4336
+							NodeType: Function
+
+							Alias: updateView()
+							StartLine: 4338
+							EndLine: 4356
+							NodeType: Function
+
+							Alias: onEvent(event,handler)
+							StartLine: 4358
+							EndLine: 4360
+							NodeType: Function
+
+							Alias: arrayForEach&gt;?(eventName)
+							StartLine: 4364
+							EndLine: 4370
+							NodeType: AnonymousFunction
+							Comment: Provide a way for tests to specify exactly which events are bound
+
+							Alias: onEvent&gt;?(event)
+							StartLine: 4377
+							EndLine: 4381
+							NodeType: AnonymousFunction
+							Comment: Internet Explorer &lt;= 8 doesn&#39;t support the &#39;input&#39; event, but does include &#39;propertychange&#39; that fires whenever&#D;&#A; any property of an element changes. Unlike &#39;input&#39;, it also fires if a property is changed from JavaScript code,&#D;&#A; but that&#39;s an acceptable compromise for this binding. IE 9 does support &#39;input&#39;, but since it doesn&#39;t fire it&#D;&#A; when using autocomplete, we&#39;ll use &#39;propertychange&#39; for it also.
+
+							Alias: computed&gt;?
+							StartLine: 4428
+							EndLine: 4428
+							NodeType: Object
+
+					Alias: &#39;textinput&#39;
+					StartLine: 4434
+					EndLine: 4439
+					NodeType: Object
+					Comment: textinput is an alias for textInput&#D;&#A; preprocess is the only way to set up a full alias
+
+						Alias: &#39;preprocess&#39;(value,name,addBinding)
+						StartLine: 4436
+						EndLine: 4438
+						NodeType: Function
+
+				Alias: &#39;uniqueName&#39;
+				StartLine: 4441
+				EndLine: 4448
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAccessor)
+					StartLine: 4442
+					EndLine: 4447
+					NodeType: Function
+
+				Alias: &#39;value&#39;
+				StartLine: 4450
+				EndLine: 4554
+				NodeType: Object
+
+					Alias: &#39;init&#39;(element,valueAcc…Bindings)
+					StartLine: 4452
+					EndLine: 4552
+					NodeType: Function
+					Comment: If the value binding is placed on a radio/checkbox, then just pass through to checkedValue and quit
+
+						Alias: applyBindingAccessorsToNode&gt;?
+						StartLine: 4455
+						EndLine: 4455
+						NodeType: Object
+
+						Alias: valueUpdateHandler()
+						StartLine: 4472
+						EndLine: 4478
+						NodeType: Function
+
+						Alias: registerEventHandler&gt;?()
+						StartLine: 4485
+						EndLine: 4485
+						NodeType: AnonymousFunction
+
+						Alias: registerEventHandler&gt;?()
+						StartLine: 4486
+						EndLine: 4486
+						NodeType: AnonymousFunction
+
+						Alias: registerEventHandler&gt;?()
+						StartLine: 4487
+						EndLine: 4491
+						NodeType: AnonymousFunction
+
+						Alias: arrayForEach&gt;?(eventName)
+						StartLine: 4494
+						EndLine: 4514
+						NodeType: AnonymousFunction
+						Comment: The syntax &quot;after&lt;eventname&gt;&quot; means &quot;run the handler asynchronously after the event&quot;&#D;&#A; This is useful, for example, to catch &quot;keydown&quot; events after the browser has updated the control&#D;&#A; (otherwise, ko.selectExtensions.readValue(this) will receive the control&#39;s value *before* the key event)
+
+							Alias: handler()
+							StartLine: 4500
+							EndLine: 4510
+							NodeType: Function
+							Comment: The elementValueBeforeEvent variable is non-null *only* during the brief gap between&#D;&#A; a keyX event firing and the valueUpdateHandler running, which is scheduled to happen&#D;&#A; at the earliest asynchronous opportunity. We store this temporary information so that&#D;&#A; if, between keyX and valueUpdateHandler, the underlying model value changes separately,&#D;&#A; we can overwrite that model value change with the value the user just typed. Otherwise,&#D;&#A; techniques like rateLimit can trigger model changes at critical moments that will&#D;&#A; override the user&#39;s inputs, causing keystrokes to be lost.
+
+						Alias: updateFromModel()
+						StartLine: 4516
+						EndLine: 4549
+						NodeType: Function
+
+							Alias: applyValueAction()
+							StartLine: 4530
+							EndLine: 4532
+							NodeType: Function
+
+						Alias: computed&gt;?
+						StartLine: 4551
+						EndLine: 4551
+						NodeType: Object
+
+					Alias: &#39;update&#39;()
+					StartLine: 4553
+					EndLine: 4553
+					NodeType: Function
+					Comment: Keep for backwards compatibility with code that may have wrapped value binding
+
+				Alias: &#39;visible&#39;
+				StartLine: 4556
+				EndLine: 4565
+				NodeType: Object
+
+					Alias: &#39;update&#39;(element,valueAccessor)
+					StartLine: 4557
+					EndLine: 4564
+					NodeType: Function
+
+				Alias: templateEngine()
+				StartLine: 4595
+				EndLine: 4595
+				NodeType: Function
+
+				Alias: &#39;renderTemplateSource&#39;(templateSource,b…Document)
+				StartLine: 4597
+				EndLine: 4599
+				NodeType: Function
+
+				Alias: &#39;createJavaScriptEvaluatorBlock&#39;(script)
+				StartLine: 4601
+				EndLine: 4603
+				NodeType: Function
+
+				Alias: &#39;makeTemplateSource&#39;(template,templateDocument)
+				StartLine: 4605
+				EndLine: 4618
+				NodeType: Function
+				Comment: Named template
+
+				Alias: &#39;renderTemplate&#39;(template,binding…Document)
+				StartLine: 4620
+				EndLine: 4623
+				NodeType: Function
+
+				Alias: &#39;isTemplateRewritten&#39;(template,templateDocument)
+				StartLine: 4625
+				EndLine: 4630
+				NodeType: Function
+				Comment: Skip rewriting if requested
+
+				Alias: &#39;rewriteTemplate&#39;(template,rewrite…Document)
+				StartLine: 4632
+				EndLine: 4637
+				NodeType: Function
+
+				Alias: templateRewriting()
+				StartLine: 4641
+				EndLine: 4701
+				NodeType: Function
+
+					Alias: validateDataBindValuesForRewriting(keyValueArray)
+					StartLine: 4645
+					EndLine: 4661
+					NodeType: Function
+
+					Alias: constructMemoizedTagReplacement(dataBindAttribut…teEngine)
+					StartLine: 4663
+					EndLine: 4674
+					NodeType: Function
+
+						Alias: preProcessBindings.rewrittenDataBindAttributeValue&gt;?
+						StartLine: 4666
+						EndLine: 4666
+						NodeType: Object
+
+					Alias: ?
+					StartLine: 4676
+					EndLine: 4700
+					NodeType: Object
+
+						Alias: ensureTemplateIsRewritten(template,templat…Document)
+						StartLine: 4677
+						EndLine: 4682
+						NodeType: Function
+
+							Alias: &#39;rewriteTemplate&#39;&gt;?(htmlString)
+							StartLine: 4679
+							EndLine: 4681
+							NodeType: AnonymousFunction
+
+						Alias: memoizeBindingAttributeSyntax(htmlString,templateEngine)
+						StartLine: 4684
+						EndLine: 4690
+						NodeType: Function
+
+							Alias: replace&gt;?()
+							StartLine: 4685
+							EndLine: 4687
+							NodeType: AnonymousFunction
+							Comment: dataBindAttributeValue: &#D;&#A; tagToRetain: &#D;&#A; nodeName:
+
+							Alias: replace&gt;?()
+							StartLine: 4687
+							EndLine: 4689
+							NodeType: AnonymousFunction
+							Comment: dataBindAttributeValue: &#D;&#A; tagToRetain: &#D;&#A; nodeName:
+
+						Alias: applyMemoizedBindingsToNextSibling(bindings,nodeName)
+						StartLine: 4692
+						EndLine: 4699
+						NodeType: Function
+
+							Alias: memoize&gt;?(domNode,bindingContext)
+							StartLine: 4693
+							EndLine: 4698
+							NodeType: AnonymousFunction
+
+				Alias: ?()
+				StartLine: 4706
+				EndLine: 4800
+				NodeType: AnonymousFunction
+				Comment: A template source represents a read/write way of accessing a template. This is to eliminate the need for template loading/saving&#D;&#A; logic to be duplicated in every template engine (and means they can all work with anonymous templates, etc.)&#D;&#A;&#D;&#A; Two are provided by default:&#D;&#A;  1. ko.templateSources.domElement       - reads/writes the text content of an arbitrary DOM element&#D;&#A;  2. ko.templateSources.anonymousElement - uses ko.utils.domData to read/write text *associated* with the DOM element, but&#D;&#A;                                           without reading/writing the actual element text content, since it will be overwritten&#D;&#A;                                           with the rendered template output.&#D;&#A; You can implement your own template source if you want to fetch/store templates somewhere other than in DOM elements.&#D;&#A; Template sources need to have the following functions:&#D;&#A;   text() &#9;&#9;&#9;- returns the template text from your storage location&#D;&#A;   text(value)&#9;&#9;- writes the supplied template text to your storage location&#D;&#A;   data(key)&#9;&#9;&#9;- reads values stored using data(key, value) - see below&#D;&#A;   data(key, value)&#9;- associates &quot;value&quot; with this template and the key &quot;key&quot;. Is used to store information like &quot;isRewritten&quot;.&#D;&#A;&#D;&#A; Optionally, template sources can also have the following functions:&#D;&#A;   nodes()            - returns a DOM element containing the nodes of this template, where available&#D;&#A;   nodes(value)       - writes the given DOM element to your storage location&#D;&#A; If a DOM element is available for a given template source, template engines are encouraged to use it in preference over text()&#D;&#A; for improved speed. However, all templateSources must supply text() even if they don&#39;t supply nodes().&#D;&#A;&#D;&#A; Once you&#39;ve implemented a templateSource, make your template engine use it by subclassing whatever template engine you were&#D;&#A; using and overriding &quot;makeTemplateSource&quot; to return an instance of your custom template source.
+
+					Alias: domElement(element)
+					StartLine: 4735
+					EndLine: 4737
+					NodeType: Function
+
+					Alias: &#39;text&#39;()
+					StartLine: 4739
+					EndLine: 4754
+					NodeType: Function
+					Comment: valueToWrite
+
+					Alias: &#39;data&#39;(key)
+					StartLine: 4757
+					EndLine: 4763
+					NodeType: Function
+					Comment: , valueToWrite
+
+					Alias: anonymousTemplate(element)
+					StartLine: 4771
+					EndLine: 4773
+					NodeType: Function
+
+					Alias: &#39;text&#39;()
+					StartLine: 4776
+					EndLine: 4786
+					NodeType: Function
+					Comment: valueToWrite
+
+						Alias: set&gt;?
+						StartLine: 4784
+						EndLine: 4784
+						NodeType: Object
+
+					Alias: &#39;nodes&#39;()
+					StartLine: 4787
+					EndLine: 4795
+					NodeType: Function
+					Comment: valueToWrite
+
+						Alias: set&gt;?
+						StartLine: 4793
+						EndLine: 4793
+						NodeType: Object
+
+				Alias: ?()
+				StartLine: 4801
+				EndLine: 5101
+				NodeType: AnonymousFunction
+
+					Alias: setTemplateEngine(templateEngine)
+					StartLine: 4803
+					EndLine: 4807
+					NodeType: Function
+
+					Alias: invokeForEachNodeInContinuousRange(firstNode,lastNode,action)
+					StartLine: 4809
+					EndLine: 4815
+					NodeType: Function
+
+					Alias: activateBindingsOnContinuousNodeArray(continuousNodeAr…gContext)
+					StartLine: 4817
+					EndLine: 4872
+					NodeType: Function
+					Comment: To be used on any nodes that have been rendered by a template and have been inserted into some parent element&#D;&#A; Walks through continuousNodeArray (which *must* be continuous, i.e., an uninterrupted sequence of sibling nodes, because&#D;&#A; the algorithm for walking them relies on this), and for each top-level item in the virtual-element sense,&#D;&#A; (1) Does a regular &quot;applyBindings&quot; to associate bindingContext with this node and to activate any non-memoized bindings&#D;&#A; (2) Unmemoizes any memos in the DOM subtree (e.g., to activate bindings that had been memoized during template rewriting)
+
+						Alias: invokeForEachNodeInContinuousRange&gt;?(node,nextNodeInRange)
+						StartLine: 4832
+						EndLine: 4841
+						NodeType: AnonymousFunction
+
+						Alias: invokeForEachNodeInContinuousRange&gt;?(node)
+						StartLine: 4860
+						EndLine: 4863
+						NodeType: AnonymousFunction
+						Comment: Need to applyBindings *before* unmemoziation, because unmemoization might introduce extra nodes (that we don&#39;t want to re-bind)&#D;&#A; whereas a regular applyBindings won&#39;t introduce new memoized nodes
+
+						Alias: invokeForEachNodeInContinuousRange&gt;?(node)
+						StartLine: 4864
+						EndLine: 4867
+						NodeType: AnonymousFunction
+
+					Alias: getFirstNodeFromPossibleArray(nodeOrNodeArray)
+					StartLine: 4874
+					EndLine: 4878
+					NodeType: Function
+
+					Alias: executeTemplate(targetNodeOrNode…,options)
+					StartLine: 4880
+					EndLine: 4914
+					NodeType: Function
+
+					Alias: resolveTemplateName(template,data,context)
+					StartLine: 4916
+					EndLine: 4928
+					NodeType: Function
+					Comment: The template can be specified as:
+
+					Alias: renderTemplate(template,dataOrB…nderMode)
+					StartLine: 4930
+					EndLine: 4966
+					NodeType: Function
+
+						Alias: whenToDispose()
+						StartLine: 4939
+						EndLine: 4939
+						NodeType: Function
+						Comment: Passive disposal (on next evaluation)
+
+						Alias: dependentObservable&gt;?()
+						StartLine: 4943
+						EndLine: 4956
+						NodeType: AnonymousFunction
+						Comment: So the DOM is automatically updated when any dependency changes&#D;&#A; Ensure we&#39;ve got a proper binding context to work with
+
+						Alias: dependentObservable&gt;?
+						StartLine: 4958
+						EndLine: 4958
+						NodeType: Object
+
+						Alias: memoize&gt;?(domNode)
+						StartLine: 4962
+						EndLine: 4964
+						NodeType: AnonymousFunction
+						Comment: We don&#39;t yet have a DOM node to evaluate, so use a memo and render the template later when there is a DOM node
+
+					Alias: renderTemplateForEach(template,arrayOr…gContext)
+					StartLine: 4968
+					EndLine: 5010
+					NodeType: Function
+					Comment: Since setDomNodeChildrenFromArrayMapping always calls executeTemplateForArrayItem and then&#D;&#A; activateBindingsCallback for added items, we can store the binding context in the former to use in the latter.
+
+						Alias: executeTemplateForArrayItem(arrayValue,index)
+						StartLine: 4974
+						EndLine: 4982
+						NodeType: Function
+						Comment: This will be called by setDomNodeChildrenFromArrayMapping to get the nodes to add to targetNode&#D;&#A; Support selecting template as a function of the data being rendered
+
+							Alias: &#39;createChildContext&#39;.arrayItemContext&gt;?(context)
+							StartLine: 4976
+							EndLine: 4978
+							NodeType: AnonymousFunction
+
+						Alias: activateBindingsCallback(arrayValue,added…ay,index)
+						StartLine: 4985
+						EndLine: 4993
+						NodeType: Function
+						Comment: This will be called whenever setDomNodeChildrenFromArrayMapping has added nodes to targetNode
+
+						Alias: dependentObservable&gt;?()
+						StartLine: 4995
+						EndLine: 5009
+						NodeType: AnonymousFunction
+
+							Alias: arrayFilter.filteredArray&gt;?(item)
+							StartLine: 5001
+							EndLine: 5003
+							NodeType: AnonymousFunction
+							Comment: Filter out any entries marked as destroyed
+
+						Alias: dependentObservable&gt;?
+						StartLine: 5009
+						EndLine: 5009
+						NodeType: Object
+
+					Alias: disposeOldComputedAndStoreNewOne(element,newComputed)
+					StartLine: 5013
+					EndLine: 5018
+					NodeType: Function
+
+					Alias: &#39;template&#39;
+					StartLine: 5020
+					EndLine: 5086
+					NodeType: Object
+
+						Alias: &#39;init&#39;(element,valueAccessor)
+						StartLine: 5021
+						EndLine: 5045
+						NodeType: Function
+						Comment: Support anonymous templates
+
+							Alias: ?
+							StartLine: 5044
+							EndLine: 5044
+							NodeType: Object
+
+						Alias: &#39;update&#39;(element,valueAcc…gContext)
+						StartLine: 5046
+						EndLine: 5085
+						NodeType: Function
+
+					Alias: &#39;template&#39;(bindingValue)
+					StartLine: 5089
+					EndLine: 5098
+					NodeType: Function
+					Comment: Anonymous templates can&#39;t be rewritten. Give a nice error message if you try to do it.
+
+				Alias: findMovesInArrayComparison(left,right,limit…Compares)
+				StartLine: 5106
+				EndLine: 5122
+				NodeType: Function
+				Comment: Go through the items that have been added and deleted and try to find matches between them.
+
+				Alias: compareArrays()
+				StartLine: 5124
+				EndLine: 5204
+				NodeType: Function
+
+					Alias: compareArrays(oldArray,newArray,options)
+					StartLine: 5128
+					EndLine: 5139
+					NodeType: Function
+					Comment: Simple calculation based on Levenshtein distance.&#D;&#A; For backward compatibility, if the third arg is actually a bool, interpret&#D;&#A; it as the old parameter &#39;dontLimitMoves&#39;. Newer code should use { dontLimitMoves: true }.
+
+					Alias: compareSmallArrayToBigArray(smlArray,bigArra…,options)
+					StartLine: 5141
+					EndLine: 5201
+					NodeType: Function
+
+				Alias: ?()
+				StartLine: 5207
+				EndLine: 5363
+				NodeType: AnonymousFunction
+				Comment: Objective:&#D;&#A; * Given an input array, a container DOM node, and a function from array elements to arrays of DOM nodes,&#D;&#A;   map the array elements to arrays of DOM nodes, concatenate together all these arrays, and use them to populate the container DOM node&#D;&#A; * Next time we&#39;re given the same combination of things (with the array possibly having mutated), update the container DOM node&#D;&#A;   so that its children is again the concatenation of the mappings of the array elements, but don&#39;t re-map any array elements that we&#D;&#A;   previously mapped - retain those nodes, and just insert/delete other ones
+
+					Alias: mapNodeAndRefreshWhenChanged(containerNode,ma…es,index)
+					StartLine: 5218
+					EndLine: 5237
+					NodeType: Function
+					Comment: Map this array value inside a dependentObservable so we re-map when any dependency changes
+
+						Alias: dependentObservable.dependentObservable&gt;?()
+						StartLine: 5221
+						EndLine: 5235
+						NodeType: AnonymousFunction
+
+						Alias: dependentObservable.dependentObservable&gt;?
+						StartLine: 5235
+						EndLine: 5235
+						NodeType: Object
+
+							Alias: disposeWhen()
+							StartLine: 5235
+							EndLine: 5235
+							NodeType: Function
+
+						Alias: ?
+						StartLine: 5236
+						EndLine: 5236
+						NodeType: Object
+
+					Alias: setDomNodeChildrenFromArrayMapping(domNode,array,ma…ingNodes)
+					StartLine: 5241
+					EndLine: 5362
+					NodeType: Function
+					Comment: Compare the provided array against the previous one
+
+						Alias: arrayMap.lastArray&gt;?(x)
+						StartLine: 5247
+						EndLine: 5247
+						NodeType: AnonymousFunction
+
+						Alias: itemMovedOrRetained(editScriptIndex,…Position)
+						StartLine: 5262
+						EndLine: 5271
+						NodeType: Function
+
+						Alias: callCallback(callback,items)
+						StartLine: 5273
+						EndLine: 5283
+						NodeType: Function
+
+				Alias: nativeTemplateEngine()
+				StartLine: 5366
+				EndLine: 5368
+				NodeType: Function
+
+				Alias: &#39;renderTemplateSource&#39;(templateSource,b…Document)
+				StartLine: 5372
+				EndLine: 5383
+				NodeType: Function
+				Comment: IE&lt;9 cloneNode doesn&#39;t work properly
+
+				Alias: ?()
+				StartLine: 5389
+				EndLine: 5472
+				NodeType: AnonymousFunction
+
+					Alias: jqueryTmplTemplateEngine()
+					StartLine: 5390
+					EndLine: 5461
+					NodeType: Function
+					Comment: Detect which version of jquery-tmpl you&#39;re using. Unfortunately jquery-tmpl&#D;&#A; doesn&#39;t expose a version number, so we have to infer it.&#D;&#A; Note that as of Knockout 1.3, we only support jQuery.tmpl 1.0.0pre and later,&#D;&#A; which KO internally refers to as version &quot;2&quot;, so older versions are no longer detected.
+
+						Alias: jQueryTmplVersion.jQueryTmplVersion()
+						StartLine: 5395
+						EndLine: 5407
+						NodeType: Function
+
+						Alias: ensureHasReferencedJQueryTemplates()
+						StartLine: 5409
+						EndLine: 5412
+						NodeType: Function
+
+						Alias: executeTemplate(compiledTemplate…eOptions)
+						StartLine: 5414
+						EndLine: 5416
+						NodeType: Function
+
+						Alias: &#39;renderTemplateSource&#39;(templateSource,b…Document)
+						StartLine: 5418
+						EndLine: 5442
+						NodeType: Function
+
+							Alias: &#39;extend&#39;.jQueryTemplateOptions&gt;?
+							StartLine: 5435
+							EndLine: 5435
+							NodeType: Object
+							Comment: Prewrap the data in an array to stop jquery.tmpl from trying to unwrap any arrays
+
+						Alias: &#39;createJavaScriptEvaluatorBlock&#39;(script)
+						StartLine: 5444
+						EndLine: 5446
+						NodeType: Function
+
+						Alias: &#39;addTemplate&#39;(templateName,tem…teMarkup)
+						StartLine: 5448
+						EndLine: 5450
+						NodeType: Function
+
+						Alias: &#39;ko_code&#39;
+						StartLine: 5453
+						EndLine: 5455
+						NodeType: Object
+
+						Alias: &#39;ko_with&#39;
+						StartLine: 5456
+						EndLine: 5459
+						NodeType: Object
+

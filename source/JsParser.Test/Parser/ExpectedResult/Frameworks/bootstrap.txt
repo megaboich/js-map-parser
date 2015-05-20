@@ -1,0 +1,1110 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: ?($)
+	StartLine: 11
+	EndLine: 17
+	NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 28
+	EndLine: 77
+	NodeType: AnonymousFunction
+
+		Alias: transitionEnd()
+		StartLine: 34
+		EndLine: 51
+		NodeType: Function
+
+			Alias: transEndEventNames
+			StartLine: 37
+			EndLine: 42
+			NodeType: Object
+
+		Alias: emulateTransitionEnd(duration)
+		StartLine: 54
+		EndLine: 61
+		NodeType: Function
+		Comment: http://blog.alexmaccaw.com/css-transitions
+
+			Alias: one&gt;?()
+			StartLine: 57
+			EndLine: 57
+			NodeType: AnonymousFunction
+
+			Alias: callback()
+			StartLine: 58
+			EndLine: 58
+			NodeType: Function
+
+		Alias: $&gt;?()
+		StartLine: 63
+		EndLine: 75
+		NodeType: AnonymousFunction
+
+			Alias: bsTransitionEnd
+			StartLine: 68
+			EndLine: 74
+			NodeType: Object
+
+				Alias: handle(e)
+				StartLine: 71
+				EndLine: 73
+				NodeType: Function
+
+	Alias: ?($)
+	StartLine: 88
+	EndLine: 172
+	NodeType: AnonymousFunction
+
+		Alias: Alert(el)
+		StartLine: 95
+		EndLine: 97
+		NodeType: Function
+
+		Alias: close(e)
+		StartLine: 103
+		EndLine: 136
+		NodeType: Function
+
+			Alias: removeElement()
+			StartLine: 126
+			EndLine: 129
+			NodeType: Function
+			Comment: detach from parent, fire event then clean up data
+
+		Alias: Plugin(option)
+		StartLine: 142
+		EndLine: 150
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 143
+			EndLine: 149
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 161
+		EndLine: 164
+		NodeType: Function
+
+	Alias: ?($)
+	StartLine: 183
+	EndLine: 289
+	NodeType: AnonymousFunction
+
+		Alias: Button(element,options)
+		StartLine: 189
+		EndLine: 193
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 197
+		EndLine: 199
+		NodeType: Object
+
+		Alias: setState(state)
+		StartLine: 201
+		EndLine: 223
+		NodeType: Function
+
+			Alias: proxy.setTimeout&gt;?&gt;?()
+			StartLine: 212
+			EndLine: 222
+			NodeType: AnonymousFunction
+			Comment: push to event loop to allow forms to submit
+
+		Alias: toggle()
+		StartLine: 225
+		EndLine: 241
+		NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 247
+		EndLine: 258
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 248
+			EndLine: 257
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 269
+		EndLine: 272
+		NodeType: Function
+
+		Alias: on&gt;?(e)
+		StartLine: 279
+		EndLine: 284
+		NodeType: AnonymousFunction
+
+		Alias: on&gt;?(e)
+		StartLine: 285
+		EndLine: 287
+		NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 300
+	EndLine: 527
+	NodeType: AnonymousFunction
+
+		Alias: Carousel(element,options)
+		StartLine: 306
+		EndLine: 321
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 327
+		EndLine: 332
+		NodeType: Object
+
+		Alias: keydown(e)
+		StartLine: 334
+		EndLine: 343
+		NodeType: Function
+
+		Alias: cycle(e)
+		StartLine: 345
+		EndLine: 355
+		NodeType: Function
+
+		Alias: getItemIndex(item)
+		StartLine: 357
+		EndLine: 360
+		NodeType: Function
+
+		Alias: getItemForDirection(direction,active)
+		StartLine: 362
+		EndLine: 370
+		NodeType: Function
+
+		Alias: to(pos)
+		StartLine: 372
+		EndLine: 382
+		NodeType: Function
+
+			Alias: one&gt;?()
+			StartLine: 378
+			EndLine: 378
+			NodeType: AnonymousFunction
+			Comment: yes, &quot;slid&quot;
+
+		Alias: pause(e)
+		StartLine: 384
+		EndLine: 395
+		NodeType: Function
+
+		Alias: next()
+		StartLine: 397
+		EndLine: 400
+		NodeType: Function
+
+		Alias: prev()
+		StartLine: 402
+		EndLine: 405
+		NodeType: Function
+
+		Alias: slide(type,next)
+		StartLine: 407
+		EndLine: 460
+		NodeType: Function
+
+			Alias: Event.slideEvent&gt;?
+			StartLine: 417
+			EndLine: 420
+			NodeType: Object
+
+			Alias: Event.slidEvent&gt;?
+			StartLine: 434
+			EndLine: 434
+			NodeType: Object
+			Comment: yes, &quot;slid&quot;
+
+			Alias: one&gt;?()
+			StartLine: 441
+			EndLine: 448
+			NodeType: AnonymousFunction
+
+				Alias: setTimeout&gt;?()
+				StartLine: 445
+				EndLine: 447
+				NodeType: AnonymousFunction
+
+		Alias: Plugin(option)
+		StartLine: 466
+		EndLine: 478
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 467
+			EndLine: 477
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 489
+		EndLine: 492
+		NodeType: Function
+
+		Alias: clickHandler(e)
+		StartLine: 498
+		EndLine: 514
+		NodeType: Function
+
+		Alias: on&gt;?()
+		StartLine: 520
+		EndLine: 525
+		NodeType: AnonymousFunction
+
+			Alias: each&gt;?()
+			StartLine: 521
+			EndLine: 524
+			NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 538
+	EndLine: 739
+	NodeType: AnonymousFunction
+
+		Alias: Collapse(element,options)
+		StartLine: 544
+		EndLine: 558
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 564
+		EndLine: 566
+		NodeType: Object
+
+		Alias: dimension()
+		StartLine: 568
+		EndLine: 571
+		NodeType: Function
+
+		Alias: show()
+		StartLine: 573
+		EndLine: 622
+		NodeType: Function
+
+			Alias: complete()
+			StartLine: 606
+			EndLine: 613
+			NodeType: Function
+
+		Alias: hide()
+		StartLine: 624
+		EndLine: 660
+		NodeType: Function
+
+			Alias: complete()
+			StartLine: 646
+			EndLine: 652
+			NodeType: Function
+
+		Alias: toggle()
+		StartLine: 662
+		EndLine: 664
+		NodeType: Function
+
+		Alias: getParent()
+		StartLine: 666
+		EndLine: 674
+		NodeType: Function
+
+			Alias: proxy.each&gt;?&gt;?(i,element)
+			StartLine: 669
+			EndLine: 672
+			NodeType: AnonymousFunction
+
+		Alias: addAriaAndCollapsedClass($element,$trigger)
+		StartLine: 676
+		EndLine: 683
+		NodeType: Function
+
+		Alias: getTargetFromTrigger($trigger)
+		StartLine: 685
+		EndLine: 691
+		NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 697
+		EndLine: 707
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 698
+			EndLine: 706
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 718
+		EndLine: 721
+		NodeType: Function
+
+		Alias: on&gt;?(e)
+		StartLine: 727
+		EndLine: 737
+		NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 750
+	EndLine: 901
+	NodeType: AnonymousFunction
+
+		Alias: Dropdown(element)
+		StartLine: 758
+		EndLine: 760
+		NodeType: Function
+
+		Alias: toggle(e)
+		StartLine: 764
+		EndLine: 795
+		NodeType: Function
+
+			Alias: relatedTarget
+			StartLine: 780
+			EndLine: 780
+			NodeType: Object
+
+		Alias: keydown(e)
+		StartLine: 797
+		EndLine: 827
+		NodeType: Function
+
+		Alias: clearMenus(e)
+		StartLine: 829
+		EndLine: 846
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 832
+			EndLine: 845
+			NodeType: AnonymousFunction
+
+				Alias: relatedTarget
+				StartLine: 835
+				EndLine: 835
+				NodeType: Object
+
+		Alias: getParent($this)
+		StartLine: 848
+		EndLine: 859
+		NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 865
+		EndLine: 873
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 866
+			EndLine: 872
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 884
+		EndLine: 887
+		NodeType: Function
+
+		Alias: on&gt;?(e)
+		StartLine: 895
+		EndLine: 895
+		NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 912
+	EndLine: 1241
+	NodeType: AnonymousFunction
+
+		Alias: Modal(element,options)
+		StartLine: 918
+		EndLine: 936
+		NodeType: Function
+
+			Alias: proxy.load&gt;?&gt;?()
+			StartLine: 932
+			EndLine: 934
+			NodeType: AnonymousFunction
+
+		Alias: DEFAULTS
+		StartLine: 943
+		EndLine: 947
+		NodeType: Object
+
+		Alias: toggle(_relatedTarget)
+		StartLine: 949
+		EndLine: 951
+		NodeType: Function
+
+		Alias: show(_relatedTarget)
+		StartLine: 953
+		EndLine: 1011
+		NodeType: Function
+
+			Alias: Event.e&gt;?
+			StartLine: 955
+			EndLine: 955
+			NodeType: Object
+
+			Alias: on&gt;?()
+			StartLine: 972
+			EndLine: 976
+			NodeType: AnonymousFunction
+
+				Alias: one&gt;?(e)
+				StartLine: 973
+				EndLine: 975
+				NodeType: AnonymousFunction
+
+			Alias: backdrop&gt;?()
+			StartLine: 978
+			EndLine: 1010
+			NodeType: AnonymousFunction
+
+				Alias: Event.e&gt;?
+				StartLine: 1001
+				EndLine: 1001
+				NodeType: Object
+
+		Alias: hide(e)
+		StartLine: 1013
+		EndLine: 1042
+		NodeType: Function
+
+		Alias: enforceFocus()
+		StartLine: 1044
+		EndLine: 1052
+		NodeType: Function
+
+			Alias: proxy.on&gt;?&gt;?(e)
+			StartLine: 1047
+			EndLine: 1051
+			NodeType: AnonymousFunction
+			Comment: guard against infinite focus loop
+
+		Alias: escape()
+		StartLine: 1054
+		EndLine: 1062
+		NodeType: Function
+
+			Alias: proxy.on&gt;?&gt;?(e)
+			StartLine: 1056
+			EndLine: 1058
+			NodeType: AnonymousFunction
+
+		Alias: resize()
+		StartLine: 1064
+		EndLine: 1070
+		NodeType: Function
+
+		Alias: hideModal()
+		StartLine: 1072
+		EndLine: 1081
+		NodeType: Function
+
+			Alias: backdrop&gt;?()
+			StartLine: 1075
+			EndLine: 1080
+			NodeType: AnonymousFunction
+
+		Alias: removeBackdrop()
+		StartLine: 1083
+		EndLine: 1086
+		NodeType: Function
+
+		Alias: backdrop(callback)
+		StartLine: 1088
+		EndLine: 1137
+		NodeType: Function
+
+			Alias: proxy.on&gt;?&gt;?(e)
+			StartLine: 1098
+			EndLine: 1107
+			NodeType: AnonymousFunction
+
+			Alias: callbackRemove()
+			StartLine: 1124
+			EndLine: 1127
+			NodeType: Function
+
+		Alias: handleUpdate()
+		StartLine: 1141
+		EndLine: 1143
+		NodeType: Function
+
+		Alias: adjustDialog()
+		StartLine: 1145
+		EndLine: 1152
+		NodeType: Function
+
+			Alias: css&gt;?
+			StartLine: 1148
+			EndLine: 1151
+			NodeType: Object
+
+		Alias: resetAdjustments()
+		StartLine: 1154
+		EndLine: 1159
+		NodeType: Function
+
+			Alias: css&gt;?
+			StartLine: 1155
+			EndLine: 1158
+			NodeType: Object
+
+		Alias: checkScrollbar()
+		StartLine: 1161
+		EndLine: 1169
+		NodeType: Function
+
+		Alias: setScrollbar()
+		StartLine: 1171
+		EndLine: 1175
+		NodeType: Function
+
+		Alias: resetScrollbar()
+		StartLine: 1177
+		EndLine: 1179
+		NodeType: Function
+
+		Alias: measureScrollbar()
+		StartLine: 1181
+		EndLine: 1188
+		NodeType: Function
+		Comment: thx walsh
+
+		Alias: Plugin(option,_relatedTarget)
+		StartLine: 1194
+		EndLine: 1204
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 1195
+			EndLine: 1203
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 1215
+		EndLine: 1218
+		NodeType: Function
+
+		Alias: on&gt;?(e)
+		StartLine: 1224
+		EndLine: 1239
+		NodeType: AnonymousFunction
+
+			Alias: one&gt;?(showEvent)
+			StartLine: 1232
+			EndLine: 1237
+			NodeType: AnonymousFunction
+			Comment: only register focus restorer if modal will actually get shown
+
+				Alias: one&gt;?()
+				StartLine: 1234
+				EndLine: 1236
+				NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 1253
+	EndLine: 1718
+	NodeType: AnonymousFunction
+
+		Alias: Tooltip(element,options)
+		StartLine: 1259
+		EndLine: 1268
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 1274
+		EndLine: 1288
+		NodeType: Object
+
+			Alias: viewport
+			StartLine: 1284
+			EndLine: 1287
+			NodeType: Object
+
+		Alias: init(type,element,options)
+		StartLine: 1290
+		EndLine: 1320
+		NodeType: Function
+
+		Alias: getDefaults()
+		StartLine: 1322
+		EndLine: 1324
+		NodeType: Function
+
+		Alias: getOptions(options)
+		StartLine: 1326
+		EndLine: 1337
+		NodeType: Function
+
+			Alias: delay
+			StartLine: 1330
+			EndLine: 1333
+			NodeType: Object
+
+		Alias: getDelegateOptions()
+		StartLine: 1339
+		EndLine: 1348
+		NodeType: Function
+
+			Alias: each&gt;?(key,value)
+			StartLine: 1343
+			EndLine: 1345
+			NodeType: AnonymousFunction
+
+		Alias: enter(obj)
+		StartLine: 1350
+		EndLine: 1373
+		NodeType: Function
+
+			Alias: setTimeout.timeout&gt;?()
+			StartLine: 1370
+			EndLine: 1372
+			NodeType: AnonymousFunction
+
+		Alias: leave(obj)
+		StartLine: 1375
+		EndLine: 1393
+		NodeType: Function
+
+			Alias: setTimeout.timeout&gt;?()
+			StartLine: 1390
+			EndLine: 1392
+			NodeType: AnonymousFunction
+
+		Alias: show()
+		StartLine: 1395
+		EndLine: 1469
+		NodeType: Function
+
+			Alias: css&gt;?
+			StartLine: 1425
+			EndLine: 1425
+			NodeType: Object
+
+			Alias: complete()
+			StartLine: 1455
+			EndLine: 1461
+			NodeType: Function
+
+		Alias: applyPlacement(offset,placement)
+		StartLine: 1471
+		EndLine: 1519
+		NodeType: Function
+
+			Alias: extend.setOffset&gt;?&gt;?
+			StartLine: 1489
+			EndLine: 1496
+			NodeType: Object
+			Comment: $.fn.offset doesn&#39;t round pixel values&#D;&#A; so we use setOffset directly with our own function B-0
+
+				Alias: using(props)
+				StartLine: 1490
+				EndLine: 1495
+				NodeType: Function
+
+					Alias: css&gt;?
+					StartLine: 1491
+					EndLine: 1494
+					NodeType: Object
+
+		Alias: replaceArrow(delta,dimension,…Vertical)
+		StartLine: 1521
+		EndLine: 1525
+		NodeType: Function
+
+		Alias: setContent()
+		StartLine: 1527
+		EndLine: 1533
+		NodeType: Function
+
+		Alias: hide(callback)
+		StartLine: 1535
+		EndLine: 1563
+		NodeType: Function
+
+			Alias: complete()
+			StartLine: 1540
+			EndLine: 1546
+			NodeType: Function
+
+		Alias: fixTitle()
+		StartLine: 1565
+		EndLine: 1570
+		NodeType: Function
+
+		Alias: hasContent()
+		StartLine: 1572
+		EndLine: 1574
+		NodeType: Function
+
+		Alias: getPosition($element)
+		StartLine: 1576
+		EndLine: 1592
+		NodeType: Function
+
+			Alias: extend.elRect&gt;?
+			StartLine: 1585
+			EndLine: 1585
+			NodeType: Object
+			Comment: width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+
+			Alias: scroll
+			StartLine: 1588
+			EndLine: 1588
+			NodeType: Object
+
+		Alias: getCalculatedOffset(placement,pos,ac…alHeight)
+		StartLine: 1594
+		EndLine: 1600
+		NodeType: Function
+
+		Alias: getViewportAdjustedDelta(placement,pos,ac…alHeight)
+		StartLine: 1602
+		EndLine: 1628
+		NodeType: Function
+
+			Alias: delta
+			StartLine: 1603
+			EndLine: 1603
+			NodeType: Object
+
+		Alias: getTitle()
+		StartLine: 1630
+		EndLine: 1639
+		NodeType: Function
+
+		Alias: getUID(prefix)
+		StartLine: 1641
+		EndLine: 1645
+		NodeType: Function
+
+		Alias: tip()
+		StartLine: 1647
+		EndLine: 1649
+		NodeType: Function
+
+		Alias: arrow()
+		StartLine: 1651
+		EndLine: 1653
+		NodeType: Function
+
+		Alias: enable()
+		StartLine: 1655
+		EndLine: 1657
+		NodeType: Function
+
+		Alias: disable()
+		StartLine: 1659
+		EndLine: 1661
+		NodeType: Function
+
+		Alias: toggleEnabled()
+		StartLine: 1663
+		EndLine: 1665
+		NodeType: Function
+
+		Alias: toggle(e)
+		StartLine: 1667
+		EndLine: 1678
+		NodeType: Function
+
+		Alias: destroy()
+		StartLine: 1680
+		EndLine: 1686
+		NodeType: Function
+
+			Alias: hide&gt;?()
+			StartLine: 1683
+			EndLine: 1685
+			NodeType: AnonymousFunction
+
+		Alias: Plugin(option)
+		StartLine: 1692
+		EndLine: 1702
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 1693
+			EndLine: 1701
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 1713
+		EndLine: 1716
+		NodeType: Function
+
+	Alias: ?($)
+	StartLine: 1729
+	EndLine: 1827
+	NodeType: AnonymousFunction
+
+		Alias: Popover(element,options)
+		StartLine: 1735
+		EndLine: 1737
+		NodeType: Function
+
+		Alias: extend.DEFAULTS&gt;?
+		StartLine: 1743
+		EndLine: 1748
+		NodeType: Object
+
+		Alias: getDefaults()
+		StartLine: 1758
+		EndLine: 1760
+		NodeType: Function
+
+		Alias: setContent()
+		StartLine: 1762
+		EndLine: 1777
+		NodeType: Function
+
+		Alias: hasContent()
+		StartLine: 1779
+		EndLine: 1781
+		NodeType: Function
+
+		Alias: getContent()
+		StartLine: 1783
+		EndLine: 1791
+		NodeType: Function
+
+		Alias: arrow()
+		StartLine: 1793
+		EndLine: 1795
+		NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 1801
+		EndLine: 1811
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 1802
+			EndLine: 1810
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 1822
+		EndLine: 1825
+		NodeType: Function
+
+	Alias: ?($)
+	StartLine: 1838
+	EndLine: 2000
+	NodeType: AnonymousFunction
+
+		Alias: ScrollSpy(element,options)
+		StartLine: 1844
+		EndLine: 1857
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 1861
+		EndLine: 1863
+		NodeType: Object
+
+		Alias: getScrollHeight()
+		StartLine: 1865
+		EndLine: 1867
+		NodeType: Function
+
+		Alias: refresh()
+		StartLine: 1869
+		EndLine: 1900
+		NodeType: Function
+
+			Alias: map&gt;?()
+			StartLine: 1885
+			EndLine: 1894
+			NodeType: AnonymousFunction
+
+			Alias: sort&gt;?(a,b)
+			StartLine: 1895
+			EndLine: 1895
+			NodeType: AnonymousFunction
+
+			Alias: each&gt;?()
+			StartLine: 1896
+			EndLine: 1899
+			NodeType: AnonymousFunction
+
+		Alias: process()
+		StartLine: 1902
+		EndLine: 1930
+		NodeType: Function
+
+		Alias: activate(target)
+		StartLine: 1932
+		EndLine: 1952
+		NodeType: Function
+
+		Alias: clear()
+		StartLine: 1954
+		EndLine: 1958
+		NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 1964
+		EndLine: 1973
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 1965
+			EndLine: 1972
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 1984
+		EndLine: 1987
+		NodeType: Function
+
+		Alias: on&gt;?()
+		StartLine: 1993
+		EndLine: 1998
+		NodeType: AnonymousFunction
+
+			Alias: each&gt;?()
+			StartLine: 1994
+			EndLine: 1997
+			NodeType: AnonymousFunction
+
+	Alias: ?($)
+	StartLine: 2011
+	EndLine: 2154
+	NodeType: AnonymousFunction
+
+		Alias: Tab(element)
+		StartLine: 2017
+		EndLine: 2019
+		NodeType: Function
+
+		Alias: show()
+		StartLine: 2025
+		EndLine: 2063
+		NodeType: Function
+
+			Alias: Event.hideEvent&gt;?
+			StartLine: 2038
+			EndLine: 2040
+			NodeType: Object
+
+			Alias: Event.showEvent&gt;?
+			StartLine: 2041
+			EndLine: 2043
+			NodeType: Object
+
+			Alias: activate&gt;?()
+			StartLine: 2053
+			EndLine: 2062
+			NodeType: AnonymousFunction
+
+				Alias: trigger&gt;?
+				StartLine: 2054
+				EndLine: 2057
+				NodeType: Object
+
+				Alias: trigger&gt;?
+				StartLine: 2058
+				EndLine: 2061
+				NodeType: Object
+
+		Alias: activate(element,containe…callback)
+		StartLine: 2065
+		EndLine: 2111
+		NodeType: Function
+
+			Alias: next()
+			StartLine: 2071
+			EndLine: 2102
+			NodeType: Function
+
+		Alias: Plugin(option)
+		StartLine: 2117
+		EndLine: 2125
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 2118
+			EndLine: 2124
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 2136
+		EndLine: 2139
+		NodeType: Function
+
+		Alias: clickHandler(e)
+		StartLine: 2145
+		EndLine: 2148
+		NodeType: Function
+
+	Alias: ?($)
+	StartLine: 2165
+	EndLine: 2317
+	NodeType: AnonymousFunction
+
+		Alias: Affix(element,options)
+		StartLine: 2171
+		EndLine: 2184
+		NodeType: Function
+
+		Alias: DEFAULTS
+		StartLine: 2190
+		EndLine: 2193
+		NodeType: Object
+
+		Alias: getState(scrollHeight,hei…etBottom)
+		StartLine: 2195
+		EndLine: 2215
+		NodeType: Function
+
+		Alias: getPinnedOffset()
+		StartLine: 2217
+		EndLine: 2223
+		NodeType: Function
+
+		Alias: checkPositionWithEventLoop()
+		StartLine: 2225
+		EndLine: 2227
+		NodeType: Function
+
+		Alias: checkPosition()
+		StartLine: 2229
+		EndLine: 2268
+		NodeType: Function
+
+			Alias: offset&gt;?
+			StartLine: 2264
+			EndLine: 2266
+			NodeType: Object
+
+		Alias: Plugin(option)
+		StartLine: 2274
+		EndLine: 2283
+		NodeType: Function
+
+			Alias: each&gt;?()
+			StartLine: 2275
+			EndLine: 2282
+			NodeType: AnonymousFunction
+
+		Alias: noConflict()
+		StartLine: 2294
+		EndLine: 2297
+		NodeType: Function
+
+		Alias: on&gt;?()
+		StartLine: 2303
+		EndLine: 2315
+		NodeType: AnonymousFunction
+
+			Alias: each&gt;?()
+			StartLine: 2304
+			EndLine: 2314
+			NodeType: AnonymousFunction
+

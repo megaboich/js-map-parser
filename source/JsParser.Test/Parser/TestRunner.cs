@@ -43,11 +43,12 @@ namespace JsParser.Test.Parser
             };
             var actualResult = (new JavascriptParser(settings)).Parse(source);
 
-            Directory.CreateDirectory("C:\\outxml");
+            var outDir = "C:\\js_parser_units_output";
+            Directory.CreateDirectory(outDir);
 
             // Save actual hierarchy xml
             var serialized = SimpleHierarchySerializer.Serialize(actualResult.Nodes);
-            File.WriteAllText("C:\\outxml\\" + resultName, serialized);
+            File.WriteAllText(outDir + "\\" + resultName, serialized);
 
             // Load test data
             var resName = "JsParser.Test.Parser.ExpectedResult." + resultName;
@@ -55,13 +56,13 @@ namespace JsParser.Test.Parser
             var passed = false;
             if (TestsHelper.CheckEmbeddedRes(resName))
             {
-                File.WriteAllText("C:\\outxml\\" + resultName, SimpleHierarchySerializer.Serialize(actualResult.Nodes));
+                File.WriteAllText(outDir + "\\" + resultName, SimpleHierarchySerializer.Serialize(actualResult.Nodes));
 
                 var expectedresultSerialized = TestsHelper.GetEmbeddedText(resName);
                 var expectedresult = SimpleHierarchySerializer.Deserialize<CodeNode>(expectedresultSerialized);
 
                 // Save expected hierarchy serialized
-                File.WriteAllText("C:\\outxml\\" + resultName + ".ex", expectedresultSerialized);
+                File.WriteAllText(outDir + "\\" + resultName + ".ex", expectedresultSerialized);
 
                 if (HierarchyComparer.Compare(actualResult.Nodes, expectedresult, new CodeNodeAssertComparer()))
                 {

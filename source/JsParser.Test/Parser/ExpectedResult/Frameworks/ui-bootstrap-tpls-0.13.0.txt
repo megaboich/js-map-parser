@@ -1,0 +1,3411 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: ?($animate)
+	StartLine: 12
+	EndLine: 59
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 14
+		EndLine: 58
+		NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 15
+			EndLine: 57
+			NodeType: Function
+
+				Alias: expand()
+				StartLine: 16
+				EndLine: 21
+				NodeType: Function
+
+					Alias: addClass&gt;?
+					StartLine: 18
+					EndLine: 20
+					NodeType: Object
+
+						Alias: to
+						StartLine: 19
+						EndLine: 19
+						NodeType: Object
+
+				Alias: expandDone()
+				StartLine: 23
+				EndLine: 26
+				NodeType: Function
+
+					Alias: css&gt;?
+					StartLine: 25
+					EndLine: 25
+					NodeType: Object
+
+				Alias: collapse()
+				StartLine: 28
+				EndLine: 42
+				NodeType: Function
+
+					Alias: css&gt;?
+					StartLine: 33
+					EndLine: 33
+					NodeType: Object
+					Comment: IMPORTANT: The height must be set before adding &quot;collapsing&quot; class.&#D;&#A; Otherwise, the browser attempts to animate from height 0 (in&#D;&#A; collapsing class) to the given height here.&#D;&#A; initially all panel collapse have the collapse class, this removal&#D;&#A; prevents the animation from jumping to collapsed state
+
+					Alias: removeClass&gt;?
+					StartLine: 39
+					EndLine: 41
+					NodeType: Object
+
+						Alias: to
+						StartLine: 40
+						EndLine: 40
+						NodeType: Object
+
+				Alias: collapseDone()
+				StartLine: 44
+				EndLine: 48
+				NodeType: Function
+				Comment: Required so that collapse works when animation is disabled
+
+					Alias: css&gt;?
+					StartLine: 45
+					EndLine: 45
+					NodeType: Object
+
+				Alias: $watch&gt;?(shouldCollapse)
+				StartLine: 50
+				EndLine: 56
+				NodeType: AnonymousFunction
+
+	Alias: constant&gt;?
+	StartLine: 63
+	EndLine: 65
+	NodeType: Object
+
+	Alias: ?($scope,$attrs,ac…onConfig)
+	StartLine: 67
+	EndLine: 102
+	NodeType: AnonymousFunction
+
+		Alias: closeOthers(openGroup)
+		StartLine: 73
+		EndLine: 82
+		NodeType: Function
+		Comment: Ensure that all the groups in this accordion are closed, unless close-others explicitly says not to
+
+			Alias: forEach&gt;?(group)
+			StartLine: 76
+			EndLine: 80
+			NodeType: AnonymousFunction
+
+		Alias: addGroup(groupScope)
+		StartLine: 85
+		EndLine: 92
+		NodeType: Function
+		Comment: This is called from the accordion-group directive to add itself to the accordion
+
+			Alias: $on&gt;?(event)
+			StartLine: 89
+			EndLine: 91
+			NodeType: AnonymousFunction
+
+		Alias: removeGroup(group)
+		StartLine: 95
+		EndLine: 100
+		NodeType: Function
+		Comment: This is called from the accordion-group directive when to remove itself
+
+	Alias: directive&gt;?()
+	StartLine: 106
+	EndLine: 114
+	NodeType: AnonymousFunction
+	Comment: The accordion directive simply sets up the directive controller&#D;&#A; and adds an accordion CSS class to itself element.
+
+		Alias: ?
+		StartLine: 107
+		EndLine: 113
+		NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 117
+	EndLine: 150
+	NodeType: AnonymousFunction
+	Comment: The accordion-group directive indicates a block of html that will expand and collapse in an accordion
+
+		Alias: ?
+		StartLine: 118
+		EndLine: 149
+		NodeType: Object
+		Comment: We need this directive to be inside an accordion
+
+			Alias: scope
+			StartLine: 124
+			EndLine: 128
+			NodeType: Object
+			Comment: Interpolate the heading attribute onto this scope
+
+			Alias: controller()
+			StartLine: 129
+			EndLine: 133
+			NodeType: Function
+
+				Alias: setHeading(element)
+				StartLine: 130
+				EndLine: 132
+				NodeType: Function
+
+			Alias: link(scope,element,at…dionCtrl)
+			StartLine: 134
+			EndLine: 148
+			NodeType: Function
+
+				Alias: $watch&gt;?(value)
+				StartLine: 137
+				EndLine: 141
+				NodeType: AnonymousFunction
+
+				Alias: toggleOpen()
+				StartLine: 143
+				EndLine: 147
+				NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 156
+	EndLine: 170
+	NodeType: AnonymousFunction
+	Comment: Use accordion-heading below an accordion-group to provide a heading containing HTML&#D;&#A; &lt;accordion-group&gt;&#D;&#A;   &lt;accordion-heading&gt;Heading containing HTML - &lt;img src=&quot;...&quot;&gt;&lt;/accordion-heading&gt;&#D;&#A; &lt;/accordion-group&gt;
+
+		Alias: ?
+		StartLine: 157
+		EndLine: 169
+		NodeType: Object
+
+			Alias: link(scope,element,at…ansclude)
+			StartLine: 163
+			EndLine: 168
+			NodeType: Function
+			Comment: Pass the heading to the accordion-group controller&#D;&#A; so that it can be transcluded into the right place in the template&#D;&#A; [The second parameter to transclude causes the elements to be cloned so that they work in ng-repeat]
+
+	Alias: directive&gt;?()
+	StartLine: 178
+	EndLine: 190
+	NodeType: AnonymousFunction
+	Comment: Use in the accordion-group template to indicate where you want the heading to be transcluded&#D;&#A; You must provide the property on the accordion-group controller that will hold the transcluded element&#D;&#A; &lt;div class=&quot;accordion-group&quot;&gt;&#D;&#A;   &lt;div class=&quot;accordion-heading&quot; &gt;&lt;a ... accordion-transclude=&quot;heading&quot;&gt;...&lt;/a&gt;&lt;/div&gt;&#D;&#A;   ...&#D;&#A; &lt;/div&gt;
+
+		Alias: ?
+		StartLine: 179
+		EndLine: 189
+		NodeType: Object
+
+			Alias: link(scope,element,at…ntroller)
+			StartLine: 181
+			EndLine: 188
+			NodeType: Function
+
+				Alias: $watch&gt;?()
+				StartLine: 182
+				EndLine: 182
+				NodeType: AnonymousFunction
+
+				Alias: $watch&gt;?(heading)
+				StartLine: 182
+				EndLine: 187
+				NodeType: AnonymousFunction
+
+	Alias: ?($scope,$attrs)
+	StartLine: 196
+	EndLine: 199
+	NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 201
+	EndLine: 213
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 202
+		EndLine: 212
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 208
+			EndLine: 211
+			NodeType: Object
+
+	Alias: ?($timeout)
+	StartLine: 215
+	EndLine: 224
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 216
+		EndLine: 223
+		NodeType: Object
+
+			Alias: link(scope,element,at…lertCtrl)
+			StartLine: 218
+			EndLine: 222
+			NodeType: Function
+
+				Alias: $timeout&gt;?()
+				StartLine: 219
+				EndLine: 221
+				NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 228
+	EndLine: 235
+	NodeType: AnonymousFunction
+
+		Alias: ?(scope,element,attr)
+		StartLine: 229
+		EndLine: 234
+		NodeType: AnonymousFunction
+
+			Alias: bindHtmlUnsafeWatchAction(value)
+			StartLine: 231
+			EndLine: 233
+			NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 238
+	EndLine: 241
+	NodeType: Object
+
+	Alias: ?(buttonConfig)
+	StartLine: 243
+	EndLine: 246
+	NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 248
+	EndLine: 273
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 249
+		EndLine: 272
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 252
+			EndLine: 271
+			NodeType: Function
+
+				Alias: $render()
+				StartLine: 256
+				EndLine: 258
+				NodeType: Function
+				Comment: model -&gt; UI
+
+				Alias: bind&gt;?()
+				StartLine: 261
+				EndLine: 270
+				NodeType: AnonymousFunction
+				Comment: ui-&gt;model
+
+					Alias: $apply&gt;?()
+					StartLine: 265
+					EndLine: 268
+					NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 275
+	EndLine: 309
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 276
+		EndLine: 308
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 279
+			EndLine: 307
+			NodeType: Function
+
+				Alias: getTrueValue()
+				StartLine: 282
+				EndLine: 284
+				NodeType: Function
+
+				Alias: getFalseValue()
+				StartLine: 286
+				EndLine: 288
+				NodeType: Function
+
+				Alias: getCheckboxValue(attributeValue,d…ultValue)
+				StartLine: 290
+				EndLine: 293
+				NodeType: Function
+
+				Alias: $render()
+				StartLine: 296
+				EndLine: 298
+				NodeType: Function
+				Comment: model -&gt; UI
+
+				Alias: bind&gt;?()
+				StartLine: 301
+				EndLine: 306
+				NodeType: AnonymousFunction
+				Comment: ui-&gt;model
+
+					Alias: $apply&gt;?()
+					StartLine: 302
+					EndLine: 305
+					NodeType: AnonymousFunction
+
+	Alias: ?($scope,$interval,$animate)
+	StartLine: 320
+	EndLine: 481
+	NodeType: AnonymousFunction
+
+		Alias: select.select(nextSlide,direction)
+		StartLine: 329
+		EndLine: 356
+		NodeType: Function
+		Comment: direction: &quot;prev&quot; or &quot;next&quot;
+
+			Alias: goNext()
+			StartLine: 338
+			EndLine: 355
+			NodeType: Function
+			Comment: Scope has been destroyed, stop here.
+
+				Alias: extend&gt;?
+				StartLine: 342
+				EndLine: 342
+				NodeType: Object
+
+				Alias: extend&gt;?
+				StartLine: 343
+				EndLine: 343
+				NodeType: Object
+
+				Alias: closeFn()
+				StartLine: 346
+				EndLine: 348
+				NodeType: Function
+
+		Alias: $on&gt;?()
+		StartLine: 357
+		EndLine: 359
+		NodeType: AnonymousFunction
+
+		Alias: getSlideByIndex(index)
+		StartLine: 361
+		EndLine: 371
+		NodeType: Function
+
+		Alias: getCurrentIndex()
+		StartLine: 373
+		EndLine: 378
+		NodeType: Function
+
+		Alias: indexOfSlide(slide)
+		StartLine: 381
+		EndLine: 383
+		NodeType: Function
+		Comment: Allow outside people to call indexOf on slides array
+
+		Alias: next()
+		StartLine: 385
+		EndLine: 392
+		NodeType: Function
+
+		Alias: prev()
+		StartLine: 394
+		EndLine: 401
+		NodeType: Function
+
+		Alias: isActive(slide)
+		StartLine: 403
+		EndLine: 405
+		NodeType: Function
+
+		Alias: restartTimer()
+		StartLine: 410
+		EndLine: 416
+		NodeType: Function
+
+		Alias: resetTimer()
+		StartLine: 418
+		EndLine: 423
+		NodeType: Function
+
+		Alias: timerFn()
+		StartLine: 425
+		EndLine: 432
+		NodeType: Function
+
+		Alias: play()
+		StartLine: 434
+		EndLine: 439
+		NodeType: Function
+
+		Alias: pause()
+		StartLine: 440
+		EndLine: 445
+		NodeType: Function
+
+		Alias: addSlide(slide,element)
+		StartLine: 447
+		EndLine: 459
+		NodeType: Function
+
+		Alias: removeSlide(slide)
+		StartLine: 461
+		EndLine: 479
+		NodeType: Function
+
+			Alias: sort&gt;?(a,b)
+			StartLine: 463
+			EndLine: 465
+			NodeType: AnonymousFunction
+
+	Alias: ?()
+	StartLine: 521
+	EndLine: 535
+	NodeType: AnonymousFunction
+	Comment: *&#A; * @ngdoc directive&#A; * @name ui.bootstrap.carousel.directive:carousel&#A; * @restrict EA&#A; *&#A; * @description&#A; * Carousel is the outer container for a set of image &#39;slides&#39; to showcase.&#A; *&#A; * @param {number=} interval The time, in milliseconds, that it will take the carousel to go to the next slide.&#A; * @param {boolean=} noTransition Whether to disable transitions on the carousel.&#A; * @param {boolean=} noPause Whether to disable pausing on the carousel (by default, the carousel interval pauses on hover).&#A; *&#A; * @example&#A;&lt;example module=&quot;ui.bootstrap&quot;&gt;&#A;  &lt;file name=&quot;index.html&quot;&gt;&#A;    &lt;carousel&gt;&#A;      &lt;slide&gt;&#A;        &lt;img src=&quot;http://placekitten.com/150/150&quot; style=&quot;margin:auto;&quot;&gt;&#A;        &lt;div class=&quot;carousel-caption&quot;&gt;&#A;          &lt;p&gt;Beautiful!&lt;/p&gt;&#A;        &lt;/div&gt;&#A;      &lt;/slide&gt;&#A;      &lt;slide&gt;&#A;        &lt;img src=&quot;http://placekitten.com/100/150&quot; style=&quot;margin:auto;&quot;&gt;&#A;        &lt;div class=&quot;carousel-caption&quot;&gt;&#A;          &lt;p&gt;D&#39;aww!&lt;/p&gt;&#A;        &lt;/div&gt;&#A;      &lt;/slide&gt;&#A;    &lt;/carousel&gt;&#A;  &lt;/file&gt;&#A;  &lt;file name=&quot;demo.css&quot;&gt;&#A;    .carousel-indicators {&#A;      top: auto;&#A;      bottom: 15px;&#A;    }&#A;  &lt;/file&gt;&#A;&lt;/example&gt;
+
+		Alias: ?
+		StartLine: 522
+		EndLine: 534
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 529
+			EndLine: 533
+			NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 579
+	EndLine: 604
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 580
+		EndLine: 603
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 586
+			EndLine: 589
+			NodeType: Object
+
+			Alias: link(scope,element,at…uselCtrl)
+			StartLine: 590
+			EndLine: 602
+			NodeType: Function
+
+				Alias: $on&gt;?()
+				StartLine: 593
+				EndLine: 595
+				NodeType: AnonymousFunction
+				Comment: when the scope is destroyed then remove the slide from the current slides array
+
+				Alias: $watch&gt;?(active)
+				StartLine: 597
+				EndLine: 601
+				NodeType: AnonymousFunction
+
+	Alias: ?($animate)
+	StartLine: 608
+	EndLine: 652
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 609
+		EndLine: 650
+		NodeType: Object
+
+			Alias: beforeAddClass(element,className,done)
+			StartLine: 610
+			EndLine: 630
+			NodeType: Function
+			Comment: Due to transclusion, noTransition property is on parent&#39;s scope
+
+				Alias: then&gt;?()
+				StartLine: 618
+				EndLine: 623
+				NodeType: AnonymousFunction
+
+				Alias: ?()
+				StartLine: 625
+				EndLine: 627
+				NodeType: AnonymousFunction
+
+			Alias: beforeRemoveClass(element,className,done)
+			StartLine: 631
+			EndLine: 649
+			NodeType: Function
+			Comment: Due to transclusion, noTransition property is on parent&#39;s scope
+
+				Alias: then&gt;?()
+				StartLine: 638
+				EndLine: 643
+				NodeType: AnonymousFunction
+
+				Alias: ?()
+				StartLine: 644
+				EndLine: 646
+				NodeType: AnonymousFunction
+
+	Alias: ?($locale,orderByFilter)
+	StartLine: 659
+	EndLine: 831
+	NodeType: AnonymousFunction
+	Comment: Pulled from https://github.com/mbostock/d3/blob/master/src/format/requote.js
+
+		Alias: formatCodeToRegex
+		StartLine: 665
+		EndLine: 736
+		NodeType: Object
+
+			Alias: &#39;yyyy&#39;
+			StartLine: 666
+			EndLine: 669
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 668
+				EndLine: 668
+				NodeType: Function
+
+			Alias: &#39;yy&#39;
+			StartLine: 670
+			EndLine: 673
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 672
+				EndLine: 672
+				NodeType: Function
+
+			Alias: &#39;y&#39;
+			StartLine: 674
+			EndLine: 677
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 676
+				EndLine: 676
+				NodeType: Function
+
+			Alias: &#39;MMMM&#39;
+			StartLine: 678
+			EndLine: 681
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 680
+				EndLine: 680
+				NodeType: Function
+
+			Alias: &#39;MMM&#39;
+			StartLine: 682
+			EndLine: 685
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 684
+				EndLine: 684
+				NodeType: Function
+
+			Alias: &#39;MM&#39;
+			StartLine: 686
+			EndLine: 689
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 688
+				EndLine: 688
+				NodeType: Function
+
+			Alias: &#39;M&#39;
+			StartLine: 690
+			EndLine: 693
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 692
+				EndLine: 692
+				NodeType: Function
+
+			Alias: &#39;dd&#39;
+			StartLine: 694
+			EndLine: 697
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 696
+				EndLine: 696
+				NodeType: Function
+
+			Alias: &#39;d&#39;
+			StartLine: 698
+			EndLine: 701
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 700
+				EndLine: 700
+				NodeType: Function
+
+			Alias: &#39;EEEE&#39;
+			StartLine: 702
+			EndLine: 704
+			NodeType: Object
+
+			Alias: &#39;EEE&#39;
+			StartLine: 705
+			EndLine: 707
+			NodeType: Object
+
+			Alias: &#39;HH&#39;
+			StartLine: 708
+			EndLine: 711
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 710
+				EndLine: 710
+				NodeType: Function
+
+			Alias: &#39;H&#39;
+			StartLine: 712
+			EndLine: 715
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 714
+				EndLine: 714
+				NodeType: Function
+
+			Alias: &#39;mm&#39;
+			StartLine: 716
+			EndLine: 719
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 718
+				EndLine: 718
+				NodeType: Function
+
+			Alias: &#39;m&#39;
+			StartLine: 720
+			EndLine: 723
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 722
+				EndLine: 722
+				NodeType: Function
+
+			Alias: &#39;sss&#39;
+			StartLine: 724
+			EndLine: 727
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 726
+				EndLine: 726
+				NodeType: Function
+
+			Alias: &#39;ss&#39;
+			StartLine: 728
+			EndLine: 731
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 730
+				EndLine: 730
+				NodeType: Function
+
+			Alias: &#39;s&#39;
+			StartLine: 732
+			EndLine: 735
+			NodeType: Object
+
+				Alias: apply(value)
+				StartLine: 734
+				EndLine: 734
+				NodeType: Function
+
+		Alias: createParser(format)
+		StartLine: 738
+		EndLine: 763
+		NodeType: Function
+
+			Alias: forEach&gt;?(data,code)
+			StartLine: 741
+			EndLine: 757
+			NodeType: AnonymousFunction
+
+				Alias: push&gt;?
+				StartLine: 755
+				EndLine: 755
+				NodeType: Object
+
+			Alias: ?
+			StartLine: 759
+			EndLine: 762
+			NodeType: Object
+
+		Alias: parse(input,format,baseDate)
+		StartLine: 765
+		EndLine: 812
+		NodeType: Function
+
+			Alias: fields
+			StartLine: 785
+			EndLine: 793
+			NodeType: Object
+
+			Alias: fields
+			StartLine: 795
+			EndLine: 795
+			NodeType: Object
+
+		Alias: isValid(year,month,date)
+		StartLine: 816
+		EndLine: 830
+		NodeType: Function
+		Comment: Check if date is valid for specific month (and year for February).&#D;&#A; Month: 0 = Jan, 1 = Feb, etc
+
+	Alias: ?($document,$window)
+	StartLine: 841
+	EndLine: 984
+	NodeType: AnonymousFunction
+	Comment: *&#A; * A set of utility methods that can be use to retrieve position of DOM elements.&#A; * It is meant to be used where we need to absolute-position DOM elements in&#A; * relation to other, existing elements (this is the case for tooltips, popovers,&#A; * typeahead suggestions etc.).
+
+		Alias: getStyle(el,cssprop)
+		StartLine: 843
+		EndLine: 851
+		NodeType: Function
+		Comment: IE
+
+		Alias: isStaticPositioned(element)
+		StartLine: 857
+		EndLine: 859
+		NodeType: Function
+		Comment: *&#A;     * Checks if a given element is statically positioned&#A;     * @param element - raw DOM element
+
+		Alias: parentOffsetEl(element)
+		StartLine: 865
+		EndLine: 872
+		NodeType: Function
+		Comment: *&#A;     * returns the closest, non-statically positioned parentOffset of a given element&#A;     * @param element
+
+		Alias: ?
+		StartLine: 874
+		EndLine: 983
+		NodeType: Object
+		Comment: *&#A;       * Provides read-only equivalent of jQuery&#39;s position function:&#A;       * http://api.jquery.com/position/
+
+			Alias: position(element)
+			StartLine: 879
+			EndLine: 896
+			NodeType: Function
+
+				Alias: offsetParentBCR
+				StartLine: 881
+				EndLine: 881
+				NodeType: Object
+
+				Alias: ?
+				StartLine: 890
+				EndLine: 895
+				NodeType: Object
+
+			Alias: offset(element)
+			StartLine: 902
+			EndLine: 910
+			NodeType: Function
+			Comment: *&#A;       * Provides read-only equivalent of jQuery&#39;s offset function:&#A;       * http://api.jquery.com/offset/
+
+				Alias: ?
+				StartLine: 904
+				EndLine: 909
+				NodeType: Object
+
+			Alias: positionElements(hostEl,targetEl,…ndToBody)
+			StartLine: 915
+			EndLine: 982
+			NodeType: Function
+			Comment: *&#A;       * Provides coordinates for the targetEl in relation to hostEl
+
+				Alias: shiftWidth
+				StartLine: 930
+				EndLine: 940
+				NodeType: Object
+
+					Alias: center()
+					StartLine: 931
+					EndLine: 933
+					NodeType: Function
+
+					Alias: left()
+					StartLine: 934
+					EndLine: 936
+					NodeType: Function
+
+					Alias: right()
+					StartLine: 937
+					EndLine: 939
+					NodeType: Function
+
+				Alias: shiftHeight
+				StartLine: 942
+				EndLine: 952
+				NodeType: Object
+
+					Alias: center()
+					StartLine: 943
+					EndLine: 945
+					NodeType: Function
+
+					Alias: top()
+					StartLine: 946
+					EndLine: 948
+					NodeType: Function
+
+					Alias: bottom()
+					StartLine: 949
+					EndLine: 951
+					NodeType: Function
+
+				Alias: targetElPos
+				StartLine: 956
+				EndLine: 959
+				NodeType: Object
+
+				Alias: targetElPos
+				StartLine: 962
+				EndLine: 965
+				NodeType: Object
+
+				Alias: targetElPos
+				StartLine: 968
+				EndLine: 971
+				NodeType: Object
+
+				Alias: targetElPos
+				StartLine: 974
+				EndLine: 977
+				NodeType: Object
+
+	Alias: constant&gt;?
+	StartLine: 988
+	EndLine: 1004
+	NodeType: Object
+
+	Alias: ?($scope,$attrs,$p…erConfig)
+	StartLine: 1006
+	EndLine: 1183
+	NodeType: AnonymousFunction
+
+		Alias: ngModelCtrl
+		StartLine: 1008
+		EndLine: 1008
+		NodeType: Object
+		Comment: nullModelCtrl;
+
+		Alias: forEach&gt;?(key,index)
+		StartLine: 1015
+		EndLine: 1017
+		NodeType: AnonymousFunction
+
+		Alias: forEach&gt;?(key)
+		StartLine: 1020
+		EndLine: 1029
+		NodeType: AnonymousFunction
+		Comment: Watchable date attributes
+
+			Alias: $watch&gt;?(value)
+			StartLine: 1022
+			EndLine: 1025
+			NodeType: AnonymousFunction
+
+		Alias: $watch&gt;?(initDate)
+		StartLine: 1037
+		EndLine: 1042
+		NodeType: AnonymousFunction
+
+		Alias: isActive(dateObject)
+		StartLine: 1047
+		EndLine: 1053
+		NodeType: Function
+
+		Alias: init(ngModelCtrl_)
+		StartLine: 1055
+		EndLine: 1061
+		NodeType: Function
+
+			Alias: $render()
+			StartLine: 1058
+			EndLine: 1060
+			NodeType: Function
+
+		Alias: render()
+		StartLine: 1063
+		EndLine: 1076
+		NodeType: Function
+
+		Alias: refreshView()
+		StartLine: 1078
+		EndLine: 1085
+		NodeType: Function
+
+		Alias: createDateObject(date,format)
+		StartLine: 1087
+		EndLine: 1097
+		NodeType: Function
+
+			Alias: ?
+			StartLine: 1089
+			EndLine: 1096
+			NodeType: Object
+
+		Alias: isDisabled(date)
+		StartLine: 1099
+		EndLine: 1101
+		NodeType: Function
+
+			Alias: dateDisabled&gt;?
+			StartLine: 1100
+			EndLine: 1100
+			NodeType: Object
+
+		Alias: customClass(date)
+		StartLine: 1103
+		EndLine: 1105
+		NodeType: Function
+
+			Alias: customClass&gt;?
+			StartLine: 1104
+			EndLine: 1104
+			NodeType: Object
+
+		Alias: split(arr,size)
+		StartLine: 1108
+		EndLine: 1114
+		NodeType: Function
+		Comment: Split array into smaller arrays
+
+		Alias: select(date)
+		StartLine: 1116
+		EndLine: 1126
+		NodeType: Function
+
+		Alias: move(direction)
+		StartLine: 1128
+		EndLine: 1133
+		NodeType: Function
+
+		Alias: toggleMode(direction)
+		StartLine: 1135
+		EndLine: 1143
+		NodeType: Function
+
+		Alias: keys
+		StartLine: 1146
+		EndLine: 1146
+		NodeType: Object
+		Comment: Key event mapper
+
+		Alias: focusElement()
+		StartLine: 1148
+		EndLine: 1152
+		NodeType: Function
+
+			Alias: $timeout&gt;?()
+			StartLine: 1149
+			EndLine: 1151
+			NodeType: AnonymousFunction
+
+		Alias: keydown(evt)
+		StartLine: 1157
+		EndLine: 1182
+		NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 1185
+	EndLine: 1206
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1186
+		EndLine: 1205
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 1190
+			EndLine: 1195
+			NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 1198
+			EndLine: 1204
+			NodeType: Function
+
+	Alias: ?(dateFilter)
+	StartLine: 1208
+	EndLine: 1317
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1209
+		EndLine: 1316
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrl)
+			StartLine: 1214
+			EndLine: 1315
+			NodeType: Function
+
+				Alias: step
+				StartLine: 1217
+				EndLine: 1217
+				NodeType: Object
+
+				Alias: getDaysInMonth(year,month)
+				StartLine: 1221
+				EndLine: 1223
+				NodeType: Function
+
+				Alias: getDates(startDate,n)
+				StartLine: 1225
+				EndLine: 1233
+				NodeType: Function
+
+				Alias: _refreshView()
+				StartLine: 1235
+				EndLine: 1276
+				NodeType: Function
+
+				Alias: compare(date1,date2)
+				StartLine: 1278
+				EndLine: 1280
+				NodeType: Function
+
+				Alias: getISO8601WeekNumber(date)
+				StartLine: 1282
+				EndLine: 1289
+				NodeType: Function
+
+				Alias: handleKeyDown(key,evt)
+				StartLine: 1291
+				EndLine: 1312
+				NodeType: Function
+
+	Alias: ?(dateFilter)
+	StartLine: 1319
+	EndLine: 1372
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1320
+		EndLine: 1371
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrl)
+			StartLine: 1325
+			EndLine: 1370
+			NodeType: Function
+
+				Alias: step
+				StartLine: 1326
+				EndLine: 1326
+				NodeType: Object
+
+				Alias: _refreshView()
+				StartLine: 1329
+				EndLine: 1341
+				NodeType: Function
+
+				Alias: compare(date1,date2)
+				StartLine: 1343
+				EndLine: 1345
+				NodeType: Function
+
+				Alias: handleKeyDown(key,evt)
+				StartLine: 1347
+				EndLine: 1367
+				NodeType: Function
+
+	Alias: ?(dateFilter)
+	StartLine: 1374
+	EndLine: 1431
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1375
+		EndLine: 1430
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrl)
+			StartLine: 1380
+			EndLine: 1429
+			NodeType: Function
+
+				Alias: step
+				StartLine: 1383
+				EndLine: 1383
+				NodeType: Object
+
+				Alias: getStartingYear(year)
+				StartLine: 1386
+				EndLine: 1388
+				NodeType: Function
+
+				Alias: _refreshView()
+				StartLine: 1390
+				EndLine: 1401
+				NodeType: Function
+
+				Alias: compare(date1,date2)
+				StartLine: 1403
+				EndLine: 1405
+				NodeType: Function
+
+				Alias: handleKeyDown(key,evt)
+				StartLine: 1407
+				EndLine: 1426
+				NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 1433
+	EndLine: 1446
+	NodeType: Object
+
+		Alias: html5Types
+		StartLine: 1435
+		EndLine: 1439
+		NodeType: Object
+
+	Alias: ?($compile,$parse,…upConfig)
+	StartLine: 1449
+	EndLine: 1713
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1450
+		EndLine: 1712
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 1453
+			EndLine: 1460
+			NodeType: Object
+
+			Alias: link(scope,element,at…,ngModel)
+			StartLine: 1461
+			EndLine: 1711
+			NodeType: Function
+
+				Alias: getText(key)
+				StartLine: 1468
+				EndLine: 1470
+				NodeType: Function
+
+				Alias: $observe&gt;?(value,oldValue)
+				StartLine: 1478
+				EndLine: 1490
+				NodeType: AnonymousFunction
+
+				Alias: attr&gt;?
+				StartLine: 1503
+				EndLine: 1506
+				NodeType: Object
+
+				Alias: cameltoDash(string)
+				StartLine: 1508
+				EndLine: 1510
+				NodeType: Function
+
+					Alias: replace&gt;?($1)
+					StartLine: 1509
+					EndLine: 1509
+					NodeType: AnonymousFunction
+
+				Alias: forEach&gt;?(value,option)
+				StartLine: 1528
+				EndLine: 1530
+				NodeType: AnonymousFunction
+
+				Alias: forEach&gt;?(key)
+				StartLine: 1534
+				EndLine: 1552
+				NodeType: AnonymousFunction
+
+					Alias: $watch&gt;?(value)
+					StartLine: 1537
+					EndLine: 1539
+					NodeType: AnonymousFunction
+
+					Alias: $watch&gt;?(value,oldvalue)
+					StartLine: 1545
+					EndLine: 1549
+					NodeType: AnonymousFunction
+
+				Alias: parseDate(viewValue)
+				StartLine: 1565
+				EndLine: 1585
+				NodeType: Function
+
+				Alias: validator(modelValue,viewValue)
+				StartLine: 1587
+				EndLine: 1602
+				NodeType: Function
+
+				Alias: push&gt;?(value)
+				StartLine: 1609
+				EndLine: 1612
+				NodeType: AnonymousFunction
+
+				Alias: push&gt;?(value)
+				StartLine: 1615
+				EndLine: 1618
+				NodeType: AnonymousFunction
+
+				Alias: dateSelection(dt)
+				StartLine: 1622
+				EndLine: 1634
+				NodeType: Function
+				Comment: Inner change
+
+				Alias: push&gt;?()
+				StartLine: 1637
+				EndLine: 1639
+				NodeType: AnonymousFunction
+				Comment: Detect changes in the view from the text box
+
+				Alias: documentClickBind(event)
+				StartLine: 1641
+				EndLine: 1647
+				NodeType: Function
+
+					Alias: $apply&gt;?()
+					StartLine: 1643
+					EndLine: 1645
+					NodeType: AnonymousFunction
+
+				Alias: keydown(evt,noApply)
+				StartLine: 1649
+				EndLine: 1651
+				NodeType: Function
+
+				Alias: keydown(evt)
+				StartLine: 1654
+				EndLine: 1664
+				NodeType: Function
+
+				Alias: $watch&gt;?(value)
+				StartLine: 1666
+				EndLine: 1676
+				NodeType: AnonymousFunction
+
+				Alias: select(date)
+				StartLine: 1678
+				EndLine: 1689
+				NodeType: Function
+
+				Alias: close()
+				StartLine: 1691
+				EndLine: 1694
+				NodeType: Function
+
+				Alias: $on&gt;?()
+				StartLine: 1706
+				EndLine: 1710
+				NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 1715
+	EndLine: 1728
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1716
+		EndLine: 1727
+		NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 1721
+			EndLine: 1726
+			NodeType: Function
+
+				Alias: bind&gt;?(event)
+				StartLine: 1722
+				EndLine: 1725
+				NodeType: AnonymousFunction
+
+	Alias: constant&gt;?
+	StartLine: 1732
+	EndLine: 1734
+	NodeType: Object
+
+	Alias: ?($document,$rootScope)
+	StartLine: 1736
+	EndLine: 1790
+	NodeType: AnonymousFunction
+
+		Alias: open(dropdownScope)
+		StartLine: 1739
+		EndLine: 1750
+		NodeType: Function
+
+		Alias: close(dropdownScope)
+		StartLine: 1752
+		EndLine: 1758
+		NodeType: Function
+
+		Alias: closeDropdown(evt)
+		StartLine: 1760
+		EndLine: 1782
+		NodeType: Function
+		Comment: This method may still be called during the same mouse event that&#D;&#A; unbound this event handler. So check openScope before proceeding.
+
+		Alias: escapeKeyBind(evt)
+		StartLine: 1784
+		EndLine: 1789
+		NodeType: Function
+
+	Alias: ?($scope,$attrs,$p…document)
+	StartLine: 1792
+	EndLine: 1882
+	NodeType: AnonymousFunction
+
+		Alias: init(element)
+		StartLine: 1801
+		EndLine: 1821
+		NodeType: Function
+
+			Alias: $watch&gt;?(value)
+			StartLine: 1808
+			EndLine: 1810
+			NodeType: AnonymousFunction
+
+			Alias: handleDestroyEvent()
+			StartLine: 1817
+			EndLine: 1819
+			NodeType: Function
+
+		Alias: toggle(open)
+		StartLine: 1823
+		EndLine: 1825
+		NodeType: Function
+
+		Alias: isOpen()
+		StartLine: 1828
+		EndLine: 1830
+		NodeType: Function
+		Comment: Allow other directives to watch status
+
+		Alias: getToggleElement()
+		StartLine: 1832
+		EndLine: 1834
+		NodeType: Function
+
+		Alias: getAutoClose()
+		StartLine: 1836
+		EndLine: 1838
+		NodeType: Function
+		Comment: or &#39;outsideClick&#39; or &#39;disabled&#39;
+
+		Alias: getElement()
+		StartLine: 1840
+		EndLine: 1842
+		NodeType: Function
+
+		Alias: focusToggleElement()
+		StartLine: 1844
+		EndLine: 1848
+		NodeType: Function
+
+		Alias: $watch&gt;?(isOpen,wasOpen)
+		StartLine: 1850
+		EndLine: 1873
+		NodeType: AnonymousFunction
+
+			Alias: css&gt;?
+			StartLine: 1853
+			EndLine: 1857
+			NodeType: Object
+
+			Alias: toggleInvoker&gt;?
+			StartLine: 1871
+			EndLine: 1871
+			NodeType: Object
+
+		Alias: $on&gt;?()
+		StartLine: 1875
+		EndLine: 1877
+		NodeType: AnonymousFunction
+
+		Alias: $on&gt;?()
+		StartLine: 1879
+		EndLine: 1881
+		NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 1884
+	EndLine: 1891
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1885
+		EndLine: 1890
+		NodeType: Object
+
+			Alias: link(scope,element,at…downCtrl)
+			StartLine: 1887
+			EndLine: 1889
+			NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 1893
+	EndLine: 1904
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1894
+		EndLine: 1903
+		NodeType: Object
+
+			Alias: link(scope,element,at…downCtrl)
+			StartLine: 1897
+			EndLine: 1902
+			NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 1906
+	EndLine: 1939
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 1907
+		EndLine: 1938
+		NodeType: Object
+
+			Alias: link(scope,element,at…downCtrl)
+			StartLine: 1909
+			EndLine: 1937
+			NodeType: Function
+
+				Alias: toggleDropdown(event)
+				StartLine: 1916
+				EndLine: 1924
+				NodeType: Function
+
+					Alias: $apply&gt;?()
+					StartLine: 1920
+					EndLine: 1922
+					NodeType: AnonymousFunction
+
+				Alias: attr&gt;?
+				StartLine: 1929
+				EndLine: 1929
+				NodeType: Object
+				Comment: WAI-ARIA
+
+				Alias: $watch&gt;?(isOpen)
+				StartLine: 1930
+				EndLine: 1932
+				NodeType: AnonymousFunction
+
+				Alias: $on&gt;?()
+				StartLine: 1934
+				EndLine: 1936
+				NodeType: AnonymousFunction
+
+	Alias: factory&gt;?()
+	StartLine: 1947
+	EndLine: 1995
+	NodeType: AnonymousFunction
+	Comment: *&#A; * A helper, internal data structure that acts as a map but also allows getting / removing&#A; * elements in the LIFO order
+
+		Alias: ?
+		StartLine: 1948
+		EndLine: 1994
+		NodeType: Object
+
+			Alias: createNew()
+			StartLine: 1949
+			EndLine: 1993
+			NodeType: Function
+
+				Alias: ?
+				StartLine: 1952
+				EndLine: 1992
+				NodeType: Object
+
+					Alias: add(key,value)
+					StartLine: 1953
+					EndLine: 1958
+					NodeType: Function
+
+						Alias: push&gt;?
+						StartLine: 1954
+						EndLine: 1957
+						NodeType: Object
+
+					Alias: get(key)
+					StartLine: 1959
+					EndLine: 1965
+					NodeType: Function
+
+					Alias: keys()
+					StartLine: 1966
+					EndLine: 1972
+					NodeType: Function
+
+					Alias: top()
+					StartLine: 1973
+					EndLine: 1975
+					NodeType: Function
+
+					Alias: remove(key)
+					StartLine: 1976
+					EndLine: 1985
+					NodeType: Function
+
+					Alias: removeTop()
+					StartLine: 1986
+					EndLine: 1988
+					NodeType: Function
+
+					Alias: length()
+					StartLine: 1989
+					EndLine: 1991
+					NodeType: Function
+
+	Alias: ?($timeout)
+	StartLine: 2000
+	EndLine: 2019
+	NodeType: AnonymousFunction
+	Comment: *&#A; * A helper directive for the $modal service. It creates a backdrop element.
+
+		Alias: ?
+		StartLine: 2001
+		EndLine: 2009
+		NodeType: Object
+
+			Alias: compile(tElement,tAttrs)
+			StartLine: 2005
+			EndLine: 2008
+			NodeType: Function
+
+		Alias: linkFn(scope,element,attrs)
+		StartLine: 2011
+		EndLine: 2018
+		NodeType: Function
+
+			Alias: $timeout&gt;?()
+			StartLine: 2015
+			EndLine: 2017
+			NodeType: AnonymousFunction
+			Comment: trigger CSS transitions
+
+	Alias: ?($modalStack,$q)
+	StartLine: 2021
+	EndLine: 2088
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 2022
+		EndLine: 2087
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 2024
+			EndLine: 2027
+			NodeType: Object
+
+			Alias: templateUrl(tElement,tAttrs)
+			StartLine: 2030
+			EndLine: 2032
+			NodeType: Function
+
+			Alias: link(scope,element,attrs)
+			StartLine: 2033
+			EndLine: 2086
+			NodeType: Function
+
+				Alias: close(evt)
+				StartLine: 2037
+				EndLine: 2044
+				NodeType: Function
+
+				Alias: $observe&gt;?(value)
+				StartLine: 2055
+				EndLine: 2059
+				NodeType: AnonymousFunction
+				Comment: Observe function will be called on next digest cycle after compilation, ensuring that the DOM is ready.&#D;&#A; In order to use this way of finding whether DOM is ready, we need to observe a scope property used in modal&#39;s template.
+
+				Alias: then&gt;?()
+				StartLine: 2061
+				EndLine: 2085
+				NodeType: AnonymousFunction
+				Comment: trigger CSS transitions
+
+	Alias: ?()
+	StartLine: 2091
+	EndLine: 2099
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 2092
+		EndLine: 2098
+		NodeType: Object
+
+			Alias: compile(tElement,tAttrs)
+			StartLine: 2093
+			EndLine: 2097
+			NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 2101
+	EndLine: 2110
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 2102
+		EndLine: 2109
+		NodeType: Object
+
+			Alias: link($scope,$element,…ansclude)
+			StartLine: 2103
+			EndLine: 2108
+			NodeType: Function
+
+				Alias: $transclude&gt;?(clone)
+				StartLine: 2104
+				EndLine: 2107
+				NodeType: AnonymousFunction
+
+	Alias: ?($animate,$timeou…ackedMap)
+	StartLine: 2113
+	EndLine: 2298
+	NodeType: AnonymousFunction
+
+		Alias: backdropIndex()
+		StartLine: 2121
+		EndLine: 2130
+		NodeType: Function
+
+		Alias: $watch&gt;?(newBackdropIndex)
+		StartLine: 2132
+		EndLine: 2136
+		NodeType: AnonymousFunction
+
+		Alias: removeModalWindow(modalInstance)
+		StartLine: 2138
+		EndLine: 2151
+		NodeType: Function
+
+			Alias: removeAfterAnimate&gt;?()
+			StartLine: 2147
+			EndLine: 2150
+			NodeType: AnonymousFunction
+			Comment: remove window DOM element
+
+		Alias: checkRemoveBackdrop()
+		StartLine: 2153
+		EndLine: 2163
+		NodeType: Function
+		Comment: remove backdrop if no longer needed
+
+			Alias: removeAfterAnimate&gt;?()
+			StartLine: 2157
+			EndLine: 2159
+			NodeType: AnonymousFunction
+
+		Alias: removeAfterAnimate(domEl,scope,done)
+		StartLine: 2165
+		EndLine: 2191
+		NodeType: Function
+		Comment: Closing animation
+
+			Alias: closeFn()
+			StartLine: 2171
+			EndLine: 2173
+			NodeType: Function
+			Comment: transition out
+
+			Alias: afterAnimating()
+			StartLine: 2179
+			EndLine: 2190
+			NodeType: Function
+
+		Alias: bind&gt;?(evt)
+		StartLine: 2193
+		EndLine: 2205
+		NodeType: AnonymousFunction
+
+			Alias: $apply&gt;?()
+			StartLine: 2200
+			EndLine: 2202
+			NodeType: AnonymousFunction
+
+		Alias: open(modalInstance,modal)
+		StartLine: 2207
+		EndLine: 2251
+		NodeType: Function
+
+			Alias: add&gt;?
+			StartLine: 2211
+			EndLine: 2217
+			NodeType: Object
+
+			Alias: attr&gt;?
+			StartLine: 2235
+			EndLine: 2241
+			NodeType: Object
+
+		Alias: broadcastClosing(modalWindow,resu…,closing)
+		StartLine: 2253
+		EndLine: 2255
+		NodeType: Function
+
+		Alias: close(modalInstance,result)
+		StartLine: 2257
+		EndLine: 2266
+		NodeType: Function
+
+		Alias: dismiss(modalInstance,reason)
+		StartLine: 2268
+		EndLine: 2277
+		NodeType: Function
+
+		Alias: dismissAll(reason)
+		StartLine: 2279
+		EndLine: 2284
+		NodeType: Function
+
+		Alias: getTop()
+		StartLine: 2286
+		EndLine: 2288
+		NodeType: Function
+
+		Alias: modalRendered(modalInstance)
+		StartLine: 2290
+		EndLine: 2295
+		NodeType: Function
+
+	Alias: provider&gt;?()
+	StartLine: 2300
+	EndLine: 2415
+	NodeType: AnonymousFunction
+
+		Alias: $modalProvider
+		StartLine: 2302
+		EndLine: 2412
+		NodeType: Object
+
+			Alias: options
+			StartLine: 2303
+			EndLine: 2307
+			NodeType: Object
+
+			Alias: ?($injector,$rootS…dalStack)
+			StartLine: 2309
+			EndLine: 2411
+			NodeType: AnonymousFunction
+
+				Alias: getTemplatePromise(options)
+				StartLine: 2313
+				EndLine: 2316
+				NodeType: Function
+
+				Alias: getResolvePromises(resolves)
+				StartLine: 2318
+				EndLine: 2326
+				NodeType: Function
+
+					Alias: forEach&gt;?(value)
+					StartLine: 2320
+					EndLine: 2324
+					NodeType: AnonymousFunction
+
+				Alias: open(modalOptions)
+				StartLine: 2328
+				EndLine: 2408
+				NodeType: Function
+
+					Alias: modalInstance
+					StartLine: 2335
+					EndLine: 2345
+					NodeType: Object
+					Comment: prepare an instance of a modal to be injected into controllers and returned to a caller
+
+						Alias: close(result)
+						StartLine: 2339
+						EndLine: 2341
+						NodeType: Function
+
+						Alias: dismiss(reason)
+						StartLine: 2342
+						EndLine: 2344
+						NodeType: Function
+
+					Alias: resolveSuccess(tplAndVars)
+					StartLine: 2360
+					EndLine: 2397
+					NodeType: Function
+
+						Alias: forEach&gt;?(value,key)
+						StartLine: 2373
+						EndLine: 2375
+						NodeType: AnonymousFunction
+
+						Alias: open&gt;?
+						StartLine: 2383
+						EndLine: 2395
+						NodeType: Object
+
+					Alias: resolveError(reason)
+					StartLine: 2397
+					EndLine: 2399
+					NodeType: Function
+
+					Alias: then&gt;?()
+					StartLine: 2401
+					EndLine: 2403
+					NodeType: AnonymousFunction
+
+					Alias: then&gt;?(reason)
+					StartLine: 2403
+					EndLine: 2405
+					NodeType: AnonymousFunction
+
+	Alias: ?($scope,$attrs,$parse)
+	StartLine: 2419
+	EndLine: 2484
+	NodeType: AnonymousFunction
+
+		Alias: ngModelCtrl
+		StartLine: 2421
+		EndLine: 2421
+		NodeType: Object
+		Comment: nullModelCtrl
+
+		Alias: init(ngModelCtrl_,config)
+		StartLine: 2424
+		EndLine: 2454
+		NodeType: Function
+
+			Alias: $render()
+			StartLine: 2428
+			EndLine: 2430
+			NodeType: Function
+
+			Alias: $watch&gt;?(value)
+			StartLine: 2433
+			EndLine: 2436
+			NodeType: AnonymousFunction
+
+			Alias: $watch&gt;?()
+			StartLine: 2441
+			EndLine: 2443
+			NodeType: AnonymousFunction
+
+			Alias: $watch&gt;?(value)
+			StartLine: 2445
+			EndLine: 2453
+			NodeType: AnonymousFunction
+			Comment: Readonly variable
+
+		Alias: calculateTotalPages()
+		StartLine: 2456
+		EndLine: 2459
+		NodeType: Function
+
+		Alias: render()
+		StartLine: 2461
+		EndLine: 2463
+		NodeType: Function
+
+		Alias: selectPage(page,evt)
+		StartLine: 2465
+		EndLine: 2473
+		NodeType: Function
+
+		Alias: getText(key)
+		StartLine: 2475
+		EndLine: 2477
+		NodeType: Function
+
+		Alias: noPrevious()
+		StartLine: 2478
+		EndLine: 2480
+		NodeType: Function
+
+		Alias: noNext()
+		StartLine: 2481
+		EndLine: 2483
+		NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 2486
+	EndLine: 2495
+	NodeType: Object
+
+	Alias: ?($parse,paginationConfig)
+	StartLine: 2497
+	EndLine: 2601
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 2498
+		EndLine: 2600
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 2500
+			EndLine: 2506
+			NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 2511
+			EndLine: 2599
+			NodeType: Function
+
+				Alias: $watch&gt;?(value)
+				StartLine: 2527
+				EndLine: 2530
+				NodeType: AnonymousFunction
+
+				Alias: makePage(number,text,isActive)
+				StartLine: 2534
+				EndLine: 2540
+				NodeType: Function
+				Comment: Create page object used in template
+
+					Alias: ?
+					StartLine: 2535
+					EndLine: 2539
+					NodeType: Object
+
+				Alias: getPages(currentPage,totalPages)
+				StartLine: 2542
+				EndLine: 2590
+				NodeType: Function
+
+				Alias: render()
+				StartLine: 2593
+				EndLine: 2598
+				NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 2603
+	EndLine: 2608
+	NodeType: Object
+
+	Alias: ?(pagerConfig)
+	StartLine: 2610
+	EndLine: 2633
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 2611
+		EndLine: 2632
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 2613
+			EndLine: 2617
+			NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 2622
+			EndLine: 2631
+			NodeType: Function
+
+	Alias: provider&gt;?()
+	StartLine: 2646
+	EndLine: 3006
+	NodeType: AnonymousFunction
+	Comment: *&#A; * The $tooltip service creates tooltip- and popover-like directives as well as&#A; * houses global options for them.&#A; &#D;&#A; The default options tooltip and popover.
+
+		Alias: defaultOptions
+		StartLine: 2648
+		EndLine: 2653
+		NodeType: Object
+
+		Alias: triggerMap
+		StartLine: 2656
+		EndLine: 2660
+		NodeType: Object
+		Comment: Default hide triggers for each show trigger
+
+		Alias: options(value)
+		StartLine: 2674
+		EndLine: 2676
+		NodeType: Function
+		Comment: *&#A;   * `options({})` allows global configuration of all tooltips in the&#A;   * application.&#A;   *&#A;   *   var app = angular.module( &#39;App&#39;, [&#39;ui.bootstrap.tooltip&#39;], function( $tooltipProvider ) {&#A;   *     // place tooltips left instead of top by default&#A;   *     $tooltipProvider.options( { placement: &#39;left&#39; } );&#A;   *   });
+
+		Alias: setTriggers(triggers)
+		StartLine: 2683
+		EndLine: 2685
+		NodeType: Function
+		Comment: *&#A;   * This allows you to extend the set of trigger mappings available. E.g.:&#A;   *&#A;   *   $tooltipProvider.setTriggers( &#39;openTrigger&#39;: &#39;closeTrigger&#39; );
+
+		Alias: snake_case(name)
+		StartLine: 2690
+		EndLine: 2696
+		NodeType: Function
+		Comment: *&#A;   * This is a helper function for translating camel-case to snake-case.
+
+			Alias: replace&gt;?(letter,pos)
+			StartLine: 2693
+			EndLine: 2695
+			NodeType: AnonymousFunction
+
+		Alias: ?($window,$compile…erpolate)
+		StartLine: 2702
+		EndLine: 3005
+		NodeType: AnonymousFunction
+		Comment: *&#A;   * Returns the actual instance of the $tooltip service.&#A;   * TODO support multiple triggers
+
+			Alias: $tooltip(type,prefix,defa…,options)
+			StartLine: 2703
+			EndLine: 3004
+			NodeType: Function
+
+				Alias: getTriggers(trigger)
+				StartLine: 2720
+				EndLine: 2727
+				NodeType: Function
+				Comment: *&#A;       * Returns an object of show and hide triggers.&#A;       *&#A;       * If a trigger is supplied,&#A;       * it is used to show the tooltip; otherwise, it will use the `trigger`&#A;       * option passed to the `$tooltipProvider.options` method; else it will&#A;       * default to the trigger supplied to this directive factory.&#A;       *&#A;       * The hide trigger is based on the show trigger. If the `trigger` option&#A;       * was passed to the `$tooltipProvider.options` method, it will use the&#A;       * mapped trigger from `triggerMap` or the passed trigger if the map is&#A;       * undefined; otherwise, it uses the `triggerMap` value of the show&#A;       * trigger; else it will just use the show trigger.
+
+					Alias: ?
+					StartLine: 2723
+					EndLine: 2726
+					NodeType: Object
+
+				Alias: ?
+				StartLine: 2747
+				EndLine: 3003
+				NodeType: Object
+
+					Alias: compile(tElem,tAttrs)
+					StartLine: 2749
+					EndLine: 3002
+					NodeType: Function
+
+						Alias: link(scope,element,at…ltipCtrl)
+						StartLine: 2752
+						EndLine: 3001
+						NodeType: Function
+
+							Alias: positionTooltip()
+							StartLine: 2762
+							EndLine: 2771
+							NodeType: Function
+
+							Alias: toggleTooltipBind()
+							StartLine: 2780
+							EndLine: 2786
+							NodeType: Function
+
+							Alias: showTooltipBind()
+							StartLine: 2789
+							EndLine: 2806
+							NodeType: Function
+							Comment: Show the tooltip with delay if specified, otherwise show it immediately
+
+								Alias: then&gt;?(reposition)
+								StartLine: 2801
+								EndLine: 2801
+								NodeType: AnonymousFunction
+
+							Alias: hideTooltipBind()
+							StartLine: 2808
+							EndLine: 2812
+							NodeType: Function
+
+								Alias: $apply&gt;?()
+								StartLine: 2809
+								EndLine: 2811
+								NodeType: AnonymousFunction
+
+							Alias: show()
+							StartLine: 2815
+							EndLine: 2846
+							NodeType: Function
+							Comment: Show the tooltip popup element.
+
+								Alias: css&gt;?
+								StartLine: 2834
+								EndLine: 2834
+								NodeType: Object
+								Comment: Set the initial positioning.
+
+							Alias: hide()
+							StartLine: 2849
+							EndLine: 2867
+							NodeType: Function
+							Comment: Hide the tooltip popup element.&#D;&#A; First things first: we don&#39;t show it anymore.
+
+							Alias: createTooltip()
+							StartLine: 2869
+							EndLine: 2894
+							NodeType: Function
+							Comment: There can only be one tooltip element per directive shown at once.
+
+								Alias: tooltipLinker.tooltip&gt;?(tooltip)
+								StartLine: 2875
+								EndLine: 2881
+								NodeType: AnonymousFunction
+
+								Alias: $watch&gt;?()
+								StartLine: 2883
+								EndLine: 2885
+								NodeType: AnonymousFunction
+
+								Alias: $watch&gt;?(val)
+								StartLine: 2888
+								EndLine: 2892
+								NodeType: AnonymousFunction
+
+							Alias: removeTooltip()
+							StartLine: 2896
+							EndLine: 2906
+							NodeType: Function
+
+							Alias: prepareTooltip()
+							StartLine: 2908
+							EndLine: 2912
+							NodeType: Function
+
+							Alias: contentExp()
+							StartLine: 2914
+							EndLine: 2916
+							NodeType: Function
+
+							Alias: $observe&gt;?(val)
+							StartLine: 2922
+							EndLine: 2928
+							NodeType: AnonymousFunction
+
+							Alias: $observe&gt;?(val)
+							StartLine: 2931
+							EndLine: 2935
+							NodeType: AnonymousFunction
+
+							Alias: $observe&gt;?(val)
+							StartLine: 2937
+							EndLine: 2939
+							NodeType: AnonymousFunction
+
+							Alias: prepPopupClass()
+							StartLine: 2941
+							EndLine: 2943
+							NodeType: Function
+
+							Alias: prepPlacement()
+							StartLine: 2945
+							EndLine: 2948
+							NodeType: Function
+
+							Alias: prepPopupDelay()
+							StartLine: 2950
+							EndLine: 2954
+							NodeType: Function
+
+							Alias: unregisterTriggers()
+							StartLine: 2956
+							EndLine: 2959
+							NodeType: Function
+
+							Alias: prepTriggers()
+							StartLine: 2961
+							EndLine: 2973
+							NodeType: Function
+
+							Alias: closeTooltipOnLocationChangeSuccess()
+							StartLine: 2986
+							EndLine: 2990
+							NodeType: Function
+
+							Alias: onDestroyTooltip()
+							StartLine: 2994
+							EndLine: 3000
+							NodeType: Function
+							Comment: Make sure tooltip is destroyed and removed.
+
+	Alias: ?($animate,$sce,$c…eRequest)
+	StartLine: 3011
+	EndLine: 3074
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3012
+		EndLine: 3073
+		NodeType: Object
+
+			Alias: link(scope,elem,attrs)
+			StartLine: 3013
+			EndLine: 3072
+			NodeType: Function
+
+				Alias: cleanupLastIncludeContent()
+				StartLine: 3021
+				EndLine: 3037
+				NodeType: Function
+
+					Alias: then&gt;?()
+					StartLine: 3031
+					EndLine: 3033
+					NodeType: AnonymousFunction
+
+				Alias: $watch&gt;?(src)
+				StartLine: 3039
+				EndLine: 3069
+				NodeType: AnonymousFunction
+
+					Alias: then&gt;?(response)
+					StartLine: 3045
+					EndLine: 3059
+					NodeType: AnonymousFunction
+					Comment: set the 2nd param to true to ignore the template request error so that the inner&#D;&#A;contents and scope can be cleaned up.
+
+						Alias: $compile.clone&gt;?(clone)
+						StartLine: 3050
+						EndLine: 3053
+						NodeType: AnonymousFunction
+
+					Alias: then&gt;?()
+					StartLine: 3059
+					EndLine: 3064
+					NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 3081
+	EndLine: 3096
+	NodeType: AnonymousFunction
+	Comment: *&#A; * Note that it&#39;s intentional that these classes are *not* applied through $animate.&#A; * They must not be animated as they&#39;re expected to be present on the tooltip on&#A; * initialization.
+
+		Alias: ?
+		StartLine: 3082
+		EndLine: 3095
+		NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 3084
+			EndLine: 3094
+			NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3098
+	EndLine: 3105
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3099
+		EndLine: 3104
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3102
+			EndLine: 3102
+			NodeType: Object
+
+	Alias: ?($tooltip)
+	StartLine: 3107
+	EndLine: 3109
+	NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 3111
+	EndLine: 3119
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3112
+		EndLine: 3118
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3115
+			EndLine: 3116
+			NodeType: Object
+
+	Alias: ?($tooltip)
+	StartLine: 3121
+	EndLine: 3125
+	NodeType: AnonymousFunction
+
+		Alias: $tooltip&gt;?
+		StartLine: 3122
+		EndLine: 3124
+		NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 3127
+	EndLine: 3134
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3128
+		EndLine: 3133
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3131
+			EndLine: 3131
+			NodeType: Object
+
+	Alias: ?($tooltip)
+	StartLine: 3136
+	EndLine: 3140
+	NodeType: AnonymousFunction
+
+		Alias: $tooltip&gt;?
+		StartLine: 3137
+		EndLine: 3139
+		NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 3145
+	EndLine: 3152
+	NodeType: AnonymousFunction
+	Comment: Deprecated
+
+		Alias: ?
+		StartLine: 3146
+		EndLine: 3151
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3149
+			EndLine: 3149
+			NodeType: Object
+
+	Alias: ?($tooltip,tooltip…ted,$log)
+	StartLine: 3157
+	EndLine: 3162
+	NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 3171
+	EndLine: 3179
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3172
+		EndLine: 3178
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3175
+			EndLine: 3176
+			NodeType: Object
+
+	Alias: ?($tooltip)
+	StartLine: 3181
+	EndLine: 3185
+	NodeType: AnonymousFunction
+
+		Alias: $tooltip&gt;?
+		StartLine: 3182
+		EndLine: 3184
+		NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 3187
+	EndLine: 3194
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3188
+		EndLine: 3193
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3191
+			EndLine: 3191
+			NodeType: Object
+
+	Alias: ?($tooltip)
+	StartLine: 3196
+	EndLine: 3198
+	NodeType: AnonymousFunction
+
+	Alias: constant&gt;?
+	StartLine: 3202
+	EndLine: 3205
+	NodeType: Object
+
+	Alias: ?($scope,$attrs,pr…ssConfig)
+	StartLine: 3207
+	EndLine: 3234
+	NodeType: AnonymousFunction
+
+		Alias: addBar(bar,element)
+		StartLine: 3214
+		EndLine: 3229
+		NodeType: Function
+
+			Alias: css&gt;?
+			StartLine: 3216
+			EndLine: 3216
+			NodeType: Object
+
+			Alias: $watch&gt;?(value)
+			StartLine: 3221
+			EndLine: 3223
+			NodeType: AnonymousFunction
+
+			Alias: $on&gt;?()
+			StartLine: 3225
+			EndLine: 3228
+			NodeType: AnonymousFunction
+
+		Alias: removeBar(bar)
+		StartLine: 3231
+		EndLine: 3233
+		NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3236
+	EndLine: 3246
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3237
+		EndLine: 3245
+		NodeType: Object
+
+	Alias: directive&gt;?()
+	StartLine: 3248
+	EndLine: 3264
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3249
+		EndLine: 3263
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3254
+			EndLine: 3258
+			NodeType: Object
+
+			Alias: link(scope,element,at…ressCtrl)
+			StartLine: 3260
+			EndLine: 3262
+			NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3266
+	EndLine: 3282
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3267
+		EndLine: 3281
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3272
+			EndLine: 3276
+			NodeType: Object
+
+			Alias: link(scope,element,at…ressCtrl)
+			StartLine: 3278
+			EndLine: 3280
+			NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 3286
+	EndLine: 3290
+	NodeType: Object
+
+	Alias: ?($scope,$attrs,ra…ngConfig)
+	StartLine: 3292
+	EndLine: 3351
+	NodeType: AnonymousFunction
+
+		Alias: ngModelCtrl
+		StartLine: 3293
+		EndLine: 3293
+		NodeType: Object
+
+		Alias: init(ngModelCtrl_)
+		StartLine: 3295
+		EndLine: 3312
+		NodeType: Function
+
+			Alias: push&gt;?(value)
+			StartLine: 3299
+			EndLine: 3304
+			NodeType: AnonymousFunction
+
+		Alias: buildTemplateObjects(states)
+		StartLine: 3314
+		EndLine: 3319
+		NodeType: Function
+
+		Alias: rate(value)
+		StartLine: 3321
+		EndLine: 3326
+		NodeType: Function
+
+		Alias: enter(value)
+		StartLine: 3328
+		EndLine: 3333
+		NodeType: Function
+
+			Alias: onHover&gt;?
+			StartLine: 3332
+			EndLine: 3332
+			NodeType: Object
+
+		Alias: reset()
+		StartLine: 3335
+		EndLine: 3338
+		NodeType: Function
+
+		Alias: onKeydown(evt)
+		StartLine: 3340
+		EndLine: 3346
+		NodeType: Function
+
+		Alias: render()
+		StartLine: 3348
+		EndLine: 3350
+		NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3353
+	EndLine: 3370
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3354
+		EndLine: 3369
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3357
+			EndLine: 3361
+			NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 3365
+			EndLine: 3368
+			NodeType: Function
+
+	Alias: TabsetCtrl($scope)
+	StartLine: 3382
+	EndLine: 3426
+	NodeType: Function
+
+		Alias: select(selectedTab)
+		StartLine: 3386
+		EndLine: 3395
+		NodeType: Function
+
+			Alias: forEach&gt;?(tab)
+			StartLine: 3387
+			EndLine: 3392
+			NodeType: AnonymousFunction
+
+		Alias: addTab(tab)
+		StartLine: 3397
+		EndLine: 3409
+		NodeType: Function
+
+		Alias: removeTab(tab)
+		StartLine: 3411
+		EndLine: 3420
+		NodeType: Function
+
+		Alias: $on&gt;?()
+		StartLine: 3423
+		EndLine: 3425
+		NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 3458
+	EndLine: 3473
+	NodeType: AnonymousFunction
+	Comment: *&#A; * @ngdoc directive&#A; * @name ui.bootstrap.tabs.directive:tabset&#A; * @restrict EA&#A; *&#A; * @description&#A; * Tabset is the outer container for the tabs directive&#A; *&#A; * @param {boolean=} vertical Whether or not to use vertical styling for the tabs.&#A; * @param {boolean=} justified Whether or not to use justified styling for the tabs.&#A; *&#A; * @example&#A;&lt;example module=&quot;ui.bootstrap&quot;&gt;&#A;  &lt;file name=&quot;index.html&quot;&gt;&#A;    &lt;tabset&gt;&#A;      &lt;tab heading=&quot;Tab 1&quot;&gt;&lt;b&gt;First&lt;/b&gt; Content!&lt;/tab&gt;&#A;      &lt;tab heading=&quot;Tab 2&quot;&gt;&lt;i&gt;Second&lt;/i&gt; Content!&lt;/tab&gt;&#A;    &lt;/tabset&gt;&#A;    &lt;hr /&gt;&#A;    &lt;tabset vertical=&quot;true&quot;&gt;&#A;      &lt;tab heading=&quot;Vertical Tab 1&quot;&gt;&lt;b&gt;First&lt;/b&gt; Vertical Content!&lt;/tab&gt;&#A;      &lt;tab heading=&quot;Vertical Tab 2&quot;&gt;&lt;i&gt;Second&lt;/i&gt; Vertical Content!&lt;/tab&gt;&#A;    &lt;/tabset&gt;&#A;    &lt;tabset justified=&quot;true&quot;&gt;&#A;      &lt;tab heading=&quot;Justified Tab 1&quot;&gt;&lt;b&gt;First&lt;/b&gt; Justified Content!&lt;/tab&gt;&#A;      &lt;tab heading=&quot;Justified Tab 2&quot;&gt;&lt;i&gt;Second&lt;/i&gt; Justified Content!&lt;/tab&gt;&#A;    &lt;/tabset&gt;&#A;  &lt;/file&gt;&#A;&lt;/example&gt;
+
+		Alias: ?
+		StartLine: 3459
+		EndLine: 3472
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3463
+			EndLine: 3465
+			NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 3468
+			EndLine: 3471
+			NodeType: Function
+
+	Alias: ?($parse,$log)
+	StartLine: 3555
+	EndLine: 3615
+	NodeType: AnonymousFunction
+	Comment: *&#A; * @ngdoc directive&#A; * @name ui.bootstrap.tabs.directive:tabHeading&#A; * @restrict EA&#A; *&#A; * @description&#A; * Creates an HTML heading for a {@link ui.bootstrap.tabs.directive:tab tab}. Must be placed as a child of a tab element.&#A; *&#A; * @example&#A;&lt;example module=&quot;ui.bootstrap&quot;&gt;&#A;  &lt;file name=&quot;index.html&quot;&gt;&#A;    &lt;tabset&gt;&#A;      &lt;tab&gt;&#A;        &lt;tab-heading&gt;&lt;b&gt;HTML&lt;/b&gt; in my titles?!&lt;/tab-heading&gt;&#A;        And some content, too!&#A;      &lt;/tab&gt;&#A;      &lt;tab&gt;&#A;        &lt;tab-heading&gt;&lt;i class=&quot;icon-heart&quot;&gt;&lt;/i&gt; Icon heading?!?&lt;/tab-heading&gt;&#A;        That&#39;s right.&#A;      &lt;/tab&gt;&#A;    &lt;/tabset&gt;&#A;  &lt;/file&gt;&#A;&lt;/example&gt;
+
+		Alias: ?
+		StartLine: 3556
+		EndLine: 3614
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 3562
+			EndLine: 3568
+			NodeType: Object
+
+			Alias: controller()
+			StartLine: 3569
+			EndLine: 3571
+			NodeType: Function
+			Comment: Empty controller so other directives can require being &#39;under&#39; a tab
+
+			Alias: compile(elm,attrs,transclude)
+			StartLine: 3572
+			EndLine: 3613
+			NodeType: Function
+
+				Alias: postLink(scope,elm,attrs,…bsetCtrl)
+				StartLine: 3573
+				EndLine: 3612
+				NodeType: Function
+
+					Alias: $watch&gt;?(active)
+					StartLine: 3574
+					EndLine: 3578
+					NodeType: AnonymousFunction
+
+					Alias: $watch&gt;?(value)
+					StartLine: 3582
+					EndLine: 3584
+					NodeType: AnonymousFunction
+
+					Alias: $watch&gt;?(value)
+					StartLine: 3593
+					EndLine: 3595
+					NodeType: AnonymousFunction
+
+					Alias: select()
+					StartLine: 3598
+					EndLine: 3602
+					NodeType: Function
+
+					Alias: $on&gt;?()
+					StartLine: 3605
+					EndLine: 3607
+					NodeType: AnonymousFunction
+
+	Alias: ?()
+	StartLine: 3617
+	EndLine: 3630
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3618
+		EndLine: 3629
+		NodeType: Object
+
+			Alias: link(scope,elm,attrs,tabCtrl)
+			StartLine: 3621
+			EndLine: 3628
+			NodeType: Function
+
+				Alias: updateHeadingElement(heading)
+				StartLine: 3622
+				EndLine: 3627
+				NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3632
+	EndLine: 3661
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3633
+		EndLine: 3652
+		NodeType: Object
+
+			Alias: link(scope,elm,attrs)
+			StartLine: 3636
+			EndLine: 3651
+			NodeType: Function
+
+				Alias: $transcludeFn&gt;?(contents)
+				StartLine: 3641
+				EndLine: 3650
+				NodeType: AnonymousFunction
+				Comment: Now our tab is ready to be transcluded: both the tab heading area&#D;&#A;and the tab content area are loaded.  Transclude &#39;em both.
+
+					Alias: forEach&gt;?(node)
+					StartLine: 3642
+					EndLine: 3649
+					NodeType: AnonymousFunction
+
+		Alias: isTabHeading(node)
+		StartLine: 3653
+		EndLine: 3660
+		NodeType: Function
+
+	Alias: constant&gt;?
+	StartLine: 3667
+	EndLine: 3675
+	NodeType: Object
+
+	Alias: ?($scope,$attrs,$p…erConfig)
+	StartLine: 3677
+	EndLine: 3941
+	NodeType: AnonymousFunction
+
+		Alias: ngModelCtrl
+		StartLine: 3679
+		EndLine: 3679
+		NodeType: Object
+		Comment: nullModelCtrl
+
+		Alias: init(ngModelCtrl_,inputs)
+		StartLine: 3682
+		EndLine: 3705
+		NodeType: Function
+
+			Alias: unshift&gt;?(modelValue)
+			StartLine: 3686
+			EndLine: 3688
+			NodeType: AnonymousFunction
+
+		Alias: $watch&gt;?(value)
+		StartLine: 3709
+		EndLine: 3711
+		NodeType: AnonymousFunction
+
+		Alias: $watch&gt;?(value)
+		StartLine: 3716
+		EndLine: 3718
+		NodeType: AnonymousFunction
+
+		Alias: $watch&gt;?(value)
+		StartLine: 3724
+		EndLine: 3737
+		NodeType: AnonymousFunction
+
+		Alias: getHoursFromTemplate()
+		StartLine: 3741
+		EndLine: 3757
+		NodeType: Function
+		Comment: Get $scope.hours in 24H mode if valid
+
+		Alias: getMinutesFromTemplate()
+		StartLine: 3759
+		EndLine: 3762
+		NodeType: Function
+
+		Alias: pad(value)
+		StartLine: 3764
+		EndLine: 3766
+		NodeType: Function
+
+		Alias: setupMousewheelEvents(hoursInputEl,min…sInputEl)
+		StartLine: 3769
+		EndLine: 3789
+		NodeType: Function
+		Comment: Respond on mousewheel spin
+
+			Alias: isScrollingUp(e)
+			StartLine: 3770
+			EndLine: 3777
+			NodeType: Function
+
+			Alias: bind&gt;?(e)
+			StartLine: 3779
+			EndLine: 3782
+			NodeType: AnonymousFunction
+
+			Alias: bind&gt;?(e)
+			StartLine: 3784
+			EndLine: 3787
+			NodeType: AnonymousFunction
+
+		Alias: setupArrowkeyEvents(hoursInputEl,min…sInputEl)
+		StartLine: 3792
+		EndLine: 3818
+		NodeType: Function
+		Comment: Respond on up/down arrowkeys
+
+			Alias: bind&gt;?(e)
+			StartLine: 3793
+			EndLine: 3804
+			NodeType: AnonymousFunction
+			Comment: up
+
+			Alias: bind&gt;?(e)
+			StartLine: 3806
+			EndLine: 3817
+			NodeType: AnonymousFunction
+			Comment: up
+
+		Alias: setupInputEvents(hoursInputEl,min…sInputEl)
+		StartLine: 3820
+		EndLine: 3876
+		NodeType: Function
+
+			Alias: invalidate(invalidHours,inv…dMinutes)
+			StartLine: 3827
+			EndLine: 3836
+			NodeType: Function
+
+			Alias: updateHours()
+			StartLine: 3838
+			EndLine: 3847
+			NodeType: Function
+
+			Alias: bind&gt;?(e)
+			StartLine: 3849
+			EndLine: 3855
+			NodeType: AnonymousFunction
+
+				Alias: $apply&gt;?()
+				StartLine: 3851
+				EndLine: 3853
+				NodeType: AnonymousFunction
+
+			Alias: updateMinutes()
+			StartLine: 3857
+			EndLine: 3866
+			NodeType: Function
+
+			Alias: bind&gt;?(e)
+			StartLine: 3868
+			EndLine: 3874
+			NodeType: AnonymousFunction
+
+				Alias: $apply&gt;?()
+				StartLine: 3870
+				EndLine: 3872
+				NodeType: AnonymousFunction
+
+		Alias: render()
+		StartLine: 3878
+		EndLine: 3891
+		NodeType: Function
+
+		Alias: refresh(keyboardChange)
+		StartLine: 3894
+		EndLine: 3898
+		NodeType: Function
+		Comment: Call internally when we know that model is valid.
+
+		Alias: makeValid()
+		StartLine: 3900
+		EndLine: 3904
+		NodeType: Function
+
+		Alias: updateTemplate(keyboardChange)
+		StartLine: 3906
+		EndLine: 3918
+		NodeType: Function
+
+		Alias: addMinutes(minutes)
+		StartLine: 3920
+		EndLine: 3924
+		NodeType: Function
+
+		Alias: incrementHours()
+		StartLine: 3926
+		EndLine: 3928
+		NodeType: Function
+
+		Alias: decrementHours()
+		StartLine: 3929
+		EndLine: 3931
+		NodeType: Function
+
+		Alias: incrementMinutes()
+		StartLine: 3932
+		EndLine: 3934
+		NodeType: Function
+
+		Alias: decrementMinutes()
+		StartLine: 3935
+		EndLine: 3937
+		NodeType: Function
+
+		Alias: toggleMeridian()
+		StartLine: 3938
+		EndLine: 3940
+		NodeType: Function
+
+	Alias: directive&gt;?()
+	StartLine: 3943
+	EndLine: 3959
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 3944
+		EndLine: 3958
+		NodeType: Object
+
+			Alias: link(scope,element,attrs,ctrls)
+			StartLine: 3951
+			EndLine: 3957
+			NodeType: Function
+
+	Alias: ?($q,$timeout,$roo…precated)
+	StartLine: 3975
+	EndLine: 4049
+	NodeType: AnonymousFunction
+
+		Alias: $transition(element,trigger,options)
+		StartLine: 3981
+		EndLine: 4023
+		NodeType: Function
+
+			Alias: transitionEndHandler(event)
+			StartLine: 3986
+			EndLine: 3991
+			NodeType: Function
+
+				Alias: $apply&gt;?()
+				StartLine: 3987
+				EndLine: 3990
+				NodeType: AnonymousFunction
+
+			Alias: $timeout&gt;?()
+			StartLine: 3998
+			EndLine: 4010
+			NodeType: AnonymousFunction
+			Comment: Wrap in a timeout to allow the browser time to update the DOM before the transition is to occur
+
+			Alias: cancel()
+			StartLine: 4015
+			EndLine: 4020
+			NodeType: Function
+			Comment: Add our custom cancel function to the promise that is returned&#D;&#A; We can call this if we are about to run a new transition, which we know will prevent this transition from ending,&#D;&#A; i.e. it will therefore never raise a transitionEnd event for that transition
+
+		Alias: transitionEndEventNames
+		StartLine: 4027
+		EndLine: 4032
+		NodeType: Object
+
+		Alias: animationEndEventNames
+		StartLine: 4033
+		EndLine: 4038
+		NodeType: Object
+
+		Alias: findEndEventName(endEventNames)
+		StartLine: 4039
+		EndLine: 4045
+		NodeType: Function
+
+	Alias: ?($parse)
+	StartLine: 4057
+	EndLine: 4080
+	NodeType: AnonymousFunction
+	Comment: *&#A; * A helper service that can parse typeahead&#39;s syntax (string provided by users)&#A; * Extracted to a separate service for ease of unit testing
+
+		Alias: ?
+		StartLine: 4062
+		EndLine: 4079
+		NodeType: Object
+
+			Alias: parse(input)
+			StartLine: 4063
+			EndLine: 4078
+			NodeType: Function
+
+				Alias: ?
+				StartLine: 4072
+				EndLine: 4077
+				NodeType: Object
+
+	Alias: ?($compile,$parse,…adParser)
+	StartLine: 4083
+	EndLine: 4396
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 4087
+		EndLine: 4394
+		NodeType: Object
+
+			Alias: link(originalScope,el…odelCtrl)
+			StartLine: 4089
+			EndLine: 4393
+			NodeType: Function
+
+				Alias: $on&gt;?()
+				StartLine: 4127
+				EndLine: 4129
+				NodeType: AnonymousFunction
+
+				Alias: attr&gt;?
+				StartLine: 4133
+				EndLine: 4137
+				NodeType: Object
+
+				Alias: attr&gt;?
+				StartLine: 4141
+				EndLine: 4148
+				NodeType: Object
+
+				Alias: resetMatches()
+				StartLine: 4154
+				EndLine: 4158
+				NodeType: Function
+
+				Alias: getMatchId(index)
+				StartLine: 4160
+				EndLine: 4162
+				NodeType: Function
+
+				Alias: $watch&gt;?(index)
+				StartLine: 4166
+				EndLine: 4172
+				NodeType: AnonymousFunction
+				Comment: Indicate that the specified match is the active (pre-selected) item in the list owned by this typeahead.&#D;&#A; This attribute is added or removed automatically when the `activeIdx` changes.
+
+				Alias: getMatchesAsync(inputValue)
+				StartLine: 4174
+				EndLine: 4218
+				NodeType: Function
+
+					Alias: locals
+					StartLine: 4176
+					EndLine: 4176
+					NodeType: Object
+
+					Alias: then&gt;?(matches)
+					StartLine: 4178
+					EndLine: 4214
+					NodeType: AnonymousFunction
+
+					Alias: then&gt;?()
+					StartLine: 4214
+					EndLine: 4217
+					NodeType: AnonymousFunction
+
+				Alias: scheduleSearchWithTimeout(inputValue)
+				StartLine: 4228
+				EndLine: 4232
+				NodeType: Function
+
+					Alias: $timeout.timeoutPromise&gt;?()
+					StartLine: 4229
+					EndLine: 4231
+					NodeType: AnonymousFunction
+
+				Alias: cancelPreviousTimeout()
+				StartLine: 4234
+				EndLine: 4238
+				NodeType: Function
+
+				Alias: unshift&gt;?(inputValue)
+				StartLine: 4242
+				EndLine: 4271
+				NodeType: AnonymousFunction
+				Comment: plug into $parsers pipeline to open a typeahead on view changes initiated from DOM&#D;&#A;$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
+
+				Alias: push&gt;?(modelValue)
+				StartLine: 4273
+				EndLine: 4301
+				NodeType: AnonymousFunction
+
+				Alias: select(activeIdx)
+				StartLine: 4303
+				EndLine: 4325
+				NodeType: Function
+				Comment: called from within the $digest() cycle
+
+					Alias: onSelectCallback&gt;?
+					StartLine: 4314
+					EndLine: 4318
+					NodeType: Object
+
+					Alias: $timeout&gt;?()
+					StartLine: 4324
+					EndLine: 4324
+					NodeType: AnonymousFunction
+					Comment: return focus to the input element if a match was selected via a mouse click event&#D;&#A; use timeout to avoid $rootScope:inprog error
+
+				Alias: bind&gt;?(evt)
+				StartLine: 4328
+				EndLine: 4361
+				NodeType: AnonymousFunction
+				Comment: bind keyboard events: arrows up(38) / down(40), enter(13) and tab(9), esc(27)
+
+					Alias: $apply&gt;?()
+					StartLine: 4351
+					EndLine: 4353
+					NodeType: AnonymousFunction
+
+				Alias: bind&gt;?(evt)
+				StartLine: 4363
+				EndLine: 4365
+				NodeType: AnonymousFunction
+
+				Alias: dismissClickHandler(evt)
+				StartLine: 4368
+				EndLine: 4373
+				NodeType: Function
+				Comment: Keep reference to click handler to unbind it.
+
+				Alias: $on&gt;?()
+				StartLine: 4377
+				EndLine: 4384
+				NodeType: AnonymousFunction
+
+	Alias: directive&gt;?()
+	StartLine: 4398
+	EndLine: 4431
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 4399
+		EndLine: 4430
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 4401
+			EndLine: 4407
+			NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 4410
+			EndLine: 4429
+			NodeType: Function
+
+				Alias: isOpen()
+				StartLine: 4414
+				EndLine: 4416
+				NodeType: Function
+
+				Alias: isActive(matchIdx)
+				StartLine: 4418
+				EndLine: 4420
+				NodeType: Function
+
+				Alias: selectActive(matchIdx)
+				StartLine: 4422
+				EndLine: 4424
+				NodeType: Function
+
+				Alias: selectMatch(activeIdx)
+				StartLine: 4426
+				EndLine: 4428
+				NodeType: Function
+
+					Alias: select&gt;?
+					StartLine: 4427
+					EndLine: 4427
+					NodeType: Object
+
+	Alias: ?($templateRequest…e,$parse)
+	StartLine: 4433
+	EndLine: 4450
+	NodeType: AnonymousFunction
+
+		Alias: ?
+		StartLine: 4434
+		EndLine: 4449
+		NodeType: Object
+
+			Alias: scope
+			StartLine: 4436
+			EndLine: 4440
+			NodeType: Object
+
+			Alias: link(scope,element,attrs)
+			StartLine: 4441
+			EndLine: 4448
+			NodeType: Function
+
+				Alias: then&gt;?(tplContent)
+				StartLine: 4443
+				EndLine: 4447
+				NodeType: AnonymousFunction
+
+					Alias: $compile&gt;?(clonedElement)
+					StartLine: 4444
+					EndLine: 4446
+					NodeType: AnonymousFunction
+
+	Alias: filter&gt;?()
+	StartLine: 4452
+	EndLine: 4461
+	NodeType: AnonymousFunction
+
+		Alias: escapeRegexp(queryToEscape)
+		StartLine: 4454
+		EndLine: 4456
+		NodeType: Function
+
+		Alias: ?(matchItem,query)
+		StartLine: 4458
+		EndLine: 4460
+		NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4463
+	EndLine: 4476
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4478
+	EndLine: 4481
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4483
+	EndLine: 4493
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4495
+	EndLine: 4506
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4508
+	EndLine: 4514
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4516
+	EndLine: 4523
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4525
+	EndLine: 4549
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4551
+	EndLine: 4570
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4572
+	EndLine: 4585
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4587
+	EndLine: 4606
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4608
+	EndLine: 4616
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4618
+	EndLine: 4626
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4628
+	EndLine: 4634
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4636
+	EndLine: 4645
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4647
+	EndLine: 4657
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4659
+	EndLine: 4669
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4671
+	EndLine: 4681
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4683
+	EndLine: 4695
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4697
+	EndLine: 4713
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4715
+	EndLine: 4726
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4728
+	EndLine: 4742
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4744
+	EndLine: 4748
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4750
+	EndLine: 4753
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4755
+	EndLine: 4761
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4763
+	EndLine: 4770
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4772
+	EndLine: 4778
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4780
+	EndLine: 4793
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4795
+	EndLine: 4824
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4826
+	EndLine: 4829
+	NodeType: AnonymousFunction
+
+	Alias: ?($templateCache)
+	StartLine: 4831
+	EndLine: 4839
+	NodeType: AnonymousFunction
+
