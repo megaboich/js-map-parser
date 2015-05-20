@@ -216,6 +216,10 @@
     <EmbeddedResource Include="Parser\Source\New\DebuggerKeyword.js" />
     <EmbeddedResource Include="Parser\Source\New\TodoList.js" />
     <EmbeddedResource Include="Parser\ExpectedResult\New\TodoList.txt" />
+    <EmbeddedResource Include="Parser\Source\New\Es6_GetSet.js" />
+    <EmbeddedResource Include="Parser\Source\New\Es6_GetSet2.js" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\Es6_GetSet.txt" />
+    <EmbeddedResource Include="Parser\ExpectedResult\New\Es6_GetSet2.txt" />
     <Content Include="Parser\Tests.VisualState.xml" />
   </ItemGroup>
   <ItemGroup>

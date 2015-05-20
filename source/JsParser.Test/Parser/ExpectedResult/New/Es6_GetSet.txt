@@ -1,0 +1,21 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: o
+	StartLine: 10
+	EndLine: 18
+	NodeType: Object
+	Comment: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects&#D;&#A;&#D;&#A;When defining getters and setters using object initializers &#D;&#A;all you need to do is to prefix a getter method with get and a setter&#D;&#A;method with set. Of course, the getter method must not expect a parameter,&#D;&#A;while the setter method expects exactly one parameter (the new value to set).&#D;&#A;For instance:
+
+		Alias: b()
+		StartLine: 12
+		EndLine: 14
+		NodeType: Function
+
+		Alias: b(x)
+		StartLine: 15
+		EndLine: 17
+		NodeType: Function
+

@@ -83,5 +83,17 @@ namespace JsParser.Test.Parser
             Assert.AreEqual("to do: Another todo line", result.TaskList[1].Description);
             Assert.AreEqual(9, result.TaskList[1].StartLine);
         }
+
+        [Test]
+        public void Es6_GetSet()
+        {
+            TestRunner.RunTest("New.Es6_GetSet.js", "New.Es6_GetSet.txt");
+        }
+
+        [Test]
+        public void Es6_GetSet2()
+        {
+            TestRunner.RunTest("New.Es6_GetSet2.js", "New.Es6_GetSet2.txt");
+        }
     }
 }

@@ -1,0 +1,20 @@
+Alias: All
+StartLine: 0
+EndLine: 0
+NodeType: Function
+
+	Alias: defineProperty&gt;?
+	StartLine: 2
+	EndLine: 5
+	NodeType: Object
+
+		Alias: get()
+		StartLine: 3
+		EndLine: 3
+		NodeType: Function
+
+		Alias: set(y)
+		StartLine: 4
+		EndLine: 4
+		NodeType: Function
+
