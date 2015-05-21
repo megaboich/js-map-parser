@@ -63,9 +63,10 @@ namespace JsParser.Test
 
         private void ScanDir(string dir)
         {
-            Directory.CreateDirectory("f:\\js2\\min");
-            Directory.CreateDirectory("f:\\js2\\src");
-            var jsFiles = Directory.GetFiles(dir, "*.js");
+            var outDir = "C:\\js_parser_units_output\\scan_results";
+            Directory.CreateDirectory(outDir + "\\min");
+            Directory.CreateDirectory(outDir + "\\src");
+            var jsFiles = Directory.GetFiles(dir, "*.js", SearchOption.AllDirectories);
             Parallel.ForEach(jsFiles, file =>
             {
                 if (_stopAll)
@@ -83,13 +84,16 @@ namespace JsParser.Test
                 var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
 
                 var fileName = Path.GetFileName(file);
-                File.AppendAllText("f:\\js2\\" + (isNotMinified ? "src\\" : "min\\") + fileName, source);
+                lock (_lock)
+                {
+                    File.AppendAllText(outDir + (isNotMinified ? "\\src\\" : "\\min\\") + fileName, source);
+                }
 
                 if (actualResult.InternalErrors != null && actualResult.InternalErrors.Count > 0)
                 {
                     lock (_lock)
                     {
-                        File.AppendAllText("f:\\js_err_" + (isNotMinified ? "src" : "min") + ".log", fileName + Environment.NewLine);
+                        File.AppendAllText(outDir + (isNotMinified ? "err_src" : "err_min") + ".log", fileName + Environment.NewLine);
                     }
                 }
 
