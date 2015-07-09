@@ -38,7 +38,7 @@ namespace JsParser.Test.Helpers
                 if (!isIgnored)
                 {
                     var val = p.GetValue(hierarchy.Item, null);
-                    if (val != null && !(val is string && val == string.Empty))
+                    if (val != null && !(val is string && string.IsNullOrEmpty((string)val)))
                     {
                         var escaped = System.Web.HttpUtility.HtmlEncode(val.ToString())
                             .Replace("\r", "&#D;")

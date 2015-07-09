@@ -9,7 +9,6 @@ namespace JsParser.Core.Parsers
     /// </summary>
     public class JavascriptParser : IJavascriptParser
     {
-        private CommentsAgregator _comments;
         private JavascriptParserSettings _settings;
 
         public JavascriptParser(JavascriptParserSettings settings)

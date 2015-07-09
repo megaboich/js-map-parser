@@ -23,7 +23,6 @@ namespace JsParser.Core.Parsers
         {
             var jsp = new Jint.Parser.JavaScriptParser();
             var returnedResult = new JSParserResult();
-            string serialized;
 
             Program program = null;
             try
