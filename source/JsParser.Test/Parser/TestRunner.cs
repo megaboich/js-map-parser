@@ -37,6 +37,10 @@ namespace JsParser.Test.Parser
         public static JSParserResult RunTest(string sourceName, string resultName)
         {
             var source = TestsHelper.GetEmbeddedText("JsParser.Test.Parser.Source." + sourceName);
+
+            // Fix line endings in test files. All should be unix way, but on some GIT clients it is updated automatically.
+            source = source.Replace("\r\n", "\n");
+
             var settings = new JavascriptParserSettings()
             {
                 Filename = sourceName,

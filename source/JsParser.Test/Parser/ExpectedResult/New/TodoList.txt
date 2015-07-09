@@ -18,5 +18,5 @@ NodeType: Function
 	StartLine: 8
 	EndLine: 14
 	NodeType: Function
-	Comment: some comment&#D;&#A;        to do: Another todo line&#D;&#A;        some other text
+	Comment: some comment&#A;        to do: Another todo line&#A;        some other text
 

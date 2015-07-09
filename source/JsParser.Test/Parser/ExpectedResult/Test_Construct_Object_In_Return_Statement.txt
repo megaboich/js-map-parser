@@ -34,5 +34,5 @@ NodeType: Function
 				StartLine: 16
 				EndLine: 18
 				NodeType: Function
-				Comment: Delegate method&#D;&#A;&#9;&#9;&#9;This method contains multilines comment
+				Comment: Delegate method&#A;&#9;&#9;&#9;This method contains multilines comment
 

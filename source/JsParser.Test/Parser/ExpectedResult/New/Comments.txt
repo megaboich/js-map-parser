@@ -24,11 +24,11 @@ NodeType: Function
 		StartLine: 14
 		EndLine: 16
 		NodeType: Function
-		Comment: Comment block - 1 line&#D;&#A;    Comment block - 2 line
+		Comment: Comment block - 1 line&#A;    Comment block - 2 line
 
 		Alias: loadThird()
 		StartLine: 22
 		EndLine: 24
 		NodeType: Function
-		Comment: Comment block with new lines- 2 line&#D;&#A;&#D;&#A;    Comment block with new lines- 3 line
+		Comment: Comment block with new lines- 2 line&#A;&#A;    Comment block with new lines- 3 line
 
