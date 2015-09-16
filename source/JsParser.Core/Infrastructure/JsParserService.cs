@@ -71,9 +71,10 @@ namespace JsParser.Core.Infrastructure
         {
             if (_settings.Extensions.Count > 0)
             {
+                var currentExt = Path.GetExtension(fileName).SafeTrimStart('.');
                 foreach (var ext in _settings.Extensions)
                 {
-                    if (fileName.ToLower().EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
+                    if (string.Compare(currentExt, ext, StringComparison.InvariantCultureIgnoreCase) == 0)
                     {
                         return true;
                     }
