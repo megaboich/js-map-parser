@@ -52,7 +52,7 @@ namespace NppPluginNET
             }
             else if (nc.nmhdr.code == (uint)SciMsg.SCN_CHARADDED)
             {
-                PluginBase.doInsertHtmlCloseTag((char)nc.ch);
+                //PluginBase.doInsertHtmlCloseTag((char)nc.ch);
             }
             else if (nc.nmhdr.code == (uint)NppMsg.NPPN_SHUTDOWN)
             {

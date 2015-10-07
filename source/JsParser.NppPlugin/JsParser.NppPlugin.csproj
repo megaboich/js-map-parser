@@ -9,14 +9,15 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NppPluginNET</RootNamespace>
-    <AssemblyName>Demo</AssemblyName>
+    <AssemblyName>JsParser.NppPlugin</AssemblyName>
     <StartupObject>
     </StartupObject>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,11 +53,11 @@
   -->
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
-    <Compile Include="Forms\frmGoToLine.cs">
+    <Compile Include="Forms\frmParserUiContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmGoToLine.designer.cs">
-      <DependentUpon>frmGoToLine.cs</DependentUpon>
+    <Compile Include="Forms\frmParserUiContainer.designer.cs">
+      <DependentUpon>frmParserUiContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Demo.cs" />
     <Compile Include="NppPluginNETBase.cs" />
@@ -73,8 +74,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\frmGoToLine.resx">
-      <DependentUpon>frmGoToLine.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmParserUiContainer.resx">
+      <DependentUpon>frmParserUiContainer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -82,7 +83,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\star.png" />
-    <Content Include="Properties\star_bmp.bmp" />
+    <Content Include="Properties\jsparsericon.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jint.Parser\Jint.Parser.csproj">
+      <Project>{f2d9f1ae-8db3-4e58-a83c-3297eb69f715}</Project>
+      <Name>Jint.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JsParser.Core\JsParser.Core.csproj">
+      <Project>{4c9696d4-5d66-40f0-aadd-8d6772d1a249}</Project>
+      <Name>JsParser.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JsParser.UI\JsParser.UI.csproj">
+      <Project>{2c3a9341-bfb8-45de-8b5c-e2bafe3a3b80}</Project>
+      <Name>JsParser.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)tools\ilmerge.exe /out:$(ProjectDir)build\JsMapParser.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
+  </PropertyGroup>
 </Project>

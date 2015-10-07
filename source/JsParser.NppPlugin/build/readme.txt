@@ -1,0 +1,1 @@
+Here should be copied the result of build process
