@@ -10,12 +10,11 @@ namespace NppPluginNET
             InitializeComponent();
         }
 
-        void FrmGoToLineVisibleChanged(object sender, EventArgs e)
+        void FormVisibleChanged(object sender, EventArgs e)
         {
         	if (!Visible)
         	{
-                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK,
-                                  PluginBase._funcItems.Items[PluginBase.idFrmGotToLine]._cmdID, 0);
+                PluginBase.UncheckMenuItem(PluginBase.idMenuItemParserUi);
         	}
         }
     }

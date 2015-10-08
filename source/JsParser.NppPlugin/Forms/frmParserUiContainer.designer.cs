@@ -47,14 +47,15 @@
             this.Controls.Add(this.navigationTreeView1);
             this.Name = "frmParserUiContainer";
             this.Text = "NppDockableForm";
-            this.VisibleChanged += new System.EventHandler(this.FrmGoToLineVisibleChanged);
+            this.VisibleChanged += new System.EventHandler(this.FormVisibleChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private JsParser.UI.UI.NavigationTreeView navigationTreeView1;
+        public JsParser.UI.UI.NavigationTreeView navigationTreeView1;
+
 
 
 

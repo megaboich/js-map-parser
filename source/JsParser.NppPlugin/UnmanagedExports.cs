@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using NppPlugin.DllExport;
 
 namespace NppPluginNET
@@ -45,6 +47,15 @@ namespace NppPluginNET
         static void beNotified(IntPtr notifyCode)
         {
             SCNotification nc = (SCNotification)Marshal.PtrToStructure(notifyCode, typeof(SCNotification));
+
+            StringBuilder resultFileName = new StringBuilder(Win32.MAX_PATH);
+            Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, resultFileName);
+            
+            File.AppendAllLines(@"c:\npp_events.log", new[]
+            {
+                resultFileName.ToString() + ":" + nc.nmhdr.code + "," + nc.lParam + "," + nc.wParam
+            });
+
             if (nc.nmhdr.code == (uint)NppMsg.NPPN_TBMODIFICATION)
             {
                 PluginBase._funcItems.RefreshItems();
@@ -58,6 +69,14 @@ namespace NppPluginNET
             {
                 PluginBase.PluginCleanUp();
                 Marshal.FreeHGlobal(_ptrPluginName);
+            }
+            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_FILESAVED)
+            {
+                PluginBase.OnFileSaved();
+            }
+            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_BUFFERACTIVATED)
+            {
+                PluginBase.OnFileChanged();
             }
         }
     }

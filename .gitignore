@@ -3,3 +3,7 @@ source/*/bin/
 *.user
 *.suo
 source/*.vsix
+/source/JsParser.NppPlugin/build/JsMapParser.dll
+/source/JsParser.NppPlugin/build/JsMapParser.exp
+/source/JsParser.NppPlugin/build/JsMapParser.lib
+/source/JsParser.NppPlugin/build/JsMapParser.pdb

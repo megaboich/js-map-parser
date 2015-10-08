@@ -59,7 +59,9 @@
     <Compile Include="Forms\frmParserUiContainer.designer.cs">
       <DependentUpon>frmParserUiContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demo.cs" />
+    <Compile Include="JsParserIntegration.cs" />
+    <Compile Include="NppCodeProvider.cs" />
+    <Compile Include="Plugin.cs" />
     <Compile Include="NppPluginNETBase.cs" />
     <Compile Include="NppPluginNETHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
