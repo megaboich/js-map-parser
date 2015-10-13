@@ -74,7 +74,7 @@ namespace JsParser.UI.Infrastructure
                 return;
             }
 
-            if (string.IsNullOrEmpty(result.FileName))
+            if (result.IsEmpty)
             {
                 // skip - cached result
                 return;

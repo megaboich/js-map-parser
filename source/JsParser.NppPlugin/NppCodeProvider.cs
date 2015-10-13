@@ -8,14 +8,14 @@ using JsParser.Core.Code;
 
 namespace NppPluginNET
 {
-    class NppCodeProvider:ICodeProvider
+    internal class NppCodeProvider : ICodeProvider
     {
         public NppCodeProvider(string fileName)
         {
             FullName = fileName;
             Path = System.IO.Path.GetDirectoryName(fileName);
             Name = System.IO.Path.GetFileName(fileName);
-            
+
             ContainerName = Assembly.GetExecutingAssembly().FullName;
         }
 
@@ -38,18 +38,17 @@ namespace NppPluginNET
 
         public void SelectionMoveToLineAndOffset(int startLine, int startColumn)
         {
-            //do nothing
+            PluginBase.GoToPosition(startLine, startColumn);
         }
 
         public void SetFocus()
         {
-            //do nothing
+            PluginBase.SetFocus();
         }
 
         public void GetCursorPos(out int line, out int column)
         {
-            line = PluginBase.GetCaretLineNumber();
-            column = 0;
+            PluginBase.GetCursorPos(out line, out column);
         }
     }
 }

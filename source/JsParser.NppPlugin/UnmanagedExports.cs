@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -46,37 +47,47 @@ namespace NppPluginNET
         [DllExport(CallingConvention = CallingConvention.Cdecl)]
         static void beNotified(IntPtr notifyCode)
         {
-            SCNotification nc = (SCNotification)Marshal.PtrToStructure(notifyCode, typeof(SCNotification));
+            try
+            {
+                SCNotification nc = (SCNotification) Marshal.PtrToStructure(notifyCode, typeof (SCNotification));
 
-            StringBuilder resultFileName = new StringBuilder(Win32.MAX_PATH);
-            Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, resultFileName);
-            
-            File.AppendAllLines(@"c:\npp_events.log", new[]
-            {
-                resultFileName.ToString() + ":" + nc.nmhdr.code + "," + nc.lParam + "," + nc.wParam
-            });
+                //File.AppendAllLines(Path.Combine(Path.GetTempPath(), "npp_logevent.log"), new[]
+                //{
+                //    nc.nmhdr.code + ":" + nc.lParam + "," + nc.wParam
+                //});
 
-            if (nc.nmhdr.code == (uint)NppMsg.NPPN_TBMODIFICATION)
-            {
-                PluginBase._funcItems.RefreshItems();
-                PluginBase.SetToolBarIcon();
+                StringBuilder resultFileName = new StringBuilder(Win32.MAX_PATH);
+                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, resultFileName);
+
+                if (nc.nmhdr.code == (uint) NppMsg.NPPN_TBMODIFICATION)
+                {
+                    PluginBase._funcItems.RefreshItems();
+                    PluginBase.SetToolBarIcon();
+                }
+                else if (nc.nmhdr.code == (uint) SciMsg.SCN_CHARADDED)
+                {
+                    //PluginBase.doInsertHtmlCloseTag((char)nc.ch);
+                }
+                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_SHUTDOWN)
+                {
+                    PluginBase.PluginCleanUp();
+                    Marshal.FreeHGlobal(_ptrPluginName);
+                }
+                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_FILESAVED)
+                {
+                    PluginBase.OnFileSaved();
+                }
+                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_BUFFERACTIVATED)
+                {
+                    PluginBase.OnFileChanged();
+                }
             }
-            else if (nc.nmhdr.code == (uint)SciMsg.SCN_CHARADDED)
+            catch (Exception ex)
             {
-                //PluginBase.doInsertHtmlCloseTag((char)nc.ch);
-            }
-            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_SHUTDOWN)
-            {
-                PluginBase.PluginCleanUp();
-                Marshal.FreeHGlobal(_ptrPluginName);
-            }
-            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_FILESAVED)
-            {
-                PluginBase.OnFileSaved();
-            }
-            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_BUFFERACTIVATED)
-            {
-                PluginBase.OnFileChanged();
+                File.AppendAllLines(Path.Combine(Path.GetTempPath(), "npp_logevent.log"), new[]
+                {
+                    "ERROR: " + ex.Message + " " + ex.StackTrace
+                });
             }
         }
     }

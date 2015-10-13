@@ -101,7 +101,10 @@
       <Name>JsParser.UI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DllExport\NppPlugin.DllExport.targets" />
+  </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(ProjectDir)tools\ilmerge.exe /out:$(ProjectDir)build\JsMapParser.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)tools\ilmerge.exe /out:$(ProjectDir)build\JsMapParser.NppPlugin.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>

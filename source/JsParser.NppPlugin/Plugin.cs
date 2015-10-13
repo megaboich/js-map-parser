@@ -111,19 +111,19 @@ namespace NppPluginNET
 
             jsParser.InitUi(_frmParserUiContainer);
             string fileName = PluginBase.GetCurrentFile();
-            jsParser.Update(fileName);
+            jsParser.UpdateTree(fileName, ignoreCache: true);
         }
         
         public static void OnFileSaved()
         {
             string fileName = PluginBase.GetCurrentFile();
-            jsParser.Update(fileName);
+            jsParser.UpdateTree(fileName);
         }
 
         public static void OnFileChanged()
         {
             string fileName = PluginBase.GetCurrentFile();
-            jsParser.Update(fileName);
+            jsParser.UpdateTree(fileName);
         }
     }
 }   

@@ -15,7 +15,7 @@
                    KeyContainer="$(KeyContainerName)$(AssemblyKeyContainerName)"
                    KeyFile="$(KeyOriginatorFile)"
                    ProjectDirectory="$(MSBuildProjectDirectory)"
-                   InputFileName="$(ProjectDir)build\JsMapParser.dll"
+                   InputFileName="$(ProjectDir)build\JsMapParser.NppPlugin.dll"
                    FrameworkPath="$(TargetedFrameworkDir);$(TargetFrameworkDirectory)"
                    LibToolPath="$(DevEnvDir)\..\..\VC\bin"
                    LibToolDllPath="$(DevEnvDir)"

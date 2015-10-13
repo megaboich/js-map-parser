@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using JsParser.Core.Infrastructure;
+using JsParser.Core.Parsers;
 using JsParser.UI.Properties;
 
 namespace NppPluginNET
@@ -21,26 +22,30 @@ namespace NppPluginNET
             }
         }
 
-        public void Update(string fileName)
+        public void UpdateTree(string fileName, bool ignoreCache = false)
         {
-            //try
-            //{
-                var codeProvider = new NppCodeProvider(fileName);
+            var codeProvider = new NppCodeProvider(fileName);
 
-                var result = _jsParserService.Process(codeProvider);
+            var result = _jsParserService.Process(codeProvider, ignoreCache);
+            if (result == null)
+            {
+                //not JS case
+                _jsParserService.InvalidateCash();
+                if (_frmParserUiContainer != null)
+                {
+                    _frmParserUiContainer.navigationTreeView1.Clear();
+                }
 
+                return;
+            }
+
+            if (!result.IsEmpty)
+            {
                 if (_frmParserUiContainer != null)
                 {
                     _frmParserUiContainer.navigationTreeView1.UpdateTree(result, codeProvider);
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    File.AppendAllLines(@"c:\npp_events.log", new[]
-            //    {
-            //        ex.Message + "\r\n" + ex.StackTrace
-            //    });
-            //}
+            }
         }
     }
 }

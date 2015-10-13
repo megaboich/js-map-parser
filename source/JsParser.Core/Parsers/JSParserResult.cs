@@ -26,6 +26,14 @@ namespace JsParser.Core.Parsers
             InternalErrors = new List<ErrorMessage>();
             TaskList = new List<TaskListItem>();
         }
+
+        /// <summary>
+        /// Get the IsEmpty flag. If so then result is empty - probably service returned empty result when there is not need to update previous.
+        /// </summary>
+        public bool IsEmpty
+        {
+            get { return string.IsNullOrEmpty(FileName); }
+        }
     }
 
     public class ErrorMessage
