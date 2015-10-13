@@ -15,6 +15,7 @@ namespace NppPluginNET
         	if (!Visible)
         	{
                 PluginBase.UncheckMenuItem(PluginBase.idMenuItemParserUi);
+        	    PluginBase.showToolWindow = false;
         	}
         }
     }
