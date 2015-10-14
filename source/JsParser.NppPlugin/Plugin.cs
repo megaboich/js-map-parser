@@ -12,8 +12,7 @@ namespace NppPluginNET
     {
         internal const string PluginName = "Javascript Map Parser";
         internal static int idMenuItemParserUi = -1;
-        internal static bool showToolWindow = false;
-        private static string _iniFilePath;
+        internal static PluginSettings Settings;
 
         private static frmParserUiContainer _frmParserUiContainer;
         private static readonly JsParserIntegration jsParser = new JsParserIntegration();
@@ -23,20 +22,10 @@ namespace NppPluginNET
             // get path of plugin configuration
             StringBuilder sbIniFilePath = new StringBuilder(Win32.MAX_PATH);
             Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
-            _iniFilePath = sbIniFilePath.ToString();
 
-            // if config path doesn't exist, we create it
-            if (!Directory.Exists(_iniFilePath))
-            {
-                Directory.CreateDirectory(_iniFilePath);
-            }
+            Settings = new PluginSettings(sbIniFilePath.ToString());
 
-            // make your plugin config file full file path name
-            _iniFilePath = Path.Combine(_iniFilePath, PluginName + ".ini");
-
-            // get the parameter value from plugin config
-            showToolWindow = (Win32.GetPrivateProfileInt("JsMapParserExtension", "showToolWindow", 0, _iniFilePath) != 0);
-
+            
             SetCommand(0, "Show Javascript Map Parser UI Panel", ShowParserUiPanel);
             idMenuItemParserUi = 0;
 
@@ -44,9 +33,9 @@ namespace NppPluginNET
 
             SetCommand(2, "About", About);
 
-            SetCommand(3, "Attach Debugger", AttachDebugger);
+            //SetCommand(3, "Attach Debugger", AttachDebugger);
 
-            if (showToolWindow)
+            if (Settings.ShowToolWindow)
             {
                 ShowParserUiPanel();
             }
@@ -65,12 +54,12 @@ namespace NppPluginNET
 
         internal static void PluginCleanUp()
         {
-            Win32.WritePrivateProfileString("JsMapParserExtension", "showToolWindow", showToolWindow ? "1" : "0", _iniFilePath);
+            Settings.Save();
         }
 
         private static void About()
         {
-            Process.Start("https://github.com/megaboich/jsparser");
+            Process.Start("https://github.com/megaboich/js-map-parser");
         }
 
         private static void AttachDebugger()
@@ -100,7 +89,7 @@ namespace NppPluginNET
 
                 var nppTbData = new NppTbData();
                 nppTbData.hClient = _frmParserUiContainer.Handle;
-                nppTbData.pszName = "Js Map Parser";
+                nppTbData.pszName = PluginName;
                 // the dlgDlg should be the index of funcItem where the current function pointer is in
                 // this case is 15.. so the initial value of funcItem[15]._cmdID - not the updated internal one !
                 nppTbData.dlgID = idMenuItemParserUi;
@@ -115,7 +104,7 @@ namespace NppPluginNET
                 // Following message will toogle both menu item state and toolbar button
                 Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK,
                     _funcItems.Items[idMenuItemParserUi]._cmdID, 1);
-                PluginBase.showToolWindow = true;
+                Settings.ShowToolWindow = true;
             }
             else
             {
@@ -124,14 +113,14 @@ namespace NppPluginNET
                     Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, _frmParserUiContainer.Handle);
                     Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK,
                         _funcItems.Items[idMenuItemParserUi]._cmdID, 1);
-                    PluginBase.showToolWindow = true;
+                    Settings.ShowToolWindow = true;
                 }
                 else
                 {
                     Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_DMMHIDE, 0, _frmParserUiContainer.Handle);
                     Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK,
                         _funcItems.Items[idMenuItemParserUi]._cmdID, 0);
-                    PluginBase.showToolWindow = false;
+                    Settings.ShowToolWindow = false;
                 }
             }
 
