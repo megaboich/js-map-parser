@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NppPluginNET
+namespace JsMapParser.NppPlugin.Forms
 {
     partial class frmParserUiContainer : Form
     {

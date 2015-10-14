@@ -112,46 +112,13 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="star" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/55p/55p
-        /55p/55p/51n/J1o/KJw/Z1o/51n/55p/5tl/J9s/KJw/Zxn/51m9KR2/55p/55p/55p/51n+quA+dG7
-        ++DR+cyz+6Z3/p1o+b2c+trI++DR+Mqv/KV29KN0/55p/55p/55p/5pi88+5+fj3+dXA+vr5+sqv87aS
-        +vz79+DS+NS/+vr5+cyy8aR1/55p/55p/55p/55o/qNx+al8/qRz9ujf/NvJ+6Fw9bGL/qFu/KJw9+vk
-        /d3L8ad7/55p/55p/55p/55p/55p/55p/qJw9ufd/d3L/Z9s/pxn9ryb9u3n/f//+cap86Jy/55p/55p
-        /55p/55p/55p/55p/qJw9ufd/d3L+51o9dvL/v///O7n9sCh/pxm9KR1/55p/55p/55p/55p/55p/55p
-        /qJw9ufd/tzJ9ap///r39NrK9Ztp/Kd4/51o9KR2/55p/55p/55p/55p/55p/55p/qJw9urh/t/O+KJy
-        ++/o+uzk+9vJ9+Xa+qh79KN0/55p/55p/55p/55p/55p/55p/qBt88it+MKj/p1o+q6F9tO+9tjH+L6c
-        /6Ft9KR1/55p/55p/55p/55p/55p/55p/55p/qBs/qBs/55p/55p/qBt/qFt/p9q/51o9KR2/55p/55p
-        /55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p
-        /55p/55p/55p/55p/55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p
-        /55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p
-        /51o9KR2/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/51n9KR1+KNy+KNy
-        +KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+aJx7ah9
-</value>
-  </data>
-  <data name="star_bmp" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/55p/55p
-        /55p/55p/51n/J1o/KJw/Z1o/51n/55p/5tl/J9s/KJw/Zxn/51m9KR2/55p/55p/55p/51n+quA+dG7
-        ++DR+cyz+6Z3/p1o+b2c+trI++DR+Mqv/KV29KN0/55p/55p/55p/5pi88+5+fj3+dXA+vr5+sqv87aS
-        +vz79+DS+NS/+vr5+cyy8aR1/55p/55p/55p/55o/qNx+al8/qRz9ujf/NvJ+6Fw9bGL/qFu/KJw9+vk
-        /d3L8ad7/55p/55p/55p/55p/55p/55p/qJw9ufd/d3L/Z9s/pxn9ryb9u3n/f//+cap86Jy/55p/55p
-        /55p/55p/55p/55p/qJw9ufd/d3L+51o9dvL/v///O7n9sCh/pxm9KR1/55p/55p/55p/55p/55p/55p
-        /qJw9ufd/tzJ9ap///r39NrK9Ztp/Kd4/51o9KR2/55p/55p/55p/55p/55p/55p/qJw9urh/t/O+KJy
-        ++/o+uzk+9vJ9+Xa+qh79KN0/55p/55p/55p/55p/55p/55p/qBt88it+MKj/p1o+q6F9tO+9tjH+L6c
-        /6Ft9KR1/55p/55p/55p/55p/55p/55p/55p/qBs/qBs/55p/55p/qBt/qFt/p9q/51o9KR2/55p/55p
-        /55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p
-        /55p/55p/55p/55p/55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p
-        /55p/55p/55p/55p/51o9KR2/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p/55p
-        /51o9KR2/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/55o/51n9KR1+KNy+KNy
-        +KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+KNy+aJx7ah9
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="jsparsericon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Properties\jsparsericon.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

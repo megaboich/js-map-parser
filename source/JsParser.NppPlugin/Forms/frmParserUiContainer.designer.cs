@@ -1,4 +1,4 @@
-﻿namespace NppPluginNET
+﻿namespace JsMapParser.NppPlugin.Forms
 {
     partial class frmParserUiContainer
     {

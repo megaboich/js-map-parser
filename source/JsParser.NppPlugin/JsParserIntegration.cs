@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using JsMapParser.NppPlugin.Forms;
 using JsParser.Core.Infrastructure;
-using JsParser.Core.Parsers;
 using JsParser.UI.Properties;
 
-namespace NppPluginNET
+namespace JsMapParser.NppPlugin
 {
     internal class JsParserIntegration
     {
         private frmParserUiContainer _frmParserUiContainer = null;
-        private JsParser.Core.Infrastructure.JsParserService _jsParserService = new JsParserService(Settings.Default);
+        private JsParserService _jsParserService = new JsParserService(Settings.Default);
 
         public void InitUi(frmParserUiContainer uiContainer)
         {

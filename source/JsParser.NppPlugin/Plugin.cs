@@ -1,12 +1,11 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using NppPluginNET.Properties;
+using JsMapParser.NppPlugin.Forms;
 
-namespace NppPluginNET
+namespace JsMapParser.NppPlugin
 {
     partial class PluginBase
     {
@@ -44,7 +43,7 @@ namespace NppPluginNET
         internal static void SetToolBarIcon()
         {
             var tbIcons = new toolbarIcons();
-            tbIcons.hToolbarBmp = Resources.star.GetHbitmap();
+            tbIcons.hToolbarBmp = Resources.Resources.jsparsericon.GetHbitmap();
             var pTbIcons = Marshal.AllocHGlobal(Marshal.SizeOf(tbIcons));
             Marshal.StructureToPtr(tbIcons, pTbIcons, false);
             Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_ADDTOOLBARICON,
@@ -83,7 +82,7 @@ namespace NppPluginNET
                     colorMap[0].NewColor = Color.FromKnownColor(KnownColor.ButtonFace);
                     var attr = new ImageAttributes();
                     attr.SetRemapTable(colorMap);
-                    g.DrawImage(Resources.star, new Rectangle(0, 0, 16, 16), 0, 0, 16, 16, GraphicsUnit.Pixel, attr);
+                    g.DrawImage(Resources.Resources.jsparsericon, new Rectangle(0, 0, 16, 16), 0, 0, 16, 16, GraphicsUnit.Pixel, attr);
                     tbIcon = Icon.FromHandle(newBmp.GetHicon());
                 }
 

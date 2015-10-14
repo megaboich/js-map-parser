@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace NppPluginNET
+namespace JsMapParser.NppPlugin
 {
     partial class PluginBase
     {
