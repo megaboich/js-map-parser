@@ -147,7 +147,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\VSVersionDetector.cs" />
     <Compile Include="UI\ErrorsNotificationControl.xaml.cs">
       <DependentUpon>ErrorsNotificationControl.xaml</DependentUpon>
     </Compile>
@@ -170,7 +169,6 @@
     <Compile Include="PkgCmdID.cs" />
     <Compile Include="UI\JSParserErrorsNotificationMarginFactory.cs" />
     <Compile Include="Infrastructure\VS2010CodeProvider.cs" />
-    <Compile Include="Infrastructure\VS2010UIThemeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Resources.resx">
@@ -240,10 +238,6 @@
       <Name>JsParser.Core</Name>
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
-    </ProjectReference>
-    <ProjectReference Include="..\JsParser.Package.2012\JsParser.Package.2012.csproj">
-      <Project>{05907e5b-3e90-4fa5-8d0d-02f65ca636de}</Project>
-      <Name>JsParser.Package.2012</Name>
     </ProjectReference>
     <ProjectReference Include="..\JsParser.UI\JsParser.UI.csproj">
       <Project>{2c3a9341-bfb8-45de-8b5c-e2bafe3a3b80}</Project>

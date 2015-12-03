@@ -107,6 +107,7 @@
     <Compile Include="Find\SearchFinalTest.cs" />
     <Compile Include="Find\FindDialogTest.cs" />
     <Compile Include="Helpers\StringExtText.cs" />
+    <Compile Include="Themes\ThemeProviderTest.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

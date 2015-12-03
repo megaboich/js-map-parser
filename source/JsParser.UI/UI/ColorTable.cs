@@ -12,25 +12,15 @@ namespace JsParser.UI.UI
     public class ColorTable
     {
         public Color ControlBackground { get; set; }
-
         public Color ControlText { get; set; }
-
         public Color WindowBackground { get; set; }
-
         public Color WindowText { get; set; }
-
         public Color HighlightBackground { get; set; }
-
         public Color HighlightInactiveBackground { get; set; }
-
         public Color HighlightText { get; set; }
-
         public Color HighlightInactiveText { get; set; }
-
         public Color GridLines { get; set; }
-
         public Color TabText { get; set; }
-
         public Color MenuBackground { get; set; }
 
         public static ColorTable Default
@@ -52,6 +42,24 @@ namespace JsParser.UI.UI
                     MenuBackground = SystemColors.Control,
                 };
             }
+        }
+
+        public ColorTable Clone()
+        {
+            return new ColorTable()
+            {
+                ControlBackground = ControlBackground,
+                ControlText = ControlText,
+                WindowBackground = WindowBackground,
+                WindowText = WindowText,
+                HighlightBackground = HighlightBackground,
+                HighlightText = HighlightText,
+                HighlightInactiveBackground = HighlightInactiveBackground,
+                HighlightInactiveText = HighlightInactiveText,
+                GridLines = GridLines,
+                TabText = TabText,
+                MenuBackground = MenuBackground,
+            };
         }
 
         public string GetHash()

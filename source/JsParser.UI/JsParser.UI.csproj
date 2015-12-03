@@ -103,7 +103,8 @@
     <Compile Include="UI\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UIThemeProvider.cs" />
+    <Compile Include="UI\Theme.cs" />
+    <Compile Include="UI\ThemeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx" />

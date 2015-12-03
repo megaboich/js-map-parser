@@ -59,7 +59,6 @@ namespace JsParser.Package
         private DocumentEvents _documentEvents;
         private SolutionEvents _solutionEvents;
         private WindowEvents _windowEvents;
-        private IUIThemeProvider _uiThemeProvider;
         private static JsParserToolWindowManager _jsParserToolWindowManager;
 
         public static JsParserToolWindowManager JsParserToolWindowManager
@@ -143,27 +142,9 @@ namespace JsParser.Package
             _documentEvents.DocumentOpened += documentEvents_DocumentOpened;
             _windowEvents.WindowActivated += windowEvents_WindowActivated;
 
-            if (VSVersionDetector.IsVs2012(dte.Version))
-            {
-                //load .Net4.5 assembly dynamically because current project targeted as 4.0 for VS2010 compability 
-                var asm = Assembly.Load("JsParser.Package.2012");
-                var type = asm.GetType("JsParser.Package._2012.VS2012UIThemeProvider");
-                object serviceDelegate = new Func<Type, object>(GetService);
-                _uiThemeProvider = (IUIThemeProvider) Activator.CreateInstance(type, serviceDelegate);
-            }
-            else 
-            {
-                _uiThemeProvider = new VS2010UIThemeProvider(GetService);
-            }
-
-            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, _uiThemeProvider, () =>
+            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, () =>
             {
                 return FindToolWindow<JsParserToolWindow>();
-            });
-
-            _uiThemeProvider.SubscribeToThemeChanged(() =>
-            {
-                _jsParserToolWindowManager.NotifyColorChangeToToolWindow();
             });
 
             base.Initialize();

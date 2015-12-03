@@ -501,5 +501,17 @@ namespace JsParser.UI.Properties {
                 this["FixRazorSyntaxExtensions"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ThemeSettingsSerialized {
+            get {
+                return ((string)(this["ThemeSettingsSerialized"]));
+            }
+            set {
+                this["ThemeSettingsSerialized"] = value;
+            }
+        }
     }
 }

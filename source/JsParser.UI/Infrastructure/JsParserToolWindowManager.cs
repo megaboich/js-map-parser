@@ -13,16 +13,13 @@ namespace JsParser.UI.Infrastructure
         string _activeDocFullName;
         JsParserService _jsParserService;
         Func<IJsParserToolWindow> _findWindowDelegate;
-        IUIThemeProvider _uiThemeProvider;
 
         public JsParserToolWindowManager(
             JsParserService jsParserService,
-            IUIThemeProvider uiThemeProvider,
             Func<IJsParserToolWindow> findWindowDelegate)
             
         {
             _jsParserService = jsParserService;
-            _uiThemeProvider = uiThemeProvider;
             _findWindowDelegate = findWindowDelegate;
         }
 
@@ -39,10 +36,6 @@ namespace JsParser.UI.Infrastructure
             if (navTree == null)
             {
                 navTree = _findWindowDelegate().NavigationTreeView;
-            }
-            if (navTree != null)
-            {
-                navTree.InitColors(_uiThemeProvider);
             }
             if (_jsParserService.Code != null)
             {
@@ -91,17 +84,7 @@ namespace JsParser.UI.Infrastructure
 
             if (toolWindow != null)
             {
-                NotifyColorChangeToToolWindow();
                 toolWindow.NavigationTreeView.UpdateTree(result, codeProvider);
-            }
-        }
-
-        public void NotifyColorChangeToToolWindow()
-        {
-            var toolWindow = _findWindowDelegate();
-            if (toolWindow != null)
-            {
-                toolWindow.NavigationTreeView.InitColors(_uiThemeProvider);
             }
         }
     }

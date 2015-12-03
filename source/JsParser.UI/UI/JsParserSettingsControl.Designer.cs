@@ -39,7 +39,11 @@
             this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chUseVSColors = new System.Windows.Forms.CheckBox();
+            this.btnEditTheme = new System.Windows.Forms.Button();
+            this.btnRemoveTheme = new System.Windows.Forms.Button();
+            this.btnAddCustomTheme = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbThemePicker = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button13 = new System.Windows.Forms.Button();
@@ -207,7 +211,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.chUseVSColors);
+            this.tabPage2.Controls.Add(this.btnEditTheme);
+            this.tabPage2.Controls.Add(this.btnRemoveTheme);
+            this.tabPage2.Controls.Add(this.btnAddCustomTheme);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.cbThemePicker);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
@@ -218,15 +226,58 @@
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // chUseVSColors
+            // btnEditTheme
             // 
-            this.chUseVSColors.AutoSize = true;
-            this.chUseVSColors.Location = new System.Drawing.Point(17, 15);
-            this.chUseVSColors.Name = "chUseVSColors";
-            this.chUseVSColors.Size = new System.Drawing.Size(172, 17);
-            this.chUseVSColors.TabIndex = 0;
-            this.chUseVSColors.Text = "Use Visual Studio Color Theme";
-            this.chUseVSColors.UseVisualStyleBackColor = true;
+            this.btnEditTheme.Location = new System.Drawing.Point(377, 19);
+            this.btnEditTheme.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditTheme.Name = "btnEditTheme";
+            this.btnEditTheme.Size = new System.Drawing.Size(63, 22);
+            this.btnEditTheme.TabIndex = 3;
+            this.btnEditTheme.Tag = "1";
+            this.btnEditTheme.Text = "Edit";
+            this.btnEditTheme.UseVisualStyleBackColor = true;
+            this.btnEditTheme.Click += new System.EventHandler(this.btnEditTheme_Click);
+            // 
+            // btnRemoveTheme
+            // 
+            this.btnRemoveTheme.Location = new System.Drawing.Point(444, 19);
+            this.btnRemoveTheme.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveTheme.Name = "btnRemoveTheme";
+            this.btnRemoveTheme.Size = new System.Drawing.Size(63, 22);
+            this.btnRemoveTheme.TabIndex = 4;
+            this.btnRemoveTheme.Tag = "1";
+            this.btnRemoveTheme.Text = "Remove";
+            this.btnRemoveTheme.UseVisualStyleBackColor = true;
+            this.btnRemoveTheme.Click += new System.EventHandler(this.btnRemoveTheme_Click);
+            // 
+            // btnAddCustomTheme
+            // 
+            this.btnAddCustomTheme.Location = new System.Drawing.Point(249, 19);
+            this.btnAddCustomTheme.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddCustomTheme.Name = "btnAddCustomTheme";
+            this.btnAddCustomTheme.Size = new System.Drawing.Size(124, 22);
+            this.btnAddCustomTheme.TabIndex = 2;
+            this.btnAddCustomTheme.Tag = "1";
+            this.btnAddCustomTheme.Text = "Add custom theme";
+            this.btnAddCustomTheme.UseVisualStyleBackColor = true;
+            this.btnAddCustomTheme.Click += new System.EventHandler(this.btnAddCustomTheme_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Color theme:";
+            // 
+            // cbThemePicker
+            // 
+            this.cbThemePicker.FormattingEnabled = true;
+            this.cbThemePicker.Location = new System.Drawing.Point(96, 19);
+            this.cbThemePicker.Name = "cbThemePicker";
+            this.cbThemePicker.Size = new System.Drawing.Size(121, 21);
+            this.cbThemePicker.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -254,12 +305,12 @@
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.taggedFuncLabel6);
-            this.groupBox1.Location = new System.Drawing.Point(15, 50);
+            this.groupBox1.Location = new System.Drawing.Point(15, 77);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(329, 176);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text style of marked items in tree";
             // 
@@ -810,7 +861,6 @@
         private System.Windows.Forms.CheckBox chSendStatistics;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.CheckBox chUseVSColors;
         private System.Windows.Forms.TextBox edExtensions;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel1;
@@ -831,5 +881,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox edScriptStripEtensions;
         private System.Windows.Forms.CheckBox chScriptStripEnabled;
+        private System.Windows.Forms.Button btnEditTheme;
+        private System.Windows.Forms.Button btnRemoveTheme;
+        private System.Windows.Forms.Button btnAddCustomTheme;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbThemePicker;
     }
 }

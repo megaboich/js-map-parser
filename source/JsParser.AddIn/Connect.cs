@@ -24,7 +24,6 @@ namespace JsParser.AddIn
         private DocumentEvents _documentEvents;
         private WindowEvents _windowEvents;
 
-        private IUIThemeProvider _uiThemeProvider;
         private JsParserService _jsParserService;
         private JsParserToolWindowManager _jsParserToolWindowManager;
         
@@ -153,9 +152,8 @@ namespace JsParser.AddIn
             _documentEvents.DocumentOpened += documentEvents_DocumentOpened;
             _windowEvents.WindowActivated += windowEvents_WindowActivated;
 
-            _uiThemeProvider = new DefaultUIThemeProvider();
             _jsParserService = new JsParserService(Settings.Default);
-            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, _uiThemeProvider, () =>
+            _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, () =>
             {
                 return EnsureWindowCreated();
             });

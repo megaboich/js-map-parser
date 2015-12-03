@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading;
 using System.Diagnostics;
 using JsParser.Core.Helpers;
+using System.ComponentModel;
 
 namespace JsParser.UI.UI
 {
@@ -39,8 +40,6 @@ namespace JsParser.UI.UI
         private JSParserResult _lastParserResult;
         private ICodeProvider _codeProvider;
         private string _colorTableHash;
-        private IUIThemeProvider _uiThemesProvider;
-
         
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationTreeView"/> class.
@@ -58,20 +57,21 @@ namespace JsParser.UI.UI
             filterByMarksToolStripMenuItem.Checked = Settings.FilterByMarksEnabled;
             expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
             hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
+
+            ReadSettings();
+
+            Settings.Default.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+            {
+                ReadSettings();
+                RefreshTree();
+            };
         }
 
-        public void InitColors(IUIThemeProvider uiThemeProvider)
+        public void ReadSettings()
         {
-            _uiThemesProvider = uiThemeProvider;
-            if (Settings.Default.UseVSColorTheme)
-            {
-                _colorTable = uiThemeProvider.Colors;
-            }
-            else
-            {
-                _colorTable = ColorTable.Default;
-            }
-
+            var tp = ThemeProvider.Deserialize(Settings.ThemeSettingsSerialized);
+            _colorTable = tp.CurrentTheme.Colors;
+            
             var colorHash = _colorTable.GetHash();
             if (_colorTableHash == colorHash)
             {
@@ -93,11 +93,9 @@ namespace JsParser.UI.UI
 
             toolStrip2.BackColor = _colorTable.MenuBackground;
 
-            treeView1.Indent = Settings.Default.UseVSColorTheme ? 10 : 16;
-            treeView1.DrawMode = Settings.Default.UseVSColorTheme
-                ? TreeViewDrawMode.OwnerDrawAll
-                : TreeViewDrawMode.OwnerDrawText;
-            treeView1.ShowLines = !Settings.Default.UseVSColorTheme;
+            treeView1.Indent = 10;
+            treeView1.DrawMode = TreeViewDrawMode.OwnerDrawAll;
+            treeView1.ShowLines = false;
         }
 
         public void OnDisposed(object sender, EventArgs args)
@@ -257,10 +255,6 @@ namespace JsParser.UI.UI
 
         public void RefreshTree()
         {
-            if (_uiThemesProvider != null)
-            {
-                InitColors(_uiThemesProvider);
-            }
             UpdateTree(_lastParserResult, _codeProvider);
         }
 
@@ -624,7 +618,7 @@ namespace JsParser.UI.UI
 
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            var node = (CustomTreeNode)e.Node;
+            var node = (CustomTreeNode) e.Node;
 
             //workaround for a bug when nodes draws twice - first attempt on zero boundaries
             if (node.Bounds.Width == 0 && node.Bounds.Height == 0)
@@ -634,94 +628,72 @@ namespace JsParser.UI.UI
 
             var tags = node.Tags;
 
-            if (Settings.Default.UseVSColorTheme)
+            // Retrieve the node font. If the node font has not been set,
+            // use the TreeView font.
+            Font nodeFont = e.Node.NodeFont;
+            if (nodeFont == null) nodeFont = ((TreeView) sender).Font;
+
+            var hasExpand = (e.Node.Nodes != null && e.Node.Nodes.Count > 0);
+            var hasImage = (e.Node.StateImageIndex >= 0);
+            var hasTags = !string.IsNullOrEmpty(tags);
+            var isSelected = ((e.State & TreeNodeStates.Selected) != 0);
+
+            var tagsShift = 0;
+
+            // Draw background
+            var bgBrush = isSelected
+                ? (treeView1.Focused)
+                    ? _palette.GetSolidBrush(_colorTable.HighlightBackground)
+                    : _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
+                : _palette.GetSolidBrush(_colorTable.WindowBackground);
+
+            e.Graphics.FillRectangle(bgBrush, e.Graphics.VisibleClipBounds.Left, e.Bounds.Top,
+                e.Graphics.VisibleClipBounds.Width, e.Bounds.Height);
+
+            //Draw tags
+            if (hasTags)
             {
-
-                // Retrieve the node font. If the node font has not been set,
-                // use the TreeView font.
-                Font nodeFont = e.Node.NodeFont;
-                if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
-
-                var hasExpand = (e.Node.Nodes != null && e.Node.Nodes.Count > 0);
-                var hasImage = (e.Node.StateImageIndex >= 0);
-                var hasTags = !string.IsNullOrEmpty(tags);
-                var isSelected = ((e.State & TreeNodeStates.Selected) != 0);
-
-                var tagsShift = 0;
-
-                // Draw background
-                var bgBrush = isSelected
-                    ? (treeView1.Focused)
-                        ? _palette.GetSolidBrush(_colorTable.HighlightBackground)
-                        : _palette.GetSolidBrush(_colorTable.HighlightInactiveBackground)
-                    : _palette.GetSolidBrush(_colorTable.WindowBackground);
-
-                e.Graphics.FillRectangle(bgBrush, e.Graphics.VisibleClipBounds.Left, e.Bounds.Top, e.Graphics.VisibleClipBounds.Width, e.Bounds.Height);
-
-                //Draw tags
-                if (hasTags)
+                foreach (char mark in tags)
                 {
-                    foreach (char mark in tags)
-                    {
-                        e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
-                        tagsShift += 18;
-                    }
+                    e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
+                    tagsShift += 18;
                 }
-
-                var nodeLeftShift = 0;
-                // Draw image before node
-                if (hasImage)
-                {
-                    nodeLeftShift += 16;
-                    e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
-                        Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
-                }
-
-                // Draw + - sign before node
-                if (hasExpand)
-                {
-                    var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
-
-                    e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 - nodeLeftShift, e.Node.Bounds.Location.Y + 3, 9, 9);
-                }
-
-                var textColor = (e.Node.ForeColor.ToArgb() == 0)
-                    ? _colorTable.WindowText
-                    : e.Node.ForeColor;
-
-                // Draw the node text.
-                var textColorToUse = ((e.State & TreeNodeStates.Selected) != 0)
-                    ? (treeView1.Focused)
-                        ? _colorTable.HighlightText
-                        : _colorTable.HighlightInactiveText
-                    : textColor;
-
-                var textBrush = _palette.GetSolidBrush(textColorToUse);
-
-                TextRenderer.DrawText(e.Graphics, e.Node.Text, nodeFont,
-                    Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)),
-                    textColorToUse);
-                /*
-                e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
-                    Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)));
-                */
-                e.DrawDefault = false;
             }
-            else
+
+            var nodeLeftShift = 0;
+            // Draw image before node
+            if (hasImage)
             {
-                //Draw tags
-                if (!string.IsNullOrEmpty(tags))
-                {
-                    var tagsShift = 2;
-                    foreach (char mark in tags)
-                    {
-                        e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Right + tagsShift, e.Bounds.Top);
-                        tagsShift += 18;
-                    }
-                }
-
-                e.DrawDefault = true;
+                nodeLeftShift += 16;
+                e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
+                    Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
             }
+
+            // Draw + - sign before node
+            if (hasExpand)
+            {
+                var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
+
+                e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 - nodeLeftShift,
+                    e.Node.Bounds.Location.Y + 3, 9, 9);
+            }
+
+            var textColor = (e.Node.ForeColor.ToArgb() == 0)
+                ? _colorTable.WindowText
+                : e.Node.ForeColor;
+
+            // Draw the node text.
+            var textColorToUse = ((e.State & TreeNodeStates.Selected) != 0)
+                ? (treeView1.Focused)
+                    ? _colorTable.HighlightText
+                    : _colorTable.HighlightInactiveText
+                : textColor;
+
+            TextRenderer.DrawText(e.Graphics, e.Node.Text, nodeFont,
+                Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)),
+                textColorToUse);
+
+            e.DrawDefault = false;
         }
 
         private void ErrorDiagnosisClick(object sender, EventArgs e)
@@ -883,14 +855,6 @@ namespace JsParser.UI.UI
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             panelLinesNumbers.Refresh();
-        }
-
-        private void showHierarhyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveSettings();
-            RefreshTree();
-            ++StatisticsManager.Instance.Statistics.ToggleHierachyOptionCount;
-            StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
         }
 
         private void expandAllByDefaultToolStripMenuItem_Click(object sender, EventArgs e)

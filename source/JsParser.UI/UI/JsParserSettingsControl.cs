@@ -53,7 +53,6 @@ namespace JsParser.UI.UI
             numericUpDownMaxParametersLengthInFunctionChain.Value = Settings.Default.MaxParametersLengthInFunctionChain;
 
             chSendStatistics.Checked = Settings.Default.SendStatistics;
-            chUseVSColors.Checked = Settings.Default.UseVSColorTheme;
             chFixAspNet.Checked = Settings.Default.FixAspNetTags;
             edFixAspNetExtensions.Text = string.Join(" ", Settings.Default.FixAspNetTagsExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
             chFixRazor.Checked = Settings.Default.FixRazorSyntax;
@@ -62,6 +61,8 @@ namespace JsParser.UI.UI
             edToDoKeyWords.Text = String.Join(", ", Settings.Default.ToDoKeywords.OfType<string>().ToArray());
 
             chShowErrorNotificationOnTopOfTheEditor.Checked = Settings.Default.ShowErrorsNotificationOnTopOfEditor;
+
+            var themesSerialized = Settings.Default.ThemeSettingsSerialized;
         }
 
         private StringCollection ReadListOfExtensionsFromTextBoxText(string textBoxText)
@@ -73,7 +74,6 @@ namespace JsParser.UI.UI
 
         public void SaveSettings()
         {
-            Settings.Default.UseVSColorTheme = chUseVSColors.Checked;
             Settings.Default.TrackActiveItem = chTrackActiveItem.Checked;
             Settings.Default.Extensions = ReadListOfExtensionsFromTextBoxText(edExtensions.Text);
 
@@ -162,11 +162,6 @@ namespace JsParser.UI.UI
             ShowColorDialogForLabel(lblName);
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void chScriptStripEnabled_CheckedChanged(object sender, EventArgs e)
         {
             edScriptStripEtensions.Enabled = chScriptStripEnabled.Checked;
@@ -180,6 +175,21 @@ namespace JsParser.UI.UI
         private void chFixRazor_CheckedChanged(object sender, EventArgs e)
         {
             edFixRazorExtensions.Enabled = chFixRazor.Checked;
+        }
+
+        private void btnAddCustomTheme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditTheme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemoveTheme_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
