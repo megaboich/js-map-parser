@@ -7,3 +7,4 @@ source/*.vsix
 /source/JsParser.NppPlugin/build/*.exp
 /source/JsParser.NppPlugin/build/*.lib
 /source/JsParser.NppPlugin/build/*.pdb
+source/packages/*

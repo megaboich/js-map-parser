@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Linq;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
-using Microsoft.Win32;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using EnvDTE;
-using JsParser.UI.UI;
-using System.Windows;
-using System.IO;
 using JsParser.Package.UI;
 using JsParser.Package.Infrastructure;
-using EnvDTE80;
-using Microsoft.VisualStudio.Platform.WindowManagement;
 using JsParser.Core.Infrastructure;
 using JsParser.UI.Properties;
 using JsParser.UI.Infrastructure;
-using System.Reflection;
 
 namespace JsParser.Package
 {
