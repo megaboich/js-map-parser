@@ -63,7 +63,6 @@ namespace JsParser.UI.UI
             Settings.Default.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
             {
                 ReadSettings();
-                RefreshTree();
             };
         }
 
@@ -117,7 +116,7 @@ namespace JsParser.UI.UI
             OnResize(null);
             panelLinesNumbers.Refresh();
             btnErrorDiagnosis.Visible = false;
-            btnErrorSeparator.Visible = false;
+
             lbTaskList.Text = "      Task List";
         }
 
@@ -179,7 +178,6 @@ namespace JsParser.UI.UI
             if (result.Errors.Count > 0)
             {
                 btnErrorDiagnosis.Visible = true;
-                btnErrorSeparator.Visible = true;
                 btnErrorDiagnosis.DropDownItems.Clear();
                 result.Errors.ForEach(er =>
                 {
@@ -190,7 +188,6 @@ namespace JsParser.UI.UI
             else
             {
                 btnErrorDiagnosis.Visible = false;
-                btnErrorSeparator.Visible = false;
             }
 
             var tasksDataSource = new List<object>();
@@ -678,16 +675,14 @@ namespace JsParser.UI.UI
                     e.Node.Bounds.Location.Y + 3, 9, 9);
             }
 
-            var textColor = (e.Node.ForeColor.ToArgb() == 0)
-                ? _colorTable.WindowText
-                : e.Node.ForeColor;
-
             // Draw the node text.
             var textColorToUse = ((e.State & TreeNodeStates.Selected) != 0)
                 ? (treeView1.Focused)
                     ? _colorTable.HighlightText
                     : _colorTable.HighlightInactiveText
-                : textColor;
+                : (e.Node.ForeColor.ToArgb() == 0)
+                    ? _colorTable.WindowText
+                    : e.Node.ForeColor;
 
             TextRenderer.DrawText(e.Graphics, e.Node.Text, nodeFont,
                 Point.Add(e.Node.Bounds.Location, new Size(2 + tagsShift, 0)),
@@ -758,6 +753,7 @@ namespace JsParser.UI.UI
             if (Settings.ShowLineNumbersEnabled && treeView1.Nodes.Count > 0)
             {
                 var gr = e.Graphics;
+                var textBrush = _palette.GetSolidBrush(_colorTable.LineNumbersText);
                 ScanTreeView(node =>
                 {
                     int p = node.Bounds.Top + 2;
@@ -773,7 +769,7 @@ namespace JsParser.UI.UI
 
                     var nodeHeight = node.Bounds.Height;
                     var s = node.CodeNode.StartLine.ToString();
-                    gr.DrawString(s, Font, Brushes.Gray, new Rectangle(0, p, panelLinesNumbers.Width, nodeHeight));
+                    gr.DrawString(s, Font, textBrush, new Rectangle(0, p, panelLinesNumbers.Width, nodeHeight));
                     return true;
                 }, treeView1.Nodes, false);
             }

@@ -58,11 +58,21 @@
     <Compile Include="Infrastructure\IJsParserToolWindow.cs" />
     <Compile Include="Infrastructure\JsParserToolWindowManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ColorTable.cs" />
     <Compile Include="UI\CustomPanel.cs">
@@ -104,10 +114,23 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Theme.cs" />
+    <Compile Include="UI\ThemeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ThemeEditor.Designer.cs">
+      <DependentUpon>ThemeEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ThemeProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ThemeEditor.resx">
+      <DependentUpon>ThemeEditor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +174,12 @@
     <Content Include="Resources\js_file.gif" />
     <Content Include="Resources\js_function.gif" />
     <Content Include="Resources\list_settings.gif" />
+    <None Include="Resources\menu.png" />
     <Content Include="Resources\navCollapseArrow.gif" />
     <Content Include="Resources\navExpandArrow.gif" />
+    <None Include="Resources\quick-find.png" />
     <Content Include="Resources\refresh.gif" />
+    <None Include="Resources\setttings.png" />
     <Content Include="Resources\SortAZ.png" />
     <Content Include="Resources\statistics.jpg" />
     <Content Include="Resources\task_List.png" />

@@ -17,7 +17,6 @@ namespace JsParser.UI.UI
 
         void AddTheme(string name);
         void RemoveTheme(string name);
-        void UpdateTheme(string name, string newName, ColorTable newColorTable);
     }
 
     public class ThemeProvider : IThemeProvider
@@ -27,7 +26,17 @@ namespace JsParser.UI.UI
 
         public Theme CurrentTheme
         {
-            get { return _themes.FirstOrDefault(t => t.Name == CurrentThemeName); }
+            get
+            {
+                var tm = _themes.FirstOrDefault(t => t.Name == CurrentThemeName);
+                if (tm == null && _themes.Count > 0)
+                {
+                    tm = _themes.First();
+                    CurrentThemeName = tm.Name;
+                }
+
+                return tm;
+            }
         }
 
         public ThemeProvider()
@@ -41,12 +50,18 @@ namespace JsParser.UI.UI
             {
                 var tp = new ThemeProvider();
                 var rootElt = XElement.Parse(serialized);
-                tp.CurrentThemeName = rootElt.Attribute("Current").Value;
                 var themesXml = rootElt.Elements("theme");
                 foreach (var tx in themesXml)
                 {
                     var t = Theme.LoadFromXml(tx);
                     tp._themes.Add(t);
+                }
+
+                tp.CurrentThemeName = rootElt.Attribute("Current").Value;
+                
+                if (tp._themes.Count == 0)
+                {
+                    throw new Exception("load defaults then");
                 }
 
                 return tp;
@@ -55,8 +70,10 @@ namespace JsParser.UI.UI
             {
                 var tp = new ThemeProvider();
                 tp._themes = new List<Theme>();
+                tp._themes.Add(Theme.GetDefaultLightTheme());
+                tp._themes.Add(Theme.GetDefaultDarkTheme());
                 tp._themes.Add(Theme.GetDefaultBlueTheme());
-                tp.CurrentThemeName = tp._themes[0].Name;
+                tp.CurrentThemeName = tp._themes.First().Name;
                 return tp;
             }
         }
@@ -69,7 +86,7 @@ namespace JsParser.UI.UI
                 var themeXml = theme.SaveToXml();
                 rootElt.Add(themeXml);
             }
-            rootElt.SetAttributeValue("Current", this.CurrentThemeName);
+            rootElt.SetAttributeValue("Current", this.CurrentTheme.Name);
             return rootElt.ToString();
         }
 
@@ -93,16 +110,21 @@ namespace JsParser.UI.UI
             };
 
             _themes.Add(theme);
+
+            SetCurrent(name);
         }
 
         public void RemoveTheme(string name)
         {
-            _themes.Remove(_themes.FirstOrDefault(t => t.Name == name));
-        }
-
-        public void UpdateTheme(string name, string newName, ColorTable newColorTable)
-        {
-            throw new NotImplementedException();
+            if (_themes.Count > 1)
+            {
+                var themeToRemove = _themes.FirstOrDefault(t => t.Name == name);
+                if (!themeToRemove.IsPredefined)
+                {
+                    _themes.Remove(themeToRemove);
+                    SetCurrent(_themes.First().Name);
+                }
+            }
         }
     }
 }

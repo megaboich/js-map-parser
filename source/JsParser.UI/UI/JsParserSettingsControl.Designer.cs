@@ -228,7 +228,7 @@
             // 
             // btnEditTheme
             // 
-            this.btnEditTheme.Location = new System.Drawing.Point(377, 19);
+            this.btnEditTheme.Location = new System.Drawing.Point(88, 45);
             this.btnEditTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditTheme.Name = "btnEditTheme";
             this.btnEditTheme.Size = new System.Drawing.Size(63, 22);
@@ -240,7 +240,7 @@
             // 
             // btnRemoveTheme
             // 
-            this.btnRemoveTheme.Location = new System.Drawing.Point(444, 19);
+            this.btnRemoveTheme.Location = new System.Drawing.Point(155, 45);
             this.btnRemoveTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveTheme.Name = "btnRemoveTheme";
             this.btnRemoveTheme.Size = new System.Drawing.Size(63, 22);
@@ -252,20 +252,20 @@
             // 
             // btnAddCustomTheme
             // 
-            this.btnAddCustomTheme.Location = new System.Drawing.Point(249, 19);
+            this.btnAddCustomTheme.Location = new System.Drawing.Point(24, 45);
             this.btnAddCustomTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddCustomTheme.Name = "btnAddCustomTheme";
-            this.btnAddCustomTheme.Size = new System.Drawing.Size(124, 22);
+            this.btnAddCustomTheme.Size = new System.Drawing.Size(60, 22);
             this.btnAddCustomTheme.TabIndex = 2;
             this.btnAddCustomTheme.Tag = "1";
-            this.btnAddCustomTheme.Text = "Add custom theme";
+            this.btnAddCustomTheme.Text = "Add";
             this.btnAddCustomTheme.UseVisualStyleBackColor = true;
             this.btnAddCustomTheme.Click += new System.EventHandler(this.btnAddCustomTheme_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 22);
+            this.label2.Location = new System.Drawing.Point(17, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 0;
@@ -273,11 +273,13 @@
             // 
             // cbThemePicker
             // 
+            this.cbThemePicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbThemePicker.FormattingEnabled = true;
-            this.cbThemePicker.Location = new System.Drawing.Point(96, 19);
+            this.cbThemePicker.Location = new System.Drawing.Point(89, 19);
             this.cbThemePicker.Name = "cbThemePicker";
-            this.cbThemePicker.Size = new System.Drawing.Size(121, 21);
+            this.cbThemePicker.Size = new System.Drawing.Size(128, 21);
             this.cbThemePicker.TabIndex = 1;
+            this.cbThemePicker.SelectedIndexChanged += new System.EventHandler(this.cbThemePicker_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -305,7 +307,7 @@
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.taggedFuncLabel6);
-            this.groupBox1.Location = new System.Drawing.Point(15, 77);
+            this.groupBox1.Location = new System.Drawing.Point(15, 86);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);

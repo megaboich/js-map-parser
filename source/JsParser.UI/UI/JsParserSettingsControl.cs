@@ -15,6 +15,7 @@ namespace JsParser.UI.UI
     public partial class JsParserSettingsControl : UserControl
     {
         private Font _defaultTreeFont;
+        private ThemeProvider _themeProvider;
 
         public JsParserSettingsControl()
         {
@@ -63,6 +64,22 @@ namespace JsParser.UI.UI
             chShowErrorNotificationOnTopOfTheEditor.Checked = Settings.Default.ShowErrorsNotificationOnTopOfEditor;
 
             var themesSerialized = Settings.Default.ThemeSettingsSerialized;
+            _themeProvider = ThemeProvider.Deserialize(themesSerialized);
+
+            ReInitThemesComboBox();
+        }
+
+        private void ReInitThemesComboBox()
+        {
+            cbThemePicker.BeginUpdate();
+            cbThemePicker.Items.Clear();
+            foreach (var item in _themeProvider.GetThemes().Select(t => t.Name))
+            {
+                cbThemePicker.Items.Add(item);
+            }
+
+            cbThemePicker.SelectedItem = _themeProvider.CurrentTheme.Name;
+            cbThemePicker.EndUpdate();
         }
 
         private StringCollection ReadListOfExtensionsFromTextBoxText(string textBoxText)
@@ -112,6 +129,8 @@ namespace JsParser.UI.UI
             Settings.Default.ToDoKeywords.AddRange(edToDoKeyWords.Text.Split(new[] { ',', ';' }).Select(p => p.Trim()).ToArray());
 
             Settings.Default.ShowErrorsNotificationOnTopOfEditor = chShowErrorNotificationOnTopOfTheEditor.Checked;
+
+            Settings.Default.ThemeSettingsSerialized = _themeProvider.Serialize();
 
             Settings.Default.Save();
         }
@@ -179,17 +198,41 @@ namespace JsParser.UI.UI
 
         private void btnAddCustomTheme_Click(object sender, EventArgs e)
         {
-
+            _themeProvider.AddTheme("New theme");
+            ReInitThemesComboBox();
         }
 
         private void btnEditTheme_Click(object sender, EventArgs e)
         {
-
+            var editThemeDialog = new ThemeEditor(_themeProvider.CurrentTheme, (theme) =>
+            {
+                var name = theme.Name;
+                if (name.ToLower() != _themeProvider.CurrentThemeName.ToLower()
+                    && _themeProvider.GetThemes().Select(t => t.Name.ToLower()).Contains(name.ToLower()))
+                {
+                    MessageBox.Show("Name '" + name + "' is already used", "ERROR");
+                    return false;
+                }
+                return true;
+            });
+            if (editThemeDialog.ShowDialog() == DialogResult.OK)
+            {
+                _themeProvider.CurrentThemeName = editThemeDialog.Theme.Name;
+                ReInitThemesComboBox();
+            }
         }
 
         private void btnRemoveTheme_Click(object sender, EventArgs e)
         {
+            _themeProvider.RemoveTheme(_themeProvider.CurrentThemeName);
+            ReInitThemesComboBox();
+        }
 
+        private void cbThemePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _themeProvider.SetCurrent(cbThemePicker.SelectedItem.ToString());
+            btnEditTheme.Enabled = !_themeProvider.CurrentTheme.IsPredefined;
+            btnRemoveTheme.Enabled = !_themeProvider.CurrentTheme.IsPredefined;
         }
     }
 }

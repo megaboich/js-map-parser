@@ -22,6 +22,7 @@ namespace JsParser.UI.UI
         public Color GridLines { get; set; }
         public Color TabText { get; set; }
         public Color MenuBackground { get; set; }
+        public Color LineNumbersText { get; set; }
 
         public static ColorTable Default
         {
@@ -38,6 +39,7 @@ namespace JsParser.UI.UI
                     HighlightInactiveBackground = SystemColors.InactiveCaption,
                     HighlightInactiveText = SystemColors.InactiveCaptionText,
                     GridLines = SystemColors.ActiveBorder,
+                    LineNumbersText = Color.Gray,
                     TabText = SystemColors.WindowText,
                     MenuBackground = SystemColors.Control,
                 };
@@ -57,6 +59,7 @@ namespace JsParser.UI.UI
                 HighlightInactiveBackground = HighlightInactiveBackground,
                 HighlightInactiveText = HighlightInactiveText,
                 GridLines = GridLines,
+                LineNumbersText = LineNumbersText,
                 TabText = TabText,
                 MenuBackground = MenuBackground,
             };
