@@ -95,6 +95,7 @@ namespace JsParser.UI.UI
             treeView1.Indent = 10;
             treeView1.DrawMode = TreeViewDrawMode.OwnerDrawAll;
             treeView1.ShowLines = false;
+            //treeView1.Parent.Parent.Font = new Font(treeView1.Font.FontFamily, 15);
         }
 
         public void OnDisposed(object sender, EventArgs args)
@@ -647,12 +648,14 @@ namespace JsParser.UI.UI
             e.Graphics.FillRectangle(bgBrush, e.Graphics.VisibleClipBounds.Left, e.Bounds.Top,
                 e.Graphics.VisibleClipBounds.Width, e.Bounds.Height);
 
+            var verticalShift = (e.Node.Bounds.Height - 16)/2;
+
             //Draw tags
             if (hasTags)
             {
                 foreach (char mark in tags)
                 {
-                    e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top);
+                    e.Graphics.DrawImageUnscaled(GetTagImage(mark), e.Node.Bounds.Left + tagsShift, e.Bounds.Top + verticalShift);
                     tagsShift += 18;
                 }
             }
@@ -662,8 +665,7 @@ namespace JsParser.UI.UI
             if (hasImage)
             {
                 nodeLeftShift += 16;
-                e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex],
-                    Point.Subtract(e.Node.Bounds.Location, new Size(16, 0)));
+                e.Graphics.DrawImageUnscaled(imageList1.Images[e.Node.StateImageIndex], e.Node.Bounds.Left - 16, e.Bounds.Top + verticalShift);
             }
 
             // Draw + - sign before node
@@ -672,7 +674,7 @@ namespace JsParser.UI.UI
                 var img = e.Node.IsExpanded ? Resources.treeleaf_expanded : Resources.treeleaf_collapsed;
 
                 e.Graphics.DrawImageUnscaled(img, e.Node.Bounds.Location.X - 11 - nodeLeftShift,
-                    e.Node.Bounds.Location.Y + 3, 9, 9);
+                    e.Node.Bounds.Location.Y + 3 + verticalShift);
             }
 
             // Draw the node text.
