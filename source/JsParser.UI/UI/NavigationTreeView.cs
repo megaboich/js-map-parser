@@ -68,6 +68,13 @@ namespace JsParser.UI.UI
 
         public void ReadSettings()
         {
+            treeView1.Indent = 10;
+            treeView1.DrawMode = TreeViewDrawMode.OwnerDrawAll;
+            treeView1.ShowLines = false;
+            treeView1.Font = Settings.TreeFont ?? Font;
+            taskListDataGrid.Font = treeView1.Font;
+
+            // Colors
             var tp = ThemeProvider.Deserialize(Settings.ThemeSettingsSerialized);
             _colorTable = tp.CurrentTheme.Colors;
             
@@ -91,11 +98,6 @@ namespace JsParser.UI.UI
             taskListDataGrid.RowsDefaultCellStyle.ForeColor = _colorTable.WindowText;
 
             toolStrip2.BackColor = _colorTable.MenuBackground;
-
-            treeView1.Indent = 10;
-            treeView1.DrawMode = TreeViewDrawMode.OwnerDrawAll;
-            treeView1.ShowLines = false;
-            //treeView1.Parent.Parent.Font = new Font(treeView1.Font.FontFamily, 15);
         }
 
         public void OnDisposed(object sender, EventArgs args)
@@ -566,9 +568,9 @@ namespace JsParser.UI.UI
                 var nodeTags = ((CustomTreeNode)e.Node).Tags ?? string.Empty;
                 resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(nodeTags);
                 
-                var menuItems = new[] { contextMenuMarks0Item, contextMenuMarks1Item, contextMenuMarks2Item, contextMenuMarks3Item, contextMenuMarks4Item, contextMenuMarks5Item };
-                var menuFonts = new[] { Settings.taggedFunction1Font, Settings.taggedFunction2Font, Settings.taggedFunction3Font, Settings.taggedFunction4Font, Settings.taggedFunction5Font, Settings.taggedFunction6Font };
-                var menuColors = new[] { Settings.taggedFunction1Color, Settings.taggedFunction2Color, Settings.taggedFunction3Color, Settings.taggedFunction4Color, Settings.taggedFunction5Color, Settings.taggedFunction6Color };
+                var menuItems = new[] { contextMenuMarks1Item, contextMenuMarks2Item, contextMenuMarks3Item, contextMenuMarks4Item, contextMenuMarks5Item };
+                var menuFonts = new[] { Settings.taggedFunction2Font, Settings.taggedFunction3Font, Settings.taggedFunction4Font, Settings.taggedFunction5Font, Settings.taggedFunction6Font };
+                var menuColors = new[] { Settings.taggedFunction2Color, Settings.taggedFunction3Color, Settings.taggedFunction4Color, Settings.taggedFunction5Color, Settings.taggedFunction6Color };
 
                 for (int i = 0; i < menuItems.Length; ++i)
                 {

@@ -34,7 +34,7 @@
     <Setting Name="Visible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="taggedFunction1Font" Type="System.Drawing.Font" Scope="User">
+    <Setting Name="TreeFont" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="taggedFunction2Font" Type="System.Drawing.Font" Scope="User">
@@ -51,9 +51,6 @@
     </Setting>
     <Setting Name="taggedFunction6Font" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="taggedFunction1Color" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="taggedFunction2Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Blue</Value>

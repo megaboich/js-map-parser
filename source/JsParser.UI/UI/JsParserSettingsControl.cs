@@ -37,8 +37,10 @@ namespace JsParser.UI.UI
             chScriptStripEnabled.Checked = Settings.Default.ScriptStripEnabled;
             edScriptStripEtensions.Text = string.Join(" ", Settings.Default.ScriptStripExtensions.OfType<string>().Select(s => s.Replace(".", "")).ToArray());
 
-            taggedFuncLabel1.ForeColor = Settings.Default.taggedFunction1Color;
-            taggedFuncLabel1.Font = Settings.Default.taggedFunction1Font ?? _defaultTreeFont;
+            var treeFont = Settings.Default.TreeFont ?? _defaultTreeFont;
+            btnSelectTreeFont.Text = treeFont.Name + " (" + treeFont.Size + ")";
+            btnSelectTreeFont.Font = treeFont;
+
             taggedFuncLabel2.ForeColor = Settings.Default.taggedFunction2Color;
             taggedFuncLabel2.Font = Settings.Default.taggedFunction2Font ?? _defaultTreeFont;
             taggedFuncLabel3.ForeColor = Settings.Default.taggedFunction3Color;
@@ -97,8 +99,8 @@ namespace JsParser.UI.UI
             Settings.Default.ScriptStripEnabled = chScriptStripEnabled.Checked;
             Settings.Default.ScriptStripExtensions = ReadListOfExtensionsFromTextBoxText(edScriptStripEtensions.Text);
 
-            Settings.Default.taggedFunction1Color = taggedFuncLabel1.ForeColor;
-            Settings.Default.taggedFunction1Font = taggedFuncLabel1.Font;
+            Settings.Default.TreeFont = btnSelectTreeFont.Font;
+
             Settings.Default.taggedFunction2Color = taggedFuncLabel2.ForeColor;
             Settings.Default.taggedFunction2Font = taggedFuncLabel2.Font;
             Settings.Default.taggedFunction3Color = taggedFuncLabel3.ForeColor;
@@ -233,6 +235,21 @@ namespace JsParser.UI.UI
             _themeProvider.SetCurrent(cbThemePicker.SelectedItem.ToString());
             btnEditTheme.Enabled = !_themeProvider.CurrentTheme.IsPredefined;
             btnRemoveTheme.Enabled = !_themeProvider.CurrentTheme.IsPredefined;
+        }
+
+        private void btnSelectTreeFont_Click(object sender, EventArgs e)
+        {
+            fontDialog1.AllowScriptChange = false;
+            fontDialog1.AllowVerticalFonts = false;
+            fontDialog1.ShowColor = true;
+            fontDialog1.ShowEffects = true;
+            fontDialog1.FontMustExist = true;
+
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                btnSelectTreeFont.Font = fontDialog1.Font;
+                btnSelectTreeFont.Text = fontDialog1.Font.Name + " (" + fontDialog1.Font.Size + ")";
+            }
         }
     }
 }

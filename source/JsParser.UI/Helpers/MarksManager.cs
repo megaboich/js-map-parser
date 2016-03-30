@@ -76,10 +76,6 @@ namespace JsParser.UI.Helpers
 
 				switch (mark[0])
 				{
-					case 'W':
-						treenode.ForeColor = Settings.Default.taggedFunction1Color;
-						treenode.NodeFont = Settings.Default.taggedFunction1Font;
-						break;
 					case 'B':
 						treenode.ForeColor = Settings.Default.taggedFunction2Color;
 						treenode.NodeFont = Settings.Default.taggedFunction2Font;

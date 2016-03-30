@@ -138,12 +138,12 @@ namespace JsParser.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction1Font {
+        public global::System.Drawing.Font TreeFont {
             get {
-                return ((global::System.Drawing.Font)(this["taggedFunction1Font"]));
+                return ((global::System.Drawing.Font)(this["TreeFont"]));
             }
             set {
-                this["taggedFunction1Font"] = value;
+                this["TreeFont"] = value;
             }
         }
         
@@ -199,18 +199,6 @@ namespace JsParser.UI.Properties {
             }
             set {
                 this["taggedFunction6Font"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color taggedFunction1Color {
-            get {
-                return ((global::System.Drawing.Color)(this["taggedFunction1Color"]));
-            }
-            set {
-                this["taggedFunction1Color"] = value;
             }
         }
         

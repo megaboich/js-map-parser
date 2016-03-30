@@ -37,7 +37,6 @@ namespace JsParser.UI.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationTreeView));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuMarks0Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks1Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks2Item = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuMarks3Item = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +88,6 @@ namespace JsParser.UI.UI
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextMenuMarks0Item,
             this.contextMenuMarks1Item,
             this.contextMenuMarks2Item,
             this.contextMenuMarks3Item,
@@ -100,16 +98,6 @@ namespace JsParser.UI.UI
             this.resetAllLabelsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(153, 186);
-            // 
-            // contextMenuMarks0Item
-            // 
-            this.contextMenuMarks0Item.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuMarks0Item.Image = global::JsParser.UI.Properties.Resources.flag_white;
-            this.contextMenuMarks0Item.Name = "contextMenuMarks0Item";
-            this.contextMenuMarks0Item.Size = new System.Drawing.Size(152, 22);
-            this.contextMenuMarks0Item.Tag = "W";
-            this.contextMenuMarks0Item.Text = "White mark";
-            this.contextMenuMarks0Item.Click += new System.EventHandler(this.contextMenuMarks0Item_Click);
             // 
             // contextMenuMarks1Item
             // 
@@ -511,7 +499,6 @@ namespace JsParser.UI.UI
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks5Item;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem resetAllLabelsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contextMenuMarks0Item;
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks2Item;
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks1Item;
         private System.Windows.Forms.ToolStripMenuItem contextMenuMarks3Item;

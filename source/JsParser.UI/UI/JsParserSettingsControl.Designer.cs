@@ -39,24 +39,22 @@
             this.chTrackActiveItem = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSelectTreeFont = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnEditTheme = new System.Windows.Forms.Button();
             this.btnRemoveTheme = new System.Windows.Forms.Button();
             this.btnAddCustomTheme = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbThemePicker = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button13 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.taggedFuncLabel1 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.taggedFuncLabel2 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.taggedFuncLabel3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -93,7 +91,6 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -211,6 +208,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnSelectTreeFont);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.btnEditTheme);
             this.tabPage2.Controls.Add(this.btnRemoveTheme);
             this.tabPage2.Controls.Add(this.btnAddCustomTheme);
@@ -226,9 +225,30 @@
             this.tabPage2.Text = "UI";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnSelectTreeFont
+            // 
+            this.btnSelectTreeFont.Location = new System.Drawing.Point(75, 81);
+            this.btnSelectTreeFont.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSelectTreeFont.Name = "btnSelectTreeFont";
+            this.btnSelectTreeFont.Size = new System.Drawing.Size(270, 26);
+            this.btnSelectTreeFont.TabIndex = 6;
+            this.btnSelectTreeFont.Tag = "2";
+            this.btnSelectTreeFont.Text = "Font";
+            this.btnSelectTreeFont.UseVisualStyleBackColor = true;
+            this.btnSelectTreeFont.Click += new System.EventHandler(this.btnSelectTreeFont_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 87);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Tree font:";
+            // 
             // btnEditTheme
             // 
-            this.btnEditTheme.Location = new System.Drawing.Point(88, 45);
+            this.btnEditTheme.Location = new System.Drawing.Point(215, 45);
             this.btnEditTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditTheme.Name = "btnEditTheme";
             this.btnEditTheme.Size = new System.Drawing.Size(63, 22);
@@ -240,7 +260,7 @@
             // 
             // btnRemoveTheme
             // 
-            this.btnRemoveTheme.Location = new System.Drawing.Point(155, 45);
+            this.btnRemoveTheme.Location = new System.Drawing.Point(282, 45);
             this.btnRemoveTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveTheme.Name = "btnRemoveTheme";
             this.btnRemoveTheme.Size = new System.Drawing.Size(63, 22);
@@ -252,7 +272,7 @@
             // 
             // btnAddCustomTheme
             // 
-            this.btnAddCustomTheme.Location = new System.Drawing.Point(24, 45);
+            this.btnAddCustomTheme.Location = new System.Drawing.Point(151, 45);
             this.btnAddCustomTheme.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddCustomTheme.Name = "btnAddCustomTheme";
             this.btnAddCustomTheme.Size = new System.Drawing.Size(60, 22);
@@ -277,24 +297,20 @@
             this.cbThemePicker.FormattingEnabled = true;
             this.cbThemePicker.Location = new System.Drawing.Point(89, 19);
             this.cbThemePicker.Name = "cbThemePicker";
-            this.cbThemePicker.Size = new System.Drawing.Size(128, 21);
+            this.cbThemePicker.Size = new System.Drawing.Size(255, 21);
             this.cbThemePicker.TabIndex = 1;
             this.cbThemePicker.SelectedIndexChanged += new System.EventHandler(this.cbThemePicker_SelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox5);
             this.groupBox1.Controls.Add(this.button13);
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button14);
-            this.groupBox1.Controls.Add(this.taggedFuncLabel1);
             this.groupBox1.Controls.Add(this.button11);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button12);
             this.groupBox1.Controls.Add(this.taggedFuncLabel2);
             this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.taggedFuncLabel3);
             this.groupBox1.Controls.Add(this.pictureBox6);
             this.groupBox1.Controls.Add(this.button6);
@@ -307,78 +323,46 @@
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.taggedFuncLabel6);
-            this.groupBox1.Location = new System.Drawing.Point(15, 86);
+            this.groupBox1.Location = new System.Drawing.Point(15, 117);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(329, 176);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.Size = new System.Drawing.Size(329, 142);
+            this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text style of marked items in tree";
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::JsParser.UI.Properties.Resources.flag_white;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 26);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox5.TabIndex = 16;
-            this.pictureBox5.TabStop = false;
-            // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(252, 141);
+            this.button13.Location = new System.Drawing.Point(252, 114);
             this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(56, 19);
-            this.button13.TabIndex = 17;
+            this.button13.TabIndex = 9;
             this.button13.Tag = "6";
             this.button13.Text = "Color";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(184, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(56, 19);
-            this.button3.TabIndex = 1;
-            this.button3.Tag = "1";
-            this.button3.Text = "Font";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnFont_Click);
-            // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(252, 118);
+            this.button14.Location = new System.Drawing.Point(252, 91);
             this.button14.Margin = new System.Windows.Forms.Padding(2);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(56, 19);
-            this.button14.TabIndex = 14;
+            this.button14.TabIndex = 7;
             this.button14.Tag = "5";
             this.button14.Text = "Color";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // taggedFuncLabel1
-            // 
-            this.taggedFuncLabel1.AutoSize = true;
-            this.taggedFuncLabel1.Location = new System.Drawing.Point(34, 26);
-            this.taggedFuncLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.taggedFuncLabel1.Name = "taggedFuncLabel1";
-            this.taggedFuncLabel1.Size = new System.Drawing.Size(87, 13);
-            this.taggedFuncLabel1.TabIndex = 0;
-            this.taggedFuncLabel1.Text = "taggedFunction()";
-            // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(252, 94);
+            this.button11.Location = new System.Drawing.Point(252, 67);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(56, 19);
-            this.button11.TabIndex = 11;
+            this.button11.TabIndex = 5;
             this.button11.Tag = "4";
             this.button11.Text = "Color";
             this.button11.UseVisualStyleBackColor = true;
@@ -386,11 +370,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(184, 47);
+            this.button4.Location = new System.Drawing.Point(184, 20);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 19);
-            this.button4.TabIndex = 4;
+            this.button4.TabIndex = 0;
             this.button4.Tag = "2";
             this.button4.Text = "Font";
             this.button4.UseVisualStyleBackColor = true;
@@ -398,11 +382,11 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(252, 71);
+            this.button12.Location = new System.Drawing.Point(252, 44);
             this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(56, 19);
-            this.button12.TabIndex = 8;
+            this.button12.TabIndex = 3;
             this.button12.Tag = "3";
             this.button12.Text = "Color";
             this.button12.UseVisualStyleBackColor = true;
@@ -411,7 +395,7 @@
             // taggedFuncLabel2
             // 
             this.taggedFuncLabel2.AutoSize = true;
-            this.taggedFuncLabel2.Location = new System.Drawing.Point(34, 50);
+            this.taggedFuncLabel2.Location = new System.Drawing.Point(34, 23);
             this.taggedFuncLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taggedFuncLabel2.Name = "taggedFuncLabel2";
             this.taggedFuncLabel2.Size = new System.Drawing.Size(87, 13);
@@ -420,11 +404,11 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(252, 47);
+            this.button10.Location = new System.Drawing.Point(252, 20);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(56, 19);
-            this.button10.TabIndex = 5;
+            this.button10.TabIndex = 1;
             this.button10.Tag = "2";
             this.button10.Text = "Color";
             this.button10.UseVisualStyleBackColor = true;
@@ -432,32 +416,20 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(184, 71);
+            this.button5.Location = new System.Drawing.Point(184, 44);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(56, 19);
-            this.button5.TabIndex = 7;
+            this.button5.TabIndex = 2;
             this.button5.Tag = "3";
             this.button5.Text = "Font";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnFont_Click);
             // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(252, 24);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(56, 19);
-            this.button9.TabIndex = 2;
-            this.button9.Tag = "1";
-            this.button9.Text = "Color";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.btnColor_Click);
-            // 
             // taggedFuncLabel3
             // 
             this.taggedFuncLabel3.AutoSize = true;
-            this.taggedFuncLabel3.Location = new System.Drawing.Point(34, 73);
+            this.taggedFuncLabel3.Location = new System.Drawing.Point(34, 46);
             this.taggedFuncLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taggedFuncLabel3.Name = "taggedFuncLabel3";
             this.taggedFuncLabel3.Size = new System.Drawing.Size(87, 13);
@@ -467,7 +439,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::JsParser.UI.Properties.Resources.icon_favourites;
-            this.pictureBox6.Location = new System.Drawing.Point(12, 144);
+            this.pictureBox6.Location = new System.Drawing.Point(12, 117);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(18, 20);
@@ -476,11 +448,11 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(184, 94);
+            this.button6.Location = new System.Drawing.Point(184, 67);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(56, 19);
-            this.button6.TabIndex = 10;
+            this.button6.TabIndex = 4;
             this.button6.Tag = "4";
             this.button6.Text = "Font";
             this.button6.UseVisualStyleBackColor = true;
@@ -489,7 +461,7 @@
             // taggedFuncLabel4
             // 
             this.taggedFuncLabel4.AutoSize = true;
-            this.taggedFuncLabel4.Location = new System.Drawing.Point(34, 97);
+            this.taggedFuncLabel4.Location = new System.Drawing.Point(34, 70);
             this.taggedFuncLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taggedFuncLabel4.Name = "taggedFuncLabel4";
             this.taggedFuncLabel4.Size = new System.Drawing.Size(87, 13);
@@ -499,7 +471,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::JsParser.UI.Properties.Resources.flag_orange;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 97);
+            this.pictureBox4.Location = new System.Drawing.Point(12, 70);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(18, 20);
@@ -508,11 +480,11 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(184, 118);
+            this.button7.Location = new System.Drawing.Point(184, 91);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(56, 19);
-            this.button7.TabIndex = 13;
+            this.button7.TabIndex = 6;
             this.button7.Tag = "5";
             this.button7.Text = "Font";
             this.button7.UseVisualStyleBackColor = true;
@@ -521,7 +493,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::JsParser.UI.Properties.Resources.flag_red;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 120);
+            this.pictureBox3.Location = new System.Drawing.Point(12, 93);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(18, 20);
@@ -531,7 +503,7 @@
             // taggedFuncLabel5
             // 
             this.taggedFuncLabel5.AutoSize = true;
-            this.taggedFuncLabel5.Location = new System.Drawing.Point(34, 120);
+            this.taggedFuncLabel5.Location = new System.Drawing.Point(34, 93);
             this.taggedFuncLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taggedFuncLabel5.Name = "taggedFuncLabel5";
             this.taggedFuncLabel5.Size = new System.Drawing.Size(87, 13);
@@ -541,7 +513,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::JsParser.UI.Properties.Resources.flag_green;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 73);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 46);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(18, 20);
@@ -550,11 +522,11 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(184, 141);
+            this.button8.Location = new System.Drawing.Point(184, 114);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(56, 19);
-            this.button8.TabIndex = 16;
+            this.button8.TabIndex = 8;
             this.button8.Tag = "6";
             this.button8.Text = "Font";
             this.button8.UseVisualStyleBackColor = true;
@@ -563,7 +535,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::JsParser.UI.Properties.Resources.flag_blue;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 50);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 23);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(18, 20);
@@ -573,7 +545,7 @@
             // taggedFuncLabel6
             // 
             this.taggedFuncLabel6.AutoSize = true;
-            this.taggedFuncLabel6.Location = new System.Drawing.Point(34, 144);
+            this.taggedFuncLabel6.Location = new System.Drawing.Point(34, 117);
             this.taggedFuncLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taggedFuncLabel6.Name = "taggedFuncLabel6";
             this.taggedFuncLabel6.Size = new System.Drawing.Size(87, 13);
@@ -809,7 +781,6 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -834,18 +805,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label taggedFuncLabel1;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label taggedFuncLabel2;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label taggedFuncLabel3;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button button6;
@@ -888,5 +855,7 @@
         private System.Windows.Forms.Button btnAddCustomTheme;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbThemePicker;
+        private System.Windows.Forms.Button btnSelectTreeFont;
+        private System.Windows.Forms.Label label10;
     }
 }

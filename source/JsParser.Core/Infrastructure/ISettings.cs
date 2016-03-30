@@ -22,8 +22,8 @@ namespace JsParser.Core.Infrastructure
         bool SortingEnabled { get; set; }
         string Statistics { get; set; }
         string StatisticsServerUrl { get; set; }
-        System.Drawing.Color taggedFunction1Color { get; set; }
-        System.Drawing.Font taggedFunction1Font { get; set; }
+        System.Drawing.Font TreeFont { get; set; }
+
         System.Drawing.Color taggedFunction2Color { get; set; }
         System.Drawing.Font taggedFunction2Font { get; set; }
         System.Drawing.Color taggedFunction3Color { get; set; }
