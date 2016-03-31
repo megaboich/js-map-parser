@@ -28,7 +28,6 @@ namespace JsParser.UI.UI
         private bool _canExpand = true;
         private MarksManager _marksManager = new MarksManager();
         private ExpandedNodesManager _expandedNodesManager = new ExpandedNodesManager();
-        private List<TreeNode> _tempTreeNodes = new List<TreeNode>();
         private int _lastCodeLine = -1;
         private List<CodeNode> _functions;
         private int _lastActiveLine;
@@ -58,15 +57,15 @@ namespace JsParser.UI.UI
             expandAllByDefaultToolStripMenuItem.Checked = Settings.AutoExpandAll;
             hideAnonymousFunctionsToolStripMenuItem.Checked = Settings.HideAnonymousFunctions;
 
-            ReadSettings();
+            ApplySettings();
 
             Settings.Default.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
             {
-                ReadSettings();
+                ApplySettings();
             };
         }
 
-        public void ReadSettings()
+        public void ApplySettings()
         {
             treeView1.Indent = 10;
             treeView1.DrawMode = TreeViewDrawMode.OwnerDrawAll;
@@ -167,13 +166,9 @@ namespace JsParser.UI.UI
             _expandedNodesManager.SetFile(_loadedDocName);
             _marksManager.SetFile(_loadedDocName);
 
-            var isSort = Settings.SortingEnabled;
-            var isHierarchy = true;
-
             _treeRefreshing = true;
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
-            _tempTreeNodes.Clear();
             _canExpand = true;
 
             var nodes = result.Nodes;
@@ -228,19 +223,6 @@ namespace JsParser.UI.UI
             _functions = new List<CodeNode>();
             FillNodes(nodes, treeView1.Nodes, 0, _functions);
 
-            if (!isHierarchy)
-            {
-                if (isSort)
-                {
-                    _tempTreeNodes.Sort((n1, n2) => string.Compare(n1.Text, n2.Text));
-                }
-
-                foreach (TreeNode node in _tempTreeNodes)
-                {
-                    treeView1.Nodes.Add(node);
-                }
-            }
-
             if (filterByMarksToolStripMenuItem.Checked)
             {
                 HideUnmarkedNodes(treeView1.Nodes);
@@ -248,7 +230,7 @@ namespace JsParser.UI.UI
 
             treeView1.EndUpdate();
             _treeRefreshing = false;
-            AdjustLineNumbersPanelSize();
+            AdjustUiPanelsSizeAndPosition();
             panelLinesNumbers.Refresh();
             return treeView1.Nodes.Count > 0;
         }
@@ -326,7 +308,6 @@ namespace JsParser.UI.UI
             }
 
             var isSort = Settings.SortingEnabled;
-            var isHierarchy = true;
             var childrens = source.Children;
             if (isSort)
             {
@@ -347,14 +328,7 @@ namespace JsParser.UI.UI
                 treeNode.ToolTipText = CommentTipFormatter.FormatPlainTextComment(node.Comment);
                 treeNode.StateImageIndex = GetImageIndex(node.NodeType);
                 _marksManager.RestoreMark(treeNode);
-                if (isHierarchy)
-                {
-                    dest.Add(treeNode);
-                }
-                else
-                {
-                    _tempTreeNodes.Add(treeNode);
-                }
+                dest.Add(treeNode);
 
                 functions.Add(node);
 
@@ -511,7 +485,7 @@ namespace JsParser.UI.UI
             Settings.Save();
         }
 
-        private void AdjustLineNumbersPanelSize()
+        private void AdjustUiPanelsSizeAndPosition()
         {
             var tw = 0;
             using (var g = this.CreateGraphics())
@@ -523,6 +497,7 @@ namespace JsParser.UI.UI
             treeView1.Top = 0;
             treeView1.Width = splitContainer1.Panel1.ClientSize.Width - treeView1.Left;
             treeView1.Height = splitContainer1.Panel1.ClientSize.Height - treeView1.Top;
+
             panelLinesNumbers.Left = 0;
             panelLinesNumbers.Width = tw;
             panelLinesNumbers.Top = 0;
@@ -602,12 +577,6 @@ namespace JsParser.UI.UI
         private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _marksManager.ResetMarks();
-            RefreshTree();
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            SaveSettings();
             RefreshTree();
         }
 
@@ -723,7 +692,7 @@ namespace JsParser.UI.UI
         private void showLineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveSettings();
-            AdjustLineNumbersPanelSize();
+            AdjustUiPanelsSizeAndPosition();
             panelLinesNumbers.Refresh();
             ++StatisticsManager.Instance.Statistics.ToggleShowLineNumbersCount;
             StatisticsManager.Instance.Statistics.UpdateStatisticsFromSettings();
@@ -731,15 +700,16 @@ namespace JsParser.UI.UI
 
         private void NavigationTreeView_Resize(object sender, EventArgs e)
         {
+            var menuHeight = toolStripSettingsMenuDropDownButton.Height + 4;
             splitContainer1.Left = 0;
-            splitContainer1.Top = 27;
+            splitContainer1.Top = menuHeight;
             splitContainer1.Width = this.ClientSize.Width;
-            splitContainer1.Height = this.ClientSize.Height - 27;
+            splitContainer1.Height = this.ClientSize.Height - menuHeight;
         }
 
         private void splitContainer1_Panel1_Resize(object sender, EventArgs e)
         {
-            AdjustLineNumbersPanelSize();
+            AdjustUiPanelsSizeAndPosition();
         }
 
         private void treeView1_OnScroll(object sender, CustomTreeView.ScrollEventArgs e)

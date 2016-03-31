@@ -46,7 +46,7 @@ namespace JsParser.UI.UI
             this.resetLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetAllLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSettingsMenuDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.expandAllByDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collapseAllNodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -175,7 +175,7 @@ namespace JsParser.UI.UI
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton2,
+            this.toolStripSettingsMenuDropDownButton,
             this.toolStripButton1,
             this.btnErrorDiagnosis});
             this.toolStrip2.Location = new System.Drawing.Point(0, -8);
@@ -186,9 +186,9 @@ namespace JsParser.UI.UI
             // 
             // toolStripDropDownButton2
             // 
-            this.toolStripDropDownButton2.AutoToolTip = false;
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSettingsMenuDropDownButton.AutoToolTip = false;
+            this.toolStripSettingsMenuDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSettingsMenuDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.expandAllByDefaultToolStripMenuItem,
             this.expandAllToolStripMenuItem,
             this.collapseAllNodesToolStripMenuItem,
@@ -199,13 +199,13 @@ namespace JsParser.UI.UI
             this.hideAnonymousFunctionsToolStripMenuItem,
             this.toolStripMenuItem7,
             this.settingsToolStripMenuItem1});
-            this.toolStripDropDownButton2.Image = global::JsParser.UI.Properties.Resources.list_settings;
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(37, 22);
-            this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
+            this.toolStripSettingsMenuDropDownButton.Image = global::JsParser.UI.Properties.Resources.list_settings;
+            this.toolStripSettingsMenuDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSettingsMenuDropDownButton.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.toolStripSettingsMenuDropDownButton.Name = "toolStripSettingsMenuDropDownButton";
+            this.toolStripSettingsMenuDropDownButton.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.toolStripSettingsMenuDropDownButton.Size = new System.Drawing.Size(37, 22);
+            this.toolStripSettingsMenuDropDownButton.Text = "toolStripDropDownButton2";
             // 
             // expandAllByDefaultToolStripMenuItem
             // 
@@ -507,25 +507,25 @@ namespace JsParser.UI.UI
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private CustomPanel panelLinesNumbers;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripSettingsMenuDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem expandAllByDefaultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseAllNodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton btnErrorDiagnosis;
         private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.Label lbTaskList;
+        private System.Windows.Forms.Label lbTaskList;
         private System.Windows.Forms.ToolStripMenuItem sortItemsAlphabeticallyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showLineNumbersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filterByMarksToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hideAnonymousFunctionsToolStripMenuItem;
-		private System.Windows.Forms.Button btnToDoListToggle;
+        private System.Windows.Forms.Button btnToDoListToggle;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.DataGridView taskListDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Line;
-		private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -58,8 +58,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(271, 33);
             this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "I agree to send anonymous statistics related to usage of JavaScript Parser Extens" +
-    "ion.";
+            this.checkBox1.Text = "I agree to send anonymous statistics related to usage of JavaScript Map Parser Extension.";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -93,7 +92,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(275, 23);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Help to improve Javascript Parser Extension!";
+            this.label2.Text = "Help to improve JavaScript Map Parser Extension!";
             // 
             // pictureBox1
             // 
@@ -124,7 +123,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "JavaScript Parser Extension";
+            this.Text = "JavaScript Map Parser Extension";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

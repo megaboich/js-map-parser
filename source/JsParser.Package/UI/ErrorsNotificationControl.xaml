@@ -13,7 +13,7 @@
                 RenderOptions.BitmapScalingMode="LowQuality"
                 />
             <Label Name="SummaryMessageLabel" 
-                VerticalAlignment="Center" Margin="4,0,0,0" Content="Javascript Parser: {0} errors found."></Label>
+                VerticalAlignment="Center" Margin="4,0,0,0" Content="Javascript Map Parser: {0} errors found."></Label>
             <ComboBox
                 Name="ErrorsDetailsCombobox"
                 Focusable="True"

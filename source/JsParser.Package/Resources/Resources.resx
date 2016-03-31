@@ -121,6 +121,6 @@
     <value>Can not create tool window.</value>
   </data>
   <data name="ToolWindowTitle" xml:space="preserve">
-    <value>Javascript Parser</value>
+    <value>Javascript Map Parser</value>
   </data>
 </root>

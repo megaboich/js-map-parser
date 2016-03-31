@@ -116,7 +116,7 @@ namespace JsParser.Package.UI
             var errors = args.Errors;
             if (errors.Any())
             {
-                SummaryMessageLabel.Content = string.Format(" Javascript Parser: {0} errors found.", errors.Count());
+                SummaryMessageLabel.Content = string.Format(" Javascript Map Parser: {0} errors found.", errors.Count());
                 ErrorsDetailsCombobox.SelectionChanged -= ErrorsDetailsCombobox_SelectionChanged;
                 ErrorsDetailsCombobox.ItemsSource =
                     errors
