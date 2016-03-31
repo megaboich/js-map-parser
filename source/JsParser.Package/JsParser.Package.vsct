@@ -65,7 +65,7 @@
         <Icon guid="guidImages" id="bmpWindowIcon" />
         <Strings>
           <CommandName>cmdJsParser</CommandName>
-          <ButtonText>Javascript Parser</ButtonText>
+          <ButtonText>Javascript Map Parser</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidJsParserPackageCmdSet" id="cmdJsParserFind" priority="0x0100" type="Button">
@@ -73,7 +73,7 @@
         <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <CommandName>cmdJsParserFind</CommandName>
-          <ButtonText>Javascript Parser Find</ButtonText>
+          <ButtonText>Javascript Map Parser Find</ButtonText>
         </Strings>
       </Button>
 

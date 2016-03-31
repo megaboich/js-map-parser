@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\JsParser.Core\Properties\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Helpers\CommentTipFormatter.cs" />
     <Compile Include="Helpers\ExpandedNodesManager.cs" />
     <Compile Include="Helpers\MarksManager.cs" />

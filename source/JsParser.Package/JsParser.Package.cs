@@ -42,7 +42,7 @@ namespace JsParser.Package
     [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
     
 
-    [ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Parser Extension", "General", 113, 114, true)]
+    [ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Map Parser Extension", "General", 113, 114, true)]
     [Guid(GuidList.guidJsParserPackagePkgString)]
     public sealed class JsParserPackage : Microsoft.VisualStudio.Shell.Package
     {

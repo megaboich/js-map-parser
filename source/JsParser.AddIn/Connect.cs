@@ -98,8 +98,8 @@ namespace JsParser.AddIn
                     //Add a command to the Commands collection:
                     var comShow = commands.AddNamedCommand2(_addInInstance,
                         "Show",
-                        "Javascript Parser",
-                        "Javascript Parser AddIn Show",
+                        "Javascript Map Parser",
+                        "Javascript Map Parser AddIn Show",
                         true,
                         629,
                         ref contextGUIDS,
@@ -111,8 +111,8 @@ namespace JsParser.AddIn
                     //Add a command to the Commands collection:
                     var comFind = commands.AddNamedCommand2(_addInInstance,
                         "Find",
-                        "Javascript Parser Find",
-                        "Javascript Parser AddIn 'Find' Feature",
+						"Javascript Map Parser Find",
+						"Javascript Map Parser AddIn 'Find' Feature",
                         true,
                         0,
                         ref contextGUIDS,
@@ -306,7 +306,7 @@ namespace JsParser.AddIn
                 {
                     var t = typeof(NavigationTreeView);
                     var window = windows2.CreateToolWindow2(_addInInstance, t.Assembly.Location, t.ToString(),
-                                                              "JavaScript Parser", guid, ref obj);
+                                                              "JavaScript Map Parser", guid, ref obj);
                     window.Visible = true;
 
                     _toolWindow = new JsParserToolWindow

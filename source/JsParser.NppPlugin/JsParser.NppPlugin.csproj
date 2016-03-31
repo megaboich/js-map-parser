@@ -52,6 +52,9 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="..\JsParser.Core\Properties\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="Forms\frmParserUiContainer.cs">
       <SubType>Form</SubType>
