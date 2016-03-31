@@ -14,7 +14,7 @@ namespace JsParser.UI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase, ISettings {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -144,61 +144,6 @@ namespace JsParser.UI.Properties {
             }
             set {
                 this["TreeFont"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction2Font {
-            get {
-                return ((global::System.Drawing.Font)(this["taggedFunction2Font"]));
-            }
-            set {
-                this["taggedFunction2Font"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction3Font {
-            get {
-                return ((global::System.Drawing.Font)(this["taggedFunction3Font"]));
-            }
-            set {
-                this["taggedFunction3Font"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction4Font {
-            get {
-                return ((global::System.Drawing.Font)(this["taggedFunction4Font"]));
-            }
-            set {
-                this["taggedFunction4Font"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction5Font {
-            get {
-                return ((global::System.Drawing.Font)(this["taggedFunction5Font"]));
-            }
-            set {
-                this["taggedFunction5Font"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Font taggedFunction6Font {
-            get {
-                return ((global::System.Drawing.Font)(this["taggedFunction6Font"]));
-            }
-            set {
-                this["taggedFunction6Font"] = value;
             }
         }
         

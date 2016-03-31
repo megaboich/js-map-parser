@@ -25,15 +25,10 @@ namespace JsParser.Core.Infrastructure
         System.Drawing.Font TreeFont { get; set; }
 
         System.Drawing.Color taggedFunction2Color { get; set; }
-        System.Drawing.Font taggedFunction2Font { get; set; }
         System.Drawing.Color taggedFunction3Color { get; set; }
-        System.Drawing.Font taggedFunction3Font { get; set; }
         System.Drawing.Color taggedFunction4Color { get; set; }
-        System.Drawing.Font taggedFunction4Font { get; set; }
         System.Drawing.Color taggedFunction5Color { get; set; }
-        System.Drawing.Font taggedFunction5Font { get; set; }
         System.Drawing.Color taggedFunction6Color { get; set; }
-        System.Drawing.Font taggedFunction6Font { get; set; }
         bool ToDoListCollapsed { get; set; }
         int ToDoListLastHeight { get; set; }
         bool TrackActiveItem { get; set; }

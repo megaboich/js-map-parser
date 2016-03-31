@@ -37,21 +37,6 @@
     <Setting Name="TreeFont" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="taggedFunction2Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="taggedFunction3Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="taggedFunction4Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="taggedFunction5Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="taggedFunction6Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="taggedFunction2Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Blue</Value>
     </Setting>

@@ -47,24 +47,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbThemePicker = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.taggedFuncLabel2 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.taggedFuncLabel3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.taggedFuncLabel4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.taggedFuncLabel5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.taggedFuncLabel6 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -84,9 +74,13 @@
             this.btnForceSendStatistics = new System.Windows.Forms.Button();
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.colorPicker6 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker5 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker4 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker3 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker2 = new JsParser.UI.UI.ColorPicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -303,24 +297,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button13);
-            this.groupBox1.Controls.Add(this.button14);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.colorPicker6);
+            this.groupBox1.Controls.Add(this.colorPicker5);
+            this.groupBox1.Controls.Add(this.colorPicker4);
+            this.groupBox1.Controls.Add(this.colorPicker3);
+            this.groupBox1.Controls.Add(this.colorPicker2);
             this.groupBox1.Controls.Add(this.taggedFuncLabel2);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.taggedFuncLabel3);
             this.groupBox1.Controls.Add(this.pictureBox6);
-            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.taggedFuncLabel4);
             this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.taggedFuncLabel5);
             this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.taggedFuncLabel6);
             this.groupBox1.Location = new System.Drawing.Point(15, 117);
@@ -332,66 +321,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text style of marked items in tree";
             // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(252, 114);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(56, 19);
-            this.button13.TabIndex = 9;
-            this.button13.Tag = "6";
-            this.button13.Text = "Color";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.btnColor_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(252, 91);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(56, 19);
-            this.button14.TabIndex = 7;
-            this.button14.Tag = "5";
-            this.button14.Text = "Color";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.btnColor_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(252, 67);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(56, 19);
-            this.button11.TabIndex = 5;
-            this.button11.Tag = "4";
-            this.button11.Text = "Color";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.btnColor_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(184, 20);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(56, 19);
-            this.button4.TabIndex = 0;
-            this.button4.Tag = "2";
-            this.button4.Text = "Font";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnFont_Click);
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(252, 44);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(56, 19);
-            this.button12.TabIndex = 3;
-            this.button12.Tag = "3";
-            this.button12.Text = "Color";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.btnColor_Click);
-            // 
             // taggedFuncLabel2
             // 
             this.taggedFuncLabel2.AutoSize = true;
@@ -401,30 +330,6 @@
             this.taggedFuncLabel2.Size = new System.Drawing.Size(87, 13);
             this.taggedFuncLabel2.TabIndex = 3;
             this.taggedFuncLabel2.Text = "taggedFunction()";
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(252, 20);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(56, 19);
-            this.button10.TabIndex = 1;
-            this.button10.Tag = "2";
-            this.button10.Text = "Color";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.btnColor_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(184, 44);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(56, 19);
-            this.button5.TabIndex = 2;
-            this.button5.Tag = "3";
-            this.button5.Text = "Font";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.btnFont_Click);
             // 
             // taggedFuncLabel3
             // 
@@ -446,18 +351,6 @@
             this.pictureBox6.TabIndex = 17;
             this.pictureBox6.TabStop = false;
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(184, 67);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 19);
-            this.button6.TabIndex = 4;
-            this.button6.Tag = "4";
-            this.button6.Text = "Font";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.btnFont_Click);
-            // 
             // taggedFuncLabel4
             // 
             this.taggedFuncLabel4.AutoSize = true;
@@ -477,18 +370,6 @@
             this.pictureBox4.Size = new System.Drawing.Size(18, 20);
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(184, 91);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(56, 19);
-            this.button7.TabIndex = 6;
-            this.button7.Tag = "5";
-            this.button7.Text = "Font";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.btnFont_Click);
             // 
             // pictureBox3
             // 
@@ -519,18 +400,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(18, 20);
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(184, 114);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(56, 19);
-            this.button8.TabIndex = 8;
-            this.button8.Tag = "6";
-            this.button8.Text = "Font";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.btnFont_Click);
             // 
             // pictureBox1
             // 
@@ -767,6 +636,56 @@
             this.panel1.Size = new System.Drawing.Size(564, 449);
             this.panel1.TabIndex = 1;
             // 
+            // colorPicker6
+            // 
+            this.colorPicker6.Location = new System.Drawing.Point(200, 114);
+            this.colorPicker6.Name = "colorPicker6";
+            this.colorPicker6.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker6.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker6.TabIndex = 22;
+            this.colorPicker6.Tag = "6";
+            this.colorPicker6.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker5
+            // 
+            this.colorPicker5.Location = new System.Drawing.Point(200, 91);
+            this.colorPicker5.Name = "colorPicker5";
+            this.colorPicker5.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker5.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker5.TabIndex = 21;
+            this.colorPicker5.Tag = "5";
+            this.colorPicker5.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker4
+            // 
+            this.colorPicker4.Location = new System.Drawing.Point(200, 67);
+            this.colorPicker4.Name = "colorPicker4";
+            this.colorPicker4.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker4.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker4.TabIndex = 20;
+            this.colorPicker4.Tag = "4";
+            this.colorPicker4.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker3
+            // 
+            this.colorPicker3.Location = new System.Drawing.Point(200, 43);
+            this.colorPicker3.Name = "colorPicker3";
+            this.colorPicker3.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker3.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker3.TabIndex = 19;
+            this.colorPicker3.Tag = "3";
+            this.colorPicker3.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker2
+            // 
+            this.colorPicker2.Location = new System.Drawing.Point(200, 19);
+            this.colorPicker2.Name = "colorPicker2";
+            this.colorPicker2.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker2.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker2.TabIndex = 18;
+            this.colorPicker2.Tag = "2";
+            this.colorPicker2.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
             // JsParserSettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -805,31 +724,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label taggedFuncLabel2;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label taggedFuncLabel3;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label taggedFuncLabel4;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label taggedFuncLabel5;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label taggedFuncLabel6;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnForceSendStatistics;
         private System.Windows.Forms.CheckBox chSendStatistics;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TextBox edExtensions;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel1;
@@ -857,5 +765,10 @@
         private System.Windows.Forms.ComboBox cbThemePicker;
         private System.Windows.Forms.Button btnSelectTreeFont;
         private System.Windows.Forms.Label label10;
+        private ColorPicker colorPicker6;
+        private ColorPicker colorPicker5;
+        private ColorPicker colorPicker4;
+        private ColorPicker colorPicker3;
+        private ColorPicker colorPicker2;
     }
 }

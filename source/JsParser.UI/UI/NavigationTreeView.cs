@@ -544,12 +544,10 @@ namespace JsParser.UI.UI
                 resetLabelToolStripMenuItem.Enabled = !string.IsNullOrEmpty(nodeTags);
                 
                 var menuItems = new[] { contextMenuMarks1Item, contextMenuMarks2Item, contextMenuMarks3Item, contextMenuMarks4Item, contextMenuMarks5Item };
-                var menuFonts = new[] { Settings.taggedFunction2Font, Settings.taggedFunction3Font, Settings.taggedFunction4Font, Settings.taggedFunction5Font, Settings.taggedFunction6Font };
                 var menuColors = new[] { Settings.taggedFunction2Color, Settings.taggedFunction3Color, Settings.taggedFunction4Color, Settings.taggedFunction5Color, Settings.taggedFunction6Color };
 
                 for (int i = 0; i < menuItems.Length; ++i)
                 {
-                    menuItems[i].Font = menuFonts[i];
                     menuItems[i].ForeColor = menuColors[i];
                     menuItems[i].Checked = nodeTags.Contains((string)menuItems[i].Tag);
                 }

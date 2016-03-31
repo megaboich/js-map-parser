@@ -78,23 +78,18 @@ namespace JsParser.UI.Helpers
 				{
 					case 'B':
 						treenode.ForeColor = Settings.Default.taggedFunction2Color;
-						treenode.NodeFont = Settings.Default.taggedFunction2Font;
 						break;
 					case 'G':
 						treenode.ForeColor = Settings.Default.taggedFunction3Color;
-						treenode.NodeFont = Settings.Default.taggedFunction3Font;
 						break;
 					case 'O':
 						treenode.ForeColor = Settings.Default.taggedFunction4Color;
-						treenode.NodeFont = Settings.Default.taggedFunction4Font;
 						break;
 					case 'R':
 						treenode.ForeColor = Settings.Default.taggedFunction5Color;
-						treenode.NodeFont = Settings.Default.taggedFunction5Font;
 						break;
 					case 'S':
 						treenode.ForeColor = Settings.Default.taggedFunction6Color;
-						treenode.NodeFont = Settings.Default.taggedFunction6Font;
 						break;
 				}
 			}

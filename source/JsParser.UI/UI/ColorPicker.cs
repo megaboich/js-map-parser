@@ -13,6 +13,10 @@ namespace JsParser.UI.UI
     {
         private bool _skipTextBoxEvent = false;
 
+        [Description("SelectedColorChanged")]
+        [Category("CatBehavior")]
+        public event EventHandler SelectedColorChanged;
+
         public Color SelectedColor
         {
             get { return panel1.BackColor; }
@@ -22,6 +26,10 @@ namespace JsParser.UI.UI
                 _skipTextBoxEvent = true;
                 textBox1.Text = ColorTranslator.ToHtml(panel1.BackColor);
                 _skipTextBoxEvent = false;
+                if (SelectedColorChanged != null)
+                {
+                    SelectedColorChanged(this, EventArgs.Empty);
+                }
             }
         }
 

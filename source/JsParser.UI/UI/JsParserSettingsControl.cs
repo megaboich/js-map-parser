@@ -41,16 +41,16 @@ namespace JsParser.UI.UI
             btnSelectTreeFont.Text = treeFont.Name + " (" + treeFont.Size + ")";
             btnSelectTreeFont.Font = treeFont;
 
-            taggedFuncLabel2.ForeColor = Settings.Default.taggedFunction2Color;
-            taggedFuncLabel2.Font = Settings.Default.taggedFunction2Font ?? _defaultTreeFont;
-            taggedFuncLabel3.ForeColor = Settings.Default.taggedFunction3Color;
-            taggedFuncLabel3.Font = Settings.Default.taggedFunction3Font ?? _defaultTreeFont;
-            taggedFuncLabel4.ForeColor = Settings.Default.taggedFunction4Color;
-            taggedFuncLabel4.Font = Settings.Default.taggedFunction4Font ?? _defaultTreeFont;
-            taggedFuncLabel5.ForeColor = Settings.Default.taggedFunction5Color;
-            taggedFuncLabel5.Font = Settings.Default.taggedFunction5Font ?? _defaultTreeFont;
-            taggedFuncLabel6.ForeColor = Settings.Default.taggedFunction6Color;
-            taggedFuncLabel6.Font = Settings.Default.taggedFunction6Font ?? _defaultTreeFont;
+            taggedFuncLabel2.Font = treeFont;
+            taggedFuncLabel3.Font = treeFont;
+            taggedFuncLabel4.Font = treeFont;
+            taggedFuncLabel5.Font = treeFont;
+            taggedFuncLabel6.Font = treeFont;
+            colorPicker2.SelectedColor = Settings.Default.taggedFunction2Color;
+            colorPicker3.SelectedColor = Settings.Default.taggedFunction3Color;
+            colorPicker4.SelectedColor = Settings.Default.taggedFunction4Color;
+            colorPicker5.SelectedColor = Settings.Default.taggedFunction5Color;
+            colorPicker6.SelectedColor = Settings.Default.taggedFunction6Color;
 
             numericUpDownMaxParametersLength.Value = Settings.Default.MaxParametersLength;
             numericUpDownMaxParametersLengthInFunctionChain.Value = Settings.Default.MaxParametersLengthInFunctionChain;
@@ -101,16 +101,11 @@ namespace JsParser.UI.UI
 
             Settings.Default.TreeFont = btnSelectTreeFont.Font;
 
-            Settings.Default.taggedFunction2Color = taggedFuncLabel2.ForeColor;
-            Settings.Default.taggedFunction2Font = taggedFuncLabel2.Font;
-            Settings.Default.taggedFunction3Color = taggedFuncLabel3.ForeColor;
-            Settings.Default.taggedFunction3Font = taggedFuncLabel3.Font;
-            Settings.Default.taggedFunction4Color = taggedFuncLabel4.ForeColor;
-            Settings.Default.taggedFunction4Font = taggedFuncLabel4.Font;
-            Settings.Default.taggedFunction5Color = taggedFuncLabel5.ForeColor;
-            Settings.Default.taggedFunction5Font = taggedFuncLabel5.Font;
-            Settings.Default.taggedFunction6Color = taggedFuncLabel6.ForeColor;
-            Settings.Default.taggedFunction6Font = taggedFuncLabel6.Font;
+            Settings.Default.taggedFunction2Color = colorPicker2.SelectedColor;
+            Settings.Default.taggedFunction3Color = colorPicker3.SelectedColor;
+            Settings.Default.taggedFunction4Color = colorPicker4.SelectedColor;
+            Settings.Default.taggedFunction5Color = colorPicker5.SelectedColor;
+            Settings.Default.taggedFunction6Color = colorPicker6.SelectedColor;
 
             Settings.Default.MaxParametersLength = Convert.ToInt32(numericUpDownMaxParametersLength.Value);
             Settings.Default.MaxParametersLengthInFunctionChain = Convert.ToInt32(numericUpDownMaxParametersLengthInFunctionChain.Value);
@@ -160,29 +155,7 @@ namespace JsParser.UI.UI
                 lbl.ForeColor = fontDialog1.Color;
             }
         }
-
-        private void ShowColorDialogForLabel(string lblName)
-        {
-            Label lbl = (Label)Controls.Find(lblName, true).First();
-            colorDialog1.Color = lbl.ForeColor;
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                lbl.ForeColor = colorDialog1.Color;
-            }
-        }
-
-        private void btnFont_Click(object sender, EventArgs e)
-        {
-            var lblName = "taggedFuncLabel" + (string)((Control)sender).Tag;
-            ShowFontDialogForLabel(lblName);
-        }
-
-        private void btnColor_Click(object sender, EventArgs e)
-        {
-            var lblName = "taggedFuncLabel" + (string)((Control)sender).Tag;
-            ShowColorDialogForLabel(lblName);
-        }
-
+       
         private void chScriptStripEnabled_CheckedChanged(object sender, EventArgs e)
         {
             edScriptStripEtensions.Enabled = chScriptStripEnabled.Checked;
@@ -249,7 +222,21 @@ namespace JsParser.UI.UI
             {
                 btnSelectTreeFont.Font = fontDialog1.Font;
                 btnSelectTreeFont.Text = fontDialog1.Font.Name + " (" + fontDialog1.Font.Size + ")";
+
+                taggedFuncLabel2.Font = fontDialog1.Font;
+                taggedFuncLabel3.Font = fontDialog1.Font;
+                taggedFuncLabel4.Font = fontDialog1.Font;
+                taggedFuncLabel5.Font = fontDialog1.Font;
+                taggedFuncLabel6.Font = fontDialog1.Font;
             }
+        }
+
+        private void colorPicker2_SelectedColorChanged(object sender, EventArgs e)
+        {
+            var senderColorPicker = (ColorPicker) sender;
+            var lblName = "taggedFuncLabel" + senderColorPicker.Tag;
+            Label lbl = (Label)Controls.Find(lblName, true).First();
+            lbl.ForeColor = senderColorPicker.SelectedColor;
         }
     }
 }
