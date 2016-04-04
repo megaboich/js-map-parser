@@ -109,9 +109,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DllExport\NppPlugin.DllExport.targets" />
+    <None Include="DllExport\NppPlugin.DllExport.targets">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(ProjectDir)tools\ilmerge.exe /out:$(ProjectDir)build\JsMapParser.NppPlugin.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)tools\ILMerge\ilmerge.exe /targetplatform:v4 /out:$(ProjectDir)build\JsMapParser.NppPlugin.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
