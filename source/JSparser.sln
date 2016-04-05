@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{807A3C04-84D7-4D97-8C38-8646E041E6CA}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,9 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Core", "JsParser.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Test", "JsParser.Test\JsParser.Test.csproj", "{A6217C4C-BBA4-4DBF-8352-7CC2A93CDBAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.Package", "JsParser.Package\JsParser.Package.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.AddIn", "JsParser.AddIn\JsParser.AddIn.csproj", "{1C699393-B880-4B7A-AD0E-64C1174718A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.VsExtension", "JsParser.VsExtension\JsParser.VsExtension.csproj", "{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsParser.UI", "JsParser.UI\JsParser.UI.csproj", "{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}"
 EndProject
@@ -62,16 +60,6 @@ Global
 		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{564B76C6-C96F-41AB-AA4F-2F09A9DB14BF}.Release|x86.ActiveCfg = Release|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{1C699393-B880-4B7A-AD0E-64C1174718A1}.Release|x86.ActiveCfg = Release|Any CPU
 		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3A9341-BFB8-45DE-8B5C-E2BAFE3A3B80}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

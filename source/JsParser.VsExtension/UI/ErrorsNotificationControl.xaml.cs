@@ -1,7 +1,7 @@
 ﻿using JsParser.Core.Code;
 using JsParser.Core.Infrastructure;
 using JsParser.Core.Parsers;
-using JsParser.Package.Infrastructure;
+using JsParser.VsExtension.Infrastructure;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JsParser.Package.UI
+namespace JsParser.VsExtension.UI
 {
     /// <summary>
     /// Interaction logic for ErrorsNotificationControl.xaml

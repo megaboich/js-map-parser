@@ -2,7 +2,7 @@
 // MUST match guids.h
 using System;
 
-namespace JsParser.Package
+namespace JsParser.VsExtension
 {
     static class GuidList
     {

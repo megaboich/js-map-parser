@@ -7,13 +7,13 @@ using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
 using EnvDTE;
-using JsParser.Package.UI;
-using JsParser.Package.Infrastructure;
 using JsParser.Core.Infrastructure;
 using JsParser.UI.Properties;
 using JsParser.UI.Infrastructure;
+using JsParser.VsExtension.Infrastructure;
+using JsParser.VsExtension.UI;
 
-namespace JsParser.Package
+namespace JsParser.VsExtension
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -35,14 +35,13 @@ namespace JsParser.Package
     [ProvideMenuResource("Menus.ctmenu", 1)]
 
     // This attribute registers a tool window exposed by this package.
-    [ProvideToolWindow(typeof(JsParserToolWindow))]
+    [ProvideToolWindow(typeof (JsParserToolWindow))]
 
     // This attribute triggers load of extension
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
-    
 
-    [ProvideOptionPageAttribute(typeof(OptionsPageCustom), "Javascript Map Parser Extension", "General", 113, 114, true)]
+    [ProvideOptionPage(typeof (OptionsPageCustom), "JavaScript Map Parser Extension", "General", 113, 114, true)]
     [Guid(GuidList.guidJsParserPackagePkgString)]
     public sealed class JsParserPackage : Microsoft.VisualStudio.Shell.Package
     {
@@ -54,10 +53,7 @@ namespace JsParser.Package
 
         public static JsParserToolWindowManager JsParserToolWindowManager
         {
-            get
-            {
-                return _jsParserToolWindowManager;
-            }
+            get { return _jsParserToolWindowManager; }
         }
 
         /// <summary>
@@ -93,13 +89,9 @@ namespace JsParser.Package
             CreateToolWindow<JsParserToolWindow>().FindCommand();
         }
 
-        /////////////////////////////////////////////////////////////////////////////
-        // Overriden Package Implementation
-        #region Package Members
-
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
-        /// where you can put all the initilaization code that rely on services provided by VisualStudio.
+        /// where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
         protected override void Initialize()
         {
@@ -108,23 +100,23 @@ namespace JsParser.Package
             //System.Diagnostics.Debugger.Break();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
-            var mcs = (IMenuCommandService)GetService(typeof(IMenuCommandService));
+            var mcs = (IMenuCommandService) GetService(typeof (IMenuCommandService));
             if (mcs != null)
             {
                 // Create the command for the tool window
-                var toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParser);
+                var toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int) PkgCmdIDList.cmdJsParser);
                 var menuToolWin = new MenuCommand(JsParserMenuCmd, toolwndCommandID);
                 mcs.AddCommand(menuToolWin);
 
                 // Create the command for the tool window
-                toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int)PkgCmdIDList.cmdJsParserFind);
+                toolwndCommandID = new CommandID(GuidList.guidJsParserPackageCmdSet, (int) PkgCmdIDList.cmdJsParserFind);
                 menuToolWin = new MenuCommand(JsParserMenuFindCmd, toolwndCommandID);
                 mcs.AddCommand(menuToolWin);
             }
 
             _jsParserService = new JsParserService(Settings.Default);
 
-            var dte = (DTE)GetService(typeof(DTE));
+            var dte = (DTE) GetService(typeof (DTE));
             Events events = dte.Events;
             _documentEvents = events.get_DocumentEvents(null);
             _solutionEvents = events.SolutionEvents;
@@ -140,7 +132,6 @@ namespace JsParser.Package
 
             base.Initialize();
         }
-        #endregion
 
         private T CreateToolWindow<T>()
             where T : ToolWindowPane
@@ -148,7 +139,7 @@ namespace JsParser.Package
             // Get the instance number 0 of this tool window. This window is single instance so this instance
             // is actually the only one.
             // The last flag is set to true so that if the tool window does not exists it will be created.
-            var window = (T)this.FindToolWindow(typeof(T), 0, true);
+            var window = (T) this.FindToolWindow(typeof (T), 0, true);
             if ((null == window) || (null == window.Frame))
             {
                 throw new NotSupportedException(Resources.Resources.CanNotCreateWindow);
@@ -157,9 +148,9 @@ namespace JsParser.Package
         }
 
         private T FindToolWindow<T>()
-             where T : ToolWindowPane
+            where T : ToolWindowPane
         {
-            var window = (T)this.FindToolWindow(typeof(T), 0, false);
+            var window = (T) this.FindToolWindow(typeof (T), 0, false);
             if ((null == window) || (null == window.Frame))
             {
                 return null;
@@ -174,7 +165,6 @@ namespace JsParser.Package
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
         }
 
-        #region DTE Events
         private void windowEvents_WindowActivated(EnvDTE.Window gotFocus, EnvDTE.Window lostFocus)
         {
             if (gotFocus == null
@@ -190,8 +180,8 @@ namespace JsParser.Package
 
         private void documentEvents_DocumentSaved(Document doc)
         {
-            if (doc.ActiveWindow != null 
-                && doc.ActiveWindow.Left == 0 
+            if (doc.ActiveWindow != null
+                && doc.ActiveWindow.Left == 0
                 && doc.ActiveWindow.Top == 0)
             {
                 //This is invisible doc
@@ -205,10 +195,5 @@ namespace JsParser.Package
         {
             _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(doc));
         }
-        #endregion
-
-        
-
-
     }
 }

@@ -2,7 +2,7 @@
 // MUST match PkgCmdID.h
 using System;
 
-namespace JsParser.Package
+namespace JsParser.VsExtension
 {
     static class PkgCmdIDList
     {

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using JsParser.UI.UI;
 using System.Diagnostics;
 
-namespace JsParser.Package
+namespace JsParser.VsExtension
 {
 	/// <summary>
 	/// Extends a standard dialog functionality for implementing ToolsOptions pages, 
