@@ -5,6 +5,7 @@ namespace JsMapParser.NppPlugin
     internal class PluginSettings
     {
         public bool ShowToolWindow { get; set; }
+        public bool ToolWindowVisible { get; set; }
 
         private string _iniFilePath;
 
@@ -21,11 +22,13 @@ namespace JsMapParser.NppPlugin
 
             // get the parameter value from plugin config
             ShowToolWindow = (Win32.GetPrivateProfileInt("JsMapParserExtension", "ShowToolWindow", 0, _iniFilePath) != 0);
+            ToolWindowVisible = (Win32.GetPrivateProfileInt("JsMapParserExtension", "ToolWindowVisible", 0, _iniFilePath) != 0);
         }
 
         public void Save()
         {
             Win32.WritePrivateProfileString("JsMapParserExtension", "ShowToolWindow", ShowToolWindow ? "1" : "0", _iniFilePath);
+            Win32.WritePrivateProfileString("JsMapParserExtension", "ToolWindowVisible", ToolWindowVisible ? "1" : "0", _iniFilePath);
         }
     }
 }

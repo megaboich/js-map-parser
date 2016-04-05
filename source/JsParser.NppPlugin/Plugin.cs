@@ -27,7 +27,7 @@ namespace JsMapParser.NppPlugin
 
             Settings = new PluginSettings(sbIniFilePath.ToString());
 
-            SetCommand(0, "Show Panel", ShowParserUiPanel, true);
+            SetCommand(0, "Show Panel", ShowParserUiPanel, Settings.ShowToolWindow);
             idMenuItemParserUi = 0;
 
             SetCommand(1, "---", null);
@@ -46,7 +46,20 @@ namespace JsMapParser.NppPlugin
             if (Settings.ShowToolWindow)
             {
                 ShowParserUiPanel();
+
+                if (Settings.ToolWindowVisible)
+                {
+                    //Also register timer to show panel once more with delay - so our panel will be likely shown the last
+                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(100));
+                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(200));
+                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(500));
+                }
             }
+        }
+
+        private static void ShowThePanel()
+        {
+            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, _frmParserUiContainer.Handle);
         }
 
         internal static void SetToolBarIcon()
@@ -61,6 +74,7 @@ namespace JsMapParser.NppPlugin
 
         internal static void PluginCleanUp()
         {
+            Settings.ToolWindowVisible = _frmParserUiContainer != null && _frmParserUiContainer.Visible;
             Settings.Save();
         }
 
