@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -49,41 +50,33 @@ namespace JsMapParser.NppPlugin
             try
             {
                 SCNotification nc = (SCNotification) Marshal.PtrToStructure(notifyCode, typeof (SCNotification));
-
-                //File.AppendAllLines(Path.Combine(Path.GetTempPath(), "npp_logevent.log"), new[]
-                //{
-                //    nc.nmhdr.code + ":" + nc.lParam + "," + nc.wParam
-                //});
-
-                StringBuilder resultFileName = new StringBuilder(Win32.MAX_PATH);
-                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, resultFileName);
-
-                if (nc.nmhdr.code == (uint) NppMsg.NPPN_TBMODIFICATION)
+                var commandCode = nc.nmhdr.code;
+                switch (commandCode)
                 {
-                    PluginBase._funcItems.RefreshItems();
-                    PluginBase.SetToolBarIcon();
-                }
-                else if (nc.nmhdr.code == (uint) SciMsg.SCN_CHARADDED)
-                {
-                    //PluginBase.doInsertHtmlCloseTag((char)nc.ch);
-                }
-                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_SHUTDOWN)
-                {
-                    PluginBase.PluginCleanUp();
-                    Marshal.FreeHGlobal(_ptrPluginName);
-                }
-                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_FILESAVED)
-                {
-                    PluginBase.OnFileSaved();
-                }
-                else if (nc.nmhdr.code == (uint) NppMsg.NPPN_BUFFERACTIVATED)
-                {
-                    PluginBase.OnFileChanged();
+                    case (uint)NppMsg.NPPN_READY:
+                        PluginBase.OnReady();
+                        break;
+                    case (uint)NppMsg.NPPN_TBMODIFICATION:
+                        PluginBase._funcItems.RefreshItems();
+                        PluginBase.SetToolBarIcon();
+                        break;
+                    case (uint)SciMsg.SCN_CHARADDED:
+                        break;
+                    case (uint)NppMsg.NPPN_SHUTDOWN:
+                        PluginBase.PluginCleanUp();
+                        Marshal.FreeHGlobal(_ptrPluginName);
+                        break;
+                    case (uint)NppMsg.NPPN_FILESAVED:
+                        PluginBase.OnFileSaved();
+                        break;
+                    case (uint)NppMsg.NPPN_BUFFERACTIVATED:
+                        PluginBase.OnFileChanged();
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                File.AppendAllLines(Path.Combine(Path.GetTempPath(), "npp_logevent.log"), new[]
+                File.AppendAllLines(Path.Combine(Path.GetTempPath(), "npp_js_map_parser_event.log"), new[]
                 {
                     "ERROR: " + ex.Message + " " + ex.StackTrace
                 });

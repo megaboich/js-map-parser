@@ -74,6 +74,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ToolsHelper.cs" />
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>

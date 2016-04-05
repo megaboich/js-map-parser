@@ -12,11 +12,6 @@ namespace JsMapParser.NppPlugin.Forms
 
         void FormVisibleChanged(object sender, EventArgs e)
         {
-        	if (!Visible)
-        	{
-                PluginBase.UncheckMenuItem(PluginBase.idMenuItemParserUi);
-        	    PluginBase.Settings.ShowToolWindow = false;
-        	}
         }
     }
 }

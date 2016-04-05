@@ -1,39 +1,48 @@
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using JsMapParser.NppPlugin.Forms;
 
 namespace JsMapParser.NppPlugin
 {
     partial class PluginBase
     {
-        internal const string PluginName = "Javascript Map Parser";
+        internal const string PluginName = "JavaScript Map Parser";
         internal static int idMenuItemParserUi = -1;
         internal static PluginSettings Settings;
+        internal static bool IsDebugMode = false;
 
         private static frmParserUiContainer _frmParserUiContainer;
         private static readonly JsParserIntegration jsParser = new JsParserIntegration();
 
         internal static void CommandMenuInit()
         {
-            // get path of plugin configuration
+            // get path of plug-in configuration
             StringBuilder sbIniFilePath = new StringBuilder(Win32.MAX_PATH);
             Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
 
             Settings = new PluginSettings(sbIniFilePath.ToString());
 
-            
-            SetCommand(0, "Show Javascript Map Parser UI Panel", ShowParserUiPanel);
+            SetCommand(0, "Show Panel", ShowParserUiPanel, true);
             idMenuItemParserUi = 0;
 
             SetCommand(1, "---", null);
 
             SetCommand(2, "About", About);
 
-            //SetCommand(3, "Attach Debugger", AttachDebugger);
+            IsDebugMode = Environment.GetEnvironmentVariable("npp_js_map_parser_addin_debug_mode") == "true";
+            if (IsDebugMode)
+            {
+                SetCommand(3, "Attach Debugger", AttachDebugger);
+            }
+        }
 
+        public static void OnReady()
+        {
             if (Settings.ShowToolWindow)
             {
                 ShowParserUiPanel();
@@ -46,8 +55,7 @@ namespace JsMapParser.NppPlugin
             tbIcons.hToolbarBmp = Resources.Resources.jsparsericon.GetHbitmap();
             var pTbIcons = Marshal.AllocHGlobal(Marshal.SizeOf(tbIcons));
             Marshal.StructureToPtr(tbIcons, pTbIcons, false);
-            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_ADDTOOLBARICON,
-                _funcItems.Items[idMenuItemParserUi]._cmdID, pTbIcons);
+            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_ADDTOOLBARICON, _funcItems.Items[idMenuItemParserUi]._cmdID, pTbIcons);
             Marshal.FreeHGlobal(pTbIcons);
         }
 
@@ -72,27 +80,12 @@ namespace JsMapParser.NppPlugin
             if (_frmParserUiContainer == null)
             {
                 _frmParserUiContainer = new frmParserUiContainer();
-                Icon tbIcon;
-                using (var newBmp = new Bitmap(16, 16))
-                {
-                    var g = Graphics.FromImage(newBmp);
-                    var colorMap = new ColorMap[1];
-                    colorMap[0] = new ColorMap();
-                    colorMap[0].OldColor = Color.Fuchsia;
-                    colorMap[0].NewColor = Color.FromKnownColor(KnownColor.ButtonFace);
-                    var attr = new ImageAttributes();
-                    attr.SetRemapTable(colorMap);
-                    g.DrawImage(Resources.Resources.jsparsericon, new Rectangle(0, 0, 16, 16), 0, 0, 16, 16, GraphicsUnit.Pixel, attr);
-                    tbIcon = Icon.FromHandle(newBmp.GetHicon());
-                }
-
+                var tbIcon = ToolsHelper.GetTransparentIcon(Resources.Resources.jsparsericon, 16, 16);
                 var nppTbData = new NppTbData();
                 nppTbData.hClient = _frmParserUiContainer.Handle;
                 nppTbData.pszName = PluginName;
-                // the dlgDlg should be the index of funcItem where the current function pointer is in
-                // this case is 15.. so the initial value of funcItem[15]._cmdID - not the updated internal one !
                 nppTbData.dlgID = idMenuItemParserUi;
-                // define the default docking behaviour
+                // define the default docking behavior
                 nppTbData.uMask = NppTbMsg.DWS_DF_CONT_RIGHT | NppTbMsg.DWS_ICONTAB | NppTbMsg.DWS_ICONBAR;
                 nppTbData.hIconTab = (uint) tbIcon.Handle;
                 nppTbData.pszModuleName = PluginName;
@@ -100,9 +93,14 @@ namespace JsMapParser.NppPlugin
                 Marshal.StructureToPtr(nppTbData, ptrNppTbData, false);
 
                 Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_DMMREGASDCKDLG, 0, ptrNppTbData);
-                // Following message will toogle both menu item state and toolbar button
-                Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK,
-                    _funcItems.Items[idMenuItemParserUi]._cmdID, 1);
+
+                // Following message will toggle both menu item state and toolbar button
+                Win32.SendMessage(
+                    nppData._nppHandle, 
+                    NppMsg.NPPM_SETMENUITEMCHECK,
+                    _funcItems.Items[idMenuItemParserUi]._cmdID, 
+                    1);
+
                 Settings.ShowToolWindow = true;
             }
             else

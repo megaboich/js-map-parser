@@ -45,11 +45,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(197, 420);
             this.Controls.Add(this.navigationTreeView1);
+            this.DoubleBuffered = true;
             this.Name = "frmParserUiContainer";
             this.Text = "NppDockableForm";
             this.VisibleChanged += new System.EventHandler(this.FormVisibleChanged);
             this.ResumeLayout(false);
-
         }
 
         #endregion
