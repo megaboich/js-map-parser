@@ -59,9 +59,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\CodeNodeComparer.cs" />
@@ -73,7 +71,6 @@
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\HierarchyComparer.cs" />
-    <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Infrastructure\ISettings.cs" />
     <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
     <Compile Include="Infrastructure\JsParserService.cs" />

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
-using JsParser.Core.Helpers;
-using JsParser.Core.Parsers;
 
 namespace JsParser.Core.Code
 {
     /// <summary>
     /// The code node.
     /// </summary>
-    [Serializable]
     public class CodeNode : IEquatable<CodeNode>
     {
         /// <summary>
@@ -30,13 +26,11 @@ namespace JsParser.Core.Code
         /// <summary>
         /// Gets or sets EndColumn.
         /// </summary>
-        [XmlIgnore]
         public int EndColumn { get; set; }
 
         /// <summary>
         /// Gets or sets StartPosition.
         /// </summary>
-        [XmlIgnore]
         public int StartColumn { get; set; }
 
         /// <summary>

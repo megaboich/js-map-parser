@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Xml.Serialization;
 
 namespace JsParser.Core.Helpers
 {
@@ -12,7 +11,6 @@ namespace JsParser.Core.Helpers
     /// Type of objects used in hierarchy.
     /// </typeparam>
     [Serializable]
-    [XmlRoot("Hierachy")]
     public class Hierarchy<T>
     {
         /// <summary>
@@ -44,7 +42,6 @@ namespace JsParser.Core.Helpers
         /// <summary>
         /// Gets or sets Childrens.
         /// </summary>
-        [XmlArrayItem(ElementName = "Hierachy", IsNullable = true)]
         public List<Hierarchy<T>> Children { get; set; }
 
         /// <summary>

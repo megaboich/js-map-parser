@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
-using JsParser.Core.Helpers;
-using JsParser.Core.Parsers;
 
 namespace JsParser.Core.Code
 {
