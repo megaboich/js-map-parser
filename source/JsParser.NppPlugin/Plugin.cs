@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using JsMapParser.NppPlugin.Forms;
+using JsMapParser.NppPlugin.Helpers;
 
 namespace JsMapParser.NppPlugin
 {
@@ -50,9 +51,11 @@ namespace JsMapParser.NppPlugin
                 if (Settings.ToolWindowVisible)
                 {
                     //Also register timer to show panel once more with delay - so our panel will be likely shown the last
-                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(100));
-                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(200));
-                    ToolsHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(500));
+                    TimerHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(100));
+                    TimerHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(200));
+                    TimerHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(500));
+                    TimerHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(1000));
+                    TimerHelper.SetTimeOut(ShowThePanel, TimeSpan.FromMilliseconds(1500));
                 }
             }
         }

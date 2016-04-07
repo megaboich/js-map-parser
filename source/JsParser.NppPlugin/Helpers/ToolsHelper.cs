@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading;
 
-namespace JsMapParser.NppPlugin
+namespace JsMapParser.NppPlugin.Helpers
 {
     public static class ToolsHelper
     {
@@ -26,12 +21,6 @@ namespace JsMapParser.NppPlugin
                 tbIcon = Icon.FromHandle(newBmp.GetHicon());
             }
             return tbIcon;
-        }
-
-        public static Timer SetTimeOut(Action action, TimeSpan delay)
-        {
-            var timer = new Timer(_ => action(), null, delay, TimeSpan.FromMilliseconds(-1));
-            return timer;
         }
     }
 }
