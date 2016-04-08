@@ -73,6 +73,25 @@ namespace JsParser.UI.Helpers
 
         public void SubmitStatisticsToServer(bool force = false)
         {
+            /*
+curl \
+-H application-id:<your-app-id> \
+-H secret-key:<your-rest-secret-key> \
+-H Content-Type:application/json \
+-H application-type:REST \
+-X POST \
+'https://api.backendless.com/v1/data/Comment' \
+-d '{"message":"Hi, I am here!"}'
+ */
+
+            var serverUrl = "https://api.backendless.com/v1/data/plugin_usage";
+            var headers = new Dictionary<string, string>()
+            {
+                { "application-id", "7FDF78C3-51B1-3F8F-FF3B-F2F4B4287C00" },
+                { "secret-key", "1F901130-6AE6-4D3C-FF65-AA4808E44F00" },
+                { "application-type", "REST" }
+            };
+            
             if (force || Statistics.LastSubmittedTime.AddDays(1) < DateTime.UtcNow)
             {
                 Save();
@@ -81,10 +100,10 @@ namespace JsParser.UI.Helpers
                 {
                     try
                     {
-                        //This code is copypasted from http://msdn.microsoft.com/en-us/library/debx8sh9.aspx
+                        //This code is copy-pasted from http://msdn.microsoft.com/en-us/library/debx8sh9.aspx
 
                         // Create a request using a URL that can receive a post. 
-                        WebRequest request = WebRequest.Create(Settings.Default.StatisticsServerUrl);
+                        WebRequest request = WebRequest.Create(serverUrl);
                         // Set the Method property of the request to POST.
                         request.Method = "POST";
                         // Create POST data and convert it to a byte array.
@@ -96,12 +115,20 @@ namespace JsParser.UI.Helpers
                         request.ContentType = "application/json";
                         // Set the ContentLength property of the WebRequest.
                         request.ContentLength = byteArray.Length;
+
+                        // Add more headers
+                        foreach (var kv in headers)
+                        {
+                            request.Headers.Add(kv.Key, kv.Value);
+                        }
+
                         // Get the request stream.
                         Stream dataStream = request.GetRequestStream();
                         // Write the data to the request stream.
                         dataStream.Write(byteArray, 0, byteArray.Length);
                         // Close the Stream object.
                         dataStream.Close();
+
                         // Get the response.
                         var response = (HttpWebResponse) request.GetResponse();
                         // Display the status.

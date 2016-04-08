@@ -61,9 +61,6 @@
     <Setting Name="Statistics" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="StatisticsServerUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://apps.megaboich.com/statistics/jsparser/submit</Value>
-    </Setting>
     <Setting Name="SendStatistics" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
