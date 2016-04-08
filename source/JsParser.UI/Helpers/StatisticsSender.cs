@@ -20,8 +20,8 @@ namespace JsParser.UI.Helpers
 
             //Ask user if it is normal to send statistics
             if (Settings.Default.SendStatisticsPolitic == "Ask"
-             && StatisticsManager.Instance.Statistics.LastSubmittedTime.AddDays(3) < DateTime.UtcNow
-             && StatisticsManager.Instance.Statistics.NavigateFromFunctionsTreeCount > 10)
+                && StatisticsManager.Instance.Statistics.FirstDateUse.AddDays(3) < DateTime.UtcNow
+                && StatisticsManager.Instance.Statistics.NavigateFromFunctionsTreeCount > 10)
             {
                 var askForm = new Form_SendStatisticsConfirmation();
                 var result = askForm.ShowDialog();
@@ -39,7 +39,7 @@ namespace JsParser.UI.Helpers
 
                 if (result == System.Windows.Forms.DialogResult.Cancel)
                 {
-                    //no - user dont want this shit
+                    //no - user don't want this shit
                     Settings.Default.SendStatisticsPolitic = "Not allowed";
                     Settings.Default.SendStatistics = false;
                     Settings.Default.Save();

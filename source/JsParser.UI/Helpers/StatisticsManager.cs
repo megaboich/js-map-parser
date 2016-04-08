@@ -65,25 +65,8 @@ namespace JsParser.UI.Helpers
             Settings.Default.Save();
         }
 
-        public void IgnoreSendingStatistics()
-        {
-            Statistics.LastSubmittedTime = DateTime.UtcNow;
-            Save();
-        }
-
         public void SubmitStatisticsToServer(bool force = false)
         {
-            /*
-curl \
--H application-id:<your-app-id> \
--H secret-key:<your-rest-secret-key> \
--H Content-Type:application/json \
--H application-type:REST \
--X POST \
-'https://api.backendless.com/v1/data/Comment' \
--d '{"message":"Hi, I am here!"}'
- */
-
             var serverUrl = "https://api.backendless.com/v1/data/plugin_usage";
             var headers = new Dictionary<string, string>()
             {
