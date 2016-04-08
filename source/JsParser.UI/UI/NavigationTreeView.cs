@@ -26,7 +26,7 @@ namespace JsParser.UI.UI
     {
         private string _loadedDocName = string.Empty;
         private bool _canExpand = true;
-        private MarksManager _marksManager = new MarksManager();
+        private SourceFileSpecificSettingsManager _sourceFileSpecificSettingsManager = new SourceFileSpecificSettingsManager();
         private ExpandedNodesManager _expandedNodesManager = new ExpandedNodesManager();
         private int _lastCodeLine = -1;
         private List<CodeNode> _functions;
@@ -164,7 +164,7 @@ namespace JsParser.UI.UI
 
             _loadedDocName = _lastParserResult.FileName;
             _expandedNodesManager.SetFile(_loadedDocName);
-            _marksManager.SetFile(_loadedDocName);
+            _sourceFileSpecificSettingsManager.SetFile(_loadedDocName);
 
             _treeRefreshing = true;
             treeView1.BeginUpdate();
@@ -327,7 +327,7 @@ namespace JsParser.UI.UI
                 treeNode.CodeNode = node;
                 treeNode.ToolTipText = CommentTipFormatter.FormatPlainTextComment(node.Comment);
                 treeNode.StateImageIndex = GetImageIndex(node.NodeType);
-                _marksManager.RestoreMark(treeNode);
+                _sourceFileSpecificSettingsManager.RestoreMark(treeNode);
                 dest.Add(treeNode);
 
                 functions.Add(node);
@@ -561,20 +561,20 @@ namespace JsParser.UI.UI
         private void contextMenuMarks0Item_Click(object sender, EventArgs e)
         {
             var menuItem = (ToolStripMenuItem)sender;
-            _marksManager.SetMark((string)menuItem.Tag, (CustomTreeNode)treeView1.SelectedNode);
+            _sourceFileSpecificSettingsManager.SetMark((string)menuItem.Tag, (CustomTreeNode)treeView1.SelectedNode);
             treeView1.Refresh();
             ++StatisticsManager.Instance.Statistics.SetMarkExecutedCount;
         }
 
         private void resetLabelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _marksManager.SetMark(null, (CustomTreeNode)treeView1.SelectedNode);
+            _sourceFileSpecificSettingsManager.SetMark(null, (CustomTreeNode)treeView1.SelectedNode);
             treeView1.Refresh();
         }
 
         private void resetAllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _marksManager.ResetMarks();
+            _sourceFileSpecificSettingsManager.ResetMarks();
             RefreshTree();
         }
 

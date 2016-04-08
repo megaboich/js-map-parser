@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using JsParser.Core.Infrastructure;
 using JsParser.Core.Parsers;
 
 namespace JsParser.UI.Properties {
@@ -30,12 +29,12 @@ namespace JsParser.UI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string BookmarksData {
+        public string FileSpecificData {
             get {
-                return ((string)(this["BookmarksData"]));
+                return ((string)(this["FileSpecificData"]));
             }
             set {
-                this["BookmarksData"] = value;
+                this["FileSpecificData"] = value;
             }
         }
         

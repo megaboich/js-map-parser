@@ -67,6 +67,8 @@ namespace JsParser.UI.Helpers
 
         public DateTime LastSubmittedTime { get; set; }
 
+        public DateTime CurrentTime { get; set; }
+
         public string Version {get; set;}
 
         /// <summary>

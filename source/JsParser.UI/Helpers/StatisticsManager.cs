@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
-using System.Web.Script.Serialization;
+using fastJSON;
 
 namespace JsParser.UI.Helpers
 {
@@ -32,7 +32,7 @@ namespace JsParser.UI.Helpers
             {
                 try
                 {
-                    Statistics = new JavaScriptSerializer().Deserialize<Statistics>(Settings.Default.Statistics);
+                    Statistics = JSON.ToObject<Statistics>(Settings.Default.Statistics);
                 }
                 catch
                 {
@@ -46,15 +46,17 @@ namespace JsParser.UI.Helpers
 
         public static StatisticsManager Instance
         {
-            get
-            {
-                return _statMan;
-            }
+            get { return _statMan; }
         }
 
         public void UpdateSettingsWithStatistics()
         {
-            Settings.Default.Statistics = new JavaScriptSerializer().Serialize(Statistics);
+            Settings.Default.Statistics = GetSerializedStatistics();
+        }
+
+        private string GetSerializedStatistics()
+        {
+            return JSON.ToNiceJSON(Statistics, new JSONParameters() { UseExtensions = false, UseFastGuid = false });
         }
 
         public void Save()
@@ -75,7 +77,8 @@ namespace JsParser.UI.Helpers
             {
                 Save();
 
-                ThreadPool.QueueUserWorkItem(state => {
+                ThreadPool.QueueUserWorkItem(state =>
+                {
                     try
                     {
                         //This code is copypasted from http://msdn.microsoft.com/en-us/library/debx8sh9.aspx
@@ -85,8 +88,9 @@ namespace JsParser.UI.Helpers
                         // Set the Method property of the request to POST.
                         request.Method = "POST";
                         // Create POST data and convert it to a byte array.
-                        string postData = new JavaScriptSerializer().Serialize(Statistics);
-                        
+                        Statistics.CurrentTime = DateTime.UtcNow;
+                        string postData = GetSerializedStatistics();
+
                         byte[] byteArray = Encoding.UTF8.GetBytes(postData);
                         // Set the ContentType property of the WebRequest.
                         request.ContentType = "application/json";
@@ -99,9 +103,9 @@ namespace JsParser.UI.Helpers
                         // Close the Stream object.
                         dataStream.Close();
                         // Get the response.
-                        WebResponse response = request.GetResponse();
+                        var response = (HttpWebResponse) request.GetResponse();
                         // Display the status.
-                        Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
+                        Trace.WriteLine(response.StatusDescription);
                         // Get the stream containing content returned by the server.
                         dataStream = response.GetResponseStream();
                         // Open the stream using a StreamReader for easy access.
@@ -115,8 +119,7 @@ namespace JsParser.UI.Helpers
                         dataStream.Close();
                         response.Close();
 
-                        var responseData = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(responseFromServer);
-                        if ((string) responseData["processed"] == "Ok")
+                        if (response.StatusCode == HttpStatusCode.OK)
                         {
                             Statistics.LastSubmittedTime = DateTime.UtcNow;
                             Save();
