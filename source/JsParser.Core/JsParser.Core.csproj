@@ -71,7 +71,6 @@
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Hierachy.cs" />
     <Compile Include="Helpers\HierarchyComparer.cs" />
-    <Compile Include="Infrastructure\ISettings.cs" />
     <Compile Include="Infrastructure\JsParserEventsBroadcaster.cs" />
     <Compile Include="Infrastructure\JsParserService.cs" />
     <Compile Include="Parsers\CommentWrapper.cs" />

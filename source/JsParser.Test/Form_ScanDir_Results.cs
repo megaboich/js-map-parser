@@ -67,7 +67,7 @@ namespace JsParser.Test
             Directory.CreateDirectory(outDir + "\\min");
             Directory.CreateDirectory(outDir + "\\src");
             var jsFiles = Directory.GetFiles(dir, "*.js", SearchOption.AllDirectories);
-            Parallel.ForEach(jsFiles, file =>
+            Parallel.ForEach(jsFiles, fullFileName =>
             {
                 if (_stopAll)
                 {
@@ -79,11 +79,11 @@ namespace JsParser.Test
 
                 Application.DoEvents();
 
-                var source = File.ReadAllText(file);
+                var source = File.ReadAllText(fullFileName);
                 var isNotMinified = analyzeJsFileIsNotObfuscated(source);
-                var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source);
+                var actualResult = (new JavascriptParser(new JavascriptParserSettings())).Parse(source, fullFileName);
 
-                var fileName = Path.GetFileName(file);
+                var fileName = Path.GetFileName(fullFileName);
                 lock (_lock)
                 {
                     File.AppendAllText(outDir + (isNotMinified ? "\\src\\" : "\\min\\") + fileName, source);

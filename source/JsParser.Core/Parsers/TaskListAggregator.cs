@@ -7,7 +7,7 @@ namespace JsParser.Core.Parsers
 {
     public static class TaskListAggregator
     {
-        public static IEnumerable<TaskListItem> GetTaskList(IEnumerable<CommentWrapper> comments, string[] todokeywords)
+        public static IEnumerable<TaskListItem> GetTaskList(IEnumerable<CommentWrapper> comments, IEnumerable<string> todokeywords)
         {
             return comments.
                 Select(c => {

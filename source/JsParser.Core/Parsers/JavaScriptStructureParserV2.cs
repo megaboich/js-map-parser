@@ -12,9 +12,9 @@ namespace JsParser.Core.Parsers
     public class JavascriptStructureParserV2
     {
         private CommentsAgregator _comments;
-        private JavascriptParserSettings _settings;
+        private IJavascriptParserSettings _settings;
 
-        public JavascriptStructureParserV2(JavascriptParserSettings settings)
+        public JavascriptStructureParserV2(IJavascriptParserSettings settings)
         {
             _settings = settings;
         }
@@ -65,7 +65,7 @@ namespace JsParser.Core.Parsers
 
             ProcessStatements(program.Body, new ParserContext(returnedResult.Nodes));
 
-            returnedResult.TaskList = TaskListAggregator.GetTaskList(_comments.Comments, _settings.ToDoKeyWords).ToList();
+            returnedResult.TaskList = TaskListAggregator.GetTaskList(_comments.Comments, _settings.ToDoKeywords.GetEnumerable()).ToList();
             
             return returnedResult;
         }

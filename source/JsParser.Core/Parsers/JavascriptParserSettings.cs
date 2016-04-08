@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using JsParser.Core.Code;
 using JsParser.Core.Helpers;
@@ -8,10 +9,39 @@ using System.Diagnostics;
 
 namespace JsParser.Core.Parsers
 {
+    public interface IJavascriptParserSettings
+    {
+        int MaxParametersLengthInFunctionChain { get; set; }
+        int MaxParametersLength { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag indicating to skip anonymous functions
+        /// </summary>
+        bool HideAnonymousFunctions { get; set; }
+
+        bool ScriptStripEnabled { get; set; }
+
+        /// <summary>
+        /// List of extensions that will be analyzed by parser.
+        /// </summary>
+        StringCollection Extensions { get; set; }
+
+        /// <summary>
+        /// List of extensions that are considered as for script blocks stripping.
+        /// </summary>
+        StringCollection ScriptStripExtensions { get; set; }
+
+        bool FixAspNetTags { get; set; }
+        StringCollection FixAspNetTagsExtensions { get; set; }
+        bool FixRazorSyntax { get; set; }
+        StringCollection FixRazorSyntaxExtensions { get; set; }
+        StringCollection ToDoKeywords { get; set; }
+    }
+
     /// <summary>
     /// The js parser settings.
     /// </summary>
-    public class JavascriptParserSettings
+    public class JavascriptParserSettings : IJavascriptParserSettings
     {
         public int MaxParametersLengthInFunctionChain { get; set; }
 
@@ -20,40 +50,40 @@ namespace JsParser.Core.Parsers
         /// <summary>
         /// Gets or sets flag indicating to skip anonymous functions
         /// </summary>
-        public bool SkipAnonymousFuntions { get; set; }
-
-        public string Filename { get; set; }
+        public bool HideAnonymousFunctions { get; set; }
 
         public bool ScriptStripEnabled { get; set; }
 
         /// <summary>
         /// List of extensions that are considered as for script blocks stripping.
         /// </summary>
-        public string[] ScriptStripExtensions { get; set; }
+        public StringCollection ScriptStripExtensions { get; set; }
+
+        public StringCollection Extensions { get; set; }
 
         public bool FixAspNetTags { get; set; }
 
-        public string[] FixAspNetTagsExtensions { get; set; }
+        public StringCollection FixAspNetTagsExtensions { get; set; }
 
         public bool FixRazorSyntax { get; set; }
 
-        public string[] FixRazorSyntaxExtensions { get; set; }
+        public StringCollection FixRazorSyntaxExtensions { get; set; }
 
-        public string[] ToDoKeyWords { get; set; }
+        public StringCollection ToDoKeywords { get; set; }
 
         public JavascriptParserSettings()
         {
             MaxParametersLengthInFunctionChain = 25;
             MaxParametersLength = 25;
-            SkipAnonymousFuntions = false;
-            Filename = "fakefilename.html";
+            HideAnonymousFunctions = false;
             ScriptStripEnabled = true;
-            ScriptStripExtensions = new[] { "htm", "html", "aspx", "asp", "ascx", "master", "cshtml" };
+            ScriptStripExtensions = new[] { "htm", "html", "aspx", "asp", "ascx", "master", "cshtml" }.ToStringCollection();
             FixAspNetTags = true;
-            FixAspNetTagsExtensions = new[] { "asp", "aspx", "ascx", "master" };
+            FixAspNetTagsExtensions = new[] { "asp", "aspx", "ascx", "master" }.ToStringCollection();
             FixRazorSyntax = true;
-            FixRazorSyntaxExtensions = new[] { "cshtml" };
-            ToDoKeyWords = new[] { "todo:", "to do:" };
+            FixRazorSyntaxExtensions = new[] { "cshtml" }.ToStringCollection();
+            ToDoKeywords = new[] { "todo:", "to do:" }.ToStringCollection();
+            Extensions = new[] { "js" }.ToStringCollection();
         }
     }
 }

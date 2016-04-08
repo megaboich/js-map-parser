@@ -41,11 +41,8 @@ namespace JsParser.Test.Parser
             // Fix line endings in test files. All should be unix way, but on some GIT clients it is updated automatically.
             source = source.Replace("\r\n", "\n");
 
-            var settings = new JavascriptParserSettings()
-            {
-                Filename = sourceName,
-            };
-            var actualResult = (new JavascriptParser(settings)).Parse(source);
+            var settings = new JavascriptParserSettings();
+            var actualResult = (new JavascriptParser(settings)).Parse(source, sourceName);
 
             var outDir = "C:\\js_parser_units_output";
             Directory.CreateDirectory(outDir);

@@ -5,26 +5,24 @@ using System.IO;
 namespace JsParser.Core.Parsers
 {
     /// <summary>
-    /// The js parser.
+    /// The JavaScript parser.
     /// </summary>
     public class JavascriptParser : IJavascriptParser
     {
-        private JavascriptParserSettings _settings;
+        private readonly IJavascriptParserSettings _settings;
 
-        public JavascriptParser(JavascriptParserSettings settings)
+        public JavascriptParser(IJavascriptParserSettings settings)
         {
             _settings = settings;
         }
 
         /// <summary>
-        /// Parse javascript
+        /// Parse JavaScript
         /// </summary>
-        /// <param name="code">string with javascript code</param>
-        /// <returns></returns>
-        public JSParserResult Parse(string code)
+        public JSParserResult Parse(string code, string filename)
         {
             // Get extension
-            var ext = Path.GetExtension(_settings.Filename).ToLower();
+            var ext = Path.GetExtension(filename).ToLower();
             if (ext.StartsWith("."))
             {
                 ext = ext.Substring(1);
@@ -55,7 +53,10 @@ namespace JsParser.Core.Parsers
             
             var result = ParseInternal(code);
 
-            NodesPostProcessor.HideAnonymousFunctions(result.Nodes, _settings);
+            if (_settings.HideAnonymousFunctions)
+            {
+                NodesPostProcessor.HideAnonymousFunctions(result.Nodes);
+            }
 
             return result;
         }
@@ -63,11 +64,11 @@ namespace JsParser.Core.Parsers
         /// <summary>
         /// The parse.
         /// </summary>
-        /// <param name="script">
-        /// The js script.
+        /// <param name="sourceCode">
+        /// The JavaScript script.
         /// </param>
         /// <returns>
-        /// Hierarhy with code structure.
+        /// Hierarchy with code structure.
         /// </returns>
         private JSParserResult ParseInternal(string sourceCode)
         {

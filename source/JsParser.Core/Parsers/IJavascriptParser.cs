@@ -3,10 +3,11 @@ namespace JsParser.Core.Parsers
     public interface IJavascriptParser
     {
         /// <summary>
-        /// Parse javascript
+        /// Parse JavaScript
         /// </summary>
-        /// <param name="code">string with javascript code</param>
+        /// <param name="code">string with JavaScript code</param>
+        /// <param name="filename"></param>
         /// <returns></returns>
-        JSParserResult Parse(string code);
+        JSParserResult Parse(string code, string filename);
     }
 }

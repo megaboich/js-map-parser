@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
@@ -57,6 +58,21 @@ namespace JsParser.Core.Parsers
             }
 
             return new string(chars.ToArray()).Trim();
+        }
+
+        public static StringCollection ToStringCollection(this string[] strings)
+        {
+            var sc = new StringCollection();
+            sc.AddRange(strings);
+            return sc;
+        }
+
+        public static IEnumerable<string> GetEnumerable(this StringCollection sc)
+        {
+            foreach (var s in sc)
+            {
+                yield return s;
+            }
         }
     }
 }

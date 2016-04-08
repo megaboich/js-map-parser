@@ -12,9 +12,9 @@ namespace JsParser.Core.Infrastructure
     public class JsParserService
     {
         private string _loadedCodeHash;
-        private ISettings _settings;
+        private readonly IJavascriptParserSettings _settings;
 
-        public JsParserService(ISettings settings)
+        public JsParserService(IJavascriptParserSettings settings)
         {
             _settings = settings;
         }
@@ -46,23 +46,8 @@ namespace JsParser.Core.Infrastructure
                 return new JSParserResult();
             }
             _loadedCodeHash = hash;
-
-            var parserSettings = new JavascriptParserSettings
-            {
-                MaxParametersLength = _settings.MaxParametersLength,
-                MaxParametersLengthInFunctionChain = _settings.MaxParametersLengthInFunctionChain,
-                SkipAnonymousFuntions = _settings.HideAnonymousFunctions,
-                Filename = docName,
-                ScriptStripEnabled = _settings.ScriptStripEnabled,
-                ScriptStripExtensions = _settings.ScriptStripExtensions.OfType<string>().ToArray(),
-                ToDoKeyWords = _settings.ToDoKeywords.OfType<string>().ToArray(),
-                FixAspNetTags = _settings.FixAspNetTags,
-                FixAspNetTagsExtensions = _settings.FixAspNetTagsExtensions.OfType<string>().ToArray(),
-                FixRazorSyntax = _settings.FixRazorSyntax,
-                FixRazorSyntaxExtensions = _settings.FixRazorSyntaxExtensions.OfType<string>().ToArray(),
-            };
-
-            var result = (new JavascriptParser(parserSettings)).Parse(code);
+            
+            var result = (new JavascriptParser(_settings)).Parse(code, docName);
             result.FileName = docName;
             return result;
         }
