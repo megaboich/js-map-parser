@@ -1,6 +1,6 @@
 ﻿namespace JsMapParser.NppPlugin.Forms
 {
-    partial class frmParserUiContainer
+    partial class PluginUiPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -39,17 +39,17 @@
             this.navigationTreeView1.Size = new System.Drawing.Size(197, 420);
             this.navigationTreeView1.TabIndex = 0;
             // 
-            // frmParserUiContainer
+            // PluginPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(197, 420);
             this.Controls.Add(this.navigationTreeView1);
             this.DoubleBuffered = true;
-            this.Name = "frmParserUiContainer";
-            this.Text = "NppDockableForm";
-            this.VisibleChanged += new System.EventHandler(this.FormVisibleChanged);
+            this.Name = "PluginUiPanel";
+            this.Text = "PluginPanel";
             this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JsMapParser.NppPlugin
+namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
 {
     #region " Notepad++ "
     [StructLayout(LayoutKind.Sequential)]

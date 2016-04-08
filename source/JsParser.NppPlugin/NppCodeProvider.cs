@@ -7,13 +7,22 @@ namespace JsMapParser.NppPlugin
 {
     internal class NppCodeProvider : ICodeProvider
     {
-        public NppCodeProvider(string fileName)
+        private JsMapParserPlugin _plugin;
+
+        public string Path { get; private set; }
+        public string Name { get; private set; }
+        public string FullName { get; private set; }
+        public string ContainerName { get; set; }
+
+        public NppCodeProvider(JsMapParserPlugin plugin, string fileName)
         {
+            _plugin = plugin;
+
             FullName = fileName;
             Path = System.IO.Path.GetDirectoryName(fileName);
             Name = System.IO.Path.GetFileName(fileName);
 
-            ContainerName = Assembly.GetExecutingAssembly().FullName;
+            ContainerName = "Notepad++ " + _plugin.GetNppVersion();
         }
 
         public string LoadCode()
@@ -28,24 +37,19 @@ namespace JsMapParser.NppPlugin
             }
         }
 
-        public string Path { get; private set; }
-        public string Name { get; private set; }
-        public string FullName { get; private set; }
-        public string ContainerName { get; set; }
-
         public void SelectionMoveToLineAndOffset(int startLine, int startColumn)
         {
-            PluginBase.GoToPosition(startLine, startColumn);
+            _plugin.GoToPosition(startLine, startColumn);
         }
 
         public void SetFocus()
         {
-            PluginBase.SetFocus();
+            _plugin.SetFocus();
         }
 
         public void GetCursorPos(out int line, out int column)
         {
-            PluginBase.GetCursorPos(out line, out column);
+            _plugin.GetCursorPos(out line, out column);
         }
     }
 }

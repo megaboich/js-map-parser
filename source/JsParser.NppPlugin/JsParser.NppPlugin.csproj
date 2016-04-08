@@ -56,18 +56,18 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DllExport\DllExportAttribute.cs" />
-    <Compile Include="Forms\frmParserUiContainer.cs">
+    <Compile Include="Forms\PluginUiPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmParserUiContainer.designer.cs">
-      <DependentUpon>frmParserUiContainer.cs</DependentUpon>
+    <Compile Include="Forms\PluginUiPanel.designer.cs">
+      <DependentUpon>PluginUiPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="JsParserIntegration.cs" />
+    <Compile Include="NppPluginBaseInfrastructure\NppPluginBaseSpecifics.cs" />
     <Compile Include="NppCodeProvider.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="NppPluginNETBase.cs" />
-    <Compile Include="NppPluginNETHelper.cs" />
-    <Compile Include="PluginSettings.cs" />
+    <Compile Include="JsMapParserPlugin.cs" />
+    <Compile Include="NppPluginBaseInfrastructure\NppPluginBase.cs" />
+    <Compile Include="NppPluginBaseInfrastructure\NppPluginHelper.cs" />
+    <Compile Include="JsMapParserPluginSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,17 +75,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Helpers\TimerHelper.cs" />
-    <Compile Include="Helpers\ToolsHelper.cs" />
-    <Compile Include="UnmanagedExports.cs" />
+    <Compile Include="NppPluginBaseInfrastructure\NppPluginBaseExports.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="fastjson, Version=2.1.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
+      <HintPath>..\packages\fastJSON.2.1.15.0\lib\net40\fastjson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\frmParserUiContainer.resx">
-      <DependentUpon>frmParserUiContainer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PluginUiPanel.resx">
+      <DependentUpon>PluginUiPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.resx">
@@ -114,8 +117,9 @@
     <None Include="DllExport\NppPlugin.DllExport.targets">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(ProjectDir)tools\ILMerge\ilmerge.exe /targetplatform:v4 /out:$(ProjectDir)build\JsMapParser.NppPlugin.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)tools\ILMerge\ilmerge.exe /targetplatform:v4 /out:$(ProjectDir)build\JsMapParser.NppPlugin.dll $(TargetPath) $(TargetDir)JsParser.Core.dll $(TargetDir)Jint.Parser.dll $(TargetDir)JsParser.UI.dll $(TargetDir)fastjson.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
