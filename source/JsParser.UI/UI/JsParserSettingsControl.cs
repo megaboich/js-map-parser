@@ -130,30 +130,6 @@ namespace JsParser.UI.UI
 
             Settings.Default.Save();
         }
-
-        private void btnForceSendStatistics_Click(object sender, EventArgs e)
-        {
-            StatisticsManager.Instance.SubmitStatisticsToServer(force: true);
-        }
-
-        private void ShowFontDialogForLabel(string lblName)
-        {
-            Label lbl = (Label)Controls.Find(lblName, true).First();
-            fontDialog1.AllowScriptChange = false;
-            fontDialog1.AllowVerticalFonts = false;
-            fontDialog1.ShowColor = true;
-            fontDialog1.ShowEffects = true;
-            fontDialog1.FontMustExist = true;
-
-            fontDialog1.Font = lbl.Font;
-            fontDialog1.Color = lbl.ForeColor;
-
-            if (fontDialog1.ShowDialog() == DialogResult.OK)
-            {
-                lbl.Font = fontDialog1.Font;
-                lbl.ForeColor = fontDialog1.Color;
-            }
-        }
        
         private void chScriptStripEnabled_CheckedChanged(object sender, EventArgs e)
         {

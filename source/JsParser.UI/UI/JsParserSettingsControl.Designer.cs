@@ -47,6 +47,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbThemePicker = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.colorPicker6 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker5 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker4 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker3 = new JsParser.UI.UI.ColorPicker();
+            this.colorPicker2 = new JsParser.UI.UI.ColorPicker();
             this.taggedFuncLabel2 = new System.Windows.Forms.Label();
             this.taggedFuncLabel3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -71,16 +76,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnForceSendStatistics = new System.Windows.Forms.Button();
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colorPicker6 = new JsParser.UI.UI.ColorPicker();
-            this.colorPicker5 = new JsParser.UI.UI.ColorPicker();
-            this.colorPicker4 = new JsParser.UI.UI.ColorPicker();
-            this.colorPicker3 = new JsParser.UI.UI.ColorPicker();
-            this.colorPicker2 = new JsParser.UI.UI.ColorPicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -320,6 +319,56 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Text style of marked items in tree";
+            // 
+            // colorPicker6
+            // 
+            this.colorPicker6.Location = new System.Drawing.Point(200, 114);
+            this.colorPicker6.Name = "colorPicker6";
+            this.colorPicker6.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker6.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker6.TabIndex = 22;
+            this.colorPicker6.Tag = "6";
+            this.colorPicker6.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker5
+            // 
+            this.colorPicker5.Location = new System.Drawing.Point(200, 91);
+            this.colorPicker5.Name = "colorPicker5";
+            this.colorPicker5.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker5.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker5.TabIndex = 21;
+            this.colorPicker5.Tag = "5";
+            this.colorPicker5.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker4
+            // 
+            this.colorPicker4.Location = new System.Drawing.Point(200, 67);
+            this.colorPicker4.Name = "colorPicker4";
+            this.colorPicker4.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker4.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker4.TabIndex = 20;
+            this.colorPicker4.Tag = "4";
+            this.colorPicker4.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker3
+            // 
+            this.colorPicker3.Location = new System.Drawing.Point(200, 43);
+            this.colorPicker3.Name = "colorPicker3";
+            this.colorPicker3.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker3.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker3.TabIndex = 19;
+            this.colorPicker3.Tag = "3";
+            this.colorPicker3.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
+            // 
+            // colorPicker2
+            // 
+            this.colorPicker2.Location = new System.Drawing.Point(200, 19);
+            this.colorPicker2.Name = "colorPicker2";
+            this.colorPicker2.SelectedColor = System.Drawing.Color.Transparent;
+            this.colorPicker2.Size = new System.Drawing.Size(112, 23);
+            this.colorPicker2.TabIndex = 18;
+            this.colorPicker2.Tag = "2";
+            this.colorPicker2.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
             // 
             // taggedFuncLabel2
             // 
@@ -592,7 +641,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnForceSendStatistics);
             this.tabPage3.Controls.Add(this.chSendStatistics);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -601,16 +649,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Network";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // btnForceSendStatistics
-            // 
-            this.btnForceSendStatistics.Location = new System.Drawing.Point(26, 40);
-            this.btnForceSendStatistics.Name = "btnForceSendStatistics";
-            this.btnForceSendStatistics.Size = new System.Drawing.Size(75, 23);
-            this.btnForceSendStatistics.TabIndex = 1;
-            this.btnForceSendStatistics.Text = "Send now";
-            this.btnForceSendStatistics.UseVisualStyleBackColor = true;
-            this.btnForceSendStatistics.Click += new System.EventHandler(this.btnForceSendStatistics_Click);
             // 
             // chSendStatistics
             // 
@@ -635,56 +673,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(564, 449);
             this.panel1.TabIndex = 1;
-            // 
-            // colorPicker6
-            // 
-            this.colorPicker6.Location = new System.Drawing.Point(200, 114);
-            this.colorPicker6.Name = "colorPicker6";
-            this.colorPicker6.SelectedColor = System.Drawing.Color.Transparent;
-            this.colorPicker6.Size = new System.Drawing.Size(112, 23);
-            this.colorPicker6.TabIndex = 22;
-            this.colorPicker6.Tag = "6";
-            this.colorPicker6.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
-            // 
-            // colorPicker5
-            // 
-            this.colorPicker5.Location = new System.Drawing.Point(200, 91);
-            this.colorPicker5.Name = "colorPicker5";
-            this.colorPicker5.SelectedColor = System.Drawing.Color.Transparent;
-            this.colorPicker5.Size = new System.Drawing.Size(112, 23);
-            this.colorPicker5.TabIndex = 21;
-            this.colorPicker5.Tag = "5";
-            this.colorPicker5.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
-            // 
-            // colorPicker4
-            // 
-            this.colorPicker4.Location = new System.Drawing.Point(200, 67);
-            this.colorPicker4.Name = "colorPicker4";
-            this.colorPicker4.SelectedColor = System.Drawing.Color.Transparent;
-            this.colorPicker4.Size = new System.Drawing.Size(112, 23);
-            this.colorPicker4.TabIndex = 20;
-            this.colorPicker4.Tag = "4";
-            this.colorPicker4.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
-            // 
-            // colorPicker3
-            // 
-            this.colorPicker3.Location = new System.Drawing.Point(200, 43);
-            this.colorPicker3.Name = "colorPicker3";
-            this.colorPicker3.SelectedColor = System.Drawing.Color.Transparent;
-            this.colorPicker3.Size = new System.Drawing.Size(112, 23);
-            this.colorPicker3.TabIndex = 19;
-            this.colorPicker3.Tag = "3";
-            this.colorPicker3.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
-            // 
-            // colorPicker2
-            // 
-            this.colorPicker2.Location = new System.Drawing.Point(200, 19);
-            this.colorPicker2.Name = "colorPicker2";
-            this.colorPicker2.SelectedColor = System.Drawing.Color.Transparent;
-            this.colorPicker2.Size = new System.Drawing.Size(112, 23);
-            this.colorPicker2.TabIndex = 18;
-            this.colorPicker2.Tag = "2";
-            this.colorPicker2.SelectedColorChanged += new System.EventHandler(this.colorPicker2_SelectedColorChanged);
             // 
             // JsParserSettingsControl
             // 
@@ -735,7 +723,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label taggedFuncLabel6;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnForceSendStatistics;
         private System.Windows.Forms.CheckBox chSendStatistics;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.TextBox edExtensions;
