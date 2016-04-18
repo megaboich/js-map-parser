@@ -49,8 +49,5 @@
   <Content>
     <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
     <MefComponent>|%CurrentProject%|</MefComponent>
-    <MefComponent>|JsParser.Core|</MefComponent>
-    <MefComponent>|JsParser.UI|</MefComponent>
-    <MefComponent>|Jint.Parser|</MefComponent>
   </Content>
 </Vsix>
