@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using JsParser.UI.Helpers;
 using JsParser.UI.Properties;
 using System.Collections.Specialized;
+using System.Diagnostics;
 
 namespace JsParser.UI.UI
 {
@@ -212,6 +213,16 @@ namespace JsParser.UI.UI
             var lblName = "taggedFuncLabel" + senderColorPicker.Tag;
             Label lbl = (Label)Controls.Find(lblName, true).First();
             lbl.ForeColor = senderColorPicker.SelectedColor;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/megaboich/js-map-parser");
+        }
+
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

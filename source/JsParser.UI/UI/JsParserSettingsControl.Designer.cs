@@ -76,6 +76,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.chSendStatistics = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -641,6 +643,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Controls.Add(this.chSendStatistics);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -649,6 +653,28 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Network";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 73);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Project home page:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkLabel1.Location = new System.Drawing.Point(114, 73);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(219, 13);
+            this.linkLabel1.TabIndex = 1;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/megaboich/js-map-parser";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // chSendStatistics
             // 
@@ -757,5 +783,7 @@
         private ColorPicker colorPicker4;
         private ColorPicker colorPicker3;
         private ColorPicker colorPicker2;
-    }
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.LinkLabel linkLabel1;
+	}
 }

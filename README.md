@@ -7,7 +7,8 @@ This extension works in
  * Visual Studio version: 2010-2015
  * Notepad++ version: 6.5
 
-Please check all functionality described here: [Functionality Guide](https://github.com/megaboich/jsparser/wiki/Functionality-Guide)
+Please check all functionality described here: [Functionality Guide](https://github.com/megaboich/jsparser/wiki/Functionality-Guide).
+You can also check [FAQ](https://github.com/megaboich/jsparser/wiki/Frequently-Asked-Questions).
 
 Current version is 4.1. [Version History](https://github.com/megaboich/jsparser/wiki/Version-History)
 
