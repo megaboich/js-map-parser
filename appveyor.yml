@@ -1,0 +1,71 @@
+version: 4.1.{build}
+image: Visual Studio 2015
+
+
+platform:
+    - Any CPU
+    #- x86
+    - x64
+
+configuration:
+    - Debug
+    - Release
+
+install:
+    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+    - cd "%APPVEYOR_BUILD_FOLDER%\source"
+    - nuget restore
+build:
+    parallel: true                  # enable MSBuild parallel builds
+    verbosity: minimal
+
+build_script:
+    - cd "%APPVEYOR_BUILD_FOLDER%\source"
+    - msbuild JSparser.sln /m /p:configuration="%configuration%" /p:platform="%platform%"
+
+after_build:
+    - cd "%APPVEYOR_BUILD_FOLDER%\source\JsParser.NppPlugin"
+    - ps: >-
+
+        if ($env:PLATFORM -eq "x64") {
+            Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
+        }
+
+        if ($env:PLATFORM -eq "x86" ) {
+            Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
+        }
+
+        if ($env:PLATFORM -eq "Any CPU" ) {
+            Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
+        }
+
+        if ($($env:APPVEYOR_REPO_TAG) -eq "true" -and $env:CONFIGURATION -eq "Release") {
+            if($env:PLATFORM -eq "x64"){
+            $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x64.zip"
+            7z a $ZipFileName build\JsMapParser.NppPlugin.dll
+            }
+            if($env:PLATFORM -eq "x86"){
+            $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
+            7z a $ZipFileName build\JsMapParser.NppPlugin.dll
+            }
+            if($env:PLATFORM -eq "Any CPU"){
+            $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
+            7z a $ZipFileName build\JsMapParser.NppPlugin.dll
+            }
+        }
+
+artifacts:
+  - path: JsMapParser.NppPlugin_*.zip
+    name: releases
+
+deploy:
+    provider: GitHub
+    auth_token:
+        secure: !!TODO, see https://www.appveyor.com/docs/deployment/github/#provider-settings!!
+    artifact: releases
+    draft: false
+    prerelease: false
+    force_update: true
+    on:
+        appveyor_repo_tag: true
+        configuration: Release
