@@ -1,7 +1,11 @@
 version: 4.1.{build}
-image: Visual Studio 2015
+image: Visual Studio 2017
 
-
+environment:
+  matrix:
+    - PlatformToolset: VS15
+    - PlatformToolset: VS17
+    
 platform:
     - Any CPU
     #- x86
@@ -12,43 +16,52 @@ configuration:
     - Release
 
 install:
-    - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+    - if "%platform%"=="x64" set archi=amd64
+    - if "%platform%"=="x64" set platform_input=x64
+
+    - if "%platform%"=="Any CPU" set archi=x86
+    - if "%platform%"=="Any CPU" set platform_input=Any CPU
+
+    - if "%PlatformToolset%"=="VS15" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %archi%
+    - if "%PlatformToolset%"=="VS17" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %archi%
+
     - cd "%APPVEYOR_BUILD_FOLDER%\source"
-    - nuget restore
-build:
-    parallel: true                  # enable MSBuild parallel builds
-    verbosity: minimal
+    - nuget restore "%APPVEYOR_BUILD_FOLDER%"\source\JsParser.VsExtension\packages.config -PackagesDirectory "%APPVEYOR_BUILD_FOLDER%"\source\packages
+    - nuget restore "%APPVEYOR_BUILD_FOLDER%"\source\JsParser.UI\packages.config -PackagesDirectory "%APPVEYOR_BUILD_FOLDER%"\source\packages
+    - nuget restore "%APPVEYOR_BUILD_FOLDER%"\source\JsParser.Test\packages.config -PackagesDirectory "%APPVEYOR_BUILD_FOLDER%"\source\packages
+    - nuget restore "%APPVEYOR_BUILD_FOLDER%"\source\JsParser.NppPlugin\packages.config -PackagesDirectory "%APPVEYOR_BUILD_FOLDER%"\source\packages
 
 build_script:
     - cd "%APPVEYOR_BUILD_FOLDER%\source"
-    - msbuild JSparser.sln /m /p:configuration="%configuration%" /p:platform="%platform%"
+    - msbuild JSparser.sln /m /p:configuration="%configuration%" /p:platform="%platform_input%"  /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
 
 after_build:
     - cd "%APPVEYOR_BUILD_FOLDER%\source\JsParser.NppPlugin"
     - ps: >-
 
-        if ($env:PLATFORM -eq "x64") {
+        if ($env:PLATFORM_INPUT -eq "x64") {
             Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
         }
 
-        if ($env:PLATFORM -eq "x86" ) {
+        if ($env:PLATFORM_INPUT -eq "x86" ) {
             Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
         }
 
-        if ($env:PLATFORM -eq "Any CPU" ) {
+        if ($env:PLATFORM_INPUT -eq "Any CPU" ) {
             Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
         }
 
         if ($($env:APPVEYOR_REPO_TAG) -eq "true" -and $env:CONFIGURATION -eq "Release") {
-            if($env:PLATFORM -eq "x64"){
+            if($env:PLATFORM_INPUT -eq "x64"){
             $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x64.zip"
             7z a $ZipFileName build\JsMapParser.NppPlugin.dll
             }
-            if($env:PLATFORM -eq "x86"){
+            if($env:PLATFORM_INPUT -eq "x86"){
             $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
             7z a $ZipFileName build\JsMapParser.NppPlugin.dll
             }
-            if($env:PLATFORM -eq "Any CPU"){
+            if($env:PLATFORM_INPUT -eq "Any CPU"){
             $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
             7z a $ZipFileName build\JsMapParser.NppPlugin.dll
             }

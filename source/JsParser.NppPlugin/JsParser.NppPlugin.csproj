@@ -95,12 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="fastjson, Version=2.1.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
-      <HintPath>..\packages\fastJSON.2.1.15.0\lib\net40\fastjson.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\fastJSON.2.1.27\lib\net40\fastjson.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\PluginUiPanel.resx">

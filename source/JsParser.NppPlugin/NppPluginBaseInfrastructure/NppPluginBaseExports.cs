@@ -18,7 +18,10 @@ namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
         [DllExport(CallingConvention = CallingConvention.Cdecl)]
         private static void setInfo(NppData notepadPlusData)
         {
-            _plugin = GetPluginInstance();
+            if (_plugin == null)
+            {
+                _plugin = GetPluginInstance();
+            }
             _plugin._nppData = notepadPlusData;
             _plugin.OnInit?.Invoke();
             _plugin.CreateMenuItems();
@@ -43,7 +46,13 @@ namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
         private static IntPtr getName()
         {
             if (_ptrPluginName == IntPtr.Zero)
+            {
+                if (_plugin == null)
+                {
+                    _plugin = GetPluginInstance();
+                }
                 _ptrPluginName = Marshal.StringToHGlobalUni(_plugin.PluginName);
+            }
             return _ptrPluginName;
         }
 

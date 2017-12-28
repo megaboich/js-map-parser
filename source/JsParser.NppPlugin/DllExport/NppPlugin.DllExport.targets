@@ -17,8 +17,7 @@
                    ProjectDirectory="$(MSBuildProjectDirectory)"
                    InputFileName="$(ProjectDir)build\JsMapParser.NppPlugin.dll"
                    FrameworkPath="$(TargetedFrameworkDir);$(TargetFrameworkDirectory)"
-                   LibToolPath="$(ProjectDir)tools\VcBin\"
-                   LibToolDllPath="(ProjectDir)tools\VcBin\"
+                   LibToolDllPath="$(DevEnvDir)"
                    SdkPath="$(SDK40ToolsPath)"/>
   </Target>
 </Project>
