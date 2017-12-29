@@ -8,12 +8,11 @@ environment:
     
 platform:
     - Any CPU
-    #- x86
     - x64
 
 configuration:
-    - Debug
     - Release
+    #- Debug
 
 install:
     - if "%platform%"=="x64" set archi=amd64
@@ -44,12 +43,9 @@ after_build:
             Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
         }
 
-        if ($env:PLATFORM_INPUT -eq "x86" ) {
-            Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
-        }
-
         if ($env:PLATFORM_INPUT -eq "Any CPU" ) {
             Push-AppveyorArtifact "build\JsMapParser.NppPlugin.dll" -FileName JsMapParser.NppPlugin.dll
+            Push-AppveyorArtifact "..\JsParser.VsExtension\bin\$env:CONFIGURATION\JsMapParser.VsExtension.vsix" -FileName JsMapParser.VsExtension.vsix
         }
 
         if ($($env:APPVEYOR_REPO_TAG) -eq "true" -and $env:CONFIGURATION -eq "Release") {
@@ -57,10 +53,7 @@ after_build:
             $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x64.zip"
             7z a $ZipFileName build\JsMapParser.NppPlugin.dll
             }
-            if($env:PLATFORM_INPUT -eq "x86"){
-            $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
-            7z a $ZipFileName build\JsMapParser.NppPlugin.dll
-            }
+
             if($env:PLATFORM_INPUT -eq "Any CPU"){
             $ZipFileName = "JsMapParser_NppPlugin_$($env:APPVEYOR_REPO_TAG_NAME)_x86.zip"
             7z a $ZipFileName build\JsMapParser.NppPlugin.dll
@@ -68,7 +61,7 @@ after_build:
         }
 
 artifacts:
-  - path: JsMapParser.NppPlugin_*.zip
+  - path: JsMapParser_NppPlugin_*.zip
     name: releases
 
 deploy:
@@ -81,4 +74,5 @@ deploy:
     force_update: true
     on:
         appveyor_repo_tag: true
+        PlatformToolset: VS17
         configuration: Release

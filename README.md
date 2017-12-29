@@ -10,7 +10,7 @@ This extension works in
 Please check all functionality described here: [Functionality Guide](https://github.com/megaboich/jsparser/wiki/Functionality-Guide).
 You can also check [FAQ](https://github.com/megaboich/jsparser/wiki/Frequently-Asked-Questions).
 
-Current version is 4.1. [Version History](https://github.com/megaboich/jsparser/wiki/Version-History)
+Current version is [![GitHub release](https://img.shields.io/github/release/megaboich/js-map-parser.svg)]()  [Version History](https://github.com/megaboich/jsparser/wiki/Version-History)
 
 ![](https://raw.githubusercontent.com/megaboich/js-map-parser/master/site/vs/dark_theme.png)
 
