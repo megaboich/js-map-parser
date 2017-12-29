@@ -1,7 +1,6 @@
-﻿using System;
+﻿using JsParser.Core.Code;
+using System;
 using System.IO;
-using System.Reflection;
-using JsParser.Core.Code;
 
 namespace JsMapParser.NppPlugin
 {

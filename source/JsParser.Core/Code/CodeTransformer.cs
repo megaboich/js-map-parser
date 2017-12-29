@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace JsParser.Core.Code
 {
-	public static class CodeTransformer
+    public static class CodeTransformer
 	{
 		public static string KillAspNetTags(string source)
 		{

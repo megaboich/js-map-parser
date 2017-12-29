@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JsParser.UI.Properties;
+﻿using JsParser.UI.Properties;
 using JsParser.UI.UI;
+using System;
 
 namespace JsParser.UI.Helpers
 {

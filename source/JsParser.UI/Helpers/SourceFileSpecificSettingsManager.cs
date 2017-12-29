@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using fastJSON;
 using JsParser.UI.Properties;
-using System.Drawing;
-using fastJSON;
 using JsParser.UI.UI;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace JsParser.UI.Helpers
 {

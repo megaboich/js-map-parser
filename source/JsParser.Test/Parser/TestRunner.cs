@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using JsParser.Core.Code;
+﻿using JsParser.Core.Code;
 using JsParser.Core.Helpers;
 using JsParser.Core.Parsers;
 using JsParser.Test.Helpers;
 using JsParserTest.Helpers;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.IO;
 
 namespace JsParser.Test.Parser
 {

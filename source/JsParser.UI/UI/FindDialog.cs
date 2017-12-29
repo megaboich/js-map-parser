@@ -1,19 +1,15 @@
-﻿using System;
+﻿using JsParser.Core.Code;
+using JsParser.Core.Search;
+using JsParser.UI.Helpers;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
-using JsParser.Core.Code;
-using JsParser.UI.Properties;
-using JsParser.UI.Helpers;
-using JsParser.Core.Search;
 
 namespace JsParser.UI.UI
 {
-	public partial class FindDialog : Form
+    public partial class FindDialog : Form
 	{
 		public string Result { get; set; }
 		Func<CodeNode, bool> _callback;

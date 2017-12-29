@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JsMapParser.NppPlugin.Resources {
-    using System;
-    
-    
+namespace JsMapParser.NppPlugin.Resources
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

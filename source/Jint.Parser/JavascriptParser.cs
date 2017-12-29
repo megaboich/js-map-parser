@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Jint.Native.String;
+using Jint.Parser.Ast;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Jint.Native.String;
-using Jint.Parser.Ast;
 
 namespace Jint.Parser
 {

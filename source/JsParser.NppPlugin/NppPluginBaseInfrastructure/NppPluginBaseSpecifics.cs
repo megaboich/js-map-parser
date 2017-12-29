@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using NppPlugin.DllExport;
-
-namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
+﻿namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
 {
     internal abstract partial class NppPluginBase
     {

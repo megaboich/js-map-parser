@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using JsParser.Core.Code;
 using JsParser.Core.Helpers;
-using JsParser.Core.Code;
+using System.Collections.Generic;
 
 namespace JsParser.Core.Parsers
 {

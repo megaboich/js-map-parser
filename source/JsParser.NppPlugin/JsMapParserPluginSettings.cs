@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using fastJSON;
 using System.IO;
-using fastJSON;
 
 namespace JsMapParser.NppPlugin
 {

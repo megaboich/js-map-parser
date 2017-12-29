@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NppPlugin.DllExport;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using NppPlugin.DllExport;
 
 namespace JsMapParser.NppPlugin.NppPluginBaseInfrastructure
 {

@@ -1,9 +1,7 @@
 ﻿using JsParser.Core.Code;
 using JsParser.Core.Parsers;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 

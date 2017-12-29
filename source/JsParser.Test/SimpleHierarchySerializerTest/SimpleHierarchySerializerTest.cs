@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JsParser.Core.Code;
+﻿using JsParser.Core.Code;
 using JsParser.Core.Helpers;
 using JsParser.Test.Helpers;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace JsParser.Test.SimpleHierarchySerializerTest
 {

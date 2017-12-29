@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
 using JsMapParser.NppPlugin.Forms;
 using JsMapParser.NppPlugin.Helpers;
 using JsMapParser.NppPlugin.NppPluginBaseInfrastructure;
 using JsParser.Core.Infrastructure;
 using JsParser.UI.Properties;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace JsMapParser.NppPlugin
 {

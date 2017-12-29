@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace JsParser.Core.Code
+﻿namespace JsParser.Core.Code
 {
-	public interface ICodeProvider
+    public interface ICodeProvider
 	{
 		string LoadCode();
 

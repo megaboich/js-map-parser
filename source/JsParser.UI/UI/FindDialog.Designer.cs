@@ -1,6 +1,6 @@
 ﻿namespace JsParser.UI.UI
 {
-	partial class FindDialog
+    partial class FindDialog
 	{
 		/// <summary>
 		/// Required designer variable.

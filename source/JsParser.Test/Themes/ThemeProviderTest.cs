@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JsParser.UI.UI;
+﻿using JsParser.UI.UI;
 using NUnit.Framework;
+using System.Linq;
 
 namespace JsParser.Test.Themes
 {

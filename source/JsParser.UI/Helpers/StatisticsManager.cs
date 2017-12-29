@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using fastJSON;
 using JsParser.UI.Properties;
-using System.Net;
-using System.Threading;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using fastJSON;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Threading;
 
 namespace JsParser.UI.Helpers
 {

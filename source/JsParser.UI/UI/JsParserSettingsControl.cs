@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using JsParser.UI.Helpers;
-using JsParser.UI.Properties;
+﻿using JsParser.UI.Properties;
+using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace JsParser.UI.UI
 {
