@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace JsParser.UI.UI
 {
-    public partial class FindDialog : Form
+	public partial class FindDialog : Form
 	{
 		public string Result { get; set; }
 		Func<CodeNode, bool> _callback;

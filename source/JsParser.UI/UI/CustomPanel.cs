@@ -2,7 +2,7 @@
 
 namespace JsParser.UI.UI
 {
-    public class CustomPanel : Panel
+	public class CustomPanel : Panel
 	{
         public CustomPanel()
             : base()

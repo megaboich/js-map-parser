@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace JsParserTest.UnitTests
 {
-    [TestFixture]
+	[TestFixture]
 	public class FindDialogTest
 	{
 		[Test]

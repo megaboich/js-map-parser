@@ -1,6 +1,6 @@
 ﻿namespace JsParser.Core.Code
 {
-    public interface ICodeProvider
+	public interface ICodeProvider
 	{
 		string LoadCode();
 

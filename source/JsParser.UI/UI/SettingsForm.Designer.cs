@@ -1,6 +1,6 @@
 ﻿namespace JsParser.UI.UI
 {
-    partial class SettingsForm
+	partial class SettingsForm
 	{
 		/// <summary>
 		/// Required designer variable.

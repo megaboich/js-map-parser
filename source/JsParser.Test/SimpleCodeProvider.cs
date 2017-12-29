@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace JsParser.Test
 {
-    public class SimpleCodeProvider :ICodeProvider
+	public class SimpleCodeProvider :ICodeProvider
 	{
 		private string _name;
 		private string _path;

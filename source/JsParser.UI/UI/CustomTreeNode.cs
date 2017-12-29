@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace JsParser.UI.UI
 {
-    public class CustomTreeNode : TreeNode
+	public class CustomTreeNode : TreeNode
 	{
 		public CustomTreeNode(string text) : base(text) { }
 
