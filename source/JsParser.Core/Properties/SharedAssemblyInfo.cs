@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyCompany("Oleksandr Boiko")]
-[assembly: AssemblyCopyright("Oleksandr Boiko 2016")]
+[assembly: AssemblyCopyright("Oleksandr Boiko 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,5 +21,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.1")]
-[assembly: AssemblyFileVersion("4.1")]
+[assembly: AssemblyVersion("4.2")]
+[assembly: AssemblyFileVersion("4.2")]
