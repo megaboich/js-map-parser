@@ -1,10 +1,7 @@
-﻿using System;
+﻿using JsParser.Core.Search;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using JsParser.UI.UI;
-using JsParser.Core.Search;
 
 namespace JsParserTest.UnitTests
 {

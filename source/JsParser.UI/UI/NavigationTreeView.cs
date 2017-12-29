@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using JsParser.Core.Code;
-using JsParser.UI.Helpers;
-using JsParser.Core.Parsers;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.IO;
-using JsParser.UI.Properties;
-using System.Linq;
-using System.Threading;
-using System.Diagnostics;
+﻿using JsParser.Core.Code;
 using JsParser.Core.Helpers;
+using JsParser.Core.Parsers;
+using JsParser.UI.Helpers;
+using JsParser.UI.Properties;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace JsParser.UI.UI
 {

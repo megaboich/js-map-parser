@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using JsParser.Core.Code;
 using System.Linq;
-using System.Text;
-using JsParser.Core.Code;
 using System.Windows.Forms;
-using System.Reflection;
 
 namespace JsParser.Test
 {
-	public class SimpleCodeProvider :ICodeProvider
+    public class SimpleCodeProvider :ICodeProvider
 	{
 		private string _name;
 		private string _path;

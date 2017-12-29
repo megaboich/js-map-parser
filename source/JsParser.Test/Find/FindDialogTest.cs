@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using JsParser.Core.Search;
 using NUnit.Framework;
-using JsParser.UI.UI;
-using JsParser.Core.Search;
+using System;
+using System.Linq;
 
 namespace JsParserTest.UnitTests
 {
-	[TestFixture]
+    [TestFixture]
 	public class FindDialogTest
 	{
 		[Test]

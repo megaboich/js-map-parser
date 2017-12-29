@@ -1,11 +1,10 @@
-﻿using System;
+﻿using JsParser.Core.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
-using JsParser.Core.Helpers;
 
 namespace JsParser.Test.Helpers
 {

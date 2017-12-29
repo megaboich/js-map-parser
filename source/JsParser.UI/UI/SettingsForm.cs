@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using JsParser.UI.Properties;
-using JsParser.UI.Helpers;
 
 namespace JsParser.UI.UI
 {
-	public partial class SettingsForm : Form
+    public partial class SettingsForm : Form
 	{
 		public SettingsForm(Font defaultTreeFont)
 		{

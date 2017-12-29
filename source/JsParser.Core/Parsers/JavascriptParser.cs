@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using JsParser.Core.Code;
+﻿using JsParser.Core.Code;
 using System.IO;
 
 namespace JsParser.Core.Parsers

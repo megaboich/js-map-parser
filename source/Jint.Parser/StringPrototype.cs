@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Jint.Native.String
+﻿namespace Jint.Native.String
 {
     /// <summary>
     /// http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4

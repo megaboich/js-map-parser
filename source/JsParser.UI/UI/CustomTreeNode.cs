@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using JsParser.Core.Code;
 using System.Windows.Forms;
-using JsParser.Core.Code;
 
 namespace JsParser.UI.UI
 {
-	public class CustomTreeNode : TreeNode
+    public class CustomTreeNode : TreeNode
 	{
 		public CustomTreeNode(string text) : base(text) { }
 

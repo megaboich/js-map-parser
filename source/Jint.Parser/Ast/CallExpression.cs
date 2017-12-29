@@ -1,4 +1,3 @@
-using Jint.Native;
 using System.Collections.Generic;
 
 namespace Jint.Parser.Ast

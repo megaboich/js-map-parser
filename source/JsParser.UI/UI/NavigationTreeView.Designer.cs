@@ -1,9 +1,4 @@
-﻿using System.Resources;
-using System.Reflection;
-using System.IO;
-using System.Drawing;
-using System.ComponentModel;
-namespace JsParser.UI.UI
+﻿namespace JsParser.UI.UI
 {
     partial class NavigationTreeView
     {

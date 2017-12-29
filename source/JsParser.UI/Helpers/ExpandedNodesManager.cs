@@ -1,12 +1,9 @@
 ﻿using JsParser.UI.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace JsParser.UI.Helpers
 {
-	class ExpandedNodesManager
+    class ExpandedNodesManager
 	{
 		private Dictionary<string, Dictionary<string, bool>> _storage = new Dictionary<string, Dictionary<string, bool>>();
 		private string _activeDocName;

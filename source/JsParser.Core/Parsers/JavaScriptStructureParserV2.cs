@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Jint.Parser;
+﻿using Jint.Parser;
 using Jint.Parser.Ast;
 using JsParser.Core.Code;
 using JsParser.Core.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JsParser.Core.Parsers
 {
