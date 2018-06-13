@@ -1,3 +1,5 @@
+**UPDATE 13.06.2018:** This project could be considered as an obsolete. There are no plans to support/improve implementation unless new maintainer/contributor will appear.
+
 This is an extension for Visual Studio and Notepad++ for better JavaScript support. 
 Here is a link to  [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/288a2b0f-1357-47b4-8215-1134c36bdf30).
 
