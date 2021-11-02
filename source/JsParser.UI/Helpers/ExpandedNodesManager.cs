@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JsParser.UI.Helpers
 {
-    class ExpandedNodesManager
+	class ExpandedNodesManager
 	{
 		private Dictionary<string, Dictionary<string, bool>> _storage = new Dictionary<string, Dictionary<string, bool>>();
 		private string _activeDocName;

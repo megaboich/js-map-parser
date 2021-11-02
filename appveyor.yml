@@ -3,7 +3,6 @@ image: Visual Studio 2017
 
 environment:
   matrix:
-    - PlatformToolset: VS15
     - PlatformToolset: VS17
     
 platform:
@@ -21,7 +20,6 @@ install:
     - if "%platform%"=="Any CPU" set archi=x86
     - if "%platform%"=="Any CPU" set platform_input=Any CPU
 
-    - if "%PlatformToolset%"=="VS15" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %archi%
     - if "%PlatformToolset%"=="VS17" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %archi%
 
     - cd "%APPVEYOR_BUILD_FOLDER%\source"

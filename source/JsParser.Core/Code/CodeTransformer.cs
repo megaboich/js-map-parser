@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace JsParser.Core.Code
 {
-    public static class CodeTransformer
+	public static class CodeTransformer
 	{
 		public static string KillAspNetTags(string source)
 		{

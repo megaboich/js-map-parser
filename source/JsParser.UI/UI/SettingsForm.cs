@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace JsParser.UI.UI
 {
-    public partial class SettingsForm : Form
+	public partial class SettingsForm : Form
 	{
 		public SettingsForm(Font defaultTreeFont)
 		{
