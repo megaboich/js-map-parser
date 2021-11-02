@@ -42,12 +42,11 @@ namespace JsParser.VsExtension.UI
             if (JsParser.UI.Properties.Settings.Default.ShowErrorsNotificationOnTopOfEditor)
             {
 
-                Microsoft.VisualStudio.Text.ITextDocument document;
                 if (wpfTextView == null
                     || wpfTextView.TextDataModel == null
                     || wpfTextView.TextDataModel.DocumentBuffer == null
                     || wpfTextView.TextDataModel.DocumentBuffer.Properties == null
-                    || (!wpfTextView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(Microsoft.VisualStudio.Text.ITextDocument), out document))
+                    || (!wpfTextView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(Microsoft.VisualStudio.Text.ITextDocument), out ITextDocument document))
                     || document == null
                     || document.TextBuffer == null
                 )
@@ -60,7 +59,7 @@ namespace JsParser.VsExtension.UI
                 else
                 {
                     _docFilePath = document.FilePath;
-                    document.FileActionOccurred += document_FileActionOccurred;
+                    document.FileActionOccurred += Document_FileActionOccurred;
                     JsParserEventsBroadcaster.Subscribe(JsParserEventsHandler, _docFilePath);
                 }
             }
@@ -68,7 +67,7 @@ namespace JsParser.VsExtension.UI
             InitializeComponent();
         }
 
-        private void document_FileActionOccurred(object sender, TextDocumentFileActionEventArgs e)
+        private void Document_FileActionOccurred(object sender, TextDocumentFileActionEventArgs e)
         {
             if (e.FileActionType.HasFlag(FileActionTypes.ContentSavedToDisk)
                 || e.FileActionType.HasFlag(FileActionTypes.DocumentRenamed))
@@ -95,13 +94,11 @@ namespace JsParser.VsExtension.UI
 
         private void ErrorsDetailsCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is ComboBox)
+            if (sender is ComboBox cmb)
             {
-                var cmb = (ComboBox)sender;
                 var val = cmb.SelectedValue;
-                if (val is ErrorMessage)
+                if (val is ErrorMessage errorMessage)
                 {
-                    var errorMessage = (ErrorMessage)val;
                     if (_codeProvider != null)
                     {
                         _codeProvider.SelectionMoveToLineAndOffset(errorMessage.StartLine, errorMessage.StartColumn + 1);
