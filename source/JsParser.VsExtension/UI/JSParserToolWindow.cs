@@ -34,7 +34,7 @@ namespace JsParser.VsExtension.UI
     [Guid(GuidList.guidToolWindowPersistanceString)]
     public class JsParserToolWindow : ToolWindowPane, IJsParserToolWindow
     {
-        private NavigationTreeView _navigationTreeView;
+        private readonly NavigationTreeView _navigationTreeView;
 
         public NavigationTreeView NavigationTreeView
         {

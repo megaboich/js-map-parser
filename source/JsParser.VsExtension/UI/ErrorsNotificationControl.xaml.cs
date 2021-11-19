@@ -85,9 +85,9 @@ namespace JsParser.VsExtension.UI
         {
             _codeProvider = args.Code;
 
-            if (args is JsParserErrorsNotificationArgs)
+            if (args is JsParserErrorsNotificationArgs args1)
             {
-                SetErrors(((JsParserErrorsNotificationArgs)args));
+                SetErrors(args1);
                 return;
             }
         }
