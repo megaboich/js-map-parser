@@ -9,9 +9,9 @@ using System.Threading;
 
 namespace JsParser.VsExtension.Infrastructure
 {
-	public class VS2010CodeProvider: ICodeProvider
+	public class VS2010CodeProvider : ICodeProvider
 	{
-		private Document _activeDocument;
+		private readonly Document _activeDocument;
 
 		public VS2010CodeProvider(Document activeDocument)
 		{

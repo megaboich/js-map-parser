@@ -5,6 +5,11 @@
   <Target Name="AfterBuild"
           DependsOnTargets="GetFrameworkPaths"
           >
+    <PropertyGroup>
+		<!-- LibToolPath is optional - it's needed to debug C++, but you can still debug the C# code without it
+			If you don't have the C++ toolchain installed this is missing, but then you can't' debug C++ anyway -->
+        <LibToolPath Condition="Exists('$(DevEnvDir)\..\..\VC\bin')">$(DevEnvDir)\..\..\VC\bin</LibToolPath>
+    </PropertyGroup>
     <DllExportTask Platform="$(Platform)"
                    PlatformTarget="$(PlatformTarget)"
                    CpuType="$(CpuType)"
@@ -15,8 +20,9 @@
                    KeyContainer="$(KeyContainerName)$(AssemblyKeyContainerName)"
                    KeyFile="$(KeyOriginatorFile)"
                    ProjectDirectory="$(MSBuildProjectDirectory)"
-                   InputFileName="$(ProjectDir)build\JsMapParser.NppPlugin.dll"
+                   InputFileName="$(TargetPath)"
                    FrameworkPath="$(TargetedFrameworkDir);$(TargetFrameworkDirectory)"
+                   LibToolPath="$(LibToolPath)"
                    LibToolDllPath="$(DevEnvDir)"
                    SdkPath="$(SDK40ToolsPath)"/>
   </Target>

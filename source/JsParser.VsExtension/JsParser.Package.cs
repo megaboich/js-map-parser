@@ -47,7 +47,6 @@ namespace JsParser.VsExtension
     {
         private JsParserService _jsParserService;
         private DocumentEvents _documentEvents;
-        private SolutionEvents _solutionEvents;
         private WindowEvents _windowEvents;
         private static JsParserToolWindowManager _jsParserToolWindowManager;
 
@@ -119,11 +118,10 @@ namespace JsParser.VsExtension
             var dte = (DTE) GetService(typeof (DTE));
             Events events = dte.Events;
             _documentEvents = events.get_DocumentEvents(null);
-            _solutionEvents = events.SolutionEvents;
             _windowEvents = events.get_WindowEvents(null);
-            _documentEvents.DocumentSaved += documentEvents_DocumentSaved;
-            _documentEvents.DocumentOpened += documentEvents_DocumentOpened;
-            _windowEvents.WindowActivated += windowEvents_WindowActivated;
+            _documentEvents.DocumentSaved += DocumentEvents_DocumentSaved;
+            _documentEvents.DocumentOpened += DocumentEvents_DocumentOpened;
+            _windowEvents.WindowActivated += WindowEvents_WindowActivated;
 
             _jsParserToolWindowManager = new JsParserToolWindowManager(_jsParserService, () =>
             {
@@ -165,7 +163,7 @@ namespace JsParser.VsExtension
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(windowFrame.Show());
         }
 
-        private void windowEvents_WindowActivated(EnvDTE.Window gotFocus, EnvDTE.Window lostFocus)
+        private void WindowEvents_WindowActivated(EnvDTE.Window gotFocus, EnvDTE.Window lostFocus)
         {
             if (gotFocus == null
                 || gotFocus.Kind != "Document"
@@ -178,7 +176,7 @@ namespace JsParser.VsExtension
             _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(gotFocus.Document));
         }
 
-        private void documentEvents_DocumentSaved(Document doc)
+        private void DocumentEvents_DocumentSaved(Document doc)
         {
             if (doc.ActiveWindow != null
                 && doc.ActiveWindow.Left == 0
@@ -191,7 +189,7 @@ namespace JsParser.VsExtension
             _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(doc));
         }
 
-        private void documentEvents_DocumentOpened(Document doc)
+        private void DocumentEvents_DocumentOpened(Document doc)
         {
             _jsParserToolWindowManager.CallParserForDocument(new VS2010CodeProvider(doc));
         }
